@@ -80,12 +80,16 @@ fun TelaSimulado(
         }
         if (segundosRestantes <= 0) {
             terminado = true
-            onFinalizar(respostas, simulado.duracaoMinutos * 60 - segundosRestantes)
+            aoFinalizar(respostas, tempoGasto())
         }
     }
 
     val questao: SimuladoQuestao? = simulado.questoes.getOrNull(indice)
     val respondidas = respostas.size
+
+    /** Tempo realmente gasto, nunca negativo. */
+    fun tempoGasto(): Int =
+        (simulado.duracaoMinutos * 60 - segundosRestantes).coerceAtLeast(0)
 
     Column(
         modifier = Modifier
@@ -121,7 +125,7 @@ fun TelaSimulado(
                     color = Danger,
                     modifier = Modifier.clickable {
                         terminado = true
-                        onFinalizar(respostas, simulado.duracaoMinutos * 60 - segundosRestantes)
+                        aoFinalizar(respostas, tempoGasto())
                     },
                 )
             }
@@ -291,7 +295,7 @@ fun TelaSimulado(
                             indice++
                         } else {
                             terminado = true
-                            onFinalizar(respostas, simulado.duracaoMinutos * 60 - segundosRestantes)
+                            aoFinalizar(respostas, tempoGasto())
                         }
                     },
                 contentAlignment = Alignment.Center,
