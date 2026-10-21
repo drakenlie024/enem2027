@@ -221,7 +221,12 @@ fun EnemApp() {
     }
 }
 
-@Composable
+/**
+ * Abre a tela de questão.
+ *
+ * Não é @Composable: o `savedStateHandle` do back stack não pode ser lido
+ * de fora de um contexto de composição.
+ */
 private fun abrirQuestao(
     navController: androidx.navigation.NavHostController,
     questao: com.franferreira.enem2027.data.model.Question,
