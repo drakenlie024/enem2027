@@ -141,8 +141,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                 fila = fila,
                 pendentes = repo.pendentes(),
             )
-        }
-    }
+        }    }
 
     fun filtrarPorArea(area: String?) {
         _estado.value = _estado.value.copy(areaSelecionada = area, temaSelecionado = null)
@@ -153,6 +152,15 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
         _estado.value = _estado.value.copy(temaSelecionado = tema)
         carregarSessao()
     }
+
+    /**
+     * Busca uma questão pelo id, no banco local.
+     *
+     * A tela de questão recebe só o ID: o `savedStateHandle` do Navigation
+     * exige `Parcelable` ou `Serializable`, e a data class `Question` do
+     * Kotlin não é nenhuma das duas — passar o objeto inteiro fechava o app.
+     */
+    suspend fun buscarQuestao(id: String): Question? = repo.questaoPorId(id)
 
     fun baixarAcervo(ano: Int) {
         viewModelScope.launch {
@@ -195,8 +203,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
         }
     }
 
-    fun responder(questionId: String, correta: Boolean, segundos: Float?) {
-        viewModelScope.launch {
+    fun responder(questionId: String, correta: Boolean, segundos: Float?) {        viewModelScope.launch {
             repo.registrarResposta(questionId, correta, segundos)
             val gam = repo.gamificacao()
             _estado.value = _estado.value.copy(

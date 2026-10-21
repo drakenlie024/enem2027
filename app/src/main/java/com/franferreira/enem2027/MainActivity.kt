@@ -172,9 +172,10 @@ fun EnemApp() {
             }
 
             composable("questao") {
-                val questao = navController.currentBackStackEntry
+                val questaoId = navController.currentBackStackEntry
                     ?.savedStateHandle
-                    ?.get<com.franferreira.enem2027.data.model.Question>("questao")
+                    ?.get<String>("questaoId")
+                val questao = questaoId?.let { vm.buscarQuestao(it) }
                 if (questao != null) {
                     TelaQuestao(
                         questao = questao,
@@ -224,14 +225,16 @@ fun EnemApp() {
 /**
  * Abre a tela de questão.
  *
- * Não é @Composable: o `savedStateHandle` do back stack não pode ser lido
- * de fora de um contexto de composição.
+ * Passa só o ID pelo `savedStateHandle`: o `savedStateHandle` do Navigation
+ * exige que o valor seja Parcelable ou Serializable, e a data class
+ * `Question` do Kotlin não é nenhuma das duas — passar o objeto inteiro
+ * fazia o app fechar ao tocar na questão.
  */
 private fun abrirQuestao(
     navController: androidx.navigation.NavHostController,
     questao: com.franferreira.enem2027.data.model.Question,
 ) {
-    navController.currentBackStackEntry?.savedStateHandle?.set("questao", questao)
+    navController.currentBackStackEntry?.savedStateHandle?.set("questaoId", questao.id)
     navController.navigate("questao")
 }
 
