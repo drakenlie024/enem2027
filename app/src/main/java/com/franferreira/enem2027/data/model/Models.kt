@@ -224,6 +224,30 @@ data class AreaStatsSimulado(
     val taxa: Double = 0.0,
 )
 
+// --- fila de aprovação (questões geradas por IA) ---
+
+@Serializable
+data class QuestaoPendente(
+    val id: String = "",
+    val confianca: Double = 0.0,
+    val payload: QuestaoPendentePayload = QuestaoPendentePayload(),
+)
+
+@Serializable
+data class QuestaoPendentePayload(
+    val tema: String = "",
+    val enunciado: String = "",
+    val contexto: String = "",
+    val alternativas: List<Alternative> = emptyList(),
+    val gabarito: String = "",
+    val explicacao: String = "",
+    val competencia: String = "",
+    val dificuldade: String = "",
+)
+
+@Serializable
+data class ResolverPendenteRequest(val approved: Boolean)
+
 // --- IA ---
 
 @Serializable

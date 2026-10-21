@@ -18,7 +18,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.EmojiEvents
+import androidx.compose.material.icons.filled.FactCheck
 import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -29,12 +31,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.AreaStats
 import com.franferreira.enem2027.data.model.ProgressoResponse
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
+import com.franferreira.enem2027.ui.theme.Danger
 import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Secondary
 import com.franferreira.enem2027.ui.theme.Surface
@@ -44,6 +46,7 @@ import com.franferreira.enem2027.ui.theme.TextMuted
 import com.franferreira.enem2027.ui.theme.TextMutedDark
 import com.franferreira.enem2027.ui.theme.TextPrimary
 import com.franferreira.enem2027.ui.theme.TextSecondary
+import com.franferreira.enem2027.ui.theme.Warning
 import kotlin.math.roundToInt
 
 /**
@@ -57,6 +60,8 @@ import kotlin.math.roundToInt
 fun TelaProgresso(
     progresso: ProgressoResponse,
     aoAbrirAgenda: () -> Unit,
+    aoAbrirAprovacao: () -> Unit,
+    pendentesAprovacao: Int,
 ) {
     val fraca = progresso.porArea.minByOrNull { it.taxa }
 
@@ -95,7 +100,37 @@ fun TelaProgresso(
                     )
                 }
             }
+
             Spacer(Modifier.height(14.dp))
+
+            // fila de aprovação da IA
+            if (pendentesAprovacao > 0) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(Primary.copy(alpha = 0.10f))
+                        .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(12.dp))
+                        .clickable { aoAbrirAprovacao() }
+                        .padding(12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        Icons.Filled.FactCheck,
+                        contentDescription = null,
+                        tint = Primary,
+                        modifier = Modifier.size(17.dp),
+                    )
+                    Spacer(Modifier.width(9.dp))
+                    Text(
+                        text = "$pendentesAprovacao questões da IA esperando sua aprovação",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = TextSecondary,
+                        modifier = Modifier.weight(1f),
+                    )
+                }
+                Spacer(Modifier.height(10.dp))
+            }
 
             // topo: nível, streak, taxa
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -114,7 +149,7 @@ fun TelaProgresso(
                 CartaoNumero(
                     valor = "${progresso.taxaGeral.roundToInt()}%",
                     rotulo = "acerto geral",
-                    cor = if (progresso.taxaGeral >= 70) Secondary else com.franferreira.enem2027.ui.theme.Warning,
+                    cor = if (progresso.taxaGeral >= 70) Secondary else Warning,
                     modifier = Modifier.weight(1f),
                 )
             }
@@ -322,8 +357,8 @@ private fun LinhaArea(area: AreaStats) {
             style = MaterialTheme.typography.titleMedium,
             color = when {
                 area.taxa >= 70 -> Secondary
-                area.taxa >= 50 -> com.franferreira.enem2027.ui.theme.Warning
-                else -> com.franferreira.enem2027.ui.theme.Danger
+                area.taxa >= 50 -> Warning
+                else -> Danger
             },
         )
     }
@@ -333,8 +368,8 @@ private fun LinhaArea(area: AreaStats) {
 private fun BarraTaxa(taxa: Double) {
     val cor = when {
         taxa >= 70 -> Secondary
-        taxa >= 50 -> com.franferreira.enem2027.ui.theme.Warning
-        else -> com.franferreira.enem2027.ui.theme.Danger
+        taxa >= 50 -> Warning
+        else -> Danger
     }
     Box(
         modifier = Modifier
@@ -383,7 +418,7 @@ private fun LinhaCompetencia(rotulo: String, taxa: Double, respondidas: Int) {
         Text(
             text = "${taxa.roundToInt()}%",
             style = MaterialTheme.typography.titleMedium,
-            color = if (taxa >= 70) Secondary else com.franferreira.enem2027.ui.theme.Warning,
+            color = if (taxa >= 70) Secondary else Warning,
         )
     }
 }
@@ -420,7 +455,7 @@ private fun GradeConquistas(conquistas: List<String>) {
     }
 }
 
-private fun areaLegivel(area: String): String = when (area) {
+internal fun areaLegivel(area: String): String = when (area) {
     "matematica" -> "Matemática"
     "linguagens" -> "Linguagens"
     "ciencias-humanas" -> "Ciências Humanas"
@@ -429,7 +464,7 @@ private fun areaLegivel(area: String): String = when (area) {
     else -> area.replace('-', ' ').replaceFirstChar { it.uppercase() }
 }
 
-private fun rotuloConquista(id: String): String = when (id) {
+internal fun rotuloConquista(id: String): String = when (id) {
     "primeira_questao" -> "Primeira questão respondida"
     "dez_questoes" -> "10 questões respondidas"
     "cem_questoes" -> "100 questões respondidas"

@@ -7,6 +7,8 @@ import com.franferreira.enem2027.data.model.AgendaItem
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
 import com.franferreira.enem2027.data.model.ProgressoResponse
 import com.franferreira.enem2027.data.model.Question
+import com.franferreira.enem2027.data.model.QuestaoPendente
+import com.franferreira.enem2027.data.model.ResolverPendenteRequest
 import com.franferreira.enem2027.data.model.RespostaSimulado
 import com.franferreira.enem2027.data.model.SimuladoMontado
 import com.franferreira.enem2027.data.model.SimuladoRequest
@@ -44,6 +46,8 @@ data class EstadoHoje(
     /** Diagnóstico do último simulado encerrado. */
     val diagnostico: DiagnosticoSimulado? = null,
     val mensagemSimulado: String? = null,
+    /** Fila de questões geradas por IA aguardando aprovação. */
+    val filaAprovacao: List<QuestaoPendente> = emptyList(),
     val xp: Int = 0,
     val nivel: Int = 1,
     val streak: Int = 0,
@@ -86,6 +90,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             _estado.value = _estado.value.copy(carregando = false, autenticado = true)
             recarregar()
             carregarAgenda()
+            carregarFilaAprovacao()
         }
     }
 
@@ -237,6 +242,38 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
         }
     }
 
+    // ---------- fila de aprovação ----------
+
+    private fun carregarFilaAprovacao() {
+        viewModelScope.launch {
+            runCatching { ApiClient.api.filaDeAprovacao() }
+                .onSuccess { resposta ->
+                    _estado.value = _estado.value.copy(
+                        filaAprovacao = resposta["fila"] ?: emptyList(),
+                    )
+                }
+        }
+    }
+
+    fun resolverAprovacao(id: String, aprovar: Boolean) {
+        viewModelScope.launch {
+            runCatching {
+                ApiClient.api.resolverAprovacao(id, ResolverPendenteRequest(approved = aprovar))
+            }
+                .onSuccess {
+                    _estado.value = _estado.value.copy(
+                        mensagem = if (aprovar) "Questão aprovada" else "Questão rejeitada",
+                    )
+                    carregarFilaAprovacao()
+                }
+                .onFailure {
+                    _estado.value = _estado.value.copy(
+                        mensagem = "Não consegui resolver a aprovação. Tente de novo.",
+                    )
+                }
+        }
+    }
+
     // ---------- agenda ----------
 
     private fun carregarAgenda() {
@@ -272,6 +309,10 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                 .onSuccess {
                     _estado.value = _estado.value.copy(
                         mensagem = "Agenda salva: ${itens.size} períodos",
+                    )
+                    // Reagenda o lembrete com os novos períodos.
+                    com.franferreira.enem2027.notificacao.Agendador.agendar(
+                        getApplication<Application>()
                     )
                 }
                 .onFailure {

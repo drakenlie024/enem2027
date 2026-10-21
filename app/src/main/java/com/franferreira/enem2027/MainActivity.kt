@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.FactCheck
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Insights
@@ -40,6 +41,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.franferreira.enem2027.ui.ViewModelPrincipal
 import com.franferreira.enem2027.ui.screens.TelaAgenda
+import com.franferreira.enem2027.ui.screens.TelaAprovacao
 import com.franferreira.enem2027.ui.screens.TelaHoje
 import com.franferreira.enem2027.ui.screens.TelaLogin
 import com.franferreira.enem2027.ui.screens.TelaMontarSimulado
@@ -79,6 +81,7 @@ private sealed class Destination(
     data object Progresso : Destination("progresso", "Progresso", Icons.Filled.Insights)
     data object Agenda : Destination("agenda", "Agenda", Icons.Filled.CalendarMonth)
     data object Simulado : Destination("simulado", "Simulado", Icons.Filled.Timer)
+    data object Aprovacao : Destination("aprovacao", "Aprovação", Icons.Filled.FactCheck)
 }
 
 private val destinations = listOf(
@@ -231,6 +234,26 @@ fun EnemApp() {
                 TelaProgresso(
                     progresso = estado.progresso,
                     aoAbrirAgenda = { navController.navigate(Destination.Agenda.route) },
+                    aoAbrirAprovacao = { navController.navigate(Destination.Aprovacao.route) },
+                    pendentesAprovacao = estado.filaAprovacao.size,
+                )
+            }
+
+            composable(Destination.Aprovacao.route) {
+                TelaAprovacao(
+                    itens = estado.filaAprovacao.map { pendente ->
+                        QuestaoPendente(
+                            id = pendente.id,
+                            tema = pendente.payload.tema,
+                            enunciado = pendente.payload.enunciado,
+                            alternativas = pendente.payload.alternativas,
+                            gabarito = pendente.payload.gabarito,
+                            explicacao = pendente.payload.explicacao,
+                            confianca = pendente.confianca,
+                        )
+                    },
+                    aoAprovar = { id -> vm.resolverAprovacao(id, true) },
+                    aoRejeitar = { id -> vm.resolverAprovacao(id, false) },
                 )
             }
 

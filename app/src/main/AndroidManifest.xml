@@ -15,6 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Enem2027">
 
+        <receiver
+            android:name=".notificacao.LembreteReceiver"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

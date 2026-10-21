@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="#FFFFFF">
+    <!-- Livro aberto com marcador: "estudar" -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M4,4.5C4,3.67 4.67,3 5.5,3H11V20.5C10.4,20.17 9.75,20 9,20H5.5C4.67,20 4,19.33 4,18.5V4.5M20,4.5C20,3.67 19.33,3 18.5,3H13V20.5C13.6,20.17 14.25,20 15,20H18.5C19.33,20 20,19.33 20,18.5V4.5M13,3H11V20.5C11.35,20.33 11.68,20.17 12,20L13,20.17V3Z" />
+</vector>
