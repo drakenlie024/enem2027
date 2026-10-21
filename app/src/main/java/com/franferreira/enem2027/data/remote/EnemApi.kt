@@ -12,11 +12,11 @@ import com.franferreira.enem2027.data.model.SyncResponse
 import com.franferreira.enem2027.data.model.TokenResponse
 import com.franferreira.enem2027.data.model.YearInfo
 import com.franferreira.enem2027.data.model.YearPackage
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

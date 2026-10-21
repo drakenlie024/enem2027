@@ -28,6 +28,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -233,4 +234,4 @@ private fun TelaVazia(titulo: String, subtitulo: String) {
 
 @Composable
 private fun <T> kotlinx.coroutines.flow.StateFlow<T>.collectAsStateSafe() =
-    androidx.lifecycle.compose.collectAsStateWithLifecycle(this)
+    collectAsStateWithLifecycle()
