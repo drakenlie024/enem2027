@@ -157,7 +157,18 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                 sincronizando = false,
                 mensagem = resultado.fold(
                     onSuccess = { "$ano baixado: $it questões" },
-                    onFailure = { "Falha ao baixar $ano: ${it.message}" },
+                    onFailure = { erro ->
+                        val detalhe = when (erro) {
+                            is retrofit2.HttpException -> when (erro.code()) {
+                                422 -> "O servidor recusou o pedido (422)."
+                                401 -> "Sua sessão expirou. Entre de novo."
+                                404 -> "Não achei o acervo de $ano."
+                                else -> "Erro ${erro.code()} do servidor."
+                            }
+                            else -> erro.message ?: "Falha ao baixar $ano."
+                        }
+                        "Não consegui baixar $ano: $detalhe"
+                    },
                 ),
             )
             recarregar()

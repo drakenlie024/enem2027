@@ -37,10 +37,26 @@ class Repositorio(private val context: Context) {
 
     suspend fun anosDisponiveis(): List<YearInfo> = runCatching { api.anos() }.getOrDefault(emptyList())
 
-    /** Baixa o pacote de um ano e guarda localmente. */
+    /** Baixa o pacote de um ano e guarda localmente.
+     *
+     * O backend entrega no máximo 200 questões por requisição, então a
+     * busca é paginada até o fim do ano. Pedir mais que isso dá 422.
+     */
     suspend fun baixarAno(ano: Int): Result<Int> = runCatching {
-        val pacote = api.ano(ano, limit = 300)
-        val entidades = pacote.questoes.map { it.paraEntidade(pacote.versao) }
+        val todas = mutableListOf<Question>()
+        var offset = 0
+        var versao: String? = null
+        while (true) {
+            val pagina = api.ano(ano, limit = 200, offset = offset)
+            if (versao == null) versao = pagina.versao
+            val recebidas = pagina.questoes
+            if (recebidas.isEmpty()) break
+            todas += recebidas
+            offset += recebidas.size
+            if (recebidas.size < 200) break
+            if (todas.size >= pagina.total && pagina.total > 0) break
+        }
+        val entidades = todas.map { it.paraEntidade(versao) }
         db.questions().substituirAno(ano, entidades)
         entidades.size
     }
