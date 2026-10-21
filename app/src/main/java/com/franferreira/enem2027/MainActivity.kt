@@ -40,6 +40,8 @@ import com.franferreira.enem2027.ui.ViewModelPrincipal
 import com.franferreira.enem2027.ui.screens.TelaHoje
 import com.franferreira.enem2027.ui.screens.TelaLogin
 import com.franferreira.enem2027.ui.screens.TelaQuestao
+import com.franferreira.enem2027.ui.screens.TelaRedacao
+import com.franferreira.enem2027.ui.screens.TelaRevisao
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.EnemTheme
 import com.franferreira.enem2027.ui.theme.Primary
@@ -163,10 +165,7 @@ fun EnemApp() {
                     aoSincronizar = vm::sincronizar,
                     aoAbrirQuestao = { indice ->
                         estado.sessao.getOrNull(indice)?.let { questao ->
-                            navController.currentBackStackEntry
-                                ?.savedStateHandle
-                                ?.set("questao", questao)
-                            navController.navigate("questao")
+                            abrirQuestao(navController, questao)
                         }
                     },
                 )
@@ -200,11 +199,35 @@ fun EnemApp() {
                 }
             }
 
-            composable(Destination.Revisao.route) { TelaVazia("Revisão", "A fila de SRS aparece aqui.") }
-            composable(Destination.Redacao.route) { TelaVazia("Redação", "O editor de redação vem na próxima etapa.") }
+            composable(Destination.Revisao.route) {
+                TelaRevisao(
+                    vencendo = estado.fila.vencendo,
+                    novas = estado.fila.novas,
+                    erradas = estado.fila.erradas,
+                    aoAbrir = { questao -> abrirQuestao(navController, questao) },
+                    aoSincronizar = vm::sincronizar,
+                    sincronizando = estado.sincronizando,
+                )
+            }
+            composable(Destination.Redacao.route) {
+                TelaRedacao(
+                    temas = vm.temasRedacao.map { it.titulo },
+                    aoCorrigir = { tema, texto -> vm.corrigirRedacao(tema, texto) },
+                    historico = emptyList(),
+                )
+            }
             composable(Destination.Progresso.route) { TelaVazia("Progresso", "A evolução por área vem na próxima etapa.") }
         }
     }
+}
+
+@Composable
+private fun abrirQuestao(
+    navController: androidx.navigation.NavHostController,
+    questao: com.franferreira.enem2027.data.model.Question,
+) {
+    navController.currentBackStackEntry?.savedStateHandle?.set("questao", questao)
+    navController.navigate("questao")
 }
 
 @Composable

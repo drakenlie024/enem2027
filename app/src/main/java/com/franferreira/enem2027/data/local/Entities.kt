@@ -33,6 +33,11 @@ data class QuestionEntity(
     val subassunto: String?,
     val versaoAcervo: String?,
     val baixadoEm: Long = System.currentTimeMillis(),
+    /**
+     * Estado do SRS dessa questão, preenchido pela query de revisão
+     * (LEFT JOIN na tabela progress). Null = nunca respondida.
+     */
+    val progressState: String? = null,
 )
 
 /** Estado de repetição espaçada de uma questão, por usuário. */

@@ -79,6 +79,35 @@ class Repositorio(private val context: Context) {
 
     suspend fun pendentes(): Int = db.questions().pendentes(System.currentTimeMillis())
 
+    /**
+     * A fila de revisão separada por estado de memória.
+     *
+     * - [FilaRevisao.vencendo]: o SRS mandou voltar agora.
+     * - [FilaRevisao.novas]: nunca vistas.
+     * - [FilaRevisao.erradas]: caíram (lapse) e ainda estão em relearning.
+     */
+    suspend fun filaRevisao(area: String?, tema: String?, limite: Int = 50): FilaRevisao {
+        val agora = System.currentTimeMillis()
+        val vencendo = mutableListOf<Question>()
+        val novas = mutableListOf<Question>()
+        val erradas = mutableListOf<Question>()
+
+        db.questions().paraRevisao(area, tema, agora, limite * 2).forEach { entity ->
+            val questao = entity.paraModelo()
+            when (entity.progressState) {
+                "seen" -> Unit
+                "relearning" -> erradas += questao
+                "new" -> novas += questao
+                else -> vencendo += questao
+            }
+        }
+        return FilaRevisao(
+            vencendo = vencendo.take(limite),
+            novas = novas.take(limite),
+            erradas = erradas.take(limite),
+        )
+    }
+
     suspend fun questaoPorId(id: String): Question? =
         db.questions().porId(id)?.paraModelo()
 

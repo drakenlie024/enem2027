@@ -30,10 +30,13 @@ interface QuestionDao {
      * Questões para a sessão de hoje: as que vencem no SRS, priorizando as
      * que o usuário escolheu como tema. Quando não há nada vencido, cai
      * para as nunca vistas da área escolhida.
+     *
+     * O estado do SRS vem junto (`progressState`), para a tela de revisão
+     * separar o que está vencendo do que é novo.
      */
     @Query(
         """
-        SELECT q.* FROM questions q
+        SELECT q.*, p.state AS progressState FROM questions q
         LEFT JOIN progress p ON p.questionId = q.id
         WHERE (:area IS NULL OR q.area = :area)
           AND (:tema IS NULL OR q.tema = :tema)

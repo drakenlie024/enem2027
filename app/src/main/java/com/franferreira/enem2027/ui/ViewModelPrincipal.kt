@@ -5,6 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.data.remote.ApiClient
+import com.franferreira.enem2027.data.repo.FilaRevisao
+import com.franferreira.enem2027.data.repo.RepertorioRedacao
 import com.franferreira.enem2027.data.repo.Repositorio
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -23,6 +25,7 @@ data class EstadoHoje(
     val areaSelecionada: String? = null,
     val temaSelecionado: String? = null,
     val sessao: List<Question> = emptyList(),
+    val fila: FilaRevisao = FilaRevisao(),
     val xp: Int = 0,
     val nivel: Int = 1,
     val streak: Int = 0,
@@ -132,8 +135,10 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch {
             val s = _estado.value
             val sessao = repo.sessao(s.areaSelecionada, s.temaSelecionado, limite = 20)
+            val fila = repo.filaRevisao(s.areaSelecionada, s.temaSelecionado, limite = 50)
             _estado.value = _estado.value.copy(
                 sessao = sessao,
+                fila = fila,
                 pendentes = repo.pendentes(),
             )
         }
@@ -213,6 +218,20 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                 )
             ).explicacao
         }.getOrNull()
+    }
+
+    // ---------- redação ----------
+
+    val temasRedacao: List<RepertorioRedacao.Tema>
+        get() = RepertorioRedacao.temas
+
+    suspend fun corrigirRedacao(
+        tema: String,
+        texto: String,
+    ): Result<com.franferreira.enem2027.data.model.EssayCorrection> = runCatching {
+        ApiClient.api.corrigirRedacao(
+            com.franferreira.enem2027.data.model.EssayRequest(theme = tema, text = texto)
+        )
     }
 
     fun limparMensagem() {
