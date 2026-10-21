@@ -69,7 +69,7 @@ fun TelaQuestao(
     aoVoltar: () -> Unit,
     aoPedirExplicacao: suspend () -> String?,
 ) {
-    respondida by remember { mutableStateOf(false) }
+    var respondida by remember { mutableStateOf(false) }
     var alternativaEscolhida by remember { mutableStateOf<String?>(null) }
     var explicacao by remember { mutableStateOf<String?>(null) }
     var carregandoExplicacao by remember { mutableStateOf(false) }
