@@ -27,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -36,6 +37,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.franferreira.enem2027.ui.ViewModelPrincipal
 import com.franferreira.enem2027.ui.screens.TelaHoje
+import com.franferreira.enem2027.ui.screens.TelaLogin
 import com.franferreira.enem2027.ui.screens.TelaQuestao
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.EnemTheme
@@ -80,13 +82,37 @@ fun EnemApp() {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = backStackEntry?.destination
     val vm: ViewModelPrincipal = viewModel()
+    val estado by vm.estado.collectAsStateSafe()
 
     val rotaAtual = currentDestination?.route
+
+    if (!estado.autenticado) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Background),
+        ) {
+            if (estado.carregando) {
+                androidx.compose.foundation.layout.Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = androidx.compose.ui.Alignment.Center,
+                ) {
+                    androidx.compose.material3.CircularProgressIndicator(
+                        color = Primary,
+                        strokeWidth = 2.dp,
+                    )
+                }
+            } else {
+                TelaLogin(aoEntrar = vm::autenticar)
+            }
+        }
+        return
+    }
 
     Scaffold(
         containerColor = Background,
         bottomBar = {
-            if (rotaAtual != "questao") {
+            if (rotaAtual != "questao" && estado.autenticado) {
                 NavigationBar(containerColor = Surface, contentColor = TextPrimary) {
                     destinations.forEach { destino ->
                         val selecionado =
@@ -128,7 +154,6 @@ fun EnemApp() {
             modifier = Modifier.padding(innerPadding),
         ) {
             composable(Destination.Hoje.route) {
-                val estado by vm.estado.collectAsStateSafe()
                 TelaHoje(
                     estado = estado,
                     aoFiltrarArea = vm::filtrarPorArea,

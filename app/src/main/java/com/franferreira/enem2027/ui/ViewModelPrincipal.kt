@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 data class EstadoHoje(
     val carregando: Boolean = true,
     val sincronizando: Boolean = false,
+    val autenticado: Boolean = false,
     val pendentes: Int = 0,
     val totalLocal: Int = 0,
     val anos: List<Int> = emptyList(),
@@ -31,12 +32,78 @@ data class EstadoHoje(
 class ViewModelPrincipal(application: Application) : AndroidViewModel(application) {
 
     private val repo = Repositorio(application)
+    private val api = ApiClient.api
 
     private val _estado = MutableStateFlow(EstadoHoje())
     val estado: StateFlow<EstadoHoje> = _estado.asStateFlow()
 
     init {
-        recarregar()
+        restaurarSessao()
+    }
+
+    /**
+     * Guarda o token localmente para não pedir login toda vez.
+     */
+    private fun restaurarSessao() {
+        viewModelScope.launch {
+            val prefs = getApplication<Application>()
+                .getSharedPreferences("leticia", android.content.Context.MODE_PRIVATE)
+            val token = prefs.getString("token", null)
+            if (token.isNullOrBlank()) {
+                _estado.value = _estado.value.copy(carregando = false, autenticado = false)
+                return@launch
+            }
+            ApiClient.token = token
+            // Confere se o token ainda vale.
+            val valido = runCatching { api.gamificacao() }.isSuccess
+            if (!valido) {
+                ApiClient.token = null
+                prefs.edit().remove("token").apply()
+                _estado.value = _estado.value.copy(carregando = false, autenticado = false)
+                return@launch
+            }
+            _estado.value = _estado.value.copy(carregando = false, autenticado = true)
+            recarregar()
+        }
+    }
+
+    /** Faz login ou cadastro. Devolve null em caso de sucesso, ou a mensagem de erro. */
+    suspend fun autenticar(
+        email: String,
+        senha: String,
+        nome: String,
+        criar: Boolean,
+    ): String? {
+        return runCatching {
+            val resposta = if (criar) {
+                ApiClient.api.registrar(
+                    com.franferreira.enem2027.data.model.RegisterRequest(email, senha, nome)
+                )
+            } else {
+                ApiClient.api.entrar(
+                    com.franferreira.enem2027.data.model.LoginRequest(email, senha)
+                )
+            }
+            ApiClient.token = resposta.accessToken
+            getApplication<Application>()
+                .getSharedPreferences("leticia", android.content.Context.MODE_PRIVATE)
+                .edit()
+                .putString("token", resposta.accessToken)
+                .apply()
+            _estado.value = _estado.value.copy(autenticado = true)
+            recarregar()
+            null
+        }.getOrElse { erro ->
+            when (erro) {
+                is retrofit2.HttpException -> when (erro.code()) {
+                    401 -> "E-mail ou senha incorretos"
+                    409 -> "Já existe conta com esse e-mail"
+                    429 -> "Muitas tentativas. Aguarde um pouco."
+                    else -> "Falha no servidor (${erro.code()})"
+                }
+                else -> "Não consegui falar com o servidor. Tente de novo."
+            }
+        }
     }
 
     fun recarregar() {
