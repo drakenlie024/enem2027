@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Insights
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -21,19 +22,25 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.franferreira.enem2027.ui.screens.TodayScreen
+import com.franferreira.enem2027.ui.ViewModelPrincipal
+import com.franferreira.enem2027.ui.screens.TelaHoje
+import com.franferreira.enem2027.ui.screens.TelaQuestao
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.EnemTheme
+import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Surface
-import com.franferreira.enem2027.ui.theme.SurfaceBorder
 import com.franferreira.enem2027.ui.theme.TextMuted
 import com.franferreira.enem2027.ui.theme.TextPrimary
 
@@ -54,17 +61,17 @@ private sealed class Destination(
     val label: String,
     val icon: ImageVector,
 ) {
-    data object Today : Destination("today", "Hoje", Icons.Filled.Home)
-    data object Review : Destination("review", "Revisão", Icons.Filled.CheckCircle)
-    data object Essay : Destination("essay", "Redação", Icons.Filled.Edit)
-    data object Progress : Destination("progress", "Progresso", Icons.Filled.Insights)
+    data object Hoje : Destination("hoje", "Hoje", Icons.Filled.Home)
+    data object Revisao : Destination("revisao", "Revisão", Icons.Filled.CheckCircle)
+    data object Redacao : Destination("redacao", "Redação", Icons.Filled.Edit)
+    data object Progresso : Destination("progresso", "Progresso", Icons.Filled.Insights)
 }
 
 private val destinations = listOf(
-    Destination.Today,
-    Destination.Review,
-    Destination.Essay,
-    Destination.Progress,
+    Destination.Hoje,
+    Destination.Revisao,
+    Destination.Redacao,
+    Destination.Progresso,
 )
 
 @Composable
@@ -72,79 +79,133 @@ fun EnemApp() {
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = backStackEntry?.destination
+    val vm: ViewModelPrincipal = viewModel()
+
+    val rotaAtual = currentDestination?.route
 
     Scaffold(
         containerColor = Background,
         bottomBar = {
-            NavigationBar(
-                containerColor = Surface,
-                contentColor = TextPrimary,
-            ) {
-                destinations.forEach { destination ->
-                    val selected = currentDestination?.hierarchy?.any { it.route == destination.route } == true
-                    NavigationBarItem(
-                        selected = selected,
-                        onClick = {
-                            navController.navigate(destination.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
+            if (rotaAtual != "questao") {
+                NavigationBar(containerColor = Surface, contentColor = TextPrimary) {
+                    destinations.forEach { destino ->
+                        val selecionado =
+                            currentDestination?.hierarchy?.any { it.route == destino.route } == true
+                        NavigationBarItem(
+                            selected = selecionado,
+                            onClick = {
+                                navController.navigate(destino.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
                                 }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        },
-                        icon = {
-                            Icon(
-                                imageVector = destination.icon,
-                                contentDescription = destination.label,
-                            )
-                        },
-                        label = { Text(destination.label) },
-                        colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = TextPrimary,
-                            selectedTextColor = TextPrimary,
-                            indicatorColor = com.franferreira.enem2027.ui.theme.Primary.copy(alpha = 0.18f),
-                            unselectedIconColor = TextMuted,
-                            unselectedTextColor = TextMuted,
-                        ),
-                    )
+                            },
+                            icon = {
+                                Icon(
+                                    imageVector = destino.icon,
+                                    contentDescription = destino.label,
+                                )
+                            },
+                            label = { Text(destino.label) },
+                            colors = NavigationBarItemDefaults.colors(
+                                selectedIconColor = TextPrimary,
+                                selectedTextColor = TextPrimary,
+                                indicatorColor = Primary.copy(alpha = 0.18f),
+                                unselectedIconColor = TextMuted,
+                                unselectedTextColor = TextMuted,
+                            ),
+                        )
+                    }
                 }
             }
         },
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = Destination.Today.route,
+            startDestination = Destination.Hoje.route,
             modifier = Modifier.padding(innerPadding),
         ) {
-            composable(Destination.Today.route) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Background),
-                ) {
-                    TodayScreen()
+            composable(Destination.Hoje.route) {
+                val estado by vm.estado.collectAsStateSafe()
+                TelaHoje(
+                    estado = estado,
+                    aoFiltrarArea = vm::filtrarPorArea,
+                    aoFiltrarTema = vm::filtrarPorTema,
+                    aoBaixarAno = vm::baixarAcervo,
+                    aoSincronizar = vm::sincronizar,
+                    aoAbrirQuestao = { indice ->
+                        estado.sessao.getOrNull(indice)?.let { questao ->
+                            navController.currentBackStackEntry
+                                ?.savedStateHandle
+                                ?.set("questao", questao)
+                            navController.navigate("questao")
+                        }
+                    },
+                )
+            }
+
+            composable("questao") {
+                val questao = navController.currentBackStackEntry
+                    ?.savedStateHandle
+                    ?.get<com.franferreira.enem2027.data.model.Question>("questao")
+                if (questao != null) {
+                    TelaQuestao(
+                        questao = questao,
+                        aoResponder = { correta, segundos ->
+                            vm.responder(questao.id, correta, segundos)
+                        },
+                        aoVoltar = { navController.popBackStack() },
+                        aoPedirExplicacao = { vm.pedirExplicacao(questao) },
+                    )
+                } else {
+                    Box(
+                        Modifier
+                            .fillMaxSize()
+                            .background(Background),
+                    ) {
+                        Text(
+                            text = "Questão não encontrada",
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = TextMuted,
+                        )
+                    }
                 }
             }
-            composable(Destination.Review.route) { PlaceholderScreen("Revisão espaçada") }
-            composable(Destination.Essay.route) { PlaceholderScreen("Redação") }
-            composable(Destination.Progress.route) { PlaceholderScreen("Progresso") }
+
+            composable(Destination.Revisao.route) { TelaVazia("Revisão", "A fila de SRS aparece aqui.") }
+            composable(Destination.Redacao.route) { TelaVazia("Redação", "O editor de redação vem na próxima etapa.") }
+            composable(Destination.Progresso.route) { TelaVazia("Progresso", "A evolução por área vem na próxima etapa.") }
         }
     }
 }
 
 @Composable
-private fun PlaceholderScreen(title: String) {
+private fun TelaVazia(titulo: String, subtitulo: String) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Background),
         contentAlignment = androidx.compose.ui.Alignment.Center,
     ) {
-        Text(
-            text = title,
-            style = androidx.compose.material3.MaterialTheme.typography.titleLarge,
-            color = TextPrimary,
-        )
+        androidx.compose.foundation.layout.Column(
+            horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
+        ) {
+            Text(
+                text = titulo,
+                style = MaterialTheme.typography.titleLarge,
+                color = TextPrimary,
+            )
+            Text(
+                text = subtitulo,
+                style = MaterialTheme.typography.bodySmall,
+                color = TextMuted,
+            )
+        }
     }
 }
+
+@Composable
+private fun <T> kotlinx.coroutines.flow.StateFlow<T>.collectAsStateSafe() =
+    androidx.lifecycle.compose.collectAsStateWithLifecycle(this)
