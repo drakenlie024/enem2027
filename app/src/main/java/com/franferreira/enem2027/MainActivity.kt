@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Insights
+import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -41,10 +42,13 @@ import com.franferreira.enem2027.ui.ViewModelPrincipal
 import com.franferreira.enem2027.ui.screens.TelaAgenda
 import com.franferreira.enem2027.ui.screens.TelaHoje
 import com.franferreira.enem2027.ui.screens.TelaLogin
+import com.franferreira.enem2027.ui.screens.TelaMontarSimulado
 import com.franferreira.enem2027.ui.screens.TelaProgresso
 import com.franferreira.enem2027.ui.screens.TelaQuestao
 import com.franferreira.enem2027.ui.screens.TelaRedacao
+import com.franferreira.enem2027.ui.screens.TelaResultadoSimulado
 import com.franferreira.enem2027.ui.screens.TelaRevisao
+import com.franferreira.enem2027.ui.screens.TelaSimulado
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.EnemTheme
 import com.franferreira.enem2027.ui.theme.Primary
@@ -74,14 +78,15 @@ private sealed class Destination(
     data object Redacao : Destination("redacao", "Redação", Icons.Filled.Edit)
     data object Progresso : Destination("progresso", "Progresso", Icons.Filled.Insights)
     data object Agenda : Destination("agenda", "Agenda", Icons.Filled.CalendarMonth)
+    data object Simulado : Destination("simulado", "Simulado", Icons.Filled.Timer)
 }
 
 private val destinations = listOf(
     Destination.Hoje,
     Destination.Revisao,
+    Destination.Simulado,
     Destination.Redacao,
     Destination.Progresso,
-    Destination.Agenda,
 )
 
 @Composable
@@ -223,7 +228,10 @@ fun EnemApp() {
                 )
             }
             composable(Destination.Progresso.route) {
-                TelaProgresso(progresso = estado.progresso)
+                TelaProgresso(
+                    progresso = estado.progresso,
+                    aoAbrirAgenda = { navController.navigate(Destination.Agenda.route) },
+                )
             }
 
             composable(Destination.Agenda.route) {
@@ -232,6 +240,38 @@ fun EnemApp() {
                     aoAlternar = vm::alternarAgenda,
                     aoSalvar = vm::salvarAgenda,
                 )
+            }
+
+            composable(Destination.Simulado.route) {
+                val simulado = estado.simulado
+                val diagnostico = estado.diagnostico
+                when {
+                    diagnostico != null -> TelaResultadoSimulado(
+                        diagnostico = diagnostico,
+                        aoFechar = {
+                            vm.fecharSimulado()
+                            navController.popBackStack()
+                        },
+                    )
+                    simulado != null -> TelaSimulado(
+                        simulado = simulado,
+                        aoFinalizar = { respostas, duracao ->
+                            vm.finalizarSimulado(respostas, duracao)
+                        },
+                        aoVoltar = {
+                            vm.fecharSimulado()
+                            navController.popBackStack()
+                        },
+                    )
+                    else -> TelaMontarSimulado(
+                        anosDisponiveis = estado.anos,
+                        carregando = estado.carregandoSimulado,
+                        diagnosticoPrevio = estado.mensagemSimulado,
+                        aoIniciar = { tipo, area, ano, quantidade ->
+                            vm.gerarSimulado(tipo, area, ano, quantidade)
+                        },
+                    )
+                }
             }
         }
     }

@@ -2,6 +2,7 @@ package com.franferreira.enem2027.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -53,7 +54,10 @@ import kotlin.math.roundToInt
  * QUAL área está fraca. Por isso o destaque vai na menor taxa de acerto.
  */
 @Composable
-fun TelaProgresso(progresso: ProgressoResponse) {
+fun TelaProgresso(
+    progresso: ProgressoResponse,
+    aoAbrirAgenda: () -> Unit,
+) {
     val fraca = progresso.porArea.minByOrNull { it.taxa }
 
     Column(
@@ -63,16 +67,34 @@ fun TelaProgresso(progresso: ProgressoResponse) {
     ) {
         Column(Modifier.padding(horizontal = 16.dp)) {
             Spacer(Modifier.height(12.dp))
-            Text(
-                text = "PROGRESSO",
-                style = MaterialTheme.typography.labelSmall,
-                color = Primary,
-            )
-            Text(
-                text = "Onde você está mandando bem",
-                style = MaterialTheme.typography.titleLarge,
-                color = TextPrimary,
-            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    Text(
+                        text = "PROGRESSO",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = Primary,
+                    )
+                    Text(
+                        text = "Onde você está mandando bem",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = TextPrimary,
+                    )
+                }
+                Box(
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .background(Surface)
+                        .border(1.dp, SurfaceBorder, CircleShape)
+                        .clickable { aoAbrirAgenda() }
+                        .padding(horizontal = 12.dp, vertical = 8.dp),
+                ) {
+                    Text(
+                        text = "Agenda",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = TextSecondary,
+                    )
+                }
+            }
             Spacer(Modifier.height(14.dp))
 
             // topo: nível, streak, taxa

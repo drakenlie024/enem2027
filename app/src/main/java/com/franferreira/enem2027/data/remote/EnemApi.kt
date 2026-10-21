@@ -3,6 +3,7 @@ package com.franferreira.enem2027.data.remote
 import com.franferreira.enem2027.data.model.AgendaItem
 import com.franferreira.enem2027.data.model.ExplainRequest
 import com.franferreira.enem2027.data.model.ExplainResponse
+import com.franferreira.enem2027.data.model.DiagnosticoSimulado
 import com.franferreira.enem2027.data.model.EssayCorrection
 import com.franferreira.enem2027.data.model.EssayRequest
 import com.franferreira.enem2027.data.model.GamificationResponse
@@ -10,6 +11,9 @@ import com.franferreira.enem2027.data.model.LoginRequest
 import com.franferreira.enem2027.data.model.ProgressBatch
 import com.franferreira.enem2027.data.model.ProgressoResponse
 import com.franferreira.enem2027.data.model.RegisterRequest
+import com.franferreira.enem2027.data.model.RespostaSimulado
+import com.franferreira.enem2027.data.model.SimuladoMontado
+import com.franferreira.enem2027.data.model.SimuladoRequest
 import com.franferreira.enem2027.data.model.SyncResponse
 import com.franferreira.enem2027.data.model.TokenResponse
 import com.franferreira.enem2027.data.model.YearInfo
@@ -60,6 +64,15 @@ interface EnemApi {
 
     @POST("ai/explain")
     suspend fun explicar(@Body body: ExplainRequest): ExplainResponse
+
+    @POST("simulados/gerar")
+    suspend fun gerarSimulado(@Body body: SimuladoRequest): SimuladoMontado
+
+    @POST("simulados/diagnostico")
+    suspend fun diagnosticoSimulado(@Body body: RespostaSimulado): DiagnosticoSimulado
+
+    @GET("simulados/historico")
+    suspend fun historicoSimulados(): Map<String, List<Map<String, String>>>
 
     @POST("ai/essay/correct")
     suspend fun corrigirRedacao(@Body body: EssayRequest): EssayCorrection

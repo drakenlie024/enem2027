@@ -155,6 +155,75 @@ data class AgendaItem(
     @SerialName("minutes_target") val minutesTarget: Int = 30,
 )
 
+// --- simulados ---
+
+@Serializable
+data class SimuladoRequest(
+    val tipo: String = "area",
+    val ano: Int? = null,
+    val area: String? = null,
+    val quantidade: Int = 20,
+)
+
+@Serializable
+data class SimuladoQuestao(
+    val id: String = "",
+    val indice: Int = 0,
+    val area: String? = null,
+    val tema: String? = null,
+    val enunciado: String? = null,
+    val contexto: String? = null,
+    val arquivos: List<String> = emptyList(),
+    val alternativas: List<Alternative> = emptyList(),
+    val gabarito: String? = null,
+)
+
+@Serializable
+data class SimuladoMontado(
+    val id: String = "",
+    val tipo: String = "",
+    val label: String = "",
+    val ano: Int? = null,
+    val area: String? = null,
+    @SerialName("duracao_minutos") val duracaoMinutos: Int = 0,
+    val questoes: List<SimuladoQuestao> = emptyList(),
+    @SerialName("diagnostico_previo") val diagnosticoPrevio: String? = null,
+)
+
+@Serializable
+data class RespostaSimulado(
+    @SerialName("simulado_id") val simuladoId: String = "",
+    val tipo: String = "",
+    val label: String = "",
+    @SerialName("duracao_segundos") val duracaoSegundos: Int = 0,
+    val respostas: List<Map<String, String>> = emptyList(),
+)
+
+@Serializable
+data class TemaFraco(
+    val tema: String = "",
+    val erros: Int = 0,
+    val total: Int = 0,
+    val taxa: Double = 0.0,
+)
+
+@Serializable
+data class DiagnosticoSimulado(
+    val total: Int = 0,
+    val acertos: Int = 0,
+    val taxa: Double = 0.0,
+    @SerialName("por_area") val porArea: Map<String, AreaStatsSimulado> = emptyMap(),
+    @SerialName("temas_fracos") val temasFracos: List<TemaFraco> = emptyList(),
+    val plano: List<String> = emptyList(),
+)
+
+@Serializable
+data class AreaStatsSimulado(
+    val total: Int = 0,
+    val acertos: Int = 0,
+    val taxa: Double = 0.0,
+)
+
 // --- IA ---
 
 @Serializable

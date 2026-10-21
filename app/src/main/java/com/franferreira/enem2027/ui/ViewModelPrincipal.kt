@@ -4,8 +4,12 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.franferreira.enem2027.data.model.AgendaItem
+import com.franferreira.enem2027.data.model.DiagnosticoSimulado
 import com.franferreira.enem2027.data.model.ProgressoResponse
 import com.franferreira.enem2027.data.model.Question
+import com.franferreira.enem2027.data.model.RespostaSimulado
+import com.franferreira.enem2027.data.model.SimuladoMontado
+import com.franferreira.enem2027.data.model.SimuladoRequest
 import com.franferreira.enem2027.data.remote.ApiClient
 import com.franferreira.enem2027.data.repo.FilaRevisao
 import com.franferreira.enem2027.data.repo.RepertorioRedacao
@@ -34,6 +38,12 @@ data class EstadoHoje(
     val progresso: ProgressoResponse = ProgressoResponse(),
     /** Períodos que o usuário marcou na agenda. */
     val agenda: Set<Pair<Int, String>> = emptySet(),
+    /** Simulado em andamento. */
+    val simulado: SimuladoMontado? = null,
+    val carregandoSimulado: Boolean = false,
+    /** Diagnóstico do último simulado encerrado. */
+    val diagnostico: DiagnosticoSimulado? = null,
+    val mensagemSimulado: String? = null,
     val xp: Int = 0,
     val nivel: Int = 1,
     val streak: Int = 0,
@@ -160,6 +170,69 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             runCatching { ApiClient.api.progresso(dias = 30) }
                 .onSuccess { dados ->
                     _estado.value = _estado.value.copy(progresso = dados)
+                }
+        }
+    }
+
+    // ---------- simulados ----------
+
+    fun gerarSimulado(tipo: String, area: String?, ano: Int?, quantidade: Int) {
+        viewModelScope.launch {
+            _estado.value = _estado.value.copy(carregandoSimulado = true, mensagemSimulado = null)
+            runCatching {
+                ApiClient.api.gerarSimulado(
+                    SimuladoRequest(
+                        tipo = tipo,
+                        area = area,
+                        ano = ano,
+                        quantidade = quantidade,
+                    )
+                )
+            }
+                .onSuccess { simulado ->
+                    _estado.value = _estado.value.copy(
+                        carregandoSimulado = false,
+                        simulado = simulado,
+                    )
+                }
+                .onFailure {
+                    _estado.value = _estado.value.copy(
+                        carregandoSimulado = false,
+                        mensagemSimulado = "Não consegui montar o simulado. Tente de novo.",
+                    )
+                }
+        }
+    }
+
+    fun fecharSimulado() {
+        _estado.value = _estado.value.copy(simulado = null, diagnostico = null)
+    }
+
+    fun finalizarSimulado(respostas: List<Map<String, String>>, duracaoSegundos: Int) {
+        val simulado = _estado.value.simulado ?: return
+        viewModelScope.launch {
+            runCatching {
+                ApiClient.api.diagnosticoSimulado(
+                    RespostaSimulado(
+                        simuladoId = simulado.id,
+                        tipo = simulado.tipo,
+                        label = simulado.label,
+                        duracaoSegundos = duracaoSegundos,
+                        respostas = respostas,
+                    )
+                )
+            }
+                .onSuccess { diag ->
+                    _estado.value = _estado.value.copy(
+                        simulado = null,
+                        diagnostico = diag,
+                    )
+                }
+                .onFailure {
+                    _estado.value = _estado.value.copy(
+                        simulado = null,
+                        mensagemSimulado = "Não consegui fechar o simulado no servidor.",
+                    )
                 }
         }
     }
