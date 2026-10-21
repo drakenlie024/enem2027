@@ -165,24 +165,24 @@ fun EnemApp() {
                     aoSincronizar = vm::sincronizar,
                     aoAbrirQuestao = { indice ->
                         estado.sessao.getOrNull(indice)?.let { questao ->
-                            abrirQuestao(navController, questao)
+                            abrirQuestao(navController, vm, questao)
                         }
                     },
                 )
             }
 
             composable("questao") {
-                val questaoId = navController.currentBackStackEntry
-                    ?.savedStateHandle
-                    ?.get<String>("questaoId")
-                val questao = questaoId?.let { vm.buscarQuestao(it) }
+                val questao = estado.questaoAberta
                 if (questao != null) {
                     TelaQuestao(
                         questao = questao,
                         aoResponder = { correta, segundos ->
                             vm.responder(questao.id, correta, segundos)
                         },
-                        aoVoltar = { navController.popBackStack() },
+                        aoVoltar = {
+                            vm.fecharQuestao()
+                            navController.popBackStack()
+                        },
                         aoPedirExplicacao = { vm.pedirExplicacao(questao) },
                     )
                 } else {
@@ -205,7 +205,7 @@ fun EnemApp() {
                     vencendo = estado.fila.vencendo,
                     novas = estado.fila.novas,
                     erradas = estado.fila.erradas,
-                    aoAbrir = { questao -> abrirQuestao(navController, questao) },
+                    aoAbrir = { questao -> abrirQuestao(navController, vm, questao) },
                     aoSincronizar = vm::sincronizar,
                     sincronizando = estado.sincronizando,
                 )
@@ -229,12 +229,16 @@ fun EnemApp() {
  * exige que o valor seja Parcelable ou Serializable, e a data class
  * `Question` do Kotlin não é nenhuma das duas — passar o objeto inteiro
  * fazia o app fechar ao tocar na questão.
+ *
+ * O ViewModel é quem carrega a questão do banco local e a expõe no estado;
+ * a função de composite não pode chamar um `suspend`.
  */
 private fun abrirQuestao(
     navController: androidx.navigation.NavHostController,
+    vm: ViewModelPrincipal,
     questao: com.franferreira.enem2027.data.model.Question,
 ) {
-    navController.currentBackStackEntry?.savedStateHandle?.set("questaoId", questao.id)
+    vm.abrirQuestao(questao.id)
     navController.navigate("questao")
 }
 

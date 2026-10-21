@@ -26,6 +26,8 @@ data class EstadoHoje(
     val temaSelecionado: String? = null,
     val sessao: List<Question> = emptyList(),
     val fila: FilaRevisao = FilaRevisao(),
+    /** Questão em foco na tela de revisão (null = nenhuma). */
+    val questaoAberta: Question? = null,
     val xp: Int = 0,
     val nivel: Int = 1,
     val streak: Int = 0,
@@ -154,13 +156,18 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
     }
 
     /**
-     * Busca uma questão pelo id, no banco local.
+     * Abre uma questão na tela de revisão.
      *
-     * A tela de questão recebe só o ID: o `savedStateHandle` do Navigation
-     * exige `Parcelable` ou `Serializable`, e a data class `Question` do
-     * Kotlin não é nenhuma das duas — passar o objeto inteiro fechava o app.
+     * A tela recebe só o ID: o `savedStateHandle` do Navigation exige
+     * `Parcelable` ou `Serializable`, e a data class `Question` do Kotlin não
+     * é nenhuma das duas — passar o objeto inteiro fechava o app.
      */
-    suspend fun buscarQuestao(id: String): Question? = repo.questaoPorId(id)
+    fun abrirQuestao(questionId: String) {
+        viewModelScope.launch {
+            val questao = repo.questaoPorId(questionId)
+            _estado.value = _estado.value.copy(questaoAberta = questao)
+        }
+    }
 
     fun baixarAcervo(ano: Int) {
         viewModelScope.launch {
@@ -201,6 +208,10 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             )
             recarregar()
         }
+    }
+
+    fun fecharQuestao() {
+        _estado.value = _estado.value.copy(questaoAberta = null)
     }
 
     fun responder(questionId: String, correta: Boolean, segundos: Float?) {        viewModelScope.launch {
