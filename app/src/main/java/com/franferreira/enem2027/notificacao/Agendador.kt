@@ -40,7 +40,8 @@ object Agendador {
             }
 
             val agora = Calendar.getInstance()
-            val hoje = agora.get(Calendar.DAY_OF_WEEK) - 2  # Calendar: domingo=1
+            // Calendar: domingo = 1, segunda = 2 ... sábado = 7
+            val hoje = agora.get(Calendar.DAY_OF_WEEK) - 2
             val weekday = if (hoje < 0) 6 else hoje
 
             val periodo = agenda
