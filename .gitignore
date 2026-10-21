@@ -1,0 +1,23 @@
+# Android / Gradle
+*.iml
+.gradle/
+build/
+local.properties
+.cxx/
+captures/
+.externalNativeBuild/
+
+# Segredos (keystore e senhas nunca entram no git)
+*.jks
+*.keystore
+keystore.properties
+secrets.properties
+
+# IDE
+.idea/
+.vscode/
+*.hprof
+
+# SO
+.DS_Store
+Thumbs.db
