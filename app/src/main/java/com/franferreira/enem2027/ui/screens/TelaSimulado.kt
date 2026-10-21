@@ -39,7 +39,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
 import com.franferreira.enem2027.data.model.SimuladoMontado
-import com.franferreira.enem2027.data.model.SimuladoQuestaoimport com.franferreira.enem2027.ui.theme.Background
+import com.franferreira.enem2027.data.model.SimuladoQuestao
+import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
 import com.franferreira.enem2027.ui.theme.Primary
