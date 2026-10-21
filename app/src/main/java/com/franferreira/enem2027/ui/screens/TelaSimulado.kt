@@ -238,7 +238,7 @@ fun TelaSimulado(
                 Spacer(Modifier.height(14.dp))
             }
 
-            itemsIndexed(questao.alternativas) { _, alternativa ->
+            itemsIndexed(questao.alternativas, key = { _, alt -> alt.letra }) { _, alternativa ->
                 val escolhida = respostas[questao.id] == alternativa.letra
                 Box(
                     modifier = Modifier
