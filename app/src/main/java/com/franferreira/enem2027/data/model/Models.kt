@@ -110,6 +110,51 @@ data class GamificationResponse(
     @SerialName("longest_streak") val longestStreak: Int = 0,
 )
 
+// --- progresso ---
+
+@Serializable
+data class AreaStats(
+    val area: String = "",
+    val total: Int = 0,
+    val respondidas: Int = 0,
+    val acertos: Int = 0,
+    val taxa: Double = 0.0,
+    val pendentes: Int = 0,
+)
+
+@Serializable
+data class CompetenciaStats(
+    val competencia: String = "",
+    val respondidas: Int = 0,
+    val acertos: Int = 0,
+    val taxa: Double = 0.0,
+)
+
+@Serializable
+data class ProgressoResponse(
+    val xp: Int = 0,
+    val nivel: Int = 1,
+    val streak: Int = 0,
+    @SerialName("longest_streak") val longestStreak: Int = 0,
+    @SerialName("total_respondidas") val totalRespondidas: Int = 0,
+    @SerialName("total_acertos") val totalAcertos: Int = 0,
+    @SerialName("taxa_geral") val taxaGeral: Double = 0.0,
+    val pendentes: Int = 0,
+    @SerialName("por_area") val porArea: List<AreaStats> = emptyList(),
+    @SerialName("por_competencia") val porCompetencia: List<CompetenciaStats> = emptyList(),
+    @SerialName("por_dia") val porDia: List<Int> = emptyList(),
+    val conquistas: List<String> = emptyList(),
+)
+
+/** Item da agenda: quando o usuário pode estudar. */
+@Serializable
+data class AgendaItem(
+    val id: String? = null,
+    val weekday: Int,
+    val period: String,
+    @SerialName("minutes_target") val minutesTarget: Int = 30,
+)
+
 // --- IA ---
 
 @Serializable

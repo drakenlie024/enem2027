@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Home
@@ -37,8 +38,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.franferreira.enem2027.ui.ViewModelPrincipal
+import com.franferreira.enem2027.ui.screens.TelaAgenda
 import com.franferreira.enem2027.ui.screens.TelaHoje
 import com.franferreira.enem2027.ui.screens.TelaLogin
+import com.franferreira.enem2027.ui.screens.TelaProgresso
 import com.franferreira.enem2027.ui.screens.TelaQuestao
 import com.franferreira.enem2027.ui.screens.TelaRedacao
 import com.franferreira.enem2027.ui.screens.TelaRevisao
@@ -70,6 +73,7 @@ private sealed class Destination(
     data object Revisao : Destination("revisao", "Revisão", Icons.Filled.CheckCircle)
     data object Redacao : Destination("redacao", "Redação", Icons.Filled.Edit)
     data object Progresso : Destination("progresso", "Progresso", Icons.Filled.Insights)
+    data object Agenda : Destination("agenda", "Agenda", Icons.Filled.CalendarMonth)
 }
 
 private val destinations = listOf(
@@ -77,6 +81,7 @@ private val destinations = listOf(
     Destination.Revisao,
     Destination.Redacao,
     Destination.Progresso,
+    Destination.Agenda,
 )
 
 @Composable
@@ -217,7 +222,17 @@ fun EnemApp() {
                     historico = emptyList(),
                 )
             }
-            composable(Destination.Progresso.route) { TelaVazia("Progresso", "A evolução por área vem na próxima etapa.") }
+            composable(Destination.Progresso.route) {
+                TelaProgresso(progresso = estado.progresso)
+            }
+
+            composable(Destination.Agenda.route) {
+                TelaAgenda(
+                    diasSelecionados = estado.agenda,
+                    aoAlternar = vm::alternarAgenda,
+                    aoSalvar = vm::salvarAgenda,
+                )
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.franferreira.enem2027.data.remote
 
+import com.franferreira.enem2027.data.model.AgendaItem
 import com.franferreira.enem2027.data.model.ExplainRequest
 import com.franferreira.enem2027.data.model.ExplainResponse
 import com.franferreira.enem2027.data.model.EssayCorrection
@@ -7,6 +8,7 @@ import com.franferreira.enem2027.data.model.EssayRequest
 import com.franferreira.enem2027.data.model.GamificationResponse
 import com.franferreira.enem2027.data.model.LoginRequest
 import com.franferreira.enem2027.data.model.ProgressBatch
+import com.franferreira.enem2027.data.model.ProgressoResponse
 import com.franferreira.enem2027.data.model.RegisterRequest
 import com.franferreira.enem2027.data.model.SyncResponse
 import com.franferreira.enem2027.data.model.TokenResponse
@@ -45,6 +47,15 @@ interface EnemApi {
 
     @GET("sync/gamification")
     suspend fun gamificacao(): GamificationResponse
+
+    @GET("sync/progresso")
+    suspend fun progresso(@Query("dias") dias: Int = 30): ProgressoResponse
+
+    @GET("sync/agenda")
+    suspend fun agenda(): Map<String, List<AgendaItem>>
+
+    @PUT("sync/agenda")
+    suspend fun salvarAgenda(@Body itens: List<AgendaItem>): Map<String, Any>
 
     @POST("ai/explain")
     suspend fun explicar(@Body body: ExplainRequest): ExplainResponse

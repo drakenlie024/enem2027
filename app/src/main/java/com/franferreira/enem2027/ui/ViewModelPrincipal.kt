@@ -3,6 +3,8 @@ package com.franferreira.enem2027.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.franferreira.enem2027.data.model.AgendaItem
+import com.franferreira.enem2027.data.model.ProgressoResponse
 import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.data.remote.ApiClient
 import com.franferreira.enem2027.data.repo.FilaRevisao
@@ -28,6 +30,10 @@ data class EstadoHoje(
     val fila: FilaRevisao = FilaRevisao(),
     /** Questão em foco na tela de revisão (null = nenhuma). */
     val questaoAberta: Question? = null,
+    /** Evolução do usuário: por área, competência, dia e conquistas. */
+    val progresso: ProgressoResponse = ProgressoResponse(),
+    /** Períodos que o usuário marcou na agenda. */
+    val agenda: Set<Pair<Int, String>> = emptySet(),
     val xp: Int = 0,
     val nivel: Int = 1,
     val streak: Int = 0,
@@ -69,6 +75,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             }
             _estado.value = _estado.value.copy(carregando = false, autenticado = true)
             recarregar()
+            carregarAgenda()
         }
     }
 
@@ -143,7 +150,64 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                 fila = fila,
                 pendentes = repo.pendentes(),
             )
-        }    }
+            carregarProgresso()
+        }
+    }
+
+    /** Carrega a evolução. Falha de rede não pode virar tela em branco. */
+    private fun carregarProgresso() {
+        viewModelScope.launch {
+            runCatching { ApiClient.api.progresso(dias = 30) }
+                .onSuccess { dados ->
+                    _estado.value = _estado.value.copy(progresso = dados)
+                }
+        }
+    }
+
+    // ---------- agenda ----------
+
+    private fun carregarAgenda() {
+        viewModelScope.launch {
+            runCatching { ApiClient.api.agenda() }
+                .onSuccess { resposta ->
+                    val itens = resposta["itens"] ?: emptyList<AgendaItem>()
+                    _estado.value = _estado.value.copy(
+                        agenda = itens.mapNotNull { item ->
+                            item.period?.let { periodo -> item.weekday to periodo }
+                        }.toSet(),
+                    )
+                }
+        }
+    }
+
+    fun alternarAgenda(weekday: Int, periodo: String) {
+        val atual = _estado.value.agenda
+        val novo = if ((weekday to periodo) in atual) {
+            atual - (weekday to periodo)
+        } else {
+            atual + (weekday to periodo)
+        }
+        _estado.value = _estado.value.copy(agenda = novo)
+    }
+
+    fun salvarAgenda() {
+        viewModelScope.launch {
+            val itens = _estado.value.agenda.map { (weekday, periodo) ->
+                AgendaItem(weekday = weekday, period = periodo)
+            }
+            runCatching { ApiClient.api.salvarAgenda(itens) }
+                .onSuccess {
+                    _estado.value = _estado.value.copy(
+                        mensagem = "Agenda salva: ${itens.size} períodos",
+                    )
+                }
+                .onFailure {
+                    _estado.value = _estado.value.copy(
+                        mensagem = "Não consegui salvar a agenda. Ela fica salva só neste aparelho por enquanto.",
+                    )
+                }
+        }
+    }
 
     fun filtrarPorArea(area: String?) {
         _estado.value = _estado.value.copy(areaSelecionada = area, temaSelecionado = null)
