@@ -80,16 +80,25 @@ fun TelaSimulado(
         }
         if (segundosRestantes <= 0) {
             terminado = true
-            aoFinalizar(respostas, tempoGasto())
+            val gasto = (simulado.duracaoMinutos * 60 - segundosRestantes).coerceAtLeast(0)
+            aoFinalizar(respostasParaBackend(), gasto)
         }
     }
 
     val questao: SimuladoQuestao? = simulado.questoes.getOrNull(indice)
     val respondidas = respostas.size
 
-    /** Tempo realmente gasto, nunca negativo. */
-    fun tempoGasto(): Int =
-        (simulado.duracaoMinutos * 60 - segundosRestantes).coerceAtLeast(0)
+    /** Converte o mapa id→letra na lista de respostas que o backend espera. */
+    fun respostasParaBackend(): List<Map<String, String>> =
+        respostas.map { (id, letra) ->
+            mapOf(
+                "id" to id,
+                "escolhida" to letra,
+                "gabarito" to (simulado.questoes.firstOrNull { it.id == id }?.gabarito ?: ""),
+                "area" to (simulado.questoes.firstOrNull { it.id == id }?.area ?: ""),
+                "tema" to (simulado.questoes.firstOrNull { it.id == id }?.tema ?: ""),
+            )
+        }
 
     Column(
         modifier = Modifier
@@ -125,7 +134,7 @@ fun TelaSimulado(
                     color = Danger,
                     modifier = Modifier.clickable {
                         terminado = true
-                        aoFinalizar(respostas, tempoGasto())
+                        aoFinalizar(respostasParaBackend(), (simulado.duracaoMinutos * 60 - segundosRestantes).coerceAtLeast(0))
                     },
                 )
             }
@@ -295,7 +304,7 @@ fun TelaSimulado(
                             indice++
                         } else {
                             terminado = true
-                            aoFinalizar(respostas, tempoGasto())
+                            aoFinalizar(respostasParaBackend(), (simulado.duracaoMinutos * 60 - segundosRestantes).coerceAtLeast(0))
                         }
                     },
                 contentAlignment = Alignment.Center,
