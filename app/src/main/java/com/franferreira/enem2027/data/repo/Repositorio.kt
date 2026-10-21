@@ -13,6 +13,7 @@ import com.franferreira.enem2027.data.model.ProgressItem
 import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.data.model.YearInfo
 import com.franferreira.enem2027.data.remote.ApiClient
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.time.Instant
 import java.time.LocalDate

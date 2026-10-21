@@ -188,7 +188,14 @@ fun TelaQuestao(
 
             // alternativas
             items(questao.alternativas, key = { it.letra }) { alternativa ->
-                val correta = alternativa.correta
+                // O gabarito oficial é a fonte da verdade. O campo `correta`
+                // que vem no acervo é fallback (para questão de IA, onde
+                // não há gabarito oficial).
+                val correta = if (gabarito != null) {
+                    alternativa.letra.equals(gabarito, ignoreCase = true)
+                } else {
+                    alternativa.correta
+                }
                 val escolhida = alternativaEscolhida == alternativa.letra
                 val mostrarCerto = Respondida && correta
                 val mostrarErrado = Respondida && escolhida && !correta
