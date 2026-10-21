@@ -31,7 +31,12 @@ data class Question(
 
 @Serializable
 data class Alternative(
-    @SerialName("letra") val letra: String,
+    /**
+     * `texto` pode vir `null` na fonte (questão de figura, por exemplo).
+     * Com `coerceInputValues = true` no Json, o null vira "" em vez de
+     * estourar o parse do pacote inteiro.
+     */
+    @SerialName("letra") val letra: String = "",
     @SerialName("texto") val texto: String = "",
     @SerialName("arquivo") val arquivo: String? = null,
     @SerialName("correta") val correta: Boolean = false,

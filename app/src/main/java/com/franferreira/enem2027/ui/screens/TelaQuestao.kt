@@ -252,12 +252,39 @@ fun TelaQuestao(
                         )
                     }
                     Spacer(Modifier.width(10.dp))
-                    Text(
-                        text = alternativa.texto,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = corTexto,
-                        modifier = Modifier.weight(1f),
-                    )
+                    val textoAlternativa = alternativa.texto
+                    if (textoAlternativa.isNotBlank()) {
+                        Text(
+                            text = textoAlternativa,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = corTexto,
+                            modifier = Modifier.weight(1f),
+                        )
+                    } else {
+                        // A alternativa é uma figura, não texto. A imagem vem
+                        // no campo da alternativa; se não vier, o app mostra
+                        // o aviso e a figura da questão (que já está acima).
+                        Column(Modifier.weight(1f)) {
+                            Text(
+                                text = "Alternativa em imagem",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = TextMutedDark,
+                            )
+                            alternativa.arquivo?.let { url ->
+                                Spacer(Modifier.height(6.dp))
+                                AsyncImage(
+                                    model = url,
+                                    contentDescription = "Alternativa ${alternativa.letra}",
+                                    contentScale = ContentScale.Fit,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(130.dp)
+                                        .clip(RoundedCornerShape(10.dp))
+                                        .background(SurfaceRaised),
+                                )
+                            }
+                        }
+                    }
                     if (mostrarCerto) {
                         Spacer(Modifier.width(8.dp))
                         Icon(

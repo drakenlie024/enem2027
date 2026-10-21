@@ -66,6 +66,9 @@ object ApiClient {
         ignoreUnknownKeys = true
         encodeDefaults = true
         explicitNulls = false
+        // Um campo null na fonte vira o default do modelo, em vez de
+        // derrubar o parse do pacote inteiro de uma vez.
+        coerceInputValues = true
     }
 
     @Volatile

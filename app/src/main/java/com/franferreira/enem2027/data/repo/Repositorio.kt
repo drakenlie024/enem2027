@@ -31,7 +31,11 @@ class Repositorio(private val context: Context) {
 
     private val db = EnemDatabase.get(context)
     private val api = ApiClient.api
-    private val json = Json { ignoreUnknownKeys = true; explicitNulls = false }
+    private val json = Json {
+        ignoreUnknownKeys = true
+        explicitNulls = false
+        coerceInputValues = true
+    }
 
     // ---------- acervo ----------
 
