@@ -69,7 +69,7 @@ fun TelaQuestao(
     aoVoltar: () -> Unit,
     aoPedirExplicacao: suspend () -> String?,
 ) {
-    varRespondida by remember { mutableStateOf(false) }
+    respondida by remember { mutableStateOf(false) }
     var alternativaEscolhida by remember { mutableStateOf<String?>(null) }
     var explicacao by remember { mutableStateOf<String?>(null) }
     var carregandoExplicacao by remember { mutableStateOf(false) }
@@ -197,8 +197,8 @@ fun TelaQuestao(
                     alternativa.correta
                 }
                 val escolhida = alternativaEscolhida == alternativa.letra
-                val mostrarCerto = Respondida && correta
-                val mostrarErrado = Respondida && escolhida && !correta
+                val mostrarCerto = respondida && correta
+                val mostrarErrado = respondida && escolhida && !correta
 
                 val corFundo = when {
                     mostrarCerto -> Secondary.copy(alpha = 0.12f)

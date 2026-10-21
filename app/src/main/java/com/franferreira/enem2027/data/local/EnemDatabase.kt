@@ -57,6 +57,9 @@ interface QuestionDao {
     ): List<QuestionEntity>
 
     @Query("SELECT COUNT(*) FROM progress WHERE dueAt <= :agora AND state != 'seen'")
+    suspend fun pendentesProgresso(agora: Long): Int
+
+    @Query("SELECT COUNT(*) FROM questions WHERE id IN (SELECT questionId FROM progress WHERE dueAt <= :agora AND state != 'seen')")
     suspend fun pendentes(agora: Long): Int
 
     @Query("SELECT COUNT(*) FROM progress WHERE questionId = :id")

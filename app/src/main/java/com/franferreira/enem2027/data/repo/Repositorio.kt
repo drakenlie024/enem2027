@@ -61,7 +61,7 @@ class Repositorio(private val context: Context) {
             .map { it.paraModelo() }
     }
 
-    suspend fun pendentes(): Int = db.progress().pendentes(System.currentTimeMillis())
+    suspend fun pendentes(): Int = db.questions().pendentes(System.currentTimeMillis())
 
     suspend fun questaoPorId(id: String): Question? =
         db.questions().porId(id)?.paraModelo()
