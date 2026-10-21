@@ -5,7 +5,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.core.app.AlarmManagerCompat
 import androidx.core.app.NotificationManagerCompat
 import com.franferreira.enem2027.data.repo.Repositorio
 import kotlinx.coroutines.CoroutineScope
@@ -16,7 +15,7 @@ import java.util.Calendar
 /**
  * Agenda o lembrete de estudo.
  *
- * O alarm dispara, o `BroadcastReceiver` acorda e pergunta ao repositório
+ * O alarm dispara, o `LembreteReceiver` acorda e pergunta ao repositório
  * quantas questões estão vencendo. Só mostra notificação se houver
  * alguma — senão seria um aviso para tocar numa tela vazia.
  *
@@ -44,11 +43,9 @@ object Agendador {
             val hoje = agora.get(Calendar.DAY_OF_WEEK) - 2
             val weekday = if (hoje < 0) 6 else hoje
 
-            val periodo = agenda
-                .firstOrNull { it.first == weekday }
-                ?.second
-                ?: agenda.first().second
-
+            // `agenda` é List<AgendaEntity>: weekday e period são campos.
+            val doDia = agenda.firstOrNull { it.weekday == weekday } ?: agenda.first()
+            val periodo = doDia.period
             val hora = when (periodo) {
                 "manha" -> 8
                 "tarde" -> 15
@@ -75,11 +72,22 @@ object Agendador {
             )
 
             val alarm = context.getSystemService(AlarmManager::class.java)
-            AlarmManagerCompat.setExactAndAllowWhileIdle(
-                alarm,
-                alvo.timeInMillis,
-                pending,
-            )
+            if (alarm != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    alarm.setExactAndAllowWhileIdle(
+                        AlarmManager.RTC_WAKEUP,
+                        alvo.timeInMillis,
+                        pending,
+                    )
+                } else {
+                    @Suppress("DEPRECATION")
+                    alarm.setExact(
+                        AlarmManager.RTC_WAKEUP,
+                        alvo.timeInMillis,
+                        pending,
+                    )
+                }
+            }
         }
     }
 

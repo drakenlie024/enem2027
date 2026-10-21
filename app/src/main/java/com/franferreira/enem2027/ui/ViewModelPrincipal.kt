@@ -249,7 +249,17 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             runCatching { ApiClient.api.filaDeAprovacao() }
                 .onSuccess { resposta ->
                     _estado.value = _estado.value.copy(
-                        filaAprovacao = resposta["fila"] ?: emptyList(),
+                        filaAprovacao = (resposta["fila"] ?: emptyList()).map { dto ->
+                            QuestaoPendente(
+                                id = dto.id,
+                                tema = dto.payload.tema,
+                                enunciado = dto.payload.enunciado,
+                                alternativas = dto.payload.alternativas,
+                                gabarito = dto.payload.gabarito,
+                                explicacao = dto.payload.explicacao,
+                                confianca = dto.confidence,
+                            )
+                        },
                     )
                 }
         }

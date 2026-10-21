@@ -226,15 +226,18 @@ data class AreaStatsSimulado(
 
 // --- fila de aprovação (questões geradas por IA) ---
 
+/**
+ * Resposta crua do backend: o payload vem aninhado.
+ */
 @Serializable
-data class QuestaoPendente(
+data class QuestaoPendenteDto(
     val id: String = "",
-    val confianca: Double = 0.0,
-    val payload: QuestaoPendentePayload = QuestaoPendentePayload(),
+    val confidence: Double = 0.0,
+    val payload: QuestaoPendentePayloadDto = QuestaoPendentePayloadDto(),
 )
 
 @Serializable
-data class QuestaoPendentePayload(
+data class QuestaoPendentePayloadDto(
     val tema: String = "",
     val enunciado: String = "",
     val contexto: String = "",
@@ -247,6 +250,17 @@ data class QuestaoPendentePayload(
 
 @Serializable
 data class ResolverPendenteRequest(val approved: Boolean)
+
+/** Questão da fila de aprovação, já achatada para a tela. */
+data class QuestaoPendente(
+    val id: String,
+    val tema: String = "",
+    val enunciado: String = "",
+    val alternativas: List<Alternative> = emptyList(),
+    val gabarito: String = "",
+    val explicacao: String = "",
+    val confianca: Double = 0.0,
+)
 
 // --- IA ---
 

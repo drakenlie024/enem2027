@@ -10,7 +10,7 @@ import com.franferreira.enem2027.data.model.GamificationResponse
 import com.franferreira.enem2027.data.model.LoginRequest
 import com.franferreira.enem2027.data.model.ProgressBatch
 import com.franferreira.enem2027.data.model.ProgressoResponse
-import com.franferreira.enem2027.data.model.QuestaoPendente
+import com.franferreira.enem2027.data.model.QuestaoPendenteDto
 import com.franferreira.enem2027.data.model.RegisterRequest
 import com.franferreira.enem2027.data.model.ResolverPendenteRequest
 import com.franferreira.enem2027.data.model.RespostaSimulado
@@ -80,7 +80,7 @@ interface EnemApi {
     suspend fun corrigirRedacao(@Body body: EssayRequest): EssayCorrection
 
     @GET("ai/pending")
-    suspend fun filaDeAprovacao(): Map<String, List<QuestaoPendente>>
+    suspend fun filaDeAprovacao(): Map<String, List<QuestaoPendenteDto>>
 
     @POST("ai/pending/{id}")
     suspend fun resolverAprovacao(

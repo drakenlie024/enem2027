@@ -241,17 +241,7 @@ fun EnemApp() {
 
             composable(Destination.Aprovacao.route) {
                 TelaAprovacao(
-                    itens = estado.filaAprovacao.map { pendente ->
-                        QuestaoPendente(
-                            id = pendente.id,
-                            tema = pendente.payload.tema,
-                            enunciado = pendente.payload.enunciado,
-                            alternativas = pendente.payload.alternativas,
-                            gabarito = pendente.payload.gabarito,
-                            explicacao = pendente.payload.explicacao,
-                            confianca = pendente.confianca,
-                        )
-                    },
+                    itens = estado.filaAprovacao,
                     aoAprovar = { id -> vm.resolverAprovacao(id, true) },
                     aoRejeitar = { id -> vm.resolverAprovacao(id, false) },
                 )
