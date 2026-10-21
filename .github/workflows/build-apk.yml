@@ -31,15 +31,22 @@ jobs:
 
       - name: Assemble release APK
         env:
-          RELEASE_STORE_FILE: ${{ secrets.RELEASE_STORE_FILE }}
+          RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
           RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
           RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
           RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
         run: |
           set -euo pipefail
-          if [ -n "${RELEASE_STORE_FILE}" ] && [ -f "${RELEASE_STORE_FILE}" ]; then
-            echo "Usando keystore de release"
-            ./gradlew assembleRelease --stacktrace
+          if [ -n "${RELEASE_KEYSTORE_BASE64}" ] && [ -n "${RELEASE_STORE_PASSWORD}" ]; then
+            KEYSTORE="$RUNNER_TEMP/enem2027.keystore"
+            echo "${RELEASE_KEYSTORE_BASE64}" | base64 -d > "$KEYSTORE"
+            echo "Keystore de release restaurado; compilando APK assinado"
+            ./gradlew assembleRelease \
+              -PRELEASE_STORE_FILE="$KEYSTORE" \
+              -PRELEASE_STORE_PASSWORD="${RELEASE_STORE_PASSWORD}" \
+              -PRELEASE_KEY_ALIAS="${RELEASE_KEY_ALIAS}" \
+              -PRELEASE_KEY_PASSWORD="${RELEASE_KEY_PASSWORD}" \
+              --stacktrace
           else
             echo "Sem keystore de release configurado; gerando debug para validar o build"
             ./gradlew assembleDebug --stacktrace
