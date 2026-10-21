@@ -13,7 +13,7 @@ import androidx.room.PrimaryKey
  */
 @Entity(
     tableName = "questions",
-    indices = [Index("ano"), Index("area"), Index("topic"), Index("origin")],
+    indices = [Index("ano"), Index("area"), Index("tema"), Index("origem")],
 )
 data class QuestionEntity(
     @PrimaryKey val id: String,
@@ -58,7 +58,7 @@ data class ProgressEntity(
 )
 
 /** Configuração de agenda: quando o usuário pode estudar. */
-@Entity(tableName = "agenda")
+@Entity(tableName = "agenda", primaryKeys = ["id"])
 data class AgendaEntity(
     val id: Long = 0,
     val weekday: Int,            // 0 = segunda ... 6 = domingo
@@ -67,7 +67,7 @@ data class AgendaEntity(
 )
 
 /** Progresso de gamificação local (espelha o servidor). */
-@Entity(tableName = "gamification")
+@Entity(tableName = "gamification", primaryKeys = ["id"])
 data class GamificationEntity(
     val id: Long = 0,
     val xp: Int = 0,
