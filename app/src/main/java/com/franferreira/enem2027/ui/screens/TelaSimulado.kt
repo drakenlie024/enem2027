@@ -254,7 +254,7 @@ fun TelaSimulado(
                             respostas = respostas + (questao.id to alternativa.letra)
                         }
                         .padding(12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
+                    contentAlignment = Alignment.CenterStart,
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Box(
