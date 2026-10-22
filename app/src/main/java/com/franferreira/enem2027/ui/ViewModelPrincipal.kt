@@ -176,7 +176,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
     private fun semearAcervo() {
         viewModelScope.launch {
             _estado.value = _estado.value.copy(semeando = true)
-            val quantas = runCatching { repo.sembearAcervoEmbutido() }.getOrDefault(0)
+            val quantas = runCatching { repo.semearAcervoEmbutido() }.getOrDefault(0)
             _estado.value = _estado.value.copy(semeando = false, anos = repo.anosLocais())
             if (quantas > 0) {
                 _estado.value = _estado.value.copy(
