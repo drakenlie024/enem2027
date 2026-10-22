@@ -2,10 +2,13 @@
 
 package com.franferreira.enem2027.ui.theme
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -14,26 +17,49 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.franferreira.enem2027.R
 
-private val LousaColors = darkColorScheme(
-    primary = Primary,
-    onPrimary = Background,
-    primaryContainer = SurfaceRaised,
-    onPrimaryContainer = TextPrimary,
-    secondary = Secondary,
-    onSecondary = Background,
-    secondaryContainer = SurfaceRaised,
-    onSecondaryContainer = TextPrimary,
-    background = Background,
-    onBackground = TextPrimary,
-    surface = Surface,
-    onSurface = TextPrimary,
-    surfaceVariant = SurfaceRaised,
-    onSurfaceVariant = TextMuted,
-    outline = SurfaceBorder,
-    outlineVariant = SurfaceBorder,
-    error = Danger,
-    onError = Background,
-)
+private fun esquema(p: Paleta) = if (p.escuro) {
+    darkColorScheme(
+        primary = p.acao,
+        onPrimary = p.fundo,
+        primaryContainer = p.cartaoAlto,
+        onPrimaryContainer = p.texto,
+        secondary = p.acao2,
+        onSecondary = p.fundo,
+        secondaryContainer = p.cartaoAlto,
+        onSecondaryContainer = p.texto,
+        background = p.fundo,
+        onBackground = p.texto,
+        surface = p.cartao,
+        onSurface = p.texto,
+        surfaceVariant = p.cartaoAlto,
+        onSurfaceVariant = p.textoFraco,
+        outline = p.borda,
+        outlineVariant = p.borda,
+        error = p.perigo,
+        onError = p.fundo,
+    )
+} else {
+    lightColorScheme(
+        primary = p.acao,
+        onPrimary = p.cartao,
+        primaryContainer = p.cartaoAlto,
+        onPrimaryContainer = p.texto,
+        secondary = p.acao2,
+        onSecondary = p.cartao,
+        secondaryContainer = p.cartaoAlto,
+        onSecondaryContainer = p.texto,
+        background = p.fundo,
+        onBackground = p.texto,
+        surface = p.cartao,
+        onSurface = p.texto,
+        surfaceVariant = p.cartaoAlto,
+        onSurfaceVariant = p.textoFraco,
+        outline = p.borda,
+        outlineVariant = p.borda,
+        error = p.perigo,
+        onError = p.cartao,
+    )
+}
 
 /**
  * Fredoka para títulos e números: arredondada, simpática, com peso variável.
@@ -80,7 +106,7 @@ private val Nunito = FontFamily(
     ),
 )
 
-private val LousaTypography = Typography(
+private val FloralTypography = Typography(
     headlineLarge = TextStyle(
         fontFamily = Fredoka,
         fontSize = 32.sp,
@@ -107,7 +133,6 @@ private val LousaTypography = Typography(
         fontSize = 17.sp,
         lineHeight = 23.sp,
         fontWeight = FontWeight.Medium,
-        letterSpacing = 0.sp,
     ),
     titleSmall = TextStyle(
         fontFamily = Fredoka,
@@ -155,10 +180,19 @@ private val LousaTypography = Typography(
 )
 
 @Composable
-fun EnemTheme(content: @Composable () -> Unit) {
-    MaterialTheme(
-        colorScheme = LousaColors,
-        typography = LousaTypography,
-        content = content,
-    )
+fun EnemTheme(
+    escuro: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit,
+) {
+    val paleta = if (escuro) PaletaNoite else PaletaClaro
+    // Define a paleta ANTES de compor as telas; `key` reinicia a subárvore
+    // quando o tema do sistema muda, para todo mundo reler as cores.
+    PaletaAtual.atual = paleta
+    key(paleta) {
+        MaterialTheme(
+            colorScheme = esquema(paleta),
+            typography = FloralTypography,
+            content = content,
+        )
+    }
 }

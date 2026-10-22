@@ -38,6 +38,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.rotate
+import kotlin.math.roundToInt
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -51,6 +53,7 @@ import com.franferreira.enem2027.ui.components.CartaoGamificado
 import com.franferreira.enem2027.ui.components.Pilula
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
+import com.franferreira.enem2027.ui.theme.PaletaAtual
 import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Secondary
 import com.franferreira.enem2027.ui.theme.Surface
@@ -102,6 +105,11 @@ fun TelaHoje(
             .fillMaxSize()
             .background(
                 Brush.verticalGradient(listOf(BackgroundGradientTop, Background))
+            )
+            .then(
+                com.franferreira.enem2027.ui.components.floresFundo(
+                    alpha = if (PaletaAtual.atual.escuro) 0.22f else 0.42f
+                )
             ),
         contentPadding = androidx.compose.foundation.layout.PaddingValues(
             start = 16.dp, end = 16.dp, bottom = 24.dp
@@ -132,8 +140,8 @@ fun TelaHoje(
                         .background(SurfaceRaised),
                     contentAlignment = Alignment.Center,
                 ) {
-                    com.franferreira.enem2027.ui.components.Gizinho(
-                        tamanho = 40.dp,
+                    com.franferreira.enem2027.ui.components.Florzinha(
+                        tamanho = 42.dp,
                         dormindo = estado.respondidasHoje == 0 && estado.streak == 0,
                     )
                 }
@@ -388,31 +396,38 @@ private fun CartaoMeta(
                 contentAlignment = Alignment.Center,
             ) {
                 Canvas(modifier = Modifier.fillMaxSize()) {
-                    val espessura = 11.dp.toPx()
-                    val diametro = size.minDimension - espessura
-                    val canto = androidx.compose.ui.geometry.Offset(
-                        (size.width - diametro) / 2,
-                        (size.height - diametro) / 2,
-                    )
-                    drawArc(
-                        color = SurfaceRaised,
-                        startAngle = -90f,
-                        sweepAngle = 360f,
-                        useCenter = false,
-                        topLeft = canto,
-                        size = androidx.compose.ui.geometry.Size(diametro, diametro),
-                        style = Stroke(width = espessura, cap = StrokeCap.Round),
-                    )
-                    drawArc(
-                        color = cor,
-                        startAngle = -90f,
-                        sweepAngle = 360f * progresso,
-                        useCenter = false,
-                        topLeft = canto,
-                        size = androidx.compose.ui.geometry.Size(diametro, diametro),
-                        style = Stroke(width = espessura, cap = StrokeCap.Round),
-                    )
+                    // A meta vira uma flor: uma pétala por questão do dia.
+                    val centro = center
+                    val total = if (meta in 1..12) meta else 12
+                    val cheias = (progresso * total).roundToInt().coerceIn(0, total)
+                    val lado = size.minDimension
+                    val largura = lado * 0.16f
+                    val altura = lado * 0.23f
+                    val distancia = lado * 0.13f
+                    for (i in 0 until total) {
+                        rotate(degrees = -90f + i * (360f / total), pivot = centro) {
+                            val canto = androidx.compose.ui.geometry.Offset(
+                                centro.x - largura / 2f,
+                                centro.y - distancia - altura,
+                            )
+                            val tamanhoPetala = androidx.compose.ui.geometry.Size(largura, altura)
+                            drawOval(
+                                color = if (i < cheias) cor else SurfaceRaised,
+                                topLeft = canto,
+                                size = tamanhoPetala,
+                            )
+                            if (i >= cheias) {
+                                drawOval(
+                                    color = cor.copy(alpha = 0.22f),
+                                    topLeft = canto,
+                                    size = tamanhoPetala,
+                                    style = Stroke(width = 1.dp.toPx()),
+                                )
+                            }
+                        }
+                    }
                 }
+
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
                         text = "$feitas",

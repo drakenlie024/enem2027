@@ -90,6 +90,7 @@ fun TelaLogin(
         modifier = Modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
+            .then(com.franferreira.enem2027.ui.components.floresFundo(alpha = 0.45f))
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -103,7 +104,7 @@ fun TelaLogin(
                 .background(SurfaceRaised),
             contentAlignment = Alignment.Center,
         ) {
-            com.franferreira.enem2027.ui.components.Gizinho(tamanho = 64.dp)
+            com.franferreira.enem2027.ui.components.Florzinha(tamanho = 64.dp)
         }
 
         Spacer(Modifier.height(20.dp))
