@@ -340,7 +340,31 @@ fun EnemApp() {
                     progresso = estado.progresso,
                     aoAbrirAgenda = { navController.navigate(Destination.Agenda.route) },
                     aoAbrirAprovacao = { navController.navigate(Destination.Aprovacao.route) },
+                    aoAbrirNota = { navController.navigate("nota") },
+                    aoAbrirCaderno = { navController.navigate("caderno") },
                     pendentesAprovacao = estado.filaAprovacao.size,
+                )
+            }
+
+            // Nota prevista: quanto o usuário faria hoje, e a nota de corte.
+            composable("nota") {
+                TelaNota(
+                    previsao = estado.previsao,
+                    aoTrocarAno = vm::trocarAnoCorte,
+                    aoTrocarAlvo = vm::trocarNotaAlvo,
+                    aoVoltar = { navController.popBackStack() },
+                )
+            }
+
+            // Caderno de erros: o que errou, para treinar de novo.
+            composable("caderno") {
+                TelaCaderno(
+                    itens = estado.caderno,
+                    aoAbrir = { id ->
+                        vm.abrirQuestao(id)
+                        navController.navigate("questao")
+                    },
+                    aoVoltar = { navController.popBackStack() },
                 )
             }
 

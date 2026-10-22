@@ -7,6 +7,9 @@ import com.franferreira.enem2027.data.local.AgendaEntity
 import com.franferreira.enem2027.data.model.AgendaItem
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
 import com.franferreira.enem2027.data.model.Etapa
+import com.franferreira.enem2027.data.model.ItemCaderno
+import com.franferreira.enem2027.data.model.PrevisaoNota
+import com.franferreira.enem2027.data.model.Previsor
 import com.franferreira.enem2027.data.model.ProgressoResponse
 import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.data.model.QuestaoPendente
@@ -71,6 +74,14 @@ data class EstadoHoje(
     val resumoEtapa: ResumoEtapa? = null,
     /** Meta diária de questões (sugerida, ajustável). */
     val metaDiaria: Int = 12,
+    /** Previsão de nota (estimativa por TRI, com a faixa do ano). */
+    val previsao: PrevisaoNota = PrevisaoNota(),
+    /** Ano de referência para o corte de nota. */
+    val anoCorte: Int = 2024,
+    /** Nota que o usuário quer alcançar. */
+    val notaAlvo: Int = 700,
+    /** Caderno de erros: o que já foi errado. */
+    val caderno: List<ItemCaderno> = emptyList(),
 ) {
     /**
      * A trilha que o botão principal da tela Hoje deve atacar.
@@ -297,6 +308,10 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                         label = simulado.label,
                         duracaoSegundos = duracaoSegundos,
                         respostas = respostas,
+                        // O total vai separado: `respostas` só traz o que foi
+                        // respondido, e sem isto o servidor usaria 8/8 = 100%
+                        // quando o simulado tinha 20 questões.
+                        totalQuestions = simulado.questoes.size,
                     )
                 )
             }
@@ -747,5 +762,45 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
 
     fun fecharResumo() {
         _estado.value = _estado.value.copy(resumoEtapa = null)
+    }
+
+    // ---------- previsão de nota e caderno de erros ----------
+
+    /**
+     * Recalcula a previsão de nota a partir do que o usuário já respondeu.
+     *
+     * É local de propósito: o SRS vive no aparelho, e a previsão precisa
+     * refletir as respostas de hoje — não as de quando o servidor sincronizou.
+     */
+    fun carregarPrevisao() {
+        viewModelScope.launch {
+            val acertos = repo.acertosPorArea()
+            val previsao = Previsor.prever(
+                acertosPorArea = acertos,
+                anoAlvo = _estado.value.anoCorte,
+                notaAlvo = _estado.value.notaAlvo,
+            )
+            _estado.value = _estado.value.copy(previsao = previsao)
+        }
+    }
+
+    /** Troca o ano de referência do corte de nota. */
+    fun trocarAnoCorte(ano: Int) {
+        _estado.value = _estado.value.copy(anoCorte = ano)
+        carregarPrevisao()
+    }
+
+    /** Troca a nota-alvo. */
+    fun trocarNotaAlvo(nota: Int) {
+        _estado.value = _estado.value.copy(notaAlvo = nota)
+        carregarPrevisao()
+    }
+
+    /** Carrega o caderno de erros. */
+    fun carregarCaderno() {
+        viewModelScope.launch {
+            val itens = repo.cadernoDeErros().map { ItemCaderno.de(it) }
+            _estado.value = _estado.value.copy(caderno = itens)
+        }
     }
 }

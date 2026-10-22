@@ -30,6 +30,21 @@
             android:name=".notificacao.LembreteReceiver"
             android:exported="false" />
 
+        <!--
+            Reagenda os lembretes depois de reiniciar o aparelho. Todo
+            reinício do celular apaga os alarmes, e a Agenda parava de avisar
+            sem dar nenhum sinal na tela.
+        -->
+        <receiver
+            android:name=".notificacao.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -227,6 +227,13 @@ data class RespostaSimulado(
     val label: String = "",
     @SerialName("duracao_segundos") val duracaoSegundos: Int = 0,
     val respostas: List<Map<String, String>> = emptyList(),
+    /**
+     * Quantas questões o simulado tinha.
+     *
+     * Sem isto, o servidor calcula o denominador pelo que chegou (só as
+     * respondidas) — encerrar com 8 de 20 dava "8/8, 100%".
+     */
+    @SerialName("total_questions") val totalQuestions: Int = 0,
 )
 
 @Serializable

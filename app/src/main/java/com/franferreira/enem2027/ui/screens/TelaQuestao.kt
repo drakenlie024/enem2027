@@ -228,8 +228,15 @@ fun TelaQuestao(
                         .clickable(enabled = !respondida) {
                             alternativaEscolhida = alternativa.letra
                             respondida = true
-                            val corretaEscolhida = gabarito != null &&
+                            // Mesmo critério da tela: gabarito oficial quando
+                            // existe, senão o campo `correta` do acervo. Sem
+                            // isto, questão sem gabarito aparecia verde e
+                            // entrava no SRS como erro.
+                            val corretaEscolhida = if (gabarito != null) {
                                 alternativa.letra.equals(gabarito, ignoreCase = true)
+                            } else {
+                                alternativa.correta
+                            }
                             aoResponder(corretaEscolhida, (System.currentTimeMillis() - inicio) / 1000f)
                         }
                         .padding(12.dp),

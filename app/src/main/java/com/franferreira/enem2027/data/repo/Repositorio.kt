@@ -2,7 +2,9 @@ package com.franferreira.enem2027.data.repo
 
 import android.content.Context
 import com.franferreira.enem2027.data.local.AgendaEntity
+import com.franferreira.enem2027.data.local.AcertoAreaRow
 import com.franferreira.enem2027.data.local.EnemDatabase
+import com.franferreira.enem2027.data.local.ErroRow
 import com.franferreira.enem2027.data.local.EssayEntity
 import com.franferreira.enem2027.data.local.GamificationEntity
 import com.franferreira.enem2027.data.local.PendingAnswerEntity
@@ -193,6 +195,22 @@ class Repositorio(private val context: Context) {
 
     suspend fun questaoPorId(id: String): Question? =
         db.questions().porId(id)?.paraModelo()
+
+    // ---------- caderno de erros e previsão de nota ----------
+
+    /**
+     * As questões que o usuário já errou, das mais recentes para as mais
+     * antigas.
+     *
+     * É o histórico do que já foi errado — diferente da fila do SRS, que é
+     * sobre o que vence agora. É aqui que o aprendizado se concentra.
+     */
+    suspend fun cadernoDeErros(limite: Int = 200): List<ErroRow> =
+        db.progress().cadernoDeErros(limite)
+
+    /** Acertos e erros por área, para a previsão de nota. */
+    suspend fun acertosPorArea(): List<AcertoAreaRow> =
+        db.progress().acertosPorArea()
 
     // ---------- trilhas ----------
 

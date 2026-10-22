@@ -106,7 +106,9 @@ fun TelaHoje(
                         color = Primary,
                     )
                     Text(
-                        text = "Bom dia, Letícia",
+                        // A saudação acompanha a hora: "Bom dia" às 22h
+                        // estragava a primeira impressão da tela.
+                        text = "${saudacao()}, Letícia",
                         style = MaterialTheme.typography.titleLarge,
                         color = TextPrimary,
                     )

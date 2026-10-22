@@ -127,6 +127,33 @@ data class TrilhaEtapaEntity(
 )
 
 /**
+ * Uma questão do caderno de erros.
+ *
+ * Não é a entity inteira: o caderno mostra só o resumo, e o app abre a
+ * questão completa a partir do id.
+ */
+data class ErroRow(
+    val questionId: String,
+    val ano: Int,
+    val area: String?,
+    val tema: String?,
+    val enunciado: String?,
+    val gabarito: String?,
+    val lastQuality: Int?,
+    val wrongCount: Int,
+    val correctCount: Int,
+    val lastReviewedAt: Long?,
+)
+
+/** Acertos e erros de uma área, para a previsão de nota. */
+data class AcertoAreaRow(
+    val area: String,
+    val respondidas: Int,
+    val acertos: Int,
+    val erros: Int,
+)
+
+/**
  * Versão do acervo local, por ano.
  *
  * Não é uma tabela: é o resultado do GROUP BY que compara o que o aparelho

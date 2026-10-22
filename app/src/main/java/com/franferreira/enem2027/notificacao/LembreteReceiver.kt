@@ -13,8 +13,12 @@ import kotlinx.coroutines.launch
  */
 class LembreteReceiver : BroadcastReceiver() {
 
+    companion object {
+        const val EXTRA_PERIODO = "periodo"
+    }
+
     override fun onReceive(context: Context, intent: Intent) {
-        val periodo = intent.getStringExtra("periodo")
+        val periodo = intent.getStringExtra(EXTRA_PERIODO)
         val pending = goAsync()
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -24,8 +28,24 @@ class LembreteReceiver : BroadcastReceiver() {
                     Notificador.avisar(context, pendentes, periodo)
                 }
             } finally {
+                // Reagenda os próximos: o alarme é de disparo único.
+                Agendador.agendar(context)
                 pending.finish()
             }
+        }
+    }
+}
+
+/**
+ * Reagenda os lembretes depois de o aparelho reiniciar.
+ *
+ * Sem isso, todo reinício do celular apagava os alarmes e a Agenda deixava de
+ * avisar — a tela continuava mostrando os períodos, mas nada acontecia.
+ */
+class BootReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        if (intent.action == Intent.ACTION_BOOT_COMPLETED) {
+            Agendador.agendar(context)
         }
     }
 }

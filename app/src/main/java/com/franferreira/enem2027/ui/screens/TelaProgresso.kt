@@ -22,6 +22,8 @@ import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.FactCheck
 import androidx.compose.material.icons.filled.LocalFireDepartment
+import androidx.compose.material.icons.filled.MenuBook
+import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -61,6 +63,8 @@ fun TelaProgresso(
     progresso: ProgressoResponse,
     aoAbrirAgenda: () -> Unit,
     aoAbrirAprovacao: () -> Unit,
+    aoAbrirNota: () -> Unit,
+    aoAbrirCaderno: () -> Unit,
     pendentesAprovacao: Int,
 ) {
     val fraca = progresso.porArea.minByOrNull { it.taxa }
@@ -99,6 +103,28 @@ fun TelaProgresso(
                         color = TextSecondary,
                     )
                 }
+            }
+
+            Spacer(Modifier.height(14.dp))
+
+            // atalhos: nota prevista e caderno de erros
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                AtalhoProgresso(
+                    icone = Icons.Filled.TrendingUp,
+                    titulo = "Nota prevista",
+                    subtitulo = "quanto você faria",
+                    cor = Primary,
+                    modifier = Modifier.weight(1f),
+                    aoClicar = { aoAbrirNota() },
+                )
+                AtalhoProgresso(
+                    icone = Icons.Filled.MenuBook,
+                    titulo = "Caderno de erros",
+                    subtitulo = "o que você errou",
+                    cor = Secondary,
+                    modifier = Modifier.weight(1f),
+                    aoClicar = { aoAbrirCaderno() },
+                )
             }
 
             Spacer(Modifier.height(14.dp))
@@ -311,6 +337,54 @@ private fun CartaoSemana(porDia: List<Int>) {
                 }
             }
         }
+    }
+}
+
+/**
+ * A saudação conforme a hora do aparelho.
+ *
+ * "Bom dia" às 22h soava errado — a primeira coisa que a tela mostra é a
+ * primeira impressão.
+ */
+private fun saudacao(): String = when (java.time.LocalTime.now().hour) {
+    in 5..11 -> "Bom dia"
+    in 12..17 -> "Boa tarde"
+    else -> "Boa noite"
+}
+
+@Composable
+private fun AtalhoProgresso(
+    icone: androidx.compose.ui.graphics.vector.ImageVector,
+    titulo: String,
+    subtitulo: String,
+    cor: androidx.compose.ui.graphics.Color,
+    modifier: Modifier = Modifier,
+    aoClicar: () -> Unit,
+) {
+    Column(
+        modifier = modifier
+            .clip(RoundedCornerShape(14.dp))
+            .background(cor.copy(alpha = 0.10f))
+            .border(1.dp, cor.copy(alpha = 0.30f), RoundedCornerShape(14.dp))
+            .clickable { aoClicar() }
+            .padding(12.dp),
+    ) {
+        Icon(icone, contentDescription = null, tint = cor, modifier = Modifier.size(18.dp))
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = titulo,
+            style = MaterialTheme.typography.labelLarge,
+            color = TextPrimary,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+        Text(
+            text = subtitulo,
+            style = MaterialTheme.typography.labelSmall,
+            color = TextMuted,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
     }
 }
 

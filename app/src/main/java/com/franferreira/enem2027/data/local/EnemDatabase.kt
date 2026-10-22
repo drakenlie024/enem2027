@@ -163,6 +163,47 @@ interface ProgressDao {
 
     @Query("SELECT COUNT(*) FROM progress WHERE state = 'review'")
     suspend fun emRevisao(): Int
+
+    /**
+     * O caderno de erros: as questões que o usuário já errou.
+     *
+     * Não é a fila do SRS (que é sobre o que VENCE agora) — é o histórico do
+     * que já foi errado, que é onde o aprendizado se concentra.
+     */
+    @Query(
+        """
+        SELECT q.id AS questionId, q.ano AS ano, q.area AS area, q.tema AS tema,
+               q.enunciado AS enunciado, q.gabarito AS gabarito,
+               p.lastQuality AS lastQuality, p.wrongCount AS wrongCount,
+               p.correctCount AS correctCount, p.lastReviewedAt AS lastReviewedAt
+        FROM progress p
+        JOIN questions q ON q.id = p.questionId
+        WHERE p.wrongCount > 0
+        ORDER BY p.lastReviewedAt DESC
+        LIMIT :limite
+        """
+    )
+    suspend fun cadernoDeErros(limite: Int): List<ErroRow>
+
+    /**
+     * Acertos e erros por área, para a previsão de nota.
+     *
+     * Contabiliza só o que tem `lastQuality` (ou seja, foi respondido de
+     * verdade — questão vista não conta).
+     */
+    @Query(
+        """
+        SELECT q.area AS area,
+               COUNT(*) AS respondidas,
+               SUM(CASE WHEN p.lastQuality >= 3 THEN 1 ELSE 0 END) AS acertos,
+               SUM(CASE WHEN p.lastQuality < 3 THEN 1 ELSE 0 END) AS erros
+        FROM progress p
+        JOIN questions q ON q.id = p.questionId
+        WHERE q.area IS NOT NULL AND p.lastQuality IS NOT NULL
+        GROUP BY q.area
+        """
+    )
+    suspend fun acertosPorArea(): List<AcertoAreaRow>
 }
 
 @Dao
