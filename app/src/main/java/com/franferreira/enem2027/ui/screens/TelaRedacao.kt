@@ -39,6 +39,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import com.franferreira.enem2027.ui.components.BotaoGamificado
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.EssayCorrection
@@ -193,21 +195,46 @@ fun TelaRedacao(
 
             Spacer(Modifier.height(14.dp))
 
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp)
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(
-                        when {
-                            corrigindo -> SurfaceBorder
-                            texto.length < 300 -> SurfaceBorder
-                            else -> Primary
+            if (corrigindo) {
+                // Gamificado: enquanto os corretores leem, o botão vira um
+                // card que mostra o que está acontecendo.
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(
+                            Brush.verticalGradient(listOf(Color(0xFF1A1F2C), Surface))
+                        )
+                        .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(16.dp))
+                        .padding(14.dp),
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        CircularProgressIndicator(
+                            modifier = Modifier.size(18.dp),
+                            color = Primary,
+                            strokeWidth = 2.dp,
+                        )
+                        Spacer(Modifier.width(10.dp))
+                        Column {
+                            Text(
+                                text = "Dois corretores estão lendo…",
+                                style = MaterialTheme.typography.labelLarge,
+                                color = TextPrimary,
+                            )
+                            Text(
+                                text = "se divergirem, um terceiro desempata",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = TextMuted,
+                            )
                         }
-                    )
-                    .clickable(
-                        enabled = !corrigindo && texto.length >= 300 && temaSelecionado.isNotBlank(),
-                    ) {
+                    }
+                }
+            } else {
+                BotaoGamificado(
+                    texto = "CORRIGIR REDAÇÃO",
+                    cor = Primary,
+                    habilitado = texto.length >= 300 && temaSelecionado.isNotBlank(),
+                    aoClicar = {
                         corrigindo = true
                         erro = null
                         resultado = null
@@ -220,29 +247,7 @@ fun TelaRedacao(
                             corrigindo = false
                         }
                     },
-                contentAlignment = Alignment.Center,
-            ) {
-                if (corrigindo) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.size(18.dp),
-                            color = Secondary,
-                            strokeWidth = 2.dp,
-                        )
-                        Spacer(Modifier.width(10.dp))
-                        Text(
-                            text = "Dois corretores estão lendo…",
-                            style = MaterialTheme.typography.labelLarge,
-                            color = TextSecondary,
-                        )
-                    }
-                } else {
-                    Text(
-                        text = "Corrigir redação",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = if (texto.length >= 300) Background else TextMuted,
-                    )
-                }
+                )
             }
 
             resultado?.let { correcao ->

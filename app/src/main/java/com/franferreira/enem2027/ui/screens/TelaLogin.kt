@@ -40,6 +40,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.franferreira.enem2027.ui.components.BotaoGamificado
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -156,28 +157,27 @@ fun TelaLogin(
 
         Spacer(Modifier.height(20.dp))
 
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp)
-                .clip(RoundedCornerShape(12.dp))
-                .background(if (carregando) SurfaceBorder else Primary)
-                .clickable(enabled = !carregando) { enviar() },
-            contentAlignment = Alignment.Center,
-        ) {
-            if (carregando) {
+        if (carregando) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(52.dp)
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(SurfaceBorder),
+                contentAlignment = Alignment.Center,
+            ) {
                 CircularProgressIndicator(
                     modifier = Modifier.size(20.dp),
                     color = Secondary,
                     strokeWidth = 2.dp,
                 )
-            } else {
-                Text(
-                    text = if (criando) "Criar conta" else "Entrar",
-                    style = MaterialTheme.typography.labelLarge,
-                    color = Background,
-                )
             }
+        } else {
+            BotaoGamificado(
+                texto = if (criando) "CRIAR CONTA" else "ENTRAR",
+                cor = Primary,
+                aoClicar = { enviar() },
+            )
         }
 
         Spacer(Modifier.height(16.dp))

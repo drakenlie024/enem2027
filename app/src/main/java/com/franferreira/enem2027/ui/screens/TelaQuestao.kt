@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -203,12 +204,13 @@ fun TelaQuestao(
                 val corFundo = when {
                     mostrarCerto -> Secondary.copy(alpha = 0.12f)
                     mostrarErrado -> Danger.copy(alpha = 0.12f)
-                    escolhida -> SurfaceRaised
+                    escolhida -> Primary.copy(alpha = 0.10f)
                     else -> Surface
                 }
                 val corBorda = when {
-                    mostrarCerto -> Secondary.copy(alpha = 0.6f)
-                    mostrarErrado -> Danger.copy(alpha = 0.6f)
+                    mostrarCerto -> Secondary
+                    mostrarErrado -> Danger
+                    escolhida -> Primary
                     else -> SurfaceBorder
                 }
                 val corTexto = when {
@@ -219,9 +221,9 @@ fun TelaQuestao(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(12.dp))
+                        .clip(RoundedCornerShape(14.dp))
                         .background(corFundo)
-                        .border(1.dp, corBorda, RoundedCornerShape(12.dp))
+                        .border(1.5.dp, corBorda, RoundedCornerShape(14.dp))
                         .clickable(enabled = !respondida) {
                             alternativaEscolhida = alternativa.letra
                             respondida = true
@@ -234,8 +236,8 @@ fun TelaQuestao(
                 ) {
                     Box(
                         modifier = Modifier
-                            .size(24.dp)
-                            .clip(RoundedCornerShape(7.dp))
+                            .size(26.dp)
+                            .clip(CircleShape)
                             .background(
                                 when {
                                     mostrarCerto -> Secondary

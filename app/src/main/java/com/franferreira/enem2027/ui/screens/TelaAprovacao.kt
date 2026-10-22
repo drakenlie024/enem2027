@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.QuestaoPendente
@@ -236,10 +237,10 @@ private fun CartaoPendente(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .height(40.dp)
-                    .clip(RoundedCornerShape(10.dp))
+                    .height(46.dp)
+                    .clip(RoundedCornerShape(14.dp))
                     .background(SurfaceRaised)
-                    .border(1.dp, SurfaceBorder, RoundedCornerShape(10.dp))
+                    .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
                     .clickable { aoRejeitar(item.id) },
                 contentAlignment = Alignment.Center,
             ) {
@@ -261,9 +262,13 @@ private fun CartaoPendente(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .height(40.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(Primary)
+                    .height(46.dp)
+                    .clip(RoundedCornerShape(14.dp))
+                    .background(
+                        Brush.horizontalGradient(
+                            listOf(Secondary, Color(0xFF2BB87A))
+                        )
+                    )
                     .clickable { aoAprovar(item.id) },
                 contentAlignment = Alignment.Center,
             ) {
