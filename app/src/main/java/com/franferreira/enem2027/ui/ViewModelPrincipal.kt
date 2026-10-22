@@ -162,7 +162,10 @@ data class ResumoEtapa(
         }
 }
 
-class ViewModelPrincipal(application: Application) : AndroidViewModel(application) {
+class ViewModelPrincipal(
+    application: Application,
+    private val savedStateHandle: androidx.lifecycle.SavedStateHandle,
+) : AndroidViewModel(application) {
 
     private val repo = Repositorio(application)
     private val api = ApiClient.api
@@ -191,6 +194,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             // Sem recarregar aqui ela fica dizendo "baixe o acervo" com as
             // 3.117 questões já gravadas no aparelho.
             recarregar()
+            restaurarEstadoAberto()
             if (quantas > 0) {
                 _estado.value = _estado.value.copy(
                     mensagem = "$quantas questões do ENEM já vieram no aplicativo."
@@ -652,6 +656,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
         // Marca o Pending antes de sair para a corrotina: a rota sabe que
         // está carregando em vez de jurar que a questão não existe.
         _estado.value = _estado.value.copy(questaoPendente = questionId)
+        savedStateHandle["questao_aberta_id"] = questionId
         viewModelScope.launch {
             val questao = repo.questaoPorId(questionId)
             _estado.value = _estado.value.copy(
@@ -719,7 +724,18 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
         }
     }
 
-    fun fecharQuestao() {
+    /** Reabre o que estava aberto antes do processo ser morto. */
+    private fun restaurarEstadoAberto() {
+        val qid = savedStateHandle.get<String>("questao_aberta_id")
+        if (!qid.isNullOrBlank()) {
+            abrirQuestao(qid)
+        }
+        val pid = savedStateHandle.get<String>("pacote_aula_id")
+        if (!pid.isNullOrBlank()) {
+            abrirPacoteAula(pid)
+        }
+    }
+        savedStateHandle.remove<String>("questao_aberta_id")
         _estado.value = _estado.value.copy(questaoAberta = null)
     }
 
@@ -797,6 +813,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             _estado.value = _estado.value.copy(
                 corrigindoRedacao = false,
                 resultadoRedacao = correcao,
+                mensagem = "Redação corrigida: ${correcao.nota ?: "—"}",
             )
             carregarRedacoes()
         }
@@ -1079,6 +1096,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
 
     /** Abre uma aula: video, resumo e questoes. */
     fun abrirPacoteAula(id: String) {
+        savedStateHandle["pacote_aula_id"] = id
         viewModelScope.launch(Dispatchers.IO) {
             _estado.value = _estado.value.copy(carregandoAulas = true, pacoteAula = null)
             val app = getApplication<Application>()
@@ -1101,6 +1119,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
     }
 
     fun fecharAula() {
+        savedStateHandle.remove<String>("pacote_aula_id")
         _estado.value = _estado.value.copy(pacoteAula = null)
     }
 }

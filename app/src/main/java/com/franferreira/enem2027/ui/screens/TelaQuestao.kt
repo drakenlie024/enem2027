@@ -44,6 +44,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -198,6 +199,8 @@ fun TelaQuestao(
                                 model = com.franferreira.enem2027.data.repo.ImagensAcervo.arquivoLocal(app, url) ?: url,
                                 contentDescription = "Figura da questão",
                                 contentScale = ContentScale.Fit,
+placeholder = ColorPainter(SurfaceRaised),
+error = ColorPainter(SurfaceRaised),
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(220.dp)
@@ -342,6 +345,8 @@ fun TelaQuestao(
                                     model = com.franferreira.enem2027.data.repo.ImagensAcervo.arquivoLocal(app, url) ?: url,
                                     contentDescription = "Alternativa ${alternativa.letra}",
                                     contentScale = ContentScale.Fit,
+placeholder = ColorPainter(SurfaceRaised),
+error = ColorPainter(SurfaceRaised),
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .height(130.dp)
