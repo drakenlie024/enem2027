@@ -30,6 +30,16 @@
             android:name=".notificacao.LembreteReceiver"
             android:exported="false" />
 
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <!--
             Reagenda os lembretes depois de reiniciar o aparelho. Todo
             reinício do celular apaga os alarmes, e a Agenda parava de avisar

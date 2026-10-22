@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Caminhos que o app pode compartilhar com o player de video do sistema.
+
+    O video baixado fica no armazenamento PRIVADO do app (filesDir/videos).
+    Sem isto, o player externo não conseguiria abrir o arquivo.
+-->
+<paths>
+    <files-path
+        name="videos"
+        path="videos/" />
+</paths>

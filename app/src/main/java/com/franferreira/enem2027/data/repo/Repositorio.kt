@@ -80,6 +80,32 @@ class Repositorio(private val context: Context) {
     suspend fun anosLocais(): List<Int> = db.questions().anos()
 
     /**
+     * Semeia o acervo que vem DENTRO do APK.
+     *
+     * O app ja abre com as 17 provas (2009-2025) e a explicacao offline de
+     * cada questao: nao ha download nem espera, e o app funciona offline desde
+     * o primeiro clique.
+     *
+     * O servidor continua servindo o acervo para REBAIXAR um ano quando o
+     * servidor corrige alguma coisa (a area de 15 questoes de 2024/2025, por
+     * exemplo). Mas o caminho normal ja nao precisa de rede.
+     *
+     * Devolve quantas questoes foram semeadas.
+     */
+    suspend fun semearAcervoEmbutido(): Int {
+        val jaTem = db.questions().anos().toSet()
+        var total = 0
+        for (ano in AcervoEmbutido.anos(context)) {
+            if (ano in jaTem) continue
+            val n = AcervoEmbutido.semear(context, ano) { a, versao, questoes ->
+                db.questions().substituirAno(a, questoes.map { it.paraEntidade(versao) })
+            }
+            total += n
+        }
+        return total
+    }
+
+    /**
      * Anos que o servidor tem mais novos que o aparelho.
      *
      * Acontece quando o acervo do servidor muda depois do download — por

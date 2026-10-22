@@ -216,6 +216,33 @@ fun TelaHoje(
                     CircularProgressIndicator(color = Primary, strokeWidth = 2.dp)
                 }
             }
+        } else if (estado.semeando) {
+            // O acervo ja esta no APK: ele esta sendo gravado no aparelho.
+            item {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(220.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        CircularProgressIndicator(color = Primary, strokeWidth = 2.dp)
+                        Spacer(Modifier.height(12.dp))
+                        Text(
+                            text = "Preparando as provas do ENEM",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = TextPrimary,
+                        )
+                        Spacer(Modifier.height(4.dp))
+                        Text(
+                            text = "Elas já vieram no aplicativo: é só gravar no aparelho.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = TextMuted,
+                            textAlign = TextAlign.Center,
+                        )
+                    }
+                }
+            }
         } else if (estado.totalLocal == 0) {
             item {
                 Box(

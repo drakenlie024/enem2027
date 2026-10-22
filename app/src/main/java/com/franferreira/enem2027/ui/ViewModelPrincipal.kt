@@ -7,6 +7,7 @@ import com.franferreira.enem2027.data.local.AgendaEntity
 import com.franferreira.enem2027.data.model.AgendaItem
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
 import com.franferreira.enem2027.data.model.AreaAulas
+import com.franferreira.enem2027.data.model.AreasAula
 import com.franferreira.enem2027.data.model.AulasDeArea
 import com.franferreira.enem2027.data.model.Etapa
 import com.franferreira.enem2027.data.model.ItemCaderno
@@ -34,6 +35,8 @@ import kotlinx.coroutines.launch
 data class EstadoHoje(
     val carregando: Boolean = true,
     val sincronizando: Boolean = false,
+    /** O acervo embutido do APK esta sendo gravado no banco local. */
+    val semeando: Boolean = false,
     val autenticado: Boolean = false,
     val pendentes: Int = 0,
     val totalLocal: Int = 0,
@@ -57,9 +60,8 @@ data class EstadoHoje(
     val progresso: ProgressoResponse = ProgressoResponse(),
     /** Períodos que o usuário marcou na agenda. */
     val agenda: Set<Pair<Int, String>> = emptySet(),
-    /** Simulado em andamento. */
-    val simulado: SimuladoMontado? = null,
-    val carregandoSimulado: Boolean = false,
+    /** Simulador em andamento. */
+    val simulado: SimuladoMontado? = null,    val carregandoSimulado: Boolean = false,
     /** Diagnóstico do último simulado encerrado. */
     val diagnostico: DiagnosticoSimulado? = null,
     val mensagemSimulado: String? = null,
@@ -161,7 +163,27 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
 
     init {
         carregarMeta()
+        semearAcervo()
         restaurarSessao()
+    }
+
+    /**
+     * Semeia o acervo que vem no APK.
+     *
+     * Roda em paralelo com o login: nao depende de rede nem de token, e
+     * enquanto o acervo entra a tela mostra que esta preparando.
+     */
+    private fun semearAcervo() {
+        viewModelScope.launch {
+            _estado.value = _estado.value.copy(semeando = true)
+            val quantas = runCatching { repo.sembearAcervoEmbutido() }.getOrDefault(0)
+            _estado.value = _estado.value.copy(semeando = false, anos = repo.anosLocais())
+            if (quantas > 0) {
+                _estado.value = _estado.value.copy(
+                    mensagem = "$quantas questões do ENEM já vieram no aplicativo."
+                )
+            }
+        }
     }
 
     /**

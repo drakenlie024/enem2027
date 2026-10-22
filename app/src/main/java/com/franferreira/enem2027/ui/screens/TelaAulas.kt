@@ -29,9 +29,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,6 +50,8 @@ import com.franferreira.enem2027.data.model.AulaResumo
 import com.franferreira.enem2027.data.model.AulasDeArea
 import com.franferreira.enem2027.data.model.PacoteAula
 import com.franferreira.enem2027.data.model.QuestaoAula
+import com.franferreira.enem2027.data.repo.VideoDownloader
+import com.franferreira.enem2027.ui.components.BarraGamificada
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -61,6 +65,7 @@ import com.franferreira.enem2027.ui.theme.TextMutedDark
 import com.franferreira.enem2027.ui.theme.TextPrimary
 import com.franferreira.enem2027.ui.theme.TextSecondary
 import com.franferreira.enem2027.ui.theme.corDaArea
+import kotlinx.coroutines.launch
 
 /**
  * Lista de video-aulas: areas -> temas -> aulas.
@@ -189,6 +194,19 @@ fun TelaAula(
     aoVoltar: () -> Unit,
 ) {
     val contexto = LocalContext.current
+    val escopo = rememberCoroutineScope()
+
+    // ---- o video baixado no aparelho
+    var baixado by remember(pacote.id) { mutableStateOf(false) }
+    var tamanho by remember(pacote.id) { mutableStateOf(0L) }
+    var baixando by remember(pacote.id) { mutableStateOf(false) }
+    var progresso by remember(pacote.id) { mutableStateOf<Pair<Long, Long>?>(null) }
+    var erroDownload by remember(pacote.id) { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(pacote.id) {
+        baixado = VideoDownloader.existe(contexto, pacote.id)
+        tamanho = VideoDownloader.tamanho(contexto, pacote.id)
+    }
 
     fun abrirVideo(segundos: Int = 0) {
         val url = if (segundos > 0) {
@@ -199,6 +217,22 @@ fun TelaAula(
         runCatching {
             contexto.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
         }
+    }
+
+    /** Abre o video que esta no aparelho, sem internet. */
+    fun abrirOffline() {
+        val arquivo = VideoDownloader.arquivoLocal(contexto, pacote.id)
+        if (!arquivo.exists()) return
+        val uri = androidx.core.content.FileProvider.getUriForFile(
+            contexto,
+            "${contexto.packageName}.fileprovider",
+            arquivo,
+        )
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(uri, "video/mp4")
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        runCatching { contexto.startActivity(intent) }
     }
 
     Column(
@@ -266,6 +300,112 @@ fun TelaAula(
                         style = MaterialTheme.typography.labelSmall,
                         color = TextMuted,
                     )
+
+                    Spacer(Modifier.height(11.dp))
+
+                    // ---- guardar o video no aparelho
+                    when {
+                        baixando -> {
+                            val p = progresso
+                            Text(
+                                text = "BAIXANDO" + (
+                                    p?.let { (b, t) ->
+                                        if (t > 0) "  ${b * 100 / t}%  (${b / 1048576} de ${t / 1048576} MB)"
+                                        else "  ${b / 1048576} MB"
+                                    } ?: ""
+                                    ),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = Primary,
+                            )
+                            Spacer(Modifier.height(6.dp))
+                            BarraGamificada(
+                                progresso = if (p != null && p.second > 0) {
+                                    p.first.toFloat() / p.second.toFloat()
+                                } else {
+                                    0f
+                                },
+                                cor = Primary,
+                                altura = 5,
+                            )
+                        }
+                        baixado -> {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Box(
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(9.dp))
+                                        .background(Secondary.copy(alpha = 0.16f))
+                                        .clickable { abrirOffline() }
+                                        .padding(horizontal = 11.dp, vertical = 7.dp),
+                                ) {
+                                    Text(
+                                        text = "ASSISTIR OFFLINE",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = Secondary,
+                                    )
+                                }
+                                Spacer(Modifier.width(8.dp))
+                                Box(
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(9.dp))
+                                        .background(SurfaceRaised)
+                                        .clickable {
+                                            VideoDownloader.apagar(contexto, pacote.id)
+                                            baixado = false
+                                            tamanho = 0L
+                                            erroDownload = null
+                                        }
+                                        .padding(horizontal = 11.dp, vertical = 7.dp),
+                                ) {
+                                    Text(
+                                        text = "APAGAR  (${tamanho / 1048576} MB)",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = TextMuted,
+                                    )
+                                }
+                            }
+                        }
+                        else -> {
+                            Box(
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(9.dp))
+                                    .background(SurfaceRaised)
+                                    .clickable {
+                                        erroDownload = null
+                                        baixando = true
+                                        escopo.launch {
+                                            val r = VideoDownloader.baixar(
+                                                contexto,
+                                                pacote.id,
+                                            ) { b, t -> progresso = b to t }
+                                            baixando = false
+                                            progresso = null
+                                            r.onSuccess {
+                                                baixado = true
+                                                tamanho = it
+                                            }.onFailure { erro ->
+                                                erroDownload = erro.message
+                                            }
+                                        }
+                                    }
+                                    .padding(horizontal = 11.dp, vertical = 7.dp),
+                            ) {
+                                Text(
+                                    text = "BAIXAR PARA ASSISTIR OFFLINE",
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = TextSecondary,
+                                )
+                            }
+                        }
+                    }
+
+                    if (erroDownload != null) {
+                        Spacer(Modifier.height(6.dp))
+                        Text(
+                            text = "Nao consegui baixar: $erroDownload",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = Danger,
+                        )
+                    }
                 }
             }
 
