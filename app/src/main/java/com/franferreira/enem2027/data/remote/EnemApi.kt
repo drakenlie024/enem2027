@@ -64,15 +64,18 @@ interface EnemApi {
     suspend fun curriculoTrilhas(): CurriculoTrilhas
 
     // ---- video-aulas ----
+    // Devolvem o corpo CRU (e nao o modelo) porque o app guarda o JSON
+    // exatamente como veio, para cache offline: o pacote baixado e o mesmo
+    // arquivo que fica no aparelho.
 
     @GET("aulas/areas")
-    suspend fun areasComAula(): AreasAula
+    suspend fun areasComAula(): okhttp3.ResponseBody
 
     @GET("aulas/{area}")
-    suspend fun aulasDe(@Path("area") area: String): AulasDeArea
+    suspend fun aulasDe(@Path("area") area: String): okhttp3.ResponseBody
 
     @GET("aulas/pacote/{id}")
-    suspend fun pacoteAula(@Path("id") id: String): PacoteAula
+    suspend fun pacoteAula(@Path("id") id: String): okhttp3.ResponseBody
 
     @POST("trilhas/etapas")
     suspend fun registrarEtapa(@Body body: EtapaConcluida): Map<String, Any>

@@ -13,6 +13,7 @@ import com.franferreira.enem2027.data.model.ItemCaderno
 import com.franferreira.enem2027.data.model.PacoteAula
 import com.franferreira.enem2027.data.model.PrevisaoNota
 import com.franferreira.enem2027.data.model.Previsor
+import com.franferreira.enem2027.data.repo.AulasCache
 import com.franferreira.enem2027.data.model.ProgressoResponse
 import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.data.model.QuestaoPendente
@@ -843,9 +844,23 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
     fun carregarAreasAula() {
         viewModelScope.launch {
             _estado.value = _estado.value.copy(carregandoAulas = true)
-            val resultado = runCatching { ApiClient.api.areasComAula() }
+            val app = getApplication<Application>()
+            val resultado = runCatching {
+                ApiClient.api.areasComAula().string()
+            }
+            val corpo = resultado.getOrNull()
+            if (corpo != null) {
+                AulasCache.guardar(app, "areas", corpo)
+            }
+            val areas = corpo?.let {
+                runCatching {
+                    kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
+                        .decodeFromString(AreasAula.serializer(), it)
+                }.getOrNull()
+            }
+            ?: AulasCache.lerModelo(app, "areas")
             _estado.value = _estado.value.copy(
-                areasAula = resultado.getOrNull()?.areas ?: emptyList(),
+                areasAula = areas?.areas ?: emptyList(),
                 carregandoAulas = false,
             )
         }
@@ -855,9 +870,20 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
     fun carregarAulasDe(area: String) {
         viewModelScope.launch {
             _estado.value = _estado.value.copy(carregandoAulas = true, aulasDaArea = AulasDeArea())
-            val resultado = runCatching { ApiClient.api.aulasDe(area) }
+            val app = getApplication<Application>()
+            val corpo = runCatching { ApiClient.api.aulasDe(area).string() }.getOrNull()
+            if (corpo != null) {
+                AulasCache.guardar(app, "area-$area", corpo)
+            }
+            val dados = corpo?.let {
+                runCatching {
+                    kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
+                        .decodeFromString(AulasDeArea.serializer(), it)
+                }.getOrNull()
+            }
+            ?: AulasCache.lerModelo(app, "area-$area")
             _estado.value = _estado.value.copy(
-                aulasDaArea = resultado.getOrNull() ?: AulasDeArea(),
+                aulasDaArea = dados ?: AulasDeArea(),
                 carregandoAulas = false,
             )
         }
@@ -867,9 +893,20 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
     fun abrirPacoteAula(id: String) {
         viewModelScope.launch {
             _estado.value = _estado.value.copy(carregandoAulas = true, pacoteAula = null)
-            val resultado = runCatching { ApiClient.api.pacoteAula(id) }
+            val app = getApplication<Application>()
+            val corpo = runCatching { ApiClient.api.pacoteAula(id).string() }.getOrNull()
+            if (corpo != null) {
+                AulasCache.guardar(app, "pacote-$id", corpo)
+            }
+            val pacote = corpo?.let {
+                runCatching {
+                    kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
+                        .decodeFromString(PacoteAula.serializer(), it)
+                }.getOrNull()
+            }
+            ?: AulasCache.lerModelo(app, "pacote-$id")
             _estado.value = _estado.value.copy(
-                pacoteAula = resultado.getOrNull(),
+                pacoteAula = pacote,
                 carregandoAulas = false,
             )
         }
