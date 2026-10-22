@@ -11,6 +11,7 @@ import com.franferreira.enem2027.data.local.PendingAnswerEntity
 import com.franferreira.enem2027.data.local.ProgressEntity
 import com.franferreira.enem2027.data.local.TrilhaEtapaEntity
 import com.franferreira.enem2027.data.local.JsonCompartilhado
+import com.franferreira.enem2027.data.local.paraEntidade
 import com.franferreira.enem2027.data.local.paraModelo
 import com.franferreira.enem2027.data.model.CurriculoTrilhas
 import com.franferreira.enem2027.data.model.EtapaConcluida
