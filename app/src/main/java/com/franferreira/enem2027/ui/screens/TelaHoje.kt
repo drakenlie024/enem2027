@@ -45,6 +45,10 @@ import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.Etapa
 import com.franferreira.enem2027.data.model.Trilha
 import com.franferreira.enem2027.ui.EstadoHoje
+import com.franferreira.enem2027.ui.components.BarraGamificada
+import com.franferreira.enem2027.ui.components.BotaoGamificado
+import com.franferreira.enem2027.ui.components.CartaoGamificado
+import com.franferreira.enem2027.ui.components.Pilula
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Primary
@@ -383,36 +387,16 @@ private fun CartaoMeta(
             Spacer(Modifier.height(14.dp))
 
             // o botão
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)
-                    .clip(RoundedCornerShape(14.dp))
-                    .background(if (podeJogar) cor else SurfaceRaised)
-                    .clickable(enabled = podeJogar) { aoJogar() },
-                contentAlignment = Alignment.Center,
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    if (podeJogar) {
-                        Icon(
-                            Icons.Filled.PlayArrow,
-                            contentDescription = null,
-                            tint = Background,
-                            modifier = Modifier.size(20.dp),
-                        )
-                        Spacer(Modifier.width(8.dp))
-                    }
-                    Text(
-                        text = when {
-                            etapa == null -> "Trilha completa"
-                            !etapa.jogavel -> "Baixe o acervo"
-                            else -> "Começar"
-                        },
-                        style = MaterialTheme.typography.labelLarge,
-                        color = if (podeJogar) Background else TextMuted,
-                    )
-                }
-            }
+            BotaoGamificado(
+                texto = when {
+                    etapa == null -> "Trilha completa"
+                    !etapa.jogavel -> "Baixe o acervo"
+                    else -> "JOGAR ETAPA"
+                },
+                cor = cor,
+                habilitado = podeJogar,
+                aoClicar = { aoJogar() },
+            )
         }
     }
 }
@@ -430,9 +414,9 @@ private fun CartaoTrilha(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+            .clip(RoundedCornerShape(18.dp))
+            .background(Brush.verticalGradient(listOf(Color(0xFF1A1F2C), Surface)))
+            .border(1.dp, Color(0xFF262D3C), RoundedCornerShape(18.dp))
             .clickable { aoAbrir() }
             .padding(14.dp),
     ) {
@@ -440,7 +424,7 @@ private fun CartaoTrilha(
             // marcador com a cor da área
             Box(
                 modifier = Modifier
-                    .size(9.dp)
+                    .size(10.dp)
                     .clip(CircleShape)
                     .background(cor),
             )
@@ -461,31 +445,21 @@ private fun CartaoTrilha(
                     )
                 }
             }
-            Text(
-                text = "${trilha.concluidas}/${trilha.totalEtapas}",
-                style = MaterialTheme.typography.labelLarge,
-                color = TextMuted,
+            Pilula(
+                texto = "${trilha.concluidas}/${trilha.totalEtapas}",
+                cor = cor,
+                fundo = cor.copy(alpha = 0.14f),
             )
         }
 
         Spacer(Modifier.height(10.dp))
 
         // barra de progresso
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(5.dp)
-                .clip(CircleShape)
-                .background(SurfaceRaised),
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth((trilha.progresso / 100.0).toFloat().coerceIn(0f, 1f))
-                    .height(5.dp)
-                    .clip(CircleShape)
-                    .background(cor),
-            )
-        }
+        BarraGamificada(
+            progresso = (trilha.progresso / 100.0).toFloat(),
+            cor = cor,
+            altura = 6,
+        )
 
         if (etapa != null) {
             Spacer(Modifier.height(10.dp))

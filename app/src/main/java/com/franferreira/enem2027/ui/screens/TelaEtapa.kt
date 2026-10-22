@@ -116,23 +116,26 @@ fun TelaEtapa(
                 }
             }
             Spacer(Modifier.height(8.dp))
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(4.dp)
-                    .clip(RoundedCornerShape(2.dp))
-                    .background(SurfaceRaised),
+            // Pips: um segmento por questão. Verde = respondida e acertada.
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(3.dp),
             ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth(
-                            if (etapa.questoes.isEmpty()) 0f
-                            else (indice + 1f) / etapa.questoes.size
-                        )
-                        .height(4.dp)
-                        .clip(RoundedCornerShape(2.dp))
-                        .background(cor),
-                )
+                etapa.questoes.forEachIndexed { i, _ ->
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(5.dp)
+                            .clip(CircleShape)
+                            .background(
+                                when {
+                                    i < indice -> Secondary
+                                    i == indice -> cor
+                                    else -> SurfaceRaised
+                                }
+                            ),
+                    )
+                }
             }
             Spacer(Modifier.height(12.dp))
         }
