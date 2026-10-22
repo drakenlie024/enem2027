@@ -34,13 +34,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.text.style.TextAlign
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.franferreira.enem2027.notificacao.Notificador
-import com.franferreira.enem2027.notificacao.NotificadorGradientTop
+import com.franferreira.enem2027.ui.theme.Background
+import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Secondary
 import com.franferreira.enem2027.ui.theme.Surface

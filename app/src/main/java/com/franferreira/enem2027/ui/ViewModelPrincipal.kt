@@ -27,6 +27,7 @@ import com.franferreira.enem2027.data.remote.ApiClient
 import com.franferreira.enem2027.data.repo.FilaRevisao
 import com.franferreira.enem2027.data.repo.RepertorioRedacao
 import com.franferreira.enem2027.data.repo.Repositorio
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
