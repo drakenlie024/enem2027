@@ -735,6 +735,7 @@ class ViewModelPrincipal(
             abrirPacoteAula(pid)
         }
     }
+    fun fecharQuestao() {
         savedStateHandle.remove<String>("questao_aberta_id")
         _estado.value = _estado.value.copy(questaoAberta = null)
     }
