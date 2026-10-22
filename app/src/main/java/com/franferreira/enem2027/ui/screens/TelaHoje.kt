@@ -68,6 +68,18 @@ import com.franferreira.enem2027.ui.theme.corDaArea
  * A tela responde a uma pergunta só — "o que eu faço agora?" — e a resposta
  * é o botão grande do anel. As trilhas ficam abaixo, como o mapa do caminho.
  */
+/**
+ * A saudação conforme a hora do aparelho.
+ *
+ * "Bom dia" às 22h soava errado — a primeira coisa que a tela mostra é a
+ * primeira impressão.
+ */
+private fun saudacao(): String = when (java.time.LocalTime.now().hour) {
+    in 5..11 -> "Bom dia"
+    in 12..17 -> "Boa tarde"
+    else -> "Boa noite"
+}
+
 @Composable
 fun TelaHoje(
     estado: EstadoHoje,

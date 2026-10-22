@@ -24,6 +24,7 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -48,6 +49,8 @@ import com.franferreira.enem2027.ui.screens.TelaLogin
 import com.franferreira.enem2027.ui.screens.TelaMontarSimulado
 import com.franferreira.enem2027.ui.screens.TelaProgresso
 import com.franferreira.enem2027.data.model.PASSO_MINIMO_PCT
+import com.franferreira.enem2027.ui.screens.TelaCaderno
+import com.franferreira.enem2027.ui.screens.TelaNota
 import com.franferreira.enem2027.ui.screens.TelaQuestao
 import com.franferreira.enem2027.ui.screens.TelaRedacao
 import com.franferreira.enem2027.ui.screens.TelaResultadoSimulado
@@ -308,7 +311,11 @@ fun EnemApp() {
                             .background(Background),
                     ) {
                         Text(
-                            text = "Questão não encontrada",
+                            text = if (estado.questaoPendente != null) {
+                                "Abrindo a questão…"
+                            } else {
+                                "Questão não encontrada"
+                            },
                             style = MaterialTheme.typography.bodyLarge,
                             color = TextMuted,
                         )
@@ -348,6 +355,9 @@ fun EnemApp() {
 
             // Nota prevista: quanto o usuário faria hoje, e a nota de corte.
             composable("nota") {
+                // Recarrega quando a tela volta de uma resposta: a previsão
+                // depende do que foi respondido agora.
+                LaunchedEffect(estado.questaoAberta?.id) { vm.carregarPrevisao() }
                 TelaNota(
                     previsao = estado.previsao,
                     aoTrocarAno = vm::trocarAnoCorte,
@@ -358,6 +368,9 @@ fun EnemApp() {
 
             // Caderno de erros: o que errou, para treinar de novo.
             composable("caderno") {
+                // Recarrega ao voltar de uma questão corrigida: o erro
+                // corrigido muda o caderno.
+                LaunchedEffect(estado.questaoAberta?.id) { vm.carregarCaderno() }
                 TelaCaderno(
                     itens = estado.caderno,
                     aoAbrir = { id ->

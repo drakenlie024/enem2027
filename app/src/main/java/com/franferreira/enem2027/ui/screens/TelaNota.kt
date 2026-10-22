@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
@@ -213,6 +214,7 @@ fun TelaNota(
                     area = area,
                     posicao = Previsor.posicaoNaFaixa(area.area, area.notaEstimada, previsao.anoAlvo),
                     ano = previsao.anoAlvo,
+                    notaAlvo = previsao.notaAlvo,
                 )
                 Spacer(Modifier.height(8.dp))
             }
@@ -239,6 +241,7 @@ private fun CartaoArea(
     area: DesempenhoArea,
     posicao: PosicaoFaixa,
     ano: Int,
+    notaAlvo: Int,
 ) {
     val cor = corDaArea(area.area)
     val faixa = DadosTri.faixaDoAno(ano, area.area)
@@ -344,4 +347,4 @@ private fun Chip(texto: String, selecionado: Boolean, aoClicar: () -> Unit) {
 /** `verticalScroll` sem o import repetido nas assinaturas. */
 @Composable
 private fun Modifier.verticalScrollCompat(): Modifier =
-    this.then(androidx.compose.foundation.verticalScroll(rememberScrollState()))
+    this.verticalScroll(rememberScrollState())

@@ -24,6 +24,7 @@ import androidx.compose.material.icons.filled.FactCheck
 import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.TrendingUp
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -338,18 +339,6 @@ private fun CartaoSemana(porDia: List<Int>) {
             }
         }
     }
-}
-
-/**
- * A saudação conforme a hora do aparelho.
- *
- * "Bom dia" às 22h soava errado — a primeira coisa que a tela mostra é a
- * primeira impressão.
- */
-private fun saudacao(): String = when (java.time.LocalTime.now().hour) {
-    in 5..11 -> "Bom dia"
-    in 12..17 -> "Boa tarde"
-    else -> "Boa noite"
 }
 
 @Composable

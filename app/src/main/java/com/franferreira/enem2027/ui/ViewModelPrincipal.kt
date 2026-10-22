@@ -42,6 +42,13 @@ data class EstadoHoje(
     val fila: FilaRevisao = FilaRevisao(),
     /** Questão em foco na tela de revisão (null = nenhuma). */
     val questaoAberta: Question? = null,
+    /**
+     * Id da questão que está sendo carregada para abrir.
+     *
+     * Sem isso, abrir uma questão pelo caderno mostrava "Questão não
+     * encontrada" por um instante: a rota compõe antes do banco responder.
+     */
+    val questaoPendente: String? = null,
     /** Evolução do usuário: por área, competência, dia e conquistas. */
     val progresso: ProgressoResponse = ProgressoResponse(),
     /** Períodos que o usuário marcou na agenda. */
@@ -466,9 +473,15 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
      * é nenhuma das duas — passar o objeto inteiro fechava o app.
      */
     fun abrirQuestao(questionId: String) {
+        // Marca o Pending antes de sair para a corrotina: a rota sabe que
+        // está carregando em vez de jurar que a questão não existe.
+        _estado.value = _estado.value.copy(questaoPendente = questionId)
         viewModelScope.launch {
             val questao = repo.questaoPorId(questionId)
-            _estado.value = _estado.value.copy(questaoAberta = questao)
+            _estado.value = _estado.value.copy(
+                questaoAberta = questao,
+                questaoPendente = null,
+            )
         }
     }
 
@@ -534,7 +547,8 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
         _estado.value = _estado.value.copy(questaoAberta = null)
     }
 
-    fun responder(questionId: String, correta: Boolean, segundos: Float?) {        viewModelScope.launch {
+    fun responder(questionId: String, correta: Boolean, segundos: Float?) {
+        viewModelScope.launch {
             repo.registrarResposta(questionId, correta, segundos)
             val gam = repo.gamificacao()
             _estado.value = _estado.value.copy(
@@ -544,6 +558,9 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                 streak = gam?.streak ?: 0,
             )
             carregarSessao()
+            // A previsão de nota muda a cada resposta — recalcula para a
+            // tela "Nota" mostrar o número de agora, não o de antes.
+            carregarPrevisao()
         }
     }
 
