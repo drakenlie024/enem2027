@@ -97,10 +97,13 @@ class Repositorio(private val context: Context) {
         var total = 0
         for (ano in AcervoEmbutido.anos(context)) {
             if (ano in jaTem) continue
-            val n = AcervoEmbutido.semear(context, ano) { a, versao, questoes ->
-                db.questions().substituirAno(a, questoes.map { it.paraEntidade(versao) })
-            }
-            total += n
+            val pacote = AcervoEmbutido.carregar(context, ano) ?: continue
+            if (pacote.questoes.isEmpty()) continue
+            db.questions().substituirAno(
+                ano,
+                pacote.questoes.map { it.paraEntidade(pacote.versao) },
+            )
+            total += pacote.questoes.size
         }
         return total
     }
