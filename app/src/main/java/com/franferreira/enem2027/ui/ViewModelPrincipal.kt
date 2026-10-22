@@ -6,8 +6,11 @@ import androidx.lifecycle.viewModelScope
 import com.franferreira.enem2027.data.local.AgendaEntity
 import com.franferreira.enem2027.data.model.AgendaItem
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
+import com.franferreira.enem2027.data.model.AreaAulas
+import com.franferreira.enem2027.data.model.AulasDeArea
 import com.franferreira.enem2027.data.model.Etapa
 import com.franferreira.enem2027.data.model.ItemCaderno
+import com.franferreira.enem2027.data.model.PacoteAula
 import com.franferreira.enem2027.data.model.PrevisaoNota
 import com.franferreira.enem2027.data.model.Previsor
 import com.franferreira.enem2027.data.model.ProgressoResponse
@@ -61,6 +64,14 @@ data class EstadoHoje(
     val mensagemSimulado: String? = null,
     /** Fila de questões geradas por IA aguardando aprovação. */
     val filaAprovacao: List<QuestaoPendente> = emptyList(),
+    // ---- video-aulas ----
+    /** Áreas que têm video-aula. */
+    val areasAula: List<AreaAulas> = emptyList(),
+    /** Aulas da área aberta, agrupadas por tema. */
+    val aulasDaArea: AulasDeArea = AulasDeArea(),
+    /** A aula aberta (video, resumo e questões). */
+    val pacoteAula: PacoteAula? = null,
+    val carregandoAulas: Boolean = false,
     /** Rascunho da redação em edição (sobrevive ao process death). */
     val redacaoRascunho: RascunhoRedacao? = null,
     /** Histórico de redações do aparelho. */
@@ -824,5 +835,47 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             val itens = repo.cadernoDeErros().map { ItemCaderno.de(it) }
             _estado.value = _estado.value.copy(caderno = itens)
         }
+    }
+
+    // ---------- video-aulas ----------
+
+    /** Carrega as areas que tem video-aula. */
+    fun carregarAreasAula() {
+        viewModelScope.launch {
+            _estado.value = _estado.value.copy(carregandoAulas = true)
+            val resultado = runCatching { ApiClient.api.areasComAula() }
+            _estado.value = _estado.value.copy(
+                areasAula = resultado.getOrNull()?.areas ?: emptyList(),
+                carregandoAulas = false,
+            )
+        }
+    }
+
+    /** Abre uma area: as aulas dela, agrupadas por tema. */
+    fun carregarAulasDe(area: String) {
+        viewModelScope.launch {
+            _estado.value = _estado.value.copy(carregandoAulas = true, aulasDaArea = AulasDeArea())
+            val resultado = runCatching { ApiClient.api.aulasDe(area) }
+            _estado.value = _estado.value.copy(
+                aulasDaArea = resultado.getOrNull() ?: AulasDeArea(),
+                carregandoAulas = false,
+            )
+        }
+    }
+
+    /** Abre uma aula: video, resumo e questoes. */
+    fun abrirPacoteAula(id: String) {
+        viewModelScope.launch {
+            _estado.value = _estado.value.copy(carregandoAulas = true, pacoteAula = null)
+            val resultado = runCatching { ApiClient.api.pacoteAula(id) }
+            _estado.value = _estado.value.copy(
+                pacoteAula = resultado.getOrNull(),
+                carregandoAulas = false,
+            )
+        }
+    }
+
+    fun fecharAula() {
+        _estado.value = _estado.value.copy(pacoteAula = null)
     }
 }

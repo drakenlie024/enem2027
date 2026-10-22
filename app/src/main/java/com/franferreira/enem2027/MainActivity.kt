@@ -49,6 +49,9 @@ import com.franferreira.enem2027.ui.screens.TelaLogin
 import com.franferreira.enem2027.ui.screens.TelaMontarSimulado
 import com.franferreira.enem2027.ui.screens.TelaProgresso
 import com.franferreira.enem2027.data.model.PASSO_MINIMO_PCT
+import com.franferreira.enem2027.ui.screens.TelaAula
+import com.franferreira.enem2027.ui.screens.TelaAulas
+import com.franferreira.enem2027.ui.screens.TelaAulasDeArea
 import com.franferreira.enem2027.ui.screens.TelaCaderno
 import com.franferreira.enem2027.ui.screens.TelaNota
 import com.franferreira.enem2027.ui.screens.TelaQuestao
@@ -349,6 +352,7 @@ fun EnemApp() {
                     aoAbrirAprovacao = { navController.navigate(Destination.Aprovacao.route) },
                     aoAbrirNota = { navController.navigate("nota") },
                     aoAbrirCaderno = { navController.navigate("caderno") },
+                    aoAbrirAulas = { navController.navigate("aulas") },
                     pendentesAprovacao = estado.filaAprovacao.size,
                 )
             }
@@ -364,6 +368,47 @@ fun EnemApp() {
                     aoTrocarAlvo = vm::trocarNotaAlvo,
                     aoVoltar = { navController.popBackStack() },
                 )
+            }
+
+            // ---- video-aulas ----
+            composable("aulas") {
+                LaunchedEffect(Unit) { vm.carregarAreasAula() }
+                TelaAulas(
+                    areas = estado.areasAula,
+                    aoAbrirArea = { area ->
+                        vm.carregarAulasDe(area)
+                        navController.navigate("aulasarea")
+                    },
+                    aoVoltar = { navController.popBackStack() },
+                )
+            }
+
+            composable("aulasarea") {
+                TelaAulasDeArea(
+                    dados = estado.aulasDaArea,
+                    aoAbrirAula = { aula ->
+                        vm.abrirPacoteAula(aula.id)
+                        navController.navigate("aulapacote")
+                    },
+                    aoVoltar = { navController.popBackStack() },
+                )
+            }
+
+            composable("aulapacote") {
+                val pacote = estado.pacoteAula
+                if (pacote != null) {
+                    TelaAula(
+                        pacote = pacote,
+                        aoVoltar = {
+                            vm.fecharAula()
+                            navController.popBackStack()
+                        },
+                    )
+                } else {
+                    Box(Modifier.fillMaxSize().background(Background), Alignment.Center) {
+                        CircularProgressIndicator(color = Primary)
+                    }
+                }
             }
 
             // Caderno de erros: o que errou, para treinar de novo.

@@ -51,7 +51,7 @@ object RascunhoStore {
         val f = arquivo(context, questionId)
         if (!f.exists()) return emptyList()
         return runCatching {
-            json.decodeFromString(Arquivo.serializer(), f.readText(encoding="utf-8")).tracos
+            json.decodeFromString(Arquivo.serializer(), f.readText(Charsets.UTF_8)).tracos
         }.getOrDefault(emptyList())
     }
 
@@ -61,7 +61,7 @@ object RascunhoStore {
             val conteudo = json.encodeToString(Arquivo.serializer(), Arquivo(tracos))
             // Escrita atômica: um crash no meio não deixa o rascunho pela metade.
             val tmp = File(f.parentFile, f.name + ".tmp")
-            tmp.writeText(conteudo, encoding="utf-8")
+            tmp.writeText(conteudo, Charsets.UTF_8)
             if (!tmp.renameTo(f)) {
                 f.writeText(conteudo, encoding="utf-8")
                 tmp.delete()

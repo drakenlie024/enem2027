@@ -97,9 +97,11 @@ fun TelaQuestao(
     var confianca by remember { mutableStateOf<String?>(null) }
     /** O papel digital: o rascunho onde a conta de matemática acontece. */
     var mostrarRascunho by remember { mutableStateOf(false) }
-    val contexto = LocalContext.current
+    // `contexto` já é o texto de apoio da questão, dentro do LazyColumn.
+    // O contexto do Android precisa de outro nome.
+    val app = LocalContext.current
     var tracos by remember(questao.id) {
-        mutableStateOf(RascunhoStore.carregar(contexto, questao.id))
+        mutableStateOf(RascunhoStore.carregar(app, questao.id))
     }
     val inicio = remember { System.currentTimeMillis() }
     val scope = rememberCoroutineScope()
@@ -109,7 +111,7 @@ fun TelaQuestao(
     LaunchedEffect(tracos) {
         if (tracos.isEmpty()) return@LaunchedEffect
         delay(600)
-        RascunhoStore.salvar(contexto, questao.id, tracos)
+        RascunhoStore.salvar(app, questao.id, tracos)
     }
 
     val gabarito = questao.gabarito?.trim()?.uppercase()
@@ -233,7 +235,7 @@ fun TelaQuestao(
                     canais = CanaisVideo.daArea(questao.area),
                     aoAbrirCanal = { url ->
                         runCatching {
-                            contexto.startActivity(
+                            app.startActivity(
                                 Intent(Intent.ACTION_VIEW, Uri.parse(url))
                             )
                         }

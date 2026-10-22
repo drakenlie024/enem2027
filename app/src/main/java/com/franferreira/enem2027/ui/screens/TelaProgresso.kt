@@ -23,6 +23,7 @@ import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.FactCheck
 import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.MenuBook
+import androidx.compose.material.icons.filled.OndemandVideo
 import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.material3.Icon
@@ -66,6 +67,7 @@ fun TelaProgresso(
     aoAbrirAprovacao: () -> Unit,
     aoAbrirNota: () -> Unit,
     aoAbrirCaderno: () -> Unit,
+    aoAbrirAulas: () -> Unit,
     pendentesAprovacao: Int,
 ) {
     val fraca = progresso.porArea.minByOrNull { it.taxa }
@@ -127,6 +129,18 @@ fun TelaProgresso(
                     aoClicar = { aoAbrirCaderno() },
                 )
             }
+
+            Spacer(Modifier.height(14.dp))
+
+            // video-aulas: o video, o resumo e as questoes da aula
+            AtalhoProgresso(
+                icone = Icons.Filled.OndemandVideo,
+                titulo = "Video-aulas",
+                subtitulo = "assista, leia o resumo e responda as questões da aula",
+                cor = Secondary,
+                modifier = Modifier.fillMaxWidth(),
+                aoClicar = { aoAbrirAulas() },
+            )
 
             Spacer(Modifier.height(14.dp))
 

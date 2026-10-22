@@ -1,7 +1,10 @@
 package com.franferreira.enem2027.data.remote
 
 import com.franferreira.enem2027.data.model.AgendaItem
+import com.franferreira.enem2027.data.model.AreasAula
+import com.franferreira.enem2027.data.model.AulasDeArea
 import com.franferreira.enem2027.data.model.CurriculoTrilhas
+import com.franferreira.enem2027.data.model.PacoteAula
 import com.franferreira.enem2027.data.model.EtapaConcluida
 import com.franferreira.enem2027.data.model.ExplainRequest
 import com.franferreira.enem2027.data.model.ExplainResponse
@@ -59,6 +62,17 @@ interface EnemApi {
 
     @GET("trilhas")
     suspend fun curriculoTrilhas(): CurriculoTrilhas
+
+    // ---- video-aulas ----
+
+    @GET("aulas/areas")
+    suspend fun areasComAula(): AreasAula
+
+    @GET("aulas/{area}")
+    suspend fun aulasDe(@Path("area") area: String): AulasDeArea
+
+    @GET("aulas/pacote/{id}")
+    suspend fun pacoteAula(@Path("id") id: String): PacoteAula
 
     @POST("trilhas/etapas")
     suspend fun registrarEtapa(@Body body: EtapaConcluida): Map<String, Any>
