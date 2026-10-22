@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.franferreira.enem2027.data.local.EnemDatabase
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -52,7 +53,7 @@ class OfflineGuaranteeTest {
     )
 
     @Test
-    fun `acervo baixado fica no banco local e sobrevive sem rede`() {
+    fun `acervo baixado fica no banco local e sobrevive sem rede`() = runTest {
         val db = bancoLimpo()
         val dao = db.questions()
 
@@ -75,7 +76,7 @@ class OfflineGuaranteeTest {
     }
 
     @Test
-    fun `resposta registrada offline fica na fila e nao se perde`() {
+    fun `resposta registrada offline fica na fila e nao se perde`() = runTest {
         val db = bancoLimpo()
         val dao = db.progress()
 
