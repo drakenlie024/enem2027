@@ -347,6 +347,9 @@ fun EnemApp() {
                     historico = estado.historicoRedacoes,
                     rascunho = estado.redacaoRascunho,
                     aoSalvarRascunho = { tema, texto -> vm.salvarRascunhoRedacao(tema, texto) },
+                    corrigindo = estado.corrigindoRedacao,
+                    erro = estado.erroRedacao,
+                    resultado = estado.resultadoRedacao,
                 )
             }
             composable(Destination.Progresso.route) {

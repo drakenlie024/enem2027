@@ -87,7 +87,28 @@ class Repositorio(private val context: Context) {
         entidades.size
     }
 
-    suspend fun anosLocais(): List<Int> = db.questions().anos()
+    /**
+     * Baixa em segundo plano as figuras referenciadas pelo acervo.
+     *
+     * O acervo embutido aponta ~980 URLs remotas; sem baixá-las o app não
+     * mostra a figura offline. Roda em paralelo com o estudo: a tela usa a
+     * URL enquanto o arquivo local não existe, e passa a usar o arquivo assim
+     * que ele chega.
+     */
+    suspend fun baixarImagensDoAcervo() = withContext(Dispatchers.IO) {
+        val urls = mutableListOf<String>()
+        db.questions().todos().forEach { q ->
+            runCatching {
+                urls += JsonCompartilhado.decodeFromString<List<String>>(q.arquivosJson)
+            }
+            // alternativas podem ter figura (alternativa.arquivo)
+            runCatching {
+                val alts = JsonCompartilhado.decodeFromString<List<com.franferreira.enem2027.data.model.Alternative>>(q.alternativasJson)
+                alts.mapNotNull { it.arquivo }.forEach { urls += it }
+            }
+        }
+        ImagensAcervo.baixarTodas(context, urls)
+    }
 
     /**
      * Semeia o acervo que vem DENTRO do APK.

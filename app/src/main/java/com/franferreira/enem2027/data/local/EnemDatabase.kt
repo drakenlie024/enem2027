@@ -13,8 +13,8 @@ import com.franferreira.enem2027.data.local.TrilhaEtapaEntity
 
 @Dao
 interface QuestionDao {
-    @Query("SELECT * FROM questions WHERE id = :id")
-    suspend fun porId(id: String): QuestionEntity?
+    @Query("SELECT * FROM questions")
+    suspend fun todos(): List<QuestionEntity>
 
     @Query("SELECT COUNT(*) FROM questions WHERE ano = :ano")
     suspend fun totalDoAno(ano: Int): Int

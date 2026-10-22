@@ -82,6 +82,12 @@ data class EstadoHoje(
     val redacaoRascunho: RascunhoRedacao? = null,
     /** Histórico de redações do aparelho. */
     val historicoRedacoes: List<RedacaoSalva> = emptyList(),
+    /** Correção em andamento (roda em segundo plano). */
+    val corrigindoRedacao: Boolean = false,
+    /** Erro da última tentativa de correção. */
+    val erroRedacao: String? = null,
+    /** Resultado da última correção (para a tela exibir). */
+    val resultadoRedacao: com.franferreira.enem2027.data.model.EssayCorrection? = null,
     /** Questões respondidas hoje (é o que o anel da meta mostra). */
     val respondidasHoje: Int = 0,
     val xp: Int = 0,
@@ -189,6 +195,11 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                 _estado.value = _estado.value.copy(
                     mensagem = "$quantas questões do ENEM já vieram no aplicativo."
                 )
+            }
+            // Baixa as figuras em segundo plano: não bloqueia a primeira
+            // abertura, e a tela usa a URL até o arquivo local chegar.
+            viewModelScope.launch {
+                runCatching { repo.baixarImagensDoAcervo() }
             }
         }
     }
@@ -748,20 +759,44 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
     val temasRedacao: List<RepertorioRedacao.Tema>
         get() = RepertorioRedacao.temas
 
-    suspend fun corrigirRedacao(
-        tema: String,
-        texto: String,
-    ): Result<com.franferreira.enem2027.data.model.EssayCorrection> = runCatching {
-        ApiClient.api.corrigirRedacao(
-            com.franferreira.enem2027.data.model.EssayRequest(theme = tema, text = texto)
+    /**
+     * Corrige a redação pela IA.
+     *
+     * Roda em segundo plano: salva o rascunho primeiro (para o texto não se
+     * perder se o app for morto no meio) e devolve imediatamente. O resultado
+     * chega em `estado.resultadoRedacao` quando a IA responder, e a redação
+     * corrigida é gravada no histórico do aparelho.
+     */
+    fun corrigirRedacao(tema: String, texto: String) {
+        // Rascunho primeiro: o texto não pode depender da rede.
+        salvarRascunhoRedacao(tema, texto)
+        _estado.value = _estado.value.copy(
+            corrigindoRedacao = true,
+            erroRedacao = null,
+            resultadoRedacao = null,
         )
-    }.onSuccess { correcao ->
-        // Prende a correção ao rascunho local: assim o texto e a nota ficam
-        // juntos no aparelho, e o `essay_id` do servidor (que só existe no
-        // servidor) não é o que identifica a redação aqui.
-        val id = _estado.value.redacaoRascunho?.id
-        if (id != null) {
-            registrarCorrecaoRedacao(id, correcao)
+        viewModelScope.launch {
+            val correcao = runCatching {
+                ApiClient.api.corrigirRedacao(
+                    com.franferreira.enem2027.data.model.EssayRequest(theme = tema, text = texto)
+                )
+            }.getOrNull()
+            if (correcao == null) {
+                _estado.value = _estado.value.copy(
+                    corrigindoRedacao = false,
+                    erroRedacao = "Não consegui corrigir agora. A IA pode estar ocupada — tente de novo em instantes.",
+                )
+                return@launch
+            }
+            val id = _estado.value.redacaoRascunho?.id
+            if (id != null) {
+                repo.registrarCorrecaoRedacao(id, correcao.nota, correcao.toString())
+            }
+            _estado.value = _estado.value.copy(
+                corrigindoRedacao = false,
+                resultadoRedacao = correcao,
+            )
+            carregarRedacoes()
         }
     }
 

@@ -195,7 +195,7 @@ fun TelaQuestao(
                     Column {
                         questao.arquivos.forEach { url ->
                             AsyncImage(
-                                model = url,
+                                model = com.franferreira.enem2027.data.repo.ImagensAcervo.arquivoLocal(app, url) ?: url,
                                 contentDescription = "Figura da questão",
                                 contentScale = ContentScale.Fit,
                                 modifier = Modifier
@@ -339,7 +339,7 @@ fun TelaQuestao(
                             alternativa.arquivo?.let { url ->
                                 Spacer(Modifier.height(6.dp))
                                 AsyncImage(
-                                    model = url,
+                                    model = com.franferreira.enem2027.data.repo.ImagensAcervo.arquivoLocal(app, url) ?: url,
                                     contentDescription = "Alternativa ${alternativa.letra}",
                                     contentScale = ContentScale.Fit,
                                     modifier = Modifier

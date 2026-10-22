@@ -73,16 +73,20 @@ import kotlinx.coroutines.launch
 @Composable
 fun TelaRedacao(
     temas: List<String>,
-    aoCorrigir: suspend (tema: String, texto: String) -> Result<EssayCorrection>,
+    aoCorrigir: (tema: String, texto: String) -> Unit,
     historico: List<RedacaoSalva>,
     rascunho: RascunhoRedacao? = null,
     aoSalvarRascunho: (tema: String, texto: String) -> Unit = { _, _ -> },
+    corrigindo: Boolean = false,
+    erro: String? = null,
+    resultado: com.franferreira.enem2027.data.model.EssayCorrection? = null,
 ) {
     var temaSelecionado by remember { mutableStateOf(rascunho?.tema ?: temas.firstOrNull() ?: "") }
     var texto by remember(rascunho?.id) { mutableStateOf(rascunho?.texto ?: "") }
-    var corrigindo by remember { mutableStateOf(false) }
-    var resultado by remember { mutableStateOf<EssayCorrection?>(null) }
-    var erro by remember { mutableStateOf<String?>(null) }
+    var resultadoLocal by remember { mutableStateOf<EssayCorrection?>(resultado) }
+    // Sincroniza o resultado que chega do ViewModel (correção em segundo
+    // plano) com o estado local da tela.
+    LaunchedEffect(resultado) { if (resultado != null) resultadoLocal = resultado }
     val scope = rememberCoroutineScope()
 
     // Grava o rascunho no aparelho, um instante depois de o usuário parar
@@ -250,22 +254,12 @@ fun TelaRedacao(
                     cor = Primary,
                     habilitado = texto.length >= 300 && temaSelecionado.isNotBlank(),
                     aoClicar = {
-                        corrigindo = true
-                        erro = null
-                        resultado = null
-                        scope.launch {
-                            aoCorrigir(temaSelecionado, texto)
-                                .onSuccess { resultado = it }
-                                .onFailure {
-                                    erro = "Não consegui corrigir agora. A IA pode estar ocupada — tente de novo em instantes."
-                                }
-                            corrigindo = false
-                        }
+                        aoCorrigir(temaSelecionado, texto)
                     },
                 )
             }
 
-            resultado?.let { correcao ->
+            resultadoLocal?.let { correcao ->
                 Spacer(Modifier.height(18.dp))
                 CartaoCorrecao(correcao)
             }
