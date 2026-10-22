@@ -340,6 +340,20 @@ fun TelaQuestao(
                                 carregandoExplicacao = false
                             }
                         }
+                    } else if (explicacao == null && questao.temExplicacao) {
+                        // A explicação offline veio com o acervo: mostra na hora,
+                        // sem esperar a IA.
+                        Text(
+                            text = "Por que essa é a resposta?",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = com.franferreira.enem2027.ui.theme.Primary,
+                        )
+                        Spacer(Modifier.height(6.dp))
+                        Text(
+                            text = questao.explicacao!!,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = TextSecondary,
+                        )
                     } else if (explicacao == null) {
                         BotaoExplicacao(texto = "Por que essa é a resposta?", carregando = false) {
                             carregandoExplicacao = true

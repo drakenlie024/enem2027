@@ -1,6 +1,8 @@
 package com.franferreira.enem2027.data.remote
 
 import com.franferreira.enem2027.data.model.AgendaItem
+import com.franferreira.enem2027.data.model.CurriculoTrilhas
+import com.franferreira.enem2027.data.model.EtapaConcluida
 import com.franferreira.enem2027.data.model.ExplainRequest
 import com.franferreira.enem2027.data.model.ExplainResponse
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
@@ -54,6 +56,12 @@ interface EnemApi {
         @Query("limit") limit: Int = 200,
         @Query("offset") offset: Int = 0,
     ): YearPackage
+
+    @GET("trilhas")
+    suspend fun curriculoTrilhas(): CurriculoTrilhas
+
+    @POST("trilhas/etapas")
+    suspend fun registrarEtapa(@Body body: EtapaConcluida): Map<String, Any>
 
     @POST("sync/progress")
     suspend fun sincronizar(@Body body: ProgressBatch): SyncResponse

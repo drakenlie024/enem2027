@@ -23,3 +23,23 @@ val TextMutedDark = Color(0xFF5E667A)
 val Danger = Color(0xFFFF6B6B)
 val Warning = Color(0xFFFFB020)
 val Info = Color(0xFF4DA3FF)
+
+/**
+ * Cor por área.
+ *
+ * A cor diz a MATÉRIA, não o estado: a trilha de Matemática é sempre roxa,
+ * a de Humanas sempre âmbar. Assim o app é lido de longe, e o estado de cada
+ * nó vem do formato (preenchido, pulsando, vazio), não da cor.
+ */
+val AreaMatematica = Color(0xFF7C6CFF)
+val AreaLinguagens = Color(0xFF3DDC97)
+val AreaHumanas = Color(0xFFFFB020)
+val AreaNaturezas = Color(0xFF4DA3FF)
+
+fun corDaArea(area: String?): Color = when (area) {
+    "matematica" -> AreaMatematica
+    "linguagens" -> AreaLinguagens
+    "ciencias-humanas" -> AreaHumanas
+    "ciencias-natureza" -> AreaNaturezas
+    else -> Primary
+}

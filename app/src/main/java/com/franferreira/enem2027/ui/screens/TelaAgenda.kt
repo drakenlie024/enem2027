@@ -56,6 +56,7 @@ fun TelaAgenda(
     diasSelecionados: Set<Pair<Int, String>>,
     aoAlternar: (Int, String) -> Unit,
     aoSalvar: () -> Unit,
+    mensagem: String? = null,
 ) {
     val dias = listOf(
         "Segunda" to 0,
@@ -165,6 +166,25 @@ fun TelaAgenda(
                 style = MaterialTheme.typography.labelLarge,
                 color = if (diasSelecionados.isEmpty()) TextMuted else Background,
             )
+        }
+
+        // Confirmação. Sem isto, clicar em salvar parecia não fazer nada —
+        // a mensagem só aparecia na tela de Hoje, que ninguém estava vendo.
+        mensagem?.let { texto ->
+            Spacer(Modifier.height(12.dp))
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(SurfaceRaised)
+                    .padding(12.dp),
+            ) {
+                Text(
+                    text = texto,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = Secondary,
+                )
+            }
         }
 
         Spacer(Modifier.height(28.dp))

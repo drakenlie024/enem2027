@@ -31,6 +31,8 @@ data class QuestionEntity(
     val competencia: String?,
     val dificuldade: String?,
     val subassunto: String?,
+    /** Explicação offline (gerada no servidor). Vem junto com o acervo. */
+    val explicacao: String? = null,
     val versaoAcervo: String?,
     val baixadoEm: Long = System.currentTimeMillis(),
     /**
@@ -107,6 +109,35 @@ data class PendingAnswerEntity(
     val secondsTaken: Float?,
     val reviewedAt: Long,
     val synced: Boolean = false,
+)
+
+/** Progresso acumulado de uma etapa de trilha. */
+@Entity(tableName = "trilha_etapas", primaryKeys = ["trilhaId", "etapa"])
+data class TrilhaEtapaEntity(
+    val trilhaId: String,
+    val etapa: Int,
+    val area: String = "",
+    val tema: String = "",
+    val acertos: Int = 0,
+    val total: Int = 0,
+    val segundos: Int = 0,
+    val xp: Int = 0,
+    val concluidaEm: Long = System.currentTimeMillis(),
+    val synced: Boolean = false,
+)
+
+/**
+ * Estatísticas por tema, vindas de uma query agregada.
+ *
+ * Não é uma tabela: é o resultado do GROUP BY por tema que monta a trilha
+ * adaptativa "Para você".
+ */
+data class TemaStatsEntity(
+    val tema: String,
+    val area: String?,
+    val acertos: Int,
+    val erros: Int,
+    val total: Int,
 )
 
 /** Simulado feito pelo usuário. */

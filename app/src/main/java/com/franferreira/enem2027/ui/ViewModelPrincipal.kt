@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.franferreira.enem2027.data.model.AgendaItem
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
+import com.franferreira.enem2027.data.model.Etapa
 import com.franferreira.enem2027.data.model.ProgressoResponse
 import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.data.model.QuestaoPendente
@@ -12,6 +13,7 @@ import com.franferreira.enem2027.data.model.ResolverPendenteRequest
 import com.franferreira.enem2027.data.model.RespostaSimulado
 import com.franferreira.enem2027.data.model.SimuladoMontado
 import com.franferreira.enem2027.data.model.SimuladoRequest
+import com.franferreira.enem2027.data.model.Trilha
 import com.franferreira.enem2027.data.remote.ApiClient
 import com.franferreira.enem2027.data.repo.FilaRevisao
 import com.franferreira.enem2027.data.repo.RepertorioRedacao
@@ -52,7 +54,50 @@ data class EstadoHoje(
     val nivel: Int = 1,
     val streak: Int = 0,
     val mensagem: String? = null,
-)
+    /** Trilhas montadas localmente (currículo do servidor + acervo do aparelho). */
+    val trilhas: List<Trilha> = emptyList(),
+    /** Trilha que o usuário está vendo em detalhe. */
+    val trilhaAberta: Trilha? = null,
+    /** Etapa em andamento (12 questões). */
+    val etapaEmAndamento: Etapa? = null,
+    /** Resultado da última etapa concluída, para o resumo numérico. */
+    val resumoEtapa: ResumoEtapa? = null,
+    /** Meta diária de questões (sugerida, ajustável). */
+    val metaDiaria: Int = 12,
+) {
+    /**
+     * A trilha que o botão principal da tela Hoje deve atacar.
+     *
+     * A adaptativa ("Para você") tem prioridade — é a de maior valor, porque
+     * é montada com o que o usuário mais erra. Depois vem a primeira trilha
+     * de área que ainda tem etapa por fazer.
+     */
+    val trilhaParaJogar: Trilha?
+        get() {
+            val adaptativa = trilhas.firstOrNull { it.adaptativa }
+            if (adaptativa?.etapaAtual?.jogavel == true) return adaptativa
+            return trilhas.firstOrNull { !it.adaptativa && it.etapaAtual?.jogavel == true }
+        }
+}
+
+/** O resumo de uma etapa concluída: os números que o usuário vê. */
+data class ResumoEtapa(
+    val trilhaId: String,
+    val etapa: Int,
+    val tema: String,
+    val acertos: Int,
+    val total: Int,
+    val segundos: Int,
+    val xp: Int,
+) {
+    val placar: String get() = "$acertos/$total"
+    val tempo: String
+        get() = when {
+            segundos <= 0 -> "—"
+            segundos < 60 -> "${segundos}s"
+            else -> "${segundos / 60}min ${segundos % 60}s"
+        }
+}
 
 class ViewModelPrincipal(application: Application) : AndroidViewModel(application) {
 
@@ -152,6 +197,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                 streak = gam?.streak ?: 0,
             )
             carregarSessao()
+            carregarTrilhas()
         }
     }
 
@@ -459,5 +505,81 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
 
     fun limparMensagem() {
         _estado.value = _estado.value.copy(mensagem = null)
+    }
+
+    // ---------- trilhas ----------
+
+    /** Carrega as trilhas (montadas localmente, com o acervo do aparelho). */
+    fun carregarTrilhas() {
+        viewModelScope.launch {
+            val trilhas = repo.trilhas()
+            _estado.value = _estado.value.copy(trilhas = trilhas)
+        }
+    }
+
+    fun abrirTrilha(trilha: Trilha) {
+        _estado.value = _estado.value.copy(trilhaAberta = trilha)
+    }
+
+    fun fecharTrilha() {
+        _estado.value = _estado.value.copy(trilhaAberta = null)
+    }
+
+    /** Começa uma etapa: as 12 questões entram em modo simulado. */
+    fun iniciarEtapa(trilha: Trilha, etapa: Etapa) {
+        _estado.value = _estado.value.copy(
+            trilhaAberta = trilha,
+            etapaEmAndamento = etapa,
+            resumoEtapa = null,
+        )
+    }
+
+    fun fecharEtapa() {
+        _estado.value = _estado.value.copy(etapaEmAndamento = null)
+    }
+
+    /**
+     * Conclui a etapa: grava o resultado, soma o XP e mostra o resumo.
+     *
+     * O resumo é o que o usuário vê: 7/8, o tempo e o XP ganho.
+     */
+    fun concluirEtapa(acertos: Int, segundos: Int) {
+        val etapa = _estado.value.etapaEmAndamento ?: return
+        val trilha = _estado.value.trilhaAberta ?: return
+        val total = etapa.questoes.size
+        val xp = acertos * 10
+
+        viewModelScope.launch {
+            repo.registrarEtapa(
+                trilhaId = trilha.id,
+                etapa = etapa.indice,
+                area = trilha.area,
+                tema = etapa.nome,
+                acertos = acertos,
+                total = total,
+                segundos = segundos,
+                xp = xp,
+            )
+            // Envia as etapas pendentes junto com a sincronização normal.
+            runCatching { repo.sincronizarEtapas() }
+
+            _estado.value = _estado.value.copy(
+                etapaEmAndamento = null,
+                resumoEtapa = ResumoEtapa(
+                    trilhaId = trilha.id,
+                    etapa = etapa.indice,
+                    tema = etapa.nome,
+                    acertos = acertos,
+                    total = total,
+                    segundos = segundos,
+                    xp = xp,
+                ),
+            )
+            carregarTrilhas()
+        }
+    }
+
+    fun fecharResumo() {
+        _estado.value = _estado.value.copy(resumoEtapa = null)
     }
 }

@@ -33,10 +33,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
 import com.franferreira.enem2027.data.model.SimuladoMontado
 import com.franferreira.enem2027.data.model.SimuladoQuestao
@@ -207,6 +209,30 @@ fun TelaSimulado(
                     )
                 }
                 Spacer(Modifier.height(10.dp))
+            }
+
+            // Figuras da questão. Sem isso, uma questão de geografia como
+            // "a intensificação da ocupação urbana demonstrada" chega sem
+            // o "demonstrada" — a figura é parte do enunciado.
+            if (questao.arquivos.isNotEmpty()) {
+                item {
+                    Column {
+                        questao.arquivos.forEach { url ->
+                            AsyncImage(
+                                model = url,
+                                contentDescription = "Figura da questão",
+                                contentScale = ContentScale.Fit,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(220.dp)
+                                    .clip(RoundedCornerShape(12.dp))
+                                    .background(SurfaceRaised),
+                            )
+                            Spacer(Modifier.height(10.dp))
+                        }
+                    }
+                    Spacer(Modifier.height(4.dp))
+                }
             }
 
             questao.contexto?.takeIf { it.isNotBlank() && it.length > 3 }?.let { contexto ->

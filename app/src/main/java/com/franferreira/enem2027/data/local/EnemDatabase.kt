@@ -8,6 +8,8 @@ import androidx.room.Query
 import androidx.room.RoomDatabase
 import androidx.room.Transaction
 import androidx.room.Update
+import com.franferreira.enem2027.data.local.TemaStatsEntity
+import com.franferreira.enem2027.data.local.TrilhaEtapaEntity
 
 @Dao
 interface QuestionDao {
@@ -25,6 +27,50 @@ interface QuestionDao {
 
     @Query("SELECT DISTINCT tema FROM questions WHERE tema IS NOT NULL ORDER BY tema")
     suspend fun temas(): List<String>
+
+    /**
+     * Questões de um tema dentro de uma área — é o que monta as etapas da
+     * trilha. A ordem (mais recentes primeiro) faz a etapa varied.
+     */
+    @Query(
+        """
+        SELECT * FROM questions
+        WHERE tema = :tema AND area = :area
+        ORDER BY ano DESC, indice ASC
+        """
+    )
+    suspend fun porTemaEArea(tema: String, area: String): List<QuestionEntity>
+
+    /** Questões de um tema em qualquer área (usado na trilha adaptativa). */
+    @Query(
+        """
+        SELECT * FROM questions
+        WHERE tema = :tema
+        ORDER BY ano DESC, indice ASC
+        """
+    )
+    suspend fun porTema(tema: String): List<QuestionEntity>
+
+    /**
+     * Acertos, erros e total por tema, pelo estado do SRS local.
+     *
+     * É daqui que sai a trilha adaptativa "Para você": os temas com mais
+     * erros e taxa baixa sobem na lista.
+     */
+    @Query(
+        """
+        SELECT q.tema AS tema,
+               q.area AS area,
+               SUM(CASE WHEN p.lastQuality >= 3 THEN 1 ELSE 0 END) AS acertos,
+               SUM(CASE WHEN p.lastQuality < 3 THEN 1 ELSE 0 END) AS erros,
+               COUNT(*) AS total
+        FROM questions q
+        JOIN progress p ON p.questionId = q.id
+        WHERE q.tema IS NOT NULL AND p.lastQuality IS NOT NULL
+        GROUP BY q.tema
+        """
+    )
+    suspend fun statsPorTema(): List<TemaStatsEntity>
 
     /**
      * Questões para a sessão de hoje: as que vencem no SRS, priorizando as
@@ -159,6 +205,27 @@ interface SimuladoDao {
     suspend fun salvar(simulado: SimuladoEntity)
 }
 
+/**
+ * Progresso das etapas de trilha.
+ *
+ * Fica local porque a trilha é montada no aparelho — o servidor só recebe o
+ * resultado para backup e para o caso de trocar de aparelho.
+ */
+@Dao
+interface TrilhaEtapaDao {
+    @Query("SELECT * FROM trilha_etapas")
+    suspend fun todos(): List<TrilhaEtapaEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun salvar(item: TrilhaEtapaEntity)
+
+    @Query("UPDATE trilha_etapas SET synced = 1 WHERE trilhaId = :trilhaId AND etapa = :etapa")
+    suspend fun marcarSincronizado(trilhaId: String, etapa: Int)
+
+    @Query("SELECT * FROM trilha_etapas WHERE synced = 0")
+    suspend fun naoSincronizadas(): List<TrilhaEtapaEntity>
+}
+
 @Database(
     entities = [
         QuestionEntity::class,
@@ -168,8 +235,9 @@ interface SimuladoDao {
         EssayEntity::class,
         PendingAnswerEntity::class,
         SimuladoEntity::class,
+        TrilhaEtapaEntity::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = false,
 )
 abstract class EnemDatabase : RoomDatabase() {
@@ -180,6 +248,7 @@ abstract class EnemDatabase : RoomDatabase() {
     abstract fun essays(): EssayDao
     abstract fun pendingAnswers(): PendingAnswerDao
     abstract fun simulados(): SimuladoDao
+    abstract fun trilhaEtapas(): TrilhaEtapaDao
 
     companion object {
         @Volatile

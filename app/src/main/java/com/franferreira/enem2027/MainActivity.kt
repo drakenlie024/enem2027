@@ -181,7 +181,80 @@ fun EnemApp() {
                             abrirQuestao(navController, vm, questao)
                         }
                     },
+                    aoAbrirTrilha = { trilha ->
+                        vm.abrirTrilha(trilha)
+                        navController.navigate("trilha")
+                    },
+                    aoJogarEtapa = { trilha, etapa ->
+                        vm.iniciarEtapa(trilha, etapa)
+                        navController.navigate("etapa")
+                    },
                 )
+            }
+
+            // Trilha: o caminho vertical com os nós.
+            composable("trilha") {
+                val trilha = estado.trilhaAberta
+                if (trilha == null) {
+                    Box(
+                        Modifier
+                            .fillMaxSize()
+                            .background(Background),
+                    ) {
+                        Text(
+                            text = "Trilha não encontrada",
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = TextMuted,
+                        )
+                    }
+                } else {
+                    TelaTrilha(
+                        trilha = trilha,
+                        aoVoltar = {
+                            vm.fecharTrilha()
+                            navController.popBackStack()
+                        },
+                        aoJogar = { etapa ->
+                            vm.iniciarEtapa(trilha, etapa)
+                            navController.navigate("etapa")
+                        },
+                    )
+                }
+            }
+
+            // Etapa: as 12 questões de um tema.
+            composable("etapa") {
+                val etapa = estado.etapaEmAndamento
+                val trilha = estado.trilhaAberta
+                if (etapa == null || trilha == null) {
+                    Box(
+                        Modifier
+                            .fillMaxSize()
+                            .background(Background),
+                    ) {
+                        Text(
+                            text = "Etapa não encontrada",
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = TextMuted,
+                        )
+                    }
+                } else {
+                    TelaEtapa(
+                        etapa = etapa,
+                        area = trilha.area,
+                        aoResponder = { questionId, correta, segundos ->
+                            vm.responder(questionId, correta, segundos)
+                        },
+                        aoConcluir = { acertos, segundos ->
+                            vm.concluirEtapa(acertos, segundos)
+                            navController.popBackStack()
+                        },
+                        aoVoltar = {
+                            vm.fecharEtapa()
+                            navController.popBackStack()
+                        },
+                    )
+                }
             }
 
             composable("questao") {
@@ -252,6 +325,7 @@ fun EnemApp() {
                     diasSelecionados = estado.agenda,
                     aoAlternar = vm::alternarAgenda,
                     aoSalvar = vm::salvarAgenda,
+                    mensagem = estado.mensagem,
                 )
             }
 

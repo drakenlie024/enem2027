@@ -21,12 +21,22 @@ data class Question(
     @SerialName("dificuldade") val dificuldade: String? = null,
     @SerialName("subassunto") val subassunto: String? = null,
     @SerialName("origem") val origem: String = "enem",
+    /**
+     * Explicação offline, gerada no servidor quando o acervo foi montado.
+     *
+     * Vem junto com o pacote do ano e fica no aparelho: o app explica por que
+     * a alternativa correta é a correta sem precisar chamar a IA.
+     */
+    @SerialName("explicacao") val explicacao: String? = null,
 ) {
     val temaExibicao: String
         get() = tema?.takeIf { it.isNotBlank() } ?: subassunto?.takeIf { it.isNotBlank() }
             ?: area ?: "Revisão"
 
     val oficial: Boolean get() = origem == "enem"
+
+    /** Tem explicação offline? */
+    val temExplicacao: Boolean get() = !explicacao.isNullOrBlank()
 }
 
 @Serializable

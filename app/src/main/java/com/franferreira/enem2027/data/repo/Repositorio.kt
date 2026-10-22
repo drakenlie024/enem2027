@@ -7,10 +7,14 @@ import com.franferreira.enem2027.data.local.GamificationEntity
 import com.franferreira.enem2027.data.local.PendingAnswerEntity
 import com.franferreira.enem2027.data.local.ProgressEntity
 import com.franferreira.enem2027.data.local.QuestionEntity
+import com.franferreira.enem2027.data.local.TrilhaEtapaEntity
 import com.franferreira.enem2027.data.model.Alternative
+import com.franferreira.enem2027.data.model.CurriculoTrilhas
+import com.franferreira.enem2027.data.model.EtapaConcluida
 import com.franferreira.enem2027.data.model.ProgressBatch
 import com.franferreira.enem2027.data.model.ProgressItem
 import com.franferreira.enem2027.data.model.Question
+import com.franferreira.enem2027.data.model.Trilha
 import com.franferreira.enem2027.data.model.YearInfo
 import com.franferreira.enem2027.data.remote.ApiClient
 import kotlinx.serialization.encodeToString
@@ -129,6 +133,116 @@ class Repositorio(private val context: Context) {
 
     suspend fun questaoPorId(id: String): Question? =
         db.questions().porId(id)?.paraModelo()
+
+    // ---------- trilhas ----------
+
+    /**
+     * Currículo das trilhas: vem do servidor (é estático) e é cacheado em
+     * memória. Se a rede falhar, o app usa o currículo que já tem.
+     */
+    private var curriculoCache: CurriculoTrilhas? = null
+
+    suspend fun curriculoTrilhas(): CurriculoTrilhas {
+        curriculoCache?.let { return it }
+        val baixado = runCatching { api.curriculoTrilhas() }.getOrNull()
+        if (baixado != null) {
+            curriculoCache = baixado
+            return baixado
+        }
+        // Sem rede: um currículo vazio ainda deixa o app abrir e mostrar as
+        // trilhas que ele conseguir montar localmente.
+        return curriculoCache ?: CurriculoTrilhas()
+    }
+
+    /** Monta as trilhas com as questões do aparelho e o SRS local. */
+    suspend fun trilhas(): List<Trilha> {
+        val curriculo = curriculoTrilhas()
+        val montador = MontadorTrilhas(db)
+
+        val stats = db.questions().statsPorTema().map {
+            StatsTema(
+                tema = it.tema,
+                erros = it.erros,
+                acertos = it.acertos,
+                total = it.total,
+                area = it.area,
+            )
+        }.toMap()
+
+        val etapasLocais = db.trilhaEtapas().todos()
+        val concluidas = etapasLocais.groupBy { it.trilhaId }
+            .mapValues { (_, lista) -> lista.map { it.etapa } }
+        val resultados = etapasLocais.groupBy { it.trilhaId }
+            .mapValues { (_, lista) ->
+                lista.associate { it.etapa to ResultadoEtapa(it.acertos, it.total, it.segundos, it.xp) }
+            }
+
+        return montador.montar(
+            curriculo = curriculo,
+            statsPorTema = stats,
+            etapasConcluidas = concluidas,
+            resultadoPorEtapa = resultados,
+        )
+    }
+
+    /**
+     * Registra o resultado de uma etapa concluída.
+     *
+     * Grava local na hora (a trilha já mostra a etapa como concluída, sem
+     * esperar a rede) e enfileira para o servidor.
+     */
+    suspend fun registrarEtapa(
+        trilhaId: String,
+        etapa: Int,
+        area: String,
+        tema: String,
+        acertos: Int,
+        total: Int,
+        segundos: Int,
+        xp: Int,
+    ) {
+        db.trilhaEtapas().salvar(
+            TrilhaEtapaEntity(
+                trilhaId = trilhaId,
+                etapa = etapa,
+                area = area,
+                tema = tema,
+                acertos = acertos,
+                total = total,
+                segundos = segundos,
+                xp = xp,
+                synced = false,
+            ),
+        )
+    }
+
+    /** Envia as etapas concluídas que ainda não foram para o servidor. */
+    suspend fun sincronizarEtapas(): Int {
+        val pendentes = db.trilhaEtapas().naoSincronizadas()
+        if (pendentes.isEmpty()) return 0
+        var enviadas = 0
+        for (etapa in pendentes) {
+            val ok = runCatching {
+                api.registrarEtapa(
+                    EtapaConcluida(
+                        trilhaId = etapa.trilhaId,
+                        etapa = etapa.etapa,
+                        area = etapa.area,
+                        tema = etapa.tema,
+                        acertos = etapa.acertos,
+                        total = etapa.total,
+                        segundos = etapa.segundos,
+                        xp = etapa.xp,
+                    ),
+                )
+            }.isSuccess
+            if (ok) {
+                db.trilhaEtapas().marcarSincronizado(etapa.trilhaId, etapa.etapa)
+                enviadas += 1
+            }
+        }
+        return enviadas
+    }
 
     // ---------- respostas e SRS ----------
 
@@ -336,6 +450,7 @@ class Repositorio(private val context: Context) {
         competencia = competencia,
         dificuldade = dificuldade,
         subassunto = subassunto,
+        explicacao = explicacao,
         versaoAcervo = versao,
     )
 
@@ -355,5 +470,6 @@ class Repositorio(private val context: Context) {
         competencia = competencia,
         dificuldade = dificuldade,
         subassunto = subassunto,
+        explicacao = explicacao,
     )
 }

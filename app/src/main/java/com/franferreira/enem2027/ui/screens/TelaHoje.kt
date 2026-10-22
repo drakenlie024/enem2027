@@ -1,5 +1,6 @@
 package com.franferreira.enem2027.ui.screens
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -22,6 +23,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CloudDownload
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -33,9 +35,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.franferreira.enem2027.data.model.Etapa
+import com.franferreira.enem2027.data.model.Trilha
 import com.franferreira.enem2027.ui.EstadoHoje
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
@@ -48,12 +56,13 @@ import com.franferreira.enem2027.ui.theme.TextMuted
 import com.franferreira.enem2027.ui.theme.TextMutedDark
 import com.franferreira.enem2027.ui.theme.TextPrimary
 import com.franferreira.enem2027.ui.theme.TextSecondary
+import com.franferreira.enem2027.ui.theme.corDaArea
 
 /**
- * Tela "Hoje": o que estudar agora, com os filtros de área e tema.
+ * Tela "Hoje": uma meta, um botão, e as trilhas.
  *
- * O app é offline-first: esta tela lê do banco local. Se não há nada
- * baixado ainda, ela mostra o caminho para baixar.
+ * A tela responde a uma pergunta só — "o que eu faço agora?" — e a resposta
+ * é o botão grande do anel. As trilhas ficam abaixo, como o mapa do caminho.
  */
 @Composable
 fun TelaHoje(
@@ -63,6 +72,8 @@ fun TelaHoje(
     aoBaixarAno: (Int) -> Unit,
     aoSincronizar: () -> Unit,
     aoAbrirQuestao: (Int) -> Unit,
+    aoAbrirTrilha: (Trilha) -> Unit,
+    aoJogarEtapa: (Trilha, Etapa) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -76,7 +87,7 @@ fun TelaHoje(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Column(Modifier.weight(1f)) {
                     Text(
-                        text = "SESSÃO DE HOJE",
+                        text = "HOJE",
                         style = MaterialTheme.typography.labelSmall,
                         color = Primary,
                     )
@@ -101,9 +112,23 @@ fun TelaHoje(
                 }
             }
 
+            Spacer(Modifier.height(16.dp))
+
+            // ---- a meta do dia: um anel e um botão
+            CartaoMeta(
+                estado = estado,
+                aoJogar = {
+                    val trilha = estado.trilhaParaJogar
+                    val etapa = trilha?.etapaAtual
+                    if (trilha != null && etapa != null) {
+                        aoJogarEtapa(trilha, etapa)
+                    }
+                },
+            )
+
             Spacer(Modifier.height(14.dp))
 
-            // faixa de progresso
+            // ---- estatísticas rápidas
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -132,60 +157,6 @@ fun TelaHoje(
             }
 
             Spacer(Modifier.height(12.dp))
-
-            // filtros de área
-            Text(
-                text = "ÁREA",
-                style = MaterialTheme.typography.labelSmall,
-                color = TextMuted,
-            )
-            Spacer(Modifier.height(6.dp))
-            Row(
-                modifier = Modifier.horizontalScroll(rememberScrollState()),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                ChipFiltro(
-                    texto = "Todas",
-                    selecionado = estado.areaSelecionada == null,
-                    aoClicar = { aoFiltrarArea(null) },
-                )
-                estado.areas.forEach { area ->
-                    ChipFiltro(
-                        texto = area.replace('-', ' ').replaceFirstChar { it.uppercase() },
-                        selecionado = estado.areaSelecionada == area,
-                        aoClicar = { aoFiltrarArea(area) },
-                    )
-                }
-            }
-
-            if (estado.temas.isNotEmpty()) {
-                Spacer(Modifier.height(10.dp))
-                Text(
-                    text = "TEMA",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = TextMuted,
-                )
-                Spacer(Modifier.height(6.dp))
-                Row(
-                    modifier = Modifier.horizontalScroll(rememberScrollState()),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    ChipFiltro(
-                        texto = "Todos",
-                        selecionado = estado.temaSelecionado == null,
-                        aoClicar = { aoFiltrarTema(null) },
-                    )
-                    estado.temas.take(20).forEach { tema ->
-                        ChipFiltro(
-                            texto = tema,
-                            selecionado = estado.temaSelecionado == tema,
-                            aoClicar = { aoFiltrarTema(tema) },
-                        )
-                    }
-                }
-            }
-
-            Spacer(Modifier.height(14.dp))
 
             estado.mensagem?.let { mensagem ->
                 Box(
@@ -234,7 +205,7 @@ fun TelaHoje(
                         text = "As questões ficam salvas no aparelho: você estuda sem internet.",
                         style = MaterialTheme.typography.bodySmall,
                         color = TextMuted,
-                        textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                        textAlign = TextAlign.Center,
                     )
                     Spacer(Modifier.height(16.dp))
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -250,12 +221,13 @@ fun TelaHoje(
                 contentPadding = androidx.compose.foundation.layout.PaddingValues(
                     start = 16.dp, end = 16.dp, bottom = 24.dp
                 ),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
+                // ---- trilhas
                 item {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
-                            text = "NA FILA (${estado.sessao.size})",
+                            text = "TRILHAS",
                             style = MaterialTheme.typography.labelSmall,
                             color = TextMuted,
                             modifier = Modifier.weight(1f),
@@ -269,14 +241,9 @@ fun TelaHoje(
                                 .clickable { aoSincronizar() },
                         )
                     }
-                    Spacer(Modifier.height(4.dp))
                 }
 
-                items(estado.sessao, key = { it.id }) { questao ->
-                    CartaoQuestao(questao = questao, aoClicar = { aoAbrirQuestao(estado.sessao.indexOf(questao)) })
-                }
-
-                if (estado.sessao.isEmpty()) {
+                if (estado.trilhas.isEmpty()) {
                     item {
                         Box(
                             modifier = Modifier
@@ -286,12 +253,264 @@ fun TelaHoje(
                                 .padding(20.dp),
                         ) {
                             Text(
-                                text = "Nada pendente por aqui. Troque o filtro ou baixe outro ano.",
+                                text = "Nenhuma trilha ainda. Baixe o acervo de um ano para as etapas se montarem.",
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = TextMuted,
                             )
                         }
                     }
+                } else {
+                    items(estado.trilhas, key = { it.id }) { trilha ->
+                        CartaoTrilha(
+                            trilha = trilha,
+                            aoAbrir = { aoAbrirTrilha(trilha) },
+                            aoJogar = { etapa -> aoJogarEtapa(trilha, etapa) },
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * O cartão da meta: um anel de progresso com o botão dentro.
+ *
+ * O anel mostra quanto da meta diária já foi feito; o botão é a única ação
+ * da tela. Se não houver nada para jogar, o botão diz por quê.
+ */
+@Composable
+private fun CartaoMeta(
+    estado: EstadoHoje,
+    aoJogar: () -> Unit,
+) {
+    val meta = estado.metaDiaria
+    val feitas = estado.pendentes.coerceAtMost(meta)
+    val progresso = if (meta <= 0) 0f else feitas.toFloat() / meta
+    val trilha = estado.trilhaParaJogar
+    val etapa = trilha?.etapaAtual
+    val cor = if (trilha != null) corDaArea(trilha.area) else Primary
+    val podeJogar = etapa != null && etapa.jogavel
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(18.dp))
+            .background(
+                Brush.verticalGradient(
+                    listOf(cor.copy(alpha = 0.10f), Surface)
+                )
+            )
+            .border(1.dp, cor.copy(alpha = 0.28f), RoundedCornerShape(18.dp))
+            .padding(18.dp),
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(
+                text = "META DE HOJE",
+                style = MaterialTheme.typography.labelSmall,
+                color = cor,
+            )
+            Spacer(Modifier.height(12.dp))
+
+            // anel
+            Box(
+                modifier = Modifier.size(132.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Canvas(modifier = Modifier.fillMaxSize()) {
+                    val espessura = 11.dp.toPx()
+                    val diametro = size.minDimension - espessura
+                    val canto = androidx.compose.ui.geometry.Offset(
+                        (size.width - diametro) / 2,
+                        (size.height - diametro) / 2,
+                    )
+                    drawArc(
+                        color = SurfaceRaised,
+                        startAngle = -90f,
+                        sweepAngle = 360f,
+                        useCenter = false,
+                        topLeft = canto,
+                        size = androidx.compose.ui.geometry.Size(diametro, diametro),
+                        style = Stroke(width = espessura, cap = StrokeCap.Round),
+                    )
+                    drawArc(
+                        color = cor,
+                        startAngle = -90f,
+                        sweepAngle = 360f * progresso,
+                        useCenter = false,
+                        topLeft = canto,
+                        size = androidx.compose.ui.geometry.Size(diametro, diametro),
+                        style = Stroke(width = espessura, cap = StrokeCap.Round),
+                    )
+                }
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(
+                        text = "$feitas",
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = TextPrimary,
+                    )
+                    Text(
+                        text = "de $meta",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = TextMuted,
+                    )
+                }
+            }
+
+            Spacer(Modifier.height(6.dp))
+            Text(
+                text = when {
+                    trilha == null -> "Nenhuma trilha pronta"
+                    etapa == null -> "Trilha concluída! 🎉"
+                    !etapa.jogavel -> "Baixe o acervo desta etapa"
+                    else -> etapa.nome
+                },
+                style = MaterialTheme.typography.titleMedium,
+                color = TextPrimary,
+                textAlign = TextAlign.Center,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+            )
+            if (etapa != null && etapa.jogavel) {
+                Spacer(Modifier.height(3.dp))
+                Text(
+                    text = "${etapa.questoes.size} questões",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = TextMuted,
+                )
+            }
+
+            Spacer(Modifier.height(14.dp))
+
+            // o botão
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .clip(RoundedCornerShape(14.dp))
+                    .background(if (podeJogar) cor else SurfaceRaised)
+                    .clickable(enabled = podeJogar) { aoJogar() },
+                contentAlignment = Alignment.Center,
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (podeJogar) {
+                        Icon(
+                            Icons.Filled.PlayArrow,
+                            contentDescription = null,
+                            tint = Background,
+                            modifier = Modifier.size(20.dp),
+                        )
+                        Spacer(Modifier.width(8.dp))
+                    }
+                    Text(
+                        text = when {
+                            etapa == null -> "Trilha completa"
+                            !etapa.jogavel -> "Baixe o acervo"
+                            else -> "Começar"
+                        },
+                        style = MaterialTheme.typography.labelLarge,
+                        color = if (podeJogar) Background else TextMuted,
+                    )
+                }
+            }
+        }
+    }
+}
+
+/** Um cartão de trilha na lista: nome, progresso e a próxima etapa. */
+@Composable
+private fun CartaoTrilha(
+    trilha: Trilha,
+    aoAbrir: () -> Unit,
+    aoJogar: (Etapa) -> Unit,
+) {
+    val cor = corDaArea(trilha.area)
+    val etapa = trilha.etapaAtual
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(14.dp))
+            .background(Surface)
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+            .clickable { aoAbrir() }
+            .padding(14.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            // marcador com a cor da área
+            Box(
+                modifier = Modifier
+                    .size(9.dp)
+                    .clip(CircleShape)
+                    .background(cor),
+            )
+            Spacer(Modifier.width(9.dp))
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text = trilha.nome,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = TextPrimary,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                if (trilha.adaptativa) {
+                    Text(
+                        text = "MONTADA PELO SEU DESEMPENHO",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = cor,
+                    )
+                }
+            }
+            Text(
+                text = "${trilha.concluidas}/${trilha.totalEtapas}",
+                style = MaterialTheme.typography.labelLarge,
+                color = TextMuted,
+            )
+        }
+
+        Spacer(Modifier.height(10.dp))
+
+        // barra de progresso
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(5.dp)
+                .clip(CircleShape)
+                .background(SurfaceRaised),
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth((trilha.progresso / 100f).coerceIn(0f, 1f))
+                    .height(5.dp)
+                    .clip(CircleShape)
+                    .background(cor),
+            )
+        }
+
+        if (etapa != null) {
+            Spacer(Modifier.height(10.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = etapa.nome,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = TextMuted,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(1f),
+                )
+                Spacer(Modifier.width(8.dp))
+                Box(
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .background(cor.copy(alpha = 0.16f))
+                        .clickable(enabled = etapa.jogavel) { aoJogar(etapa) }
+                        .padding(horizontal = 12.dp, vertical = 6.dp),
+                ) {
+                    Text(
+                        text = "Jogar",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = cor,
+                    )
                 }
             }
         }
@@ -315,30 +534,6 @@ private fun ColunaStat(valor: String, rotulo: String, modifier: Modifier = Modif
 }
 
 @Composable
-fun ChipFiltro(texto: String, selecionado: Boolean, aoClicar: () -> Unit) {
-    Box(
-        modifier = Modifier
-            .clip(CircleShape)
-            .background(if (selecionado) Primary.copy(alpha = 0.18f) else Surface)
-            .border(
-                1.dp,
-                if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                CircleShape,
-            )
-            .clickable { aoClicar() }
-            .padding(horizontal = 14.dp, vertical = 7.dp),
-    ) {
-        Text(
-            text = texto,
-            style = MaterialTheme.typography.labelMedium,
-            color = if (selecionado) TextPrimary else TextMuted,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-        )
-    }
-}
-
-@Composable
 private fun BotaoAno(ano: Int, carregando: Boolean, aoClicar: () -> Unit) {
     Box(
         modifier = Modifier
@@ -351,48 +546,6 @@ private fun BotaoAno(ano: Int, carregando: Boolean, aoClicar: () -> Unit) {
             text = ano.toString(),
             style = MaterialTheme.typography.labelLarge,
             color = if (carregando) TextMuted else Background,
-        )
-    }
-}
-
-@Composable
-private fun CartaoQuestao(
-    questao: com.franferreira.enem2027.data.model.Question,
-    aoClicar: () -> Unit,
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
-            .clickable { aoClicar() }
-            .padding(13.dp),
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                text = "${questao.ano} · ${questao.temaExibicao}",
-                style = MaterialTheme.typography.labelMedium,
-                color = TextMuted,
-                modifier = Modifier.weight(1f),
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-            if (!questao.oficial) {
-                Text(
-                    text = "IA",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = com.franferreira.enem2027.ui.theme.Danger,
-                )
-            }
-        }
-        Spacer(Modifier.height(6.dp))
-        Text(
-            text = questao.enunciado?.take(140) ?: "(enunciado em imagem)",
-            style = MaterialTheme.typography.bodyMedium,
-            color = TextSecondary,
-            maxLines = 3,
-            overflow = TextOverflow.Ellipsis,
         )
     }
 }
