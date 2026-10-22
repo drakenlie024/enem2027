@@ -32,7 +32,61 @@ jobs:
       - name: Rodar os testes
         # Roda ANTES do assemble: se o teste de offline (que garante o
         # requisito nº 1 do projeto) quebrar, o build nao passa.
-        run: ./gradlew testDebugUnitTest --stacktrace
+        # O log vai para arquivo: sem isso, a falha só existe no console do
+        # GitHub, que não é legível pela API pública — e o agente fica cego.
+        run: |
+          set -o pipefail
+          ./gradlew testDebugUnitTest --stacktrace 2>&1 | tee build-tests.log
+
+      - name: Publicar a falha como anotação
+        # Transforma o que falhou em anotação do check-run. Isso é o que
+        # permite ler o motivo da falha sem token do GitHub: o console do
+        # Actions exige autenticação, as anotações não.
+        if: failure()
+        run: |
+          set -uo pipefail
+          python3 - <<'PY'
+          import glob, re, xml.etree.ElementTree as ET
+
+          vistos = 0
+
+          def limpar(texto: str) -> str:
+              # Workflow command: % \r \n têm escape próprio, senão a
+              # anotação corta no meio.
+              return (texto.replace("%", "%25").replace("\r", "%0D")
+                      .replace("\n", "%0A").strip())
+
+          for caminho in glob.glob("app/build/test-results/**/*.xml", recursive=True):
+              try:
+                  arvore = ET.parse(caminho)
+              except ET.ParseError:
+                  continue
+              for caso in arvore.iter("testcase"):
+                  no = caso.find("failure")
+                  if no is None:
+                      no = caso.find("error")
+                  if no is None:
+                      continue
+                  vistos += 1
+                  nome = f"{caso.get('classname')}.{caso.get('name')}"
+                  corpo = [l for l in (no.text or "").strip().splitlines() if l.strip()]
+                  detalhe = (no.get("message") or (corpo[0] if corpo else "sem mensagem")).strip()
+                  onde = next((l.strip() for l in corpo if "Test.kt" in l or ".kt:" in l), "")
+                  texto = f"{detalhe[:280]} {onde[:120]}".strip()
+                  print(f"::error title={nome}::{limpar(texto)}")
+
+          # Erro de compilação não gera XML: o Kotlin escreve "e: file:///...".
+          try:
+              log = open("build-tests.log", encoding="utf-8", errors="replace").read()
+          except FileNotFoundError:
+              log = ""
+          for linha in log.splitlines():
+              if re.match(r"^e: (file|.*\.kt)", linha) or " error: " in linha:
+                  vistos += 1
+                  print(f"::error title=compilacao::{limpar(linha.strip()[:340])}")
+
+          print(f"falhas publicadas: {vistos}")
+          PY
 
       - name: Assemble release APK
         env:
