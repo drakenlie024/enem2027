@@ -379,12 +379,14 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             val areas = repo.areasLocais()
             val temas = repo.temasLocais()
             val gam = repo.gamificacao()
+            var totalLocal = 0
+            for (ano in anos) totalLocal += repo.totalLocal(ano)
             _estado.value = _estado.value.copy(
                 carregando = false,
                 anos = anos,
                 areas = areas,
                 temas = temas,
-                totalLocal = anos.sumOf { repo.totalLocal(it) },
+                totalLocal = totalLocal,
                 pendentes = repo.pendentes(),
                 respondidasHoje = repo.respondidasHoje(),
                 xp = gam?.xp ?: 0,

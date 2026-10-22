@@ -88,6 +88,9 @@ class Repositorio(private val context: Context) {
         entidades.size
     }
 
+    /** Anos que já estão no aparelho. */
+    suspend fun anosLocais(): List<Int> = db.questions().anos()
+
     /**
      * Baixa em segundo plano as figuras referenciadas pelo acervo.
      *
