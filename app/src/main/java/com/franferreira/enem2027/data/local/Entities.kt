@@ -1,7 +1,6 @@
 package com.franferreira.enem2027.data.local
 
-    import androidx.room.Ignore
-import androidx.room.Index
+    import androidx.room.Index
 import androidx.room.PrimaryKey
 
 /**
@@ -39,7 +38,6 @@ data class QuestionEntity(
      * Estado do SRS dessa questão, preenchido pela query de revisão
      * (LEFT JOIN na tabela progress). Null = nunca respondida.
      */
-    @Ignore
     val progressState: String? = null,
 )
 

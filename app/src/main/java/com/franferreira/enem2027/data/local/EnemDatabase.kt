@@ -82,7 +82,11 @@ interface QuestionDao {
      */
     @Query(
         """
-        SELECT q.*, p.state AS progressState FROM questions q
+        SELECT q.id, q.ano, q.indice, q.area, q.idioma, q.origem, q.enunciado,
+               q.contexto, q.arquivosJson, q.alternativasJson, q.gabarito,
+               q.tema, q.competencia, q.dificuldade, q.subassunto, q.explicacao,
+               q.versaoAcervo, q.baixadoEm, p.state AS progressState
+        FROM questions q
         LEFT JOIN progress p ON p.questionId = q.id
         WHERE (:area IS NULL OR q.area = :area)
           AND (:tema IS NULL OR q.tema = :tema)
