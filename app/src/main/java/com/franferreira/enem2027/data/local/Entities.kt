@@ -60,6 +60,14 @@ data class ProgressEntity(
     val lastQuality: Int? = null,
     val correctCount: Int = 0,
     val wrongCount: Int = 0,
+    /**
+     * A confiança declarada na ÚLTIMA resposta: "alta" (sei) ou "baixa"
+     * (palpite). Nulo se a pessoa não marcou.
+     *
+     * O sinal que interessa é o cruzamento: errou dizendo que sabia é buraco
+     * de conteúdo; errou dizendo que chutava é buraco de técnica.
+     */
+    val lastConfidence: String? = null,
     /** Se ainda não foi sincronizado com o servidor. */
     val synced: Boolean = false,
 )
@@ -108,6 +116,8 @@ data class PendingAnswerEntity(
     val correct: Boolean,
     val secondsTaken: Float?,
     val reviewedAt: Long,
+    /** A confiança declarada: "alta" (sei) ou "baixa" (palpite). */
+    val confianca: String? = null,
     val synced: Boolean = false,
 )
 

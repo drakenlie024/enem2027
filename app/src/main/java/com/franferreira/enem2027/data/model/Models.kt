@@ -105,6 +105,14 @@ data class ProgressItem(
      * "amanhã" no servidor, e o streak conta o dia errado.
      */
     @SerialName("local_date") val localDate: String? = null,
+    /**
+     * A confiança declarada na resposta: "alta" (sei) ou "baixa" (palpite).
+     *
+     * Cruzar isso com o acerto é o sinal que importa: errou dizendo que
+     * sabia é buraco de conteúdo; errou dizendo que chutava é buraco de
+     * técnica.
+     */
+    @SerialName("confidence") val confidence: String? = null,
 )
 
 @Serializable

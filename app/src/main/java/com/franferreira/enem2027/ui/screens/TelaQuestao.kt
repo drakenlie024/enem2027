@@ -1,5 +1,7 @@
 package com.franferreira.enem2027.ui.screens
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -23,12 +25,15 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.OndemandVideo
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,12 +45,18 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.franferreira.enem2027.data.model.Question
+import com.franferreira.enem2027.data.repo.CanaisVideo
+import com.franferreira.enem2027.data.repo.RascunhoStore
+import com.franferreira.enem2027.ui.components.TelaRascunho
 import com.franferreira.enem2027.ui.theme.Danger
 import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Secondary
@@ -56,6 +67,7 @@ import com.franferreira.enem2027.ui.theme.TextMuted
 import com.franferreira.enem2027.ui.theme.TextMutedDark
 import com.franferreira.enem2027.ui.theme.TextPrimary
 import com.franferreira.enem2027.ui.theme.TextSecondary
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
@@ -67,7 +79,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun TelaQuestao(
     questao: Question,
-    aoResponder: (correta: Boolean, segundos: Float?) -> Unit,
+    aoResponder: (correta: Boolean, segundos: Float?, confianca: String?) -> Unit,
     aoVoltar: () -> Unit,
     aoPedirExplicacao: suspend () -> String?,
 ) {
@@ -76,8 +88,29 @@ fun TelaQuestao(
     var explicacao by remember { mutableStateOf<String?>(null) }
     var carregandoExplicacao by remember { mutableStateOf(false) }
     var erroExplicacao by remember { mutableStateOf<String?>(null) }
+    /**
+     * A confiança que a pessoa tem na própria resposta: "sei" ou "palpite".
+     *
+     * É técnica de estudo clássica — responder no chute e ver depois que
+     * errou é o que revela o buraco real. E vira sinal que o app não tinha.
+     */
+    var confianca by remember { mutableStateOf<String?>(null) }
+    /** O papel digital: o rascunho onde a conta de matemática acontece. */
+    var mostrarRascunho by remember { mutableStateOf(false) }
+    val contexto = LocalContext.current
+    var tracos by remember(questao.id) {
+        mutableStateOf(RascunhoStore.carregar(contexto, questao.id))
+    }
     val inicio = remember { System.currentTimeMillis() }
     val scope = rememberCoroutineScope()
+
+    // Grava o rascunho pouco depois do último traço: um crash no meio não
+    // pode levar a conta embora.
+    LaunchedEffect(tracos) {
+        if (tracos.isEmpty()) return@LaunchedEffect
+        delay(600)
+        RascunhoStore.salvar(contexto, questao.id, tracos)
+    }
 
     val gabarito = questao.gabarito?.trim()?.uppercase()
 
@@ -188,6 +221,27 @@ fun TelaQuestao(
                 }
             }
 
+            // ---- confiança, papel e vídeo-aula: as três pontas para quando trava
+            item {
+                LinhaApoio(
+                    confianca = confianca,
+                    aoMudarConfianca = { novo ->
+                        confianca = if (confianca == novo) null else novo
+                    },
+                    temRascunho = tracos.isNotEmpty(),
+                    aoAbrirRascunho = { mostrarRascunho = true },
+                    canais = CanaisVideo.daArea(questao.area),
+                    aoAbrirCanal = { url ->
+                        runCatching {
+                            contexto.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                        }
+                    },
+                )
+                Spacer(Modifier.height(14.dp))
+            }
+
             // alternativas
             items(questao.alternativas, key = { it.letra }) { alternativa ->
                 // O gabarito oficial é a fonte da verdade. O campo `correta`
@@ -237,7 +291,7 @@ fun TelaQuestao(
                             } else {
                                 alternativa.correta
                             }
-                            aoResponder(corretaEscolhida, (System.currentTimeMillis() - inicio) / 1000f)
+                            aoResponder(corretaEscolhida, (System.currentTimeMillis() - inicio) / 1000f, confianca)
                         }
                         .padding(12.dp),
                     verticalAlignment = Alignment.Top,
@@ -390,6 +444,159 @@ fun TelaQuestao(
                 }
             }
         }
+
+        // O papel digital, em janela própria: dá espaço para a conta sem
+        // esconder a questão que está sendo feita.
+        if (mostrarRascunho) {
+            Dialog(
+                onDismissRequest = { mostrarRascunho = false },
+                properties = DialogProperties(usePlatformDefaultWidth = false),
+            ) {
+                TelaRascunho(
+                    tracos = tracos,
+                    aoMudar = { tracos = it },
+                    aoFechar = { mostrarRascunho = false },
+                )
+            }
+        }
+    }
+}
+
+/**
+ * A linha de apoio antes das alternativas: confiança, papel digital e
+ * vídeo-aula.
+ *
+ * Três saídas para o momento em que a pessoa trava — e é exatamente o
+ * momento em que mais rende aprender.
+ */
+@Composable
+private fun LinhaApoio(
+    confianca: String?,
+    aoMudarConfianca: (String) -> Unit,
+    temRascunho: Boolean,
+    aoAbrirRascunho: () -> Unit,
+    canais: List<CanaisVideo.Canal>,
+    aoAbrirCanal: (String) -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(14.dp))
+            .background(Surface)
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+            .padding(12.dp),
+    ) {
+        Text(
+            text = "SUA CONFIANÇA NESTA RESPOSTA",
+            style = MaterialTheme.typography.labelSmall,
+            color = TextMuted,
+        )
+        Spacer(Modifier.height(7.dp))
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(7.dp),
+        ) {
+            ChipEscolha(
+                texto = "SEI",
+                selecionado = confianca == "alta",
+                aoClicar = { aoMudarConfianca("alta") },
+            )
+            ChipEscolha(
+                texto = "PALPITE",
+                selecionado = confianca == "baixa",
+                aoClicar = { aoMudarConfianca("baixa") },
+            )
+            Spacer(Modifier.width(3.dp))
+            // o papel digital
+            Row(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(9.dp))
+                    .background(
+                        if (temRascunho) Primary.copy(alpha = 0.16f) else SurfaceRaised
+                    )
+                    .clickable { aoAbrirRascunho() }
+                    .padding(horizontal = 10.dp, vertical = 7.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(
+                    Icons.Filled.Edit,
+                    contentDescription = null,
+                    tint = if (temRascunho) Primary else TextMuted,
+                    modifier = Modifier.size(14.dp),
+                )
+                Spacer(Modifier.width(6.dp))
+                Text(
+                    text = if (temRascunho) "RASCUNHO" else "FAZER RASCUNHO",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (temRascunho) Primary else TextMuted,
+                )
+            }
+        }
+
+        // a vídeo-aula de quem explica o assunto
+        if (canais.isNotEmpty()) {
+            Spacer(Modifier.height(11.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    Icons.Filled.OndemandVideo,
+                    contentDescription = null,
+                    tint = TextMuted,
+                    modifier = Modifier.size(13.dp),
+                )
+                Spacer(Modifier.width(6.dp))
+                Text(
+                    text = "VIDEO-AULA DO TEMA",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = TextMuted,
+                )
+            }
+            Spacer(Modifier.height(7.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                canais.take(3).forEach { canal ->
+                    Column(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(9.dp))
+                            .background(SurfaceRaised)
+                            .clickable { aoAbrirCanal(canal.url) }
+                            .padding(horizontal = 10.dp, vertical = 7.dp),
+                    ) {
+                        Text(
+                            text = canal.nome,
+                            style = MaterialTheme.typography.labelSmall,
+                            color = TextSecondary,
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ChipEscolha(
+    texto: String,
+    selecionado: Boolean,
+    aoClicar: () -> Unit,
+) {
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(9.dp))
+            .background(
+                if (selecionado) Primary.copy(alpha = 0.18f) else SurfaceRaised
+            )
+            .border(
+                width = 1.dp,
+                color = if (selecionado) Primary.copy(alpha = 0.55f) else SurfaceBorder,
+                shape = RoundedCornerShape(9.dp),
+            )
+            .clickable { aoClicar() }
+            .padding(horizontal = 12.dp, vertical = 7.dp),
+    ) {
+        Text(
+            text = texto,
+            style = MaterialTheme.typography.labelSmall,
+            color = if (selecionado) Primary else TextMuted,
+        )
     }
 }
 

@@ -313,7 +313,7 @@ interface TrilhaEtapaDao {
         SimuladoEntity::class,
         TrilhaEtapaEntity::class,
     ],
-    version = 3,
+    version = 4,
     exportSchema = true,
 )
 abstract class EnemDatabase : RoomDatabase() {
@@ -382,6 +382,22 @@ abstract class EnemDatabase : RoomDatabase() {
             }
         }
 
+        /**
+         * Migração 3 → 4: a confiança que a pessoa declara na resposta.
+         *
+         * Duas colunas, as duas aditivas (nullable), então nada se perde:
+         * - `pending_answers.confianca`: viaja no sync, porque a resposta
+         *   isolada é o que carrega o "eu sabia" ou "eu chutei";
+         * - `progress.lastConfidence`: sobrevive ao sync, porque depois que
+         *   a linha sai da fila o sinal não pode desaparecer do aparelho.
+         */
+        val MIGRACAO_3_4 = object : androidx.room.migration.Migration(3, 4) {
+            override fun migrate(db: androidx.sqlite.db.SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE pending_answers ADD COLUMN confianca TEXT")
+                db.execSQL("ALTER TABLE progress ADD COLUMN lastConfidence TEXT")
+            }
+        }
+
         fun get(context: android.content.Context): EnemDatabase =
             instance ?: synchronized(this) {
                 instance ?: androidx.room.Room.databaseBuilder(
@@ -389,7 +405,7 @@ abstract class EnemDatabase : RoomDatabase() {
                     EnemDatabase::class.java,
                     "enem2027.db",
                 )
-                    .addMigrations(MIGRACAO_1_2, MIGRACAO_2_3)
+                    .addMigrations(MIGRACAO_1_2, MIGRACAO_2_3, MIGRACAO_3_4)
                     .build().also { instance = it }
             }
     }

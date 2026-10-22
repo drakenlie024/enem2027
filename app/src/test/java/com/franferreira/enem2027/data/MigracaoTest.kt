@@ -170,7 +170,11 @@ class MigracaoTest {
 
         // Abre na versão atual: as migrações têm que rodar.
         val db = Room.databaseBuilder(context, EnemDatabase::class.java, nome)
-            .addMigrations(EnemDatabase.MIGRACAO_1_2, EnemDatabase.MIGRACAO_2_3)
+            .addMigrations(
+                EnemDatabase.MIGRACAO_1_2,
+                EnemDatabase.MIGRACAO_2_3,
+                EnemDatabase.MIGRACAO_3_4,
+            )
             .build()
 
         val questao = db.questions().porId("enem-2023-q001")
@@ -192,13 +196,49 @@ class MigracaoTest {
         criarVersao1(context)
 
         val db = Room.databaseBuilder(context, EnemDatabase::class.java, nome)
-            .addMigrations(EnemDatabase.MIGRACAO_1_2, EnemDatabase.MIGRACAO_2_3)
+            .addMigrations(
+                EnemDatabase.MIGRACAO_1_2,
+                EnemDatabase.MIGRACAO_2_3,
+                EnemDatabase.MIGRACAO_3_4,
+            )
             .build()
 
         // A coluna nova existe e aceita valor (a explicação offline).
         val questao = db.questions().porId("enem-2023-q001")
         assertNotNull(questao)
         // Se a coluna não existisse, o Room nem teria aberto o banco.
+        db.close()
+    }
+
+    @Test
+    fun upgrade_cria_a_coluna_de_confianca() = runTest {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        criarVersao1(context)
+
+        val db = Room.databaseBuilder(context, EnemDatabase::class.java, nome)
+            .addMigrations(
+                EnemDatabase.MIGRACAO_1_2,
+                EnemDatabase.MIGRACAO_2_3,
+                EnemDatabase.MIGRACAO_3_4,
+            )
+            .build()
+
+        // A confiança declarada na resposta ("sei" ou "palpite") precisa
+        // existir na v4 e aceitar valor.
+        db.pendingAnswers().inserir(
+            com.franferreira.enem2027.data.local.PendingAnswerEntity(
+                questionId = "enem-2023-q001",
+                quality = 4,
+                correct = true,
+                secondsTaken = 12f,
+                reviewedAt = 1000L,
+                confianca = "alta",
+            )
+        )
+        val pendentes = db.pendingAnswers().naoSincronizadas()
+        assertEquals(1, pendentes.size)
+        assertEquals("alta", pendentes.first().confianca)
+
         db.close()
     }
 }

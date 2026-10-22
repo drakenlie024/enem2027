@@ -295,8 +295,8 @@ fun EnemApp() {
                 if (questao != null) {
                     TelaQuestao(
                         questao = questao,
-                        aoResponder = { correta, segundos ->
-                            vm.responder(questao.id, correta, segundos)
+                        aoResponder = { correta, segundos, confianca ->
+                            vm.responder(questao.id, correta, segundos, confianca)
                         },
                         aoVoltar = {
                             vm.fecharQuestao()

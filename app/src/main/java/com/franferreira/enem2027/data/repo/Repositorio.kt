@@ -384,6 +384,7 @@ class Repositorio(private val context: Context) {
         questionId: String,
         correta: Boolean,
         segundos: Float?,
+        confianca: String? = null,
     ) {
         // A quality segue a convenção do Anki: errou = 1, acertou fácil = 5.
         val quality = if (correta) 4 else 1
@@ -394,7 +395,7 @@ class Repositorio(private val context: Context) {
             atual ?: ProgressEntity(questionId = questionId),
             quality,
             agora,
-        )
+        ).copy(lastConfidence = confianca)
         db.progress().upsert(novo)
         db.pendingAnswers().inserir(
             PendingAnswerEntity(
@@ -403,6 +404,7 @@ class Repositorio(private val context: Context) {
                 correct = correta,
                 secondsTaken = segundos,
                 reviewedAt = agora,
+                confianca = confianca,
             ),
         )
         atualizarGamificacaoLocal(correta)
@@ -597,6 +599,8 @@ class Repositorio(private val context: Context) {
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate()
                         .toString(),
+                    // A confiança que a pessoa declarou ("sei" / "palpite").
+                    confidence = resposta.confianca,
                 )
             }
             try {

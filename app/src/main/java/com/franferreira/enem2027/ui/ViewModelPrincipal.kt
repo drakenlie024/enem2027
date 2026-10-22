@@ -547,9 +547,14 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
         _estado.value = _estado.value.copy(questaoAberta = null)
     }
 
-    fun responder(questionId: String, correta: Boolean, segundos: Float?) {
+    fun responder(
+        questionId: String,
+        correta: Boolean,
+        segundos: Float?,
+        confianca: String? = null,
+    ) {
         viewModelScope.launch {
-            repo.registrarResposta(questionId, correta, segundos)
+            repo.registrarResposta(questionId, correta, segundos, confianca)
             val gam = repo.gamificacao()
             _estado.value = _estado.value.copy(
                 pendentes = repo.pendentes(),
