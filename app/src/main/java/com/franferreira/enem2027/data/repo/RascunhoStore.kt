@@ -63,7 +63,7 @@ object RascunhoStore {
             val tmp = File(f.parentFile, f.name + ".tmp")
             tmp.writeText(conteudo, Charsets.UTF_8)
             if (!tmp.renameTo(f)) {
-                f.writeText(conteudo, encoding="utf-8")
+                f.writeText(conteudo, Charsets.UTF_8)
                 tmp.delete()
             }
         }

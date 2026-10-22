@@ -22,6 +22,7 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -405,7 +406,7 @@ fun EnemApp() {
                         },
                     )
                 } else {
-                    Box(Modifier.fillMaxSize().background(Background), Alignment.Center) {
+                    Box(Modifier.fillMaxSize().background(Background), androidx.compose.ui.Alignment.Center) {
                         CircularProgressIndicator(color = Primary)
                     }
                 }

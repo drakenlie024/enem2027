@@ -16,7 +16,8 @@ import java.io.File
  */
 object AulasCache {
 
-    private val json = Json { ignoreUnknownKeys = true; isLenient = true }
+    /** O Json usado para ler o cache. */
+    val json = Json { ignoreUnknownKeys = true; isLenient = true }
 
     private fun pasta(context: Context): File =
         File(context.filesDir, "aulas").apply { mkdirs() }

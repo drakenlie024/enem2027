@@ -858,7 +858,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                         .decodeFromString(AreasAula.serializer(), it)
                 }.getOrNull()
             }
-            ?: AulasCache.lerModelo(app, "areas")
+            ?: AulasCache.lerModelo<AreasAula>(app, "areas")
             _estado.value = _estado.value.copy(
                 areasAula = areas?.areas ?: emptyList(),
                 carregandoAulas = false,
@@ -881,7 +881,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                         .decodeFromString(AulasDeArea.serializer(), it)
                 }.getOrNull()
             }
-            ?: AulasCache.lerModelo(app, "area-$area")
+            ?: AulasCache.lerModelo<AulasDeArea>(app, "area-$area")
             _estado.value = _estado.value.copy(
                 aulasDaArea = dados ?: AulasDeArea(),
                 carregandoAulas = false,
@@ -904,7 +904,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                         .decodeFromString(PacoteAula.serializer(), it)
                 }.getOrNull()
             }
-            ?: AulasCache.lerModelo(app, "pacote-$id")
+            ?: AulasCache.lerModelo<PacoteAula>(app, "pacote-$id")
             _estado.value = _estado.value.copy(
                 pacoteAula = pacote,
                 carregandoAulas = false,
