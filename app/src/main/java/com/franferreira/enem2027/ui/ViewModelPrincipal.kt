@@ -108,6 +108,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
     val estado: StateFlow<EstadoHoje> = _estado.asStateFlow()
 
     init {
+        carregarMeta()
         restaurarSessao()
     }
 
@@ -505,6 +506,32 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
 
     fun limparMensagem() {
         _estado.value = _estado.value.copy(mensagem = null)
+    }
+
+    /**
+     * Ajusta a meta diária de questões.
+     *
+     * A meta é sugerida, mas o usuário manda: 12 por dia é o padrão, mas
+     * quem tem prova em menos de um ano pode querer 30, e quem estuda em
+     * dia de semana talvez queira 6. Fica salvo no aparelho.
+     */
+    fun ajustarMeta(delta: Int) {
+        val nova = (_estado.value.metaDiaria + delta).coerceIn(4, 60)
+        if (nova == _estado.value.metaDiaria) return
+        _estado.value = _estado.value.copy(metaDiaria = nova)
+        getApplication<Application>()
+            .getSharedPreferences("leticia", android.content.Context.MODE_PRIVATE)
+            .edit()
+            .putInt("meta_diaria", nova)
+            .apply()
+    }
+
+    /** Carrega a meta salva (ou a sugerida). */
+    private fun carregarMeta() {
+        val prefs = getApplication<Application>()
+            .getSharedPreferences("leticia", android.content.Context.MODE_PRIVATE)
+        val meta = prefs.getInt("meta_diaria", 12)
+        _estado.value = _estado.value.copy(metaDiaria = meta.coerceIn(4, 60))
     }
 
     // ---------- trilhas ----------

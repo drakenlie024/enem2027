@@ -47,6 +47,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.ui.theme.Danger
+import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Secondary
 import com.franferreira.enem2027.ui.theme.Surface
 import com.franferreira.enem2027.ui.theme.SurfaceBorder

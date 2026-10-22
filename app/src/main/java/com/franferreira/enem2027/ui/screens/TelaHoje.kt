@@ -78,6 +78,7 @@ fun TelaHoje(
     aoAbrirQuestao: (Int) -> Unit,
     aoAbrirTrilha: (Trilha) -> Unit,
     aoJogarEtapa: (Trilha, Etapa) -> Unit,
+    aoAjustarMeta: (Int) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -287,6 +288,7 @@ fun TelaHoje(
 private fun CartaoMeta(
     estado: EstadoHoje,
     aoJogar: () -> Unit,
+    aoAjustarMeta: (Int) -> Unit,
 ) {
     val meta = estado.metaDiaria
     val feitas = estado.pendentes.coerceAtMost(meta)
@@ -359,6 +361,23 @@ private fun CartaoMeta(
                         color = TextMuted,
                     )
                 }
+            }
+
+            // A meta é sugerida, mas ajustável: dois botões discretos ao lado
+            // do anel mudam o alvo do dia sem tirar o foco do anel.
+            Spacer(Modifier.height(6.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                BotaoMeta(
+                    simbolo = "−",
+                    habilitado = meta > 4,
+                    aoClicar = { aoAjustarMeta(-4) },
+                )
+                Spacer(Modifier.width(14.dp))
+                BotaoMeta(
+                    simbolo = "+",
+                    habilitado = meta < 60,
+                    aoClicar = { aoAjustarMeta(4) },
+                )
             }
 
             Spacer(Modifier.height(6.dp))
@@ -488,6 +507,30 @@ private fun CartaoTrilha(
                 }
             }
         }
+    }
+}
+
+/** Botão redondo e discreto que ajusta a meta diária. */
+@Composable
+private fun BotaoMeta(
+    simbolo: String,
+    habilitado: Boolean,
+    aoClicar: () -> Unit,
+) {
+    Box(
+        modifier = Modifier
+            .size(32.dp)
+            .clip(CircleShape)
+            .background(SurfaceRaised)
+            .border(1.dp, SurfaceBorder, CircleShape)
+            .clickable(enabled = habilitado) { aoClicar() },
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = simbolo,
+            style = MaterialTheme.typography.titleMedium,
+            color = if (habilitado) TextSecondary else TextMutedDark,
+        )
     }
 }
 

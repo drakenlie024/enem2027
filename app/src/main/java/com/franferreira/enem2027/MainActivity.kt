@@ -191,6 +191,7 @@ fun EnemApp() {
                         vm.iniciarEtapa(trilha, etapa)
                         navController.navigate("etapa")
                     },
+                    aoAjustarMeta = vm::ajustarMeta,
                 )
             }
 
