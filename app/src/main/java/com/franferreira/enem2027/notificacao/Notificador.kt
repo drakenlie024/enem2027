@@ -39,14 +39,34 @@ object Notificador {
         manager?.createNotificationChannel(canal)
     }
 
+    /**
+     * True se o aviso realmente vai aparecer na tela.
+     *
+     * No Android 13+ sem a permissão de POST_NOTIFICATIONS o `notify` é
+     * descartado em silêncio — não lança exceção, não avisa ninguém. O try/
+     * catch do [avisar] não salva nada nesse caso; é esta checagem que diz à
+     * tela da Agenda que falta pedir a permissão.
+     */
+    fun podeNotificar(context: Context): Boolean {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val concedida = androidx.core.content.ContextCompat.checkSelfPermission(
+                context,
+                android.Manifest.permission.POST_NOTIFICATIONS,
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+            if (!concedida) return false
+        }
+        return NotificationManagerCompat.from(context).areNotificationsEnabled()
+    }
+
     /** Mostra o aviso. `pendentes` é o número de questões na fila do SRS. */
-    fun avisar(context: Context, pendentes: Int, tema: String? = null) {
+    fun avisar(context: Context, pendentes: Int, periodo: String? = null) {
         if (pendentes <= 0) return
 
         criarCanal(context)
 
-        val texto = if (tema != null && tema.isNotBlank()) {
-            "$pendentes questões te esperando em $tema"
+        val quando = quandoNoDia(periodo)
+        val texto = if (quando != null) {
+            "$pendentes questões te esperando $quando"
         } else {
             "$pendentes questões te esperando"
         }
@@ -76,5 +96,14 @@ object Notificador {
         } catch (e: SecurityException) {
             // Falta a permissão de POST_NOTIFICATIONS (Android 13+). Sem alarde.
         }
+    }
+
+    /** "de manhã", "à tarde", "à noite" — o período como se fala. */
+    private fun quandoNoDia(periodo: String?): String? = when (periodo?.trim()?.lowercase()) {
+        null, "" -> null
+        "manha", "manhã", "morning" -> "de manhã"
+        "tarde" -> "à tarde"
+        "noite" -> "à noite"
+        else -> null
     }
 }

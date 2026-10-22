@@ -26,8 +26,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -87,18 +90,34 @@ private fun respostasParaBackend(
  * O cronômetro é honesto: mostra o tempo que resta, avisa quando está
  * acabando, e o resultado é enviado com o tempo real gasto.
  */
+/**
+ * Serializa o mapa questão → letra para o Bundle.
+ *
+ * O `rememberSaveable` só guarda tipos simples; o mapa das respostas da prova
+ * vira uma lista achatada [id, letra, id, letra, ...] e volta.
+ */
+private val SaverRespostasSimulado: Saver<Map<String, String>, ArrayList<String>> = Saver(
+    save = { mapa -> ArrayList(mapa.flatMap { (id, letra) -> listOf(id, letra) }) },
+    restore = { lista -> lista.chunked(2).filter { it.size == 2 }.associate { it[0] to it[1] } },
+)
+
 @Composable
 fun TelaSimulado(
     simulado: SimuladoMontado,
     aoFinalizar: (respostas: List<Map<String, String>>, duracaoSegundos: Int) -> Unit,
     aoVoltar: () -> Unit,
 ) {
-    var indice by remember { mutableStateOf(0) }
-    var respostas by remember { mutableStateOf<Map<String, String>>(emptyMap()) }
-    var segundosRestantes by remember {
-        mutableStateOf(simulado.duracaoMinutos * 60)
+    // rememberSaveable em tudo: trocar de aba ou o sistema matar o processo
+    // no meio da prova descartava as respostas marcadas e reiniciava o
+    // cronômetro no tempo cheio — o tempo enviado no fim era falso.
+    var indice by rememberSaveable { mutableIntStateOf(0) }
+    var respostas by rememberSaveable(stateSaver = SaverRespostasSimulado) {
+        mutableStateOf<Map<String, String>>(emptyMap())
     }
-    var terminado by remember { mutableStateOf(false) }
+    var segundosRestantes by rememberSaveable {
+        mutableIntStateOf(simulado.duracaoMinutos * 60)
+    }
+    var terminado by rememberSaveable { mutableStateOf(false) }
     // A explicação fica recolhida por padrão: no simulado, ver a resposta
     // antes de responder estragaria a prova.
     var mostrandoExplicacao by remember { mutableStateOf(false) }

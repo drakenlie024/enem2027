@@ -2,6 +2,7 @@ package com.franferreira.enem2027.data.repo
 
 import android.content.Context
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -170,19 +171,38 @@ object VideoDownloader {
         videoId: String,
         aoProgresso: (baixados: Long, total: Long) -> Unit = { _, _ -> },
     ): Result<Long> = withContext(Dispatchers.IO) {
+        val destino = arquivo(context, videoId)
+        val temporario = File(destino.parentFile, "${destino.name}.tmp")
         runCatching {
             val resolucao = resolver(videoId)
                 ?: return@runCatching Result.failure(
                     IllegalStateException("O YouTube nao entregou este video.")
                 )
-            val destino = arquivo(context, videoId)
-            val temporario = File(destino.parentFile, "${destino.name}.tmp")
             val req = Request.Builder()
                 .url(resolucao.url)
                 .header("User-Agent", USER_AGENT)
                 .build()
 
+            // Espaço livre antes de começar: um vídeo de 700 MB enchia o
+            // aparelho e o download morria no meio com erro obscuro.
+            val precisa = resolucao.tamanhoBytes
+            if (precisa > 0 && (destino.parentFile?.usableSpace ?: 0L) < precisa) {
+                return@runCatching Result.failure(
+                    IllegalStateException("Não há espaço suficiente no aparelho para este vídeo.")
+                )
+            }
+            // Sobra de uma tentativa anterior: o .tmp não é o vídeo.
+            if (temporario.exists()) temporario.delete()
+
             http.newCall(req).execute().use { resposta ->
+                // Sem esta checagem, um 403 (URL de assinatura expirada, o
+                // caso comum) gravava o XML/JSON de erro como se fosse o
+                // vídeo e a tela dizia "ASSISTIR OFFLINE".
+                if (!resposta.isSuccessful) {
+                    return@runCatching Result.failure(
+                        IllegalStateException("O YouTube recusou o download (${resposta.code}).")
+                    )
+                }
                 val corpo = resposta.body ?: return@runCatching Result.failure(
                     IllegalStateException("Resposta vazia do YouTube.")
                 )
@@ -192,6 +212,9 @@ object VideoDownloader {
                     temporario.outputStream().use { saida ->
                         val buffer = ByteArray(64 * 1024)
                         while (true) {
+                            // Sair da tela cancela a corrotina; sem isto o
+                            // download seguia até o fim em segundo plano.
+                            ensureActive()
                             val lidos = entrada.read(buffer)
                             if (lidos <= 0) break
                             saida.write(buffer, 0, lidos)
@@ -200,12 +223,26 @@ object VideoDownloader {
                         }
                     }
                 }
+                // Tamanho declarado é conferência barata: se veio muito menos,
+                // o arquivo está truncado e não serve para assistir.
+                if (precisa > 0 && temporario.length() < precisa * 0.9) {
+                    temporario.delete()
+                    return@runCatching Result.failure(
+                        IllegalStateException(
+                            "O download veio incompleto (${temporario.length()} de $precisa bytes)."
+                        )
+                    )
+                }
                 if (!temporario.renameTo(destino)) {
                     destino.writeBytes(temporario.readBytes())
                     temporario.delete()
                 }
             }
             Result.success(destino.length())
-        }.getOrElse { Result.failure(it) }
+        }.getOrElse { erro ->
+            // Nada de .tmp órfão ocupando espaço depois de uma falha.
+            runCatching { temporario.delete() }
+            Result.failure(erro)
+        }
     }
 }

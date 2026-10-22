@@ -53,15 +53,19 @@ import com.franferreira.enem2027.ui.theme.TextPrimary
 import com.franferreira.enem2027.ui.theme.TextSecondary
 import kotlinx.coroutines.launch
 
-/** Tela de entrada: login ou cadastro. */
+/** Tela de entrada: começar só com o nome, ou entrar numa conta existente. */
 @Composable
 fun TelaLogin(
+    aoComecar: (nome: String) -> Unit,
     aoEntrar: suspend (email: String, senha: String, nome: String, criar: Boolean) -> String?,
 ) {
+    var nome by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
-    var nome by remember { mutableStateOf("") }
     var criando by remember { mutableStateOf(false) }
+    // A conta com e-mail é o caminho secundário: o app é offline e o acervo
+    // já vem no APK, então pedir e-mail na porta de entrada não faz sentido.
+    var comConta by remember { mutableStateOf(false) }
     var mostrarSenha by remember { mutableStateOf(false) }
     var carregando by remember { mutableStateOf(false) }
     var erro by remember { mutableStateOf<String?>(null) }
@@ -119,78 +123,145 @@ fun TelaLogin(
 
         Spacer(Modifier.height(32.dp))
 
-        if (criando) {
+        if (!comConta) {
             Campo(
                 valor = nome,
-                aoMudar = { nome = it },
-                rotulo = "Nome",
+                aoMudar = {
+                    nome = it
+                    erro = null
+                },
+                rotulo = "Seu nome",
             )
-            Spacer(Modifier.height(12.dp))
-        }
 
-        Campo(
-            valor = email,
-            aoMudar = { email = it },
-            rotulo = "E-mail",
-            teclado = KeyboardType.Email,
-        )
-        Spacer(Modifier.height(12.dp))
-
-        Campo(
-            valor = senha,
-            aoMudar = { senha = it },
-            rotulo = "Senha",
-            senha = true,
-            mostrarSenha = mostrarSenha,
-            aoAlternarVisibilidade = { mostrarSenha = !mostrarSenha },
-        )
-
-        erro?.let {
-            Spacer(Modifier.height(12.dp))
-            Text(
-                text = it,
-                style = MaterialTheme.typography.bodySmall,
-                color = Danger,
-                textAlign = TextAlign.Center,
-            )
-        }
-
-        Spacer(Modifier.height(20.dp))
-
-        if (carregando) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(52.dp)
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(SurfaceBorder),
-                contentAlignment = Alignment.Center,
-            ) {
-                CircularProgressIndicator(
-                    modifier = Modifier.size(20.dp),
-                    color = Secondary,
-                    strokeWidth = 2.dp,
+            erro?.let {
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = Danger,
+                    textAlign = TextAlign.Center,
                 )
             }
-        } else {
+
+            Spacer(Modifier.height(20.dp))
+
             BotaoGamificado(
-                texto = if (criando) "CRIAR CONTA" else "ENTRAR",
+                texto = "COMEÇAR",
                 cor = Primary,
-                aoClicar = { enviar() },
+                aoClicar = {
+                    if (nome.isBlank()) {
+                        erro = "Escreva seu nome para começar"
+                    } else {
+                        erro = null
+                        aoComecar(nome)
+                    }
+                },
+            )
+
+            Spacer(Modifier.height(14.dp))
+            Text(
+                text = "As 3.117 questões do ENEM já estão no aparelho: " +
+                    "dá para estudar sem internet.",
+                style = MaterialTheme.typography.bodySmall,
+                color = TextMuted,
+                textAlign = TextAlign.Center,
+            )
+
+            Spacer(Modifier.height(24.dp))
+            Text(
+                text = "Já tenho conta",
+                style = MaterialTheme.typography.labelMedium,
+                color = TextSecondary,
+                modifier = Modifier.clickable {
+                    comConta = true
+                    erro = null
+                },
+            )
+        } else {
+            if (criando) {
+                Campo(
+                    valor = nome,
+                    aoMudar = { nome = it },
+                    rotulo = "Nome",
+                )
+                Spacer(Modifier.height(12.dp))
+            }
+
+            Campo(
+                valor = email,
+                aoMudar = { email = it },
+                rotulo = "E-mail",
+                teclado = KeyboardType.Email,
+            )
+            Spacer(Modifier.height(12.dp))
+
+            Campo(
+                valor = senha,
+                aoMudar = { senha = it },
+                rotulo = "Senha",
+                senha = true,
+                mostrarSenha = mostrarSenha,
+                aoAlternarVisibilidade = { mostrarSenha = !mostrarSenha },
+            )
+
+            erro?.let {
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = Danger,
+                    textAlign = TextAlign.Center,
+                )
+            }
+
+            Spacer(Modifier.height(20.dp))
+
+            if (carregando) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(52.dp)
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(SurfaceBorder),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(20.dp),
+                        color = Secondary,
+                        strokeWidth = 2.dp,
+                    )
+                }
+            } else {
+                BotaoGamificado(
+                    texto = if (criando) "CRIAR CONTA" else "ENTRAR",
+                    cor = Primary,
+                    aoClicar = { enviar() },
+                )
+            }
+
+            Spacer(Modifier.height(16.dp))
+
+            Text(
+                text = if (criando) "Já tem conta? Entrar" else "Não tem conta? Criar agora",
+                style = MaterialTheme.typography.labelMedium,
+                color = TextSecondary,
+                modifier = Modifier.clickable {
+                    criando = !criando
+                    erro = null
+                },
+            )
+
+            Spacer(Modifier.height(14.dp))
+            Text(
+                text = "Voltar",
+                style = MaterialTheme.typography.labelMedium,
+                color = TextMuted,
+                modifier = Modifier.clickable {
+                    comConta = false
+                    erro = null
+                },
             )
         }
-
-        Spacer(Modifier.height(16.dp))
-
-        Text(
-            text = if (criando) "Já tem conta? Entrar" else "Não tem conta? Criar agora",
-            style = MaterialTheme.typography.labelMedium,
-            color = TextSecondary,
-            modifier = Modifier.clickable {
-                criando = !criando
-                erro = null
-            },
-        )
 
         Spacer(Modifier.height(32.dp))
     }

@@ -60,68 +60,55 @@ object Agendador {
 
             val alarm = context.getSystemService(AlarmManager::class.java) ?: return@launch
             val agora = System.currentTimeMillis()
-            val periodos = agenda
-                .map { it.period to HORAS[it.period] }
-                .filter { it.second != null }
-                .distinctBy { it.first }
+            // Índice FIXO por período (0..2): é o que entra no REQUEST_CODE.
+            // Usar a posição na lista atual fazia o cancelamento errar o alvo
+            // quando a agenda encolhia, e sobrava alarme órfão tocando.
+            val indices = HORAS.keys.withIndex().associate { (i, periodo) -> periodo to i }
 
-            // Limpa os alarmes dos próximos dias antes de recriar (a agenda
-            // pode ter mudado e o alarme antigo aponta para um período que
-            // não existe mais).
+            // Limpa a faixa inteira antes de recriar: a agenda pode ter mudado
+            // e o alarme antigo aponta para um período que não existe mais.
             for (dia in 0 until DIAS_A_FRENTE) {
-                for (indice in periodos.indices) {
+                for (indice in HORAS.indices) {
                     alarm.cancel(pendingIntent(context, dia, indice))
                 }
             }
 
+            // Um alarme por (dia, período). Antes nascia um por dia — o mais
+            // cedo —, então quem marcava manhã E tarde só era avisado de manhã,
+            // ao contrário do que o comentário do topo prometia.
             for (dia in 0 until DIAS_A_FRENTE) {
-                val alvo = proximoAlarme(agenda, dia, agora) ?: continue
-                val periodo = alvo.second
-                val indice = periodos.indexOfFirst { it.first == periodo }
-                if (indice < 0) continue
+                for (item in agenda) {
+                    if (item.weekday != weekdayDe(dia, agora)) continue
+                    val hora = HORAS[item.period] ?: continue
+                    val quando = Calendar.getInstance().apply {
+                        timeInMillis = agora
+                        add(Calendar.DAY_OF_YEAR, dia)
+                        set(Calendar.HOUR_OF_DAY, hora)
+                        set(Calendar.MINUTE, 0)
+                        set(Calendar.SECOND, 0)
+                        set(Calendar.MILLISECOND, 0)
+                    }.timeInMillis
+                    // O horário de hoje já passou: não agenda no passado.
+                    if (quando <= agora) continue
 
-                val intent = Intent(context, LembreteReceiver::class.java).apply {
-                    putExtra(LembreteReceiver.EXTRA_PERIODO, periodo)
+                    val indice = indices[item.period] ?: continue
+                    val intent = Intent(context, LembreteReceiver::class.java).apply {
+                        putExtra(LembreteReceiver.EXTRA_PERIODO, item.period)
+                    }
+                    setAlarme(alarm, context, quando, intent, dia, indice)
                 }
-                setAlarme(alarm, context, alvo.first.timeInMillis, intent, dia, indice)
             }
         }
     }
 
-    /**
-     * O próximo alarme dentro da janela `diasAFrente`.
-     *
-     * Devolve (calendario, periodo). Percorre os períodos daquele dia em
-     * ordem de hora e pega o primeiro que ainda vai acontecer.
-     */
-    private fun proximoAlarme(
-        agenda: List<com.franferreira.enem2027.data.local.AgendaEntity>,
-        diasAFrente: Int,
-        agoraMillis: Long,
-    ): Pair<Calendar, String>? {
+    /** Dia da semana (0 = domingo) de hoje + [diasAFrente], no fuso do aparelho. */
+    private fun weekdayDe(diasAFrente: Int, agoraMillis: Long): Int {
         val base = Calendar.getInstance().apply {
             timeInMillis = agoraMillis
             add(Calendar.DAY_OF_YEAR, diasAFrente)
         }
         // Calendar: domingo = 1, segunda = 2 ... sábado = 7
-        val weekday = (base.get(Calendar.DAY_OF_WEEK) - 2 + 7) % 7
-
-        val doDia = agenda.filter { it.weekday == weekday }
-        if (doDia.isEmpty()) return null
-
-        val candidatos = doDia.mapNotNull { item ->
-            val hora = HORAS[item.period] ?: return@mapNotNull null
-            val cal = Calendar.getInstance().apply {
-                timeInMillis = agoraMillis
-                add(Calendar.DAY_OF_YEAR, diasAFrente)
-                set(Calendar.HOUR_OF_DAY, hora)
-                set(Calendar.MINUTE, 0)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-            }
-            if (cal.timeInMillis > agoraMillis) cal to item.period else null
-        }
-        return candidatos.minByOrNull { it.first.timeInMillis }
+        return (base.get(Calendar.DAY_OF_WEEK) - 2 + 7) % 7
     }
 
     private fun pendingIntent(

@@ -369,7 +369,13 @@ fun TelaAula(
                                 modifier = Modifier
                                     .clip(RoundedCornerShape(9.dp))
                                     .background(SurfaceRaised)
-                                    .clickable {
+                                    .clickable(
+                                        // Dois toques seguidos: sem isto, dois
+                                        // downloads paralelos escreviam no mesmo
+                                        // `.tmp` e um renomeava arquivo pela
+                                        // metade.
+                                        enabled = !baixando,
+                                    ) {
                                         erroDownload = null
                                         baixando = true
                                         escopo.launch {

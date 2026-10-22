@@ -62,15 +62,25 @@ class Repositorio(private val context: Context) {
         val todas = mutableListOf<Question>()
         var offset = 0
         var versao: String? = null
+        var total = 0
         while (true) {
             val pagina = api.ano(ano, limit = 200, offset = offset)
             if (versao == null) versao = pagina.versao
+            total = pagina.total
             val recebidas = pagina.questoes
             if (recebidas.isEmpty()) break
             todas += recebidas
             offset += recebidas.size
             if (recebidas.size < 200) break
             if (todas.size >= pagina.total && pagina.total > 0) break
+        }
+        // Substituir o ano é destrutivo: `substituirAno` apaga o que está no
+        // aparelho e grava o que veio. Se o servidor devolver vazio (ano que
+        // ele ainda não carregou, payload cortado), a resposta "vazia" não
+        // pode apagar as ~180 questões do ano e deixar o SRS delas órfão.
+        check(todas.isNotEmpty()) { "O servidor não devolveu nenhuma questão de $ano." }
+        if (total > 0 && todas.size != total) {
+            error("Vieram ${todas.size} de $total questões de $ano; nada foi substituído.")
         }
         val entidades = todas.map { it.paraEntidade(versao) }
         db.questions().substituirAno(ano, entidades)
@@ -92,7 +102,7 @@ class Repositorio(private val context: Context) {
      *
      * Devolve quantas questoes foram semeadas.
      */
-    suspend fun semearAcervoEmbutido(): Int {
+    suspend fun semearAcervoEmbutido(): Int = withContext(Dispatchers.IO) {
         val jaTem = db.questions().anos().toSet()
         var total = 0
         for (ano in AcervoEmbutido.anos(context)) {
@@ -105,7 +115,7 @@ class Repositorio(private val context: Context) {
             )
             total += pacote.questoes.size
         }
-        return total
+        total
     }
 
     /**
@@ -211,7 +221,7 @@ class Repositorio(private val context: Context) {
             when (entity.progressState) {
                 "seen" -> Unit
                 "relearning" -> erradas += questao
-                "new" -> novas += questao
+                null, "new" -> novas += questao
                 else -> vencendo += questao
             }
         }
@@ -416,7 +426,16 @@ class Repositorio(private val context: Context) {
         confianca: String? = null,
     ) {
         // A quality segue a convenção do Anki: errou = 1, acertou fácil = 5.
-        val quality = if (correta) 4 else 1
+        // Antes era sempre 4 (ou 1), então o único ramo que sobe o `ease` nunca
+        // rodava: a facilidade só caía, o intervalo parava de crescer, e a
+        // aluna revisava a mesma questão de novo cedo demais.
+        val quality = if (!correta) {
+            1
+        } else if (confianca == "palpite" || confianca == "baixa") {
+            3
+        } else {
+            5
+        }
         val agora = System.currentTimeMillis()
 
         val atual = db.progress().porId(questionId)
@@ -612,26 +631,7 @@ class Repositorio(private val context: Context) {
         var tudoAceito = true
 
         pendentes.chunked(MAX_ITENS_POR_LOTE).forEach { lote ->
-            val itens = lote.map { resposta ->
-                val questao = db.questions().porId(resposta.questionId)
-                ProgressItem(
-                    questionId = resposta.questionId,
-                    topic = questao?.tema,
-                    discipline = questao?.area,
-                    quality = resposta.quality,
-                    correct = resposta.correct,
-                    secondsTaken = resposta.secondsTaken,
-                    reviewedAt = Instant.ofEpochMilli(resposta.reviewedAt).toString(),
-                    // O dia local do aparelho: o streak é sobre "hoje" de quem
-                    // estudou, e não sobre o dia UTC do servidor.
-                    localDate = Instant.ofEpochMilli(resposta.reviewedAt)
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate()
-                        .toString(),
-                    // A confiança que a pessoa declarou ("sei" / "palpite").
-                    confidence = resposta.confianca,
-                )
-            }
+            val itens = lote.map { resposta -> _itemDe(resposta) }
             try {
                 val resposta = api.sincronizar(
                     ProgressBatch(
@@ -642,11 +642,33 @@ class Repositorio(private val context: Context) {
                     )
                 )
                 totalAplicado += resposta.applied
-                // Marca só o que o servidor aceitou de fato.
-                db.pendingAnswers().marcarSincronizadas(lote.map { it.localId })
+                // Marca só o que o servidor aceitou DE FATO. Antes o lote
+                // inteiro saía da fila mesmo quando o servidor recusava parte
+                // dele: as recusadas nunca eram reenviadas e sumiam caladas.
+                val aceitas = resposta.applied + resposta.duplicates
+                if (aceitas >= lote.size) {
+                    db.pendingAnswers().marcarSincronizadas(lote.map { it.localId })
+                } else {
+                    // Aceitou parte: o lote continua pendente por inteiro. O
+                    // reenvio é idempotente (o servidor deduplica por questão
+                    // + horário), então repetir não infla XP.
+                    tudoAceito = false
+                    falhou = IllegalStateException(
+                        "O servidor aceitou $aceitas de ${lote.size} respostas; " +
+                            "as outras continuam na fila.",
+                    )
+                }
             } catch (erro: Throwable) {
                 tudoAceito = false
                 falhou = erro
+                // Um item "envenenado" (question_id que saiu do acervo,
+                // seconds_taken inválido) fazia o lote de 200 falhar para
+                // sempre, e tudo o que vinha depois ficava atrás dele na fila.
+                // Em erro de validação (4xx) o lote é refeito item por item,
+                // para isolar o que o servidor recusa.
+                if (erro is retrofit2.HttpException && erro.code() in 400..499) {
+                    totalAplicado += _enviarUmPorUm(lote)
+                }
                 return@forEach
             }
         }
@@ -663,7 +685,10 @@ class Repositorio(private val context: Context) {
                     (local ?: GamificationEntity(id = 0)).copy(
                         xp = maxOf(local?.xp ?: 0, gam.xp),
                         level = maxOf(local?.level ?: 1, gam.level),
-                        streak = gam.streak,
+                        // Streak também não rebaixa: se o servidor calcular 0
+                        // (fuso, dia sem resposta aplicada), a sequência da
+                        // aluna voltava a zero no aparelho.
+                        streak = maxOf(local?.streak ?: 0, gam.streak),
                         longestStreak = maxOf(local?.longestStreak ?: 0, gam.longestStreak),
                     ),
                 )
@@ -683,4 +708,51 @@ class Repositorio(private val context: Context) {
 
     // As conversões entre entity e modelo estão em `data/local/Conversores.kt`
     // — o montador de trilhas também precisa delas.
+
+    /** Uma resposta pendente no formato que o servidor espera. */
+    private suspend fun _itemDe(resposta: PendingAnswerEntity): ProgressItem {
+        val questao = db.questions().porId(resposta.questionId)
+        return ProgressItem(
+            questionId = resposta.questionId,
+            topic = questao?.tema,
+            discipline = questao?.area,
+            quality = resposta.quality,
+            correct = resposta.correct,
+            secondsTaken = resposta.secondsTaken,
+            reviewedAt = Instant.ofEpochMilli(resposta.reviewedAt).toString(),
+            // O dia local do aparelho: o streak é sobre "hoje" de quem
+            // estudou, e não sobre o dia UTC do servidor.
+            localDate = Instant.ofEpochMilli(resposta.reviewedAt)
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate()
+                .toString(),
+            // A confiança que a pessoa declarou ("sei" / "palpite").
+            confidence = resposta.confianca,
+        )
+    }
+
+    /**
+     * Reenvia o lote item por item, depois de um 4xx no lote inteiro.
+     *
+     * O que o servidor aceitar sai da fila; o resto continua pendente. Serve
+     * para um único item inválido não travar os outros 199 para sempre.
+     */
+    private suspend fun _enviarUmPorUm(lote: List<PendingAnswerEntity>): Int {
+        var aceitas = 0
+        for (pendente in lote) {
+            val resposta = runCatching {
+                api.sincronizar(
+                    ProgressBatch(
+                        items = listOf(_itemDe(pendente)),
+                        localToday = LocalDate.now().toString(),
+                    ),
+                )
+            }.getOrNull() ?: continue
+            if (resposta.applied + resposta.duplicates > 0) {
+                db.pendingAnswers().marcarSincronizadas(listOf(pendente.localId))
+                aceitas += resposta.applied
+            }
+        }
+        return aceitas
+    }
 }

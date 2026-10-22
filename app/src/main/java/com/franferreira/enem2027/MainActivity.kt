@@ -114,6 +114,11 @@ fun EnemApp() {
 
     val rotaAtual = currentDestination?.route
 
+    // Mensagem é de uma ação, não da sessão inteira: ao trocar de tela ela
+    // some. Antes, "12 respostas sincronizadas" reaparecia na Agenda como se
+    // fosse confirmação do "Salvar agenda".
+    LaunchedEffect(rotaAtual) { vm.limparMensagem() }
+
     if (!estado.autenticado) {
         Box(
             modifier = Modifier
@@ -131,7 +136,10 @@ fun EnemApp() {
                     )
                 }
             } else {
-                TelaLogin(aoEntrar = vm::autenticar)
+                TelaLogin(
+                    aoComecar = vm::comecarSemConta,
+                    aoEntrar = vm::autenticar,
+                )
             }
         }
         return
@@ -140,7 +148,10 @@ fun EnemApp() {
     Scaffold(
         containerColor = Background,
         bottomBar = {
-            if (rotaAtual != "questao" && estado.autenticado) {
+            // Telas de prova ficam sem a barra: sair de um simulado no meio por
+            // um toque na aba jogava fora as respostas marcadas.
+            val semBarra = setOf("questao", "simulado", "etapa", "aulapacote")
+            if (rotaAtual !in semBarra && estado.autenticado) {
                 NavigationBar(containerColor = Surface, contentColor = TextPrimary) {
                     destinations.forEach { destino ->
                         val selecionado =
@@ -210,17 +221,11 @@ fun EnemApp() {
             composable("trilha") {
                 val trilha = estado.trilhaAberta
                 if (trilha == null) {
-                    Box(
-                        Modifier
-                            .fillMaxSize()
-                            .background(Background),
-                    ) {
-                        Text(
-                            text = "Trilha não encontrada",
-                            style = MaterialTheme.typography.bodyLarge,
-                            color = TextMuted,
-                        )
-                    }
+                    TelaVazia(
+                        titulo = "Trilha não encontrada",
+                        subtitulo = "Abra a trilha de novo pela tela Hoje.",
+                        aoVoltar = { navController.popBackStack() },
+                    )
                 } else {
                     TelaTrilha(
                         trilha = trilha,
@@ -263,17 +268,11 @@ fun EnemApp() {
                             navController.popBackStack()
                         },
                     )
-                    etapa == null || trilha == null -> Box(
-                        Modifier
-                            .fillMaxSize()
-                            .background(Background),
-                    ) {
-                        Text(
-                            text = "Etapa não encontrada",
-                            style = MaterialTheme.typography.bodyLarge,
-                            color = TextMuted,
-                        )
-                    }
+                    etapa == null || trilha == null -> TelaVazia(
+                        titulo = "Etapa não encontrada",
+                        subtitulo = "Comece a etapa de novo pela trilha.",
+                        aoVoltar = { navController.popBackStack() },
+                    )
                     else -> TelaEtapa(
                         etapa = etapa,
                         area = trilha.area,
@@ -309,21 +308,23 @@ fun EnemApp() {
                         aoPedirExplicacao = { vm.pedirExplicacao(questao) },
                     )
                 } else {
-                    Box(
-                        Modifier
-                            .fillMaxSize()
-                            .background(Background),
-                    ) {
-                        Text(
-                            text = if (estado.questaoPendente != null) {
-                                "Abrindo a questão…"
-                            } else {
-                                "Questão não encontrada"
-                            },
-                            style = MaterialTheme.typography.bodyLarge,
-                            color = TextMuted,
-                        )
-                    }
+                    TelaVazia(
+                        titulo = if (estado.questaoPendente != null) {
+                            "Abrindo a questão…"
+                        } else {
+                            "Questão não encontrada"
+                        },
+                        subtitulo = if (estado.questaoPendente != null) {
+                            "Só um instante."
+                        } else {
+                            "Ela pode ter saído do acervo do aparelho."
+                        },
+                        aoVoltar = if (estado.questaoPendente != null) {
+                            null
+                        } else {
+                            { navController.popBackStack() }
+                        },
+                    )
                 }
             }
 
@@ -397,18 +398,30 @@ fun EnemApp() {
 
             composable("aulapacote") {
                 val pacote = estado.pacoteAula
-                if (pacote != null) {
-                    TelaAula(
+                when {
+                    pacote != null -> TelaAula(
                         pacote = pacote,
                         aoVoltar = {
                             vm.fecharAula()
                             navController.popBackStack()
                         },
                     )
-                } else {
-                    Box(Modifier.fillMaxSize().background(Background), androidx.compose.ui.Alignment.Center) {
+                    estado.carregandoAulas -> Box(
+                        Modifier.fillMaxSize().background(Background),
+                        androidx.compose.ui.Alignment.Center,
+                    ) {
                         CircularProgressIndicator(color = Primary)
                     }
+                    // Sem cache e sem rede: antes disto a tela ficava com o
+                    // spinner eterno, sem nem a seta de voltar.
+                    else -> TelaVazia(
+                        titulo = "Aula não abriu",
+                        subtitulo = "Ela precisa de conexão na primeira vez.",
+                        aoVoltar = {
+                            vm.fecharAula()
+                            navController.popBackStack()
+                        },
+                    )
                 }
             }
 
@@ -500,7 +513,11 @@ private fun abrirQuestao(
 }
 
 @Composable
-private fun TelaVazia(titulo: String, subtitulo: String) {
+private fun TelaVazia(
+    titulo: String,
+    subtitulo: String,
+    aoVoltar: (() -> Unit)? = null,
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -520,6 +537,14 @@ private fun TelaVazia(titulo: String, subtitulo: String) {
                 style = MaterialTheme.typography.bodySmall,
                 color = TextMuted,
             )
+            if (aoVoltar != null) {
+                // Sem este botão, um process death no meio do caminho deixava
+                // a tela morta: a rota voltava, o ViewModel não.
+                Spacer(Modifier.height(16.dp))
+                androidx.compose.material3.TextButton(onClick = aoVoltar) {
+                    Text(text = "Voltar", color = Primary)
+                }
+            }
         }
     }
 }

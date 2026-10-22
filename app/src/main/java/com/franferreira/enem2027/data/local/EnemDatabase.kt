@@ -140,10 +140,18 @@ interface QuestionDao {
     @Query("DELETE FROM questions WHERE ano = :ano")
     suspend fun limparAno(ano: Int)
 
+    @Query("DELETE FROM progress WHERE questionId NOT IN (SELECT id FROM questions)")
+    suspend fun limparProgressoOrfao()
+
     @Transaction
     suspend fun substituirAno(ano: Int, questions: List<QuestionEntity>) {
         limparAno(ano)
         inserir(questions)
+        // Questões que saíram do acervo (ou o ano rebaixado com menos
+        // questões) deixavam o progress/SRS órfão: a questão voltava como
+        // inédita mas o agendamento antigo ficava no banco. Limpa tudo o que
+        // não tem mais questão correspondente, na mesma transação.
+        limparProgressoOrfao()
     }
 }
 

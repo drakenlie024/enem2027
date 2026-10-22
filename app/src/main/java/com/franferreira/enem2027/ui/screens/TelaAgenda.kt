@@ -28,14 +28,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import com.franferreira.enem2027.ui.theme.Background
-import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
+import com.franferreira.enem2027.notificacao.Notificador
+import com.franferreira.enem2027.notificacao.NotificadorGradientTop
 import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Secondary
 import com.franferreira.enem2027.ui.theme.Surface
@@ -100,6 +105,32 @@ fun TelaAgenda(
         )
 
         Spacer(Modifier.height(18.dp))
+
+        val contexto = LocalContext.current
+        val launcher = rememberLauncherForActivityResult(
+            ActivityResultContracts.RequestPermission(),
+        ) { }
+        if (!Notificador.podeNotificar(contexto)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(com.franferreira.enem2027.ui.theme.Danger.copy(alpha = 0.12f))
+                    .clickable {
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                            launcher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+                        }
+                    }
+                    .padding(12.dp),
+            ) {
+                Text(
+                    text = "Os lembretes estão desativados. Toque aqui para permitir as notificações.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = com.franferreira.enem2027.ui.theme.Danger,
+                )
+            }
+            Spacer(Modifier.height(12.dp))
+        }
 
         dias.forEach { (nome, indice) ->
             Text(

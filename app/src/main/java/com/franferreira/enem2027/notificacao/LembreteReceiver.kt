@@ -41,11 +41,24 @@ class LembreteReceiver : BroadcastReceiver() {
  *
  * Sem isso, todo reinício do celular apagava os alarmes e a Agenda deixava de
  * avisar — a tela continuava mostrando os períodos, mas nada acontecia.
+ *
+ * O `MY_PACKAGE_REPLACED` importa tanto quanto o boot: instalar uma versão nova
+ * cancela os alarmes do app, e o manifesto já declarava o filtro sem tratar.
  */
 class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        if (intent.action == Intent.ACTION_BOOT_COMPLETED) {
-            Agendador.agendar(context)
+        val relevante = intent.action == Intent.ACTION_BOOT_COMPLETED ||
+            intent.action == Intent.ACTION_MY_PACKAGE_REPLACED
+        if (!relevante) return
+        // goAsync: `agendar` lê o Room numa corrotina; sem segurar o processo,
+        // o sistema podia matá-lo antes de os alarmes serem recriados.
+        val pending = goAsync()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                Agendador.agendar(context)
+            } finally {
+                pending.finish()
+            }
         }
     }
 }

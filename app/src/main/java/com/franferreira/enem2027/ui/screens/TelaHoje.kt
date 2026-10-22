@@ -120,7 +120,7 @@ fun TelaHoje(
                     Text(
                         // A saudação acompanha a hora: "Bom dia" às 22h
                         // estragava a primeira impressão da tela.
-                        text = "${saudacao()}, Letícia",
+                        text = "${saudacao()}${estado.nome.takeIf { it.isNotBlank() }?.let { ", $it" } ?: ""}",
                         style = MaterialTheme.typography.titleLarge,
                         color = TextPrimary,
                     )

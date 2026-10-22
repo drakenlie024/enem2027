@@ -38,6 +38,8 @@ data class EstadoHoje(
     /** O acervo embutido do APK esta sendo gravado no banco local. */
     val semeando: Boolean = false,
     val autenticado: Boolean = false,
+    /** Nome que a aluna digitou ao começar; a saudação da tela Hoje usa. */
+    val nome: String = "",
     val pendentes: Int = 0,
     val totalLocal: Int = 0,
     val anos: List<Int> = emptyList(),
@@ -178,6 +180,10 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             _estado.value = _estado.value.copy(semeando = true)
             val quantas = runCatching { repo.semearAcervoEmbutido() }.getOrDefault(0)
             _estado.value = _estado.value.copy(semeando = false, anos = repo.anosLocais())
+            // A tela do Hoje pode ter lido o banco ANTES da semeadura terminar.
+            // Sem recarregar aqui ela fica dizendo "baixe o acervo" com as
+            // 3.117 questões já gravadas no aparelho.
+            recarregar()
             if (quantas > 0) {
                 _estado.value = _estado.value.copy(
                     mensagem = "$quantas questões do ENEM já vieram no aplicativo."
@@ -194,8 +200,21 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             val prefs = getApplication<Application>()
                 .getSharedPreferences("leticia", android.content.Context.MODE_PRIVATE)
             val token = prefs.getString("token", null)
+            val modoLocal = prefs.getBoolean("modo_local", false)
             if (token.isNullOrBlank()) {
-                _estado.value = _estado.value.copy(carregando = false, autenticado = false)
+                // Sem token há dois casos: primeira abertura (mostra o login) e
+                // conta local, criada só com o nome. No segundo, o estudo tem
+                // de começar na hora: o acervo é do aparelho, não do servidor.
+                _estado.value = _estado.value.copy(
+                    carregando = false,
+                    autenticado = modoLocal,
+                    nome = prefs.getString("nome", "").orEmpty(),
+                )
+                if (modoLocal) {
+                    recarregar()
+                    carregarAgenda()
+                    garantirContaRemota()
+                }
                 return@launch
             }
             ApiClient.token = token
@@ -206,14 +225,94 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             if (erro is retrofit2.HttpException && erro.code() == 401) {
                 ApiClient.token = null
                 prefs.edit().remove("token").apply()
-                _estado.value = _estado.value.copy(carregando = false, autenticado = false)
+                _estado.value = _estado.value.copy(
+                    carregando = false,
+                    autenticado = modoLocal,
+                    nome = prefs.getString("nome", "").orEmpty(),
+                )
+                if (modoLocal) {
+                    recarregar()
+                    carregarAgenda()
+                }
                 return@launch
             }
-            _estado.value = _estado.value.copy(carregando = false, autenticado = true)
+            _estado.value = _estado.value.copy(
+                carregando = false,
+                autenticado = true,
+                nome = prefs.getString("nome", "").orEmpty(),
+            )
             recarregar()
             carregarAgenda()
             carregarFilaAprovacao()
             carregarRedacoes()
+        }
+    }
+
+    private fun prefsLocais() = getApplication<Application>()
+        .getSharedPreferences("leticia", android.content.Context.MODE_PRIVATE)
+
+    /**
+     * Começa a estudar só com o nome, sem e-mail nem senha.
+     *
+     * O requisito número um do app é funcionar offline: as 3.117 questões vêm
+     * dentro do APK. Exigir conta (e internet) para chegar até elas deixava o
+     * app inteiro atrás de uma tela de login que não tem o que fazer offline.
+     *
+     * A conta no servidor é criada sozinha, com e-mail e senha gerados, na
+     * primeira vez que houver rede — é ela que faz o sync e a correção de
+     * redação por IA funcionarem depois, sem pedir nada à aluna.
+     */
+    fun comecarSemConta(nome: String) {
+        val limpo = nome.trim()
+        if (limpo.isBlank()) return
+        prefsLocais().edit()
+            .putString("nome", limpo)
+            .putBoolean("modo_local", true)
+            .apply()
+        _estado.value = _estado.value.copy(
+            carregando = false,
+            autenticado = true,
+            nome = limpo,
+        )
+        recarregar()
+        carregarAgenda()
+        garantirContaRemota()
+    }
+
+    /** Cria (ou reencontra) a conta do servidor para uma conta local. */
+    private fun garantirContaRemota() {
+        if (!ApiClient.token.isNullOrBlank()) return
+        viewModelScope.launch {
+            val prefs = prefsLocais()
+            val nome = prefs.getString("nome", null)?.takeIf { it.isNotBlank() } ?: return@launch
+            val emailSalvo = prefs.getString("email_local", null)
+            val senhaSalva = prefs.getString("senha_local", null)
+            // example.com é reservado por norma (RFC 2606): o e-mail nunca
+            // entrega nada e o backend aceita como endereço válido.
+            val email = emailSalvo
+                ?: "aluno-${java.util.UUID.randomUUID().toString().take(8)}@example.com"
+            val senha = senhaSalva
+                ?: java.util.UUID.randomUUID().toString().replace("-", "").take(24)
+
+            val resposta = runCatching {
+                if (emailSalvo == null) {
+                    api.registrar(
+                        com.franferreira.enem2027.data.model.RegisterRequest(email, senha, nome)
+                    )
+                } else {
+                    api.entrar(com.franferreira.enem2027.data.model.LoginRequest(email, senha))
+                }
+            }.getOrNull() ?: return@launch
+
+            ApiClient.token = resposta.accessToken
+            prefs.edit()
+                .putString("email_local", email)
+                .putString("senha_local", senha)
+                .putString("token", resposta.accessToken)
+                .apply()
+            // Com token, o que estava esperando na fila sobe agora.
+            runCatching { repo.sincronizar() }
+            recarregar()
         }
     }
 
@@ -239,8 +338,13 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                 .getSharedPreferences("leticia", android.content.Context.MODE_PRIVATE)
                 .edit()
                 .putString("token", resposta.accessToken)
+                .putString("nome", resposta.name.ifBlank { nome })
+                .putBoolean("modo_local", false)
                 .apply()
-            _estado.value = _estado.value.copy(autenticado = true)
+            _estado.value = _estado.value.copy(
+                autenticado = true,
+                nome = resposta.name.ifBlank { nome },
+            )
             recarregar()
             null
         }.getOrElse { erro ->
@@ -417,14 +521,38 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
 
     private fun carregarAgenda() {
         viewModelScope.launch {
+            // O aparelho manda: é a agenda do Room que o alarme lê. Antes esta
+            // função só lia o servidor — offline a tela abria com tudo
+            // desmarcado e o "Salvar" apagava a agenda real.
+            val local = runCatching { repo.agenda() }.getOrDefault(emptyList())
+            if (local.isNotEmpty()) {
+                _estado.value = _estado.value.copy(
+                    agenda = local.map { it.weekday to it.period }.toSet(),
+                )
+                return@launch
+            }
+            // Aparelho novo (ou recém-instalado): aí sim vale o que o servidor
+            // tem, e ele é gravado localmente para o alarme usar.
             runCatching { ApiClient.api.agenda() }
                 .onSuccess { resposta ->
                     val itens = resposta["itens"] ?: emptyList<AgendaItem>()
-                    _estado.value = _estado.value.copy(
-                        agenda = itens.mapNotNull { item ->
-                            item.period?.let { periodo -> item.weekday to periodo }
-                        }.toSet(),
-                    )
+                    val pares = itens.mapNotNull { item ->
+                        item.period?.let { periodo -> item.weekday to periodo }
+                    }.toSet()
+                    if (pares.isEmpty()) return@onSuccess
+                    _estado.value = _estado.value.copy(agenda = pares)
+                    runCatching {
+                        repo.salvarAgenda(
+                            pares.mapIndexed { indice, (weekday, periodo) ->
+                                AgendaEntity(
+                                    id = (weekday * 10 + indice).toLong(),
+                                    weekday = weekday,
+                                    period = periodo,
+                                    minutesTarget = 0,
+                                )
+                            },
+                        )
+                    }
                 }
         }
     }
@@ -864,15 +992,15 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
 
     /** Carrega as areas que tem video-aula. */
     fun carregarAreasAula() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _estado.value = _estado.value.copy(carregandoAulas = true)
             val app = getApplication<Application>()
             val resultado = runCatching {
-                ApiClient.api.areasComAula().string()
+                withContext(Dispatchers.IO) { ApiClient.api.areasComAula().string() }
             }
             val corpo = resultado.getOrNull()
             if (corpo != null) {
-                AulasCache.guardar(app, "areas", corpo)
+                withContext(Dispatchers.IO) { AulasCache.guardar(app, "areas", corpo) }
             }
             val areas = corpo?.let {
                 runCatching {
@@ -890,12 +1018,14 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
 
     /** Abre uma area: as aulas dela, agrupadas por tema. */
     fun carregarAulasDe(area: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _estado.value = _estado.value.copy(carregandoAulas = true, aulasDaArea = AulasDeArea())
             val app = getApplication<Application>()
-            val corpo = runCatching { ApiClient.api.aulasDe(area).string() }.getOrNull()
+            val corpo = runCatching {
+                withContext(Dispatchers.IO) { ApiClient.api.aulasDe(area).string() }
+            }.getOrNull()
             if (corpo != null) {
-                AulasCache.guardar(app, "area-$area", corpo)
+                withContext(Dispatchers.IO) { AulasCache.guardar(app, "area-$area", corpo) }
             }
             val dados = corpo?.let {
                 runCatching {
@@ -913,12 +1043,14 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
 
     /** Abre uma aula: video, resumo e questoes. */
     fun abrirPacoteAula(id: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _estado.value = _estado.value.copy(carregandoAulas = true, pacoteAula = null)
             val app = getApplication<Application>()
-            val corpo = runCatching { ApiClient.api.pacoteAula(id).string() }.getOrNull()
+            val corpo = runCatching {
+                withContext(Dispatchers.IO) { ApiClient.api.pacoteAula(id).string() }
+            }.getOrNull()
             if (corpo != null) {
-                AulasCache.guardar(app, "pacote-$id", corpo)
+                withContext(Dispatchers.IO) { AulasCache.guardar(app, "pacote-$id", corpo) }
             }
             val pacote = corpo?.let {
                 runCatching {

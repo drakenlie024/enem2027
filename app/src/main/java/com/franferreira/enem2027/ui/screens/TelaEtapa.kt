@@ -26,8 +26,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -65,6 +69,27 @@ import androidx.compose.runtime.rememberCoroutineScope
 /** O que o usuário respondeu numa questão: a letra e se acertou. */
 private data class Resposta(val letra: String, val acertou: Boolean)
 
+/**
+ * Serializa questão → resposta para o Bundle.
+ *
+ * Sem isso, sair da etapa (ou o sistema matar o app) fazia o "Concluir etapa"
+ * mandar `acertos = 0`: as respostas já tinham ido para o SRS, mas o placar
+ * não sabia de nada.
+ */
+private val SaverRespondidas: Saver<Map<String, Resposta>, ArrayList<String>> = Saver(
+    save = { mapa ->
+        ArrayList(
+            mapa.map { (id, r) -> "$id|${r.letra}|${if (r.acertou) 1 else 0}" }
+        )
+    },
+    restore = { lista ->
+        lista.mapNotNull { linha ->
+            val partes = linha.split("|")
+            if (partes.size == 3) partes[0] to Resposta(partes[1], partes[2] == "1") else null
+        }.toMap()
+    },
+)
+
 @Composable
 fun TelaEtapa(
     etapa: Etapa,
@@ -75,20 +100,22 @@ fun TelaEtapa(
     /** Etapa já concluída: é revisão, não dá XP nem mexe no SRS. */
     revisando: Boolean = false,
 ) {
-    var indice by remember { mutableStateOf(0) }
-    var escolhida by remember { mutableStateOf<String?>(null) }
+    var indice by rememberSaveable { mutableIntStateOf(0) }
+    var escolhida by rememberSaveable { mutableStateOf<String?>(null) }
     // As respondidas são guardadas por ID, não por estado de tela. Antes, o
     // botão "Anterior" zerava a flag e a questão podia ser respondida de
     // novo — o XP contava duas vezes e o SRS era aplicado duas vezes.
     // O valor carrega a LETRA escolhida, para o botão "Anterior" restaurar
     // a alternativa marcada.
-    var respondidas by remember { mutableStateOf<Map<String, Resposta>>(emptyMap()) }
+    var respondidas by rememberSaveable(stateSaver = SaverRespondidas) {
+        mutableStateOf<Map<String, Resposta>>(emptyMap())
+    }
     // `var`: a cada questão o cronômetro reinicia, para medir só o tempo
     // da questão que está na tela.
-    var inicio by remember { mutableStateOf(System.currentTimeMillis()) }
+    var inicio by rememberSaveable { mutableLongStateOf(System.currentTimeMillis()) }
     // Início da ETAPA: é o que vai para o placar. Misturar com o início da
     // questão fazia a etapa de 20 minutos registrar 15 segundos.
-    val inicioEtapa = remember { System.currentTimeMillis() }
+    val inicioEtapa = rememberSaveable { System.currentTimeMillis() }
     val scope = rememberCoroutineScope()
 
     val questao: Question? = etapa.questoes.getOrNull(indice)

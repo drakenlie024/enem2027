@@ -17,7 +17,7 @@ val Secondary = Color(0xFF3DDC97)
 val TextPrimary = Color(0xFFF2F3F7)
 val TextSecondary = Color(0xFFEDEFF5)
 val TextMuted = Color(0xFF7C8496)
-val TextMutedDark = Color(0xFF5E667A)
+val TextMutedDark = Color(0xFF7C8496)
 
 // Modais
 val Danger = Color(0xFFFF6B6B)

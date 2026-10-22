@@ -181,7 +181,7 @@ fun TelaNota(
 
             // ---- ano de referência do corte
             Text(
-                text = "COTE DE ${previsao.anoAlvo}",
+                text = "Corte de ${previsao.anoAlvo}",
                 style = MaterialTheme.typography.labelSmall,
                 color = TextMuted,
             )
