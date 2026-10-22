@@ -301,5 +301,3 @@ private fun CartaoFila(
         }
     }
 }
-    }
-}
