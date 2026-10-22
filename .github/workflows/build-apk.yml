@@ -29,6 +29,11 @@ jobs:
       - name: Tornar gradlew executável
         run: chmod +x ./gradlew
 
+      - name: Rodar os testes
+        # Roda ANTES do assemble: se o teste de offline (que garante o
+        # requisito nº 1 do projeto) quebrar, o build nao passa.
+        run: ./gradlew testDebugUnitTest --stacktrace
+
       - name: Assemble release APK
         env:
           RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
