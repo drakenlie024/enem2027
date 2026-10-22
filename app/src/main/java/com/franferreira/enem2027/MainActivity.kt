@@ -51,6 +51,7 @@ import com.franferreira.enem2027.ui.screens.TelaQuestao
 import com.franferreira.enem2027.ui.screens.TelaRedacao
 import com.franferreira.enem2027.ui.screens.TelaResultadoSimulado
 import com.franferreira.enem2027.ui.screens.TelaRevisao
+import com.franferreira.enem2027.ui.screens.ResumoEtapa
 import com.franferreira.enem2027.ui.screens.TelaSimulado
 import com.franferreira.enem2027.ui.screens.TelaTrilha
 import com.franferreira.enem2027.ui.theme.Background
