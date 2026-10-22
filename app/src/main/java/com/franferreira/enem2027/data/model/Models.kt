@@ -327,6 +327,44 @@ data class EssayCorrection(
     val competencias: List<Competencia> = emptyList(),
     val avisos: List<String> = emptyList(),
     @SerialName("avaliadores") val avaliadores: List<Avaliador> = emptyList(),
+
+    // ---- laudo acionável (metodologia dsvi-b/corretor-enem) ----
+    /**
+     * Risco de anulação (fuga ao tema, tipo textual, texto insuficiente).
+     *
+     * No modo de treino não zera a redação: avisa o que a banca poderia
+     * zerar. Vazio quando não há risco.
+     */
+    @SerialName("alerta_risco") val alertaRisco: String = "",
+    /**
+     * O maior gargalo de nota e a maior força do texto, em 1-3 frases.
+     *
+     * É o que responde "o que está ruim" sem o usuário ter que ler as 5
+     * competências para descobrir.
+     */
+    val diagnostico: String = "",
+    /** A soma bruta das competências, antes da calibração. */
+    @SerialName("nota_bruta") val notaBruta: Int = 0,
+    /** Quanto a calibração tirou (ou pôs) na nota central. */
+    @SerialName("ajuste_calibracao") val ajusteCalibracao: Int = 0,
+    /** Por que a calibração mexeu na nota. */
+    @SerialName("motivo_calibracao") val motivoCalibracao: String = "",
+    /**
+     * O trecho mais problemático reescrito como modelo.
+     *
+     * Pega a competência mais fraca e reescreve: é o exemplo concreto do
+     * que a banca esperava.
+     */
+    @SerialName("trecho_reescrito") val trechoReescrito: String = "",
+    /** Ações priorizadas para subir de faixa. */
+    @SerialName("como_subir") val comoSubir: List<String> = emptyList(),
+    /** Exercícios concretos para a próxima redação. */
+    @SerialName("plano_treino") val planoTreino: List<String> = emptyList(),
+    /**
+     * A redação inteira com marcação inline: desvios de norma, conectivos,
+     * repertório e elementos da proposta.
+     */
+    @SerialName("redacao_anotada") val redacaoAnotada: String = "",
 )
 
 @Serializable

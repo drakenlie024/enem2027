@@ -309,6 +309,8 @@ fun TelaRedacao(
 
 @Composable
 private fun CartaoCorrecao(correcao: EssayCorrection) {
+    // A redação anotada é longa: fica dobrada até o usuário pedir.
+    var anotacaoAberta by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -378,6 +380,77 @@ private fun CartaoCorrecao(correcao: EssayCorrection) {
             )
         }
 
+        // ---- risco de anulação: a banca pode zerar, o treino não ----
+        if (correcao.alertaRisco.isNotBlank()) {
+            Spacer(Modifier.height(12.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(Danger.copy(alpha = 0.10f))
+                    .border(1.dp, Danger.copy(alpha = 0.35f), RoundedCornerShape(12.dp))
+                    .padding(12.dp),
+            ) {
+                Text(
+                    text = "RISCO DE ANULAÇÃO",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Danger,
+                )
+                Spacer(Modifier.height(5.dp))
+                Text(
+                    text = correcao.alertaRisco,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = TextSecondary,
+                )
+            }
+        }
+
+        // ---- o diagnóstico: o que está ruim e o que está forte ----
+        if (correcao.diagnostico.isNotBlank()) {
+            Spacer(Modifier.height(12.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(Primary.copy(alpha = 0.09f))
+                    .padding(12.dp),
+            ) {
+                Text(
+                    text = "DIAGNÓSTICO",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Primary,
+                )
+                Spacer(Modifier.height(5.dp))
+                Text(
+                    text = correcao.diagnostico,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = TextPrimary,
+                )
+            }
+        }
+
+        // ---- a calibração, à mostra: por que a nota não é a soma ----
+        if (correcao.notaBruta > 0 && correcao.notaBruta != correcao.nota) {
+            Spacer(Modifier.height(10.dp))
+            Text(
+                text = "Soma bruta ${correcao.notaBruta}" +
+                    if (correcao.ajusteCalibracao != 0) {
+                        "  →  nota final ${correcao.nota} (${if (correcao.ajusteCalibracao > 0) "+" else ""}${correcao.ajusteCalibracao})"
+                    } else {
+                        "  →  nota final ${correcao.nota}"
+                    },
+                style = MaterialTheme.typography.labelSmall,
+                color = TextMuted,
+            )
+            if (correcao.motivoCalibracao.isNotBlank()) {
+                Text(
+                    text = correcao.motivoCalibracao,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = TextMutedDark,
+                )
+            }
+        }
+
         Spacer(Modifier.height(14.dp))
 
         correcao.competencias.forEach { competencia ->
@@ -425,6 +498,145 @@ private fun CartaoCorrecao(correcao: EssayCorrection) {
                             color = TextSecondary,
                         )
                     }
+                }
+            }
+        }
+
+        // ---- o trecho reescrito: o exemplo concreto do que a banca esperava ----
+        if (correcao.trechoReescrito.isNotBlank()) {
+            Spacer(Modifier.height(14.dp))
+            Text(
+                text = "TRECHO REESCRITO",
+                style = MaterialTheme.typography.labelSmall,
+                color = Secondary,
+            )
+            Spacer(Modifier.height(6.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(SurfaceRaised)
+                    .border(1.dp, Secondary.copy(alpha = 0.30f), RoundedCornerShape(12.dp))
+                    .padding(12.dp),
+            ) {
+                Text(
+                    text = correcao.trechoReescrito,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = TextPrimary,
+                )
+            }
+        }
+
+        // ---- como subir de faixa, priorizado ----
+        if (correcao.comoSubir.isNotEmpty()) {
+            Spacer(Modifier.height(14.dp))
+            Text(
+                text = "COMO SUBIR DE FAIXA",
+                style = MaterialTheme.typography.labelSmall,
+                color = Secondary,
+            )
+            Spacer(Modifier.height(7.dp))
+            correcao.comoSubir.forEachIndexed { indice, acao ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp),
+                    verticalAlignment = Alignment.Top,
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(19.dp)
+                            .clip(CircleShape)
+                            .background(Secondary.copy(alpha = 0.18f)),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(
+                            text = "${indice + 1}",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = Secondary,
+                        )
+                    }
+                    Spacer(Modifier.width(9.dp))
+                    Text(
+                        text = acao,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = TextSecondary,
+                        modifier = Modifier.weight(1f),
+                    )
+                }
+            }
+        }
+
+        // ---- o plano de treino da próxima redação ----
+        if (correcao.planoTreino.isNotEmpty()) {
+            Spacer(Modifier.height(14.dp))
+            Text(
+                text = "PLANO DE TREINO",
+                style = MaterialTheme.typography.labelSmall,
+                color = Secondary,
+            )
+            Spacer(Modifier.height(7.dp))
+            correcao.planoTreino.forEach { exercicio ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 3.dp),
+                    verticalAlignment = Alignment.Top,
+                ) {
+                    Text(
+                        text = "•",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = TextMuted,
+                    )
+                    Spacer(Modifier.width(7.dp))
+                    Text(
+                        text = exercicio,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = TextSecondary,
+                        modifier = Modifier.weight(1f),
+                    )
+                }
+            }
+        }
+
+        // ---- a redação anotada: longa, então fica dobrada ----
+        if (correcao.redacaoAnotada.isNotBlank()) {
+            Spacer(Modifier.height(14.dp))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(SurfaceRaised)
+                    .clickable { anotacaoAberta = !anotacaoAberta }
+                    .padding(horizontal = 12.dp, vertical = 10.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = "REDAÇÃO ANOTADA",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = TextMuted,
+                    modifier = Modifier.weight(1f),
+                )
+                Text(
+                    text = if (anotacaoAberta) "recolher ▲" else "ver ▼",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Primary,
+                )
+            }
+            if (anotacaoAberta) {
+                Spacer(Modifier.height(8.dp))
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(SurfaceRaised)
+                        .padding(12.dp),
+                ) {
+                    Text(
+                        text = correcao.redacaoAnotada,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = TextSecondary,
+                    )
                 }
             }
         }
