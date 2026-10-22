@@ -129,6 +129,7 @@ fun TelaHoje(
                         aoJogarEtapa(trilha, etapa)
                     }
                 },
+                aoAjustarMeta = aoAjustarMeta,
             )
 
             Spacer(Modifier.height(14.dp))
