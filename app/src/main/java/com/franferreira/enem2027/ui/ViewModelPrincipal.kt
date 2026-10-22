@@ -401,7 +401,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                             // colavam na MESMA linha da tabela (o REPLACE
                             // do Room sobrescrevia), e a semana montada
                             // sumia — inclusive a que o alarme lia.
-                            id = item.weekday * 10 + indice,
+                            id = (item.weekday * 10 + indice).toLong(),
                             weekday = item.weekday,
                             period = item.period,
                             minutesTarget = item.minutesTarget,
