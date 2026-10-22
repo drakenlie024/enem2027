@@ -121,7 +121,7 @@ fun TelaTrilha(
         ) {
             Box(
                 modifier = Modifier
-                    .fillMaxWidth(trilha.progresso / 100f)
+                    .fillMaxWidth((trilha.progresso / 100.0).toFloat().coerceIn(0f, 1f))
                     .height(6.dp)
                     .clip(CircleShape)
                     .background(cor),

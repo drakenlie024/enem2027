@@ -219,7 +219,7 @@ fun TelaEtapa(
                 // de fora do lambda, e o compilador recusava a atribuição.
                 val marcada = alternativa.letra == escolhida
                 val mostrarCerto = respondida && correta
-                val mostrarErrado = respondida && escolhida && !correta
+                val mostrarErrado = respondida && marcada && !correta
 
                 Row(
                     modifier = Modifier
