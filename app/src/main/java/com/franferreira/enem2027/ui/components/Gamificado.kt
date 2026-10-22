@@ -249,6 +249,76 @@ fun BarraGamificada(
     }
 }
 
+/**
+ * Anel de resultado.
+ *
+ * O número do meio é o que importa; o anel é contexto. Verde quando a taxa
+ * está boa, âmbar no meio, vermelho abaixo de 50%.
+ */
+@Composable
+fun AnelGamificado(
+    progresso: Float,
+    valor: String,
+    rotulo: String,
+    modificador: Modifier = Modifier,
+    tamanho: Int = 116,
+) {
+    val cor = when {
+        progresso >= 0.7f -> Color(0xFF3DDC97)
+        progresso >= 0.5f -> com.franferreira.enem2027.ui.theme.Warning
+        else -> com.franferreira.enem2027.ui.theme.Danger
+    }
+    Box(
+        modifier = modificador.size(tamanho.dp),
+        contentAlignment = androidx.compose.ui.Alignment.Center,
+    ) {
+        androidx.compose.foundation.Canvas(modifier = Modifier.fillMaxSize()) {
+            val espessura = 10.dp.toPx()
+            val diametro = size.minDimension - espessura
+            val canto = androidx.compose.ui.geometry.Offset(
+                (size.width - diametro) / 2,
+                (size.height - diametro) / 2,
+            )
+            drawArc(
+                color = Color(0xFF232A38),
+                startAngle = -90f,
+                sweepAngle = 360f,
+                useCenter = false,
+                topLeft = canto,
+                size = androidx.compose.ui.geometry.Size(diametro, diametro),
+                style = androidx.compose.ui.graphics.drawscope.Stroke(
+                    width = espessura,
+                    cap = androidx.compose.ui.graphics.StrokeCap.Round,
+                ),
+            )
+            drawArc(
+                color = cor,
+                startAngle = -90f,
+                sweepAngle = 360f * progresso.coerceIn(0f, 1f),
+                useCenter = false,
+                topLeft = canto,
+                size = androidx.compose.ui.geometry.Size(diametro, diametro),
+                style = androidx.compose.ui.graphics.drawscope.Stroke(
+                    width = espessura,
+                    cap = androidx.compose.ui.graphics.StrokeCap.Round,
+                ),
+            )
+        }
+        Column(horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally) {
+            Text(
+                text = valor,
+                style = MaterialTheme.typography.titleLarge,
+                color = com.franferreira.enem2027.ui.theme.TextPrimary,
+            )
+            Text(
+                text = rotulo,
+                style = MaterialTheme.typography.labelSmall,
+                color = com.franferreira.enem2027.ui.theme.TextMuted,
+            )
+        }
+    }
+}
+
 /** Títulos de seção no estilo do app. */
 @Composable
 fun SecaoGamificada(

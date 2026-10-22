@@ -33,6 +33,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import com.franferreira.enem2027.ui.components.AnelGamificado
+import com.franferreira.enem2027.ui.components.BotaoGamificado
+import com.franferreira.enem2027.ui.components.Pilula
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -120,19 +124,18 @@ fun TelaSimulado(
         Column(Modifier.padding(horizontal = 16.dp)) {
             Spacer(Modifier.height(10.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    Icons.Filled.Timer,
-                    contentDescription = null,
-                    tint = if (segundosRestantes < 300) Danger else TextMuted,
-                    modifier = Modifier.size(16.dp),
+                // Timer em pílula: fica visível de relance, e muda de cor
+                // quando está acabando.
+                Pilula(
+                    texto = formatarTempo(segundosRestantes),
+                    cor = if (segundosRestantes < 300) Danger else TextPrimary,
+                    fundo = if (segundosRestantes < 300) {
+                        Danger.copy(alpha = 0.16f)
+                    } else {
+                        Color(0xFF232A38)
+                    },
                 )
-                Spacer(Modifier.width(6.dp))
-                Text(
-                    text = formatarTempo(segundosRestantes),
-                    style = MaterialTheme.typography.titleMedium,
-                    color = if (segundosRestantes < 300) Danger else TextPrimary,
-                )
-                Spacer(Modifier.width(12.dp))
+                Spacer(Modifier.width(10.dp))
                 Text(
                     text = "${respondidas}/${simulado.questoes.size} respondidas",
                     style = MaterialTheme.typography.labelMedium,
@@ -376,17 +379,15 @@ fun TelaResultadoSimulado(
         )
         Spacer(Modifier.height(6.dp))
 
-        Row(verticalAlignment = Alignment.Bottom) {
-            Text(
-                text = "${diagnostico.acertos}",
-                style = MaterialTheme.typography.headlineMedium,
-                color = TextPrimary,
-            )
-            Text(
-                text = " / ${diagnostico.total}  ·  ${diagnostico.taxa.toInt()}%",
-                style = MaterialTheme.typography.bodyMedium,
-                color = TextMuted,
-                modifier = Modifier.padding(bottom = 6.dp),
+        // Anel com a taxa no meio: o número grande manda, o anel dá contexto.
+        Box(
+            modifier = Modifier.fillMaxWidth(),
+            contentAlignment = Alignment.Center,
+        ) {
+            AnelGamificado(
+                progresso = (diagnostico.taxa / 100.0).toFloat(),
+                valor = "${diagnostico.acertos}/${diagnostico.total}",
+                rotulo = "${diagnostico.taxa.toInt()}% DE ACERTO",
             )
         }
 
@@ -453,15 +454,17 @@ fun TelaResultadoSimulado(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(Surface)
-                    .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(
+                        Brush.verticalGradient(listOf(Color(0xFF1A1F2C), Surface))
+                    )
+                    .border(1.dp, Color(0xFF262D3C), RoundedCornerShape(16.dp))
                     .padding(12.dp),
                 verticalAlignment = Alignment.Top,
             ) {
                 Box(
                     modifier = Modifier
-                        .size(7.dp)
+                        .size(8.dp)
                         .clip(CircleShape)
                         .background(Primary),
                 )
@@ -477,21 +480,11 @@ fun TelaResultadoSimulado(
 
         Spacer(Modifier.height(16.dp))
 
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp)
-                .clip(RoundedCornerShape(12.dp))
-                .background(Primary)
-                .clickable { aoFechar() },
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = "Fechar",
-                style = MaterialTheme.typography.labelLarge,
-                color = Background,
-            )
-        }
+        BotaoGamificado(
+            texto = "CONTINUAR",
+            cor = Primary,
+            aoClicar = { aoFechar() },
+        )
         Spacer(Modifier.height(28.dp))
     }
 }
