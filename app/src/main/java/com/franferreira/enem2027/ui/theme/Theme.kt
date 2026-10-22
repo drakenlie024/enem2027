@@ -1,3 +1,5 @@
+@file:OptIn(androidx.compose.ui.text.ExperimentalTextApi::class)
+
 package com.franferreira.enem2027.ui.theme
 
 import androidx.compose.material3.MaterialTheme

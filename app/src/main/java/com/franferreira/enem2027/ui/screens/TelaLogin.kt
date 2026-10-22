@@ -48,6 +48,7 @@ import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Secondary
 import com.franferreira.enem2027.ui.theme.Surface
 import com.franferreira.enem2027.ui.theme.SurfaceBorder
+import com.franferreira.enem2027.ui.theme.SurfaceRaised
 import com.franferreira.enem2027.ui.theme.TextMuted
 import com.franferreira.enem2027.ui.theme.TextPrimary
 import com.franferreira.enem2027.ui.theme.TextSecondary
