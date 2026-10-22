@@ -425,33 +425,81 @@ private fun LinhaCompetencia(rotulo: String, taxa: Double, respondidas: Int) {
 
 @Composable
 private fun GradeConquistas(conquistas: List<String>) {
+    // Grade tipo jogo: o troféu conquistado brilha, o que falta fica apagado.
+    // Os ids são os mesmos que o backend emite (app/routers/progresso.py).
+    val todas = listOf(
+        "primeira_questao", "dez_questoes", "cem_questoes", "mil_questoes",
+        "sequencia_3", "sequencia_7", "sequencia_30",
+        "nivel_5", "nivel_10", "acertos_50", "acertos_200",
+        "area_cem", "sete_dias",
+    )
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(18.dp))
+            .background(Brush.verticalGradient(listOf(Color(0xFF1A1F2C), Surface)))
+            .border(1.dp, Color(0xFF262D3C), RoundedCornerShape(18.dp))
             .padding(13.dp),
     ) {
-        conquistas.forEach { id ->
-            Row(
-                modifier = Modifier.padding(vertical = 5.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Icon(
-                    Icons.Filled.EmojiEvents,
-                    contentDescription = null,
-                    tint = Secondary,
-                    modifier = Modifier.size(16.dp),
-                )
-                Spacer(Modifier.width(9.dp))
-                Text(
-                    text = rotuloConquista(id),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = TextSecondary,
-                )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            todas.chunked(4).forEach { linha ->
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    linha.forEach { id ->
+                        val ganha = id in conquistas
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(12.dp))
+                                .background(
+                                    if (ganha) {
+                                        Brush.verticalGradient(
+                                            listOf(Warning.copy(alpha = 0.22f), Surface)
+                                        )
+                                    } else {
+                                        Brush.verticalGradient(
+                                            listOf(Color(0xFF141821), Color(0xFF141821))
+                                        )
+                                    }
+                                )
+                                .border(
+                                    1.dp,
+                                    if (ganha) Warning.copy(alpha = 0.4f) else SurfaceBorder,
+                                    RoundedCornerShape(12.dp),
+                                )
+                                .padding(vertical = 9.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                        ) {
+                            Icon(
+                                Icons.Filled.EmojiEvents,
+                                contentDescription = null,
+                                tint = if (ganha) Warning else TextMutedDark,
+                                modifier = Modifier.size(18.dp),
+                            )
+                            Spacer(Modifier.height(4.dp))
+                            Text(
+                                text = rotuloCurtoConquista(id),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = if (ganha) TextPrimary else TextMutedDark,
+                                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                                maxLines = 2,
+                            )
+                        }
+                    }
+                }
             }
         }
+        Spacer(Modifier.height(10.dp))
+        Text(
+            text = "${conquistas.size} de ${todas.size} conquistas",
+            style = MaterialTheme.typography.labelSmall,
+            color = TextMuted,
+        )
     }
 }
 
@@ -462,6 +510,24 @@ internal fun areaLegivel(area: String): String = when (area) {
     "ciencias-natureza" -> "Ciências da Natureza"
     "sem-area" -> "Sem área"
     else -> area.replace('-', ' ').replaceFirstChar { it.uppercase() }
+}
+
+/** Rótulo curto, para caber no quadradinho da grade de conquistas. */
+internal fun rotuloCurtoConquista(id: String): String = when (id) {
+    "primeira_questao" -> "1ª questão"
+    "dez_questoes" -> "10 questões"
+    "cem_questoes" -> "100 questões"
+    "mil_questoes" -> "1.000 questões"
+    "sequencia_3" -> "3 dias"
+    "sequencia_7" -> "7 dias"
+    "sequencia_30" -> "30 dias"
+    "nivel_5" -> "Nível 5"
+    "nivel_10" -> "Nível 10"
+    "acertos_50" -> "50 acertos"
+    "acertos_200" -> "200 acertos"
+    "area_cem" -> "100 na área"
+    "sete_dias" -> "7 dias seguidos"
+    else -> id.replace('_', ' ')
 }
 
 internal fun rotuloConquista(id: String): String = when (id) {

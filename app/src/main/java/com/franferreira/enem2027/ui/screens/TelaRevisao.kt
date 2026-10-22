@@ -194,14 +194,19 @@ private fun CartaoContagem(
 ) {
     Column(
         modifier = modifier
-            .clip(RoundedCornerShape(12.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(16.dp))
+            .background(
+                androidx.compose.ui.graphics.Brush.verticalGradient(
+                    listOf(cor.copy(alpha = 0.16f), Surface),
+                )
+            )
+            .border(1.dp, cor.copy(alpha = 0.30f), RoundedCornerShape(16.dp))
             .padding(12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
             text = valor.toString(),
-            style = MaterialTheme.typography.titleLarge,
+            style = MaterialTheme.typography.headlineMedium,
             color = cor,
         )
         Text(

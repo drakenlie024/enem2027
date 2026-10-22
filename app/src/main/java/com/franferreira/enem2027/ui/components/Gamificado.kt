@@ -22,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -53,7 +54,9 @@ fun BotaoGamificado(
     val gradiente = if (verde) {
         Brush.linearGradient(listOf(Color(0xFF3DDC97), Color(0xFF2BB87A)))
     } else {
-        Brush.linearGradient(listOf(cor, cor.copy(alpha = 0.72f).blend(Color(0xFF5B8BFF), 0.4f)))
+        // O segundo tom é a cor da área clareada — `lerp` é a forma de
+        // interpolar cor no Compose (`blend` não existe).
+        Brush.linearGradient(listOf(cor, lerp(cor, Color.White, 0.28f)))
     }
     Box(
         modifier = modifier
