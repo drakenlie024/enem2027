@@ -1,6 +1,7 @@
 package com.franferreira.enem2027.data.repo
 
 import com.franferreira.enem2027.data.local.EnemDatabase
+import com.franferreira.enem2027.data.local.paraModelo
 import com.franferreira.enem2027.data.model.CurriculoTrilhas
 import com.franferreira.enem2027.data.model.Etapa
 import com.franferreira.enem2027.data.model.EtapaConcluida
@@ -131,7 +132,7 @@ class MontadorTrilhas(
                 }
                 for (q in candidatas) {
                     if (q.id !in usadas) {
-                        questoes += q
+                        questoes += q.paraModelo()
                         usadas += q.id
                     }
                     if (questoes.size >= questoesPorEtapa) break
@@ -200,7 +201,7 @@ class MontadorTrilhas(
             val candidatas = db.questions().porTemaEArea(nome, area)
             for (q in candidatas) {
                 if (q.id in usadas || q.id in escolhidas.map { it.id }) continue
-                escolhidas += q
+                escolhidas += q.paraModelo()
                 if (escolhidas.size >= questoesPorEtapa) return escolhidas
             }
         }

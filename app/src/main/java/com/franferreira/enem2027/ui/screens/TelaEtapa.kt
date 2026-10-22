@@ -74,7 +74,9 @@ fun TelaEtapa(
     var escolhida by remember { mutableStateOf<String?>(null) }
     var respondida by remember { mutableStateOf(false) }
     var acertos by remember { mutableStateOf(0) }
-    val inicio = remember { System.currentTimeMillis() }
+    // `var`: a cada questão o cronômetro reinicia, para medir só o tempo
+    // da questão que está na tela.
+    var inicio by remember { mutableStateOf(System.currentTimeMillis()) }
     val scope = rememberCoroutineScope()
 
     val questao: Question? = etapa.questoes.getOrNull(indice)
@@ -213,7 +215,9 @@ fun TelaEtapa(
                 } else {
                     alternativa.correta
                 }
-                val escolhida = escolhida == alternativa.letra
+                // `marcada` (e não `escolhida`): o nome sombreava a `var`
+                // de fora do lambda, e o compilador recusava a atribuição.
+                val marcada = alternativa.letra == escolhida
                 val mostrarCerto = respondida && correta
                 val mostrarErrado = respondida && escolhida && !correta
 
@@ -225,7 +229,7 @@ fun TelaEtapa(
                             when {
                                 mostrarCerto -> Secondary.copy(alpha = 0.12f)
                                 mostrarErrado -> com.franferreira.enem2027.ui.theme.Danger.copy(alpha = 0.12f)
-                                escolhida -> SurfaceRaised
+                                marcada -> SurfaceRaised
                                 else -> Surface
                             }
                         )

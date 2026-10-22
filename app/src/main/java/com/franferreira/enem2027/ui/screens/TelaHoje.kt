@@ -480,7 +480,7 @@ private fun CartaoTrilha(
         ) {
             Box(
                 modifier = Modifier
-                    .fillMaxWidth((trilha.progresso / 100f).coerceIn(0f, 1f))
+                    .fillMaxWidth((trilha.progresso / 100.0).toFloat().coerceIn(0f, 1f))
                     .height(5.dp)
                     .clip(CircleShape)
                     .background(cor),

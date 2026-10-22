@@ -42,6 +42,7 @@ import androidx.navigation.compose.rememberNavController
 import com.franferreira.enem2027.ui.ViewModelPrincipal
 import com.franferreira.enem2027.ui.screens.TelaAgenda
 import com.franferreira.enem2027.ui.screens.TelaAprovacao
+import com.franferreira.enem2027.ui.screens.TelaEtapa
 import com.franferreira.enem2027.ui.screens.TelaHoje
 import com.franferreira.enem2027.ui.screens.TelaLogin
 import com.franferreira.enem2027.ui.screens.TelaMontarSimulado
@@ -51,6 +52,7 @@ import com.franferreira.enem2027.ui.screens.TelaRedacao
 import com.franferreira.enem2027.ui.screens.TelaResultadoSimulado
 import com.franferreira.enem2027.ui.screens.TelaRevisao
 import com.franferreira.enem2027.ui.screens.TelaSimulado
+import com.franferreira.enem2027.ui.screens.TelaTrilha
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.EnemTheme
 import com.franferreira.enem2027.ui.theme.Primary

@@ -6,9 +6,9 @@ import com.franferreira.enem2027.data.local.EnemDatabase
 import com.franferreira.enem2027.data.local.GamificationEntity
 import com.franferreira.enem2027.data.local.PendingAnswerEntity
 import com.franferreira.enem2027.data.local.ProgressEntity
-import com.franferreira.enem2027.data.local.QuestionEntity
 import com.franferreira.enem2027.data.local.TrilhaEtapaEntity
-import com.franferreira.enem2027.data.model.Alternative
+import com.franferreira.enem2027.data.local.paraEntidade
+import com.franferreira.enem2027.data.local.paraModelo
 import com.franferreira.enem2027.data.model.CurriculoTrilhas
 import com.franferreira.enem2027.data.model.EtapaConcluida
 import com.franferreira.enem2027.data.model.ProgressBatch
@@ -17,8 +17,6 @@ import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.data.model.Trilha
 import com.franferreira.enem2027.data.model.YearInfo
 import com.franferreira.enem2027.data.remote.ApiClient
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -35,11 +33,6 @@ class Repositorio(private val context: Context) {
 
     private val db = EnemDatabase.get(context)
     private val api = ApiClient.api
-    private val json = Json {
-        ignoreUnknownKeys = true
-        explicitNulls = false
-        coerceInputValues = true
-    }
 
     // ---------- acervo ----------
 
@@ -159,7 +152,7 @@ class Repositorio(private val context: Context) {
         val curriculo = curriculoTrilhas()
         val montador = MontadorTrilhas(db)
 
-        val stats = db.questions().statsPorTema().map {
+        val stats = db.questions().statsPorTema().associate { it.tema to
             StatsTema(
                 tema = it.tema,
                 erros = it.erros,
@@ -167,7 +160,7 @@ class Repositorio(private val context: Context) {
                 total = it.total,
                 area = it.area,
             )
-        }.toMap()
+        }
 
         val etapasLocais = db.trilhaEtapas().todos()
         val concluidas = etapasLocais.groupBy { it.trilhaId }
@@ -432,44 +425,6 @@ class Repositorio(private val context: Context) {
         resposta.applied
     }
 
-    // ---------- conversões ----------
-
-    private fun Question.paraEntidade(versao: String?): QuestionEntity = QuestionEntity(
-        id = id,
-        ano = ano,
-        indice = indice,
-        area = area,
-        idioma = idioma,
-        origem = origem,
-        enunciado = enunciado,
-        contexto = contexto,
-        arquivosJson = json.encodeToString(arquivos),
-        alternativasJson = json.encodeToString(alternativas),
-        gabarito = gabarito,
-        tema = tema,
-        competencia = competencia,
-        dificuldade = dificuldade,
-        subassunto = subassunto,
-        explicacao = explicacao,
-        versaoAcervo = versao,
-    )
-
-    private fun QuestionEntity.paraModelo(): Question = Question(
-        id = id,
-        ano = ano,
-        indice = indice,
-        area = area,
-        idioma = idioma,
-        origem = origem,
-        enunciado = enunciado,
-        contexto = contexto,
-        arquivos = json.decodeFromString<List<String>>(arquivosJson),
-        alternativas = json.decodeFromString<List<Alternative>>(alternativasJson),
-        gabarito = gabarito,
-        tema = tema,
-        competencia = competencia,
-        dificuldade = dificuldade,
-        subassunto = subassunto,
-        explicacao = explicacao,
-    )
+    // As conversões entre entity e modelo estão em `data/local/Conversores.kt`
+    // — o montador de trilhas também precisa delas.
 }
