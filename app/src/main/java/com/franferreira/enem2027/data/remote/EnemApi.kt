@@ -49,6 +49,12 @@ interface EnemApi {
         @Query("limit") limit: Int = 200,
         @Query("offset") offset: Int = 0,
     ): YearPackage
+    @GET("acervo/ia")
+    suspend fun acervoDeIA(
+        @Query("limit") limit: Int = 200,
+        @Query("offset") offset: Int = 0,
+    ): YearPackage
+
     @POST("sync/progress")
     suspend fun sincronizar(@Body body: ProgressBatch): SyncResponse
 

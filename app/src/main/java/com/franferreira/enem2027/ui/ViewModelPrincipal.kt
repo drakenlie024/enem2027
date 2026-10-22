@@ -383,6 +383,21 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
         }
     }
 
+    /** Baixa as questões de IA aprovadas (vêm separadas do acervo oficial). */
+    fun baixarQuestoesDeIA() {
+        viewModelScope.launch {
+            repo.baixarQuestoesDeIA()
+                .onSuccess { total ->
+                    if (total > 0) {
+                        _estado.value = _estado.value.copy(
+                            mensagem = "$total questões de IA baixadas",
+                        )
+                        recarregar()
+                    }
+                }
+        }
+    }
+
     fun sincronizar() {
         viewModelScope.launch {
             _estado.value = _estado.value.copy(sincronizando = true, mensagem = null)
@@ -394,6 +409,8 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                     onFailure = { "Sem conexão — suas respostas ficam salvas no aparelho" },
                 ),
             )
+            // Aproveita o mesmo momento para pegar as questões de IA novas.
+            baixarQuestoesDeIA()
             recarregar()
         }
     }

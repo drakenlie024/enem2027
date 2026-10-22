@@ -17,7 +17,7 @@ interface QuestionDao {
     @Query("SELECT COUNT(*) FROM questions WHERE ano = :ano")
     suspend fun totalDoAno(ano: Int): Int
 
-    @Query("SELECT DISTINCT ano FROM questions ORDER BY ano DESC")
+    @Query("SELECT DISTINCT ano FROM questions WHERE ano > 0 ORDER BY ano DESC")
     suspend fun anos(): List<Int>
 
     @Query("SELECT DISTINCT area FROM questions WHERE area IS NOT NULL ORDER BY area")

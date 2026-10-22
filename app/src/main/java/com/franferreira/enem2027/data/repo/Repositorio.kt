@@ -67,6 +67,21 @@ class Repositorio(private val context: Context) {
 
     suspend fun anosLocais(): List<Int> = db.questions().anos()
 
+    /**
+     * Baixa as questões de IA que o usuário aprovou.
+     *
+     * Vêm separadas do acervo oficial porque a origem é diferente — o app
+     * mostra "IA" na questão. Nunca se misturam.
+     */
+    suspend fun baixarQuestoesDeIA(): Result<Int> = runCatching {
+        val pacote = api.acervoDeIA(limit = 200)
+        val entidades = pacote.questoes.map { it.paraEntidade(pacote.versao) }
+        if (entidades.isNotEmpty()) {
+            db.questions().inserir(entidades)
+        }
+        entidades.size
+    }
+
     suspend fun totalLocal(ano: Int): Int = db.questions().totalDoAno(ano)
 
     suspend fun areasLocais(): List<String> = db.questions().areas()
