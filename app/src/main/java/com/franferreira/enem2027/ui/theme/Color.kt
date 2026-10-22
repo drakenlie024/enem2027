@@ -38,8 +38,13 @@ val AreaNaturezas = Color(0xFF4DA3FF)
 
 fun corDaArea(area: String?): Color = when (area) {
     "matematica" -> AreaMatematica
-    "linguagens" -> AreaLinguagens
-    "ciencias-humanas" -> AreaHumanas
-    "ciencias-natureza" -> AreaNaturezas
+    "biologia", "ciencias-natureza" -> AreaNaturezas
+    "portugues", "linguagens", "ingles", "espanhol" -> AreaLinguagens
+    "historia", "ciencias-humanas", "geografia", "filosofia", "sociologia" -> AreaHumanas
+    "fisica" -> Info
+    "quimica" -> Secondary
+    "artes" -> Warning
+    "ed-fisica" -> Secondary
+    "redacao" -> Primary
     else -> Primary
 }
