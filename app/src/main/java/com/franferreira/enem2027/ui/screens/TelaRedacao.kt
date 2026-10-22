@@ -107,7 +107,7 @@ fun TelaRedacao(
         ) {
             Spacer(Modifier.height(12.dp))
             Text(
-                text = " REDACAO\,
+                text = "REDACAO",
                 style = MaterialTheme.typography.labelSmall,
                 color = Primary,
             )
