@@ -315,7 +315,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             val itens = _estado.value.agenda.map { (weekday, periodo) ->
                 AgendaItem(weekday = weekday, period = periodo)
             }
-            runCatching { ApiClient.api.salvarAgenda(itens) }
+            runCatching { ApiClient.api.salvarAgenda(mapOf("itens" to itens)) }
                 .onSuccess {
                     _estado.value = _estado.value.copy(
                         mensagem = "Agenda salva: ${itens.size} períodos",

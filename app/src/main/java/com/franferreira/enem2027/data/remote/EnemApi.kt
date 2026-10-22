@@ -68,7 +68,7 @@ interface EnemApi {
     suspend fun agenda(): Map<String, List<AgendaItem>>
 
     @PUT("sync/agenda")
-    suspend fun salvarAgenda(@Body itens: List<AgendaItem>): Map<String, Any>
+    suspend fun salvarAgenda(@Body corpo: Map<String, List<AgendaItem>>): Map<String, Any>
 
     @POST("ai/explain")
     suspend fun explicar(@Body body: ExplainRequest): ExplainResponse
