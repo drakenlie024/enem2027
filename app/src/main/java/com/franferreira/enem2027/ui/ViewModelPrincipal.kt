@@ -996,11 +996,11 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             _estado.value = _estado.value.copy(carregandoAulas = true)
             val app = getApplication<Application>()
             val resultado = runCatching {
-                withContext(Dispatchers.IO) { ApiClient.api.areasComAula().string() }
+                ApiClient.api.areasComAula().string()
             }
             val corpo = resultado.getOrNull()
             if (corpo != null) {
-                withContext(Dispatchers.IO) { AulasCache.guardar(app, "areas", corpo) }
+                AulasCache.guardar(app, "areas", corpo)
             }
             val areas = corpo?.let {
                 runCatching {
@@ -1021,11 +1021,9 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch(Dispatchers.IO) {
             _estado.value = _estado.value.copy(carregandoAulas = true, aulasDaArea = AulasDeArea())
             val app = getApplication<Application>()
-            val corpo = runCatching {
-                withContext(Dispatchers.IO) { ApiClient.api.aulasDe(area).string() }
-            }.getOrNull()
+            val corpo = runCatching { ApiClient.api.aulasDe(area).string() }.getOrNull()
             if (corpo != null) {
-                withContext(Dispatchers.IO) { AulasCache.guardar(app, "area-$area", corpo) }
+                AulasCache.guardar(app, "area-$area", corpo)
             }
             val dados = corpo?.let {
                 runCatching {
@@ -1046,11 +1044,9 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch(Dispatchers.IO) {
             _estado.value = _estado.value.copy(carregandoAulas = true, pacoteAula = null)
             val app = getApplication<Application>()
-            val corpo = runCatching {
-                withContext(Dispatchers.IO) { ApiClient.api.pacoteAula(id).string() }
-            }.getOrNull()
+            val corpo = runCatching { ApiClient.api.pacoteAula(id).string() }.getOrNull()
             if (corpo != null) {
-                withContext(Dispatchers.IO) { AulasCache.guardar(app, "pacote-$id", corpo) }
+                AulasCache.guardar(app, "pacote-$id", corpo)
             }
             val pacote = corpo?.let {
                 runCatching {

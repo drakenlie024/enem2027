@@ -68,7 +68,7 @@ object Agendador {
             // Limpa a faixa inteira antes de recriar: a agenda pode ter mudado
             // e o alarme antigo aponta para um período que não existe mais.
             for (dia in 0 until DIAS_A_FRENTE) {
-                for (indice in HORAS.indices) {
+                for (indice in 0 until HORAS.size) {
                     alarm.cancel(pendingIntent(context, dia, indice))
                 }
             }
