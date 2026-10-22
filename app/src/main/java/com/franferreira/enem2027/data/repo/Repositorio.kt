@@ -65,6 +65,37 @@ class Repositorio(private val context: Context) {
     suspend fun anosLocais(): List<Int> = db.questions().anos()
 
     /**
+     * Anos que o servidor tem mais novos que o aparelho.
+     *
+     * Acontece quando o acervo do servidor muda depois do download — por
+     * exemplo, quando as explicações offline foram geradas. Sem esta
+     * checagem, as questões já baixadas ficariam sem explicação até o
+     * usuário rebaixar o ano na mão.
+     */
+    suspend fun anosDesatualizados(): List<Int> {
+        val remotos = runCatching { api.anos() }.getOrDefault(emptyList())
+        if (remotos.isEmpty()) return emptyList()
+        val locais = db.questions().versoesLocais().associateBy { it.ano }
+        return remotos.mapNotNull { info ->
+            val local = locais[info.ano] ?: return@mapNotNull null
+            val versaoLocal = local.versaoAcervo
+            // Versão diferente (e o servidor sempre tem) = desatualizado.
+            if (versaoLocal != null && versaoLocal != info.versao) info.ano else null
+        }
+    }
+
+    /** Rebaixa os anos desatualizados, para trazer as explicações novas. */
+    suspend fun atualizarAcervo(): Result<Int> = runCatching {
+        val desatualizados = anosDesatualizados()
+        var total = 0
+        for (ano in desatualizados) {
+            val r = baixarAno(ano)
+            total += r.getOrDefault(0)
+        }
+        total
+    }
+
+    /**
      * Baixa as questões de IA que o usuário aprovou.
      *
      * Vêm separadas do acervo oficial porque a origem é diferente — o app

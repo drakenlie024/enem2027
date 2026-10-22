@@ -127,6 +127,17 @@ data class TrilhaEtapaEntity(
 )
 
 /**
+ * Versão do acervo local, por ano.
+ *
+ * Não é uma tabela: é o resultado do GROUP BY que compara o que o aparelho
+ * tem com o que o servidor tem.
+ */
+data class VersaoAnoEntity(
+    val ano: Int,
+    val versaoAcervo: String?,
+)
+
+/**
  * Estatísticas por tema, vindas de uma query agregada.
  *
  * Não é uma tabela: é o resultado do GROUP BY por tema que monta a trilha

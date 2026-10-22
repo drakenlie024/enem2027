@@ -192,6 +192,7 @@ fun EnemApp() {
                         navController.navigate("etapa")
                     },
                     aoAjustarMeta = vm::ajustarMeta,
+                    aoAtualizarAcervo = vm::atualizarAcervo,
                 )
             }
 

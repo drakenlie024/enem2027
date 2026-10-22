@@ -509,6 +509,34 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
     }
 
     /**
+     * Rebaixa os anos cujo acervo no servidor mudou.
+     *
+     * Sem isso, as questões já baixadas ficariam sem a explicação offline
+     * (que só existia depois da primeira leva de explicações) até o usuário
+     * rebaixar o ano na mão.
+     */
+    fun atualizarAcervo() {
+        viewModelScope.launch {
+            _estado.value = _estado.value.copy(sincronizando = true, mensagem = null)
+            val resultado = repo.atualizarAcervo()
+            _estado.value = _estado.value.copy(
+                sincronizando = false,
+                mensagem = resultado.fold(
+                    onSuccess = { total ->
+                        if (total > 0) {
+                            "Acervo atualizado: $total questões com explicação nova"
+                        } else {
+                            "Acervo já está atualizado"
+                        }
+                    },
+                    onFailure = { "Não consegui atualizar o acervo. Tente quando houver internet." },
+                ),
+            )
+            recarregar()
+        }
+    }
+
+    /**
      * Ajusta a meta diária de questões.
      *
      * A meta é sugerida, mas o usuário manda: 12 por dia é o padrão, mas

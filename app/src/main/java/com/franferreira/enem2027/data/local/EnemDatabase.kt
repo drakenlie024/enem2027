@@ -111,6 +111,17 @@ interface QuestionDao {
     @Query("SELECT COUNT(*) FROM questions WHERE id IN (SELECT questionId FROM progress WHERE dueAt <= :agora AND state != 'seen')")
     suspend fun pendentes(agora: Long): Int
 
+    /**
+     * Versão do acervo local, por ano.
+     *
+     * Serve para saber se o servidor tem conteúdo mais novo que o aparelho —
+     * por exemplo, quando as explicações offline foram geradas depois do
+     * download. Sem isso, o usuário ficaria com questões sem explicação
+     * até rebaixar o ano na mão.
+     */
+    @Query("SELECT ano, versaoAcervo FROM questions WHERE ano > 0 GROUP BY ano")
+    suspend fun versoesLocais(): List<VersaoAnoEntity>
+
     @Query("SELECT COUNT(*) FROM progress WHERE questionId = :id")
     suspend fun temProgresso(id: String): Int
 

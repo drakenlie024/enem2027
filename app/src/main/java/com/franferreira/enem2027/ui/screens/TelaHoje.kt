@@ -79,6 +79,7 @@ fun TelaHoje(
     aoAbrirTrilha: (Trilha) -> Unit,
     aoJogarEtapa: (Trilha, Etapa) -> Unit,
     aoAjustarMeta: (Int) -> Unit,
+    aoAtualizarAcervo: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -238,9 +239,20 @@ fun TelaHoje(
                             color = TextMuted,
                             modifier = Modifier.weight(1f),
                         )
+                        // Rebaixar o acervo: é o que traz a explicação nova
+                        // para as questões que já estavam no aparelho.
+                        Icon(
+                            Icons.Filled.CloudDownload,
+                            contentDescription = "Atualizar acervo",
+                            tint = if (estado.sincronizando) TextMutedDark else Primary,
+                            modifier = Modifier
+                                .size(18.dp)
+                                .clickable { aoAtualizarAcervo() },
+                        )
+                        Spacer(Modifier.width(14.dp))
                         Icon(
                             Icons.Filled.Refresh,
-                            contentDescription = "Sincronizar",
+                            contentDescription = "Sincronizar respostas",
                             tint = if (estado.sincronizando) TextMutedDark else Secondary,
                             modifier = Modifier
                                 .size(18.dp)
