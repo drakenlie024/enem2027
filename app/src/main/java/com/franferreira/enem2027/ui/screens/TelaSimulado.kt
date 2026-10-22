@@ -1,5 +1,6 @@
 package com.franferreira.enem2027.ui.screens
 
+import com.franferreira.enem2027.ui.theme.Warning
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -154,7 +155,7 @@ fun TelaSimulado(
                     fundo = if (segundosRestantes < 300) {
                         Danger.copy(alpha = 0.16f)
                     } else {
-                        Color(0xFF232A38)
+                        SurfaceRaised
                     },
                 )
                 Spacer(Modifier.width(10.dp))
@@ -250,7 +251,7 @@ fun TelaSimulado(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(220.dp)
-                                    .clip(RoundedCornerShape(12.dp))
+                                    .clip(RoundedCornerShape(16.dp))
                                     .background(SurfaceRaised),
                             )
                             Spacer(Modifier.height(10.dp))
@@ -265,9 +266,9 @@ fun TelaSimulado(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(12.dp))
+                            .clip(RoundedCornerShape(16.dp))
                             .background(Surface)
-                            .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
+                            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
                             .padding(12.dp),
                     ) {
                         Text(
@@ -294,12 +295,12 @@ fun TelaSimulado(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(12.dp))
+                        .clip(RoundedCornerShape(16.dp))
                         .background(if (escolhida) Primary.copy(alpha = 0.16f) else Surface)
                         .border(
                             1.dp,
                             if (escolhida) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                            RoundedCornerShape(12.dp),
+                            RoundedCornerShape(16.dp),
                         )
                         .clickable {
                             respostas = respostas + (questao.id to alternativa.letra)
@@ -340,7 +341,7 @@ fun TelaSimulado(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(10.dp))
+                            .clip(RoundedCornerShape(14.dp))
                             .background(SurfaceRaised)
                             .clickable { mostrandoExplicacao = !mostrandoExplicacao }
                             .padding(10.dp),
@@ -509,11 +510,11 @@ fun TelaResultadoSimulado(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(16.dp))
+                    .clip(RoundedCornerShape(20.dp))
                     .background(
-                        Brush.verticalGradient(listOf(Color(0xFF1A1F2C), Surface))
+                        Brush.verticalGradient(listOf(SurfaceRaised, Surface))
                     )
-                    .border(1.dp, Color(0xFF262D3C), RoundedCornerShape(16.dp))
+                    .border(1.dp, SurfaceBorder, RoundedCornerShape(20.dp))
                     .padding(12.dp),
                 verticalAlignment = Alignment.Top,
             ) {

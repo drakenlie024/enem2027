@@ -1,5 +1,8 @@
 package com.franferreira.enem2027.ui.screens
 
+import com.franferreira.enem2027.ui.theme.Primary
+import com.franferreira.enem2027.ui.theme.Warning
+import com.franferreira.enem2027.ui.theme.Surface
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -173,7 +176,7 @@ fun TelaTrilha(
                                     "feito" -> Icon(
                                         Icons.Filled.Check,
                                         contentDescription = "Concluída",
-                                        tint = Color(0xFF06231A),
+                                        tint = Background,
                                         modifier = Modifier.size(28.dp),
                                     )
                                     "travado" -> Icon(
@@ -206,11 +209,11 @@ fun TelaTrilha(
                     Column(
                         modifier = Modifier
                             .weight(1f)
-                            .clip(RoundedCornerShape(16.dp))
+                            .clip(RoundedCornerShape(20.dp))
                             .background(
                                 when {
                                     eAtual -> cor.copy(alpha = 0.12f)
-                                    else -> Color(0xFF141821)
+                                    else -> Surface
                                 }
                             )
                             .clickable(enabled = !eTravada) { aoJogar(etapa) }
@@ -282,12 +285,12 @@ fun ResumoEtapa(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(20.dp))
-            .background(Brush.verticalGradient(listOf(cor.copy(alpha = 0.16f), Color(0xFF141821))))
+            .background(Brush.verticalGradient(listOf(cor.copy(alpha = 0.16f), Surface)))
             .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         // O selo de aprovação: passou ou não? O corte é 80% de acerto.
-        val corSelo = if (passou) Color(0xFF3DDC97) else Color(0xFFFFB020)
+        val corSelo = if (passou) Primary else Warning
         Box(
             modifier = Modifier
                 .clip(CircleShape)
@@ -328,7 +331,7 @@ fun ResumoEtapa(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(20.dp))
                 .background(Brush.horizontalGradient(listOf(cor, cor.copy(alpha = 0.7f))))
                 .clickable { aoFechar() },
             contentAlignment = Alignment.Center,

@@ -2,39 +2,39 @@ package com.franferreira.enem2027.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Base escura do mockup C
-val Background = Color(0xFF0B0D11)
-val BackgroundGradientTop = Color(0xFF0E1117)
-val Surface = Color(0xFF141821)
-val SurfaceBorder = Color(0xFF1F2532)
-val SurfaceRaised = Color(0xFF232A38)
+// Lousa fofa: verde-pinheiro profundo, giz pastel.
+val Background = Color(0xFF16241D)
+val BackgroundGradientTop = Color(0xFF1D3026)
+val Surface = Color(0xFF1F3329)
+val SurfaceBorder = Color(0xFF33513F)
+val SurfaceRaised = Color(0xFF2A4335)
 
-// Acentos
-val Primary = Color(0xFF7C6CFF)
-val Secondary = Color(0xFF3DDC97)
+// Giz: ação principal em menta, apoio em pêssego.
+val Primary = Color(0xFF9BE7BE)
+val Secondary = Color(0xFFFFC9A3)
 
-// Texto
-val TextPrimary = Color(0xFFF2F3F7)
-val TextSecondary = Color(0xFFEDEFF5)
-val TextMuted = Color(0xFF7C8496)
-val TextMutedDark = Color(0xFF7C8496)
+// Texto: giz quente, nunca branco puro.
+val TextPrimary = Color(0xFFF6F2E6)
+val TextSecondary = Color(0xFFE7E2D3)
+val TextMuted = Color(0xFFA9BAAC)
+val TextMutedDark = Color(0xFF8FA396)
 
-// Modais
-val Danger = Color(0xFFFF6B6B)
-val Warning = Color(0xFFFFB020)
-val Info = Color(0xFF4DA3FF)
+// Estados (tons de giz, sem neon).
+val Danger = Color(0xFFFFA1A1)
+val Warning = Color(0xFFF7DE9A)
+val Info = Color(0xFF9BD3FF)
 
 /**
- * Cor por área.
+ * Cor por área — giz de cor diferente por matéria.
  *
- * A cor diz a MATÉRIA, não o estado: a trilha de Matemática é sempre roxa,
- * a de Humanas sempre âmbar. Assim o app é lido de longe, e o estado de cada
- * nó vem do formato (preenchido, pulsando, vazio), não da cor.
+ * A cor diz a MATÉRIA, não o estado: a trilha de Matemática é sempre lavanda,
+ * a de Linguagens sempre menta. O estado vem do formato (preenchido, pulsando,
+ * vazio), não da cor.
  */
-val AreaMatematica = Color(0xFF7C6CFF)
-val AreaLinguagens = Color(0xFF3DDC97)
-val AreaHumanas = Color(0xFFFFB020)
-val AreaNaturezas = Color(0xFF4DA3FF)
+val AreaMatematica = Color(0xFFC7B6FF)
+val AreaLinguagens = Color(0xFF9BE7BE)
+val AreaHumanas = Color(0xFFF7DE9A)
+val AreaNaturezas = Color(0xFF9BD3FF)
 
 fun corDaArea(area: String?): Color = when (area) {
     "matematica" -> AreaMatematica

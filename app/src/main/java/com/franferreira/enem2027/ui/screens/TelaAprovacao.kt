@@ -149,9 +149,9 @@ private fun CartaoPendente(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
+            .clip(RoundedCornerShape(18.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
             .padding(14.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -220,7 +220,7 @@ private fun CartaoPendente(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(14.dp))
                     .background(SurfaceRaised)
                     .padding(10.dp),
             ) {
@@ -238,9 +238,9 @@ private fun CartaoPendente(
                 modifier = Modifier
                     .weight(1f)
                     .height(46.dp)
-                    .clip(RoundedCornerShape(14.dp))
+                    .clip(RoundedCornerShape(18.dp))
                     .background(SurfaceRaised)
-                    .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+                    .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
                     .clickable { aoRejeitar(item.id) },
                 contentAlignment = Alignment.Center,
             ) {
@@ -263,10 +263,10 @@ private fun CartaoPendente(
                 modifier = Modifier
                     .weight(1f)
                     .height(46.dp)
-                    .clip(RoundedCornerShape(14.dp))
+                    .clip(RoundedCornerShape(18.dp))
                     .background(
                         Brush.horizontalGradient(
-                            listOf(Secondary, Color(0xFF2BB87A))
+                            listOf(Secondary, Primary)
                         )
                     )
                     .clickable { aoAprovar(item.id) },

@@ -135,12 +135,12 @@ fun TelaRedacao(
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(10.dp))
+                            .clip(RoundedCornerShape(14.dp))
                             .background(if (selecionado) Primary.copy(alpha = 0.16f) else Surface)
                             .border(
                                 1.dp,
                                 if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                                RoundedCornerShape(10.dp),
+                                RoundedCornerShape(14.dp),
                             )
                             .clickable { temaSelecionado = tema }
                             .padding(11.dp),
@@ -220,11 +220,11 @@ fun TelaRedacao(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(16.dp))
+                        .clip(RoundedCornerShape(20.dp))
                         .background(
-                            Brush.verticalGradient(listOf(Color(0xFF1A1F2C), Surface))
+                            Brush.verticalGradient(listOf(SurfaceRaised, Surface))
                         )
-                        .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(16.dp))
+                        .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(20.dp))
                         .padding(14.dp),
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -308,9 +308,9 @@ private fun CartaoCorrecao(correcao: EssayCorrection) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(20.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(20.dp))
             .padding(15.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -380,9 +380,9 @@ private fun CartaoCorrecao(correcao: EssayCorrection) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
+                    .clip(RoundedCornerShape(16.dp))
                     .background(Danger.copy(alpha = 0.10f))
-                    .border(1.dp, Danger.copy(alpha = 0.35f), RoundedCornerShape(12.dp))
+                    .border(1.dp, Danger.copy(alpha = 0.35f), RoundedCornerShape(16.dp))
                     .padding(12.dp),
             ) {
                 Text(
@@ -405,7 +405,7 @@ private fun CartaoCorrecao(correcao: EssayCorrection) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
+                    .clip(RoundedCornerShape(16.dp))
                     .background(Primary.copy(alpha = 0.09f))
                     .padding(12.dp),
             ) {
@@ -508,9 +508,9 @@ private fun CartaoCorrecao(correcao: EssayCorrection) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
+                    .clip(RoundedCornerShape(16.dp))
                     .background(SurfaceRaised)
-                    .border(1.dp, Secondary.copy(alpha = 0.30f), RoundedCornerShape(12.dp))
+                    .border(1.dp, Secondary.copy(alpha = 0.30f), RoundedCornerShape(16.dp))
                     .padding(12.dp),
             ) {
                 Text(
@@ -599,7 +599,7 @@ private fun CartaoCorrecao(correcao: EssayCorrection) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(14.dp))
                     .background(SurfaceRaised)
                     .clickable { anotacaoAberta = !anotacaoAberta }
                     .padding(horizontal = 12.dp, vertical = 10.dp),
@@ -622,7 +622,7 @@ private fun CartaoCorrecao(correcao: EssayCorrection) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(12.dp))
+                        .clip(RoundedCornerShape(16.dp))
                         .background(SurfaceRaised)
                         .padding(12.dp),
                 ) {

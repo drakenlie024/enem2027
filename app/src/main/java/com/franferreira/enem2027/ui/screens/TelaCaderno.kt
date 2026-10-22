@@ -1,5 +1,6 @@
 package com.franferreira.enem2027.ui.screens
 
+import com.franferreira.enem2027.ui.theme.Primary
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -142,7 +143,7 @@ fun TelaCaderno(
                 // só as que erraram mais de uma vez
                 Row(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(8.dp))
+                        .clip(RoundedCornerShape(12.dp))
                         .background(if (soReincidentes) Danger.copy(alpha = 0.16f) else SurfaceRaised)
                         .clickable { soReincidentes = !soReincidentes }
                         .padding(horizontal = 10.dp, vertical = 6.dp),
@@ -208,9 +209,9 @@ private fun CartaoErro(item: ItemCaderno, aoClicar: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
+            .clip(RoundedCornerShape(18.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
             .clickable { aoClicar() }
             .padding(12.dp),
     ) {

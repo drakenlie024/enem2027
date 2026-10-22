@@ -253,9 +253,9 @@ fun TelaAula(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(14.dp))
+                        .clip(RoundedCornerShape(18.dp))
                         .background(Surface)
-                        .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+                        .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
                         .clickable { abrirVideo() }
                         .padding(12.dp),
                 ) {
@@ -263,7 +263,7 @@ fun TelaAula(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(160.dp)
-                            .clip(RoundedCornerShape(10.dp))
+                            .clip(RoundedCornerShape(14.dp))
                             .background(SurfaceRaised),
                         contentAlignment = Alignment.Center,
                     ) {
@@ -332,7 +332,7 @@ fun TelaAula(
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Box(
                                     modifier = Modifier
-                                        .clip(RoundedCornerShape(9.dp))
+                                        .clip(RoundedCornerShape(13.dp))
                                         .background(Secondary.copy(alpha = 0.16f))
                                         .clickable { abrirOffline() }
                                         .padding(horizontal = 11.dp, vertical = 7.dp),
@@ -346,7 +346,7 @@ fun TelaAula(
                                 Spacer(Modifier.width(8.dp))
                                 Box(
                                     modifier = Modifier
-                                        .clip(RoundedCornerShape(9.dp))
+                                        .clip(RoundedCornerShape(13.dp))
                                         .background(SurfaceRaised)
                                         .clickable {
                                             VideoDownloader.apagar(contexto, pacote.id)
@@ -367,7 +367,7 @@ fun TelaAula(
                         else -> {
                             Box(
                                 modifier = Modifier
-                                    .clip(RoundedCornerShape(9.dp))
+                                    .clip(RoundedCornerShape(13.dp))
                                     .background(SurfaceRaised)
                                     .clickable(
                                         // Dois toques seguidos: sem isto, dois
@@ -430,9 +430,9 @@ fun TelaAula(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(14.dp))
+                            .clip(RoundedCornerShape(18.dp))
                             .background(Surface)
-                            .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+                            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
                             .padding(13.dp),
                     ) {
                         pacote.resumo.forEach { topico ->
@@ -499,9 +499,9 @@ private fun CartaoQuestaoAula(questao: QuestaoAula, aoVerNoVideo: (Int) -> Unit)
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
+            .clip(RoundedCornerShape(18.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
             .padding(13.dp),
     ) {
         Text(
@@ -532,9 +532,9 @@ private fun CartaoQuestaoAula(questao: QuestaoAula, aoVerNoVideo: (Int) -> Unit)
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 3.dp)
-                    .clip(RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(14.dp))
                     .background(corFundo)
-                    .border(1.dp, corBorda, RoundedCornerShape(10.dp))
+                    .border(1.dp, corBorda, RoundedCornerShape(14.dp))
                     .clickable(enabled = !respondida) { escolhida = alternativa.letra }
                     .padding(horizontal = 11.dp, vertical = 9.dp),
                 verticalAlignment = Alignment.CenterVertically,
@@ -584,7 +584,7 @@ private fun CartaoQuestaoAula(questao: QuestaoAula, aoVerNoVideo: (Int) -> Unit)
                 Spacer(Modifier.height(9.dp))
                 Row(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(9.dp))
+                        .clip(RoundedCornerShape(13.dp))
                         .background(Primary.copy(alpha = 0.13f))
                         .clickable { aoVerNoVideo(segundos) }
                         .padding(horizontal = 11.dp, vertical = 7.dp),
@@ -614,9 +614,9 @@ private fun CartaoAreaAulas(area: AreaAulas, aoClicar: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
+            .clip(RoundedCornerShape(18.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
             .clickable { aoClicar() }
             .padding(14.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -655,9 +655,9 @@ private fun CartaoAula(aula: AulaResumo, aoClicar: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
+            .clip(RoundedCornerShape(18.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
             .clickable { aoClicar() }
             .padding(11.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -665,7 +665,7 @@ private fun CartaoAula(aula: AulaResumo, aoClicar: () -> Unit) {
         Box(
             modifier = Modifier
                 .size(width = 74.dp, height = 44.dp)
-                .clip(RoundedCornerShape(8.dp))
+                .clip(RoundedCornerShape(12.dp))
                 .background(SurfaceRaised),
         ) {
             AsyncImage(

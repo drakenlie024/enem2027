@@ -149,9 +149,9 @@ fun TelaProgresso(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(12.dp))
+                        .clip(RoundedCornerShape(16.dp))
                         .background(Primary.copy(alpha = 0.10f))
-                        .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(12.dp))
+                        .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(16.dp))
                         .clickable { aoAbrirAprovacao() }
                         .padding(12.dp),
                     verticalAlignment = Alignment.CenterVertically,
@@ -206,9 +206,9 @@ fun TelaProgresso(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(14.dp))
+                        .clip(RoundedCornerShape(18.dp))
                         .background(Primary.copy(alpha = 0.10f))
-                        .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(14.dp))
+                        .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(18.dp))
                         .padding(14.dp),
                 ) {
                     Column {
@@ -279,9 +279,9 @@ private fun CartaoNumero(
 ) {
     Column(
         modifier = modifier
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(16.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
             .padding(12.dp),
     ) {
         Text(
@@ -304,9 +304,9 @@ private fun CartaoSemana(porDia: List<Int>) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
+            .clip(RoundedCornerShape(18.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
             .padding(14.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -366,9 +366,9 @@ private fun AtalhoProgresso(
 ) {
     Column(
         modifier = modifier
-            .clip(RoundedCornerShape(14.dp))
+            .clip(RoundedCornerShape(18.dp))
             .background(cor.copy(alpha = 0.10f))
-            .border(1.dp, cor.copy(alpha = 0.30f), RoundedCornerShape(14.dp))
+            .border(1.dp, cor.copy(alpha = 0.30f), RoundedCornerShape(18.dp))
             .clickable { aoClicar() }
             .padding(12.dp),
     ) {
@@ -406,9 +406,9 @@ private fun LinhaArea(area: AreaStats) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(16.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
             .padding(12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -470,9 +470,9 @@ private fun LinhaCompetencia(rotulo: String, taxa: Double, respondidas: Int) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(16.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
             .padding(12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -513,9 +513,9 @@ private fun GradeConquistas(conquistas: List<String>) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Brush.verticalGradient(listOf(Color(0xFF1A1F2C), Surface)))
-            .border(1.dp, Color(0xFF262D3C), RoundedCornerShape(18.dp))
+            .clip(RoundedCornerShape(22.dp))
+            .background(Brush.verticalGradient(listOf(SurfaceRaised, Surface)))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(22.dp))
             .padding(13.dp),
     ) {
         Row(
@@ -532,7 +532,7 @@ private fun GradeConquistas(conquistas: List<String>) {
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clip(RoundedCornerShape(12.dp))
+                                .clip(RoundedCornerShape(16.dp))
                                 .background(
                                     if (ganha) {
                                         Brush.verticalGradient(
@@ -540,14 +540,14 @@ private fun GradeConquistas(conquistas: List<String>) {
                                         )
                                     } else {
                                         Brush.verticalGradient(
-                                            listOf(Color(0xFF141821), Color(0xFF141821))
+                                            listOf(Surface, Surface)
                                         )
                                     }
                                 )
                                 .border(
                                     1.dp,
                                     if (ganha) Warning.copy(alpha = 0.4f) else SurfaceBorder,
-                                    RoundedCornerShape(12.dp),
+                                    RoundedCornerShape(16.dp),
                                 )
                                 .padding(vertical = 9.dp),
                             horizontalAlignment = Alignment.CenterHorizontally,

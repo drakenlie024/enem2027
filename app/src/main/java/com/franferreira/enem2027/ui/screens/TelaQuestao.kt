@@ -1,5 +1,6 @@
 package com.franferreira.enem2027.ui.screens
 
+import com.franferreira.enem2027.ui.theme.Background
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -175,9 +176,9 @@ fun TelaQuestao(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(12.dp))
+                            .clip(RoundedCornerShape(16.dp))
                             .background(Surface)
-                            .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
+                            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
                             .padding(12.dp),
                     ) {
                         Text(
@@ -204,7 +205,7 @@ error = ColorPainter(SurfaceRaised),
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(220.dp)
-                                    .clip(RoundedCornerShape(12.dp))
+                                    .clip(RoundedCornerShape(16.dp))
                                     .background(SurfaceRaised),
                             )
                             Spacer(Modifier.height(10.dp))
@@ -281,9 +282,9 @@ error = ColorPainter(SurfaceRaised),
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(14.dp))
+                        .clip(RoundedCornerShape(18.dp))
                         .background(corFundo)
-                        .border(1.5.dp, corBorda, RoundedCornerShape(14.dp))
+                        .border(1.5.dp, corBorda, RoundedCornerShape(18.dp))
                         .clickable(enabled = !respondida) {
                             alternativaEscolhida = alternativa.letra
                             respondida = true
@@ -350,7 +351,7 @@ error = ColorPainter(SurfaceRaised),
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .height(130.dp)
-                                        .clip(RoundedCornerShape(10.dp))
+                                        .clip(RoundedCornerShape(14.dp))
                                         .background(SurfaceRaised),
                                 )
                             }
@@ -488,9 +489,9 @@ private fun LinhaApoio(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
+            .clip(RoundedCornerShape(18.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
             .padding(12.dp),
     ) {
         Text(
@@ -517,7 +518,7 @@ private fun LinhaApoio(
             // o papel digital
             Row(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(9.dp))
+                    .clip(RoundedCornerShape(13.dp))
                     .background(
                         if (temRascunho) Primary.copy(alpha = 0.16f) else SurfaceRaised
                     )
@@ -562,7 +563,7 @@ private fun LinhaApoio(
                 canais.take(3).forEach { canal ->
                     Column(
                         modifier = Modifier
-                            .clip(RoundedCornerShape(9.dp))
+                            .clip(RoundedCornerShape(13.dp))
                             .background(SurfaceRaised)
                             .clickable { aoAbrirCanal(canal.url) }
                             .padding(horizontal = 10.dp, vertical = 7.dp),
@@ -587,14 +588,14 @@ private fun ChipEscolha(
 ) {
     Box(
         modifier = Modifier
-            .clip(RoundedCornerShape(9.dp))
+            .clip(RoundedCornerShape(13.dp))
             .background(
                 if (selecionado) Primary.copy(alpha = 0.18f) else SurfaceRaised
             )
             .border(
                 width = 1.dp,
                 color = if (selecionado) Primary.copy(alpha = 0.55f) else SurfaceBorder,
-                shape = RoundedCornerShape(9.dp),
+                shape = RoundedCornerShape(13.dp),
             )
             .clickable { aoClicar() }
             .padding(horizontal = 12.dp, vertical = 7.dp),
@@ -617,7 +618,7 @@ private fun BotaoExplicacao(
         modifier = Modifier
             .fillMaxWidth()
             .height(40.dp)
-            .clip(RoundedCornerShape(10.dp))
+            .clip(RoundedCornerShape(14.dp))
             .background(com.franferreira.enem2027.ui.theme.Primary)
             .clickable(enabled = !carregando) { aoClicar() },
         contentAlignment = Alignment.Center,

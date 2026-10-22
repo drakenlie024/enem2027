@@ -53,28 +53,22 @@ fun BotaoGamificado(
     habilitado: Boolean = true,
     aoClicar: () -> Unit,
 ) {
-    val gradiente = if (verde) {
-        Brush.linearGradient(listOf(Color(0xFF3DDC97), Color(0xFF2BB87A)))
-    } else {
-        // O segundo tom é a cor da área clareada — `lerp` é a forma de
-        // interpolar cor no Compose (`blend` não existe).
-        Brush.linearGradient(listOf(cor, lerp(cor, Color.White, 0.28f)))
-    }
+    val fundo = if (verde) com.franferreira.enem2027.ui.theme.Primary else cor
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(52.dp)
-            .shadow(if (habilitado) 12.dp else 0.dp, RoundedCornerShape(16.dp), spotColor = cor)
-            .clip(RoundedCornerShape(16.dp))
-            .background(if (habilitado) gradiente else Brush.linearGradient(listOf(SurfaceBorder, SurfaceBorder)))
+            .height(54.dp)
+            .shadow(if (habilitado) 10.dp else 0.dp, RoundedCornerShape(27.dp), spotColor = fundo)
+            .clip(RoundedCornerShape(27.dp))
+            .background(if (habilitado) fundo else SurfaceBorder)
             .clickable(enabled = habilitado) { aoClicar() },
         contentAlignment = Alignment.Center,
     ) {
         Text(
             text = texto,
             style = MaterialTheme.typography.labelLarge,
-            fontWeight = FontWeight.ExtraBold,
-            color = if (habilitado) Color.White else TextMuted,
+            fontWeight = FontWeight.Bold,
+            color = if (habilitado) com.franferreira.enem2027.ui.theme.Background else TextMuted,
         )
     }
 }
@@ -88,9 +82,9 @@ fun CartaoGamificado(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
+            .clip(RoundedCornerShape(22.dp))
             .background(Brush.verticalGradient(listOf(Color(0xFF1A1F2C), Surface)))
-            .border(1.dp, Color(0xFF262D3C), RoundedCornerShape(18.dp))
+            .border(1.dp, Color(0xFF262D3C), RoundedCornerShape(22.dp))
             .padding(14.dp),
     ) {
         conteudo()
@@ -195,9 +189,9 @@ fun AlternativaGamificada(
     Row(
         modifier = modificador
             .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
+            .clip(RoundedCornerShape(18.dp))
             .background(fundo)
-            .border(1.5.dp, borda, RoundedCornerShape(14.dp))
+            .border(1.5.dp, borda, RoundedCornerShape(18.dp))
             .clickable { aoClicar() }
             .padding(11.dp),
         verticalAlignment = Alignment.CenterVertically,

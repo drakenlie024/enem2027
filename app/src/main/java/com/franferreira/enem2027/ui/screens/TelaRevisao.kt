@@ -198,13 +198,13 @@ private fun CartaoContagem(
 ) {
     Column(
         modifier = modifier
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(20.dp))
             .background(
                 androidx.compose.ui.graphics.Brush.verticalGradient(
                     listOf(cor.copy(alpha = 0.16f), Surface),
                 )
             )
-            .border(1.dp, cor.copy(alpha = 0.30f), RoundedCornerShape(16.dp))
+            .border(1.dp, cor.copy(alpha = 0.30f), RoundedCornerShape(20.dp))
             .padding(12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -232,9 +232,9 @@ private fun CartaoFila(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(16.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
             .clickable { aoClicar() }
             .padding(12.dp),
     ) {
@@ -279,7 +279,7 @@ private fun CartaoFila(
             Spacer(Modifier.height(8.dp))
             Box(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(8.dp))
+                    .clip(RoundedCornerShape(12.dp))
                     .background(SurfaceRaised)
                     .clickable { mostrandoExplicacao = !mostrandoExplicacao }
                     .padding(horizontal = 10.dp, vertical = 6.dp),

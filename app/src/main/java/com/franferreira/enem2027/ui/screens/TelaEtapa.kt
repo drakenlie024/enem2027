@@ -215,7 +215,7 @@ fun TelaEtapa(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(200.dp)
-                                    .clip(RoundedCornerShape(12.dp))
+                                    .clip(RoundedCornerShape(16.dp))
                                     .background(SurfaceRaised),
                             )
                             Spacer(Modifier.height(10.dp))
@@ -230,9 +230,9 @@ fun TelaEtapa(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(12.dp))
+                            .clip(RoundedCornerShape(16.dp))
                             .background(Surface)
-                            .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
+                            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
                             .padding(12.dp),
                     ) {
                         Text(
@@ -272,7 +272,7 @@ fun TelaEtapa(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(12.dp))
+                        .clip(RoundedCornerShape(16.dp))
                         .background(
                             when {
                                 mostrarCerto -> Secondary.copy(alpha = 0.12f)
@@ -288,7 +288,7 @@ fun TelaEtapa(
                                 mostrarErrado -> com.franferreira.enem2027.ui.theme.Danger.copy(alpha = 0.6f)
                                 else -> SurfaceBorder
                             },
-                            RoundedCornerShape(12.dp),
+                            RoundedCornerShape(16.dp),
                         )
                         .clickable(enabled = !respondida) {
                             escolhida = alternativa.letra
@@ -345,9 +345,9 @@ fun TelaEtapa(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(12.dp))
+                            .clip(RoundedCornerShape(16.dp))
                             .background(Surface)
-                            .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(12.dp))
+                            .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(16.dp))
                             .padding(12.dp),
                     ) {
                         Column {
@@ -383,7 +383,7 @@ fun TelaEtapa(
                 modifier = Modifier
                     .weight(1f)
                     .height(46.dp)
-                    .clip(RoundedCornerShape(12.dp))
+                    .clip(RoundedCornerShape(16.dp))
                     .background(if (indice == 0) SurfaceRaised else SurfaceRaised)
                     .clickable(enabled = indice > 0) {
                         indice -= 1
@@ -405,7 +405,7 @@ fun TelaEtapa(
                 modifier = Modifier
                     .weight(1.4f)
                     .height(46.dp)
-                    .clip(RoundedCornerShape(12.dp))
+                    .clip(RoundedCornerShape(16.dp))
                     .background(if (respondida) cor else SurfaceRaised)
                     .clickable {
                         if (!respondida) {

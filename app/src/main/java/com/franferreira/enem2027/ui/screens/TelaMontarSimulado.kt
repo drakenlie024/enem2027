@@ -107,12 +107,12 @@ fun TelaMontarSimulado(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = 8.dp)
-                    .clip(RoundedCornerShape(12.dp))
+                    .clip(RoundedCornerShape(16.dp))
                     .background(if (selecionado) Primary.copy(alpha = 0.14f) else Surface)
                     .border(
                         1.dp,
                         if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                        RoundedCornerShape(12.dp),
+                        RoundedCornerShape(16.dp),
                     )
                     .clickable { tipo = chave }
                     .padding(13.dp),
@@ -162,12 +162,12 @@ fun TelaMontarSimulado(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 6.dp)
-                        .clip(RoundedCornerShape(10.dp))
+                        .clip(RoundedCornerShape(14.dp))
                         .background(if (selecionado) Primary.copy(alpha = 0.14f) else Surface)
                         .border(
                             1.dp,
                             if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                            RoundedCornerShape(10.dp),
+                            RoundedCornerShape(14.dp),
                         )
                         .clickable { area = chave }
                         .padding(12.dp),
@@ -195,12 +195,12 @@ fun TelaMontarSimulado(
                         modifier = Modifier
                             .weight(1f)
                             .height(34.dp)
-                            .clip(RoundedCornerShape(9.dp))
+                            .clip(RoundedCornerShape(13.dp))
                             .background(if (selecionado) Primary.copy(alpha = 0.16f) else Surface)
                             .border(
                                 1.dp,
                                 if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                                RoundedCornerShape(9.dp),
+                                RoundedCornerShape(13.dp),
                             )
                             .clickable { ano = valor },
                         contentAlignment = Alignment.Center,
@@ -224,12 +224,12 @@ fun TelaMontarSimulado(
                     modifier = Modifier
                         .weight(1f)
                         .height(34.dp)
-                        .clip(RoundedCornerShape(9.dp))
+                        .clip(RoundedCornerShape(13.dp))
                         .background(if (selecionado) Primary.copy(alpha = 0.16f) else Surface)
                         .border(
                             1.dp,
                             if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                            RoundedCornerShape(9.dp),
+                            RoundedCornerShape(13.dp),
                         )
                         .clickable { quantidade = n },
                     contentAlignment = Alignment.Center,
@@ -248,7 +248,7 @@ fun TelaMontarSimulado(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
+                    .clip(RoundedCornerShape(16.dp))
                     .background(SurfaceRaised)
                     .padding(12.dp),
             ) {
@@ -276,7 +276,7 @@ fun TelaMontarSimulado(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(52.dp)
-                    .clip(RoundedCornerShape(16.dp))
+                    .clip(RoundedCornerShape(20.dp))
                     .background(SurfaceBorder),
                 contentAlignment = Alignment.Center,
             ) {

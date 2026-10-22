@@ -113,7 +113,7 @@ fun TelaAgenda(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
+                    .clip(RoundedCornerShape(16.dp))
                     .background(com.franferreira.enem2027.ui.theme.Danger.copy(alpha = 0.12f))
                     .clickable {
                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
@@ -145,12 +145,12 @@ fun TelaAgenda(
                         modifier = Modifier
                             .weight(1f)
                             .height(38.dp)
-                            .clip(RoundedCornerShape(10.dp))
+                            .clip(RoundedCornerShape(14.dp))
                             .background(if (ativo) Primary.copy(alpha = 0.16f) else Surface)
                             .border(
                                 1.dp,
                                 if (ativo) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                                RoundedCornerShape(10.dp),
+                                RoundedCornerShape(14.dp),
                             )
                             .clickable { aoAlternar(indice, chave) },
                         contentAlignment = Alignment.Center,
@@ -183,7 +183,7 @@ fun TelaAgenda(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
-                .clip(RoundedCornerShape(12.dp))
+                .clip(RoundedCornerShape(16.dp))
                 .background(if (diasSelecionados.isEmpty()) SurfaceBorder else Primary)
                 .clickable(enabled = diasSelecionados.isNotEmpty()) { aoSalvar() },
             contentAlignment = Alignment.Center,
@@ -206,7 +206,7 @@ fun TelaAgenda(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(14.dp))
                     .background(SurfaceRaised)
                     .padding(12.dp),
             ) {

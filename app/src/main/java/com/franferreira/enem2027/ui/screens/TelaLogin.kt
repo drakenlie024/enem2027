@@ -97,16 +97,12 @@ fun TelaLogin(
 
         Box(
             modifier = Modifier
-                .size(64.dp)
-                .clip(RoundedCornerShape(18.dp))
-                .background(Brush.linearGradient(listOf(Primary, Secondary))),
+                .size(76.dp)
+                .clip(RoundedCornerShape(24.dp))
+                .background(SurfaceRaised),
             contentAlignment = Alignment.Center,
         ) {
-            Text(
-                text = "L",
-                style = MaterialTheme.typography.headlineMedium,
-                color = Background,
-            )
+            com.franferreira.enem2027.ui.components.Gizinho(tamanho = 64.dp)
         }
 
         Spacer(Modifier.height(20.dp))
@@ -221,7 +217,7 @@ fun TelaLogin(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(52.dp)
-                        .clip(RoundedCornerShape(16.dp))
+                        .clip(RoundedCornerShape(20.dp))
                         .background(SurfaceBorder),
                     contentAlignment = Alignment.Center,
                 ) {

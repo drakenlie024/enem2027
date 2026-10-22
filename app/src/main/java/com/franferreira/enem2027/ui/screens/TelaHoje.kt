@@ -127,15 +127,14 @@ fun TelaHoje(
                 }
                 Box(
                     modifier = Modifier
-                        .size(34.dp)
-                        .clip(RoundedCornerShape(10.dp))
-                        .background(Brush.linearGradient(listOf(Primary, Secondary))),
+                        .size(44.dp)
+                        .clip(RoundedCornerShape(18.dp))
+                        .background(SurfaceRaised),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Text(
-                        text = "FR",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = Background,
+                    com.franferreira.enem2027.ui.components.Gizinho(
+                        tamanho = 40.dp,
+                        dormindo = estado.respondidasHoje == 0 && estado.streak == 0,
                     )
                 }
             }
@@ -161,9 +160,9 @@ fun TelaHoje(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(14.dp))
+                    .clip(RoundedCornerShape(18.dp))
                     .background(Surface)
-                    .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+                    .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
                     .padding(14.dp),
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -191,7 +190,7 @@ fun TelaHoje(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(10.dp))
+                        .clip(RoundedCornerShape(14.dp))
                         .background(SurfaceRaised)
                         .padding(12.dp),
                 ) {
@@ -317,7 +316,7 @@ fun TelaHoje(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(12.dp))
+                            .clip(RoundedCornerShape(16.dp))
                             .background(Surface)
                             .padding(20.dp),
                     ) {
@@ -366,13 +365,13 @@ private fun CartaoMeta(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
+            .clip(RoundedCornerShape(22.dp))
             .background(
                 Brush.verticalGradient(
                     listOf(cor.copy(alpha = 0.10f), Surface)
                 )
             )
-            .border(1.dp, cor.copy(alpha = 0.28f), RoundedCornerShape(18.dp))
+            .border(1.dp, cor.copy(alpha = 0.28f), RoundedCornerShape(22.dp))
             .padding(18.dp),
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -498,9 +497,9 @@ private fun CartaoTrilha(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Brush.verticalGradient(listOf(Color(0xFF1A1F2C), Surface)))
-            .border(1.dp, Color(0xFF262D3C), RoundedCornerShape(18.dp))
+            .clip(RoundedCornerShape(22.dp))
+            .background(Brush.verticalGradient(listOf(SurfaceRaised, Surface)))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(22.dp))
             .clickable { aoAbrir() }
             .padding(14.dp),
     ) {
@@ -619,7 +618,7 @@ private fun ColunaStat(valor: String, rotulo: String, modifier: Modifier = Modif
 private fun BotaoAno(ano: Int, carregando: Boolean, aoClicar: () -> Unit) {
     Box(
         modifier = Modifier
-            .clip(RoundedCornerShape(10.dp))
+            .clip(RoundedCornerShape(14.dp))
             .background(if (carregando) SurfaceRaised else Primary)
             .clickable(enabled = !carregando) { aoClicar() }
             .padding(horizontal = 14.dp, vertical = 9.dp),

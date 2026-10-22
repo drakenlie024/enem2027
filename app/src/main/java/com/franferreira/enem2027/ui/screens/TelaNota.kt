@@ -1,5 +1,8 @@
 package com.franferreira.enem2027.ui.screens
 
+import com.franferreira.enem2027.ui.theme.Secondary
+import com.franferreira.enem2027.ui.theme.Primary
+import com.franferreira.enem2027.ui.theme.Warning
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -249,9 +252,9 @@ private fun CartaoArea(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(20.dp))
             .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(20.dp))
             .padding(13.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
