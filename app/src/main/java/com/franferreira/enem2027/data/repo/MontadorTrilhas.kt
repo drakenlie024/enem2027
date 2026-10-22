@@ -171,18 +171,23 @@ class MontadorTrilhas(
         etapasConcluidas: Map<String, List<Int>>,
         resultadoPorEtapa: Map<String, Map<Int, ResultadoEtapa>>,
     ): Etapa {
-        val concluida = indice in (etapasConcluidas[trilhaId] ?: emptyList())
         val resultado = resultadoPorEtapa[trilhaId]?.get(indice)
+        // Na trilha ADAPTATIVA, a etapa é identificada pelo TEMA, não pelo
+        // índice: o SRS reordena as etapas a cada montagem, e o índice não
+        // é uma chave estável. Sem isso, uma etapa aparece concluída com um
+        // tema que o usuário nunca fez.
+        val temaConfere = resultado?.tema == null || resultado.tema == nome
+        val concluida = indice in (etapasConcluidas[trilhaId] ?: emptyList()) && temaConfere
         return Etapa(
             indice = indice,
             nome = nome,
             apoio = apoio,
             questoes = questoes,
             concluida = concluida,
-            acertos = resultado?.acertos ?: 0,
-            total = resultado?.total ?: questoes.size,
-            segundos = resultado?.segundos ?: 0,
-            xp = resultado?.xp ?: 0,
+            acertos = if (temaConfere) resultado?.acertos ?: 0 else 0,
+            total = if (temaConfere) resultado?.total ?: questoes.size else questoes.size,
+            segundos = if (temaConfere) resultado?.segundos ?: 0 else 0,
+            xp = if (temaConfere) resultado?.xp ?: 0 else 0,
         )
     }
 
@@ -226,4 +231,13 @@ data class ResultadoEtapa(
     val total: Int,
     val segundos: Int,
     val xp: Int,
+    /**
+     * Tema da etapa quando ela foi concluída.
+     *
+     * Existe para a trilha ADAPTATIVA: lá as etapas são reordenadas a cada
+     * montagem (o SRS muda), e o índice não é uma chave estável. Comparando
+     * o tema, uma etapa só aparece como concluída se for o MESMO tema que o
+     * usuário fez — não o que ocupa o lugar dela agora.
+     */
+    val tema: String? = null,
 )

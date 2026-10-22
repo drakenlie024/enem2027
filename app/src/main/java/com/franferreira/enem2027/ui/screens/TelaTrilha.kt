@@ -132,7 +132,11 @@ fun TelaTrilha(
             }
 
             itemsIndexed(trilha.etapas) { indice, etapa ->
-                val eAtual = indice == trilha.proximaEtapa
+                // "Atual" é a primeira etapa que dá para JOGAR (tem questões).
+                // Usar a primeira não-concluída trava a trilha: com um ano só
+                // baixado, uma etapa sem questões viraria a atual e o usuário
+                // não conseguiria passar dela.
+                val eAtual = indice == trilha.primeiraJogavel
                 val eTravada = !etapa.concluida && !eAtual
                 val estado = when {
                     etapa.concluida -> "feito"

@@ -59,6 +59,7 @@ import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Surface
 import com.franferreira.enem2027.ui.theme.TextMuted
 import com.franferreira.enem2027.ui.theme.TextPrimary
+import com.franferreira.enem2027.ui.theme.corDaArea
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -230,8 +231,24 @@ fun EnemApp() {
             composable("etapa") {
                 val etapa = estado.etapaEmAndamento
                 val trilha = estado.trilhaAberta
-                if (etapa == null || trilha == null) {
-                    Box(
+                val resumo = estado.resumoEtapa
+                when {
+                    // Resumo da etapa concluída: fica no lugar até o usuário
+                    // fechar. Antes ele era gravado no estado e nunca
+                    // mostrado — a etapa acabava sem nenhum retorno visual.
+                    resumo != null -> ResumoEtapa(
+                        tema = resumo.tema,
+                        acertos = resumo.acertos,
+                        total = resumo.total,
+                        segundos = resumo.segundos,
+                        xp = resumo.xp,
+                        cor = corDaArea(trilha?.area),
+                        aoFechar = {
+                            vm.fecharResumo()
+                            navController.popBackStack()
+                        },
+                    )
+                    etapa == null || trilha == null -> Box(
                         Modifier
                             .fillMaxSize()
                             .background(Background),
@@ -242,16 +259,17 @@ fun EnemApp() {
                             color = TextMuted,
                         )
                     }
-                } else {
-                    TelaEtapa(
+                    else -> TelaEtapa(
                         etapa = etapa,
                         area = trilha.area,
+                        // Etapa já concluída: é revisão, não dá XP nem mexe
+                        // no SRS.
+                        revisando = etapa.concluida,
                         aoResponder = { questionId, correta, segundos ->
                             vm.responder(questionId, correta, segundos)
                         },
                         aoConcluir = { acertos, segundos ->
                             vm.concluirEtapa(acertos, segundos)
-                            navController.popBackStack()
                         },
                         aoVoltar = {
                             vm.fecharEtapa()

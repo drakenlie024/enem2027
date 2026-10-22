@@ -60,7 +60,7 @@ interface QuestionDao {
     @Query(
         """
         SELECT q.tema AS tema,
-               q.area AS area,
+               MIN(q.area) AS area,
                SUM(CASE WHEN p.lastQuality >= 3 THEN 1 ELSE 0 END) AS acertos,
                SUM(CASE WHEN p.lastQuality < 3 THEN 1 ELSE 0 END) AS erros,
                COUNT(*) AS total
@@ -107,6 +107,15 @@ interface QuestionDao {
 
     @Query("SELECT COUNT(*) FROM progress WHERE dueAt <= :agora AND state != 'seen'")
     suspend fun pendentesProgresso(agora: Long): Int
+
+    /**
+     * Quantas questões foram respondidas hoje.
+     *
+     * É o que o anel da meta mostra. Antes, a tela usava o saldo do SRS
+     * (`pendentes`), que é o que FALTA — cada resposta diminuía o anel.
+     */
+    @Query("SELECT COUNT(*) FROM progress WHERE lastReviewedAt >= :inicioDoDia")
+    suspend fun respondidasHoje(inicioDoDia: Long): Int
 
     @Query("SELECT COUNT(*) FROM questions WHERE id IN (SELECT questionId FROM progress WHERE dueAt <= :agora AND state != 'seen')")
     suspend fun pendentes(agora: Long): Int
@@ -227,6 +236,9 @@ interface TrilhaEtapaDao {
     @Query("SELECT * FROM trilha_etapas")
     suspend fun todos(): List<TrilhaEtapaEntity>
 
+    @Query("SELECT * FROM trilha_etapas WHERE trilhaId = :trilhaId AND etapa = :etapa")
+    suspend fun porEtapa(trilhaId: String, etapa: Int): TrilhaEtapaEntity?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun salvar(item: TrilhaEtapaEntity)
 
@@ -248,8 +260,8 @@ interface TrilhaEtapaDao {
         SimuladoEntity::class,
         TrilhaEtapaEntity::class,
     ],
-    version = 2,
-    exportSchema = false,
+    version = 3,
+    exportSchema = true,
 )
 abstract class EnemDatabase : RoomDatabase() {
     abstract fun questions(): QuestionDao
@@ -265,13 +277,67 @@ abstract class EnemDatabase : RoomDatabase() {
         @Volatile
         private var instance: EnemDatabase? = null
 
+        /**
+         * Migração 1 → 2: as trilhas.
+         *
+         * Adiciona a coluna `explicacao` em `questions` (a explicação
+         * offline, gerada no servidor) e cria a tabela `trilha_etapas`.
+         *
+         * IMPORTANTE: não existe `fallbackToDestructiveMigration()`. O
+         * fallback do Room apaga TODAS as tabelas no upgrade — e aqui o banco
+         * local É o produto: o acervo baixado, o SRS inteiro e as respostas
+         * ainda não sincronizadas vivem só no aparelho. Destruir isso no
+         * upgrade seria perder o trabalho de semanas sem aviso.
+         */
+        val MIGRACAO_1_2 = object : androidx.room.migration.Migration(1, 2) {
+            override fun migrate(db: androidx.sqlite.db.SupportSQLiteDatabase) {
+                db.execSQL(
+                    "ALTER TABLE questions ADD COLUMN explicacao TEXT"
+                )
+                db.execSQL(
+                    """
+                    CREATE TABLE IF NOT EXISTS `trilha_etapas` (
+                        `trilhaId` TEXT NOT NULL,
+                        `etapa` INTEGER NOT NULL,
+                        `area` TEXT NOT NULL,
+                        `tema` TEXT NOT NULL,
+                        `acertos` INTEGER NOT NULL,
+                        `total` INTEGER NOT NULL,
+                        `segundos` INTEGER NOT NULL,
+                        `xp` INTEGER NOT NULL,
+                        `concluidaEm` INTEGER NOT NULL,
+                        `synced` INTEGER NOT NULL,
+                        PRIMARY KEY(`trilhaId`, `etapa`)
+                    )
+                    """.trimIndent()
+                )
+            }
+        }
+
+        /**
+         * Migração 2 → 3: o schema não muda (a v3 é a v2 com a migration
+         * 1→2 no lugar do fallback destrutivo).
+         *
+         * Existe porque o APK intermediário foi publicado com `version = 2` e
+         * `fallbackToDestructiveMigration()`: quem o instalou tem um banco v2,
+         * e o Room precisa de um caminho declarado de 2 para 3 — mesmo que
+         * o caminho seja vazio.
+         */
+        val MIGRACAO_2_3 = object : androidx.room.migration.Migration(2, 3) {
+            override fun migrate(db: androidx.sqlite.db.SupportSQLiteDatabase) {
+                // Nada a fazer: o schema da v3 é idêntico ao da v2.
+            }
+        }
+
         fun get(context: android.content.Context): EnemDatabase =
             instance ?: synchronized(this) {
                 instance ?: androidx.room.Room.databaseBuilder(
                     context.applicationContext,
                     EnemDatabase::class.java,
                     "enem2027.db",
-                ).fallbackToDestructiveMigration().build().also { instance = it }
+                )
+                    .addMigrations(MIGRACAO_1_2, MIGRACAO_2_3)
+                    .build().also { instance = it }
             }
     }
 }

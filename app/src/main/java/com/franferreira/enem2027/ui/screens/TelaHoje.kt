@@ -304,7 +304,9 @@ private fun CartaoMeta(
     aoAjustarMeta: (Int) -> Unit,
 ) {
     val meta = estado.metaDiaria
-    val feitas = estado.pendentes.coerceAtMost(meta)
+    // O anel mostra o que foi FEITO hoje. Antes usava o saldo do SRS (o que
+    // falta), e cada resposta diminuía o anel — ao contrário do esperado.
+    val feitas = estado.respondidasHoje.coerceAtMost(meta)
     val progresso = if (meta <= 0) 0f else feitas.toFloat() / meta
     val trilha = estado.trilhaParaJogar
     val etapa = trilha?.etapaAtual

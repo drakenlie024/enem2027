@@ -17,6 +17,8 @@ import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.data.model.Trilha
 import com.franferreira.enem2027.data.model.YearInfo
 import com.franferreira.enem2027.data.remote.ApiClient
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -102,12 +104,21 @@ class Repositorio(private val context: Context) {
      * mostra "IA" na questão. Nunca se misturam.
      */
     suspend fun baixarQuestoesDeIA(): Result<Int> = runCatching {
-        val pacote = api.acervoDeIA(limit = 200)
-        val entidades = pacote.questoes.map { it.paraEntidade(pacote.versao) }
-        if (entidades.isNotEmpty()) {
+        // Paginado: a API entrega no máximo 200 por requisição, e pedir só
+        // a primeira página deixava as demais (quando houvesse mais de 200)
+        // para sempre.
+        var total = 0
+        var offset = 0
+        while (true) {
+            val pacote = api.acervoDeIA(limit = 200, offset = offset)
+            if (pacote.questoes.isEmpty()) break
+            val entidades = pacote.questoes.map { it.paraEntidade(pacote.versao) }
             db.questions().inserir(entidades)
+            total += entidades.size
+            offset += pacote.questoes.size
+            if (pacote.questoes.size < 200) break
         }
-        entidades.size
+        total
     }
 
     suspend fun totalLocal(ano: Int): Int = db.questions().totalDoAno(ano)
@@ -125,6 +136,20 @@ class Repositorio(private val context: Context) {
     }
 
     suspend fun pendentes(): Int = db.questions().pendentes(System.currentTimeMillis())
+
+    /**
+     * Quantas questões foram respondidas hoje (para o anel da meta).
+     *
+     * A contagem é do dia LOCAL do aparelho: o usuário estuda à noite e o
+     * "hoje" dele é o dia dele, não o do servidor.
+     */
+    suspend fun respondidasHoje(): Int {
+        val inicioDoDia = java.time.LocalDate.now()
+            .atStartOfDay(java.time.ZoneId.systemDefault())
+            .toInstant()
+            .toEpochMilli()
+        return db.questions().respondidasHoje(inicioDoDia)
+    }
 
     /**
      * A fila de revisão separada por estado de memória.
@@ -181,6 +206,7 @@ class Repositorio(private val context: Context) {
     /** Monta as trilhas com as questões do aparelho e o SRS local. */
     suspend fun trilhas(): List<Trilha> {
         val curriculo = curriculoTrilhas()
+        importarProgressoDoServidor(curriculo)
         val montador = MontadorTrilhas(db)
 
         val stats = db.questions().statsPorTema().associate { it.tema to
@@ -198,15 +224,60 @@ class Repositorio(private val context: Context) {
             .mapValues { (_, lista) -> lista.map { it.etapa } }
         val resultados = etapasLocais.groupBy { it.trilhaId }
             .mapValues { (_, lista) ->
-                lista.associate { it.etapa to ResultadoEtapa(it.acertos, it.total, it.segundos, it.xp) }
+                lista.associate {
+                    it.etapa to ResultadoEtapa(
+                        acertos = it.acertos,
+                        total = it.total,
+                        segundos = it.segundos,
+                        xp = it.xp,
+                        tema = it.tema,
+                    )
+                }
             }
 
-        return montador.montar(
-            curriculo = curriculo,
-            statsPorTema = stats,
-            etapasConcluidas = concluidas,
-            resultadoPorEtapa = resultados,
-        )
+        // A montagem faz mais de 100 queries (uma por etapa e por tema de
+        // apoio) e converte centenas de questões. Na thread principal, a
+        // tela "Hoje" travava ao abrir depois de um sync.
+        return withContext(Dispatchers.Default) {
+            montador.montar(
+                curriculo = curriculo,
+                statsPorTema = stats,
+                etapasConcluidas = concluidas,
+                resultadoPorEtapa = resultados,
+            )
+        }
+    }
+
+    /**
+     * Importa o progresso de etapas que o servidor tem.
+     *
+     * Sem isso, num aparelho novo (ou depois de um app apagado) as trilhas
+     * apareceriam zeradas, mesmo com o progresso no servidor. Só entra o que
+     * ainda não está aqui — o que o aparelho tem sempre ganha.
+     */
+    private suspend fun importarProgressoDoServidor(curriculo: CurriculoTrilhas) {
+        if (curriculo.progresso.isEmpty()) return
+        val locais = db.trilhaEtapas().todos().map { it.trilhaId to it.etapa }.toSet()
+        val novas = curriculo.progresso.flatMap { (trilhaId, etapas) ->
+            etapas.filterNot { (trilhaId to it) in locais }.map { trilhaId to it }
+        }
+        if (novas.isEmpty()) return
+        for ((trilhaId, etapa) in novas) {
+            db.trilhaEtapas().salvar(
+                TrilhaEtapaEntity(
+                    trilhaId = trilhaId,
+                    etapa = etapa,
+                    area = "",
+                    tema = "",
+                    acertos = 0,
+                    total = 0,
+                    segundos = 0,
+                    xp = 0,
+                    // Veio do servidor: não precisa ser reenviado.
+                    synced = true,
+                ),
+            )
+        }
     }
 
     /**
@@ -214,6 +285,10 @@ class Repositorio(private val context: Context) {
      *
      * Grava local na hora (a trilha já mostra a etapa como concluída, sem
      * esperar a rede) e enfileira para o servidor.
+     *
+     * Guarda a MELHOR tentativa, como o servidor faz. Com REPLACE, refazer
+     * a etapa e piorar sobrescrevia o placar bom — e a divergência aparecia
+     * justamente ao trocar de aparelho.
      */
     suspend fun registrarEtapa(
         trilhaId: String,
@@ -225,16 +300,18 @@ class Repositorio(private val context: Context) {
         segundos: Int,
         xp: Int,
     ) {
+        val anterior = db.trilhaEtapas().porEtapa(trilhaId, etapa)
+        val melhor = anterior == null || acertos >= anterior.acertos
         db.trilhaEtapas().salvar(
             TrilhaEtapaEntity(
                 trilhaId = trilhaId,
                 etapa = etapa,
                 area = area,
                 tema = tema,
-                acertos = acertos,
-                total = total,
-                segundos = segundos,
-                xp = xp,
+                acertos = if (melhor) acertos else anterior.acertos,
+                total = if (melhor) total else anterior.total,
+                segundos = if (melhor) segundos else anterior.segundos,
+                xp = if (melhor) xp else anterior.xp,
                 synced = false,
             ),
         )

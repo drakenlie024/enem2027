@@ -50,6 +50,8 @@ data class EstadoHoje(
     val mensagemSimulado: String? = null,
     /** Fila de questões geradas por IA aguardando aprovação. */
     val filaAprovacao: List<QuestaoPendente> = emptyList(),
+    /** Questões respondidas hoje (é o que o anel da meta mostra). */
+    val respondidasHoje: Int = 0,
     val xp: Int = 0,
     val nivel: Int = 1,
     val streak: Int = 0,
@@ -193,6 +195,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                 temas = temas,
                 totalLocal = anos.sumOf { repo.totalLocal(it) },
                 pendentes = repo.pendentes(),
+                respondidasHoje = repo.respondidasHoje(),
                 xp = gam?.xp ?: 0,
                 nivel = gam?.level ?: 1,
                 streak = gam?.streak ?: 0,
@@ -568,7 +571,13 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
     fun carregarTrilhas() {
         viewModelScope.launch {
             val trilhas = repo.trilhas()
-            _estado.value = _estado.value.copy(trilhas = trilhas)
+            // A trilha ABERTA é re-derivada da lista nova: sem isso, quem
+            // conclui uma etapa de dentro da tela de trilha volta e vê o
+            // mesmo nó pulsando como "atual", e pode refazê-la à toa.
+            val aberta = _estado.value.trilhaAberta?.let { atual ->
+                trilhas.firstOrNull { it.id == atual.id } ?: atual
+            }
+            _estado.value = _estado.value.copy(trilhas = trilhas, trilhaAberta = aberta)
         }
     }
 

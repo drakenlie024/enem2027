@@ -62,6 +62,9 @@ import androidx.compose.runtime.rememberCoroutineScope
  * não há pressa: o usuário responde, vê o gabarito e a explicação offline, e
  * segue. O resultado sai no resumo com os números.
  */
+/** O que o usuário respondeu numa questão: a letra e se acertou. */
+private data class Resposta(val letra: String, val acertou: Boolean)
+
 @Composable
 fun TelaEtapa(
     etapa: Etapa,
@@ -69,17 +72,28 @@ fun TelaEtapa(
     aoResponder: (questionId: String, correta: Boolean, segundos: Float?) -> Unit,
     aoConcluir: (acertos: Int, segundos: Int) -> Unit,
     aoVoltar: () -> Unit,
+    /** Etapa já concluída: é revisão, não dá XP nem mexe no SRS. */
+    revisando: Boolean = false,
 ) {
     var indice by remember { mutableStateOf(0) }
     var escolhida by remember { mutableStateOf<String?>(null) }
-    var respondida by remember { mutableStateOf(false) }
-    var acertos by remember { mutableStateOf(0) }
+    // As respondidas são guardadas por ID, não por estado de tela. Antes, o
+    // botão "Anterior" zerava a flag e a questão podia ser respondida de
+    // novo — o XP contava duas vezes e o SRS era aplicado duas vezes.
+    // O valor carrega a LETRA escolhida, para o botão "Anterior" restaurar
+    // a alternativa marcada.
+    var respondidas by remember { mutableStateOf<Map<String, Resposta>>(emptyMap()) }
     // `var`: a cada questão o cronômetro reinicia, para medir só o tempo
     // da questão que está na tela.
     var inicio by remember { mutableStateOf(System.currentTimeMillis()) }
+    // Início da ETAPA: é o que vai para o placar. Misturar com o início da
+    // questão fazia a etapa de 20 minutos registrar 15 segundos.
+    val inicioEtapa = remember { System.currentTimeMillis() }
     val scope = rememberCoroutineScope()
 
     val questao: Question? = etapa.questoes.getOrNull(indice)
+    val respondida = questao?.id?.let { respondidas.containsKey(it) } ?: false
+    val acertos = respondidas.count { it.value.acertou }
     val cor = corDaArea(area)
 
     Column(
@@ -116,12 +130,14 @@ fun TelaEtapa(
                 }
             }
             Spacer(Modifier.height(8.dp))
-            // Pips: um segmento por questão. Verde = respondida e acertada.
+            // Pips: um segmento por questão. Verde = respondida e acertada,
+            // vermelho = respondida e errada, cor da área = a atual.
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(3.dp),
             ) {
-                etapa.questoes.forEachIndexed { i, _ ->
+                etapa.questoes.forEachIndexed { i, q ->
+                    val acertou = respondidas[q.id]?.acertou
                     Box(
                         modifier = Modifier
                             .weight(1f)
@@ -129,7 +145,9 @@ fun TelaEtapa(
                             .clip(CircleShape)
                             .background(
                                 when {
-                                    i < indice -> Secondary
+                                    acertou == true -> Secondary
+                                    acertou == false ->
+                                        com.franferreira.enem2027.ui.theme.Danger
                                     i == indice -> cor
                                     else -> SurfaceRaised
                                 }
@@ -247,15 +265,19 @@ fun TelaEtapa(
                         )
                         .clickable(enabled = !respondida) {
                             escolhida = alternativa.letra
-                            respondida = true
                             val acertou = gabarito != null &&
                                 alternativa.letra.equals(gabarito, ignoreCase = true)
-                            if (acertou) acertos += 1
-                            aoResponder(
-                                questao.id,
-                                acertou,
-                                (System.currentTimeMillis() - inicio) / 1000f,
-                            )
+                            respondidas = respondidas + (questao.id to Resposta(alternativa.letra, acertou))
+                            if (!revisando) {
+                                // Em revisão, a resposta NÃO vale XP nem mexe no
+                                // SRS: repetir etapa concluída não pode ser XP
+                                // de graça.
+                                aoResponder(
+                                    questao.id,
+                                    acertou,
+                                    (System.currentTimeMillis() - inicio) / 1000f,
+                                )
+                            }
                         }
                         .padding(12.dp),
                     verticalAlignment = Alignment.Top,
@@ -338,8 +360,10 @@ fun TelaEtapa(
                     .background(if (indice == 0) SurfaceRaised else SurfaceRaised)
                     .clickable(enabled = indice > 0) {
                         indice -= 1
-                        escolhida = null
-                        respondida = false
+                        // A resposta fica guardada por ID: voltar não
+                        // "desresponde", só mostra o que já foi feito.
+                        escolhida = respondidas[etapa.questoes.getOrNull(indice)?.id]?.letra
+                        inicio = System.currentTimeMillis()
                     },
                 contentAlignment = Alignment.Center,
             ) {
@@ -363,12 +387,12 @@ fun TelaEtapa(
                         }
                         if (indice < etapa.questoes.lastIndex) {
                             indice += 1
-                            escolhida = null
-                            respondida = false
+                            escolhida = respondidas[etapa.questoes.getOrNull(indice)?.id]?.letra
                             inicio = System.currentTimeMillis()
                         } else {
+                            // O tempo da ETAPA, não o da última questão.
                             val gasto =
-                                ((System.currentTimeMillis() - inicio) / 1000).toInt()
+                                ((System.currentTimeMillis() - inicioEtapa) / 1000).toInt()
                             aoConcluir(acertos, gasto)
                         }
                     },

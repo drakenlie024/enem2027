@@ -66,6 +66,16 @@ android {
     }
 }
 
+// O schema do Room é versionado no git (app/schemas). É o que permite
+// escrever migration de verdade: sem o JSON, uma mudança de coluna passa
+// despercebida e só aparece como "Room cannot verify the data integrity"
+// — ou, pior, como um `fallbackToDestructiveMigration` que apaga o
+// progresso do usuário.
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+    arg("room.incremental", "true")
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
