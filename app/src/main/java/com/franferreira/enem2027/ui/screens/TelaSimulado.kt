@@ -99,6 +99,9 @@ fun TelaSimulado(
         mutableStateOf(simulado.duracaoMinutos * 60)
     }
     var terminado by remember { mutableStateOf(false) }
+    // A explicação fica recolhida por padrão: no simulado, ver a resposta
+    // antes de responder estragaria a prova.
+    var mostrandoExplicacao by remember { mutableStateOf(false) }
 
     LaunchedEffect(simulado.id) {
         while (segundosRestantes > 0 && !terminado) {
@@ -309,6 +312,39 @@ fun TelaSimulado(
                     }
                 }
                 Spacer(Modifier.height(8.dp))
+            }
+
+            // Botão de explicar. Só aparece DEPOIS de responder: no simulado é
+            // prova, e a explicação antes de responder seria dar a resposta.
+            if (questao.explicacao != null && respostas.containsKey(questao.id)) {
+                item {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(SurfaceRaised)
+                            .clickable { mostrandoExplicacao = !mostrandoExplicacao }
+                            .padding(10.dp),
+                    ) {
+                        Text(
+                            text = if (mostrandoExplicacao) {
+                                "OCULTAR EXPLICAÇÃO"
+                            } else {
+                                "POR QUE ESSA É A RESPOSTA?"
+                            },
+                            style = MaterialTheme.typography.labelSmall,
+                            color = if (mostrandoExplicacao) TextMuted else Primary,
+                        )
+                    }
+                    if (mostrandoExplicacao) {
+                        Spacer(Modifier.height(8.dp))
+                        Text(
+                            text = questao.explicacao!!,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = TextSecondary,
+                        )
+                    }
+                }
             }
         }
 

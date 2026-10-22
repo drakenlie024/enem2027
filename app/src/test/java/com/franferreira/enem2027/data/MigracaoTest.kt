@@ -10,7 +10,6 @@ import com.franferreira.enem2027.data.local.EnemDatabase
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.File
@@ -28,6 +27,11 @@ import java.io.File
  * Como o banco local é o produto (acervo baixado, SRS, respostas não
  * sincronizadas), isso é perda de dado sem aviso. A migração precisa
  * preservar tudo.
+ *
+ * O banco v1 é criado à mão, com o DDL EXATO que o Room gerava para as
+ * entidades da v1 — as 7 tabelas, os índices e a ordem das colunas. Se
+ * divergir do schema que o Room espera, ele rejeita a abertura com
+ * "Migration didn't properly handle", e o teste falha — que é o ponto.
  */
 @RunWith(AndroidJUnit4::class)
 class MigracaoTest {
@@ -47,6 +51,8 @@ class MigracaoTest {
                 .name(nome)
                 .callback(object : SupportSQLiteOpenHelper.Callback(1) {
                     override fun onCreate(db: androidx.sqlite.db.SupportSQLiteDatabase) {
+                        // questions (v1: SEM a coluna `explicacao`, que a
+                        // migração 1->2 adiciona).
                         db.execSQL(
                             """
                             CREATE TABLE IF NOT EXISTS `questions` (
@@ -60,6 +66,12 @@ class MigracaoTest {
                                 PRIMARY KEY(`id`))
                             """.trimIndent()
                         )
+                        db.execSQL("CREATE INDEX IF NOT EXISTS `index_questions_ano` ON `questions` (`ano`)")
+                        db.execSQL("CREATE INDEX IF NOT EXISTS `index_questions_area` ON `questions` (`area`)")
+                        db.execSQL("CREATE INDEX IF NOT EXISTS `index_questions_tema` ON `questions` (`tema`)")
+                        db.execSQL("CREATE INDEX IF NOT EXISTS `index_questions_origem` ON `questions` (`origem`)")
+
+                        // progress
                         db.execSQL(
                             """
                             CREATE TABLE IF NOT EXISTS `progress` (
@@ -71,16 +83,64 @@ class MigracaoTest {
                                 PRIMARY KEY(`questionId`))
                             """.trimIndent()
                         )
+                        db.execSQL("CREATE INDEX IF NOT EXISTS `index_progress_dueAt` ON `progress` (`dueAt`)")
+                        db.execSQL("CREATE INDEX IF NOT EXISTS `index_progress_state` ON `progress` (`state`)")
+
+                        // agenda
                         db.execSQL(
                             """
-                            CREATE TABLE IF NOT EXISTS `trilha_etapas` (
-                                `trilhaId` TEXT NOT NULL, `etapa` INTEGER NOT NULL,
-                                `area` TEXT NOT NULL, `tema` TEXT NOT NULL, `acertos` INTEGER NOT NULL,
-                                `total` INTEGER NOT NULL, `segundos` INTEGER NOT NULL, `xp` INTEGER NOT NULL,
-                                `concluidaEm` INTEGER NOT NULL, `synced` INTEGER NOT NULL,
-                                PRIMARY KEY(`trilhaId`, `etapa`))
+                            CREATE TABLE IF NOT EXISTS `agenda` (
+                                `id` INTEGER NOT NULL, `weekday` INTEGER NOT NULL,
+                                `period` TEXT NOT NULL, `minutesTarget` INTEGER NOT NULL,
+                                PRIMARY KEY(`id`))
                             """.trimIndent()
                         )
+
+                        // gamification
+                        db.execSQL(
+                            """
+                            CREATE TABLE IF NOT EXISTS `gamification` (
+                                `id` INTEGER NOT NULL, `xp` INTEGER NOT NULL, `level` INTEGER NOT NULL,
+                                `streak` INTEGER NOT NULL, `longestStreak` INTEGER NOT NULL,
+                                `lastStudyDate` TEXT, `unlockedJson` TEXT NOT NULL, `synced` INTEGER NOT NULL,
+                                PRIMARY KEY(`id`))
+                            """.trimIndent()
+                        )
+
+                        // essays
+                        db.execSQL(
+                            """
+                            CREATE TABLE IF NOT EXISTS `essays` (
+                                `id` TEXT NOT NULL, `theme` TEXT NOT NULL, `prompt` TEXT, `text` TEXT NOT NULL,
+                                `score` INTEGER, `feedbackJson` TEXT, `createdAt` INTEGER NOT NULL,
+                                `synced` INTEGER NOT NULL,
+                                PRIMARY KEY(`id`))
+                            """.trimIndent()
+                        )
+                        db.execSQL("CREATE INDEX IF NOT EXISTS `index_essays_createdAt` ON `essays` (`createdAt`)")
+
+                        // pending_answers
+                        db.execSQL(
+                            """
+                            CREATE TABLE IF NOT EXISTS `pending_answers` (
+                                `localId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                                `questionId` TEXT NOT NULL, `quality` INTEGER NOT NULL, `correct` INTEGER NOT NULL,
+                                `secondsTaken` REAL, `reviewedAt` INTEGER NOT NULL, `synced` INTEGER NOT NULL)
+                            """.trimIndent()
+                        )
+
+                        // simulados
+                        db.execSQL(
+                            """
+                            CREATE TABLE IF NOT EXISTS `simulados` (
+                                `id` TEXT NOT NULL, `kind` TEXT NOT NULL, `label` TEXT NOT NULL,
+                                `totalQuestions` INTEGER NOT NULL, `correctQuestions` INTEGER NOT NULL,
+                                `durationSeconds` INTEGER NOT NULL, `scoreByAreaJson` TEXT,
+                                `createdAt` INTEGER NOT NULL, `finished` INTEGER NOT NULL, `synced` INTEGER NOT NULL,
+                                PRIMARY KEY(`id`))
+                            """.trimIndent()
+                        )
+                        db.execSQL("CREATE INDEX IF NOT EXISTS `index_simulados_createdAt` ON `simulados` (`createdAt`)")
                     }
 
                     override fun onUpgrade(
@@ -138,12 +198,7 @@ class MigracaoTest {
         // A coluna nova existe e aceita valor (a explicação offline).
         val questao = db.questions().porId("enem-2023-q001")
         assertNotNull(questao)
-        assertTrue(
-            "A coluna explicacao precisa existir depois do upgrade",
-            questao!!.explicacao == null || questao.explicacao!!.isNotBlank() ||
-                questao.explicacao.isNullOrBlank(),
-        )
-
+        // Se a coluna não existisse, o Room nem teria aberto o banco.
         db.close()
     }
 }

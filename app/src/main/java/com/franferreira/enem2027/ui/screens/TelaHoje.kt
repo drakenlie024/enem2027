@@ -81,14 +81,22 @@ fun TelaHoje(
     aoAjustarMeta: (Int) -> Unit,
     aoAtualizarAcervo: () -> Unit,
 ) {
-    Column(
+    // Tudo num único scroll: antes o cabeçalho (anel + estatísticas) ficava
+    // fixo no topo e a lista de trilhas abaixo, dividindo a tela. Em tela
+    // pequena o cabeçalho comia o espaço e a lista ficava espremida, sem
+    // espaço para rolar.
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(
                 Brush.verticalGradient(listOf(BackgroundGradientTop, Background))
             ),
+        contentPadding = androidx.compose.foundation.layout.PaddingValues(
+            start = 16.dp, end = 16.dp, bottom = 24.dp
+        ),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        Column(Modifier.padding(horizontal = 16.dp)) {
+        item {
             Spacer(Modifier.height(12.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Column(Modifier.weight(1f)) {
@@ -184,17 +192,25 @@ fun TelaHoje(
         }
 
         if (estado.carregando) {
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator(color = Primary, strokeWidth = 2.dp)
+            item {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(220.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    CircularProgressIndicator(color = Primary, strokeWidth = 2.dp)
+                }
             }
         } else if (estado.totalLocal == 0) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 24.dp),
-                contentAlignment = Alignment.Center,
-            ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            item {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp, vertical = 32.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Icon(
                         Icons.Filled.CloudDownload,
                         contentDescription = null,
@@ -222,69 +238,62 @@ fun TelaHoje(
                     }
                 }
             }
+            }
         } else {
-            LazyColumn(
-                modifier = Modifier.weight(1f),
-                contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                    start = 16.dp, end = 16.dp, bottom = 24.dp
-                ),
-                verticalArrangement = Arrangement.spacedBy(10.dp),
-            ) {
-                // ---- trilhas
+            // ---- trilhas
+            item {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = "TRILHAS",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = TextMuted,
+                        modifier = Modifier.weight(1f),
+                    )
+                    // Rebaixar o acervo: é o que traz a explicação nova
+                    // para as questões que já estavam no aparelho.
+                    Icon(
+                        Icons.Filled.CloudDownload,
+                        contentDescription = "Atualizar acervo",
+                        tint = if (estado.sincronizando) TextMutedDark else Primary,
+                        modifier = Modifier
+                            .size(18.dp)
+                            .clickable { aoAtualizarAcervo() },
+                    )
+                    Spacer(Modifier.width(14.dp))
+                    Icon(
+                        Icons.Filled.Refresh,
+                        contentDescription = "Sincronizar respostas",
+                        tint = if (estado.sincronizando) TextMutedDark else Secondary,
+                        modifier = Modifier
+                            .size(18.dp)
+                            .clickable { aoSincronizar() },
+                    )
+                }
+            }
+
+            if (estado.trilhas.isEmpty()) {
                 item {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(Surface)
+                            .padding(20.dp),
+                    ) {
                         Text(
-                            text = "TRILHAS",
-                            style = MaterialTheme.typography.labelSmall,
+                            text = "Nenhuma trilha ainda. Baixe o acervo de um ano para as etapas se montarem.",
+                            style = MaterialTheme.typography.bodyMedium,
                             color = TextMuted,
-                            modifier = Modifier.weight(1f),
-                        )
-                        // Rebaixar o acervo: é o que traz a explicação nova
-                        // para as questões que já estavam no aparelho.
-                        Icon(
-                            Icons.Filled.CloudDownload,
-                            contentDescription = "Atualizar acervo",
-                            tint = if (estado.sincronizando) TextMutedDark else Primary,
-                            modifier = Modifier
-                                .size(18.dp)
-                                .clickable { aoAtualizarAcervo() },
-                        )
-                        Spacer(Modifier.width(14.dp))
-                        Icon(
-                            Icons.Filled.Refresh,
-                            contentDescription = "Sincronizar respostas",
-                            tint = if (estado.sincronizando) TextMutedDark else Secondary,
-                            modifier = Modifier
-                                .size(18.dp)
-                                .clickable { aoSincronizar() },
                         )
                     }
                 }
-
-                if (estado.trilhas.isEmpty()) {
-                    item {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(RoundedCornerShape(12.dp))
-                                .background(Surface)
-                                .padding(20.dp),
-                        ) {
-                            Text(
-                                text = "Nenhuma trilha ainda. Baixe o acervo de um ano para as etapas se montarem.",
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = TextMuted,
-                            )
-                        }
-                    }
-                } else {
-                    items(estado.trilhas, key = { it.id }) { trilha ->
-                        CartaoTrilha(
-                            trilha = trilha,
-                            aoAbrir = { aoAbrirTrilha(trilha) },
-                            aoJogar = { etapa -> aoJogarEtapa(trilha, etapa) },
-                        )
-                    }
+            } else {
+                items(estado.trilhas, key = { it.id }) { trilha ->
+                    CartaoTrilha(
+                        trilha = trilha,
+                        aoAbrir = { aoAbrirTrilha(trilha) },
+                        aoJogar = { etapa -> aoJogarEtapa(trilha, etapa) },
+                    )
                 }
             }
         }

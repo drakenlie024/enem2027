@@ -4,6 +4,17 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!--
+        Alarme exato: no Android 12+ (API 31) o setExactAndAllowWhileIdle
+        LANÇA SecurityException sem uma destas permissões — e a exceção
+        derrubava a coroutine, matando o agendamento inteiro.
+        USE_EXACT_ALARM é concedida na instalação; SCHEDULE_EXACT_ALARM
+        depende do usuário (e o app continua funcionando sem ela, usando
+        alarme não-exato).
+    -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"

@@ -186,6 +186,8 @@ data class SimuladoQuestao(
     val arquivos: List<String> = emptyList(),
     val alternativas: List<Alternative> = emptyList(),
     val gabarito: String? = null,
+    /** Explicação offline, vinda junto com o simulado montado. */
+    @SerialName("explicacao") val explicacao: String? = null,
 )
 
 @Serializable

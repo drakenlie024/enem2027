@@ -47,6 +47,7 @@ import com.franferreira.enem2027.ui.screens.TelaHoje
 import com.franferreira.enem2027.ui.screens.TelaLogin
 import com.franferreira.enem2027.ui.screens.TelaMontarSimulado
 import com.franferreira.enem2027.ui.screens.TelaProgresso
+import com.franferreira.enem2027.data.model.PASSO_MINIMO_PCT
 import com.franferreira.enem2027.ui.screens.TelaQuestao
 import com.franferreira.enem2027.ui.screens.TelaRedacao
 import com.franferreira.enem2027.ui.screens.TelaResultadoSimulado
@@ -244,6 +245,12 @@ fun EnemApp() {
                         segundos = resumo.segundos,
                         xp = resumo.xp,
                         cor = corDaArea(trilha?.area),
+                        // O corte é 80% de acerto — o mesmo do PASSO_MINIMO_PCT
+                        // do modelo de etapa.
+                        passou = resumo.total > 0 &&
+                            (resumo.acertos * 100f / resumo.total) >= PASSO_MINIMO_PCT,
+                        percentual = if (resumo.total == 0) 0
+                        else resumo.acertos * 100 / resumo.total,
                         aoFechar = {
                             vm.fecharResumo()
                             navController.popBackStack()

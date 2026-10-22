@@ -3,6 +3,7 @@ package com.franferreira.enem2027.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.franferreira.enem2027.data.local.AgendaEntity
 import com.franferreira.enem2027.data.model.AgendaItem
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
 import com.franferreira.enem2027.data.model.Etapa
@@ -365,6 +366,24 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             val itens = _estado.value.agenda.map { (weekday, periodo) ->
                 AgendaItem(weekday = weekday, period = periodo)
             }
+
+            // Grava LOCAL primeiro. O agendador do alarme lê a tabela Room
+            // (não o servidor), e ela nunca era escrita — então o alarme
+            // saía vazio e a agenda "não fazia nada". Gravar local primeiro
+            // também faz a agenda funcionar offline.
+            runCatching {
+                repo.salvarAgenda(
+                    itens.map { item ->
+                        AgendaEntity(
+                            id = 0,
+                            weekday = item.weekday,
+                            period = item.period,
+                            minutesTarget = item.minutesTarget,
+                        )
+                    }
+                )
+            }
+
             runCatching { ApiClient.api.salvarAgenda(mapOf("itens" to itens)) }
                 .onSuccess {
                     _estado.value = _estado.value.copy(
@@ -376,8 +395,13 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                     )
                 }
                 .onFailure {
+                    // Salvou localmente; só o servidor não respondeu.
                     _estado.value = _estado.value.copy(
-                        mensagem = "Não consegui salvar a agenda. Ela fica salva só neste aparelho por enquanto.",
+                        mensagem = "Agenda salva neste aparelho (${itens.size} períodos). " +
+                            "O servidor não respondeu — ela sincroniza depois.",
+                    )
+                    com.franferreira.enem2027.notificacao.Agendador.agendar(
+                        getApplication<Application>()
                     )
                 }
         }

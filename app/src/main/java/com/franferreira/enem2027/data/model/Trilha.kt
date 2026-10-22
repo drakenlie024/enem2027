@@ -112,7 +112,23 @@ data class Etapa(
 
     /** A etapa está pronta para ser feita? (tem questões suficientes) */
     val jogavel: Boolean get() = questoes.isNotEmpty()
+
+    /**
+     * Aprovou? (pedido do usuário: 80% de acerto)
+     *
+     * Abaixo disso a etapa conta como feita, mas marcada como NÃO aprovada:
+     * o usuário vê que precisa revisar aquele tema antes de seguir.
+     */
+    val passou: Boolean
+        get() = total > 0 && (acertos * 100f / total) >= PASSO_MINIMO_PCT
+
+    /** Percentual de acerto (0 a 100). */
+    val percentual: Int
+        get() = if (total == 0) 0 else (acertos * 100 / total)
 }
+
+/** Percentual de acerto mínimo para a etapa ser considerada aprovada. */
+const val PASSO_MINIMO_PCT = 80
 
 /** O que o app manda ao servidor quando termina uma etapa. */
 @Serializable

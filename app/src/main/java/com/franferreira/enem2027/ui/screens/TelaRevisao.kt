@@ -26,6 +26,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -223,7 +227,9 @@ private fun CartaoFila(
     cor: androidx.compose.ui.graphics.Color,
     aoClicar: () -> Unit,
 ) {
-    Row(
+    var mostrandoExplicacao by remember { mutableStateOf(false) }
+
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp))
@@ -231,39 +237,69 @@ private fun CartaoFila(
             .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
             .clickable { aoClicar() }
             .padding(12.dp),
-        verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(
-            modifier = Modifier
-                .size(7.dp)
-                .clip(CircleShape)
-                .background(cor),
-        )
-        Spacer(Modifier.width(10.dp))
-        Column(Modifier.weight(1f)) {
-            Text(
-                text = "${questao.ano} · ${questao.temaExibicao}",
-                style = MaterialTheme.typography.labelMedium,
-                color = TextMuted,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .size(7.dp)
+                    .clip(CircleShape)
+                    .background(cor),
             )
-            Spacer(Modifier.height(4.dp))
-            Text(
-                text = questao.enunciado?.take(110) ?: "(questão com figura)",
-                style = MaterialTheme.typography.bodySmall,
-                color = TextSecondary,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-            )
+            Spacer(Modifier.width(10.dp))
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text = "${questao.ano} · ${questao.temaExibicao}",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = TextMuted,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = questao.enunciado?.take(110) ?: "(questão com figura)",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = TextSecondary,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+            Spacer(Modifier.width(8.dp))
+            if (!questao.oficial) {
+                Text(
+                    text = "IA",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Danger,
+                )
+            }
         }
-        Spacer(Modifier.width(8.dp))
-        if (!questao.oficial) {
-            Text(
-                text = "IA",
-                style = MaterialTheme.typography.labelSmall,
-                color = Danger,
-            )
+
+        // Botão de explicar, direto no card: na revisão a resposta é o
+        // assunto, então não faz sentido mandar o usuário para outra tela.
+        if (questao.temExplicacao) {
+            Spacer(Modifier.height(8.dp))
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(SurfaceRaised)
+                    .clickable { mostrandoExplicacao = !mostrandoExplicacao }
+                    .padding(horizontal = 10.dp, vertical = 6.dp),
+            ) {
+                Text(
+                    text = if (mostrandoExplicacao) "OCULTAR EXPLICAÇÃO" else "POR QUE ESSA É A RESPOSTA?",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (mostrandoExplicacao) TextMuted else Primary,
+                )
+            }
+            if (mostrandoExplicacao) {
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    text = questao.explicacao!!,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = TextSecondary,
+                )
+            }
         }
+    }
+}
     }
 }

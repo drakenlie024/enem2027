@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import androidx.core.app.NotificationManagerCompat
 import com.franferreira.enem2027.data.repo.Repositorio
 import kotlinx.coroutines.CoroutineScope
@@ -72,7 +73,8 @@ object Agendador {
             )
 
             val alarm = context.getSystemService(AlarmManager::class.java)
-            if (alarm != null) {
+            if (alarm == null) return@launch
+            try {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     alarm.setExactAndAllowWhileIdle(
                         AlarmManager.RTC_WAKEUP,
@@ -87,6 +89,22 @@ object Agendador {
                         pending,
                     )
                 }
+            } catch (seguranca: SecurityException) {
+                // Sem a permissão de alarme exato (o usuário pode negar no
+                // Android 12+). Antes isto derrubava a coroutine e a agenda
+                // inteira parecia não ter sido salva. O alarme impreciso
+                // acorda na mesma janela — só não é exato ao minuto.
+                try {
+                    alarm.setAndAllowWhileIdle(
+                        AlarmManager.RTC_WAKEUP,
+                        alvo.timeInMillis,
+                        pending,
+                    )
+                } catch (falha: Exception) {
+                    Log.w("Agendador", "não consegui agendar o lembrete: ${falha.message}")
+                }
+            } catch (falha: Exception) {
+                Log.w("Agendador", "não consegui agendar o lembrete: ${falha.message}")
             }
         }
     }
