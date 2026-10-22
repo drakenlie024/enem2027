@@ -3,6 +3,7 @@ package com.franferreira.enem2027.data.repo
 import android.content.Context
 import com.franferreira.enem2027.data.local.AgendaEntity
 import com.franferreira.enem2027.data.local.EnemDatabase
+import com.franferreira.enem2027.data.local.EssayEntity
 import com.franferreira.enem2027.data.local.GamificationEntity
 import com.franferreira.enem2027.data.local.PendingAnswerEntity
 import com.franferreira.enem2027.data.local.ProgressEntity
@@ -35,6 +36,16 @@ class Repositorio(private val context: Context) {
 
     private val db = EnemDatabase.get(context)
     private val api = ApiClient.api
+
+    companion object {
+        /**
+         * Máximo de itens por requisição de sync.
+         *
+         * O servidor recusa lotes maiores com 422. Sem este limite, um fim de
+         * semana de estudo (mais de 200 respostas) travava o sync.
+         */
+        const val MAX_ITENS_POR_LOTE = 200
+    }
 
     // ---------- acervo ----------
 
@@ -488,9 +499,51 @@ class Repositorio(private val context: Context) {
     suspend fun agenda(): List<AgendaEntity> = db.agenda().todos()
 
     suspend fun salvarAgenda(itens: List<AgendaEntity>) {
-        db.agenda().limpar()
-        db.agenda().salvar(itens)
+        // limpar + inserir numa transação só: um crash no meio deixaria a
+        // agenda vazia, e é dela que o alarme do lembrete lê.
+        db.agenda().substituir(itens)
     }
+
+    // ---------- redação ----------
+
+    /**
+     * Salva o rascunho da redação no aparelho e devolve o id.
+     *
+     * A redação é o maior texto que o usuário digita no app. Guardar só na
+     * memória (`remember`) fazia ele se perder ao trocar de aba ou no
+     * process death — e a correção pela IA leva minutos, tempo mais que
+     * suficiente para o celular matar o app.
+     */
+    suspend fun salvarRascunho(tema: String, texto: String, id: String? = null): String {
+        val idFinal = id ?: "red-${System.currentTimeMillis()}"
+        val existente = db.essays().porId(idFinal)
+        db.essays().salvar(
+            EssayEntity(
+                id = idFinal,
+                theme = tema,
+                prompt = null,
+                text = texto,
+                score = existente?.score,
+                feedbackJson = existente?.feedbackJson,
+                createdAt = existente?.createdAt ?: System.currentTimeMillis(),
+                synced = existente?.synced ?: false,
+            ),
+        )
+        return idFinal
+    }
+
+    /** Grava a nota e o feedback da IA no rascunho local. */
+    suspend fun registrarCorrecaoRedacao(id: String, nota: Int?, feedbackJson: String?) {
+        val existente = db.essays().porId(id) ?: return
+        db.essays().salvar(
+            existente.copy(score = nota, feedbackJson = feedbackJson),
+        )
+    }
+
+    suspend fun redacoes(): List<EssayEntity> = db.essays().todos()
+
+    suspend fun redacao(id: String): EssayEntity? = db.essays().porId(id)
+
 
     // ---------- sincronização ----------
 
@@ -502,48 +555,79 @@ class Repositorio(private val context: Context) {
         val pendentes = db.pendingAnswers().naoSincronizadas()
         if (pendentes.isEmpty()) return@runCatching 0
 
-        val itens = pendentes.map { resposta ->
-            val questao = db.questions().porId(resposta.questionId)
-            ProgressItem(
-                questionId = resposta.questionId,
-                topic = questao?.tema,
-                discipline = questao?.area,
-                quality = resposta.quality,
-                correct = resposta.correct,
-                secondsTaken = resposta.secondsTaken,
-                reviewedAt = Instant.ofEpochMilli(resposta.reviewedAt).toString(),
-                // O dia local do aparelho: o streak é sobre "hoje" de quem
-                // estudou, e não sobre o dia UTC do servidor.
-                localDate = Instant.ofEpochMilli(resposta.reviewedAt)
-                    .atZone(ZoneId.systemDefault())
-                    .toLocalDate()
-                    .toString(),
-            )
+        // O servidor aceita no máximo 200 itens por requisição. Sem fatiar, um
+        // fim de semana de estudo (mais de 200 respostas) estourava 422 e o
+        // sync morria para sempre — e a mensagem dizia "sem conexão".
+        var totalAplicado = 0
+        var falhou: Throwable? = null
+        var tudoAceito = true
+
+        pendentes.chunked(MAX_ITENS_POR_LOTE).forEach { lote ->
+            val itens = lote.map { resposta ->
+                val questao = db.questions().porId(resposta.questionId)
+                ProgressItem(
+                    questionId = resposta.questionId,
+                    topic = questao?.tema,
+                    discipline = questao?.area,
+                    quality = resposta.quality,
+                    correct = resposta.correct,
+                    secondsTaken = resposta.secondsTaken,
+                    reviewedAt = Instant.ofEpochMilli(resposta.reviewedAt).toString(),
+                    // O dia local do aparelho: o streak é sobre "hoje" de quem
+                    // estudou, e não sobre o dia UTC do servidor.
+                    localDate = Instant.ofEpochMilli(resposta.reviewedAt)
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate()
+                        .toString(),
+                )
+            }
+            try {
+                val resposta = api.sincronizar(
+                    ProgressBatch(
+                        items = itens,
+                        // O "hoje" do aparelho, para o servidor julgar o streak
+                        // contra o dia de quem estudou.
+                        localToday = LocalDate.now().toString(),
+                    )
+                )
+                totalAplicado += resposta.applied
+                // Marca só o que o servidor aceitou de fato.
+                db.pendingAnswers().marcarSincronizadas(lote.map { it.localId })
+            } catch (erro: Throwable) {
+                tudoAceito = false
+                falhou = erro
+                return@forEach
+            }
         }
-        val resposta = api.sincronizar(
-            ProgressBatch(
-                items = itens,
-                // O "hoje" do aparelho, para o servidor julgar o streak
-                // contra o dia de quem estudou.
-                localToday = LocalDate.now().toString(),
-            )
-        )
-        db.pendingAnswers().marcarSincronizadas(pendentes.map { it.localId })
         db.pendingAnswers().limparSincronizadas()
 
-        // Espelha a gamificação do servidor (streak é mais confiável lá,
-        // porque o fuso do celular pode errar).
-        val gam = api.gamificacao()
-        val local = db.gamification().atual()
-        db.gamification().salvar(
-            (local ?: GamificationEntity(id = 0)).copy(
-                xp = gam.xp,
-                level = gam.level,
-                streak = gam.streak,
-                longestStreak = gam.longestStreak,
-            ),
-        )
-        resposta.applied
+        // Espelha a gamificação do servidor — mas só quando TODOS os lotes
+        // foram aceitos. Espelhar com o sync pela metade rebaixava o XP que o
+        // usuário já tinha ganho no aparelho.
+        if (tudoAceito) {
+            runCatching {
+                val gam = api.gamificacao()
+                val local = db.gamification().atual()
+                db.gamification().salvar(
+                    (local ?: GamificationEntity(id = 0)).copy(
+                        xp = maxOf(local?.xp ?: 0, gam.xp),
+                        level = maxOf(local?.level ?: 1, gam.level),
+                        streak = gam.streak,
+                        longestStreak = maxOf(local?.longestStreak ?: 0, gam.longestStreak),
+                    ),
+                )
+            }
+        }
+
+        // Houve lote que não passou: o que passou já está salvo, o resto fica
+        // pendente para a próxima tentativa.
+        if (falhou != null) {
+            throw IllegalStateException(
+                "Só ${totalAplicado} de ${pendentes.size} respostas foram sincronizadas.",
+                falhou,
+            )
+        }
+        totalAplicado
     }
 
     // As conversões entre entity e modelo estão em `data/local/Conversores.kt`

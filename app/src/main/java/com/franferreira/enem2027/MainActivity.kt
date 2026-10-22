@@ -330,7 +330,9 @@ fun EnemApp() {
                 TelaRedacao(
                     temas = vm.temasRedacao.map { it.titulo },
                     aoCorrigir = { tema, texto -> vm.corrigirRedacao(tema, texto) },
-                    historico = emptyList(),
+                    historico = estado.historicoRedacoes,
+                    rascunho = estado.redacaoRascunho,
+                    aoSalvarRascunho = { tema, texto -> vm.salvarRascunhoRedacao(tema, texto) },
                 )
             }
             composable(Destination.Progresso.route) {

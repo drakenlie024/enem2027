@@ -30,6 +30,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,6 +41,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import com.franferreira.enem2027.ui.RascunhoRedacao
+import com.franferreira.enem2027.ui.RedacaoSalva
 import com.franferreira.enem2027.ui.components.BotaoGamificado
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -56,6 +59,7 @@ import com.franferreira.enem2027.ui.theme.TextMuted
 import com.franferreira.enem2027.ui.theme.TextMutedDark
 import com.franferreira.enem2027.ui.theme.TextPrimary
 import com.franferreira.enem2027.ui.theme.TextSecondary
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
@@ -70,14 +74,25 @@ import kotlinx.coroutines.launch
 fun TelaRedacao(
     temas: List<String>,
     aoCorrigir: suspend (tema: String, texto: String) -> Result<EssayCorrection>,
-    historico: List<Pair<String, Int?>>,
+    historico: List<RedacaoSalva>,
+    rascunho: RascunhoRedacao? = null,
+    aoSalvarRascunho: (tema: String, texto: String) -> Unit = { _, _ -> },
 ) {
-    var temaSelecionado by remember { mutableStateOf(temas.firstOrNull() ?: "") }
-    var texto by remember { mutableStateOf("") }
+    var temaSelecionado by remember { mutableStateOf(rascunho?.tema ?: temas.firstOrNull() ?: "") }
+    var texto by remember(rascunho?.id) { mutableStateOf(rascunho?.texto ?: "") }
     var corrigindo by remember { mutableStateOf(false) }
     var resultado by remember { mutableStateOf<EssayCorrection?>(null) }
     var erro by remember { mutableStateOf<String?>(null) }
     val scope = rememberCoroutineScope()
+
+    // Grava o rascunho no aparelho, um instante depois de o usuário parar
+    // de digitar. A correção pela IA leva minutos — o texto não pode
+    // depender da memória do app.
+    LaunchedEffect(texto, temaSelecionado) {
+        if (texto.isBlank()) return@LaunchedEffect
+        delay(800)
+        aoSalvarRascunho(temaSelecionado, texto)
+    }
 
     Column(
         modifier = Modifier
@@ -263,7 +278,7 @@ fun TelaRedacao(
                     color = TextMuted,
                 )
                 Spacer(Modifier.height(8.dp))
-                historico.take(6).forEach { (tema, nota) ->
+                historico.take(6).forEach { redacao ->
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -271,15 +286,17 @@ fun TelaRedacao(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Text(
-                            text = tema,
+                            // `.tema` e `.nota` por nome: desestruturar pegaria
+                            // `id` e `tema` na ordem dos componentes.
+                            text = redacao.tema,
                             style = MaterialTheme.typography.bodySmall,
                             color = TextSecondary,
                             modifier = Modifier.weight(1f),
                         )
                         Text(
-                            text = nota?.let { "$it" } ?: "—",
+                            text = redacao.nota?.let { "$it" } ?: "—",
                             style = MaterialTheme.typography.titleMedium,
-                            color = if (nota != null) Secondary else TextMutedDark,
+                            color = if (redacao.nota != null) Secondary else TextMutedDark,
                         )
                     }
                 }

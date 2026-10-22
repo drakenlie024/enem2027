@@ -171,10 +171,22 @@ interface AgendaDao {
     suspend fun todos(): List<AgendaEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun salvar(itens: List<AgendaEntity>)
+    suspend fun inserir(itens: List<AgendaEntity>)
 
     @Query("DELETE FROM agenda")
     suspend fun limpar()
+
+    /**
+     * Troca a agenda inteira numa transação só.
+     *
+     * Sem a transação, um crash no meio do `limpar()` deixava a agenda
+     * vazia — e é dela que o alarme do lembrete lê.
+     */
+    @Transaction
+    suspend fun substituir(itens: List<AgendaEntity>) {
+        limpar()
+        if (itens.isNotEmpty()) inserir(itens)
+    }
 }
 
 @Dao

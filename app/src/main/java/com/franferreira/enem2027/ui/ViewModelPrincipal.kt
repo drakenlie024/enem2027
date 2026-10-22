@@ -51,6 +51,10 @@ data class EstadoHoje(
     val mensagemSimulado: String? = null,
     /** Fila de questões geradas por IA aguardando aprovação. */
     val filaAprovacao: List<QuestaoPendente> = emptyList(),
+    /** Rascunho da redação em edição (sobrevive ao process death). */
+    val redacaoRascunho: RascunhoRedacao? = null,
+    /** Histórico de redações do aparelho. */
+    val historicoRedacoes: List<RedacaoSalva> = emptyList(),
     /** Questões respondidas hoje (é o que o anel da meta mostra). */
     val respondidasHoje: Int = 0,
     val xp: Int = 0,
@@ -82,6 +86,21 @@ data class EstadoHoje(
             return trilhas.firstOrNull { !it.adaptativa && it.etapaAtual?.jogavel == true }
         }
 }
+
+/** O rascunho da redação em edição. Vive no Room, não só na memória. */
+data class RascunhoRedacao(
+    val id: String,
+    val tema: String,
+    val texto: String,
+)
+
+/** Uma redação já corrigida, no histórico do aparelho. */
+data class RedacaoSalva(
+    val id: String,
+    val tema: String,
+    val texto: String,
+    val nota: Int?,
+)
 
 /** O resumo de uma etapa concluída: os números que o usuário vê. */
 data class ResumoEtapa(
@@ -128,9 +147,11 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
                 return@launch
             }
             ApiClient.token = token
-            // Confere se o token ainda vale.
-            val valido = runCatching { api.gamificacao() }.isSuccess
-            if (!valido) {
+            // Confere se o token ainda vale. SÓ desloga em 401: erro de rede
+            // não é token inválido, e deslogar ali matava o app offline na
+            // primeira abertura sem internet.
+            val erro = runCatching { api.gamificacao() }.exceptionOrNull()
+            if (erro is retrofit2.HttpException && erro.code() == 401) {
                 ApiClient.token = null
                 prefs.edit().remove("token").apply()
                 _estado.value = _estado.value.copy(carregando = false, autenticado = false)
@@ -140,6 +161,7 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             recarregar()
             carregarAgenda()
             carregarFilaAprovacao()
+            carregarRedacoes()
         }
     }
 
@@ -373,9 +395,13 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
             // também faz a agenda funcionar offline.
             runCatching {
                 repo.salvarAgenda(
-                    itens.map { item ->
+                    itens.mapIndexed { indice, item ->
                         AgendaEntity(
-                            id = 0,
+                            // Id determinístico: com id = 0, todas as linhas
+                            // colavam na MESMA linha da tabela (o REPLACE
+                            // do Room sobrescrevia), e a semana montada
+                            // sumia — inclusive a que o alarme lia.
+                            id = item.weekday * 10 + indice,
                             weekday = item.weekday,
                             period = item.period,
                             minutesTarget = item.minutesTarget,
@@ -529,6 +555,58 @@ class ViewModelPrincipal(application: Application) : AndroidViewModel(applicatio
         ApiClient.api.corrigirRedacao(
             com.franferreira.enem2027.data.model.EssayRequest(theme = tema, text = texto)
         )
+    }.onSuccess { correcao ->
+        // Prende a correção ao rascunho local: assim o texto e a nota ficam
+        // juntos no aparelho, e o `essay_id` do servidor (que só existe no
+        // servidor) não é o que identifica a redação aqui.
+        val id = _estado.value.redacaoRascunho?.id
+        if (id != null) {
+            registrarCorrecaoRedacao(id, correcao)
+        }
+    }
+
+    /**
+     * Guarda o rascunho da redação no aparelho.
+     *
+     * A correção pela IA leva minutos — tempo mais que suficiente para o
+     * celular matar o app e o texto ir embora. Com o rascunho salvo, o
+     * trabalho não se perde.
+     */
+    fun salvarRascunhoRedacao(tema: String, texto: String) {
+        viewModelScope.launch {
+            val id = repo.salvarRascunho(tema, texto, _estado.value.redacaoRascunho?.id)
+            _estado.value = _estado.value.copy(
+                redacaoRascunho = RascunhoRedacao(id = id, tema = tema, texto = texto),
+            )
+        }
+    }
+
+    /** Carrega o rascunho e o histórico de redações do aparelho. */
+    fun carregarRedacoes() {
+        viewModelScope.launch {
+            val lista = repo.redacoes()
+            val rascunho = lista.firstOrNull { it.score == null }?.let {
+                RascunhoRedacao(id = it.id, tema = it.theme, texto = it.text)
+            }
+            _estado.value = _estado.value.copy(
+                redacaoRascunho = rascunho,
+                historicoRedacoes = lista.map {
+                    RedacaoSalva(id = it.id, tema = it.theme, texto = it.text, nota = it.score)
+                },
+            )
+        }
+    }
+
+    /** Grava o resultado da correção no rascunho local. */
+    fun registrarCorrecaoRedacao(id: String, correcao: com.franferreira.enem2027.data.model.EssayCorrection) {
+        viewModelScope.launch {
+            repo.registrarCorrecaoRedacao(
+                id = id,
+                nota = correcao.nota,
+                feedbackJson = correcao.toString(),
+            )
+            carregarRedacoes()
+        }
     }
 
     fun limparMensagem() {
