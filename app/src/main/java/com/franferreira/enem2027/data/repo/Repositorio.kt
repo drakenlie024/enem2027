@@ -512,9 +512,22 @@ class Repositorio(private val context: Context) {
                 correct = resposta.correct,
                 secondsTaken = resposta.secondsTaken,
                 reviewedAt = Instant.ofEpochMilli(resposta.reviewedAt).toString(),
+                // O dia local do aparelho: o streak é sobre "hoje" de quem
+                // estudou, e não sobre o dia UTC do servidor.
+                localDate = Instant.ofEpochMilli(resposta.reviewedAt)
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate()
+                    .toString(),
             )
         }
-        val resposta = api.sincronizar(ProgressBatch(itens))
+        val resposta = api.sincronizar(
+            ProgressBatch(
+                items = itens,
+                // O "hoje" do aparelho, para o servidor julgar o streak
+                // contra o dia de quem estudou.
+                localToday = LocalDate.now().toString(),
+            )
+        )
         db.pendingAnswers().marcarSincronizadas(pendentes.map { it.localId })
         db.pendingAnswers().limparSincronizadas()
 

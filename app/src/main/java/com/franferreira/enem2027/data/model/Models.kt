@@ -97,10 +97,28 @@ data class ProgressItem(
     val correct: Boolean? = null,
     @SerialName("seconds_taken") val secondsTaken: Float? = null,
     @SerialName("reviewed_at") val reviewedAt: String? = null,
+    /**
+     * O dia local do aparelho (YYYY-MM-DD), no fuso de quem estudou.
+     *
+     * O streak é sobre "hoje" e "ontem" — e "hoje" é do usuário, não do
+     * servidor. Sem isso, uma resposta às 21h em Brasília (UTC-3) vira
+     * "amanhã" no servidor, e o streak conta o dia errado.
+     */
+    @SerialName("local_date") val localDate: String? = null,
 )
 
 @Serializable
-data class ProgressBatch(val items: List<ProgressItem>)
+data class ProgressBatch(
+    val items: List<ProgressItem>,
+    /**
+     * O "hoje" do aparelho (YYYY-MM-DD), no fuso de quem estuda.
+     *
+     * O streak é julgado contra este dia. Sem ele, o servidor usaria o dia
+     * UTC — e uma resposta às 21h em Brasília (UTC-3) cairia no dia seguinte,
+     * quebrando a sequência.
+     */
+    @SerialName("local_today") val localToday: String? = null,
+)
 
 @Serializable
 data class SyncResponse(
