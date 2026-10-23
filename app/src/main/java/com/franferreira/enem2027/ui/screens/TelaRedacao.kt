@@ -85,6 +85,7 @@ fun TelaRedacao(
         mutableStateOf(rascunho?.tema ?: temas.firstOrNull()?.titulo ?: "")
     }
     var texto by remember(rascunho?.id) { mutableStateOf(rascunho?.texto ?: "") }
+    val app = androidx.compose.ui.platform.LocalContext.current
     var resultadoLocal by remember { mutableStateOf<EssayCorrection?>(resultado) }
     var mostrarVersoes by remember { mutableStateOf(false) }
     var mostrarMetaMil by remember { mutableStateOf(false) }
@@ -103,7 +104,6 @@ fun TelaRedacao(
     // plano) com o estado local da tela.
     LaunchedEffect(resultado) { if (resultado != null) resultadoLocal = resultado }
     val scope = rememberCoroutineScope()
-    val app = androidx.compose.ui.platform.LocalContext.current
 
     // Grava o rascunho no aparelho, um instante depois de o usuário parar
     // de digitar. A correção pela IA leva minutos — o texto não pode
