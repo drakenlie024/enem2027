@@ -151,9 +151,12 @@ fun EnemApp() {
         containerColor = Background,
         bottomBar = {
             // Telas de prova ficam sem a barra: sair de um simulado no meio por
-            // um toque na aba jogava fora as respostas marcadas.
-            val semBarra = setOf("questao", "simulado", "etapa", "aulapacote")
-            if (rotaAtual !in semBarra && estado.autenticado) {
+            // um toque na aba jogava fora as respostas marcadas. Mas a tela de
+            // MONTAR o simulado não é prova: ela mantém a barra.
+            val emProva = rotaAtual == "simulado" &&
+                (estado.simulado != null || estado.diagnostico != null)
+            val semBarra = rotaAtual in setOf("questao", "etapa", "aulapacote") || emProva
+            if (!semBarra && estado.autenticado) {
                 NavigationBar(containerColor = Surface, contentColor = TextPrimary) {
                     destinations.forEach { destino ->
                         val selecionado =
