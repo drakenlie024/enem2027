@@ -484,6 +484,8 @@ class Repositorio(private val context: Context) {
             ),
         )
         atualizarGamificacaoLocal(correta)
+        // Meta semanal: o dia de hoje conta como estudado (dia local).
+        runCatching { MetaSemanal.marcarHoje(context) }
     }
 
     /** Portão do SRS, espelhando a lógica do backend (SM-2 com facilidade). */

@@ -223,6 +223,7 @@ fun EnemApp() {
                     aoAtualizarAcervo = vm::atualizarAcervo,
                     aoRevisar = { navController.navigate(Destination.Revisao.route) },
                     aoAulas = { navController.navigate(Destination.Aulas.route) },
+                    aoMudarMetaSemanal = vm::ajustarMetaSemanal,
                 )
             }
 

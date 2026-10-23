@@ -109,6 +109,10 @@ data class EstadoHoje(
     val resumoEtapa: ResumoEtapa? = null,
     /** Meta diária de questões (sugerida, ajustável). */
     val metaDiaria: Int = 12,
+    /** Meta semanal: dias de estudo por semana. */
+    val metaSemanal: Int = 5,
+    /** Dias desta semana (1 = segunda) em que já houve estudo. */
+    val diasMarcados: Set<Int> = emptySet(),
     /** Previsão de nota (estimativa por TRI, com a faixa do ano). */
     val previsao: PrevisaoNota = PrevisaoNota(),
     /** Ano de referência para o corte de nota. */
@@ -416,6 +420,12 @@ class ViewModelPrincipal(
                 pendentes = repo.pendentes(),
                 esperandoRede = repo.esperandoRede(),
                 respondidasHoje = repo.respondidasHoje(),
+                metaSemanal = com.franferreira.enem2027.data.repo.MetaSemanal.meta(
+                    getApplication()
+                ),
+                diasMarcados = com.franferreira.enem2027.data.repo.MetaSemanal.diasMarcados(
+                    getApplication()
+                ),
                 xp = gam?.xp ?: 0,
                 nivel = gam?.level ?: 1,
                 streak = gam?.streak ?: 0,
@@ -961,6 +971,14 @@ class ViewModelPrincipal(
             .getSharedPreferences("leticia", android.content.Context.MODE_PRIVATE)
         val meta = prefs.getInt("meta_diaria", 12)
         _estado.value = _estado.value.copy(metaDiaria = meta.coerceIn(4, 60))
+    }
+
+    /** Muda a meta semanal (quantos dias por semana). */
+    fun ajustarMetaSemanal(dias: Int) {
+        com.franferreira.enem2027.data.repo.MetaSemanal.definirMeta(getApplication(), dias)
+        _estado.value = _estado.value.copy(
+            metaSemanal = com.franferreira.enem2027.data.repo.MetaSemanal.meta(getApplication()),
+        )
     }
 
     // ---------- trilhas ----------

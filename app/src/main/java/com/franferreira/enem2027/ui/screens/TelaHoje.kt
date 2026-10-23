@@ -99,6 +99,7 @@ fun TelaHoje(
     aoAtualizarAcervo: () -> Unit,
     aoRevisar: () -> Unit = {},
     aoAulas: () -> Unit = {},
+    aoMudarMetaSemanal: (Int) -> Unit = {},
 ) {
     // Tudo num único scroll: antes o cabeçalho (anel + estatísticas) ficava
     // fixo no topo e a lista de trilhas abaixo, dividindo a tela. Em tela
@@ -157,6 +158,11 @@ fun TelaHoje(
                 aoRevisar = aoRevisar,
                 aoJogar = { trilha, etapa -> aoJogarEtapa(trilha, etapa) },
                 aoAulas = aoAulas,
+            )
+
+            SemanaDeEstudo(
+                estado = estado,
+                aoMudarMeta = aoMudarMetaSemanal,
             )
 
             if (estado.esperandoRede > 0) {
@@ -837,4 +843,70 @@ private fun nomeDaArea(area: String): String = when (area) {
     "ciencias-natureza" -> "Natureza"
     "" -> "aulas"
     else -> area.replaceFirstChar { it.uppercase() }
+}
+
+/**
+ * Semana de estudo: sete bolinhas, uma por dia, e a meta de dias por semana.
+ *
+ * O streak premia a sequência; aqui o dia perdido não zera nada, só deixa a
+ * semana abaixo do alvo. Tocar no número muda a meta (3, 5, 6 ou 7 dias).
+ */
+@Composable
+private fun SemanaDeEstudo(estado: EstadoHoje, aoMudarMeta: (Int) -> Unit) {
+    val nomes = listOf("S", "T", "Q", "Q", "S", "S", "D")
+    val feitos = estado.diasMarcados.size
+    val meta = estado.metaSemanal
+    val proximaMeta = when (meta) {
+        3 -> 5
+        5 -> 6
+        6 -> 7
+        else -> 3
+    }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(18.dp))
+            .background(Surface)
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .clickable { aoMudarMeta(proximaMeta) }
+            .padding(horizontal = 14.dp, vertical = 11.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = "Semana",
+                style = MaterialTheme.typography.titleSmall,
+                color = TextPrimary,
+                modifier = Modifier.weight(1f),
+            )
+            Text(
+                text = "$feitos de $meta dias",
+                style = MaterialTheme.typography.labelLarge,
+                color = if (feitos >= meta) Secondary else TextMuted,
+            )
+        }
+        Spacer(Modifier.height(8.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            nomes.forEachIndexed { indice, letra ->
+                val marcado = (indice + 1) in estado.diasMarcados
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.weight(1f),
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(28.dp)
+                            .clip(CircleShape)
+                            .background(if (marcado) Primary else SurfaceRaised),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(
+                            text = letra,
+                            style = MaterialTheme.typography.labelSmall,
+                            color = if (marcado) Background else TextMuted,
+                        )
+                    }
+                }
+            }
+        }
+    }
 }
