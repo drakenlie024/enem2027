@@ -21,6 +21,7 @@ import com.franferreira.enem2027.data.model.QuestaoPendente
 import com.franferreira.enem2027.data.model.ResolverPendenteRequest
 import com.franferreira.enem2027.data.model.RespostaSimulado
 import com.franferreira.enem2027.data.model.SimuladoMontado
+import kotlinx.serialization.encodeToString
 import com.franferreira.enem2027.data.model.SimuladoRequest
 import com.franferreira.enem2027.data.model.Trilha
 import com.franferreira.enem2027.data.remote.ApiClient
@@ -42,6 +43,8 @@ data class EstadoHoje(
     /** Nome que a aluna digitou ao começar; a saudação da tela Hoje usa. */
     val nome: String = "",
     val pendentes: Int = 0,
+    /** Respostas salvas no aparelho que ainda não subiram (falta de rede). */
+    val esperandoRede: Int = 0,
     val totalLocal: Int = 0,
     val anos: List<Int> = emptyList(),
     val areas: List<String> = emptyList(),
@@ -65,6 +68,8 @@ data class EstadoHoje(
     val agenda: Set<Pair<Int, String>> = emptySet(),
     /** Simulador em andamento. */
     val simulado: SimuladoMontado? = null,    val carregandoSimulado: Boolean = false,
+    /** Quando o simulado em andamento começou (para retomar com o tempo certo). */
+    val simuladoInicio: Long = 0L,
     /** Diagnóstico do último simulado encerrado. */
     val diagnostico: DiagnosticoSimulado? = null,
     val mensagemSimulado: String? = null,
@@ -177,6 +182,23 @@ class ViewModelPrincipal(
         carregarMeta()
         semearAcervo()
         restaurarSessao()
+        restaurarSimulado()
+    }
+
+    /** Reabre o simulado que estava em andamento quando o app foi fechado. */
+    private fun restaurarSimulado() {
+        val bruto = prefsLocais().getString("simulado_ativo", null) ?: return
+        val inicio = prefsLocais().getLong("simulado_inicio", 0L)
+        val simulado = runCatching {
+            kotlinx.serialization.json.Json { ignoreUnknownKeys = true; explicitNulls = false }
+                .decodeFromString(SimuladoMontado.serializer(), bruto)
+        }.getOrNull() ?: return
+        // Simulado antigo demais (mais de 12h) já não faz sentido retomar.
+        if (inicio <= 0L || System.currentTimeMillis() - inicio > 12 * 60 * 60 * 1000L) {
+            prefsLocais().edit().remove("simulado_ativo").remove("simulado_inicio").apply()
+            return
+        }
+        _estado.value = _estado.value.copy(simulado = simulado, simuladoInicio = inicio)
     }
 
     /**
@@ -392,6 +414,7 @@ class ViewModelPrincipal(
                 temas = temas,
                 totalLocal = totalLocal,
                 pendentes = repo.pendentes(),
+                esperandoRede = repo.esperandoRede(),
                 respondidasHoje = repo.respondidasHoje(),
                 xp = gam?.xp ?: 0,
                 nivel = gam?.level ?: 1,
@@ -442,10 +465,24 @@ class ViewModelPrincipal(
                 )
             }
                 .onSuccess { simulado ->
+                    val agora = System.currentTimeMillis()
                     _estado.value = _estado.value.copy(
                         carregandoSimulado = false,
                         simulado = simulado,
+                        simuladoInicio = agora,
                     )
+                    // Guarda no aparelho: se o app morrer no meio da prova,
+                    // a pessoa volta de onde parou em vez de perder tudo.
+                    runCatching {
+                        val texto = kotlinx.serialization.json.Json {
+                            ignoreUnknownKeys = true
+                            explicitNulls = false
+                        }.encodeToString(SimuladoMontado.serializer(), simulado)
+                        prefsLocais().edit()
+                            .putString("simulado_ativo", texto)
+                            .putLong("simulado_inicio", agora)
+                            .apply()
+                    }
                 }
                 .onFailure {
                     _estado.value = _estado.value.copy(
@@ -457,7 +494,8 @@ class ViewModelPrincipal(
     }
 
     fun fecharSimulado() {
-        _estado.value = _estado.value.copy(simulado = null, diagnostico = null)
+        prefsLocais().edit().remove("simulado_ativo").remove("simulado_inicio").apply()
+        _estado.value = _estado.value.copy(simulado = null, diagnostico = null, simuladoInicio = 0L)
     }
 
     fun finalizarSimulado(respostas: List<Map<String, String>>, duracaoSegundos: Int) {
@@ -479,8 +517,10 @@ class ViewModelPrincipal(
                 )
             }
                 .onSuccess { diag ->
+                    prefsLocais().edit().remove("simulado_ativo").remove("simulado_inicio").apply()
                     _estado.value = _estado.value.copy(
                         simulado = null,
+                        simuladoInicio = 0L,
                         diagnostico = diag,
                     )
                 }
@@ -751,6 +791,7 @@ class ViewModelPrincipal(
             val gam = repo.gamificacao()
             _estado.value = _estado.value.copy(
                 pendentes = repo.pendentes(),
+                esperandoRede = repo.esperandoRede(),
                 xp = gam?.xp ?: 0,
                 nivel = gam?.level ?: 1,
                 streak = gam?.streak ?: 0,

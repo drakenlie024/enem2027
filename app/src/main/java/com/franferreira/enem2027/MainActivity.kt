@@ -481,6 +481,7 @@ fun EnemApp() {
                     )
                     simulado != null -> TelaSimulado(
                         simulado = simulado,
+                        iniciadoEm = estado.simuladoInicio,
                         aoFinalizar = { respostas, duracao ->
                             vm.finalizarSimulado(respostas, duracao)
                         },

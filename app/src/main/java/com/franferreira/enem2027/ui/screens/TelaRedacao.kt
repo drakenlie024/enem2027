@@ -86,6 +86,16 @@ fun TelaRedacao(
     }
     var texto by remember(rascunho?.id) { mutableStateOf(rascunho?.texto ?: "") }
     var resultadoLocal by remember { mutableStateOf<EssayCorrection?>(resultado) }
+    // Cronômetro da redação (1 hora, como na prova).
+    var segundos by remember { mutableStateOf(0) }
+    var correndoTempo by remember { mutableStateOf(false) }
+    LaunchedEffect(correndoTempo) {
+        while (correndoTempo && segundos < 3600) {
+            kotlinx.coroutines.delay(1000)
+            segundos += 1
+        }
+    }
+
     // Sincroniza o resultado que chega do ViewModel (correção em segundo
     // plano) com o estado local da tela.
     LaunchedEffect(resultado) { if (resultado != null) resultadoLocal = resultado }
@@ -204,6 +214,45 @@ fun TelaRedacao(
             }
 
             // editor
+            // Cronômetro da prova: 1 hora é o tempo do ENEM para a redação.
+            val minutos = segundos / 60
+            val segundosRestantes = 3600 - segundos
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = "TEMPO",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = TextMuted,
+                    modifier = Modifier.weight(1f),
+                )
+                Text(
+                    text = "%02d:%02d".format(minutos, segundos % 60),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = if (segundosRestantes <= 600) Danger else TextSecondary,
+                )
+                Spacer(Modifier.width(10.dp))
+                Text(
+                    text = if (correndoTempo) "Pausar" else "Iniciar",
+                    style = MaterialTheme.typography.labelLarge,
+                    color = Primary,
+                    modifier = Modifier.clickable {
+                        if (segundos >= 3600) segundos = 0
+                        correndoTempo = !correndoTempo
+                    },
+                )
+            }
+            if (segundosRestantes in 1..600) {
+                Text(
+                    text = "Faltam ${segundosRestantes / 60} minutos",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Danger,
+                )
+            }
+            Spacer(Modifier.height(14.dp))
+
+
             Text(
                 text = "SEU TEXTO",
                 style = MaterialTheme.typography.labelSmall,
@@ -234,11 +283,24 @@ fun TelaRedacao(
             )
 
             Spacer(Modifier.height(6.dp))
-            Text(
-                text = "${texto.length} caracteres · o ENEM pede entre 300 e 1500",
-                style = MaterialTheme.typography.labelSmall,
-                color = if (texto.isNotEmpty() && texto.length < 300) Danger else TextMutedDark,
-            )
+            // Linhas estimadas: o ENEM conta linhas na folha oficial (cerca de
+            // 58 caracteres por linha) e exige entre 25 e 30.
+            val linhas = texto.split("\n").sumOf { linha ->
+                if (linha.isEmpty()) 1 else (linha.length + 57) / 58
+            }
+            val corLinhas = if (linhas in 25..30 || linhas == 0) Secondary else Danger
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = "${texto.length} caracteres",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (texto.isNotEmpty() && texto.length < 300) Danger else TextMutedDark,
+                )
+                Text(
+                    text = "  |  $linhas linhas (25 a 30)",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (linhas == 0) TextMutedDark else corLinhas,
+                )
+            }
 
             erro?.let {
                 Spacer(Modifier.height(10.dp))

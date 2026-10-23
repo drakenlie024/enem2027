@@ -215,6 +215,7 @@ fun TelaAula(
             pacote.url
         }
         runCatching {
+            com.franferreira.enem2027.data.repo.AulasAssistidas.marcar(contexto, pacote.id)
             contexto.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
         }
     }
@@ -232,7 +233,10 @@ fun TelaAula(
             setDataAndType(uri, "video/mp4")
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
-        runCatching { contexto.startActivity(intent) }
+        runCatching {
+            com.franferreira.enem2027.data.repo.AulasAssistidas.marcar(contexto, pacote.id)
+            contexto.startActivity(intent)
+        }
     }
 
     Column(
@@ -652,6 +656,10 @@ private fun CartaoAreaAulas(area: AreaAulas, aoClicar: () -> Unit) {
 
 @Composable
 private fun CartaoAula(aula: AulaResumo, aoClicar: () -> Unit) {
+    val contexto = LocalContext.current
+    val assistida = remember(aula.id) {
+        com.franferreira.enem2027.data.repo.AulasAssistidas.foiAssistida(contexto, aula.id)
+    }
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -686,10 +694,18 @@ private fun CartaoAula(aula: AulaResumo, aoClicar: () -> Unit) {
             )
             Spacer(Modifier.height(3.dp))
             Text(
-                text = "${aula.canal} · ${aula.totalQuestoes} questões",
+                text = if (assistida) "assistida" else "${aula.canal} | ${aula.totalQuestoes} questoes",
                 style = MaterialTheme.typography.labelSmall,
-                color = TextMuted,
+                color = if (assistida) Secondary else TextMuted,
             )
+        if (assistida) {
+            Icon(
+                Icons.Filled.CheckCircle,
+                contentDescription = "Aula assistida",
+                tint = Secondary,
+                modifier = Modifier.size(16.dp),
+            )
+        }
         }
     }
 }

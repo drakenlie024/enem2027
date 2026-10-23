@@ -214,6 +214,9 @@ class Repositorio(private val context: Context) {
 
     suspend fun pendentes(): Int = db.questions().pendentes(System.currentTimeMillis())
 
+    /** Respostas gravadas no aparelho que ainda não subiram para o servidor. */
+    suspend fun esperandoRede(): Int = db.pendingAnswers().totalNaoSincronizadas()
+
     /**
      * Quantas questões foram respondidas hoje (para o anel da meta).
      *

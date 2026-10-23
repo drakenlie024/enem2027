@@ -64,6 +64,7 @@ import com.franferreira.enem2027.ui.theme.TextMuted
 import com.franferreira.enem2027.ui.theme.TextMutedDark
 import com.franferreira.enem2027.ui.theme.TextPrimary
 import com.franferreira.enem2027.ui.theme.TextSecondary
+import com.franferreira.enem2027.ui.theme.Warning
 import com.franferreira.enem2027.ui.theme.corDaArea
 
 /**
@@ -150,6 +151,28 @@ fun TelaHoje(
             Spacer(Modifier.height(16.dp))
 
             // ---- a meta do dia: um anel e um botão
+            if (estado.esperandoRede > 0) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(14.dp))
+                        .background(Warning.copy(alpha = 0.12f))
+                        .padding(horizontal = 12.dp, vertical = 9.dp),
+                ) {
+                    Text(
+                        text = if (estado.esperandoRede == 1) {
+                            "1 resposta salva no aparelho, esperando rede para subir"
+                        } else {
+                            "${estado.esperandoRede} respostas salvas no aparelho, esperando rede"
+                        },
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Warning,
+                    )
+                }
+                Spacer(Modifier.height(10.dp))
+            }
+
+
             CartaoMeta(
                 estado = estado,
                 aoJogar = {

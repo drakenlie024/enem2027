@@ -277,6 +277,9 @@ interface PendingAnswerDao {
     @Query("SELECT * FROM pending_answers WHERE synced = 0")
     suspend fun naoSincronizadas(): List<PendingAnswerEntity>
 
+    @Query("SELECT COUNT(*) FROM pending_answers WHERE synced = 0")
+    suspend fun totalNaoSincronizadas(): Int
+
     @Query("UPDATE pending_answers SET synced = 1 WHERE localId IN (:ids)")
     suspend fun marcarSincronizadas(ids: List<Long>)
 

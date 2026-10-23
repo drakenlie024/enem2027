@@ -107,6 +107,8 @@ fun TelaSimulado(
     simulado: SimuladoMontado,
     aoFinalizar: (respostas: List<Map<String, String>>, duracaoSegundos: Int) -> Unit,
     aoVoltar: () -> Unit,
+    /** Quando a prova começou (para retomar com o tempo certo). */
+    iniciadoEm: Long = 0L,
 ) {
     // rememberSaveable em tudo: trocar de aba ou o sistema matar o processo
     // no meio da prova descartava as respostas marcadas e reiniciava o
@@ -116,7 +118,13 @@ fun TelaSimulado(
         mutableStateOf<Map<String, String>>(emptyMap())
     }
     var segundosRestantes by rememberSaveable {
-        mutableIntStateOf(simulado.duracaoMinutos * 60)
+        // Retoma com o tempo que já passou desde o início real da prova.
+        val decorrido = if (iniciadoEm > 0L) {
+            ((System.currentTimeMillis() - iniciadoEm) / 1000L).toInt()
+        } else {
+            0
+        }
+        mutableIntStateOf((simulado.duracaoMinutos * 60 - decorrido).coerceAtLeast(0))
     }
     var terminado by rememberSaveable { mutableStateOf(false) }
     // A explicação fica recolhida por padrão: no simulado, ver a resposta

@@ -102,6 +102,7 @@ fun TelaQuestao(
     // `contexto` já é o texto de apoio da questão, dentro do LazyColumn.
     // O contexto do Android precisa de outro nome.
     val app = LocalContext.current
+    val vibracao = androidx.compose.ui.platform.LocalHapticFeedback.current
     var tracos by remember(questao.id) {
         mutableStateOf(RascunhoStore.carregar(app, questao.id))
     }
@@ -296,6 +297,11 @@ error = ColorPainter(SurfaceRaised),
                                 alternativa.letra.equals(gabarito, ignoreCase = true)
                             } else {
                                 alternativa.correta
+                            }
+                            if (corretaEscolhida) {
+                                vibracao.performHapticFeedback(
+                                    androidx.compose.ui.hapticfeedback.HapticFeedbackType.LongPress
+                                )
                             }
                             aoResponder(corretaEscolhida, (System.currentTimeMillis() - inicio) / 1000f, confianca)
                         }
