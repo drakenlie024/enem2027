@@ -398,6 +398,10 @@ fun EnemApp() {
                         navController.navigate("aulasarea")
                     },
                     aoVoltar = { navController.popBackStack() },
+                    aoContinuar = { id ->
+                        vm.abrirPacoteAula(id)
+                        navController.navigate("aulapacote")
+                    },
                 )
             }
 

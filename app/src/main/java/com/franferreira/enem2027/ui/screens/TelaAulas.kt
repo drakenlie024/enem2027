@@ -23,6 +23,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.OndemandVideo
 import androidx.compose.material3.CircularProgressIndicator
@@ -56,6 +57,7 @@ import com.franferreira.enem2027.ui.components.BarraGamificada
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
+import com.franferreira.enem2027.ui.theme.PaletaClaro
 import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Secondary
 import com.franferreira.enem2027.ui.theme.Surface
@@ -79,6 +81,7 @@ fun TelaAulas(
     areas: List<AreaAulas>,
     aoAbrirArea: (String) -> Unit,
     aoVoltar: () -> Unit,
+    aoContinuar: (String) -> Unit = {},
 ) {
     Column(
         modifier = Modifier
@@ -110,6 +113,46 @@ fun TelaAulas(
             ),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
+            val ultima = com.franferreira.enem2027.data.repo.AulasAssistidas
+                .ultima(androidx.compose.ui.platform.LocalContext.current)
+            if (ultima != null) {
+                item {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(18.dp))
+                            .background(Primary.copy(alpha = 0.12f))
+                            .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(18.dp))
+                            .clickable { aoContinuar(ultima.first) }
+                            .padding(13.dp),
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                Icons.Filled.PlayArrow,
+                                contentDescription = null,
+                                tint = Primary,
+                                modifier = Modifier.size(20.dp),
+                            )
+                            Spacer(Modifier.width(10.dp))
+                            Column(Modifier.weight(1f)) {
+                                Text(
+                                    text = "Continuar assistindo",
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = Primary,
+                                )
+                                Text(
+                                    text = ultima.second.ifBlank { "Última aula aberta" },
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = TextPrimary,
+                                    maxLines = 2,
+                                    overflow = TextOverflow.Ellipsis,
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
             item {
                 Text(
                     text = "Aulas com resumo e questoes sobre o que foi ensinado. " +
@@ -134,12 +177,41 @@ fun TelaAulasDeArea(
     aoAbrirAula: (AulaResumo) -> Unit,
     aoVoltar: () -> Unit,
 ) {
+    val contexto = LocalContext.current
+    val escopo = rememberCoroutineScope()
+    var selecionando by remember { mutableStateOf(false) }
+    var selecionadas by remember { mutableStateOf<Set<String>>(emptySet()) }
+    var baixandoLote by remember { mutableStateOf(false) }
+    var progressoLote by remember { mutableStateOf("") }
+    val todasAulas = dados.temas.flatMap { it.aulas }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background))),
     ) {
-        TopoAulas(dados.area.replace('-', ' ').uppercase(), aoVoltar)
+        TopoAulas(
+            titulo = dados.area.replace('-', ' ').uppercase(),
+            aoVoltar = aoVoltar,
+            acao = if (dados.temas.isEmpty()) {
+                null
+            } else {
+                {
+                    Text(
+                        text = if (selecionando) "Cancelar" else "Selecionar",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = Primary,
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(999.dp))
+                            .clickable {
+                                selecionando = !selecionando
+                                selecionadas = emptySet()
+                            }
+                            .padding(horizontal = 10.dp, vertical = 6.dp),
+                    )
+                }
+            },
+        )
 
         if (dados.temas.isEmpty()) {
             Box(
@@ -159,6 +231,7 @@ fun TelaAulasDeArea(
         }
 
         LazyColumn(
+            modifier = Modifier.weight(1f),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
                 start = 16.dp, end = 16.dp, bottom = 24.dp
             ),
@@ -175,7 +248,103 @@ fun TelaAulasDeArea(
                     Spacer(Modifier.height(6.dp))
                 }
                 items(grupo.aulas, key = { it.id }) { aula ->
-                    CartaoAula(aula = aula, aoClicar = { aoAbrirAula(aula) })
+                    if (selecionando) {
+                        val marcada = aula.id in selecionadas
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(16.dp))
+                                .clickable {
+                                    selecionadas = if (marcada) {
+                                        selecionadas - aula.id
+                                    } else {
+                                        selecionadas + aula.id
+                                    }
+                                }
+                                .padding(vertical = 2.dp),
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .size(22.dp)
+                                    .clip(RoundedCornerShape(6.dp))
+                                    .background(if (marcada) Primary else Surface)
+                                    .border(
+                                        1.dp,
+                                        if (marcada) Primary else SurfaceBorder,
+                                        RoundedCornerShape(6.dp),
+                                    ),
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                if (marcada) {
+                                    Icon(
+                                        Icons.Filled.Check,
+                                        contentDescription = null,
+                                        tint = PaletaClaro.texto,
+                                        modifier = Modifier.size(14.dp),
+                                    )
+                                }
+                            }
+                            Spacer(Modifier.width(8.dp))
+                            Box(Modifier.weight(1f)) {
+                                CartaoAula(aula = aula, aoClicar = {
+                                    selecionadas = if (marcada) {
+                                        selecionadas - aula.id
+                                    } else {
+                                        selecionadas + aula.id
+                                    }
+                                })
+                            }
+                        }
+                    } else {
+                        CartaoAula(aula = aula, aoClicar = { aoAbrirAula(aula) })
+                    }
+                }
+            }
+        }
+
+        if (selecionando) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Surface)
+                    .padding(horizontal = 16.dp, vertical = 10.dp),
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = if (progressoLote.isNotBlank()) {
+                            progressoLote
+                        } else {
+                            "${selecionadas.size} selecionada(s)"
+                        },
+                        style = MaterialTheme.typography.labelMedium,
+                        color = if (progressoLote.isNotBlank()) Primary else TextMuted,
+                        modifier = Modifier.weight(1f),
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                    Spacer(Modifier.width(8.dp))
+                    BotaoPill(
+                        texto = if (baixandoLote) "Baixando..." else "Baixar offline",
+                        ativo = selecionadas.isNotEmpty() && !baixandoLote,
+                        aoClicar = {
+                            if (selecionadas.isEmpty() || baixandoLote) return@BotaoPill
+                            val lista = todasAulas.filter { it.id in selecionadas }
+                            escopo.launch {
+                                baixandoLote = true
+                                for ((i, a) in lista.withIndex()) {
+                                    progressoLote = "Baixando ${i + 1}/${lista.size}: ${a.titulo}"
+                                    runCatching {
+                                        VideoDownloader.baixar(contexto, a.id).getOrNull()
+                                    }
+                                }
+                                progressoLote = ""
+                                baixandoLote = false
+                                selecionando = false
+                                selecionadas = emptySet()
+                            }
+                        },
+                    )
                 }
             }
         }
@@ -203,6 +372,16 @@ fun TelaAula(
     var baixando by remember(pacote.id) { mutableStateOf(false) }
     var progresso by remember(pacote.id) { mutableStateOf<Pair<Long, Long>?>(null) }
     var erroDownload by remember(pacote.id) { mutableStateOf<String?>(null) }
+    var favorita by remember(pacote.id) {
+        mutableStateOf(
+            com.franferreira.enem2027.data.repo.AulasAssistidas.ehFavorita(contexto, pacote.id)
+        )
+    }
+    var assistida by remember(pacote.id) {
+        mutableStateOf(
+            com.franferreira.enem2027.data.repo.AulasAssistidas.foiAssistida(contexto, pacote.id)
+        )
+    }
 
     LaunchedEffect(pacote.id) {
         baixado = VideoDownloader.existe(contexto, pacote.id)
@@ -217,6 +396,7 @@ fun TelaAula(
         }
         runCatching {
             com.franferreira.enem2027.data.repo.AulasAssistidas.marcar(contexto, pacote.id)
+            com.franferreira.enem2027.data.repo.AulasAssistidas.guardarUltima(contexto, pacote.id, pacote.titulo, pacote.area)
             contexto.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
         }
     }
@@ -236,6 +416,7 @@ fun TelaAula(
         }
         runCatching {
             com.franferreira.enem2027.data.repo.AulasAssistidas.marcar(contexto, pacote.id)
+            com.franferreira.enem2027.data.repo.AulasAssistidas.guardarUltima(contexto, pacote.id, pacote.titulo, pacote.area)
             contexto.startActivity(intent)
         }
     }
@@ -253,6 +434,29 @@ fun TelaAula(
             ),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
+            // ---- favoritar / marcar como assistida
+            item {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    BotaoPill(
+                        texto = if (favorita) "Favorita" else "Favoritar",
+                        ativo = favorita,
+                        aoClicar = {
+                            favorita = com.franferreira.enem2027.data.repo.AulasAssistidas
+                                .alternarFavorita(contexto, pacote.id)
+                        },
+                    )
+                    BotaoPill(
+                        texto = if (assistida) "Assistida" else "Marcar assistida",
+                        ativo = assistida,
+                        aoClicar = {
+                            com.franferreira.enem2027.data.repo.AulasAssistidas
+                                .marcar(contexto, pacote.id)
+                            assistida = true
+                        },
+                    )
+                }
+            }
+
             // ---- o video
             item {
                 Column(
@@ -712,7 +916,11 @@ private fun CartaoAula(aula: AulaResumo, aoClicar: () -> Unit) {
 }
 
 @Composable
-private fun TopoAulas(titulo: String, aoVoltar: () -> Unit) {
+private fun TopoAulas(
+    titulo: String,
+    aoVoltar: () -> Unit,
+    acao: (@Composable () -> Unit)? = null,
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -735,6 +943,32 @@ private fun TopoAulas(titulo: String, aoVoltar: () -> Unit) {
             modifier = Modifier.weight(1f),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
+        )
+        if (acao != null) {
+            acao()
+        }
+    }
+}
+
+/** Botão-pílula pequeno, usado nas ações da aula. */
+@Composable
+private fun BotaoPill(texto: String, ativo: Boolean, aoClicar: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(999.dp))
+            .background(if (ativo) Primary.copy(alpha = 0.18f) else Surface)
+            .border(
+                1.dp,
+                if (ativo) Primary.copy(alpha = 0.5f) else SurfaceBorder,
+                RoundedCornerShape(999.dp),
+            )
+            .clickable { aoClicar() }
+            .padding(horizontal = 12.dp, vertical = 7.dp),
+    ) {
+        Text(
+            text = texto,
+            style = MaterialTheme.typography.labelSmall,
+            color = if (ativo) Primary else TextMuted,
         )
     }
 }
