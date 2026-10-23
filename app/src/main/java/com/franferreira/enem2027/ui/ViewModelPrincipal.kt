@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.franferreira.enem2027.data.local.AgendaEntity
 import com.franferreira.enem2027.data.model.AgendaItem
 import com.franferreira.enem2027.data.model.Diagnostico
+import com.franferreira.enem2027.data.model.Onboarding
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
 import com.franferreira.enem2027.data.model.calcularDiagnostico
 import com.franferreira.enem2027.data.model.AreaAulas
@@ -79,6 +80,12 @@ data class EstadoHoje(
     /** Respostas do diagnóstico (id da questão -> letra). */
     val diagRespostas: Map<String, String> = emptyMap(),
     val diagResultado: com.franferreira.enem2027.data.model.ResultadoDiagnostico? = null,
+    /** Previsão de nota sai junto com o resultado do diagnóstico (faixa, não número exato). */
+    val diagPrevisao: PrevisaoNota? = null,
+    /** Etapa atual do primeiro acesso (metas, agenda, notificacao); null = fora do onboarding. */
+    val onboardingEtapa: String? = null,
+    /** Ano da prova escolhido no onboarding (null = não informado). */
+    val anoProva: Int? = null,
     /** Simulador em andamento. */
     val simulado: SimuladoMontado? = null,    val carregandoSimulado: Boolean = false,
     /** Quando o simulado em andamento começou (para retomar com o tempo certo). */
@@ -347,6 +354,7 @@ class ViewModelPrincipal(
             .putString("nome", limpo)
             .putBoolean("modo_local", true)
             .putBoolean("diag_pendente", true)
+            .putBoolean("onboarding_feito", false)
             .apply()
         _estado.value = _estado.value.copy(
             carregando = false,
@@ -356,15 +364,65 @@ class ViewModelPrincipal(
         recarregar()
         carregarAgenda()
         garantirContaRemota()
-        iniciarDiagnostico()
+        _estado.value = _estado.value.copy(onboardingEtapa = Onboarding.ETAPAS.first())
     }
 
-    /** Ao abrir o app: confere o diagnóstico e retoma se o app morreu no meio. */
+    /**
+     * Ao abrir o app: lê as metas salvas, confere o diagnóstico e retoma se o
+     * app morreu no meio. Morrer no onboarding volta para a primeira etapa; as
+     * metas já salvas continuam.
+     */
     private fun retomarDiagnostico(prefs: android.content.SharedPreferences) {
-        _estado.value = _estado.value.copy(diagFeito = prefs.getBoolean("diag_feito", false))
-        // Se morreu no meio, começa de novo: o sorteio muda, o que já foi
-        // respondido continua contando no progresso.
-        if (prefs.getBoolean("diag_pendente", false)) iniciarDiagnostico()
+        val nota = prefs.getInt("nota_alvo", 0).takeIf { it > 0 }
+        val ano = prefs.getInt("ano_prova", 0).takeIf { it > 0 }
+        _estado.value = _estado.value.copy(
+            diagFeito = prefs.getBoolean("diag_feito", false),
+            notaAlvo = nota ?: _estado.value.notaAlvo,
+            anoProva = ano,
+        )
+        if (!prefs.getBoolean("diag_pendente", false)) return
+        if (prefs.getBoolean("onboarding_feito", true)) {
+            // Se morreu no meio, começa de novo: o sorteio muda, o que já foi
+            // respondido continua contando no progresso.
+            iniciarDiagnostico()
+        } else {
+            _estado.value = _estado.value.copy(onboardingEtapa = Onboarding.ETAPAS.first())
+        }
+    }
+
+    /** Onboarding: salva a nota-alvo e o ano da prova que foram escolhidos e segue. */
+    fun salvarMetasOnboarding(notaAlvo: Int?, anoProva: Int?) {
+        val editor = prefsLocais().edit()
+        notaAlvo?.let { editor.putInt("nota_alvo", it) }
+        anoProva?.let { editor.putInt("ano_prova", it) }
+        editor.apply()
+        _estado.value = _estado.value.copy(
+            notaAlvo = notaAlvo ?: _estado.value.notaAlvo,
+            anoProva = anoProva ?: _estado.value.anoProva,
+        )
+        avancarOnboarding()
+    }
+
+    /** Onboarding: a agenda marcada vai para o Room (e o servidor, se responder). */
+    fun salvarAgendaOnboarding() {
+        salvarAgenda()
+        avancarOnboarding()
+    }
+
+    /** Pula a etapa atual do onboarding sem salvar nada. */
+    fun pularEtapaOnboarding() = avancarOnboarding()
+
+    /** Segue para a próxima etapa; depois da última, abre o diagnóstico. */
+    fun avancarOnboarding() {
+        val atual = _estado.value.onboardingEtapa ?: return
+        val proxima = Onboarding.proxima(atual)
+        if (proxima != null) {
+            _estado.value = _estado.value.copy(onboardingEtapa = proxima)
+            return
+        }
+        prefsLocais().edit().putBoolean("onboarding_feito", true).apply()
+        _estado.value = _estado.value.copy(onboardingEtapa = null)
+        iniciarDiagnostico()
     }
 
     // ---------- diagnóstico de entrada ----------
@@ -417,9 +475,25 @@ class ViewModelPrincipal(
                 resultado.fracos.map { Diagnostico.chaveTema(it.area, it.tema) }.toSet(),
             )
             .apply()
+        // Previsão com as 10 respostas de cada área: o Previsor só mostra nota
+        // por área com 5 ou mais respostas, e o diagnóstico tem 10.
+        val linhas = resultado.areas.map {
+            com.franferreira.enem2027.data.local.AcertoAreaRow(
+                area = it.area,
+                respondidas = it.total,
+                acertos = it.acertos,
+                erros = it.total - it.acertos,
+            )
+        }
+        val previsao = Previsor.prever(
+            acertosPorArea = linhas,
+            anoAlvo = atual.anoCorte,
+            notaAlvo = atual.notaAlvo,
+        )
         _estado.value = atual.copy(
             diagRespostas = respostas,
             diagResultado = resultado,
+            diagPrevisao = previsao,
             diagFeito = true,
         )
     }
@@ -450,6 +524,7 @@ class ViewModelPrincipal(
             diagIndice = 0,
             diagRespostas = emptyMap(),
             diagResultado = null,
+            diagPrevisao = null,
         )
         carregarTreinos()
     }
@@ -1331,6 +1406,7 @@ class ViewModelPrincipal(
 
     /** Troca a nota-alvo. */
     fun trocarNotaAlvo(nota: Int) {
+        prefsLocais().edit().putInt("nota_alvo", nota).apply()
         _estado.value = _estado.value.copy(notaAlvo = nota)
         carregarPrevisao()
     }

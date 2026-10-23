@@ -58,6 +58,7 @@ import com.franferreira.enem2027.ui.screens.TelaAulas
 import com.franferreira.enem2027.ui.screens.TelaAulasDeArea
 import com.franferreira.enem2027.ui.screens.TelaCaderno
 import com.franferreira.enem2027.ui.screens.TelaDiagnostico
+import com.franferreira.enem2027.ui.screens.TelaOnboarding
 import com.franferreira.enem2027.ui.screens.TelaResultadoDiagnostico
 import com.franferreira.enem2027.ui.screens.TelaNota
 import com.franferreira.enem2027.ui.screens.TelaQuestao
@@ -152,6 +153,20 @@ fun EnemApp() {
         return
     }
 
+    // Primeiro acesso: metas, agenda e notificação, todas puláveis.
+    estado.onboardingEtapa?.let { etapa ->
+        TelaOnboarding(
+            etapa = etapa,
+            agenda = estado.agenda,
+            aoSalvarMetas = vm::salvarMetasOnboarding,
+            aoAlternarAgenda = vm::alternarAgenda,
+            aoSalvarAgenda = vm::salvarAgendaOnboarding,
+            aoPular = vm::pularEtapaOnboarding,
+            aoConcluirNotificacao = vm::avancarOnboarding,
+        )
+        return
+    }
+
     // Diagnóstico de entrada: enquanto estiver pendente, o app fica só nele.
     if (estado.diagPendente) {
         val resultado = estado.diagResultado
@@ -159,6 +174,8 @@ fun EnemApp() {
         when {
             resultado != null -> TelaResultadoDiagnostico(
                 resultado = resultado,
+                previsao = estado.diagPrevisao,
+                notaAlvo = estado.notaAlvo,
                 aoComecar = vm::concluirDiagnostico,
             )
             questao != null -> TelaDiagnostico(

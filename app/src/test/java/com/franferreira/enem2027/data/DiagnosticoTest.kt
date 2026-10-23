@@ -1,6 +1,7 @@
 package com.franferreira.enem2027.data
 
 import com.franferreira.enem2027.data.model.Diagnostico
+import com.franferreira.enem2027.data.model.Onboarding
 import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.data.model.calcularDiagnostico
 import org.junit.Assert.assertEquals
@@ -120,6 +121,25 @@ class DiagnosticoTest {
         val escolhidas = Diagnostico.espalharPorTema(candidatas, 10) { it.second }
 
         assertEquals(2, escolhidas.size)
+    }
+
+    @Test
+    fun `faixa da nota fica em dezenas, em torno da estimativa`() {
+        assertEquals(600 to 680, Diagnostico.faixaDaNota(640))
+        assertEquals(660 to 740, Diagnostico.faixaDaNota(700))
+        assertEquals(600 to 690, Diagnostico.faixaDaNota(645))
+    }
+
+    @Test
+    fun `onboarding passa de metas para agenda para notificacao e depois sai`() {
+        assertEquals("agenda", Onboarding.proxima("metas"))
+        assertEquals("notificacao", Onboarding.proxima("agenda"))
+        assertEquals(null, Onboarding.proxima("notificacao"))
+    }
+
+    @Test
+    fun `etapa desconhecida nao leva a lugar nenhum`() {
+        assertEquals(null, Onboarding.proxima("inexistente"))
     }
 
     @Test

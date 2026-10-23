@@ -29,6 +29,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.Diagnostico
+import com.franferreira.enem2027.data.model.PrevisaoNota
 import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.data.model.ResultadoDiagnostico
 import com.franferreira.enem2027.data.model.TemaDiagnostico
@@ -191,6 +192,8 @@ fun TelaDiagnostico(
 @Composable
 fun TelaResultadoDiagnostico(
     resultado: ResultadoDiagnostico,
+    previsao: PrevisaoNota?,
+    notaAlvo: Int,
     aoComecar: () -> Unit,
 ) {
     val rolagem = rememberScrollState()
@@ -239,6 +242,46 @@ fun TelaResultadoDiagnostico(
                     style = MaterialTheme.typography.bodySmall,
                     color = TextMuted,
                 )
+            }
+
+            previsao?.notaMedia?.let { media ->
+                val (minimo, maximo) = Diagnostico.faixaDaNota(media)
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(18.dp))
+                        .background(Surface)
+                        .border(1.dp, Primary.copy(alpha = 0.4f), RoundedCornerShape(18.dp))
+                        .padding(14.dp),
+                ) {
+                    Text(
+                        text = "PREVISÃO INICIAL",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = Primary,
+                    )
+                    Text(
+                        text = "$minimo a $maximo",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = TextPrimary,
+                    )
+                    Spacer(Modifier.height(4.dp))
+                    val falta = notaAlvo - media
+                    Text(
+                        text = if (falta > 0) {
+                            "Faltam cerca de $falta pontos para a sua meta de $notaAlvo."
+                        } else {
+                            "Você já está na sua meta de $notaAlvo."
+                        },
+                        style = MaterialTheme.typography.bodySmall,
+                        color = TextMuted,
+                    )
+                    Spacer(Modifier.height(4.dp))
+                    Text(
+                        text = "Estimativa com 40 questões: é uma faixa, não a nota final.",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = TextMuted,
+                    )
+                }
             }
 
             Text(

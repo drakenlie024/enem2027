@@ -21,6 +21,16 @@ object Diagnostico {
         else -> area
     }
 
+    /** Margem da previsão inicial: com 40 questões, a nota é uma faixa, não um número. */
+    const val MARGEM_NOTA = 40
+
+    /** Faixa de nota (mínimo, máximo) em múltiplos de 10, em torno da estimativa. */
+    fun faixaDaNota(nota: Int): Pair<Int, Int> {
+        val minimo = ((nota - MARGEM_NOTA) / 10) * 10
+        val maximo = ((nota + MARGEM_NOTA + 9) / 10) * 10
+        return minimo to maximo
+    }
+
     /** Chave única de um tema dentro de uma área (usada para guardar os fracos). */
     fun chaveTema(area: String, tema: String): String = "$area|$tema"
 
@@ -45,6 +55,21 @@ object Diagnostico {
             }
         }
         return saida
+    }
+}
+
+/**
+ * As etapas do primeiro acesso depois do nome. O diagnóstico vem depois delas
+ * e não entra aqui: ele é obrigatório e tem tela própria.
+ */
+object Onboarding {
+    val ETAPAS = listOf("metas", "agenda", "notificacao")
+
+    /** Próxima etapa depois de [atual]; null quando a próxima é o diagnóstico. */
+    fun proxima(atual: String): String? {
+        val indice = ETAPAS.indexOf(atual)
+        if (indice < 0) return null
+        return ETAPAS.getOrNull(indice + 1)
     }
 }
 
