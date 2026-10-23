@@ -306,7 +306,7 @@ object RepertorioRedacao {
             ),
         ),
         Tema(
-            titulo = "Uso dexsd dados pessoais e privacidade",
+            titulo = "Uso de dados pessoais e privacidade",
             enunciado = "Avalie os desafios impostos pelo uso de dados pessoais na vida cotidiana.",
             repertorio = listOf(
                 Repertorio(
