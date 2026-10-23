@@ -53,6 +53,7 @@ import com.franferreira.enem2027.ui.components.CartaoGamificado
 import com.franferreira.enem2027.ui.components.Pilula
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
+import com.franferreira.enem2027.ui.components.floresFundo
 import com.franferreira.enem2027.ui.theme.PaletaAtual
 import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Secondary
@@ -106,10 +107,8 @@ fun TelaHoje(
             .background(
                 Brush.verticalGradient(listOf(BackgroundGradientTop, Background))
             )
-            .then(
-                com.franferreira.enem2027.ui.components.floresFundo(
-                    alpha = if (PaletaAtual.atual.escuro) 0.22f else 0.42f
-                )
+            .floresFundo(
+                alpha = if (PaletaAtual.atual.escuro) 0.22f else 0.42f
             ),
         contentPadding = androidx.compose.foundation.layout.PaddingValues(
             start = 16.dp, end = 16.dp, bottom = 24.dp

@@ -41,6 +41,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.ui.components.BotaoGamificado
+import com.franferreira.enem2027.ui.components.floresFundo
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -90,7 +91,7 @@ fun TelaLogin(
         modifier = Modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
-            .then(com.franferreira.enem2027.ui.components.floresFundo(alpha = 0.45f))
+            .floresFundo(alpha = 0.45f)
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
