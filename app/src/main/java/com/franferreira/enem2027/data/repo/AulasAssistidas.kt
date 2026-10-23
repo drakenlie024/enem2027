@@ -29,6 +29,20 @@ object AulasAssistidas {
         }
     }
 
+    /** Alterna a conclusão e devolve o novo estado. */
+    fun alternarConcluida(context: Context, videoId: String): Boolean {
+        val atual = assistidas(context).toMutableSet()
+        val virouConcluida = if (atual.contains(videoId)) {
+            atual.remove(videoId)
+            false
+        } else {
+            atual.add(videoId)
+            true
+        }
+        prefs(context).edit().putStringSet(CHAVE_ASSISTIDAS, atual).apply()
+        return virouConcluida
+    }
+
     fun foiAssistida(context: Context, videoId: String): Boolean =
         videoId in assistidas(context)
 

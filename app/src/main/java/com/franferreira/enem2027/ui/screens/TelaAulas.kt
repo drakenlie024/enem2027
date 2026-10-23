@@ -185,7 +185,7 @@ fun TelaAulasDeArea(
     var selecionadas by remember { mutableStateOf<Set<String>>(emptySet()) }
     var baixandoLote by remember { mutableStateOf(false) }
     var progressoLote by remember { mutableStateOf("") }
-    var recolhidos by remember { mutableStateOf<Set<String>>(emptySet()) }
+    var recolhidos by remember(dados.area) { mutableStateOf(dados.temas.map { it.tema }.toSet()) }
     val todasAulas = dados.temas.flatMap { it.aulas }
 
     Column(
@@ -409,6 +409,7 @@ fun TelaAula(
             com.franferreira.enem2027.data.repo.AulasAssistidas.foiAssistida(contexto, pacote.id)
         )
     }
+    var respondidas by remember(pacote.id) { mutableStateOf(setOf<String>()) }
 
     LaunchedEffect(pacote.id) {
         baixado = VideoDownloader.existe(contexto, pacote.id)
@@ -473,12 +474,11 @@ fun TelaAula(
                         },
                     )
                     BotaoPill(
-                        texto = if (assistida) "Assistida" else "Marcar assistida",
+                        texto = if (assistida) "Concluída" else "Marcar concluída",
                         ativo = assistida,
                         aoClicar = {
-                            com.franferreira.enem2027.data.repo.AulasAssistidas
-                                .marcar(contexto, pacote.id)
-                            assistida = true
+                            assistida = com.franferreira.enem2027.data.repo.AulasAssistidas
+                                .alternarConcluida(contexto, pacote.id)
                         },
                     )
                 }
@@ -720,6 +720,14 @@ fun TelaAula(
                     CartaoQuestaoAula(
                         questao = questao,
                         aoVerNoVideo = { segundos -> abrirVideo(segundos) },
+                        aoResponder = {
+                            respondidas = respondidas + questao.enunciado.take(40)
+                            if (!assistida && respondidas.size >= pacote.questoes.size) {
+                                com.franferreira.enem2027.data.repo.AulasAssistidas
+                                    .marcar(contexto, pacote.id)
+                                assistida = true
+                            }
+                        },
                     )
                 }
             }
@@ -728,7 +736,11 @@ fun TelaAula(
 }
 
 @Composable
-private fun CartaoQuestaoAula(questao: QuestaoAula, aoVerNoVideo: (Int) -> Unit) {
+private fun CartaoQuestaoAula(
+    questao: QuestaoAula,
+    aoVerNoVideo: (Int) -> Unit,
+    aoResponder: () -> Unit,
+) {
     var escolhida by remember { mutableStateOf<String?>(null) }
     val respondida = escolhida != null
 
@@ -771,7 +783,10 @@ private fun CartaoQuestaoAula(questao: QuestaoAula, aoVerNoVideo: (Int) -> Unit)
                     .clip(RoundedCornerShape(14.dp))
                     .background(corFundo)
                     .border(1.dp, corBorda, RoundedCornerShape(14.dp))
-                    .clickable(enabled = !respondida) { escolhida = alternativa.letra }
+                    .clickable(enabled = !respondida) {
+                        escolhida = alternativa.letra
+                        aoResponder()
+                    }
                     .padding(horizontal = 11.dp, vertical = 9.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
@@ -889,8 +904,10 @@ private fun CartaoAreaAulas(area: AreaAulas, aoClicar: () -> Unit) {
 @Composable
 private fun CartaoAula(aula: AulaResumo, aoClicar: () -> Unit) {
     val contexto = LocalContext.current
-    val assistida = remember(aula.id) {
-        com.franferreira.enem2027.data.repo.AulasAssistidas.foiAssistida(contexto, aula.id)
+    var assistida by remember(aula.id) {
+        mutableStateOf(
+            com.franferreira.enem2027.data.repo.AulasAssistidas.foiAssistida(contexto, aula.id)
+        )
     }
     Row(
         modifier = Modifier
@@ -926,19 +943,25 @@ private fun CartaoAula(aula: AulaResumo, aoClicar: () -> Unit) {
             )
             Spacer(Modifier.height(3.dp))
             Text(
-                text = if (assistida) "assistida" else "${aula.canal} | ${aula.totalQuestoes} questoes",
+                text = if (assistida) "concluída" else "${aula.canal} | ${aula.totalQuestoes} questoes",
                 style = MaterialTheme.typography.labelSmall,
                 color = if (assistida) Secondary else TextMuted,
             )
-        if (assistida) {
-            Icon(
-                Icons.Filled.CheckCircle,
-                contentDescription = "Aula assistida",
-                tint = Secondary,
-                modifier = Modifier.size(16.dp),
-            )
         }
-        }
+        Spacer(Modifier.width(8.dp))
+        Icon(
+            Icons.Filled.CheckCircle,
+            contentDescription = if (assistida) "Desmarcar concluída" else "Marcar concluída",
+            tint = if (assistida) Secondary else TextMuted.copy(alpha = 0.35f),
+            modifier = Modifier
+                .size(26.dp)
+                .clip(CircleShape)
+                .clickable {
+                    assistida = com.franferreira.enem2027.data.repo.AulasAssistidas
+                        .alternarConcluida(contexto, aula.id)
+                }
+                .padding(2.dp),
+        )
     }
 }
 
