@@ -98,6 +98,7 @@ fun TelaHoje(
     aoAjustarMeta: (Int) -> Unit,
     aoAtualizarAcervo: () -> Unit,
     aoRevisar: () -> Unit = {},
+    aoRedacao: () -> Unit = {},
 ) {
     // Tudo num único scroll: antes o cabeçalho (anel + estatísticas) ficava
     // fixo no topo e a lista de trilhas abaixo, dividindo a tela. Em tela
@@ -151,6 +152,13 @@ fun TelaHoje(
             Spacer(Modifier.height(16.dp))
 
             // ---- a meta do dia: um anel e um botão
+            PlanoDeHoje(
+                estado = estado,
+                aoRevisar = aoRevisar,
+                aoJogar = { trilha, etapa -> aoJogarEtapa(trilha, etapa) },
+                aoRedacao = aoRedacao,
+            )
+
             if (estado.esperandoRede > 0) {
                 Box(
                     modifier = Modifier
@@ -706,5 +714,105 @@ private fun BotaoAno(ano: Int, carregando: Boolean, aoClicar: () -> Unit) {
             style = MaterialTheme.typography.labelLarge,
             color = if (carregando) TextMuted else Background,
         )
+    }
+}
+
+/** Uma ação do plano do dia. */
+private data class AcaoDoDia(
+    val titulo: String,
+    val detalhe: String,
+    val cor: androidx.compose.ui.graphics.Color,
+    val aoClicar: () -> Unit,
+)
+
+/**
+ * Plano de hoje: as três coisas para fazer, na ordem, sem a pessoa ter que
+ * decidir. É a resposta para "não sei o que estudar".
+ */
+@Composable
+private fun PlanoDeHoje(
+    estado: EstadoHoje,
+    aoRevisar: () -> Unit,
+    aoJogar: (Trilha, Etapa) -> Unit,
+    aoRedacao: () -> Unit,
+) {
+    val vencendo = estado.fila.vencendo.size
+    val trilha = estado.trilhaParaJogar
+    val etapa = trilha?.etapaAtual
+
+    val acoes = buildList {
+        if (vencendo > 0) {
+            add(AcaoDoDia("Revisar", "$vencendo questões vencendo", Primary, aoRevisar))
+        }
+        if (trilha != null && etapa != null) {
+            add(
+                AcaoDoDia(
+                    titulo = "Continuar ${trilha.nome}",
+                    detalhe = "etapa ${etapa.indice + 1} · ${etapa.questoes.size} questões",
+                    cor = corDaArea(trilha.area),
+                ) { aoJogar(trilha, etapa) }
+            )
+        }
+        add(AcaoDoDia("Redação", "1 tema · 1 hora de treino", Secondary, aoRedacao))
+    }.take(3)
+
+    if (acoes.isEmpty()) return
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(22.dp))
+            .background(Surface)
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(22.dp))
+            .padding(horizontal = 14.dp, vertical = 12.dp),
+    ) {
+        Text(
+            text = "PLANO DE HOJE",
+            style = MaterialTheme.typography.labelSmall,
+            color = TextMuted,
+        )
+        Spacer(Modifier.height(4.dp))
+        acoes.forEachIndexed { indice, acao ->
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp))
+                    .clickable { acao.aoClicar() }
+                    .padding(vertical = 9.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(26.dp)
+                        .clip(CircleShape)
+                        .background(acao.cor.copy(alpha = 0.18f)),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = "${indice + 1}",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = acao.cor,
+                    )
+                }
+                Spacer(Modifier.width(11.dp))
+                Column(Modifier.weight(1f)) {
+                    Text(
+                        text = acao.titulo,
+                        style = MaterialTheme.typography.titleSmall,
+                        color = TextPrimary,
+                    )
+                    Text(
+                        text = acao.detalhe,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = TextMuted,
+                    )
+                }
+                Text(
+                    text = "›",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = TextMuted,
+                )
+            }
+        }
     }
 }
