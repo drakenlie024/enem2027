@@ -263,6 +263,13 @@ class Repositorio(private val context: Context) {
     suspend fun questaoPorId(id: String): Question? =
         db.questions().porId(id)?.paraModelo()
 
+    /** Busca livre no acervo local. Texto curto (menos de 2 letras) não busca. */
+    suspend fun buscarQuestoes(texto: String): List<Question> {
+        val termo = texto.trim()
+        if (termo.length < 2) return emptyList()
+        return db.questions().buscar(termo).map { it.paraModelo() }
+    }
+
     // ---------- caderno de erros e previsão de nota ----------
 
     /**

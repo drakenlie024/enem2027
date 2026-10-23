@@ -65,6 +65,9 @@ fun TelaRevisao(
     aoAbrir: (Question) -> Unit,
     aoSincronizar: () -> Unit,
     sincronizando: Boolean,
+    buscaTexto: String = "",
+    resultadoBusca: List<Question> = emptyList(),
+    aoBuscar: (String) -> Unit = {},
 ) {
     Column(
         modifier = Modifier
@@ -119,10 +122,49 @@ fun TelaRevisao(
                 )
             }
 
+            Spacer(Modifier.height(14.dp))
+            OutlinedTextField(
+                value = buscaTexto,
+                onValueChange = aoBuscar,
+                singleLine = true,
+                placeholder = { Text("Buscar no acervo (texto, tema)", color = TextMuted) },
+                textStyle = MaterialTheme.typography.bodyMedium,
+                colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Primary,
+                    unfocusedBorderColor = SurfaceBorder,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
+                    cursorColor = Primary,
+                ),
+                modifier = Modifier.fillMaxWidth(),
+            )
+
             Spacer(Modifier.height(16.dp))
         }
 
-        if (vencendo.isEmpty() && novas.isEmpty() && erradas.isEmpty()) {
+        val buscando = buscaTexto.trim().length >= 2
+        if (buscando) {
+            LazyColumn(
+                modifier = Modifier.weight(1f),
+                contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                item {
+                    Text(
+                        text = if (resultadoBusca.isEmpty()) {
+                            "Nenhuma questão com esse texto"
+                        } else {
+                            "${resultadoBusca.size} questões encontradas"
+                        },
+                        style = MaterialTheme.typography.labelSmall,
+                        color = TextMuted,
+                    )
+                }
+                items(resultadoBusca) { questao ->
+                    CartaoFila(questao, Primary) { aoAbrir(questao) }
+                }
+            }
+        } else if (vencendo.isEmpty() && novas.isEmpty() && erradas.isEmpty()) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()

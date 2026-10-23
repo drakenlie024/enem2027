@@ -121,6 +121,10 @@ data class EstadoHoje(
     val notaAlvo: Int = 700,
     /** Caderno de erros: o que já foi errado. */
     val caderno: List<ItemCaderno> = emptyList(),
+    /** Texto da busca de questão. */
+    val buscaTexto: String = "",
+    /** Resultado da busca de questão no acervo local. */
+    val resultadoBusca: List<Question> = emptyList(),
 ) {
     /**
      * A trilha que o botão principal da tela Hoje deve atacar.
@@ -979,6 +983,19 @@ class ViewModelPrincipal(
         _estado.value = _estado.value.copy(
             metaSemanal = com.franferreira.enem2027.data.repo.MetaSemanal.meta(getApplication()),
         )
+    }
+
+    /** Busca livre no acervo do aparelho (enunciado, contexto e tema). */
+    fun buscarQuestoes(texto: String) {
+        _estado.value = _estado.value.copy(buscaTexto = texto)
+        if (texto.trim().length < 2) {
+            _estado.value = _estado.value.copy(resultadoBusca = emptyList())
+            return
+        }
+        viewModelScope.launch {
+            val achadas = repo.buscarQuestoes(texto)
+            _estado.value = _estado.value.copy(resultadoBusca = achadas)
+        }
     }
 
     // ---------- trilhas ----------

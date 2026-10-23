@@ -44,6 +44,19 @@ interface QuestionDao {
     )
     suspend fun porTemaEArea(tema: String, area: String): List<QuestionEntity>
 
+    /** Busca livre por texto no enunciado, no contexto ou no tema. */
+    @Query(
+        """
+        SELECT * FROM questions
+        WHERE enunciado LIKE '%' || :texto || '%'
+           OR contexto LIKE '%' || :texto || '%'
+           OR tema LIKE '%' || :texto || '%'
+        ORDER BY ano DESC, indice ASC
+        LIMIT 60
+        """
+    )
+    suspend fun buscar(texto: String): List<QuestionEntity>
+
     /** Questões de um tema em qualquer área (usado na trilha adaptativa). */
     @Query(
         """

@@ -97,6 +97,15 @@ fun TelaQuestao(
      * errou é o que revela o buraco real. E vira sinal que o app não tinha.
      */
     var confianca by remember { mutableStateOf<String?>(null) }
+    // Anotação livre da questão (o caderninho de margem).
+    var anotacao by remember(questao.id) { mutableStateOf("") }
+    LaunchedEffect(questao.id) {
+        anotacao = com.franferreira.enem2027.data.repo.Anotacoes.ler(app, questao.id)
+    }
+    LaunchedEffect(anotacao) {
+        kotlinx.coroutines.delay(700)
+        com.franferreira.enem2027.data.repo.Anotacoes.salvar(app, questao.id, anotacao)
+    }
     /** O papel digital: o rascunho onde a conta de matemática acontece. */
     var mostrarRascunho by remember { mutableStateOf(false) }
     // `contexto` já é o texto de apoio da questão, dentro do LazyColumn.
@@ -226,6 +235,26 @@ error = ColorPainter(SurfaceRaised),
                     )
                     Spacer(Modifier.height(14.dp))
                 }
+            }
+
+            item {
+                OutlinedTextField(
+                    value = anotacao,
+                    onValueChange = { anotacao = it },
+                    label = { Text("Sua anotação desta questão") },
+                    placeholder = { Text("O que você quer lembrar na próxima vez") },
+                    minLines = 2,
+                    maxLines = 6,
+                    textStyle = MaterialTheme.typography.bodySmall,
+                    colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Primary,
+                        unfocusedBorderColor = SurfaceBorder,
+                        focusedTextColor = TextPrimary,
+                        unfocusedTextColor = TextPrimary,
+                        cursorColor = Primary,
+                    ),
+                    modifier = Modifier.fillMaxWidth(),
+                )
             }
 
             // ---- confiança, papel e vídeo-aula: as três pontas para quando trava

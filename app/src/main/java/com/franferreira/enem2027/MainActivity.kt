@@ -346,6 +346,9 @@ fun EnemApp() {
                     aoAbrir = { questao -> abrirQuestao(navController, vm, questao) },
                     aoSincronizar = vm::sincronizar,
                     sincronizando = estado.sincronizando,
+                    buscaTexto = estado.buscaTexto,
+                    resultadoBusca = estado.resultadoBusca,
+                    aoBuscar = vm::buscarQuestoes,
                 )
             }
             composable(Destination.Redacao.route) {
