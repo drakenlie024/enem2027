@@ -347,28 +347,11 @@ class Repositorio(private val context: Context) {
         return escolhidas.shuffled()
     }
 
-    /** Uma questão por tema por rodada, em ordem aleatória, até a quantidade. */
     private fun espalharPorTema(
         candidatas: List<com.franferreira.enem2027.data.local.QuestionEntity>,
         quantidade: Int,
-    ): List<com.franferreira.enem2027.data.local.QuestionEntity> {
-        val porTema = candidatas
-            .groupBy { it.tema.orEmpty() }
-            .values
-            .map { it.shuffled().toMutableList() }
-            .shuffled()
-            .toMutableList()
-        val saida = mutableListOf<com.franferreira.enem2027.data.local.QuestionEntity>()
-        while (saida.size < quantidade && porTema.isNotEmpty()) {
-            val iterador = porTema.iterator()
-            while (iterador.hasNext() && saida.size < quantidade) {
-                val lista = iterador.next()
-                saida += lista.removeAt(0)
-                if (lista.isEmpty()) iterador.remove()
-            }
-        }
-        return saida
-    }
+    ): List<com.franferreira.enem2027.data.local.QuestionEntity> =
+        Diagnostico.espalharPorTema(candidatas, quantidade) { it.tema.orEmpty() }
 
     suspend fun filaRevisao(area: String?, tema: String?, limite: Int = 50): FilaRevisao {
         val agora = System.currentTimeMillis()

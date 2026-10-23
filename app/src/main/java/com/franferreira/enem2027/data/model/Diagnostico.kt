@@ -23,6 +23,29 @@ object Diagnostico {
 
     /** Chave única de um tema dentro de uma área (usada para guardar os fracos). */
     fun chaveTema(area: String, tema: String): String = "$area|$tema"
+
+    /**
+     * Uma questão por tema por rodada, em ordem aleatória, até a quantidade.
+     * Assim o diagnóstico cobre o máximo de temas antes de repetir algum.
+     */
+    fun <T> espalharPorTema(candidatas: List<T>, quantidade: Int, temaDe: (T) -> String): List<T> {
+        val porTema = candidatas
+            .groupBy(temaDe)
+            .values
+            .map { it.shuffled().toMutableList() }
+            .shuffled()
+            .toMutableList()
+        val saida = mutableListOf<T>()
+        while (saida.size < quantidade && porTema.isNotEmpty()) {
+            val iterador = porTema.iterator()
+            while (iterador.hasNext() && saida.size < quantidade) {
+                val lista = iterador.next()
+                saida += lista.removeAt(0)
+                if (lista.isEmpty()) iterador.remove()
+            }
+        }
+        return saida
+    }
 }
 
 data class AreaDiagnostico(val area: String, val acertos: Int, val total: Int) {
