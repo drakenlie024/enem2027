@@ -23,6 +23,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.OndemandVideo
@@ -183,6 +185,7 @@ fun TelaAulasDeArea(
     var selecionadas by remember { mutableStateOf<Set<String>>(emptySet()) }
     var baixandoLote by remember { mutableStateOf(false) }
     var progressoLote by remember { mutableStateOf("") }
+    var recolhidos by remember { mutableStateOf<Set<String>>(emptySet()) }
     val todasAulas = dados.temas.flatMap { it.aulas }
 
     Column(
@@ -238,16 +241,40 @@ fun TelaAulasDeArea(
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             dados.temas.forEach { grupo ->
+                val recolhido = grupo.tema in recolhidos
                 item(key = "t-${grupo.tema}") {
-                    Text(
-                        text = grupo.tema.uppercase(),
-                        style = MaterialTheme.typography.labelSmall,
-                        color = TextMuted,
-                        modifier = Modifier.padding(top = 6.dp),
-                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 6.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .clickable {
+                                recolhidos = if (recolhido) recolhidos - grupo.tema else recolhidos + grupo.tema
+                            }
+                            .padding(vertical = 4.dp),
+                    ) {
+                        Text(
+                            text = grupo.tema.uppercase(),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = TextMuted,
+                        )
+                        Text(
+                            text = " · ${grupo.aulas.size} ${if (grupo.aulas.size == 1) "aula" else "aulas"}",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = TextMuted,
+                            modifier = Modifier.weight(1f),
+                        )
+                        Icon(
+                            imageVector = if (recolhido) Icons.Filled.KeyboardArrowDown else Icons.Filled.KeyboardArrowUp,
+                            contentDescription = if (recolhido) "Expandir" else "Recolher",
+                            tint = TextMuted,
+                            modifier = Modifier.size(20.dp),
+                        )
+                    }
                     Spacer(Modifier.height(6.dp))
                 }
-                items(grupo.aulas, key = { it.id }) { aula ->
+                if (!recolhido) items(grupo.aulas, key = { it.id }) { aula ->
                     if (selecionando) {
                         val marcada = aula.id in selecionadas
                         Row(
