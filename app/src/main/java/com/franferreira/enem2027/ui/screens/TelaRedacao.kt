@@ -72,7 +72,7 @@ import kotlinx.coroutines.launch
  */
 @Composable
 fun TelaRedacao(
-    temas: List<String>,
+    temas: List<com.franferreira.enem2027.data.repo.RepertorioRedacao.Tema>,
     aoCorrigir: (tema: String, texto: String) -> Unit,
     historico: List<RedacaoSalva>,
     rascunho: RascunhoRedacao? = null,
@@ -81,7 +81,9 @@ fun TelaRedacao(
     erro: String? = null,
     resultado: com.franferreira.enem2027.data.model.EssayCorrection? = null,
 ) {
-    var temaSelecionado by remember { mutableStateOf(rascunho?.tema ?: temas.firstOrNull() ?: "") }
+    var temaSelecionado by remember {
+        mutableStateOf(rascunho?.tema ?: temas.firstOrNull()?.titulo ?: "")
+    }
     var texto by remember(rascunho?.id) { mutableStateOf(rascunho?.texto ?: "") }
     var resultadoLocal by remember { mutableStateOf<EssayCorrection?>(resultado) }
     // Sincroniza o resultado que chega do ViewModel (correção em segundo
@@ -130,8 +132,8 @@ fun TelaRedacao(
             )
             Spacer(Modifier.height(6.dp))
             Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                temas.take(6).forEach { tema ->
-                    val selecionado = tema == temaSelecionado
+                temas.take(16).forEach { tema ->
+                    val selecionado = tema.titulo == temaSelecionado
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -142,16 +144,22 @@ fun TelaRedacao(
                                 if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
                                 RoundedCornerShape(14.dp),
                             )
-                            .clickable { temaSelecionado = tema }
+                            .clickable { temaSelecionado = tema.titulo }
                             .padding(11.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Text(
-                            text = tema,
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = if (selecionado) TextPrimary else TextSecondary,
-                            modifier = Modifier.weight(1f),
-                        )
+                        Column(Modifier.weight(1f)) {
+                            Text(
+                                text = tema.titulo,
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = if (selecionado) TextPrimary else TextSecondary,
+                            )
+                            Text(
+                                text = "ENEM ${tema.ano}",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = TextMuted,
+                            )
+                        }
                         if (selecionado) {
                             Icon(
                                 Icons.Filled.CheckCircle,
@@ -165,6 +173,35 @@ fun TelaRedacao(
             }
 
             Spacer(Modifier.height(14.dp))
+
+            // Textos motivadores do tema escolhido, como o ENEM apresenta.
+            val apoio = temas.firstOrNull { it.titulo == temaSelecionado }?.apoio.orEmpty()
+            if (apoio.isNotEmpty()) {
+                Text(
+                    text = "TEXTOS MOTIVADORES",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = TextMuted,
+                )
+                Spacer(Modifier.height(6.dp))
+                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    apoio.forEach { trecho ->
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(12.dp))
+                                .background(SurfaceRaised)
+                                .padding(10.dp),
+                        ) {
+                            Text(
+                                text = trecho,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = TextSecondary,
+                            )
+                        }
+                    }
+                }
+                Spacer(Modifier.height(14.dp))
+            }
 
             // editor
             Text(

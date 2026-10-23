@@ -96,6 +96,7 @@ fun TelaHoje(
     aoJogarEtapa: (Trilha, Etapa) -> Unit,
     aoAjustarMeta: (Int) -> Unit,
     aoAtualizarAcervo: () -> Unit,
+    aoRevisar: () -> Unit = {},
 ) {
     // Tudo num único scroll: antes o cabeçalho (anel + estatísticas) ficava
     // fixo no topo e a lista de trilhas abaixo, dividindo a tela. Em tela
@@ -162,6 +163,46 @@ fun TelaHoje(
             )
 
             Spacer(Modifier.height(14.dp))
+
+            // Revisão do SRS: virou cartão na Hoje em vez de aba própria.
+            val vencendo = estado.fila.vencendo.size
+            val novas = estado.fila.novas.size
+            if (vencendo + novas > 0) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(18.dp))
+                        .background(Surface)
+                        .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                        .clickable { aoRevisar() }
+                        .padding(14.dp),
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text(
+                                text = "Revisão",
+                                style = MaterialTheme.typography.titleSmall,
+                                color = TextPrimary,
+                            )
+                            Text(
+                                text = buildString {
+                                    append("$vencendo vencendo")
+                                    if (novas > 0) append(" · $novas novas")
+                                },
+                                style = MaterialTheme.typography.bodySmall,
+                                color = TextMuted,
+                            )
+                        }
+                        Text(
+                            text = "Revisar",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = Primary,
+                        )
+                    }
+                }
+                Spacer(Modifier.height(14.dp))
+            }
+
 
             // ---- estatísticas rápidas
             Box(

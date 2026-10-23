@@ -1,26 +1,24 @@
 package com.franferreira.enem2027.data.repo
 
 /**
- * Temas de redação do ENEM e repertório sugerido.
+ * Temas de redação do ENEM (2009–2024), com textos motivadores e repertório.
  *
- * O repertório é o material que o aluno usa como apoio: literatura, cinema,
- * filosofia, história, sociologia — com a âncora de por que serve para
- * aquele tema.
+ * Os títulos são os temas oficiais de cada ano. Os textos de apoio aqui são
+ * **sínteses curtas** do debate de cada tema, escritas para estudar — não são
+ * os recortes originais da prova (esses vêm do Inep e são longos).
  *
- * Além dos temas, há o repertório **por competência**: é assim que a
- * redação realmente se resolve. A competência 3 (argumentar com repertório)
- * só funciona se o aluno tiver, à mão, repertório que sustente cada um dos
- * cinco[node] parágrafos. Separar por competência é o que transforma a
- * lista em ferramenta.
- *
- * Isto é conteúdo de ESTUDO. O enunciado oficial da prova vem do Inep;
- * aqui fica só o apoio para escrever.
+ * Alén dos temas, há o repertório por competência: é assim que a redação
+ * realmente se resolve. C3 (argumentar com repertório) só funciona se houver
+ * material que sustente cada parágrafo.
  */
 object RepertorioRedacao {
 
     data class Tema(
+        /** Tema oficial do ano. */
         val titulo: String,
-        val enunciado: String,
+        val ano: Int,
+        /** Textos motivadores curtos, no espírito dos que o ENEM apresenta. */
+        val apoio: List<String>,
         val repertorio: List<Repertorio>,
     )
 
@@ -30,353 +28,233 @@ object RepertorioRedacao {
         val ancora: String,     // por que serve para esse tema
     )
 
-    /**
-     * Repertório por competência: o que usar em cada uma das cinco.
-     *
-     * C1 (compreender) e C5 (proposta de intervenção) não usam repertório
-     * externo — a C5 pede ação concreta, não citação.
-     */
     val porCompetencia: Map<Int, List<Repertorio>> = mapOf(
         2 to listOf(
-            Repertorio("A.callback - 1984", "literatura", "O controle da informação dissolve a autonomia."),
-            Repertorio("Frankl, Viktor - Em busca de sentido", "filosofia", "O vazio de sentido como motor da angústia."),
-            Repertorio("Huxley, Aldous - A Revolução e a Voz", "filosofia", "A razão substituída pelo costume."),
-            Repertorio("Arendt, Hannah - Mais igual que diferente", "filosofia", "O trabalho como criação de valor."),
+            Repertorio("Orwell, George - 1984", "literatura", "O controle da informação dissolve a autonomia."),
+            Repertorio("Bauman, Zygmunt - Modernidade líquida", "sociologia", "Laços frágeis e a insegurança do presente."),
+            Repertorio("Han, Byung-Chul - Sociedade do cansaço", "filosofia", "O excesso de desempenho vira adoecimento."),
         ),
         3 to listOf(
-            Repertorio("Rosa, Guimarães - Grande Sertão: Veredas", "literatura", "O rico vernacular do sertão como identidade."),
-            Repertorio("Cunha, Euclides - Os Sertões", "literatura", "A questão da terra e da sobrevivência."),
-            Repertorio("Flaherty - Louisiana Story", "cinema", "A medição do que não se vê revela a desigualdade."),
-            Repertorio("Frankfurt - Escola de Frankfurt", "sociologia", "A indústria cultural aliena o sujeito."),
-            Repertorio("Habermas - Esfera Pública", "filosofia", "O espaço de debate público que as redes fragmentam."),
+            Repertorio("Rosa, Guimarães - Grande Sertão: Veredas", "literatura", "O sertão como território de desigualdade e invenção."),
+            Repertorio("Cunha, Euclides - Os Sertões", "literatura", "A questão da terra e do abandono."),
+            Repertorio("Santos, Milton - O espaço dividido", "sociologia", "O território é disputado de forma desigual."),
+            Repertorio("Furtado, Celso - Formação econômica do Brasil", "historia", "A herança da concentração de renda."),
         ),
         4 to listOf(
-            Repertorio("Jonas, Hans - Princípio da Responsabilidade", "filosofia", "A responsabilidade ambiental como dever ético."),
-            Repertorio("Anders, Günther - A Técnica e o Medo", "filosofia", "A técnica e o medo da obsolescência."),
-            Repertorio("Lei 12.305/2010 - Política Nacional de Resíduos", "historia", "A base legal da logística reversa."),
-            Repertorio("Lei Maria da Penha - Lei 11.340/2006", "historia", "Marco legal do combate à violência doméstica."),
+            Repertorio("Constituição Federal de 1988", "historia", "Direitos sociais como base da intervenção."),
+            Repertorio("Lei 12.305/2010 - Política Nacional de Resíduos Sólidos", "historia", "Logística reversa e responsabilidade compartilhada."),
+            Repertorio("Lei Maria da Penha - Lei 11.340/2006", "historia", "Marco legal contra a violência doméstica."),
+            Repertorio("ONU - Agenda 2030", "sociologia", "Metas globais que o Brasil assumiu."),
         ),
     )
 
     val temas: List<Tema> = listOf(
         Tema(
-            titulo = "Impacto das redes sociais na saúde mental dos jovens",
-            enunciado = "Analise o impacto do uso das redes sociais na saúde mental dos jovens.",
+            titulo = "O indivíduo frente à ética nacional",
+            ano = 2009,
+            apoio = listOf(
+                "A ética diz respeito às escolhas de cada um, mas ganha outra dimensão quando se torna assunto público.",
+                "Pesquisas de opinião mostram que o brasileiro condena a corrupção em abstrato, mas tolera pequenos atalhos no cotidiano — o chamado \"jeitinho\".",
+            ),
             repertorio = listOf(
-                Repertorio(
-                    obra = "O App -径",
-                    tipo = "filme",
-                    ancora = "Mostra como a rede molda a identidade e a saúde mental.",
-                ),
-                Repertorio(
-                    obra = "Frankl, Viktor - Em busca de sentido",
-                    tipo = "filosofia",
-                    ancora = "O vazio de sentido como motor da ansiedade.",
-                ),
-                Repertorio(
-                    obra = "Bauman, Zygmunt - Modernidade Líquida",
-                    tipo = "sociologia",
-                    ancora = "A insegurança das relações na modernidade.",
-                ),
-                Repertorio(
-                    obra = "Hanlon, Luke - Não se mate ainda!",
-                    tipo = "cinema",
-                    ancora = "A vida como 곡 pelo likes: o mundo visto pelo celular.",
-                ),
+                Repertorio("Kant - Fundamentação da Metafísica dos Costumes", "filosofia", "Agir pela regra que se deseja universal."),
+                Repertorio("Aristóteles - Ética a Nicômaco", "filosofia", "A virtude como hábito, não como exceção."),
+                Repertorio("Sennett, Richard - A corrosão do caráter", "sociologia", "O individualismo como efeito da vida moderna."),
             ),
         ),
         Tema(
-            titulo = "Desigualdade de acesso à educação no Brasil",
-            enunciado = "Discuta os desafios para garantir o acesso à educação de qualidade no Brasil.",
+            titulo = "O trabalho na construção da dignidade humana",
+            ano = 2010,
+            apoio = listOf(
+                "A Constituição de 1988 reconhece o trabalho como direito social e fundamento da dignidade.",
+                "Ao mesmo tempo, formas de trabalho análogas à escravidão ainda são resgatadas todos os anos no país.",
+            ),
             repertorio = listOf(
-                Repertorio(
-                    obra = "Grande Sertão: Veredas - Guimarães Rosa",
-                    tipo = "literatura",
-                    ancora = "A desigualdade que se revela no cotidiano do sertão.",
-                ),
-                Repertorio(
-                    obra = "Flaherty - Louisiana Story",
-                    tipo = "sociologia",
-                    ancora = "A medição do que não se vê revela a desigualdade.",
-                ),
-                Repertorio(
-                    obra = "LDB - Lei de Diretrizes e Bases",
-                    tipo = "historia",
-                    ancora = "Marco legal do acesso à educação.",
-                ),
-                Repertorio(
-                    obra = "Auerte - O segundo釣竿",
-                    tipo = "literatura",
-                    ancora = "O analfabeto que ensina a pescar: educação como autonomy.",
-                ),
+                Repertorio("Marx, Karl - Manuscritos econômico-filosóficos", "filosofia", "O trabalho como expressão humana, não mercadoria."),
+                Repertorio("Arendt, Hannah - A condição humana", "filosofia", "Trabalho, obra e ação como dimensões distintas."),
+                Repertorio("CLT - Decreto-Lei 5.452/1943", "historia", "A regulação que sustenta o trabalho formal."),
             ),
         ),
         Tema(
-            titulo = "Violência contra a mulher no Brasil",
-            enunciado = "Reflita sobre os desafios para o combate à violência contra a mulher no Brasil.",
+            titulo = "Viver em rede no século XXI: os limites entre o público e o privado",
+            ano = 2011,
+            apoio = listOf(
+                "Redes sociais transformaram a conversa de mesa em palco aberto, com plateia permanente.",
+                "Especialistas discutem o que é legítimo compartilhar e o que deveria permanecer no âmbito privado.",
+            ),
             repertorio = listOf(
-                Repertorio(
-                    obra = "Lei Maria da Penha - Lei 11.340/2006",
-                    tipo = "historia",
-                    ancora = "Marco legal do combate à violência doméstica.",
-                ),
-                Repertorio(
-                    obra = "Tess - Fernando Dini de Almeida",
-                    tipo = "literatura",
-                    ancora = "A dominação doméstica atravessa os séculos.",
-                ),
-                Repertorio(
-                    obra = "Por um Punhal no Cervo - Consuelo de Castro",
-                    tipo = "literatura",
-                    ancora = "A resistência就看 de quem foi calada pelaConstraints.",
-                ),
-                Repertorio(
-                    obra = "Dados - ONU Mulheres (ONU)",
-                    tipo = "sociologia",
-                    ancora = "OJyoti do problema em números.",
-                ),
+                Repertorio("Habermas, Jürgen - Mudança estrutural da esfera pública", "filosofia", "O espaço público e seus limites."),
+                Repertorio("Orwell, George - 1984", "literatura", "A vigilância como controle da vida privada."),
+                Repertorio("Han, Byung-Chul - Sociedade da transparência", "filosofia", "A exposição voluntária como nova forma de controle."),
             ),
         ),
         Tema(
-            titulo = "Descarte de resíduos sólidos e meio ambiente",
-            enunciado = "Avalie os desafios impostos pelo descarte inadequado de resíduos sólidos ao meio ambiente.",
+            titulo = "O movimento imigratório para o Brasil no século XXI",
+            ano = 2012,
+            apoio = listOf(
+                "O Brasil recebeu, na última década, haitianos, venezuelanos, bolivianos e sírios, entre outros grupos.",
+                "A chegada desses grupos levanta debates sobre acolhimento, documentação e inserção no mercado de trabalho.",
+            ),
             repertorio = listOf(
-                Repertorio(
-                    obra = "Princípio da responsabilidade - Hans Jonas",
-                    tipo = "filosofia",
-                    ancora = "A responsabilidade ambiental como dever ético.",
-                ),
-                Repertorio(
-                    obra = "Lei 12.305/2010 - Política Nacional de Resíduos Sólidos",
-                    tipo = "historia",
-                    ancora = "A base legal do tratamento e da logística reversa.",
-                ),
-                Repertorio(
-                    obra = "Waste Land - Rodrigo，加油",
-                    tipo = "cinema",
-                    ancora = "O saturom de São Paulo como imagem do problema.",
-                ),
-                Repertorio(
-                    obra = "Rio-reverse - Happy World (MST)",
-                    tipo = "sociologia",
-                    ancora = "A economia solidária como alternativa ao descarte.",
-                ),
+                Repertorio("Sayad, Abdelmalek - A imigração ou os paradoxos da alteridade", "sociologia", "O estrangeiro entre acolhida e suspeita."),
+                Repertorio("Lei 9.474/1997 - Estatuto do Refugiado", "historia", "O marco legal do refúgio no Brasil."),
+                Repertorio("Bauman, Zygmunt - Estranhos à nossa porta", "sociologia", "O medo do outro na era global."),
             ),
         ),
         Tema(
-            titulo = "Influência das redes sociais na formação de opinião",
-            enunciado = "Analise a influência das redes sociais na formação de opiniões políticas no Brasil.",
+            titulo = "Efeitos da implantação da Lei Seca no Brasil",
+            ano = 2013,
+            apoio = listOf(
+                "A Lei 11.705/2008 proibiu a combinação de álcool e direção e endureceu a fiscalização.",
+                "Estudos apontam queda nos acidentes, mas também discutem a efetividade da fiscalização nas cidades pequenas.",
+            ),
             repertorio = listOf(
-                Repertorio(
-                    obra = "A Abolição do Homem - Aldous Huxley",
-                    tipo = "literatura",
-                    ancora = "Como a razão é substituída pelo costume.",
-                ),
-                Repertorio(
-                    obra = "Habermas - Esfera Pública",
-                    tipo = "filosofia",
-                    ancora = "O espaço de debate público que as redes fragmentam.",
-                ),
-                Repertorio(
-                    obra = "The Social Network - David Fincher",
-                    tipo = "cinema",
-                    ancora = "A conexão como nuevo紫外mercadoria de poder.",
-                ),
-                Repertorio(
-                    obra = "Bourdieu - A的力量 do campo",
-                    tipo = "sociologia",
-                    ancora = "Quem domina o campo domina a débat pública.",
-                ),
+                Repertorio("Lei 11.705/2008 - Lei Seca", "historia", "A norma e seu mecanismo de dissuasão."),
+                Repertorio("Hobbes, Thomas - Leviatã", "filosofia", "O Estado como limite à liberdade individual."),
+                Repertorio("Durkheim, Émile - As regras do método sociológico", "sociologia", "A norma social e a coerção sobre o indivíduo."),
             ),
         ),
         Tema(
-            titulo = "Valorização da cultura brasileira",
-            enunciado = "Discuta a importância da valorização da cultura brasileira no Brasil contemporâneo.",
+            titulo = "Publicidade infantil em questão no Brasil",
+            ano = 2014,
+            apoio = listOf(
+                "O CONANDA considera abusiva a publicidade dirigida à criança, que ainda não distingue informação de persuasão.",
+                "O setor publicitário defende a autorregulação; entidades de defesa da infância pedem regra legal específica.",
+            ),
             repertorio = listOf(
-                Repertorio(
-                    obra = "Grande Sertão: Veredas - Guimarães Rosa",
-                    tipo = "literatura",
-                    ancora = "O rico vernacular do sertão como identidade.",
-                ),
-                Repertorio(
-                    obra = "Os Sertões - Euclides da Cunha",
-                    tipo = "literatura",
-                    ancora = "A questão da terra e da sobrevivência.",
-                ),
-                Repertorio(
-                    obra = "Casa-Grande & Senzala - Gilberto Freyre",
-                    tipo = "literatura",
-                    ancora = "A Casa-Grande como origem da sociedade brasileira.",
-                ),
-                Repertorio(
-                    obra = "O Pagador de Promessas - Dias Gomes",
-                    tipo = "cinema",
-                    ancora = "A fé como motor de mudança social.",
-                ),
+                Repertorio("Consumo - Zygmunt Bauman", "sociologia", "O consumo como identidade na infância."),
+                Repertorio("CDC - Lei 8.078/1990", "historia", "A proteção do consumidor como direito."),
+                Repertorio("Adorno, Theodor - Indústria cultural", "filosofia", "A produção industrial do desejo."),
             ),
         ),
         Tema(
-            titulo = "Inteligência artificial e o mercado de trabalho",
-            enunciado = "Avalie o impacto da inteligência artificial no mercado de trabalho brasileiro.",
+            titulo = "A persistência da violência contra a mulher na sociedade brasileira",
+            ano = 2015,
+            apoio = listOf(
+                "A Lei Maria da Penha completou uma década, mas os índices de violência doméstica seguem altos.",
+                "O Brasil ocupa posição preocupante em rankings internacionais de violência de gênero.",
+            ),
             repertorio = listOf(
-                Repertorio(
-                    obra = "Mais igual que diferente - Hannah Arendt",
-                    tipo = "filosofia",
-                    ancora = "O trabalho como criação de valor.",
-                ),
-                Repertorio(
-                    obra = "A técnica e o medo - Günther Anders",
-                    tipo = "filosofia",
-                    ancora = "A técnica e o medo da obsolescência.",
-                ),
-                Repertorio(
-                    obra = "1984 - George Orwell",
-                    tipo = "literatura",
-                    ancora = "A máquina que decide por todos.",
-                ),
-                Repertorio(
-                    obra = "Caiçara -,与 as máquinas que pensam",
-                    tipo = "sociologia",
-                    ancora = "A qualificação como proteção do trabalhador.",
-                ),
+                Repertorio("Beauvoir, Simone de - O segundo sexo", "filosofia", "A construção social do gênero."),
+                Repertorio("Lei Maria da Penha - Lei 11.340/2006", "historia", "O marco legal e seus mecanismos de proteção."),
+                Repertorio("Bourdieu, Pierre - A dominação masculina", "sociologia", "A violência simbólica que naturaliza a hierarquia."),
             ),
         ),
         Tema(
-            titulo = "Fome e insegurança alimentar no Brasil",
-            enunciado = "Reflita sobre as causas da fome e da insegurança alimentar no Brasil.",
-            repertorio = listOf(
-                Repertorio(
-                    obra = "Os Sertões - Euclides da Cunha",
-                    tipo = "literatura",
-                    ancora = "A questão da terra e da sobrevivência.",
-                ),
-                Repertorio(
-                    obra = "Direito humano à alimentação - FAO",
-                    tipo = "historia",
-                    ancora = "Obrigação do Estado e a segurança alimentar.",
-                ),
-                Repertorio(
-                    obra = "A第一位 dos humilhados - Jessé Souza",
-                    tipo = "sociologia",
-                    ancora = "A naturalização da desigualdade que oculta a fome.",
-                ),
+            titulo = "Caminhos para combater a intolerância religiosa no Brasil",
+            ano = 2016,
+            apoio = listOf(
+                "O Brasil é um dos países com mais denúncias de intolerância religiosa registradas por organismos de direitos humanos.",
+                "As religiões de matriz africana concentram boa parte dos casos, o que revela a dimensão racial do problema.",
             ),
-        ),
-        // ---- temas acrescentados depois (repertório maior)
-        Tema(
-            titulo = "Cuidado com a saúde mental dos trabalhadores",
-            enunciado = "Discuta os desafios para o cuidado da saúde mental dos trabalhadores brasileiros.",
             repertorio = listOf(
-                Repertorio(
-                    obra = "Frankl, Viktor - Em busca de sentido",
-                    tipo = "filosofia",
-                    ancora = "O trabalho sem sentido como origem do adoecimento.",
-                ),
-                Repertorio(
-                    obra = "A Revolução e a Voz - Aldous Huxley",
-                    tipo = "literatura",
-                    ancora = "A automatização que esvazia a vida interior.",
-                ),
-                Repertorio(
-                    obra = "Ergonomia - norma ISO 9241",
-                    tipo = "historia",
-                    ancora = "O marco técnico que protege o corpo do trabalhador.",
-                ),
+                Repertorio("Constituição Federal de 1988 - art. 5º, VI", "historia", "A liberdade de crença como direito fundamental."),
+                Repertorio("Freire, Paulo - Pedagogia do oprimido", "filosofia", "O diálogo como caminho contra a exclusão."),
+                Repertorio("Munanga, Kabengele - Rediscutindo a mestiçagem no Brasil", "sociologia", "O racismo por trás da intolerância religiosa."),
             ),
         ),
         Tema(
-            titulo = "Desigualdade racial e meritocracia no Brasil",
-            enunciado = "Analise a desigualdade racial e os limites da meritocracia no Brasil.",
+            titulo = "Desafios para a formação educacional de surdos no Brasil",
+            ano = 2017,
+            apoio = listOf(
+                "A Lei Brasileira de Inclusão (2015) garantiu direitos, mas a oferta de educação bilíngue ainda é desigual.",
+                "O debate opõe a inclusão em escolas regulares e a valorização da Libras como primeira língua.",
+            ),
             repertorio = listOf(
-                Repertorio(
-                    obra = "Casa-Grande & Senzala - Gilberto Freyre",
-                    tipo = "literatura",
-                    ancora = "A estrutura societária que explica a desigualdade.",
-                ),
-                Repertorio(
-                    obra = "Hashtable White Riot - Joel Karlton",
-                    tipo = "sociologia",
-                    ancora = "A meritocracia racial que naturaliza a desigualdade.",
-                ),
-                Repertorio(
-                    obra = "AJUSTE - Angela Davis",
-                    tipo = "filosofia",
-                    ancora = "O racial como construção social e política.",
-                ),
+                Repertorio("Lei 10.436/2002 - Libras", "historia", "O reconhecimento da língua como direito."),
+                Repertorio("Lei 13.146/2015 - Lei Brasileira de Inclusão", "historia", "A inclusão como obrigação do Estado."),
+                Repertorio("Sacks, Oliver - Vendo vozes", "filosofia", "A surdez como cultura, não como falta."),
             ),
         ),
         Tema(
-            titulo = "Uso de dados pessoais e privacidade",
-            enunciado = "Avalie os desafios impostos pelo uso de dados pessoais na vida cotidiana.",
+            titulo = "Manipulação do comportamento do usuário pelo controle de dados na internet",
+            ano = 2018,
+            apoio = listOf(
+                "Algoritmos moldam o que cada usuário vê, a partir de dados coletados sem transparência.",
+                "Casos de vazamento e de uso político de dados expuseram a fragilidade da proteção no Brasil e no mundo.",
+            ),
             repertorio = listOf(
-                Repertorio(
-                    obra = "1984 - George Orwell",
-                    tipo = "literatura",
-                    ancora = "A vigilância como preço da comodidade.",
-                ),
-                Repertorio(
-                    obra = "Frankfurt - Escola de Frankfurt",
-                    tipo = "sociologia",
-                    ancora = "A indústria cultural que molda o comportamento.",
-                ),
-                Repertorio(
-                    obra = "LGPD - Lei 13.709/2018",
-                    tipo = "historia",
-                    ancora = "O marco legal dos dados pessoais no Brasil.",
-                ),
+                Repertorio("Orwell, George - 1984", "literatura", "O controle da informação como controle do real."),
+                Repertorio("LGPD - Lei 13.709/2018", "historia", "A proteção de dados como direito."),
+                Repertorio("Han, Byung-Chul - Sociedade da transparência", "filosofia", "A vigilância que o usuário aceita."),
             ),
         ),
         Tema(
-            titulo = "Investimento em ciência e tecnologia no Brasil",
-            enunciado = "Discuta os desafios do investimento em ciência e tecnologia no Brasil.",
+            titulo = "Democratização do acesso ao cinema no Brasil",
+            ano = 2019,
+            apoio = listOf(
+                "Grande parte dos municípios brasileiros não tem sala de cinema.",
+                "O streaming ampliou o acesso, mas não substitui a experiência coletiva nem resolve a concentração de produção.",
+            ),
             repertorio = listOf(
-                Repertorio(
-                    obra = "Fazenda Pública - Estheriffer",
-                    tipo = "literatura",
-                    ancora = "A ciência a serviço do Estado.",
-                ),
-                Repertorio(
-                    obra = "Severo - Conto de fadas",
-                    tipo = "literatura",
-                    ancora = "A educação como base da produzir melhor.",
-                ),
-                Repertorio(
-                    obra = "A，简单 - Ler",
-                    tipo = "sociologia",
-                    ancora = "A dependência tecnológica que limita a autonomia.",
-                ),
+                Repertorio("Adorno, Theodor - Indústria cultural", "filosofia", "O cinema como mercadoria e como arte."),
+                Repertorio("Bernardet, Jean-Claude - Cinema brasileiro: propostas para uma história", "historia", "A formação do cinema nacional."),
+                Repertorio("Ancine - dados do setor", "sociologia", "A concentração de salas nas capitais."),
             ),
         ),
         Tema(
-            titulo = "Alimentação e segurança alimentar",
-            enunciado = "Reflita sobre a importância da alimentação e da segurança alimentar no Brasil.",
+            titulo = "O estigma associado às doenças mentais na sociedade brasileira",
+            ano = 2020,
+            apoio = listOf(
+                "A depressão e a ansiedade cresceram entre jovens, mas o preconceito ainda impede a busca por ajuda.",
+                "A pandemia escancarou o problema e o debate sobre saúde mental no trabalho.",
+            ),
             repertorio = listOf(
-                Repertorio(
-                    obra = "A Cozinha do Escravo -椒",
-                    tipo = "historia",
-                    ancora = "A comida como memória da escravidão.",
-                ),
-                Repertorio(
-                    obra = "Slow Food - manifesto",
-                    tipo = "sociologia",
-                    ancora = "A qualidade do alimento contra a escala industrial.",
-                ),
+                Repertorio("Foucault, Michel - História da loucura", "filosofia", "O estigma como forma de exclusão."),
+                Repertorio("Lei 10.216/2001 - Reforma Psiquiátrica", "historia", "O cuidado em liberdade no lugar do isolamento."),
+                Repertorio("Han, Byung-Chul - Sociedade do cansaço", "filosofia", "O adoecimento como falha individualizada."),
             ),
         ),
         Tema(
-            titulo = "Tecnologia e isolamento social",
-            enunciado = "Analise os impactos da tecnologia no isolamento social dos jovens.",
+            titulo = "Invisibilidade e registro civil: garantia de acesso à cidadania no Brasil",
+            ano = 2021,
+            apoio = listOf(
+                "Há brasileiros sem certidão de nascimento, o que os impede de matricular-se, trabalhar e votar formalmente.",
+                "O registro civil é a porta de entrada para os demais direitos.",
+            ),
             repertorio = listOf(
-                Repertorio(
-                    obra = "O mundo de ontem - Stefan Zweig",
-                    tipo = "literatura",
-                    ancora = "A vertigem das novas formas de comunicação.",
-                ),
-                Repertorio(
-                    obra = "Sozinhos - Field of View",
-                    tipo = "cinema",
-                    ancora = "A solidão em uma cidade conectada.",
-                ),
+                Repertorio("Constituição Federal de 1988", "historia", "A cidadania como fundamento."),
+                Repertorio("Marshall, T. H. - Cidadania e classe social", "sociologia", "Direitos civis como base dos demais."),
+                Repertorio("Lei 6.015/1973 - Registros Públicos", "historia", "O instrumento legal do registro."),
+            ),
+        ),
+        Tema(
+            titulo = "Desafios para a valorização de comunidades e povos tradicionais no Brasil",
+            ano = 2022,
+            apoio = listOf(
+                "Comunidades indígenas, quilombolas, ribeirinhas e extrativistas preservam modos de vida ligados ao território.",
+                "A pressão sobre a terra e a falta de políticas específicas ameaçam essas culturas.",
+            ),
+            repertorio = listOf(
+                Repertorio("Krenak, Ailton - Ideias para adiar o fim do mundo", "literatura", "A voz indígena e a crítica ao progresso."),
+                Repertorio("Castro, Eduardo Viveiros de - A inconstância da alma selvagem", "sociologia", "Outras formas de habitar o mundo."),
+                Repertorio("Convenção 169 da OIT", "historia", "Consulta prévia e direitos territoriais."),
+            ),
+        ),
+        Tema(
+            titulo = "Desafios para o enfrentamento da invisibilidade do trabalho de cuidado realizado pela mulher no Brasil",
+            ano = 2023,
+            apoio = listOf(
+                "Cuidar de crianças, idosos e pessoas com deficiência é trabalho — e recai majoritariamente sobre mulheres.",
+                "Esse trabalho não é remunerado nem reconhecido como ocupação em grande parte dos casos.",
+            ),
+            repertorio = listOf(
+                Repertorio("Federici, Silvia - Calibã e a bruxa", "sociologia", "O trabalho reprodutivo invisibilizado."),
+                Repertorio("Beauvoir, Simone de - O segundo sexo", "filosofia", "A mulher e o papel social imposto."),
+                Repertorio("IBGE - Pesquisa Nacional por Amostra de Domicílios", "historia", "Os dados do trabalho não remunerado."),
+            ),
+        ),
+        Tema(
+            titulo = "Desafios para a valorização da herança africana no Brasil",
+            ano = 2024,
+            apoio = listOf(
+                "A herança africana está na língua, na música, na culinária e na religiosidade brasileiras.",
+                "Ainda assim, o racismo estrutural e o apagamento dessa herança persistem nas escolas e nos espaços públicos.",
+            ),
+            repertorio = listOf(
+                Repertorio("Munanga, Kabengele - Rediscutindo a mestiçagem no Brasil", "sociologia", "A construção do racismo à brasileira."),
+                Repertorio("Gonzalez, Lélia - Por um feminismo afro-latino-americano", "filosofia", "A categoria político-cultural da amefricanidade."),
+                Repertorio("Lei 10.639/2003", "historia", "O ensino obrigatório de história e cultura afro-brasileira."),
             ),
         ),
     )

@@ -90,6 +90,7 @@ private sealed class Destination(
     val icon: ImageVector,
 ) {
     data object Hoje : Destination("hoje", "Hoje", Icons.Filled.Home)
+    data object Aulas : Destination("aulas", "Aulas", Icons.Filled.PlayArrow)
     data object Revisao : Destination("revisao", "Revisão", Icons.Filled.CheckCircle)
     data object Redacao : Destination("redacao", "Redação", Icons.Filled.Edit)
     data object Progresso : Destination("progresso", "Progresso", Icons.Filled.Insights)
@@ -100,7 +101,7 @@ private sealed class Destination(
 
 private val destinations = listOf(
     Destination.Hoje,
-    Destination.Revisao,
+    Destination.Aulas,
     Destination.Simulado,
     Destination.Redacao,
     Destination.Progresso,
@@ -219,6 +220,7 @@ fun EnemApp() {
                     },
                     aoAjustarMeta = vm::ajustarMeta,
                     aoAtualizarAcervo = vm::atualizarAcervo,
+                    aoRevisar = { navController.navigate(Destination.Revisao.route) },
                 )
             }
 
@@ -345,7 +347,7 @@ fun EnemApp() {
             }
             composable(Destination.Redacao.route) {
                 TelaRedacao(
-                    temas = vm.temasRedacao.map { it.titulo },
+                    temas = vm.temasRedacao,
                     aoCorrigir = { tema, texto -> vm.corrigirRedacao(tema, texto) },
                     historico = estado.historicoRedacoes,
                     rascunho = estado.redacaoRascunho,
