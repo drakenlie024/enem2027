@@ -98,7 +98,7 @@ fun TelaHoje(
     aoAjustarMeta: (Int) -> Unit,
     aoAtualizarAcervo: () -> Unit,
     aoRevisar: () -> Unit = {},
-    aoRedacao: () -> Unit = {},
+    aoAulas: () -> Unit = {},
 ) {
     // Tudo num único scroll: antes o cabeçalho (anel + estatísticas) ficava
     // fixo no topo e a lista de trilhas abaixo, dividindo a tela. Em tela
@@ -156,7 +156,7 @@ fun TelaHoje(
                 estado = estado,
                 aoRevisar = aoRevisar,
                 aoJogar = { trilha, etapa -> aoJogarEtapa(trilha, etapa) },
-                aoRedacao = aoRedacao,
+                aoAulas = aoAulas,
             )
 
             if (estado.esperandoRede > 0) {
@@ -734,7 +734,7 @@ private fun PlanoDeHoje(
     estado: EstadoHoje,
     aoRevisar: () -> Unit,
     aoJogar: (Trilha, Etapa) -> Unit,
-    aoRedacao: () -> Unit,
+    aoAulas: () -> Unit,
 ) {
     val vencendo = estado.fila.vencendo.size
     val trilha = estado.trilhaParaJogar
@@ -753,7 +753,19 @@ private fun PlanoDeHoje(
                 ) { aoJogar(trilha, etapa) }
             )
         }
-        add(AcaoDoDia("Redação", "1 tema · 1 hora de treino", Secondary, aoRedacao))
+        // Redação não é tarefa diária. O terceiro item recomenda duas
+        // matérias para assistir aula — as que estão com pior taxa.
+        val fracas = estado.progresso.porArea
+            .filter { it.respondidas >= 5 }
+            .sortedBy { it.taxa }
+            .take(2)
+            .map { nomeDaArea(it.area) }
+        val foco = when (fracas.size) {
+            0 -> "comece pelas aulas da sua trilha"
+            1 -> "foco em ${fracas[0]}"
+            else -> "foco em ${fracas[0]} e ${fracas[1]}"
+        }
+        add(AcaoDoDia("Assistir aulas", foco, Secondary, aoAulas))
     }.take(3)
 
     if (acoes.isEmpty()) return
@@ -815,4 +827,14 @@ private fun PlanoDeHoje(
             }
         }
     }
+}
+
+/** Nome legível da área a partir do slug que o servidor manda. */
+private fun nomeDaArea(area: String): String = when (area) {
+    "matematica" -> "Matemática"
+    "linguagens" -> "Linguagens"
+    "ciencias-humanas" -> "Humanas"
+    "ciencias-natureza" -> "Natureza"
+    "" -> "aulas"
+    else -> area.replaceFirstChar { it.uppercase() }
 }
