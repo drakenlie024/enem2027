@@ -162,7 +162,7 @@ fun EnemApp() {
             aoAlternarAgenda = vm::alternarAgenda,
             aoSalvarAgenda = vm::salvarAgendaOnboarding,
             aoPular = vm::pularEtapaOnboarding,
-            aoConcluirNotificacao = vm::avancarOnboarding,
+            aoAvancar = vm::avancarOnboarding,
         )
         return
     }

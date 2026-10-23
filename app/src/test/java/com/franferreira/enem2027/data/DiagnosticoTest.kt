@@ -131,10 +131,11 @@ class DiagnosticoTest {
     }
 
     @Test
-    fun `onboarding passa de metas para agenda para notificacao e depois sai`() {
+    fun `onboarding passa de metas para agenda, notificacao e apresentacao do diagnostico`() {
         assertEquals("agenda", Onboarding.proxima("metas"))
         assertEquals("notificacao", Onboarding.proxima("agenda"))
-        assertEquals(null, Onboarding.proxima("notificacao"))
+        assertEquals("diagnostico", Onboarding.proxima("notificacao"))
+        assertEquals(null, Onboarding.proxima("diagnostico"))
     }
 
     @Test

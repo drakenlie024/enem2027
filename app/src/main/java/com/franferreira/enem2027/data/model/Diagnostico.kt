@@ -63,9 +63,10 @@ object Diagnostico {
  * e não entra aqui: ele é obrigatório e tem tela própria.
  */
 object Onboarding {
-    val ETAPAS = listOf("metas", "agenda", "notificacao")
+    /** A última etapa apresenta o diagnóstico; depois dela o diagnóstico começa. */
+    val ETAPAS = listOf("metas", "agenda", "notificacao", "diagnostico")
 
-    /** Próxima etapa depois de [atual]; null quando a próxima é o diagnóstico. */
+    /** Próxima etapa depois de [atual]; null depois da última (abre o diagnóstico). */
     fun proxima(atual: String): String? {
         val indice = ETAPAS.indexOf(atual)
         if (indice < 0) return null
