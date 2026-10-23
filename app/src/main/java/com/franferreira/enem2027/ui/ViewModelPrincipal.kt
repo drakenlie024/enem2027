@@ -396,9 +396,20 @@ class ViewModelPrincipal(
         notaAlvo?.let { editor.putInt("nota_alvo", it) }
         anoProva?.let { editor.putInt("ano_prova", it) }
         editor.apply()
+        // A data da prova sugere quantos dias por semana estudar. Só no
+        // onboarding: depois, a meta é a que a pessoa ajustar na Hoje.
+        val metaSugerida = anoProva?.let {
+            com.franferreira.enem2027.data.repo.MetaSemanal.sugeridaPara(
+                com.franferreira.enem2027.data.repo.MetaSemanal.diasAteAProva(it),
+            )
+        }
+        metaSugerida?.let {
+            com.franferreira.enem2027.data.repo.MetaSemanal.definirMeta(getApplication(), it)
+        }
         _estado.value = _estado.value.copy(
             notaAlvo = notaAlvo ?: _estado.value.notaAlvo,
             anoProva = anoProva ?: _estado.value.anoProva,
+            metaSemanal = metaSugerida ?: _estado.value.metaSemanal,
         )
         avancarOnboarding()
     }

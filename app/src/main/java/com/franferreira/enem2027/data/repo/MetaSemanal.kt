@@ -2,6 +2,7 @@ package com.franferreira.enem2027.data.repo
 
 import android.content.Context
 import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 import java.time.temporal.WeekFields
 
 /**
@@ -61,6 +62,20 @@ object MetaSemanal {
             }
             .toSet()
     }
+
+    /**
+     * Dias por semana sugeridos conforme o tempo até a prova: quanto mais longe
+     * a prova, menos dias por semana bastam para manter o ritmo.
+     */
+    fun sugeridaPara(diasAteAProva: Long): Int = when {
+        diasAteAProva >= 365 -> 3
+        diasAteAProva >= 180 -> 4
+        else -> 5
+    }
+
+    /** Dias até 1º de novembro do ano da prova (o ENEM cai no começo de novembro). */
+    fun diasAteAProva(ano: Int, hoje: LocalDate = LocalDate.now()): Long =
+        ChronoUnit.DAYS.between(hoje, LocalDate.of(ano, 11, 1))
 
     private fun semanaDe(data: LocalDate): String {
         val campo = WeekFields.ISO.weekOfWeekBasedYear()
