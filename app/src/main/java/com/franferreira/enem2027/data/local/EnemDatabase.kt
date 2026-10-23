@@ -57,6 +57,50 @@ interface QuestionDao {
     )
     suspend fun buscar(texto: String): List<QuestionEntity>
 
+    /**
+     * Resumo por tema para o treino espaçado: quantas questões o tema tem,
+     * quantas já foram vistas, quantos acertos e quantas estão disponíveis
+     * hoje (nunca vistas ou fora do cooldown e não dominadas).
+     */
+    @Query(
+        """
+        SELECT q.tema AS tema,
+               q.area AS area,
+               COUNT(*) AS total,
+               COALESCE(SUM(CASE WHEN p.questionId IS NULL THEN 0 ELSE 1 END), 0) AS vistas,
+               COALESCE(SUM(CASE WHEN p.lastQuality >= 3 THEN 1 ELSE 0 END), 0) AS acertos,
+               MAX(p.lastReviewedAt) AS ultima,
+               COALESCE(SUM(
+                   CASE WHEN p.questionId IS NULL
+                          OR (p.repetitions < 3 AND (p.lastReviewedAt IS NULL OR p.lastReviewedAt < :cooldown))
+                        THEN 1 ELSE 0 END
+               ), 0) AS disponiveis
+        FROM questions q
+        LEFT JOIN progress p ON p.questionId = q.id
+        WHERE q.tema IS NOT NULL AND q.tema != '' AND q.area IS NOT NULL
+        GROUP BY q.tema, q.area
+        """
+    )
+    suspend fun temasTreino(cooldown: Long): List<TemaTreinoRow>
+
+    /**
+     * Questões de um tema para treinar: primeiro as nunca vistas, depois as
+     * que estão fora do cooldown. Questão dominada (3 acertos seguidos) sai.
+     */
+    @Query(
+        """
+        SELECT q.* FROM questions q
+        LEFT JOIN progress p ON p.questionId = q.id
+        WHERE q.tema = :tema AND q.area = :area
+          AND (p.questionId IS NULL
+               OR (p.repetitions < 3 AND (p.lastReviewedAt IS NULL OR p.lastReviewedAt < :cooldown)))
+        ORDER BY CASE WHEN p.questionId IS NULL THEN 0 ELSE 1 END,
+                 COALESCE(p.lastReviewedAt, 0) ASC
+        LIMIT :limite
+        """
+    )
+    suspend fun paraTreino(area: String, tema: String, cooldown: Long, limite: Int): List<QuestionEntity>
+
     /** Questões de um tema em qualquer área (usado na trilha adaptativa). */
     @Query(
         """

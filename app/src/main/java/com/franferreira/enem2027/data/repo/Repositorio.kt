@@ -38,9 +38,14 @@ import java.time.format.DateTimeFormatter
 class Repositorio(private val context: Context) {
 
     private val db = EnemDatabase.get(context)
+
     private val api = ApiClient.api
 
     companion object {
+        /** Dias antes de a mesma questão poder voltar. */
+        private const val COOLDOWN_DIAS = 30L
+        private const val DIA_MS = 24L * 60 * 60 * 1000
+
         /**
          * Máximo de itens por requisição de sync.
          *
@@ -244,6 +249,69 @@ class Repositorio(private val context: Context) {
      * - [FilaRevisao.novas]: nunca vistas.
      * - [FilaRevisao.erradas]: caíram (lapse) e ainda estão em relearning.
      */
+    // ---------- treino espaçado por tema ----------
+
+    /**
+     * Intervalo do tema, em dias, conforme a força (acertos / vistas).
+     *
+     * Diferente do SM-2 por questão: aqui o que volta é o TEMA, e a questão
+     * servida é sempre nova. O intervalo cresce só quando a força justifica;
+     * tema fraco volta em 2 dias.
+     */
+    private fun intervaloDoTema(forca: Float, vistas: Int): Int = when {
+        vistas == 0 -> 0
+        forca < 0.5f -> 2
+        forca < 0.7f -> 4
+        forca < 0.85f -> 7
+        vistas >= 20 && forca >= 0.9f -> 30
+        else -> 15
+    }
+
+    /**
+     * Os temas que estão devidos hoje, do mais atrasado para o menos.
+     *
+     * É a resposta para "o que eu estudo agora": a Hoje mostra dois ou três
+     * e a pessoa só toca.
+     */
+    suspend fun temasParaTreinar(limite: Int = 6): List<com.franferreira.enem2027.data.model.TemaTreino> {
+        val agora = System.currentTimeMillis()
+        val cooldown = agora - COOLDOWN_DIAS * DIA_MS
+        val linhas = db.questions().temasTreino(cooldown)
+        return linhas.mapNotNull { r ->
+            val tema = r.tema?.takeIf { it.isNotBlank() } ?: return@mapNotNull null
+            val area = r.area?.takeIf { it.isNotBlank() } ?: return@mapNotNull null
+            if (r.disponiveis <= 0) return@mapNotNull null
+            val forca = if (r.vistas > 0) r.acertos.toFloat() / r.vistas else 0f
+            val intervalo = intervaloDoTema(forca, r.vistas)
+            val dias = r.ultima?.let { ((agora - it) / DIA_MS).toInt() }
+            val vencido = if (dias == null) 999 else dias - intervalo
+            // Tema já praticado e ainda dentro do intervalo não entra.
+            if (r.vistas > 0 && vencido < 0) return@mapNotNull null
+            com.franferreira.enem2027.data.model.TemaTreino(
+                tema = tema,
+                area = area,
+                total = r.total,
+                vistas = r.vistas,
+                acertos = r.acertos,
+                disponiveis = r.disponiveis,
+                diasDesde = dias,
+                intervaloDias = intervalo,
+                forca = forca,
+                vencidoHa = vencido.coerceAtMost(999),
+                novo = r.vistas == 0,
+            )
+        }.sortedWith(
+            compareByDescending<com.franferreira.enem2027.data.model.TemaTreino> { it.vencidoHa }
+                .thenBy { it.forca }
+        ).take(limite)
+    }
+
+    /** Questões novas (ou fora do cooldown) de um tema, para treinar. */
+    suspend fun questoesDoTema(area: String, tema: String, limite: Int = 12): List<Question> {
+        val cooldown = System.currentTimeMillis() - COOLDOWN_DIAS * DIA_MS
+        return db.questions().paraTreino(area, tema, cooldown, limite).map { it.paraModelo() }
+    }
+
     suspend fun filaRevisao(area: String?, tema: String?, limite: Int = 50): FilaRevisao {
         val agora = System.currentTimeMillis()
         val vencendo = mutableListOf<Question>()

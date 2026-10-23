@@ -213,7 +213,41 @@ fun TelaHoje(
             // Revisão do SRS: virou cartão na Hoje em vez de aba própria.
             val vencendo = estado.fila.vencendo.size
             val novas = estado.fila.novas.size
-            if (vencendo + novas > 0) {
+            val treinos = estado.treinos
+            if (treinos.isNotEmpty()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(18.dp))
+                        .background(Surface)
+                        .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                        .clickable { aoRevisar() }
+                        .padding(14.dp),
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text(
+                                text = "Treinar hoje",
+                                style = MaterialTheme.typography.titleSmall,
+                                color = TextPrimary,
+                            )
+                            Text(
+                                text = treinos.take(3).joinToString(", ") { it.tema },
+                                style = MaterialTheme.typography.bodySmall,
+                                color = TextMuted,
+                                maxLines = 2,
+                                overflow = TextOverflow.Ellipsis,
+                            )
+                        }
+                        Text(
+                            text = "Treinar",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = Primary,
+                        )
+                    }
+                }
+                Spacer(Modifier.height(14.dp))
+            } else if (vencendo + novas > 0) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()

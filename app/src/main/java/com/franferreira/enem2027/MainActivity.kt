@@ -343,12 +343,14 @@ fun EnemApp() {
 
             composable(Destination.Revisao.route) {
                 TelaRevisao(
-                    vencendo = estado.fila.vencendo,
-                    novas = estado.fila.novas,
-                    erradas = estado.fila.erradas,
                     aoAbrir = { questao -> abrirQuestao(navController, vm, questao) },
                     aoSincronizar = vm::sincronizar,
                     sincronizando = estado.sincronizando,
+                    treinos = estado.treinos,
+                    treinoAberto = estado.treinoAberto,
+                    treinoQuestoes = estado.treinoQuestoes,
+                    aoAbrirTreino = vm::abrirTreino,
+                    aoFecharTreino = vm::fecharTreino,
                     buscaTexto = estado.buscaTexto,
                     resultadoBusca = estado.resultadoBusca,
                     aoBuscar = vm::buscarQuestoes,

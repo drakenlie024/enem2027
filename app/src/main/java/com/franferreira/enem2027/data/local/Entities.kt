@@ -155,6 +155,22 @@ data class ErroRow(
     val lastReviewedAt: Long?,
 )
 
+/**
+ * O tema como unidade de treino (SRS por tema).
+ *
+ * `disponiveis` conta as questões que podem ser servidas hoje: nunca vistas ou
+ * fora do cooldown e que ainda não foram dominadas.
+ */
+data class TemaTreinoRow(
+    val tema: String,
+    val area: String?,
+    val total: Int,
+    val vistas: Int,
+    val acertos: Int,
+    val ultima: Long?,
+    val disponiveis: Int,
+)
+
 /** Acertos e erros de uma área, para a previsão de nota. */
 data class AcertoAreaRow(
     val area: String,

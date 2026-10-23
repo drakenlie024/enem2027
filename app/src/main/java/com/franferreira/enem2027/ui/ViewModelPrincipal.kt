@@ -127,6 +127,12 @@ data class EstadoHoje(
     val notaAlvo: Int = 700,
     /** Caderno de erros: o que já foi errado. */
     val caderno: List<ItemCaderno> = emptyList(),
+    /** Temas devidos hoje (treino espaçado por tema). */
+    val treinos: List<com.franferreira.enem2027.data.model.TemaTreino> = emptyList(),
+    /** Tema aberto para treinar. */
+    val treinoAberto: com.franferreira.enem2027.data.model.TemaTreino? = null,
+    /** Questões do tema aberto. */
+    val treinoQuestoes: List<Question> = emptyList(),
     /** Texto da busca de questão. */
     val buscaTexto: String = "",
     /** Resultado da busca de questão no acervo local. */
@@ -447,6 +453,7 @@ class ViewModelPrincipal(
             )
             carregarSessao()
             carregarTrilhas()
+            carregarTreinos()
         }
     }
 
@@ -1007,6 +1014,34 @@ class ViewModelPrincipal(
         _estado.value = _estado.value.copy(
             metaSemanal = com.franferreira.enem2027.data.repo.MetaSemanal.meta(getApplication()),
         )
+    }
+
+    // ---------- treino espaçado por tema ----------
+
+    /** Carrega os temas que estão devidos hoje. */
+    fun carregarTreinos() {
+        viewModelScope.launch {
+            val lista = runCatching { repo.temasParaTreinar() }.getOrDefault(emptyList())
+            _estado.value = _estado.value.copy(treinos = lista)
+        }
+    }
+
+    /** Abre um tema para treinar: serve questões novas dele. */
+    fun abrirTreino(treino: com.franferreira.enem2027.data.model.TemaTreino) {
+        viewModelScope.launch {
+            val questoes = runCatching {
+                repo.questoesDoTema(treino.area, treino.tema)
+            }.getOrDefault(emptyList())
+            _estado.value = _estado.value.copy(
+                treinoAberto = treino,
+                treinoQuestoes = questoes,
+            )
+        }
+    }
+
+    fun fecharTreino() {
+        _estado.value = _estado.value.copy(treinoAberto = null, treinoQuestoes = emptyList())
+        carregarTreinos()
     }
 
     /** Busca livre no acervo do aparelho (enunciado, contexto e tema). */

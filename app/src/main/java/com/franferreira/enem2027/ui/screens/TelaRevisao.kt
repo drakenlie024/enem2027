@@ -20,6 +20,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
@@ -41,6 +42,8 @@ import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
+import com.franferreira.enem2027.ui.theme.PaletaClaro
+import com.franferreira.enem2027.ui.theme.corDaArea
 import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Secondary
 import com.franferreira.enem2027.ui.theme.Surface
@@ -60,12 +63,14 @@ import com.franferreira.enem2027.ui.theme.TextSecondary
  */
 @Composable
 fun TelaRevisao(
-    vencendo: List<Question>,
-    novas: List<Question>,
-    erradas: List<Question>,
     aoAbrir: (Question) -> Unit,
     aoSincronizar: () -> Unit,
     sincronizando: Boolean,
+    treinos: List<com.franferreira.enem2027.data.model.TemaTreino> = emptyList(),
+    treinoAberto: com.franferreira.enem2027.data.model.TemaTreino? = null,
+    treinoQuestoes: List<Question> = emptyList(),
+    aoAbrirTreino: (com.franferreira.enem2027.data.model.TemaTreino) -> Unit = {},
+    aoFecharTreino: () -> Unit = {},
     buscaTexto: String = "",
     resultadoBusca: List<Question> = emptyList(),
     aoBuscar: (String) -> Unit = {},
@@ -78,16 +83,29 @@ fun TelaRevisao(
         Column(Modifier.padding(horizontal = 16.dp)) {
             Spacer(Modifier.height(12.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
+                if (treinoAberto != null) {
+                    Icon(
+                        Icons.Filled.ArrowBack,
+                        contentDescription = "Voltar",
+                        tint = TextMuted,
+                        modifier = Modifier
+                            .size(22.dp)
+                            .clickable { aoFecharTreino() },
+                    )
+                    Spacer(Modifier.width(10.dp))
+                }
                 Column(Modifier.weight(1f)) {
                     Text(
-                        text = "REVISÃO",
+                        text = if (treinoAberto != null) "TREINO" else "TREINOS DE HOJE",
                         style = MaterialTheme.typography.labelSmall,
                         color = Primary,
                     )
                     Text(
-                        text = "O que o SRS mandou voltar",
+                        text = treinoAberto?.tema ?: "O que estudar agora",
                         style = MaterialTheme.typography.titleLarge,
                         color = TextPrimary,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
                     )
                 }
                 Icon(
@@ -100,30 +118,18 @@ fun TelaRevisao(
                 )
             }
 
-            Spacer(Modifier.height(14.dp))
+            Spacer(Modifier.height(6.dp))
+            Text(
+                text = if (treinoAberto != null) {
+                    "${treinoQuestoes.size} questões novas deste tema"
+                } else {
+                    "O app escolhe os temas que vencem hoje, e sempre traz questão nova."
+                },
+                style = MaterialTheme.typography.bodySmall,
+                color = TextMuted,
+            )
 
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                CartaoContagem(
-                    valor = vencendo.size,
-                    rotulo = "para revisar",
-                    cor = Primary,
-                    modifier = Modifier.weight(1f),
-                )
-                CartaoContagem(
-                    valor = novas.size,
-                    rotulo = "novas",
-                    cor = Secondary,
-                    modifier = Modifier.weight(1f),
-                )
-                CartaoContagem(
-                    valor = erradas.size,
-                    rotulo = "erradas",
-                    cor = Danger,
-                    modifier = Modifier.weight(1f),
-                )
-            }
-
-            Spacer(Modifier.height(14.dp))
+            Spacer(Modifier.height(12.dp))
             OutlinedTextField(
                 value = buscaTexto,
                 onValueChange = aoBuscar,
@@ -140,84 +146,175 @@ fun TelaRevisao(
                 modifier = Modifier.fillMaxWidth(),
             )
 
-            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(14.dp))
         }
 
         val buscando = buscaTexto.trim().length >= 2
-        if (buscando) {
-            LazyColumn(
-                modifier = Modifier.weight(1f),
-                contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                item {
-                    Text(
-                        text = if (resultadoBusca.isEmpty()) {
-                            "Nenhuma questão com esse texto"
-                        } else {
-                            "${resultadoBusca.size} questões encontradas"
-                        },
-                        style = MaterialTheme.typography.labelSmall,
-                        color = TextMuted,
-                    )
-                }
-                items(resultadoBusca) { questao ->
-                    CartaoFila(questao, Primary) { aoAbrir(questao) }
+        when {
+            buscando -> {
+                LazyColumn(
+                    modifier = Modifier.weight(1f),
+                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    item {
+                        Text(
+                            text = if (resultadoBusca.isEmpty()) {
+                                "Nenhuma questão com esse texto"
+                            } else {
+                                "${resultadoBusca.size} questões encontradas"
+                            },
+                            style = MaterialTheme.typography.labelSmall,
+                            color = TextMuted,
+                        )
+                    }
+                    items(resultadoBusca) { questao ->
+                        CartaoFila(questao, Primary) { aoAbrir(questao) }
+                    }
                 }
             }
-        } else if (vencendo.isEmpty() && novas.isEmpty() && erradas.isEmpty()) {
+
+            treinoAberto != null -> {
+                if (treinoQuestoes.isEmpty()) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(horizontal = 24.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(
+                            text = "Este tema já foi todo treinado. Volte quando o intervalo vencer.",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = TextMuted,
+                            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                        )
+                    }
+                } else {
+                    LazyColumn(
+                        modifier = Modifier.weight(1f),
+                        contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        items(treinoQuestoes, key = { it.id }) { q ->
+                            CartaoFila(q, Primary) { aoAbrir(q) }
+                        }
+                    }
+                }
+            }
+
+            treinos.isEmpty() -> {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 24.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Icon(
+                            Icons.Filled.CheckCircle,
+                            contentDescription = null,
+                            tint = Secondary,
+                            modifier = Modifier.size(40.dp),
+                        )
+                        Spacer(Modifier.height(12.dp))
+                        Text(
+                            text = "Tudo em dia",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = TextPrimary,
+                        )
+                        Spacer(Modifier.height(6.dp))
+                        Text(
+                            text = "Nenhum tema venceu hoje. Você pode treinar uma trilha ou assistir uma aula.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = TextMuted,
+                            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                        )
+                    }
+                }
+            }
+
+            else -> {
+                LazyColumn(
+                    modifier = Modifier.weight(1f),
+                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    items(treinos, key = { it.tema + it.area }) { t ->
+                        CartaoTreino(t, aoClicar = { aoAbrirTreino(t) })
+                    }
+                }
+            }
+        }
+    }
+}
+
+/** Um tema devido hoje: o que treinar, quanto já rendeu e o botão. */
+@Composable
+private fun CartaoTreino(
+    t: com.franferreira.enem2027.data.model.TemaTreino,
+    aoClicar: () -> Unit,
+) {
+    val cor = corDaArea(t.area)
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(18.dp))
+            .background(Surface)
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .padding(14.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 24.dp),
-                contentAlignment = Alignment.Center,
-            ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Icon(
-                        Icons.Filled.CheckCircle,
-                        contentDescription = null,
-                        tint = Secondary,
-                        modifier = Modifier.size(40.dp),
-                    )
-                    Spacer(Modifier.height(12.dp))
-                    Text(
-                        text = "Nada pendente",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = TextPrimary,
-                    )
-                    Spacer(Modifier.height(6.dp))
-                    Text(
-                        text = "Baixe mais anos no \"Hoje\" para encher a fila.",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = TextMuted,
-                    )
-                }
+                    .size(9.dp)
+                    .clip(CircleShape)
+                    .background(cor),
+            )
+            Spacer(Modifier.width(8.dp))
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text = t.tema,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = TextPrimary,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Text(
+                    text = t.area.replace('-', ' ') + " · " + t.disponiveis + " questões disponíveis",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = TextMuted,
+                )
             }
-        } else {
-            LazyColumn(
-                modifier = Modifier.weight(1f),
-                contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                if (erradas.isNotEmpty()) {
-                    item { CabecalhoGrupo("VOCÊ ERROU — VOLTA EM BREVE", Danger) }
-                    items(erradas, key = { it.id }) { q ->
-                        CartaoFila(q, Danger) { aoAbrir(q) }
-                    }
-                }
-                if (vencendo.isNotEmpty()) {
-                    item { CabecalhoGrupo("VENCENDO AGORA", Primary) }
-                    items(vencendo, key = { it.id }) { q ->
-                        CartaoFila(q, Primary) { aoAbrir(q) }
-                    }
-                }
-                if (novas.isNotEmpty()) {
-                    item { CabecalhoGrupo("NUNCA VISTAS", Secondary) }
-                    items(novas, key = { it.id }) { q ->
-                        CartaoFila(q, Secondary) { aoAbrir(q) }
-                    }
-                }
-            }
+            Text(
+                text = if (t.novo) "NOVO" else "${t.percentual}%",
+                style = MaterialTheme.typography.labelMedium,
+                color = cor,
+            )
+        }
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = if (t.novo) {
+                "Nunca treinado. Começa pelas questões mais antigas."
+            } else {
+                val quando = t.diasDesde?.let { "há $it dia(s)" } ?: "agora"
+                "Último treino $quando · volta a cada ${t.intervaloDias} dias"
+            },
+            style = MaterialTheme.typography.bodySmall,
+            color = TextMuted,
+        )
+        Spacer(Modifier.height(10.dp))
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(999.dp))
+                .background(cor)
+                .clickable { aoClicar() }
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+        ) {
+            Text(
+                text = "Treinar",
+                style = MaterialTheme.typography.labelMedium,
+                color = PaletaClaro.texto,
+            )
         }
     }
 }
