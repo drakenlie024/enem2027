@@ -14,8 +14,8 @@ android {
         applicationId = "com.franferreira.enem2027"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.1.1"
         vectorDrawables { useSupportLibrary = true }
     }
 
@@ -27,6 +27,11 @@ android {
                 storePassword = providers.gradleProperty("RELEASE_STORE_PASSWORD").orNull
                 keyAlias = providers.gradleProperty("RELEASE_KEY_ALIAS").orNull
                 keyPassword = providers.gradleProperty("RELEASE_KEY_PASSWORD").orNull
+                // v1 + v2 + v3: alguns instaladores (Samsung antigo) recusam
+                // APK só com o bloco v2, mesmo com o certificado certo.
+                enableV1Signing = true
+                enableV2Signing = true
+                enableV3Signing = true
             }
         }
     }
