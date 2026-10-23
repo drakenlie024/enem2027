@@ -1,4 +1,4 @@
-plugins {
+﻿plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
@@ -14,8 +14,8 @@ android {
         applicationId = "com.franferreira.enem2027"
         minSdk = 26
         targetSdk = 35
-        versionCode = 2
-        versionName = "0.1.1"
+        versionCode = 3
+        versionName = "0.2.0"
         vectorDrawables { useSupportLibrary = true }
     }
 
@@ -28,7 +28,7 @@ android {
                 keyAlias = providers.gradleProperty("RELEASE_KEY_ALIAS").orNull
                 keyPassword = providers.gradleProperty("RELEASE_KEY_PASSWORD").orNull
                 // v1 + v2 + v3: alguns instaladores (Samsung antigo) recusam
-                // APK só com o bloco v2, mesmo com o certificado certo.
+                // APK sÃ³ com o bloco v2, mesmo com o certificado certo.
                 enableV1Signing = true
                 enableV2Signing = true
                 enableV3Signing = true
@@ -71,11 +71,11 @@ android {
     }
 }
 
-// O schema do Room é versionado no git (app/schemas). É o que permite
-// escrever migration de verdade: sem o JSON, uma mudança de coluna passa
-// despercebida e só aparece como "Room cannot verify the data integrity"
-// — ou, pior, como um `fallbackToDestructiveMigration` que apaga o
-// progresso do usuário.
+// O schema do Room Ã© versionado no git (app/schemas). Ã‰ o que permite
+// escrever migration de verdade: sem o JSON, uma mudanÃ§a de coluna passa
+// despercebida e sÃ³ aparece como "Room cannot verify the data integrity"
+// â€” ou, pior, como um `fallbackToDestructiveMigration` que apaga o
+// progresso do usuÃ¡rio.
 ksp {
     arg("room.schemaLocation", "$projectDir/schemas")
     arg("room.incremental", "true")
@@ -123,3 +123,4 @@ dependencies {
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.ext.junit)
 }
+
