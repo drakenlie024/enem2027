@@ -86,6 +86,9 @@ fun TelaRedacao(
     }
     var texto by remember(rascunho?.id) { mutableStateOf(rascunho?.texto ?: "") }
     var resultadoLocal by remember { mutableStateOf<EssayCorrection?>(resultado) }
+    var mostrarVersoes by remember { mutableStateOf(false) }
+    var mostrarMetaMil by remember { mutableStateOf(false) }
+    val versoes = com.franferreira.enem2027.data.repo.VersoesRascunho.listar(app)
     // Cronômetro da redação (1 hora, como na prova).
     var segundos by remember { mutableStateOf(0) }
     var correndoTempo by remember { mutableStateOf(false) }
@@ -100,6 +103,7 @@ fun TelaRedacao(
     // plano) com o estado local da tela.
     LaunchedEffect(resultado) { if (resultado != null) resultadoLocal = resultado }
     val scope = rememberCoroutineScope()
+    val app = androidx.compose.ui.platform.LocalContext.current
 
     // Grava o rascunho no aparelho, um instante depois de o usuário parar
     // de digitar. A correção pela IA leva minutos — o texto não pode
@@ -361,6 +365,76 @@ fun TelaRedacao(
             resultadoLocal?.let { correcao ->
                 Spacer(Modifier.height(18.dp))
                 CartaoCorrecao(correcao)
+            }
+
+            // ---- versões do rascunho
+            if (versoes.isNotEmpty()) {
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    text = if (mostrarVersoes) {
+                        "Versões anteriores"
+                    } else {
+                        "Versões anteriores (${versoes.size})"
+                    },
+                    style = MaterialTheme.typography.labelMedium,
+                    color = TextSecondary,
+                    modifier = Modifier.clickable { mostrarVersoes = !mostrarVersoes },
+                )
+                if (mostrarVersoes) {
+                    versoes.forEach { v ->
+                        val data = java.text.SimpleDateFormat("dd/MM HH:mm", java.util.Locale("pt", "BR"))
+                            .format(java.util.Date(v.quando))
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 6.dp)
+                                .clip(RoundedCornerShape(12.dp))
+                                .background(Surface)
+                                .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
+                                .clickable {
+                                    texto = v.texto
+                                    mostrarVersoes = false
+                                }
+                                .padding(10.dp),
+                        ) {
+                            Text(
+                                text = "$data · toque para usar",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = TextMuted,
+                            )
+                            Text(
+                                text = v.texto.take(140) + if (v.texto.length > 140) "…" else "",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = TextSecondary,
+                            )
+                        }
+                    }
+                }
+            }
+
+            // ---- o que a nota 1000 tem
+            Spacer(Modifier.height(14.dp))
+            Text(
+                text = if (mostrarMetaMil) "O que a nota 1000 tem" else "O que a nota 1000 tem ▸",
+                style = MaterialTheme.typography.labelMedium,
+                color = TextSecondary,
+                modifier = Modifier.clickable { mostrarMetaMil = !mostrarMetaMil },
+            )
+            if (mostrarMetaMil) {
+                listOf(
+                    "C1 — norma culta: nenhum desvio de concordância, regência ou pontuação.",
+                    "C2 — repertório: um repertório sociocultural produtivo, usado como argumento, não como enfeite.",
+                    "C3 — projeto de texto: cada parágrafo tem uma função e defende uma tese só sua.",
+                    "C4 — coesão: conectivos variados e precisos entre frases e parágrafos.",
+                    "C5 — intervenção: agente, ação, meio, finalidade e detalhamento, respeitando os direitos humanos.",
+                ).forEach { linha ->
+                    Text(
+                        text = "• $linha",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = TextSecondary,
+                        modifier = Modifier.padding(top = 4.dp),
+                    )
+                }
             }
 
             if (historico.isNotEmpty()) {

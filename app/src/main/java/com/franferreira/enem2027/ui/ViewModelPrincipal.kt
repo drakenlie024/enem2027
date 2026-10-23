@@ -72,6 +72,12 @@ data class EstadoHoje(
     val simuladoInicio: Long = 0L,
     /** Diagnóstico do último simulado encerrado. */
     val diagnostico: DiagnosticoSimulado? = null,
+    /** Simulado encerrado, guardado para a revisão com gabarito. */
+    val simuladoRevisao: SimuladoMontado? = null,
+    /** Respostas dadas no simulado revisado (id, escolhida, gabarito, ...). */
+    val respostasRevisao: List<Map<String, String>> = emptyList(),
+    /** Tempo gasto em cada questão do simulado (id -> segundos). */
+    val temposRevisao: Map<String, Int> = emptyMap(),
     val mensagemSimulado: String? = null,
     /** Fila de questões geradas por IA aguardando aprovação. */
     val filaAprovacao: List<QuestaoPendente> = emptyList(),
@@ -514,10 +520,17 @@ class ViewModelPrincipal(
 
     fun fecharSimulado() {
         prefsLocais().edit().remove("simulado_ativo").remove("simulado_inicio").apply()
-        _estado.value = _estado.value.copy(simulado = null, diagnostico = null, simuladoInicio = 0L)
+        _estado.value = _estado.value.copy(
+            simulado = null, diagnostico = null, simuladoInicio = 0L,
+            simuladoRevisao = null, respostasRevisao = emptyList(), temposRevisao = emptyMap(),
+        )
     }
 
-    fun finalizarSimulado(respostas: List<Map<String, String>>, duracaoSegundos: Int) {
+    fun finalizarSimulado(
+        respostas: List<Map<String, String>>,
+        duracaoSegundos: Int,
+        tempos: Map<String, Int> = emptyMap(),
+    ) {
         val simulado = _estado.value.simulado ?: return
         viewModelScope.launch {
             runCatching {
@@ -541,6 +554,10 @@ class ViewModelPrincipal(
                         simulado = null,
                         simuladoInicio = 0L,
                         diagnostico = diag,
+                        // Guarda o simulado para a revisão com gabarito.
+                        simuladoRevisao = simulado,
+                        respostasRevisao = respostas,
+                        temposRevisao = tempos,
                     )
                 }
                 .onFailure {
@@ -849,6 +866,8 @@ class ViewModelPrincipal(
     fun corrigirRedacao(tema: String, texto: String) {
         // Rascunho primeiro: o texto não pode depender da rede.
         salvarRascunhoRedacao(tema, texto)
+        // Guarda a versão antes de mandar: a correção pode reescrever tudo.
+        com.franferreira.enem2027.data.repo.VersoesRascunho.salvar(getApplication(), texto)
         _estado.value = _estado.value.copy(
             corrigindoRedacao = true,
             erroRedacao = null,

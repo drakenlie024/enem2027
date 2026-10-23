@@ -105,7 +105,11 @@ private val SaverRespostasSimulado: Saver<Map<String, String>, ArrayList<String>
 @Composable
 fun TelaSimulado(
     simulado: SimuladoMontado,
-    aoFinalizar: (respostas: List<Map<String, String>>, duracaoSegundos: Int) -> Unit,
+    aoFinalizar: (
+        respostas: List<Map<String, String>>,
+        duracaoSegundos: Int,
+        tempos: Map<String, Int>,
+    ) -> Unit,
     aoVoltar: () -> Unit,
     /** Quando a prova começou (para retomar com o tempo certo). */
     iniciadoEm: Long = 0L,
@@ -130,6 +134,11 @@ fun TelaSimulado(
     // A explicação fica recolhida por padrão: no simulado, ver a resposta
     // antes de responder estragaria a prova.
     var mostrandoExplicacao by remember { mutableStateOf(false) }
+    // Tempo gasto em cada questão: a revisão do simulado mostra onde a
+    // pessoa travou, o que o total sozinho não conta.
+    val tempos = remember { androidx.compose.runtime.mutableStateMapOf<String, Int>() }
+    var inicioQuestao by remember { mutableLongStateOf(System.currentTimeMillis()) }
+    LaunchedEffect(indice) { inicioQuestao = System.currentTimeMillis() }
 
     LaunchedEffect(simulado.id) {
         while (segundosRestantes > 0 && !terminado) {
@@ -139,7 +148,7 @@ fun TelaSimulado(
         if (segundosRestantes <= 0) {
             terminado = true
             val gasto = (simulado.duracaoMinutos * 60 - segundosRestantes).coerceAtLeast(0)
-            aoFinalizar(respostasParaBackend(respostas, simulado.questoes), gasto)
+            aoFinalizar(respostasParaBackend(respostas, simulado.questoes), gasto, tempos.toMap())
         }
     }
 
@@ -179,7 +188,11 @@ fun TelaSimulado(
                     color = Danger,
                     modifier = Modifier.clickable {
                         terminado = true
-                        aoFinalizar(respostasParaBackend(respostas, simulado.questoes), (simulado.duracaoMinutos * 60 - segundosRestantes).coerceAtLeast(0))
+                        aoFinalizar(
+                    respostasParaBackend(respostas, simulado.questoes),
+                    (simulado.duracaoMinutos * 60 - segundosRestantes).coerceAtLeast(0),
+                    tempos.toMap(),
+                )
                     },
                 )
             }
@@ -312,6 +325,9 @@ fun TelaSimulado(
                         )
                         .clickable {
                             respostas = respostas + (questao.id to alternativa.letra)
+                            tempos[questao.id] = (
+                                (System.currentTimeMillis() - inicioQuestao) / 1000
+                            ).toInt().coerceAtLeast(0)
                         }
                         .padding(12.dp),
                     contentAlignment = Alignment.CenterStart,
@@ -406,7 +422,11 @@ fun TelaSimulado(
                             indice++
                         } else {
                             terminado = true
-                            aoFinalizar(respostasParaBackend(respostas, simulado.questoes), (simulado.duracaoMinutos * 60 - segundosRestantes).coerceAtLeast(0))
+                            aoFinalizar(
+                    respostasParaBackend(respostas, simulado.questoes),
+                    (simulado.duracaoMinutos * 60 - segundosRestantes).coerceAtLeast(0),
+                    tempos.toMap(),
+                )
                         }
                     },
                 contentAlignment = Alignment.Center,
@@ -428,6 +448,7 @@ fun TelaSimulado(
 fun TelaResultadoSimulado(
     diagnostico: DiagnosticoSimulado,
     aoFechar: () -> Unit,
+    aoRevisar: () -> Unit = {},
 ) {
     Column(
         modifier = Modifier
@@ -557,4 +578,111 @@ private fun formatarTempo(segundos: Int): String {
     val minutos = segundos / 60
     val resto = segundos % 60
     return "%02d:%02d".format(minutos, resto)
+}
+
+/**
+ * Revisão do simulado encerrado: cada questão com a sua resposta, o gabarito
+ * e a explicação offline. É aqui que o erro vira aprendizado — o resultado
+ * com a nota só diz quanto; esta tela diz onde.
+ */
+@Composable
+fun TelaRevisaoSimulado(
+    simulado: SimuladoMontado,
+    respostas: List<Map<String, String>>,
+    tempos: Map<String, Int>,
+    aoVoltar: () -> Unit,
+) {
+    val porId = respostas.associateBy { it["id"] ?: "" }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background))),
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 12.dp, vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(
+                Icons.Filled.ArrowBack,
+                contentDescription = "Voltar",
+                tint = TextMuted,
+                modifier = Modifier
+                    .size(22.dp)
+                    .clickable { aoVoltar() },
+            )
+            Spacer(Modifier.width(10.dp))
+            Text(
+                text = "REVISÃO DO SIMULADO",
+                style = MaterialTheme.typography.labelMedium,
+                color = Primary,
+                modifier = Modifier.weight(1f),
+            )
+        }
+
+        LazyColumn(
+            modifier = Modifier.weight(1f),
+            contentPadding = androidx.compose.foundation.layout.PaddingValues(
+                start = 16.dp, end = 16.dp, bottom = 24.dp
+            ),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            items(simulado.questoes, key = { it.id }) { q ->
+                val r = porId[q.id]
+                val escolhida = r?.get("escolhida").orEmpty()
+                val gabarito = (r?.get("gabarito").orEmpty()).ifBlank { q.gabarito.orEmpty() }
+                val acertou = escolhida.equals(gabarito, ignoreCase = true) && escolhida.isNotBlank()
+                val segundos = tempos[q.id] ?: 0
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(Surface)
+                        .border(
+                            1.dp,
+                            if (acertou) Secondary.copy(alpha = 0.5f) else Danger.copy(alpha = 0.4f),
+                            RoundedCornerShape(16.dp),
+                        )
+                        .padding(12.dp),
+                ) {
+                    Text(
+                        text = "QUESTÃO ${q.indice}",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = TextMuted,
+                    )
+                    if (!q.enunciado.isNullOrBlank()) {
+                        Spacer(Modifier.height(4.dp))
+                        Text(
+                            text = q.enunciado!!,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = TextPrimary,
+                        )
+                    }
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        text = "Sua resposta: ${escolhida.ifBlank { "em branco" }}   ·   " +
+                            "Gabarito: ${gabarito.ifBlank { "—" }}",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = if (acertou) Secondary else Danger,
+                    )
+                    if (segundos > 0) {
+                        Text(
+                            text = "Tempo: ${segundos / 60}min ${segundos % 60}s",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = TextMuted,
+                        )
+                    }
+                    if (!q.explicacao.isNullOrBlank()) {
+                        Spacer(Modifier.height(6.dp))
+                        Text(
+                            text = q.explicacao!!,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = TextSecondary,
+                        )
+                    }
+                }
+            }
+        }
+    }
 }

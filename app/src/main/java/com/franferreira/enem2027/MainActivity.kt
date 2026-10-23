@@ -448,6 +448,25 @@ fun EnemApp() {
             }
 
             // Caderno de erros: o que errou, para treinar de novo.
+            // Revisão do simulado: questão a questão, com gabarito e explicação.
+            composable("revisaosimulado") {
+                val simulado = estado.simuladoRevisao
+                if (simulado == null) {
+                    TelaVazia(
+                        titulo = "Nada para revisar",
+                        subtitulo = "Faça um simulado primeiro.",
+                        aoVoltar = { navController.popBackStack() },
+                    )
+                } else {
+                    TelaRevisaoSimulado(
+                        simulado = simulado,
+                        respostas = estado.respostasRevisao,
+                        tempos = estado.temposRevisao,
+                        aoVoltar = { navController.popBackStack() },
+                    )
+                }
+            }
+
             composable("caderno") {
                 // Recarrega ao voltar de uma questão corrigida: o erro
                 // corrigido muda o caderno.
@@ -489,12 +508,13 @@ fun EnemApp() {
                             vm.fecharSimulado()
                             navController.popBackStack()
                         },
+                        aoRevisar = { navController.navigate("revisaosimulado") },
                     )
                     simulado != null -> TelaSimulado(
                         simulado = simulado,
                         iniciadoEm = estado.simuladoInicio,
-                        aoFinalizar = { respostas, duracao ->
-                            vm.finalizarSimulado(respostas, duracao)
+                        aoFinalizar = { respostas, duracao, tempos ->
+                            vm.finalizarSimulado(respostas, duracao, tempos)
                         },
                         aoVoltar = {
                             vm.fecharSimulado()
