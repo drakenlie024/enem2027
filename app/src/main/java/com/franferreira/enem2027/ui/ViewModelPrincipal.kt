@@ -125,6 +125,10 @@ data class EstadoHoje(
     val buscaTexto: String = "",
     /** Resultado da busca de questão no acervo local. */
     val resultadoBusca: List<Question> = emptyList(),
+    /** Bloco de foco (pomodoro) em andamento. */
+    val focoAtivo: Boolean = false,
+    /** Segundos restantes do bloco de foco. */
+    val focoRestante: Int = 0,
 ) {
     /**
      * A trilha que o botão principal da tela Hoje deve atacar.
@@ -190,6 +194,7 @@ class ViewModelPrincipal(
         carregarMeta()
         semearAcervo()
         restaurarSessao()
+        restaurarFoco()
         restaurarSimulado()
     }
 
@@ -995,6 +1000,57 @@ class ViewModelPrincipal(
         viewModelScope.launch {
             val achadas = repo.buscarQuestoes(texto)
             _estado.value = _estado.value.copy(resultadoBusca = achadas)
+        }
+    }
+
+    // ---------- foco (pomodoro) ----------
+
+    /** Começa um bloco de foco de 25 minutos e agenda o aviso do fim. */
+    fun iniciarFoco(minutos: Int = 25) {
+        val prefs = prefsLocais()
+        val inicio = System.currentTimeMillis()
+        prefs.edit().putLong("foco_inicio", inicio).putInt("foco_min", minutos).apply()
+        com.franferreira.enem2027.notificacao.Agendador.agendarFoco(getApplication(), minutos)
+        _estado.value = _estado.value.copy(focoAtivo = true, focoRestante = minutos * 60)
+        viewModelScope.launch {
+            while (true) {
+                val restante = ((inicio + minutos * 60_000L - System.currentTimeMillis()) / 1000).toInt()
+                if (restante <= 0) break
+                _estado.value = _estado.value.copy(focoRestante = restante)
+                kotlinx.coroutines.delay(1000)
+            }
+            prefs.edit().remove("foco_inicio").remove("foco_min").apply()
+            _estado.value = _estado.value.copy(focoAtivo = false, focoRestante = 0)
+        }
+    }
+
+    fun pararFoco() {
+        prefsLocais().edit().remove("foco_inicio").remove("foco_min").apply()
+        com.franferreira.enem2027.notificacao.Agendador.cancelarFoco(getApplication())
+        _estado.value = _estado.value.copy(focoAtivo = false, focoRestante = 0)
+    }
+
+    /** Retoma um bloco de foco que já estava rodando quando o app fechou. */
+    private fun restaurarFoco() {
+        val prefs = prefsLocais()
+        val inicio = prefs.getLong("foco_inicio", 0L)
+        val minutos = prefs.getInt("foco_min", 0)
+        if (inicio <= 0L || minutos <= 0) return
+        val restante = ((inicio + minutos * 60_000L - System.currentTimeMillis()) / 1000).toInt()
+        if (restante <= 0) {
+            prefs.edit().remove("foco_inicio").remove("foco_min").apply()
+            return
+        }
+        _estado.value = _estado.value.copy(focoAtivo = true, focoRestante = restante)
+        viewModelScope.launch {
+            while (true) {
+                val r = ((inicio + minutos * 60_000L - System.currentTimeMillis()) / 1000).toInt()
+                if (r <= 0) break
+                _estado.value = _estado.value.copy(focoRestante = r)
+                kotlinx.coroutines.delay(1000)
+            }
+            prefs.edit().remove("foco_inicio").remove("foco_min").apply()
+            _estado.value = _estado.value.copy(focoAtivo = false, focoRestante = 0)
         }
     }
 

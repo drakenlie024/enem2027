@@ -183,6 +183,10 @@ interface ProgressDao {
     @Query("SELECT * FROM progress WHERE synced = 0")
     suspend fun naoSincronizados(): List<ProgressEntity>
 
+    /** Quantas questões distintas foram revisadas desde um instante. */
+    @Query("SELECT COUNT(*) FROM progress WHERE lastReviewedAt >= :desde")
+    suspend fun revisadasDesde(desde: Long): Int
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(progress: ProgressEntity)
 

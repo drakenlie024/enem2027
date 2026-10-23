@@ -51,6 +51,7 @@ object Agendador {
     fun agendar(context: Context) {
         val scope = CoroutineScope(Dispatchers.IO)
         scope.launch {
+            agendarResumoSemanal(context)
             val repo = Repositorio(context)
             val agenda = repo.agenda()
             if (agenda.isEmpty()) {
@@ -157,6 +158,73 @@ object Agendador {
             }
         } catch (falha: Exception) {
             Log.w("Agendador", "não consegui agendar o lembrete: ${falha.message}")
+        }
+    }
+
+    /** Alarme do fim de um bloco de foco (pomodoro). */
+    fun agendarFoco(context: Context, minutos: Int) {
+        val alarm = context.getSystemService(AlarmManager::class.java) ?: return
+        val intent = Intent(context, LembreteReceiver::class.java).apply {
+            putExtra(LembreteReceiver.EXTRA_FOCO, true)
+        }
+        val pending = PendingIntent.getBroadcast(
+            context,
+            9600,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+        )
+        val quando = System.currentTimeMillis() + minutos * 60_000L
+        runCatching {
+            alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, quando, pending)
+        }.onFailure {
+            runCatching { alarm.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, quando, pending) }
+        }
+    }
+
+    fun cancelarFoco(context: Context) {
+        val alarm = context.getSystemService(AlarmManager::class.java) ?: return
+        val intent = Intent(context, LembreteReceiver::class.java)
+        val pending = PendingIntent.getBroadcast(
+            context,
+            9600,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+        )
+        alarm.cancel(pending)
+    }
+
+    /**
+     * Resumo do domingo, 20h. Semanal e repetido: o próprio sistema reagenda,
+     * então não depende de o app abrir.
+     */
+    fun agendarResumoSemanal(context: Context) {
+        val alarm = context.getSystemService(AlarmManager::class.java) ?: return
+        val intent = Intent(context, LembreteReceiver::class.java).apply {
+            putExtra(LembreteReceiver.EXTRA_RESUMO, true)
+        }
+        val pending = PendingIntent.getBroadcast(
+            context,
+            9700,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+        )
+        alarm.cancel(pending)
+        val quando = Calendar.getInstance().apply {
+            set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY)
+            set(Calendar.HOUR_OF_DAY, 20)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+            // se o domingo das 20h já passou, vai para a semana que vem
+            if (timeInMillis <= System.currentTimeMillis()) add(Calendar.WEEK_OF_YEAR, 1)
+        }.timeInMillis
+        runCatching {
+            alarm.setInexactRepeating(
+                AlarmManager.RTC_WAKEUP,
+                quando,
+                AlarmManager.INTERVAL_DAY * 7,
+                pending,
+            )
         }
     }
 

@@ -214,6 +214,12 @@ class Repositorio(private val context: Context) {
 
     suspend fun pendentes(): Int = db.questions().pendentes(System.currentTimeMillis())
 
+    /** Questões distintas revisadas nos últimos 7 dias. */
+    suspend fun revisadasNaSemana(): Int {
+        val inicio = System.currentTimeMillis() - 7L * 24 * 60 * 60 * 1000
+        return db.progress().revisadasDesde(inicio)
+    }
+
     /** Respostas gravadas no aparelho que ainda não subiram para o servidor. */
     suspend fun esperandoRede(): Int = db.pendingAnswers().totalNaoSincronizadas()
 

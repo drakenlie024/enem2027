@@ -61,6 +61,7 @@ object Notificador {
     /** Mostra o aviso. `pendentes` é o número de questões na fila do SRS. */
     fun avisar(context: Context, pendentes: Int, periodo: String? = null) {
         if (pendentes <= 0) return
+        if (Silencio.agoraEstaSilencioso(context)) return
 
         criarCanal(context)
 
@@ -95,6 +96,55 @@ object Notificador {
             NotificationManagerCompat.from(context).notify(ID_LEMBRETE, notificacao)
         } catch (e: SecurityException) {
             // Falta a permissão de POST_NOTIFICATIONS (Android 13+). Sem alarde.
+        }
+    }
+
+    /** Fim de um bloco de foco (pomodoro). */
+    fun avisarFoco(context: Context, minutos: Int) {
+        criarCanal(context)
+        notificar(
+            context,
+            titulo = "Fim do foco",
+            texto = "Você focou $minutos minutos. Levanta, bebe água, cinco de pausa.",
+            id = 1002,
+        )
+    }
+
+    /** Resumo do domingo: o que a semana rendeu. */
+    fun avisarResumo(context: Context, questoes: Int, dias: Int, streak: Int) {
+        if (Silencio.agoraEstaSilencioso(context)) return
+        criarCanal(context)
+        val texto = buildString {
+            append("$questoes questões e $dias dia(s) de estudo nesta semana.")
+            if (streak > 1) append(" Sequência de $streak dias.")
+        }
+        notificar(context, titulo = "Sua semana", texto = texto, id = 1003)
+    }
+
+    private fun notificar(context: Context, titulo: String, texto: String, id: Int) {
+        if (!podeNotificar(context)) return
+        val intent = Intent(context, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        }
+        val pending = PendingIntent.getActivity(
+            context,
+            0,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+        )
+        val notificacao = NotificationCompat.Builder(context, CANAL_ID)
+            .setSmallIcon(R.drawable.ic_notificacao)
+            .setContentTitle(titulo)
+            .setContentText(texto)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(texto))
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pending)
+            .setAutoCancel(true)
+            .build()
+        try {
+            NotificationManagerCompat.from(context).notify(id, notificacao)
+        } catch (e: SecurityException) {
+            // sem permissão: o sistema descarta em silêncio
         }
     }
 

@@ -83,6 +83,7 @@ fun TelaAulas(
     aoVoltar: () -> Unit,
     aoContinuar: (String) -> Unit = {},
 ) {
+    val contexto = LocalContext.current
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -113,8 +114,7 @@ fun TelaAulas(
             ),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-            val ultima = com.franferreira.enem2027.data.repo.AulasAssistidas
-                .ultima(androidx.compose.ui.platform.LocalContext.current)
+            val ultima = com.franferreira.enem2027.data.repo.AulasAssistidas.ultima(contexto)
             if (ultima != null) {
                 item {
                     Box(

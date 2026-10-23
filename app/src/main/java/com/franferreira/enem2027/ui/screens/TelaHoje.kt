@@ -55,6 +55,7 @@ import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.components.floresFundo
 import com.franferreira.enem2027.ui.theme.PaletaAtual
+import com.franferreira.enem2027.ui.theme.PaletaClaro
 import com.franferreira.enem2027.ui.theme.Primary
 import com.franferreira.enem2027.ui.theme.Secondary
 import com.franferreira.enem2027.ui.theme.Surface
@@ -97,6 +98,8 @@ fun TelaHoje(
     aoJogarEtapa: (Trilha, Etapa) -> Unit,
     aoAjustarMeta: (Int) -> Unit,
     aoAtualizarAcervo: () -> Unit,
+    aoIniciarFoco: () -> Unit = {},
+    aoPararFoco: () -> Unit = {},
     aoRevisar: () -> Unit = {},
     aoAulas: () -> Unit = {},
     aoMudarMetaSemanal: (Int) -> Unit = {},
@@ -163,6 +166,12 @@ fun TelaHoje(
             SemanaDeEstudo(
                 estado = estado,
                 aoMudarMeta = aoMudarMetaSemanal,
+            )
+
+            CartaoFoco(
+                estado = estado,
+                aoIniciar = aoIniciarFoco,
+                aoParar = aoPararFoco,
             )
 
             if (estado.esperandoRede > 0) {
@@ -906,6 +915,68 @@ private fun SemanaDeEstudo(estado: EstadoHoje, aoMudarMeta: (Int) -> Unit) {
                         )
                     }
                 }
+            }
+        }
+    }
+}
+
+/**
+ * Foco de 25 minutos (pomodoro).
+ *
+ * O alarme é agendado no início, então o aviso chega mesmo se o app estiver
+ * fechado; o contador aqui é só o que a tela mostra.
+ */
+@Composable
+private fun CartaoFoco(
+    estado: EstadoHoje,
+    aoIniciar: () -> Unit,
+    aoParar: () -> Unit,
+) {
+    val restante = estado.focoRestante.coerceAtLeast(0)
+    val tempo = "%02d:%02d".format(restante / 60, restante % 60)
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(18.dp))
+            .background(Surface)
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .padding(14.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text = "FOCO",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Primary,
+                )
+                Text(
+                    text = if (estado.focoAtivo) "Faltam $tempo" else "25 minutos sem celular",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = TextPrimary,
+                )
+                Text(
+                    text = if (estado.focoAtivo) {
+                        "Um bloco de cada vez. O aviso chega mesmo com o app fechado."
+                    } else {
+                        "Um bloco de 25 minutos, depois cinco de pausa."
+                    },
+                    style = MaterialTheme.typography.bodySmall,
+                    color = TextMuted,
+                )
+            }
+            Spacer(Modifier.width(10.dp))
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(if (estado.focoAtivo) SurfaceRaised else Primary)
+                    .clickable { if (estado.focoAtivo) aoParar() else aoIniciar() }
+                    .padding(horizontal = 14.dp, vertical = 9.dp),
+            ) {
+                Text(
+                    text = if (estado.focoAtivo) "Parar" else "Começar",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = if (estado.focoAtivo) TextMuted else PaletaClaro.texto,
+                )
             }
         }
     }

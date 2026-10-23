@@ -221,6 +221,8 @@ fun EnemApp() {
                     },
                     aoAjustarMeta = vm::ajustarMeta,
                     aoAtualizarAcervo = vm::atualizarAcervo,
+                    aoIniciarFoco = { vm.iniciarFoco() },
+                    aoPararFoco = vm::pararFoco,
                     aoRevisar = { navController.navigate(Destination.Revisao.route) },
                     aoAulas = { navController.navigate(Destination.Aulas.route) },
                     aoMudarMetaSemanal = vm::ajustarMetaSemanal,

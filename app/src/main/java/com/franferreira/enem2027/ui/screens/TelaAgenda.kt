@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.franferreira.enem2027.notificacao.Notificador
+import com.franferreira.enem2027.notificacao.Silencio
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Primary
@@ -106,6 +107,7 @@ fun TelaAgenda(
         Spacer(Modifier.height(18.dp))
 
         val contexto = LocalContext.current
+        var silencio by remember { mutableStateOf(Silencio.ativo(contexto)) }
         val launcher = rememberLauncherForActivityResult(
             ActivityResultContracts.RequestPermission(),
         ) { }
@@ -130,6 +132,38 @@ fun TelaAgenda(
             }
             Spacer(Modifier.height(12.dp))
         }
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(14.dp))
+                .background(Surface)
+                .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+                .padding(horizontal = 12.dp, vertical = 8.dp),
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    Text(
+                        text = "Não perturbe",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = TextPrimary,
+                    )
+                    Text(
+                        text = "Sem aviso entre 22h e 7h",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = TextMuted,
+                    )
+                }
+                androidx.compose.material3.Switch(
+                    checked = silencio,
+                    onCheckedChange = {
+                        silencio = it
+                        Silencio.definir(contexto, it)
+                    },
+                )
+            }
+        }
+        Spacer(Modifier.height(14.dp))
 
         dias.forEach { (nome, indice) ->
             Text(
