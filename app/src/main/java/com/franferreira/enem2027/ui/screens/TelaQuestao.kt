@@ -32,6 +32,7 @@ import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -97,6 +98,11 @@ fun TelaQuestao(
      * errou é o que revela o buraco real. E vira sinal que o app não tinha.
      */
     var confianca by remember { mutableStateOf<String?>(null) }
+    /** O papel digital: o rascunho onde a conta de matemática acontece. */
+    var mostrarRascunho by remember { mutableStateOf(false) }
+    // `contexto` já é o texto de apoio da questão, dentro do LazyColumn.
+    // O contexto do Android precisa de outro nome.
+    val app = LocalContext.current
     // Anotação livre da questão (o caderninho de margem).
     var anotacao by remember(questao.id) { mutableStateOf("") }
     LaunchedEffect(questao.id) {
@@ -106,11 +112,6 @@ fun TelaQuestao(
         kotlinx.coroutines.delay(700)
         com.franferreira.enem2027.data.repo.Anotacoes.salvar(app, questao.id, anotacao)
     }
-    /** O papel digital: o rascunho onde a conta de matemática acontece. */
-    var mostrarRascunho by remember { mutableStateOf(false) }
-    // `contexto` já é o texto de apoio da questão, dentro do LazyColumn.
-    // O contexto do Android precisa de outro nome.
-    val app = LocalContext.current
     val vibracao = androidx.compose.ui.platform.LocalHapticFeedback.current
     var tracos by remember(questao.id) {
         mutableStateOf(RascunhoStore.carregar(app, questao.id))
