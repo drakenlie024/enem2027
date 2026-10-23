@@ -14,6 +14,7 @@ import com.franferreira.enem2027.data.local.JsonCompartilhado
 import com.franferreira.enem2027.data.local.paraEntidade
 import com.franferreira.enem2027.data.local.paraModelo
 import com.franferreira.enem2027.data.model.CurriculoTrilhas
+import com.franferreira.enem2027.data.model.Diagnostico
 import com.franferreira.enem2027.data.model.EtapaConcluida
 import com.franferreira.enem2027.data.model.ProgressBatch
 import com.franferreira.enem2027.data.model.ProgressItem
@@ -273,7 +274,10 @@ class Repositorio(private val context: Context) {
      * É a resposta para "o que eu estudo agora": a Hoje mostra dois ou três
      * e a pessoa só toca.
      */
-    suspend fun temasParaTreinar(limite: Int = 6): List<com.franferreira.enem2027.data.model.TemaTreino> {
+    suspend fun temasParaTreinar(
+        limite: Int = 6,
+        fracos: Set<String> = emptySet(),
+    ): List<com.franferreira.enem2027.data.model.TemaTreino> {
         val agora = System.currentTimeMillis()
         val cooldown = agora - COOLDOWN_DIAS * DIA_MS
         val linhas = db.questions().temasTreino(cooldown)
@@ -286,7 +290,9 @@ class Repositorio(private val context: Context) {
             val dias = r.ultima?.let { ((agora - it) / DIA_MS).toInt() }
             val vencido = if (dias == null) 999 else dias - intervalo
             // Tema já praticado e ainda dentro do intervalo não entra.
-            if (r.vistas > 0 && vencido < 0) return@mapNotNull null
+            // Tema fraco do diagnóstico entra mesmo dentro do intervalo.
+            val fraco = Diagnostico.chaveTema(area, tema) in fracos
+            if (r.vistas > 0 && vencido < 0 && !fraco) return@mapNotNull null
             com.franferreira.enem2027.data.model.TemaTreino(
                 tema = tema,
                 area = area,
@@ -301,7 +307,10 @@ class Repositorio(private val context: Context) {
                 novo = r.vistas == 0,
             )
         }.sortedWith(
-            compareByDescending<com.franferreira.enem2027.data.model.TemaTreino> { it.vencidoHa }
+            compareByDescending<com.franferreira.enem2027.data.model.TemaTreino> {
+                Diagnostico.chaveTema(it.area, it.tema) in fracos
+            }
+                .thenByDescending { it.vencidoHa }
                 .thenBy { it.forca }
         ).take(limite)
     }
@@ -310,6 +319,55 @@ class Repositorio(private val context: Context) {
     suspend fun questoesDoTema(area: String, tema: String, limite: Int = 12): List<Question> {
         val cooldown = System.currentTimeMillis() - COOLDOWN_DIAS * DIA_MS
         return db.questions().paraTreino(area, tema, cooldown, limite).map { it.paraModelo() }
+    }
+
+    /**
+     * Sorteia o diagnóstico: 10 questões de cada área do ENEM, espalhadas entre
+     * os temas da área. Prefere questões ainda não respondidas; só usa as já
+     * respondidas se faltar.
+     *
+     * Roda só com o acervo do aparelho: não depende de rede.
+     */
+    suspend fun sortearDiagnostico(): List<Question> {
+        val escolhidas = mutableListOf<Question>()
+        for (area in Diagnostico.AREAS) {
+            val novas = espalharPorTema(db.questions().naoRespondidasDaArea(area), Diagnostico.POR_AREA)
+            val faltam = Diagnostico.POR_AREA - novas.size
+            val antigas = if (faltam > 0) {
+                val ids = novas.map { it.id }.toSet()
+                espalharPorTema(
+                    db.questions().respondidasDaArea(area).filter { it.id !in ids },
+                    faltam,
+                )
+            } else {
+                emptyList()
+            }
+            escolhidas += (novas + antigas).map { it.paraModelo() }
+        }
+        return escolhidas.shuffled()
+    }
+
+    /** Uma questão por tema por rodada, em ordem aleatória, até a quantidade. */
+    private fun espalharPorTema(
+        candidatas: List<com.franferreira.enem2027.data.local.QuestionEntity>,
+        quantidade: Int,
+    ): List<com.franferreira.enem2027.data.local.QuestionEntity> {
+        val porTema = candidatas
+            .groupBy { it.tema.orEmpty() }
+            .values
+            .map { it.shuffled().toMutableList() }
+            .shuffled()
+            .toMutableList()
+        val saida = mutableListOf<com.franferreira.enem2027.data.local.QuestionEntity>()
+        while (saida.size < quantidade && porTema.isNotEmpty()) {
+            val iterador = porTema.iterator()
+            while (iterador.hasNext() && saida.size < quantidade) {
+                val lista = iterador.next()
+                saida += lista.removeAt(0)
+                if (lista.isEmpty()) iterador.remove()
+            }
+        }
+        return saida
     }
 
     suspend fun filaRevisao(area: String?, tema: String?, limite: Int = 50): FilaRevisao {

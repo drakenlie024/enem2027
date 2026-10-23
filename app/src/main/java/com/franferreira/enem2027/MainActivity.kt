@@ -57,6 +57,8 @@ import com.franferreira.enem2027.ui.screens.TelaAula
 import com.franferreira.enem2027.ui.screens.TelaAulas
 import com.franferreira.enem2027.ui.screens.TelaAulasDeArea
 import com.franferreira.enem2027.ui.screens.TelaCaderno
+import com.franferreira.enem2027.ui.screens.TelaDiagnostico
+import com.franferreira.enem2027.ui.screens.TelaResultadoDiagnostico
 import com.franferreira.enem2027.ui.screens.TelaNota
 import com.franferreira.enem2027.ui.screens.TelaQuestao
 import com.franferreira.enem2027.ui.screens.TelaRedacao
@@ -150,6 +152,28 @@ fun EnemApp() {
         return
     }
 
+    // Diagnóstico de entrada: enquanto estiver pendente, o app fica só nele.
+    if (estado.diagPendente) {
+        val resultado = estado.diagResultado
+        val questao = estado.diagQuestoes.getOrNull(estado.diagIndice)
+        when {
+            resultado != null -> TelaResultadoDiagnostico(
+                resultado = resultado,
+                aoComecar = vm::concluirDiagnostico,
+            )
+            questao != null -> TelaDiagnostico(
+                questao = questao,
+                indice = estado.diagIndice,
+                total = estado.diagQuestoes.size,
+                podeSair = !estado.diagObrigatorio,
+                aoSair = vm::cancelarDiagnostico,
+                aoConfirmar = vm::responderDiagnostico,
+            )
+            else -> Box(Modifier.fillMaxSize().background(Background))
+        }
+        return
+    }
+
     Scaffold(
         containerColor = Background,
         bottomBar = {
@@ -227,6 +251,7 @@ fun EnemApp() {
                     aoRevisar = { navController.navigate(Destination.Revisao.route) },
                     aoAulas = { navController.navigate(Destination.Aulas.route) },
                     aoMudarMetaSemanal = vm::ajustarMetaSemanal,
+                    aoFazerDiagnostico = vm::iniciarDiagnostico,
                 )
             }
 

@@ -103,6 +103,7 @@ fun TelaHoje(
     aoRevisar: () -> Unit = {},
     aoAulas: () -> Unit = {},
     aoMudarMetaSemanal: (Int) -> Unit = {},
+    aoFazerDiagnostico: () -> Unit = {},
 ) {
     // Tudo num único scroll: antes o cabeçalho (anel + estatísticas) ficava
     // fixo no topo e a lista de trilhas abaixo, dividindo a tela. Em tela
@@ -213,6 +214,31 @@ fun TelaHoje(
             // Revisão do SRS: virou cartão na Hoje em vez de aba própria.
             val vencendo = estado.fila.vencendo.size
             val novas = estado.fila.novas.size
+            if (!estado.diagFeito && !estado.diagPendente) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(18.dp))
+                        .background(Surface)
+                        .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                        .clickable { aoFazerDiagnostico() }
+                        .padding(14.dp),
+                ) {
+                    Column {
+                        Text(
+                            text = "Diagnóstico inicial",
+                            style = MaterialTheme.typography.titleSmall,
+                            color = TextPrimary,
+                        )
+                        Text(
+                            text = "40 questões, 10 de cada área. Mostra onde você está forte e onde precisa de treino.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = TextMuted,
+                        )
+                    }
+                }
+                Spacer(Modifier.height(14.dp))
+            }
             val treinos = estado.treinos
             if (treinos.isNotEmpty()) {
                 Box(

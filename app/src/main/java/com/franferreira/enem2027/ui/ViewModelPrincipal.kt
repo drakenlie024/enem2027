@@ -5,7 +5,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.franferreira.enem2027.data.local.AgendaEntity
 import com.franferreira.enem2027.data.model.AgendaItem
+import com.franferreira.enem2027.data.model.Diagnostico
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
+import com.franferreira.enem2027.data.model.calcularDiagnostico
 import com.franferreira.enem2027.data.model.AreaAulas
 import com.franferreira.enem2027.data.model.AreasAula
 import com.franferreira.enem2027.data.model.AulasDeArea
@@ -66,6 +68,17 @@ data class EstadoHoje(
     val progresso: ProgressoResponse = ProgressoResponse(),
     /** Períodos que o usuário marcou na agenda. */
     val agenda: Set<Pair<Int, String>> = emptySet(),
+    /** Diagnóstico de entrada em andamento: enquanto estiver true, a tela principal fica fechada. */
+    val diagPendente: Boolean = false,
+    /** Veio do primeiro acesso: não pode ser fechado no meio. */
+    val diagObrigatorio: Boolean = false,
+    /** Já fez o diagnóstico alguma vez (quem não fez vê o cartão na Hoje). */
+    val diagFeito: Boolean = false,
+    val diagQuestoes: List<Question> = emptyList(),
+    val diagIndice: Int = 0,
+    /** Respostas do diagnóstico (id da questão -> letra). */
+    val diagRespostas: Map<String, String> = emptyMap(),
+    val diagResultado: com.franferreira.enem2027.data.model.ResultadoDiagnostico? = null,
     /** Simulador em andamento. */
     val simulado: SimuladoMontado? = null,    val carregandoSimulado: Boolean = false,
     /** Quando o simulado em andamento começou (para retomar com o tempo certo). */
@@ -278,6 +291,7 @@ class ViewModelPrincipal(
                     carregarAgenda()
                     garantirContaRemota()
                 }
+                retomarDiagnostico(prefs)
                 return@launch
             }
             ApiClient.token = token
@@ -308,6 +322,7 @@ class ViewModelPrincipal(
             carregarAgenda()
             carregarFilaAprovacao()
             carregarRedacoes()
+            retomarDiagnostico(prefs)
         }
     }
 
@@ -331,6 +346,7 @@ class ViewModelPrincipal(
         prefsLocais().edit()
             .putString("nome", limpo)
             .putBoolean("modo_local", true)
+            .putBoolean("diag_pendente", true)
             .apply()
         _estado.value = _estado.value.copy(
             carregando = false,
@@ -340,6 +356,102 @@ class ViewModelPrincipal(
         recarregar()
         carregarAgenda()
         garantirContaRemota()
+        iniciarDiagnostico()
+    }
+
+    /** Ao abrir o app: confere o diagnóstico e retoma se o app morreu no meio. */
+    private fun retomarDiagnostico(prefs: android.content.SharedPreferences) {
+        _estado.value = _estado.value.copy(diagFeito = prefs.getBoolean("diag_feito", false))
+        // Se morreu no meio, começa de novo: o sorteio muda, o que já foi
+        // respondido continua contando no progresso.
+        if (prefs.getBoolean("diag_pendente", false)) iniciarDiagnostico()
+    }
+
+    // ---------- diagnóstico de entrada ----------
+
+    /**
+     * Sorteia e abre o diagnóstico: 10 questões de cada área do ENEM.
+     *
+     * Vem do acervo do aparelho, então funciona sem internet. Obrigatório quando
+     * vem do primeiro acesso; quem já usa o app pode fechar pelo cartão da Hoje.
+     */
+    fun iniciarDiagnostico() {
+        viewModelScope.launch {
+            val obrigatorio = prefsLocais().getBoolean("diag_pendente", false)
+            val questoes = runCatching { repo.sortearDiagnostico() }.getOrDefault(emptyList())
+            if (questoes.isEmpty()) {
+                // Sem acervo não há o que sortear: não prende a pessoa aqui.
+                concluirDiagnostico()
+                return@launch
+            }
+            _estado.value = _estado.value.copy(
+                diagPendente = true,
+                diagObrigatorio = obrigatorio,
+                diagQuestoes = questoes,
+                diagIndice = 0,
+                diagRespostas = emptyMap(),
+                diagResultado = null,
+            )
+        }
+    }
+
+    fun responderDiagnostico(letra: String) {
+        val atual = _estado.value
+        val questao = atual.diagQuestoes.getOrNull(atual.diagIndice) ?: return
+        val respostas = atual.diagRespostas + (questao.id to letra)
+        val correta = letra.equals(questao.gabarito.orEmpty(), ignoreCase = true)
+        viewModelScope.launch {
+            // Conta como resposta normal: entra no SRS e no progresso.
+            runCatching { repo.registrarResposta(questao.id, correta, null) }
+        }
+        val proximo = atual.diagIndice + 1
+        if (proximo < atual.diagQuestoes.size) {
+            _estado.value = atual.copy(diagIndice = proximo, diagRespostas = respostas)
+            return
+        }
+        val resultado = calcularDiagnostico(atual.diagQuestoes, respostas)
+        prefsLocais().edit()
+            .putBoolean("diag_feito", true)
+            .putStringSet(
+                "diag_fracos",
+                resultado.fracos.map { Diagnostico.chaveTema(it.area, it.tema) }.toSet(),
+            )
+            .apply()
+        _estado.value = atual.copy(
+            diagRespostas = respostas,
+            diagResultado = resultado,
+            diagFeito = true,
+        )
+    }
+
+    /** Fecha o diagnóstico sem concluir. Não vale para o obrigatório. */
+    fun cancelarDiagnostico() {
+        if (_estado.value.diagObrigatorio) return
+        _estado.value = _estado.value.copy(
+            diagPendente = false,
+            diagQuestoes = emptyList(),
+            diagIndice = 0,
+            diagRespostas = emptyMap(),
+            diagResultado = null,
+        )
+    }
+
+    /** Sai da tela do resultado e libera o app. */
+    fun concluirDiagnostico() {
+        prefsLocais().edit()
+            .putBoolean("diag_pendente", false)
+            .putBoolean("diag_feito", true)
+            .apply()
+        _estado.value = _estado.value.copy(
+            diagPendente = false,
+            diagObrigatorio = false,
+            diagFeito = true,
+            diagQuestoes = emptyList(),
+            diagIndice = 0,
+            diagRespostas = emptyMap(),
+            diagResultado = null,
+        )
+        carregarTreinos()
     }
 
     /** Cria (ou reencontra) a conta do servidor para uma conta local. */
@@ -1021,7 +1133,8 @@ class ViewModelPrincipal(
     /** Carrega os temas que estão devidos hoje. */
     fun carregarTreinos() {
         viewModelScope.launch {
-            val lista = runCatching { repo.temasParaTreinar() }.getOrDefault(emptyList())
+            val fracos = prefsLocais().getStringSet("diag_fracos", emptySet())?.toSet() ?: emptySet()
+            val lista = runCatching { repo.temasParaTreinar(fracos = fracos) }.getOrDefault(emptyList())
             _estado.value = _estado.value.copy(treinos = lista)
         }
     }

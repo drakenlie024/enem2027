@@ -44,6 +44,26 @@ interface QuestionDao {
     )
     suspend fun porTemaEArea(tema: String, area: String): List<QuestionEntity>
 
+    /** Questões de uma área que a pessoa ainda não respondeu (para o diagnóstico). */
+    @Query(
+        """
+        SELECT q.* FROM questions q
+        LEFT JOIN progress p ON p.questionId = q.id
+        WHERE q.area = :area AND p.questionId IS NULL
+        """
+    )
+    suspend fun naoRespondidasDaArea(area: String): List<QuestionEntity>
+
+    /** Questões de uma área que a pessoa já respondeu alguma vez. */
+    @Query(
+        """
+        SELECT q.* FROM questions q
+        JOIN progress p ON p.questionId = q.id
+        WHERE q.area = :area
+        """
+    )
+    suspend fun respondidasDaArea(area: String): List<QuestionEntity>
+
     /** Busca livre por texto no enunciado, no contexto ou no tema. */
     @Query(
         """

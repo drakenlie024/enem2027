@@ -1,0 +1,71 @@
+package com.franferreira.enem2027.data.model
+
+/**
+ * Diagnóstico de entrada: 40 questões, 10 de cada área do ENEM.
+ *
+ * Tema com menos de [MIN_AMOSTRA] questões não ganha rótulo de forte ou fraco:
+ * com uma ou duas questões, acertar ou errar diz pouco sobre o assunto.
+ */
+object Diagnostico {
+    val AREAS = listOf("linguagens", "ciencias-humanas", "ciencias-natureza", "matematica")
+    const val POR_AREA = 10
+    const val MIN_AMOSTRA = 2
+    const val TAXA_FORTE = 0.75
+    const val TAXA_FRACA = 0.5
+
+    fun nomeDaArea(area: String): String = when (area) {
+        "linguagens" -> "Linguagens"
+        "ciencias-humanas" -> "Ciências Humanas"
+        "ciencias-natureza" -> "Ciências da Natureza"
+        "matematica" -> "Matemática"
+        else -> area
+    }
+
+    /** Chave única de um tema dentro de uma área (usada para guardar os fracos). */
+    fun chaveTema(area: String, tema: String): String = "$area|$tema"
+}
+
+data class AreaDiagnostico(val area: String, val acertos: Int, val total: Int) {
+    val taxa: Double get() = if (total == 0) 0.0 else acertos.toDouble() / total
+}
+
+data class TemaDiagnostico(val area: String, val tema: String, val acertos: Int, val total: Int) {
+    val taxa: Double get() = if (total == 0) 0.0 else acertos.toDouble() / total
+    val poucaAmostra: Boolean get() = total < Diagnostico.MIN_AMOSTRA
+    val forte: Boolean get() = !poucaAmostra && taxa >= Diagnostico.TAXA_FORTE
+    val fraco: Boolean get() = !poucaAmostra && taxa < Diagnostico.TAXA_FRACA
+}
+
+data class ResultadoDiagnostico(
+    val acertos: Int,
+    val total: Int,
+    val areas: List<AreaDiagnostico>,
+    val temas: List<TemaDiagnostico>,
+) {
+    val taxa: Double get() = if (total == 0) 0.0 else acertos.toDouble() / total
+    val fortes: List<TemaDiagnostico> get() = temas.filter { it.forte }.sortedByDescending { it.taxa }
+    val fracos: List<TemaDiagnostico> get() = temas.filter { it.fraco }.sortedBy { it.taxa }
+    val semAmostra: Int get() = temas.count { it.poucaAmostra }
+}
+
+/** Monta o resultado a partir das questões e das respostas (id da questão -> letra). */
+fun calcularDiagnostico(questoes: List<Question>, respostas: Map<String, String>): ResultadoDiagnostico {
+    fun acertou(q: Question): Boolean =
+        respostas[q.id]?.equals(q.gabarito.orEmpty(), ignoreCase = true) == true
+
+    val areas = Diagnostico.AREAS.map { area ->
+        val daArea = questoes.filter { it.area == area }
+        AreaDiagnostico(area, daArea.count { acertou(it) }, daArea.size)
+    }
+    val temas = questoes
+        .groupBy { it.area.orEmpty() to it.tema.orEmpty().ifBlank { "Sem tema" } }
+        .map { (chave, daTema) ->
+            TemaDiagnostico(chave.first, chave.second, daTema.count { acertou(it) }, daTema.size)
+        }
+    return ResultadoDiagnostico(
+        acertos = questoes.count { acertou(it) },
+        total = questoes.size,
+        areas = areas,
+        temas = temas,
+    )
+}
