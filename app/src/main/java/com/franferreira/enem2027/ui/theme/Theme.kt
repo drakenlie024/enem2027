@@ -20,7 +20,7 @@ import com.franferreira.enem2027.R
 private fun esquema(p: Paleta) = if (p.escuro) {
     darkColorScheme(
         primary = p.acao,
-        onPrimary = p.fundo,
+        onPrimary = PaletaClaro.texto,
         primaryContainer = p.cartaoAlto,
         onPrimaryContainer = p.texto,
         secondary = p.acao2,
@@ -41,7 +41,7 @@ private fun esquema(p: Paleta) = if (p.escuro) {
 } else {
     lightColorScheme(
         primary = p.acao,
-        onPrimary = p.cartao,
+        onPrimary = PaletaClaro.texto,
         primaryContainer = p.cartaoAlto,
         onPrimaryContainer = p.texto,
         secondary = p.acao2,

@@ -176,7 +176,7 @@ fun TelaTrilha(
                                     "feito" -> Icon(
                                         Icons.Filled.Check,
                                         contentDescription = "Concluída",
-                                        tint = Background,
+                                        tint = com.franferreira.enem2027.ui.theme.PaletaClaro.texto,
                                         modifier = Modifier.size(28.dp),
                                     )
                                     "travado" -> Icon(

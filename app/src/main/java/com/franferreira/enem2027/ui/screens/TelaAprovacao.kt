@@ -276,14 +276,14 @@ private fun CartaoPendente(
                     Icon(
                         Icons.Filled.Check,
                         contentDescription = null,
-                        tint = Background,
+                        tint = com.franferreira.enem2027.ui.theme.PaletaClaro.texto,
                         modifier = Modifier.size(15.dp),
                     )
                     Spacer(Modifier.width(6.dp))
                     Text(
                         text = "Aprovar",
                         style = MaterialTheme.typography.labelMedium,
-                        color = Background,
+                        color = com.franferreira.enem2027.ui.theme.PaletaClaro.texto,
                     )
                 }
             }

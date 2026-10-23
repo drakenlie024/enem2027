@@ -68,7 +68,7 @@ fun BotaoGamificado(
             text = texto,
             style = MaterialTheme.typography.labelLarge,
             fontWeight = FontWeight.Bold,
-            color = if (habilitado) com.franferreira.enem2027.ui.theme.Background else TextMuted,
+            color = if (habilitado) com.franferreira.enem2027.ui.theme.PaletaClaro.texto else TextMuted,
         )
     }
 }
