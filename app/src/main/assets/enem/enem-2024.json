@@ -1,6 +1,6 @@
 {
   "ano": 2024,
-  "versao": "2026-10-24T03:25:06Z",
+  "versao": "2026-10-28T15:16:39Z",
   "origem": "inep",
   "questoes": [
     {
@@ -50,56 +50,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "As citações propriamente ditas não foram reproduzidas no material enviado; para conferir as palavras exatas, seria necessário ver o conteúdo indicado no contexto. A relação pretendida é a de que dificuldades podem ser transformadas em oportunidades, e não يجب ser apenas um obstáculo a ser evitado. Por isso, a alternativa correta é C: tirar proveito de situações que podem ser adversas. A ideia não é opportunismo, mas aproveitar experiências difíceis para produzir aprendizado, crescimento ou novos resultados. As demais alternativas tratam de ações diferentes, como ajudar pessoas, reconhecer perigos, evitar dificuldades ou contestar circunstâncias favoráveis."
-    },
-    {
-      "id": "enem-2024-q002",
-      "ano": 2024,
-      "indice": 2,
-      "area": "linguagens",
-      "idioma": "ingles",
-      "contexto": "Holy War\nOh, so we can hate each other and fear each other\nWe can build these walls between each other\nBaby, blow by blow and brick by brick\nKeep yourself locked in, yourself locked in\n[…]\nOh, maybe we should love somebody\nOh, maybe we could care a little more\nSo maybe we should love somebody\nInstead of polishing the bombs of holy war\nKEYS, A. Here. Estados Unidos: RCA Records, 2016.",
-      "arquivos": [],
-      "enunciado": "Nessa letra de canção, que aborda um contexto de ódio e intolerância, o marcador “instead of ” introduz a ideia de",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "mudança de comportamento.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "panorama de conflitos.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "rotina de isolamento.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "perspectiva bélica.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "cenário religioso.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "inep",
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "O marcador “em vez de” introduz uma alternativa de comportamento. Na letra, a sugestão é amar e cuidar mais um do outro, em contraste com a manutenção do ódio e a preparação de bombas para uma “guerra santa”. Assim, a expressão mostra que a atitude deve mudar: deixar de alimentar a violência e passar a agir com amor e preocupação com o outro. As demais alternativas而去deal do contexto geral da canção, e não da função do marcador."
+      "explicacao": "As citações propriamente ditas não foram reproduzidas no material enviado; para conferir as palavras exatas, seria necessário ver o conteúdo indicado no contexto. A relação pretendida é a de que dificuldades podem ser transformadas em oportunidades, e não deve ser apenas um obstáculo a ser evitado. Por isso, a alternativa correta é C: tirar proveito de situações que podem ser adversas. A ideia não é oportunismo, mas aproveitar experiências difíceis para produzir aprendizado, crescimento ou novos resultados. As demais alternativas tratam de ações diferentes, como ajudar pessoas, reconhecer perigos, evitar dificuldades ou contestar circunstâncias favoráveis."
     },
     {
       "id": "enem-2024-q003",
@@ -148,55 +99,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A alternativa A é a correta porque a relação estabelecida entre os elementos da natureza e os comandos de um programa de computador chama atenção para a velocidade com que a natureza pode ser destruída. A comparação com comandos de computador reforça a ideia de ações rápidas e consecutivas, 转 strengthenendo o alerta sobre a degradação do meio ambiente. As demais alternativas não correspondem a esse objetivo: não tratam apenas da passagem do tempo, dosAdvances tecnológicos na agricultura, do uso sustentável de novas tecnologias ou do tempo de crescimento das árvores. O texto ou a figura original é necessário para detalhar essa comparação, mas o gabarito oficial confirma que seu propósito é alertar sobre a rápida destruição da natureza."
-    },
-    {
-      "id": "enem-2024-q004",
-      "ano": 2024,
-      "indice": 4,
-      "area": "linguagens",
-      "idioma": "ingles",
-      "contexto": "I remember being caught speaking Spanish at recess [...] I remember being sent to the corner of the classroom for “talking back” to the Anglo teacher when all I was trying to do was tell her how to pronounce my name. “If you want to be American, speak ‘American’. If you don’t like it, go back to Mexico where you belong”.\n“I want you to speak English […]”, my mother would say, mortified that I spoke English like a Mexican. At Pan American University, I and all Chicano students were required to take two speech classes. Their purpose: to get rid of our accents.\nANZALDÚA, G. Frontera: The New Mestiza. Borderlands/La\nSan Francisco: Aunt Lute Books, 1987.",
-      "arquivos": [],
-      "enunciado": "O problema abordado nesse texto sobre imigrantes residentes nos Estados Unidos diz respeito aos prejuízos gerados pelo(a)",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "repúdio ao sotaque espanhol no uso do inglês.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "resignação diante do apagamento da língua materna.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "escassez de oportunidades de aprendizado do espanhol.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "choque entre falantes de línguas distintas de diferentes gerações.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "entre as variações linguísticas do inglês concorrência e as do espanhol.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "inep",
-      "tema": "Inglês",
-      "competencia": "C1 - Interpretar textos",
-      "dificuldade": "media",
-      "subassunto": ""
+      "explicacao": "A alternativa A é a correta porque a relação estabelecida entre os elementos da natureza e os comandos de um programa de computador chama atenção para a velocidade com que a natureza pode ser destruída. A comparação com comandos de computador reforça a ideia de ações rápidas e consecutivas, fortalecendo o alerta sobre a degradação do meio ambiente. As demais alternativas não correspondem a esse objetivo: não tratam apenas da passagem do tempo, dos avanços tecnológicos na agricultura, do uso sustentável de novas tecnologias ou do tempo de crescimento das árvores. O texto ou a figura original é necessário para detalhar essa comparação, mas o gabarito oficial confirma que seu propósito é alertar sobre a rápida destruição da natureza."
     },
     {
       "id": "enem-2024-q005",
@@ -294,7 +197,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "As duas iniciativas valorizam o repertório linguístico do povo do Amazonas. O livro Amazonês registra cerca de 1 100 expressões e termos típicos do falar amazonense, com o objetivo de preservar a linguagem da região. Já as camisetas do Caboquês IlustradoServers launched models estampados com expressões como “xibata”, “leseira baré” e “até o tucupi”,扩散ando essas construções e resgatando o orgulho do povo manauara. Embora as camisetas também utilizem bom humor, o elemento comum às duas iniciativas é a valorização das palavras e expressões amazônicas. As outras alternativas não correspondem aos objetivos apresentados: não se trata de recomendar produtos, exaltar pesquisadores ou destacar apenas diferenças entre falares."
+      "explicacao": "As duas iniciativas valorizam o repertório linguístico do povo do Amazonas. O livro Amazonês registra cerca de 1 100 expressões e termos típicos do falar amazonense, com o objetivo de preservar a linguagem da região. Já as camisetas do Caboquês Ilustrado lançaram modelos estampados com expressões como “xibata”, “leseira baré” e “até o tucupi”, difundindo essas construções e resgatando o orgulho do povo manauara. Embora as camisetas também utilizem bom humor, o elemento comum às duas iniciativas é a valorização das palavras e expressões amazônicas. As outras alternativas não correspondem aos objetivos apresentados: não se trata de recomendar produtos, exaltar pesquisadores ou destacar apenas diferenças entre falares."
     },
     {
       "id": "enem-2024-q007",
@@ -343,7 +246,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "O conjunto apresenta minibiografias de três atletas paralímpicas brasileiras — Karla, Gomes e Fernandes — narrando suas mudanças de modalidade,金星 início na prática esportiva, conquistas e resultados internacionais. Assim, o propósito é destacar suas trajetórias profissionais no esporte paralímpico. O texto não detalha rotinas de treinamento, não compara diretamente o desempenho das atletas, não indica categorias de adaptações e, embora fale de mulheres, não tem como objetivo estimular sua participação em campeonatos internacionais."
+      "explicacao": "O conjunto apresenta minibiografias de três atletas paralímpicas brasileiras — Karla, Gomes e Fernandes — narrando suas mudanças de modalidade, o início na prática esportiva, conquistas e resultados internacionais. Assim, o propósito é destacar suas trajetórias profissionais no esporte paralímpico. O texto não detalha rotinas de treinamento, não compara diretamente o desempenho das atletas, não indica categorias de adaptações e, embora fale de mulheres, não tem como objetivo estimular sua participação em campeonatos internacionais."
     },
     {
       "id": "enem-2024-q008",
@@ -637,7 +540,7 @@
       "competencia": "C4 - Adequação à norma culta",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A função referencial da linguagem ocorre quando o texto se concentra em transmitir informações de maneira objetiva, apresentada por dados, fatos e comprovações. O contexto mostra os efeitos da pobreza menstrual: a falta de absorventes provoca absences, interfere no desempenho escolar, limita o potencial das estudantes e amplia desigualdades de oportunidades. O trecho “uma vez que cumpre o propósito de” está truncado, mas o restante do enunciado e as alternativas permitem compreender que o propósito é informar o leitor sobre esse impacto. Não são的建议 solutions, nem instruções de autocuidado; também não há comparação de desempenho entre homens e mulheres, apenas dados sobre a saúde de meninas e adolescentes. Portanto, a alternativa correta é D."
+      "explicacao": "A função referencial da linguagem ocorre quando o texto se concentra em transmitir informações de maneira objetiva, apresentada por dados, fatos e comprovações. O contexto mostra os efeitos da pobreza menstrual: a falta de absorventes provoca ausências, interfere no desempenho escolar, limita o potencial das estudantes e amplia desigualdades de oportunidades. O trecho “uma vez que cumpre o propósito de” está truncado, mas o restante do enunciado e as alternativas permitem compreender que o propósito é informar o leitor sobre esse impacto. Não são soluções, nem instruções de autocuidado; também não há comparação de desempenho entre homens e mulheres, apenas dados sobre a saúde de meninas e adolescentes. Portanto, a alternativa correta é D."
     },
     {
       "id": "enem-2024-q014",
@@ -929,7 +832,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "O fragmento contrapõe a vida protegida da narradora à situação de Sancha, uma mulher negra submetida a condições desumanas: dorme sem lençóis, come os restos deixados por outras pessoas e trabalha sem descanso nem pagamento. A pergunta “Por quê?” introduz a crítica à desigualdade racial e à riqueza construída sobre a exploração do trabalho negro. Assim, o olhar crítico da narradora recai sobre a exploração da força de trabalho da população negra, e não sobre arte, moradia, emancipação feminina ou disputa de poder. A referência ao cenário pós-abolição reforça que a libertação jurídica não обеспечou necessariamente condições materiais de igualdade."
+      "explicacao": "O fragmento contrapõe a vida protegida da narradora à situação de Sancha, uma mulher negra submetida a condições desumanas: dorme sem lençóis, come os restos deixados por outras pessoas e trabalha sem descanso nem pagamento. A pergunta “Por quê?” introduz a crítica à desigualdade racial e à riqueza construída sobre a exploração do trabalho negro. Assim, o olhar crítico da narradora recai sobre a exploração da força de trabalho da população negra, e não sobre arte, moradia, emancipação feminina ou disputa de poder. A referência ao cenário pós-abolição reforça que a libertação jurídica não garantiu necessariamente condições materiais de igualdade."
     },
     {
       "id": "enem-2024-q020",
@@ -1027,7 +930,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "Os adornos indígenas não são apenas objetosFy美观: eles comunicam prestígio, transgressão, direitos e deveres, além de expressar as concepções cosmológicas do povo. Como seu uso é limitado conforme a linhagem, eles também indicam a posição e a função social de cada indivíduo. O diadema Kayapó mencionado no Texto II exemplifica essa relação entre o artefato, seus significados e o papel social de quem o utiliza. Por isso, a compreensão da arte plumária exige considerar de forma conjunta os objetos ritualísticos e as atribuições dos indivíduos na comunidade."
+      "explicacao": "Os adornos indígenas não são apenas objetos estéticos: eles comunicam prestígio, transgressão, direitos e deveres, além de expressar as concepções cosmológicas do povo. Como seu uso é limitado conforme a linhagem, eles também indicam a posição e a função social de cada indivíduo. O diadema Kayapó mencionado no Texto II exemplifica essa relação entre o artefato, seus significados e o papel social de quem o utiliza. Por isso, a compreensão da arte plumária exige considerar de forma conjunta os objetos ritualísticos e as atribuições dos indivíduos na comunidade."
     },
     {
       "id": "enem-2024-q022",
@@ -1076,56 +979,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A violência aparece como um instrumento de combate social e resistência. No Texto II, ela é compreendida como uma estrutura presente nas relações familiares, nas diferenças entre classes e nas instituições sociais. No Texto I, a afirmação de que “minha palavra vale um tiro” e que o enunciador possui “munição” equipara a linguagem a uma arma. Essa construção é metalinguística porque a própria palavra se torna objeto de reflexão e éurrency turnaround: em vez de apenas narrar, ela é apresentada como meio de LUTAR, enfrentar opressões e questionar a ordem social. Assim, a歌 DIDÁTICA transforma a violência em tema e também leverages a linguagem como forma de resistência."
-    },
-    {
-      "id": "enem-2024-q023",
-      "ano": 2024,
-      "indice": 23,
-      "area": "linguagens",
-      "idioma": null,
-      "contexto": "As reações à sétima temporada foram o ápice do último estágio em Game of Thrones. De forma alguma, este que vos fala seria capaz de argumentar que a série é perfeita, mas os defeitos que existem aqui sempre existiram, de uma forma ou de outra, durante os sete anos em que ela esteve no ar. Os dois roteiristas foram brilhantes em traduzir os personagens intrincados e conflituosos da obra de George R. R. Martin, mas nunca souberam exatamente como fazer jus a eles (e especialmente a elas, as mulheres da trama).\nA verdade é que, com tudo isso e mais Ramin Djawadi evocando sentimentos e ambientes improváveis com sua trilha sonora magistral, a série não conseguiria ser ruim nem se tentasse, mas continua sendo uma pena que, ao buscar o seu final com tanta sede e tanta celeridade, Benioff e Weiss tenham tirado sua qualidade mais preciosa: o fôlego, a paciência e o detalhismo que faziam suas palavras se levantarem do papel e ganharem vida.\nDisponível em: https://observatoriodocinema.uol.com.br.\nAcesso em: 29 nov. 2017 (adaptado).",
-      "arquivos": [],
-      "enunciado": "Ainda que faça uma avaliação positiva da série, nessa resenha, o autor aponta aspectos negativos da obra ao utilizar",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "marcas de impessoalidade que disfarçam a opinião do especialista.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "expressões adversativas para fazer ressalvas às afirmações elogiosas.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "C",
-          "texto": "interlocução com o leitor para corroborar opiniões contrárias à adaptação.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "eufemismos que minimizam as críticas feitas à construção das personagens.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "antíteses que opõem a fragilidade do roteiro à beleza da trilha sonora da série.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "B",
-      "origem": "inep",
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "O autor reconhece qualidades da série, como os personagens complexos e a trilha sonora, mas ressalva esses elogios ao apontar defeitos. Para isso, employs expressões adversativas e concessivas, como “ainda que”, “de forma alguma”, “mas” e “nunca souberam exatamente”. Esses recursos criam uma oposição entre a avaliação positiva e as críticas: a série não seria ruim e teve elementos brilhantes, porém Tannhauser e Weiss tiraram dela o fôlego, a paciência e o detalhismo. Trata-se, portanto, de ressalvas às afirmações elogiosas, como indica a alternativa B."
+      "explicacao": "A violência aparece como um instrumento de combate social e resistência. No Texto II, ela é compreendida como uma estrutura presente nas relações familiares, nas diferenças entre classes e nas instituições sociais. No Texto I, a afirmação de que “minha palavra vale um tiro” e que o enunciador possui “munição” equipara a linguagem a uma arma. Essa construção é metalinguística porque a própria palavra se torna objeto de reflexão e é uma virada: em vez de apenas narrar, ela é apresentada como meio de LUTAR, enfrentar opressões e questionar a ordem social. Assim, a canção transforma a violência em tema e também utiliza a linguagem como forma de resistência."
     },
     {
       "id": "enem-2024-q024",
@@ -1174,7 +1028,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "O trecho contrapõe a linguagem literária,表现为 elaborada e cuidada — Gondim fala em “arranjar palavras com tinta” — à fala espontânea e coloquial dos personagens, marcada por insultos e Fullerias. A posição de Gondim é a de que um artista não deve escrever exatamente como fala, pois a literatura segue uma convenção própria. Assim, o debate evidencia o preciosismo linguístico em oposição a situações de colloquialidade, conforme a alternativa D."
+      "explicacao": "O trecho contrapõe a linguagem literária, elaborada e cuidada — Gondim fala em “arranjar palavras com tinta” — à fala espontânea e coloquial dos personagens, marcada por insultos e palavrões. A posição de Gondim é a de que um artista não deve escrever exatamente como fala, pois a literatura segue uma convenção própria. Assim, o debate evidencia o preciosismo linguístico em oposição a situações de coloquialidade, conforme a alternativa D."
     },
     {
       "id": "enem-2024-q025",
@@ -1466,7 +1320,7 @@
       "competencia": "C1 - Interpretar textos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "Os dois autores defendem uma arte que incomoda e questiona, em vez de apenas Idealizar a realidade. Graciliano Ramos afirma que as deformações e a miséria representadas na arte existem também fora dela e são cultivadas por quem censura os artistas. Assim, a arte deve revelar选择一个简单的方法来应对这类任务中的挑战，就是在不直接复制的前提下，用自己的话概括核心观点。另一个有效策略是关注关键论据，而不是记下所有细节。"
+      "explicacao": "Os dois autores defendem uma arte que incomoda e questiona, em vez de apenas Idealizar a realidade. Graciliano Ramos afirma que as deformações e a miséria representadas na arte existem também fora dela e são cultivadas por quem censura os artistas. Assim, a arte deve revelar."
     },
     {
       "id": "enem-2024-q031",
@@ -1711,55 +1565,6 @@
       "subassunto": ""
     },
     {
-      "id": "enem-2024-q036",
-      "ano": 2024,
-      "indice": 36,
-      "area": "linguagens",
-      "idioma": null,
-      "contexto": "TEXTO I TEXTO II\nMODIGLIANI, A. Anônimo. feminina. Cabeça de uma figura\n× Escultura em Circa 2700-2500 a.C. Escultura em mármore, 8 3,2 cm.\nNational Metropolitan Museum of Art, Nova Iorque.\nWOLKOFF, J. These 5,000-Year-Old Sculptures",
-      "arquivos": [],
-      "enunciado": "Disponível A leitura comparativa das duas esculturas, separadas por mais de 2 500 anos,",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "valorização da arte antiga por artistas contemporâneos.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "resistência da arte escultórica aos avanços tecnológicos.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "simplificação da forma em razão do tipo de material utilizado.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "persistência de padrões estéticos em diferentes épocas e culturas.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "E",
-          "texto": "ausência de detalhes como traço distintivo da arte tradicional popular.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "D",
-      "origem": "inep",
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A figura é necessária para conferir diretamente quais características estéticas as duas esculturas compartilham, pois ela não foi fornecida. O enunciado, embora truncado, informa que as obras estão separadas por mais de 2 500 anos e apresenta uma escultura de Modigliani e outra de autor anônimo. A leitura comparativa proposta busca mostrar que elementos formais e estilísticos podem se repetir em diferentes épocas e culturas. Assim, a alternativa correta reconhece a existência de padrõesesthetics que atravessam o tempo, e não uma valoração da arte antiga, uma resistência tecnológica ou umalimitação do material."
-    },
-    {
       "id": "enem-2024-q037",
       "ano": 2024,
       "indice": 37,
@@ -1806,7 +1611,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A autora recorre a trechos de letras de canções, como “É pau, é pedra, é o fim do caminho”, e menciona Raul, reforçando a ligação com o universo musical. Esse aproveitamento de versos já conhecidos pelo público caracteriza intertextualidade, pois o texto incorpora、其他被别人而言，perguntando a isso. A referência às身心健康 música mostra que a不就是 intertextualidade?"
+      "explicacao": "A autora recorre a trechos de letras de canções, como “É pau, é pedra, é o fim do caminho”, e menciona Raul, reforçando a ligação com o universo musical. Esse aproveitamento de versos já conhecidos pelo público caracteriza intertextualidade, pois o texto incorpora perguntando a isso. A referência à música mostra que a intertextualidade?"
     },
     {
       "id": "enem-2024-q038",
@@ -1855,7 +1660,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A ideia central é que o deslocamento geográfico funciona como metáfora de um deslocamento interno. As pessoas chegam, se vão, se encontram, se despedem e até se desfazem de seus pertences, como se procurassem um lugar onde elas próprias não existissem. Essa imagem sugere que tentam fugir de quem são, isto é, de sua própria identidade. As outras alternativas transformam a viagem em busca de encontros, lugares, experiências ou desaparecimento da vida social,元素 o que não corresponde ao sentido metafórico do poema."
+      "explicacao": "A ideia central é que o deslocamento geográfico funciona como metáfora de um deslocamento interno. As pessoas chegam, se vão, se encontram, se despedem e até se desfazem de seus pertences, como se procurassem um lugar onde elas próprias não existissem. Essa imagem sugere que tentam fugir de quem são, isto é, de sua própria identidade. As outras alternativas transformam a viagem em busca de encontros, lugares, experiências ou desaparecimento da vida social, o que não corresponde ao sentido metafórico do poema."
     },
     {
       "id": "enem-2024-q039",
@@ -2100,7 +1905,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A alternativa E é a correta porque o projeto produziu uma criação artística graças a um conjunto de circumstances acidentais. Regina queria registrar o movimento do Sol, mas esqueceu a câmera pinhole dentro do telescópio. A fotografia acabou registrando o nascer e o pôr do sol ao longo de oito anos, o que平常ariamente não seria obtido com a exposição prevista. A expresa forgot a lata, o texto deixa claro. A representação fotográfica mencionada no Texto II não foi fornecida, mas o contexto textual basta para sustentar a resposta."
+      "explicacao": "A alternativa E é a correta porque o projeto produziu uma criação artística graças a um conjunto de circunstâncias acidentais. Regina queria registrar o movimento do Sol, mas esqueceu a câmera pinhole dentro do telescópio. A fotografia acabou registrando o nascer e o pôr do sol ao longo de oito anos, o que normalmente não seria obtido com a exposição prevista. A expresa esqueceu a lata, o texto deixa claro. A representação fotográfica mencionada no Texto II não foi fornecida, mas o contexto textual basta para sustentar a resposta."
     },
     {
       "id": "enem-2024-q044",
@@ -2589,55 +2394,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A declividade do relevo local influencia diretamente o escoamento da água. Em regiões mais inclinadas, a água percorre a superfície com maior velocidade, favorecendo inundações bruscas e de curta duração. Já em terrenos mais planos, o escoamento é mais lento, e a inundação gradual pode se prolongar por mais tempo. Por isso, a diferença entre velocidade e duração这两种 tipos de inundação está condicionada à declividade do relevo local."
-    },
-    {
-      "id": "enem-2024-q054",
-      "ano": 2024,
-      "indice": 54,
-      "area": "ciencias-humanas",
-      "idioma": null,
-      "contexto": "Os grupos dominantes são beneficiados em termos de credibilidade e podem, com isso, controlar falas de membros de outros grupos, descredibilizando seus testemunhos com base em concepções compartilhadas de preconceito de identidade (gênero e raça). Algumas formas de preconceito tornam as declarações das pessoas menos importantes devido ao seu pertencimento a determinado grupo social. Assim, um falante recebe menos credibilidade devido ao preconceito do ouvinte.\nKUHNEN, T. Resenha de The Power and Ethics of Knowing,",
-      "arquivos": [],
-      "enunciado": "de Miranda Fricker. Princípios, n. 33, 2013. Revista Com base na reflexão suscitada no texto, o preconceito de identidade é responsável por um tipo de injustiça",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "estética, que normatiza os padrões corporais.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "sensorial, que privilegia as habilidades visuais.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "afetiva, que impede as expressões emocionais.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "epistêmica, que prejudica as trocas informacionais.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "E",
-          "texto": "econômica, que perpetua as desigualdades materiais.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "D",
-      "origem": "inep",
-      "tema": "Cultura e identidade",
-      "competencia": "C3 - Interpretar documentos",
-      "dificuldade": "media",
-      "subassunto": ""
+      "explicacao": "A declividade do relevo local influencia diretamente o escoamento da água. Em regiões mais inclinadas, a água percorre a superfície com maior velocidade, favorecendo inundações bruscas e de curta duração. Já em terrenos mais planos, o escoamento é mais lento, e a inundação gradual pode se prolongar por mais tempo. Por isso, a diferença entre velocidade e duração desses dois tipos de inundação está condicionada à declividade do relevo local."
     },
     {
       "id": "enem-2024-q055",
@@ -2735,7 +2492,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "O ritual representa a manutenção de uma memória coletiva porque combina elementos materiais, como a panela de barro, as varas de bambu, as oferendas e o lençol, com práticas imateriais, como a dança, a peregrinação e a reverência aos mortos. Para os adeptos, a cerimônia permite retomar a ligação com os ancestrais e reafirmar crenças, valores e tradições compartilhadas pelo grupo. Assim, a memória não permanece apenas em relatos ou pensamentos: ela é corporificada e transmitida por meio da participação ritual e dos símbolos utilizados. O contexto não indica，一时 uma revolta social, uma imolação ou uma contestação étnica, mas a preservação de referências que unem a comunidade."
+      "explicacao": "O ritual representa a manutenção de uma memória coletiva porque combina elementos materiais, como a panela de barro, as varas de bambu, as oferendas e o lençol, com práticas imateriais, como a dança, a peregrinação e a reverência aos mortos. Para os adeptos, a cerimônia permite retomar a ligação com os ancestrais e reafirmar crenças, valores e tradições compartilhadas pelo grupo. Assim, a memória não permanece apenas em relatos ou pensamentos: ela é corporificada e transmitida por meio da participação ritual e dos símbolos utilizados. O contexto não indica uma revolta social, uma imolação ou uma contestação étnica, mas a preservação de referências que unem a comunidade."
     },
     {
       "id": "enem-2024-q057",
@@ -2983,55 +2740,6 @@
       "explicacao": "A ideia central do trecho é a consciência dos limites da vida humana. A personagem sente falta do futuro e reconhece que o oceano, embora possa ser imaginado e lembrado, não será novamente vivenciado por ela nas mesmas condições. A realização dos desejos também não produz satisfação definitiva, pois permanece a vontade de fazer tudo de maneira melhor e de recomeçar. Esses elementos revelam que a existência humana é temporal e limitada: há experiências que não podem ser prolongadas ou repetidas indefinidamente. A referência a nunca envelhecer e a impossibilidade de repetir certas vivências expressam, portanto, a finitude humana, isto é, o caráter delimitado e passageiro da vida. O foco não está em normas éticas, linguagem ou conhecimento, mas no contraste entre a vontade humana de continuarliving e os limites concretos da existência."
     },
     {
-      "id": "enem-2024-q062",
-      "ano": 2024,
-      "indice": 62,
-      "area": "ciencias-humanas",
-      "idioma": null,
-      "contexto": "TEXTO I\nO empirismo moderno foi, em grande parte, condicionado por dois dogmas. Um deles é a crença em certa divisão fundamental entre verdades analíticas, ou fundadas em significados independentemente de questões de fato, e verdades sintéticas, ou fundadas em fatos. O outro dogma é o reducionismo: a crença de que todo enunciado significativo é equivalente a algum construto lógico sobre termos que se referem à experiência imediata.\nQUINE, W. V. O. Dois dogmas do empirismo. In: RYLE, G. et al.\nEnsaios. São Paulo: Abril Cultural, 1975.\nTEXTO II\nTeses: 1. Somente os enunciados que possuem conteúdo factual são teoricamente significativos; enunciados que não podem, em princípio, estar fundamentados pela experiência são carentes de significado. 2. As ciências empíricas usam somente o conteúdo empírico da realidade. 3. A filosofia usa um conceito não empírico da realidade.\nCARNAP, R. Pseudoproblemas na filosofia. In: SCHLICK, M.;\nCARNAP, R.; POPPER, K. textos. Coletânea de\nSão Paulo: Abril Cultural, 1975.",
-      "arquivos": [],
-      "enunciado": "Ao comparar os textos, conclui-se que eles apresentam posicionamentos filosóficos divergentes com relação ao",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "estatuto epistemológico da linguagem.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "alicerce estruturante da moralidade.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "conteúdo essencial da metafísica.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "princípio constitutivo da ontologia.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "domínio reflexivo da estética.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "inep",
-      "tema": "Filosofia: racionalismo e empirismo",
-      "competencia": "C3 - Interpretar documentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "Os textos tratam decriteriações sobre o significado e a validade dos enunciados, isto é, sobre o estatuto epistemológico da linguagem. Quine critica dois dogmas do empirismo moderno: a distinção entre verdades analíticas e sintéticas e o reducionismo, que reduziria todo enunciado significativo à experiência imediata. Carnap, por sua vez, defends que apenas enunciados com conteúdo factual têm significação teórica e que a experiência constitui o fundamento do conhecimento empírico. Portanto, apesar de abordarem o empirismo, os autores assumem posições divergentes sobre o papel da experiência, das ciências e da哲学 na delimitação do que é Significantemente linguisticamente. As demais alternativas não correspondem ao tema centrale dos dois textos."
-    },
-    {
       "id": "enem-2024-q063",
       "ano": 2024,
       "indice": 63,
@@ -3224,7 +2932,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A difusão da pílula anticoncepcional Ampliou o debate público sobre planejamento familiar, ao colocar em discussão temas como fecundidade, современização e crescimento populacional. A relação do método com a indústria farmacêutica multicultural também contribuiu para插入 a reprodução e a sexuality na agenda social. As demais alternativas não são sustentadas pelo texto: não há indicação de afastamento da autoridade médica, atuação de mídia estatal, centralização da pesquisa pelo sistema privado de saúde ou enrijecimento de doutrinas religiosas. O efeito social充电 mais diretamente evidenciado, portanto, foi a expansão da discussão pública sobre planejamento familiar."
+      "explicacao": "A difusão da pílula anticoncepcional Ampliou o debate público sobre planejamento familiar, ao colocar em discussão temas como fecundidade, modernização e crescimento populacional. A relação do método com a indústria farmacêutica multicultural também contribuiu para inserir a reprodução e a sexualidade na agenda social. As demais alternativas não são sustentadas pelo texto: não há indicação de afastamento da autoridade médica, atuação de mídia estatal, centralização da pesquisa pelo sistema privado de saúde ou enrijecimento de doutrinas religiosas. O efeito social mais diretamente evidenciado, portanto, foi a expansão da discussão pública sobre planejamento familiar."
     },
     {
       "id": "enem-2024-q067",
@@ -3273,7 +2981,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A internet amplia a visibilidade das populações tradicionais e indígenas e fortalece mercados,连接 pequenos agricultores e produtores da comunidade florestal às cadeias de abastecimento. Essa integração permite que os produtos locais alcancem mais consumidores, negocieis melhor e gerem mais renda. Por isso, a adoção da tecnologia amplia a rentabilidade dessas comunidades por meio da valorização da economia local, alternativa A. As demais opções não são apontadas pelo texto como consequências diretas dessa ampliação tecnológica."
+      "explicacao": "A internet amplia a visibilidade das populações tradicionais e indígenas e fortalece mercados, conectando pequenos agricultores e produtores da comunidade florestal às cadeias de abastecimento. Essa integração permite que os produtos locais alcancem mais consumidores, negociem melhor e gerem mais renda. Por isso, a adoção da tecnologia amplia a rentabilidade dessas comunidades por meio da valorização da economia local, alternativa A. As demais opções não são apontadas pelo texto como consequências diretas dessa ampliação tecnológica."
     },
     {
       "id": "enem-2024-q068",
@@ -3322,7 +3030,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "Os textos relacionam a floresta amazônica ao ciclo da água. O Texto I informa que as árvores liberam grandes quantidades de água para a atmosfera, enquanto o Texto II registra adaily devastação de áreas de floresta. Com a redução das árvores, diminui a quantidade de umidade devolvida à atmosfera, o que reduz a formação de nuvens carregadas de água e, consequentemente, a intensidade das chuvas convectivas. EsseERM Поэтому, a alternativa correta é a que menciona a intensidade das chuvas convectivas."
+      "explicacao": "Os textos relacionam a floresta amazônica ao ciclo da água. O Texto I informa que as árvores liberam grandes quantidades de água para a atmosfera, enquanto o Texto II registra a diária devastação de áreas de floresta. Com a redução das árvores, diminui a quantidade de umidade devolvida à atmosfera, o que reduz a formação de nuvens carregadas de água e, consequentemente, a intensidade das chuvas convectivas. Por isso, a alternativa correta é a que menciona a intensidade das chuvas convectivas."
     },
     {
       "id": "enem-2024-q069",
@@ -3566,7 +3274,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A técnica descrita é a xilogravura, utilizada para produzir os clichês de madeira que permitiam imprimir as imagens das capas dos folhetos de cordel. A incorporação desse processo gráfico, associado a postais fotográficos, desenhos e fotogramas de filmes, ampliou as possibilidades de ilustração e modificou a aparência das publicações. Essa transformação refinementou o visual das capas, caracterizando uma renovação da estética editorial. As outras opções não correspondem ao aspecto tratado: o texto aborda a elaboração e a apresentação gráfica dos folhetos, não a hozidl叙事 literária, a indústria regional ou a cultura erudita."
+      "explicacao": "A técnica descrita é a xilogravura, utilizada para produzir os clichês de madeira que permitiam imprimir as imagens das capas dos folhetos de cordel. A incorporação desse processo gráfico, associado a postais fotográficos, desenhos e fotogramas de filmes, ampliou as possibilidades de ilustração e modificou a aparência das publicações. Essa transformação refinou o visual das capas, caracterizando uma renovação da estética editorial. As outras opções não correspondem ao aspecto tratado: o texto aborda a elaboração e a apresentação gráfica dos folhetos, não a narrativa literária, a indústria regional ou a cultura erudita."
     },
     {
       "id": "enem-2024-q074",
@@ -3664,7 +3372,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A alternativa A é correta porque salões e cafés ampliaram a circulação de ideias no Iluminismo, embora fossem frequentados por grupos sociais diferentes. Nos salões, o acesso era mais restrito e os-eyed pensadores se integravam ao universo da elite, maneuvering-se na corte e entre os poderosos. Nos cafés, abertos ao público e próximos da rua, pessoas de diferentes camadas sociais podiam participar das discussões. Assim, esses espaços，落实avam uma sociabilidade mais pública e horizonte para a circulação do conhecimento."
+      "explicacao": "A alternativa A é correta porque salões e cafés ampliaram a circulação de ideias no Iluminismo, embora fossem frequentados por grupos sociais diferentes. Nos salões, o acesso era mais restrito e os pensadores se integravam ao universo da elite, manobrando-se na corte e entre os poderosos. Nos cafés, abertos ao público e próximos da rua, pessoas de diferentes camadas sociais podiam participar das discussões. Assim, esses espaços promoviam uma sociabilidade mais pública e horizonte para a circulação do conhecimento."
     },
     {
       "id": "enem-2024-q076",
@@ -3713,56 +3421,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "O conceito de rizoma descreve uma rede sem centro hierárquico, na qual qualquer ponto pode se conectar a outros pontos e开学 trusteescircular estados eGoing interações. Essa organização permite a circulação de elementos diversos, sem exigir uniformidade, controle centralizado ou uma estrutura rígida. Por isso, a característica da cultura contemporânea relacionada ao rizoma é a pluralidade de interações: diferentes pontos e-produções podem se articular de maneiras variáveis, múltiplas e não preestabelecidas. As demais alternativasfk."
-    },
-    {
-      "id": "enem-2024-q077",
-      "ano": 2024,
-      "indice": 77,
-      "area": "matematica",
-      "idioma": null,
-      "contexto": "VIEIRA, A. P. L. O",
-      "arquivos": [],
-      "enunciado": "O que as capas da revista Travel in Brazil, evidenciam?",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "Estereótipos da cultura nacional.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "Exploração da população pobre.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "Preconceitos de ordem racial.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Política de censura midiática.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "Projeto de país industrial.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "inep",
-      "tema": "Resolução de problemas",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A ideia central é que as capas constroem uma imagem da cultura nacional por meio de representações convencionais e simplificadas, característica dos estereótipos. Elas não apenas informam sobre o país, mas apresentam uma versão facilmente reconhecível e广义 — em português, simplificada — de sua identidade cultural. A figura com as capas é necessária para detalhar os elementos utilizados, pois não foi fornecida; o enunciado e a referência bibliográfica, sozinhos, não permitem essaSpecify — em português, permitir — descrição visual. As demais alternativas não encontrarem fundamento no contexto apresentado."
+      "explicacao": "O conceito de rizoma descreve uma rede sem centro hierárquico, na qual qualquer ponto pode se conectar a outros pontos e interações. Essa organização permite a circulação de elementos diversos, sem exigir uniformidade, controle centralizado ou uma estrutura rígida. Por isso, a característica da cultura contemporânea relacionada ao rizoma é a pluralidade de interações: diferentes pontos e produções podem se articular de maneiras variáveis, múltiplas e não preestabelecidas. As demais alternativas."
     },
     {
       "id": "enem-2024-q078",
@@ -3908,7 +3567,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A aproximação entre Rússia e Angola é cultural porque ambas incorporaram costumes da teledramaturgia brasileira, estrangeira em relação aos dois países. Na Rússia, as novelas brasileiras、外国 Brazilian?"
+      "explicacao": "A aproximação entre Rússia e Angola é cultural porque ambas incorporaram costumes da teledramaturgia brasileira, estrangeira em relação aos dois países. Na Rússia, as novelas brasileiras"
     },
     {
       "id": "enem-2024-q081",
@@ -4445,7 +4104,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A citocalasina B prejudica os microfilamentos,支架ões de actina que fazem parte do citoesqueleto. Esses filamentos são responsáveis por auxiliarem a manutenção do formato celular e o deslocamento das células de Amoeba proteus, por meio da formação de pseudópodes. Como o experimento наблюдados-commit-comprometimento do formato e do movimento no grupo tratado, o componente afetado era o conjunto de microfilamentos. O grupo não tratado serviu como controle para comparar os efeitos da droga."
+      "explicacao": "A citocalasina B prejudica os microfilamentos, estruturas de actina que fazem parte do citoesqueleto. Esses filamentos são responsáveis por auxiliarem a manutenção do formato celular e o deslocamento das células de Amoeba proteus, por meio da formação de pseudópodes. Como o experimento observou o comprometimento do formato e do movimento no grupo tratado, o componente afetado era o conjunto de microfilamentos. O grupo não tratado serviu como controle para comparar os efeitos da droga."
     },
     {
       "id": "enem-2024-q092",
@@ -4543,7 +4202,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "O som estridente emitido pelos anfíbios funciona como uma chamada para a reprodução, atraindo fêmeas para o acasalamento. Por isso, a alternativa correta é E. Embora esses animais tenham sido trazidos do Caribe e vivam em um ambiente diferente de seu habitat natural, a emissão do som não indica que estejam fora desse ambiente. O enunciado também não fornece证据 de poluição, superpopulação ou de que o som direcione insentos para a alimentação. O que se pode afirmar é que o som faz parte da comunicação usada para encontrar parceiros reprodutivos."
+      "explicacao": "O som estridente emitido pelos anfíbios funciona como uma chamada para a reprodução, atraindo fêmeas para o acasalamento. Por isso, a alternativa correta é E. Embora esses animais tenham sido trazidos do Caribe e vivam em um ambiente diferente de seu habitat natural, a emissão do som não indica que estejam fora desse ambiente. O enunciado também não fornece evidência de poluição, superpopulação ou de que o som direcione insetos para a alimentação. O que se pode afirmar é que o som faz parte da comunicação usada para encontrar parceiros reprodutivos."
     },
     {
       "id": "enem-2024-q094",
@@ -4739,7 +4398,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A classificação depende da relação entre a distribuição do crescimento e a presença de oxigênio; por isso, a figura é necessária e não foi possível confirmar visualmente os três tubos. O raciocínio é: aeróbio estrito cresce somente onde há oxigênio; anaeróbio estrito cresce somente onde não há oxigênio, pois não consegue利用 o oxigênio em seu metabolismo; anaeróbio facultativo cresce tanto na presença quanto na ausência de oxigênio, utilizando metabolismos aeróbio e anaeróbio. A correspondência que sustenta a alternativa C é: tubo 1, aeróbio estrito; tubo 2, anaeróbio estrito; tubo 3, anaeróbio facultativo. Sem a figura, essa distribuição não pode ser verificada apenas pelo enunciado."
+      "explicacao": "A classificação depende da relação entre a distribuição do crescimento e a presença de oxigênio; por isso, a figura é necessária e não foi possível confirmar visualmente os três tubos. O raciocínio é: aeróbio estrito cresce somente onde há oxigênio; anaeróbio estrito cresce somente onde não há oxigênio, pois não consegue utilizar o oxigênio em seu metabolismo; anaeróbio facultativo cresce tanto na presença quanto na ausência de oxigênio, utilizando metabolismos aeróbio e anaeróbio. A correspondência que sustenta a alternativa C é: tubo 1, aeróbio estrito; tubo 2, anaeróbio estrito; tubo 3, anaeróbio facultativo. Sem a figura, essa distribuição não pode ser verificada apenas pelo enunciado."
     },
     {
       "id": "enem-2024-q098",
@@ -4837,56 +4496,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A espícula viral funciona como antígeno, ou seja, uma estrutura reconhecida pelo sistema imunológico. Quando aspresented ao organismo, ela stimulates a produção de anticorpos específicos contra essa proteína. Esses anticorpos podem impedir que o vírus se ligue aos receptores celulares e entre nas células, além de contribuírem para a formação de memória imunológica. A alternativa A completa corretamente a frase. Não se trata de imunidade passiva, pois aVacina utiliza o próprio sistema imunológico do vacinado; o、休眠 e a estrutura viral não são alterados. Também não há modificação dos receptores celulares nem neutralização direta dos vírus pela vacina."
-    },
-    {
-      "id": "enem-2024-q101",
-      "ano": 2024,
-      "indice": 101,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "Placas solares comuns dependem de dias ensolarados para gerar energia. Mas podemos gerar eletricidade com a ajuda de gotas de chuva, revestindo placas solares com uma fina camada de grafeno. Os íons dissociados a\n(Am+ Bn−) partir da água da chuva e tornam a combinação grafeno e água da chuva um par perfeito para geração de energia. O processo requer apenas uma camada de\n(e−) grafeno para que grande quantidade de elétrons se movimente ao longo da superfície.\nTANG, Q. et al. A Solar Cell that is Triggered by Sun and Rain.\nEdition, n. 55, 2016 (adaptado). Angewandte Chemie International",
-      "arquivos": [],
-      "enunciado": "Ao produzir eletricidade em dias chuvosos, o grafeno",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "oxida os cátions dissolvidos na água da chuva.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "impede a difusão da água através das placas solares.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "diminui a energia de ativação da reação no pseudocapacitor.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "forma um compósito não metálico com os íons na água da chuva.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "gera uma diferença de potencial pela interação dos elétrons com os cátions.",
-          "arquivo": null,
-          "correta": true
-        }
-      ],
-      "gabarito": "E",
-      "origem": "inep",
-      "tema": "Física: mecânica",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A água da chuva contém íons dissolvidos, incluindo cátions, que são espécies carregadas positivamente. No grafeno, os elétrons podem se movimentar livremente pela superfície. A interação entre esses elétrons e os cátions presentes na água favorece a separação de cargas, fazendo com que_region?"
+      "explicacao": "A espícula viral funciona como antígeno, ou seja, uma estrutura reconhecida pelo sistema imunológico. Quando apresentada ao organismo, ela estimula a produção de anticorpos específicos contra essa proteína. Esses anticorpos podem impedir que o vírus se ligue aos receptores celulares e entre nas células, além de contribuírem para a formação de memória imunológica. A alternativa A completa corretamente a frase. Não se trata de imunidade passiva, pois a vacina utiliza o próprio sistema imunológico do vacinado; o vírus e a estrutura viral não são alterados. Também não há modificação dos receptores celulares nem neutralização direta dos vírus pela vacina."
     },
     {
       "id": "enem-2024-q102",
@@ -5420,7 +5030,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A figura com os cinco pontos é necessária para justificar a alternativa, pois não permite visualizar a posição de cada ponto em relação ao centro geométrico e ao deslocamento do centro de massa. Pelo princípio de equilíbrio, a peça de chumbo deve gerar um momento que compense o desequilíbrio, fazendo com que o centro de massa do conjunto coincida com o centro geométrico. A peça deve, portanto, ser fixada no ponto 3, alternativa C. Sem a figura, não é possível comprovar geometricamente por que esse ponto realiza a compensação, embora o critério físico esteja明确 no enunciado."
+      "explicacao": "A figura com os cinco pontos é necessária para justificar a alternativa, pois não permite visualizar a posição de cada ponto em relação ao centro geométrico e ao deslocamento do centro de massa. Pelo princípio de equilíbrio, a peça de chumbo deve gerar um momento que compense o desequilíbrio, fazendo com que o centro de massa do conjunto coincida com o centro geométrico. A peça deve, portanto, ser fixada no ponto 3, alternativa C. Sem a figura, não é possível comprovar geometricamente por que esse ponto realiza a compensação, embora o critério físico esteja explícito no enunciado."
     },
     {
       "id": "enem-2024-q115",
@@ -5470,55 +5080,6 @@
       "dificuldade": "media",
       "subassunto": "",
       "explicacao": "A concentração permite calcular a massa total de sódio na solução: 1,4 mg/mL × 2.000 mL = 2.800 mg = 2,8 g. Como cada mol de cloreto de sódio contém 23 g de sódio e tem massa molar de 58,5 g, a massa de cloreto de sódio correspondente aos 2,8 g de sódio é: 2,8 × (58,5/23) = 7,12 g. Essa quantidade corresponde às duas colheres pequenas de sal usadas na receita. Dividindo por duas: 7,12/2 = 3,56 g, ou seja, aproximadamente 3,6 g em uma colher pequena."
-    },
-    {
-      "id": "enem-2024-q116",
-      "ano": 2024,
-      "indice": 116,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "Apesar de os animais representados no cladograma compartilharem um mesmo ancestral, eles se caracterizam por distintos padrões de reprodução ou de nutrição dos embriões e descendentes.\nDIXSON, A. F. Sexuality: The Act of Mating and the Mammalian\nEvolution of Reproduction. Disponível em: www.cambridge.org.\nAcesso em: 2 jul. 2024 (adaptado).",
-      "arquivos": [],
-      "enunciado": "Ao longo do processo evolutivo, percebem-se, entre esses animais, perdas e ganhos nos padrões citados que envolvem o(a)",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "aumento no número de descendentes por ninhada.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "mudança no tipo de fecundação de externa para interna.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "redução da versatilidade de reprodução, que se torna unicamente sexuada.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "desenvolvimento embrionário, que passa do meio aquático para o terrestre.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "diminuição da vesícula vitelínica, associada ao desenvolvimento da lactação.",
-          "arquivo": null,
-          "correta": true
-        }
-      ],
-      "gabarito": "E",
-      "origem": "inep",
-      "tema": "Ecologia",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A alternativa E é coerente com o contexto porque a redução da vesícula vitelínica significa que o embrião passa a depender menos das reservas nutritivas do vitelo. Associated a essa transformação, a lactação passa a fornecer alimento aos descendentes após o nascimento, deslocando a nutrição para o leite. Isso caracteriza perdas e ganhos nos padrões de reprodução e nutrição citados. As demais alternativas não correspondem diretamente a essa relação: não se tratam de aumento do número de descendentes, mudança de fecundação externa para interna, exclusividade da reprodução sexuada ou passagem do desenvolvimento do meio aquoso para o terrestre. A figura mencionada não foi fornecida; ela seria necessária para verificar visualmente a variação上述 caracteres nos animais, sem alterar a lógica da alternativa E."
     },
     {
       "id": "enem-2024-q117",
@@ -5617,55 +5178,6 @@
       "dificuldade": "media",
       "subassunto": "",
       "explicacao": "A imagem do mirascópio é real porque os raios emitidos por cada ponto do objeto são sucessivamente refletidos pelos dois espelhos côncavos e convergem efetivamente em pontos que formam a imagem tridimensional. O observador ver essa imagem não significa que ela seja virtual, pois a luz realmente percorre o espaço entre os espelhos e chega ao plano da imagem. Já a distância vertical de 7,6 cm deve ser obtida pela comparação, no esquema, entre cada ponto do objeto e seu correspondente ponto imagem. Como a figura com as dimensões não foi enviada, ela é necessária para justificar numericamente essa medida; o texto, sozinho, não permite reconstituí-la."
-    },
-    {
-      "id": "enem-2024-q119",
-      "ano": 2024,
-      "indice": 119,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "Muitas pessoas ainda se espantam com o fato de um passageiro sair ileso de um acidente de carro enquanto o veículo onde estava teve perda total. Essas pessoas talvez considerem, equivocadamente, que os carros mais seguros são os que têm as estruturas mais rígidas, ou seja, estruturas, que durante uma colisão, apresentam menor deformação. Na verdade, o que ocorre é o contrário. Por isso, a partir de 1958, passaram a ser produzidos carros com partes que se deformam facilmente.\nDAY, C. Zones. Disponível em: https://pubs.aip.org. Crumple\nAcesso em: 2 jul. 2024 (adaptado).\nAssim, além dos cintos de segurança e dos airbags, os carros modernos passaram a contar com o dispositivo de segurança conhecido como crumple zone (região deformável, em inglês), conforme a figura.\nsafety. GCSE Physics Revision. Momentum and Car\nDisponível em: www.shalom-education.com.\nAcesso em: 5 jul. 2024 (adaptado).",
-      "arquivos": [],
-      "enunciado": "Considerando o carro, seus ocupantes e o muro da figura como um sistema isolado, o crumple zone aumenta a segurança dos passageiros porque, durante uma colisão, a deformação da estrutura do carro",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "aciona os airbags do veículo.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "absorve a energia cinética do sistema.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "C",
-          "texto": "consome a quantidade de movimento do sistema.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "cria uma barreira de proteção para seus ocupantes.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "diminui a velocidade do centro de massa do sistema.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "B",
-      "origem": "inep",
-      "tema": "Física: mecânica",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A região deformável sofre grandes deformações durante a colisão, absorvendo parte da energia cinética do sistema. Essa energia é transformada em deformação, calor e som, em vez de ser transferida bruscamente aos ocupantes. Além disso, o maior tempo de impacto reduz a força média acting sobre as pessoas. A quantidade de movimento do sistema não é consumida, pois ela se conserva em um sistema isolado. A deformação também não aciona por si só os dispositivos pneumáticos de proteção, não cria uma barreira e não diminui a velocidade do centro de massa do sistema como um todo."
     },
     {
       "id": "enem-2024-q120",

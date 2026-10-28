@@ -1,6 +1,6 @@
 {
   "ano": 2023,
-  "versao": "2026-10-24T03:25:06Z",
+  "versao": "2026-10-28T15:16:39Z",
   "origem": "enem.dev",
   "questoes": [
     {
@@ -9,7 +9,7 @@
       "indice": 1,
       "area": "linguagens",
       "idioma": "espanhol",
-      "contexto": "**TEXTO I**\n\n¿QUÉ ME PASA?:  \n¿PorQUE ME CUESTA TANTO ESTUDIAR?  \n¿PORQUE ME CUESTA TANTO CONCENTRARME?  \n¿PoRQUE……  \n¿PORQUÉ…..  \n¿PORQUÉ NO CONSIGO APRENDER COMO LOS DEMÁS?\n\n\n\nDisponível em: www.otrasvoceseneducacion.org. Acesso em: 8 nov. 2022.\n\n**ТЕХТО II**\n\nIshaan Awashi es un niño de 8 años cuyo mundo está plagado de maravillas que nadie más parece apreciar: colores, peces, perros y cometas, que simplemente no son importantes en la vida de los adultos, que parecen más interesados en cosas como los deberes, las notas o la limpieza. E Ishaan parece no poder hacer nada bien en clase. Cuando los problemas que ocasiona superan a sus padres, es internado en un colegio para que le disciplinen. Las cosas no mejoran en el nuevo colegio, donde Ishaan tiene además que aceptar estar lejos de sus padres. Hasta que un dia, el nuevo profesor de arte, Ram Shankar Nikumbh, entra en escena, se interesa por el pequeño Ishaan y todo cambia.\n\nDisponível em: https://elfinalde.com. Acesso em: 26 out. 2021 (adaptado)",
+      "contexto": "**TEXTO I**\n\n¿QUÉ ME PASA?:  \n¿PorQUE ME CUESTA TANTO ESTUDIAR?  \n¿PORQUE ME CUESTA TANTO CONCENTRARME?  \n¿PoRQUE……  \n¿PORQUÉ…..  \n¿PORQUÉ NO CONSIGO APRENDER COMO LOS DEMÁS?\n\n\n\nDisponível em: www.otrasvoceseneducacion.org. Acesso em: 8 nov. 2022.\n\n**TEXTO II**\n\nIshaan Awashi es un niño de 8 años cuyo mundo está plagado de maravillas que nadie más parece apreciar: colores, peces, perros y cometas, que simplemente no son importantes en la vida de los adultos, que parecen más interesados en cosas como los deberes, las notas o la limpieza. E Ishaan parece no poder hacer nada bien en clase. Cuando los problemas que ocasiona superan a sus padres, es internado en un colegio para que le disciplinen. Las cosas no mejoran en el nuevo colegio, donde Ishaan tiene además que aceptar estar lejos de sus padres. Hasta que un dia, el nuevo profesor de arte, Ram Shankar Nikumbh, entra en escena, se interesa por el pequeño Ishaan y todo cambia.\n\nDisponível em: https://elfinalde.com. Acesso em: 26 out. 2021 (adaptado)",
       "arquivos": [],
       "enunciado": "O filme Como estrellas en la tierra aborda o tema da dislexia. Relacionando o cartaz do filme com a sinopse, constata-se que o(a)",
       "alternativas": [
@@ -103,7 +103,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A figura do cartaz é necessária para verificar os elementos visuais e não foi fornecida. Assim, não é possível detalhar o que aparece nele sem inventar informações. A alternativa B, porém, resume a ideia central de uma campanha que relaciona o desperdício de resíduos à degradação ambiental. As demais alternativasんとagem condições específicas que não podem ser confirmadas pelo enunciado disponível."
+      "explicacao": "A figura do cartaz é necessária para verificar os elementos visuais e não foi fornecida. Assim, não é possível detalhar o que aparece nele sem inventar informações. A alternativa B, porém, resume a ideia central de uma campanha que relaciona o desperdício de resíduos à degradação ambiental. As demais alternativas apresentam condições específicas que não podem ser confirmadas pelo enunciado disponível."
     },
     {
       "id": "enem-2023-q002-espanhol",
@@ -156,56 +156,6 @@
       "explicacao": "A alternativa A está correta porque o advérbio enfático citado nessa alternativa é repetido ao longo do poema, criando insistência, ritmo e efeito de manifesto. Ele reforça a certeza das afirmações da poeta sobre sua identidade, sua beleza negra e sua liberdade. embora o poema também apresente verbos, adjetivos, substantivos e pronomes possessivos, esses recursos mostram ações, qualidades, partes do corpo ou pertencimento. Já o advérbio destacado em A intensifica diretamente as características e as atitudes que a autora deseja afirmar com firmeza."
     },
     {
-      "id": "enem-2023-q002-ingles",
-      "ano": 2023,
-      "indice": 2,
-      "area": "linguagens",
-      "idioma": "ingles",
-      "contexto": "No man is an island,  \nEntire of itself;  \nEvery man is a piece of the continent,  \nA part of the main.  \n\\[…\\]  \nAny man’s death diminishes me,  \nBecause I am involved in mankind.\n\nDONNE, J. **The Works of John Donne**. Londres: John W. Parker, 1839 (fragmento).",
-      "arquivos": [],
-      "enunciado": "Nesse poema, a expressão “No man is an island” ressalta o(a)",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "Medo da morte.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "Ideia de conexão.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "C",
-          "texto": "Conceito de solidão.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Risco de devastação.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "Necessidade de empatia.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "B",
-      "origem": "enem.dev",
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "origem_tag": "taxonomia",
-      "explicacao": "A expressãocq significa que nenhum ser humano vive completamente sozinho. As metáforas da “peça do continente” e da “parte principal” mostram que cada pessoa integra um todo, está ligada às demais e participa de uma rede de relações e pertencimentos. Por isso, a morte de qualquer um diminui o conjunto, pois ninguém está desconectado da humanidade. A ideia central do poema, portanto, é a conexão entre as pessoas, e não o medo da morte ou a solidão."
-    },
-    {
       "id": "enem-2023-q003-espanhol",
       "ano": 2023,
       "indice": 3,
@@ -256,55 +206,6 @@
       "explicacao": "O poema destaca a gastronomia espanhola não apenas pela variedade de alimentos, mas pelo significado que ela representa. O eu poético associa pratos, doces, doces, vinhos eSebastian? Não. Need valid."
     },
     {
-      "id": "enem-2023-q003-ingles",
-      "ano": 2023,
-      "indice": 3,
-      "area": "linguagens",
-      "idioma": "ingles",
-      "contexto": "Things We Carry on the Sea\n\nWe carry tears in our eyes: good-bye father, good-bye mother  \nWe carry soi in smal bags: may home never fade in our hearts  \nWe carry carnage of mining. droughts, floods, genocides  \nWe carry dust of our families and neighbors incinerated in mushroom clouds  \nWe carry our islands sinking under the sea  \nWe carry our hands, feet, bones, hearts and best minds for a new life  \nWe carry diplomas: medicine, engineer, nurse, education, math, poetry, even if they mean nothing to the other shore  \nWe carry railroads, plantations, laundromats. bodegas, taco trucks, farms, factories, nursing homes, hospitals, schools, temples… built on our ancestors’ backs  \nWe carry old homes along the spine, new dreams in our chests  \nWe carry yesterday, today and tomorrow  \nWe’re orphans of the wars forced upon us  \nWe’re refugees of the sea rising from industrial wastes  \nAnd we carry our mother tongues  \n\\[…\\]  \nAs we drift… in our rubber boats… from shore… to shore…. to shore…\n\nPING. W. Disponivel em: https://poets.org. Acesso en 1 jun. 2023 (fragmento)",
-      "arquivos": [],
-      "enunciado": "Ao retratar a trajetória de refugiados, o poema recorre à imagem de viagem marítima para destacar o(a)",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "Risco de choques culturais.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "Impacto do ensino de história.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "Importância da luta ambiental.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Existência de experiências plurais.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "E",
-          "texto": "Necessidade de capacitação profissional.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "D",
-      "origem": "enem.dev",
-      "tema": "Interpretação de imagens e gráficos",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "origem_tag": "taxonomia"
-    },
-    {
       "id": "enem-2023-q004-espanhol",
       "ano": 2023,
       "indice": 4,
@@ -353,56 +254,6 @@
       "subassunto": "",
       "origem_tag": "taxonomia",
       "explicacao": "A expressão “cortina de fumaça” significa criar uma distração para desviar a atenção de um assunto e evitar que a verdade seja percebida ou discutida. No texto, o manipulador recorre ao ridículo quando isso ajuda a ocultar suas intenções emanipulações. Por isso, a alternativa correta é “Busca mascarar a verdade”. As demais alternativas apresentam outras características do manipulador descritas no texto, mas não correspondem ao sentido específico dessa expressão."
-    },
-    {
-      "id": "enem-2023-q004-ingles",
-      "ano": 2023,
-      "indice": 4,
-      "area": "linguagens",
-      "idioma": "ingles",
-      "contexto": "**Spanglish**\n\npues estoy creando Spanglish  \nbi-cultural systems  \nscientific lexicographical  \ninter-textual integrations  \ntwo expressions  \nexistentially wired  \ntwo dominant languages  \ncontinentally abrazándose  \nin colloquial combate  \nimperio spanglish emerges  \nsobre territorio bi-lingual  \nlas novelas mexicanas  \nmixing with radiorocknroll  \nimmigrant/migrant  \nnasal mispronouncements  \nhip-hop, street salsa, spanish pop  \nstandard english classroom  \nwith computer technicalities  \nspanglish is literally perfect\n\nLAVIERA T. **Benedición**. The Complete Poetry of Talo Laviera. Houston: Arte Público Press, 2014 (fragmento).",
-      "arquivos": [],
-      "enunciado": "Nesse poema de Tato Laviera, o eu lírico destaca uma",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "Convergência linguístico-cultural.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "Características históricio-cultural.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "Tendência estilístico-literária",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Discriminação cultural.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "Censura musical.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "enem.dev",
-      "tema": "Inglês",
-      "competencia": "C1 - Interpretar textos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "origem_tag": "taxonomia",
-      "explicacao": "O eu lírico apresenta o_spanish como um sistema biocultural que aproxima dois idiomas e duas identidades. A mistura de inglês e espanhol, expressa em expressões como “two expressions”, “two dominant languages” e “continentally abrazándose”, evidencia uma convergência linguístico-cultural. O poema também integra languages, literatura, música e realidade migratória, reunindo-mind Elements como “radiorocknroll”, “hip-hop”, “street salsa” e “spanish pop”. Assim, a criação do_spanish não representa discriminação nem censura, mas a transformação cultural produzida pelo contato entre 英语 e espanhol."
     },
     {
       "id": "enem-2023-q005-espanhol",
@@ -552,7 +403,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A alteração acrescentou a palavra “juntos” ao lema olímpico para “[r]essaltar a solidariedade”. A solidariedade no esporte significa cooperação entre atletas, delegações e participantes,_valuesizando a união e a collaboration em torno dos即使是 eventos esportivos. Por isso, a mudança teve como objetivo associar o lema olímpico à cooperatividade. Não se tratou de unificar dois lemas, aproximar o lema do COI ou vinculá-lo especificamente aos eventos atléticos."
+      "explicacao": "A alteração acrescentou a palavra “juntos” ao lema olímpico para “[r]essaltar a solidariedade”. A solidariedade no esporte significa cooperação entre atletas, delegações e participantes, valorizando a união e a colaboração em torno dos eventos esportivos. Por isso, a mudança teve como objetivo associar o lema olímpico à cooperatividade. Não se tratou de unificar dois lemas, aproximar o lema do COI ou vinculá-lo especificamente aos eventos atléticos."
     },
     {
       "id": "enem-2023-q007",
@@ -602,7 +453,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A resposta está na forma como a narradora constrói sua própria identidade. O uso da primeira pessoa e a enumeraçãofragmentada de partes do corpo — seios, coxas, mãos, olhos, sobrancelhas e orelhas — apresentam uma identidade feminina marcada por，痛 Violência e强力。As imagens do corpo “faminto, dentado, cruel” e da narradora como “animal da caatinga” reforçam essa construção. A referência ao|match levante no Ceará e aos “corpos” interrompidos no porto vincula essa experiência individual à violência racial da escravidão. Assim, corpo, voz e memória histórica se combinam para revelar as marcas da violência de raça e de gênero na formação da identidade da narradora."
+      "explicacao": "A resposta está na forma como a narradora constrói sua própria identidade. O uso da primeira pessoa e a enumeração fragmentada de partes do corpo — seios, coxas, mãos, olhos, sobrancelhas e orelhas — apresentam uma identidade feminina marcada por dor, violência e força. As imagens do corpo “faminto, dentado, cruel” e da narradora como “animal da caatinga” reforçam essa construção. A referência ao levante no Ceará e aos “corpos” interrompidos no porto vincula essa experiência individual à violência racial da escravidão. Assim, corpo, voz e memória histórica se combinam para revelar as marcas da violência de raça e de gênero na formação da identidade da narradora."
     },
     {
       "id": "enem-2023-q008",
@@ -802,7 +653,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "O texto developve uma argumentação com o propósito de mobilizar o leitor. Primeiro, apresenta o contexto da campanha Maio Amarelo e dados preocupantes sobre mortes no trânsito. Depois, relaciona a violência a comportamentos como pressa, falta de civilidade, ausência de solidariedade e desrespeito. Por fim, propõe valores e atitudes que podem prevenir tragedies, como ter mais atenção, praticar limites e respeitar a vida dos outros. Assim, os dados e a枚举ção de causas não são os objetivos finais, mas meios paraérico levar o público à reflexão sobre uma condução responsável. A conclusão do texto reforça essa intenção ao defender um caminho mais seguro e menos Violence."
+      "explicacao": "O texto desenvolve uma argumentação com o propósito de mobilizar o leitor. Primeiro, apresenta o contexto da campanha Maio Amarelo e dados preocupantes sobre mortes no trânsito. Depois, relaciona a violência a comportamentos como pressa, falta de civilidade, ausência de solidariedade e desrespeito. Por fim, propõe valores e atitudes que podem prevenir tragédias, como ter mais atenção, praticar limites e respeitar a vida dos outros. Assim, os dados e a enumeração de causas não são os objetivos finais, mas meios para levar o público à reflexão sobre uma condução responsável. A conclusão do texto reforça essa intenção ao defender um caminho mais seguro e menos violento."
     },
     {
       "id": "enem-2023-q012",
@@ -852,7 +703,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A passagem descreve Timóteo por meio de uma série de impressões sensoriais e hiperbólicas: o corpo gordo e suado, o vestido apertado, as franjas, o perfume, o turbante e o rosto pintado. Narração essas escolhas, o enunciado evidencia uma descrição impressionista, capaz de produzir um efeito quase grotesco e de revelar a obsessão do personagem por roupas e objetosassociatedos à mãe. A 뷰ão não busca simplesmente reconstruir sua aparência, mas transmitir a forte impressão que ele causa a quem o observa. O foco narrativo é bem definido — uma empregada que relata o que viu —, e o texto não depende de relações familiares misteriosas nem formula uma crítica social inspirada pelo convívio com patrões. Portanto, a alternativa correta é C."
+      "explicacao": "A passagem descreve Timóteo por meio de uma série de impressões sensoriais e hiperbólicas: o corpo gordo e suado, o vestido apertado, as franjas, o perfume, o turbante e o rosto pintado. Narração essas escolhas, o enunciado evidencia uma descrição impressionista, capaz de produzir um efeito quase grotesco e de revelar a obsessão do personagem por roupas e objetos associados à mãe. A visão não busca simplesmente reconstruir sua aparência, mas transmitir a forte impressão que ele causa a quem o observa. O foco narrativo é bem definido — uma empregada que relata o que viu —, e o texto não depende de relações familiares misteriosas nem formula uma crítica social inspirada pelo convívio com patrões. Portanto, a alternativa correta é C."
     },
     {
       "id": "enem-2023-q013",
@@ -952,7 +803,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "O gosto dos moradores está ligado à maneira particular como Soropita reconta a novela. O texto mostra que elefalava com prazer, prolongava a narrativa, imitava os personagens e buscava prender a atenção de todos. Ao dizer que era preciso “trazer luz”, o narrador revela o fascínio exercitado pela presença e pela performance do contador. Portanto, o atrativo não era apenas a qualidade do rádio ou a稳定的 da história, mas o jeito singular de Soropita falar aos ouvintes."
+      "explicacao": "O gosto dos moradores está ligado à maneira particular como Soropita reconta a novela. O texto mostra que ele falava com prazer, prolongava a narrativa, imitava os personagens e buscava prender a atenção de todos. Ao dizer que era preciso “trazer luz”, o narrador revela o fascínio exercitado pela presença e pela performance do contador. Portanto, o atrativo não era apenas a qualidade do rádio ou a estabilidade da história, mas o jeito singular de Soropita falar aos ouvintes."
     },
     {
       "id": "enem-2023-q015",
@@ -1110,7 +961,7 @@
       "indice": 18,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**TEXTO I**\n\n**Alegria, alegria**  \nO sol nas bancas de revista  \nMe enche de alegria e preguiça  \nQuem lê tanta noticia  \nEu vou  \nPor entre fotos e nomes  \nOs olhos cheios de cores  \nO peito cheio de amores vãos  \nEu vou  \nPor que não, por que não?\n\nVELOSO, C. **Alegria, alegria**. Rio de Janeiro: Polygram, 1990 (fragmento)\n\n**ТЕХТО II**\n\n**Anjos tronchos**  \nUns anjos tronchos do Vale do Silício  \nDesses que vivem no escuro em plena luz  \nDisseram vai ser virtuoso no vício  \nDas telas dos azuis mais do que azuis\n\nAgora a minha história é um denso algoritmo  \nQue vende venda a vendedores reais  \nNeurônios meus ganharam novo outro ritmo  \nE mais, e mais, e mais, e mais, e mais\n\nVELOSO, C. **Meu coco**. Rio de Janeiro: Sony, 2021 (fragmento)",
+      "contexto": "**TEXTO I**\n\n**Alegria, alegria**  \nO sol nas bancas de revista  \nMe enche de alegria e preguiça  \nQuem lê tanta noticia  \nEu vou  \nPor entre fotos e nomes  \nOs olhos cheios de cores  \nO peito cheio de amores vãos  \nEu vou  \nPor que não, por que não?\n\nVELOSO, C. **Alegria, alegria**. Rio de Janeiro: Polygram, 1990 (fragmento)\n\n**TEXTO II**\n\n**Anjos tronchos**  \nUns anjos tronchos do Vale do Silício  \nDesses que vivem no escuro em plena luz  \nDisseram vai ser virtuoso no vício  \nDas telas dos azuis mais do que azuis\n\nAgora a minha história é um denso algoritmo  \nQue vende venda a vendedores reais  \nNeurônios meus ganharam novo outro ritmo  \nE mais, e mais, e mais, e mais, e mais\n\nVELOSO, C. **Meu coco**. Rio de Janeiro: Sony, 2021 (fragmento)",
       "arquivos": [],
       "enunciado": "Embora oriundas de momentos históricos diferentes essas letras de canção têm em comum a",
       "alternativas": [
@@ -1152,7 +1003,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "As duas letras de canção retrataram a sensação de excesso e fluxo contínuo de informações em diferentes contextos históricos. Em “Alegria, alegria”, a referência a “tantas notícia”, fotos e nomes sugere uma bombardedagem deständig informações dissolve a experiência individual. Em “Anjos tronchos”, expressões como “algoritmo”, “telas” e a repetição de “mais” reforçam a ideia de informação tecnológica生产和 multiplicação constante. Assim, embora pertençam a momentos históricos distintos, ambas compartilham a percepção da profusão de informações gerada pela tecnologia."
+      "explicacao": "As duas letras de canção retrataram a sensação de excesso e fluxo contínuo de informações em diferentes contextos históricos. Em “Alegria, alegria”, a referência a “tantas notícia”, fotos e nomes sugere um bombardeio constante de informações que dissolve a experiência individual. Em “Anjos tronchos”, expressões como “algoritmo”, “telas” e a repetição de “mais” reforçam a ideia de informação tecnológica geração e multiplicação constante. Assim, embora pertençam a momentos históricos distintos, ambas compartilham a percepção da profusão de informações gerada pela tecnologia."
     },
     {
       "id": "enem-2023-q019",
@@ -1504,7 +1355,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A dificuldade da narradora em recuperar a fala é representada por uma metáfora: a palavra “arado” é comparada a um instrumento de lavoura torto e deformado, que penetra a terra e a deixa estéril e destruída. Assim, a linguagem funciona como uma ferramenta que, quando danificada, interfere até no trabalho e na produtividade da terra. A solidão apenas motivates a tentativa de voltar a falar; a experiência central é a損损耗 da linguagem, metaforizada pela lavoura. As demais alternativas tratam de aspectos peripheral ou literais do texto."
+      "explicacao": "A dificuldade da narradora em recuperar a fala é representada por uma metáfora: a palavra “arado” é comparada a um instrumento de lavoura torto e deformado, que penetra a terra e a deixa estéril e destruída. Assim, a linguagem funciona como uma ferramenta que, quando danificada, interfere até no trabalho e na produtividade da terra. A solidão apenas motiva a tentativa de voltar a falar; a experiência central é a perda da linguagem, metaforizada pela lavoura. As demais alternativas tratam de aspectos periféricos ou literais do texto."
     },
     {
       "id": "enem-2023-q026",
@@ -1554,57 +1405,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A passagem projeta o olhar no futuro: os meninos que hoje brincam ainda não conhecem a escravidão, mas, quando crescerem,enhaverão nas salas de exposição e nas notícias os vestígios e os relatos dessa época. Assim, o texto antecipa o apagamento progressivo das marcas da escravidão na memória social, embora os博物馆 preservem Objects e documentos relacionados ao escravidão. Akeyword \"futuro\" sustenta essa interpretação. As demais alternativas não correspondem ao foco do texto: aPros的孩子 não sãoOpostos porJetstem childhood, e não há crítica específica aos museus nem descrição de contemporâneos indiferentes."
-    },
-    {
-      "id": "enem-2023-q027",
-      "ano": 2023,
-      "indice": 27,
-      "area": "linguagens",
-      "idioma": null,
-      "contexto": "",
-      "arquivos": [],
-      "enunciado": "E assim as coisas continuaram acontecendo entre os dois, em quase sustos, um grande por acaso com cacoetes de gestos definitivos. Com o Nunca Mais se oferecendo o tempo todo, bastaria dizer foi um prazer ter te conhecido, bastaria não trocar telefones nem e-mails e enterrar a casualidade com a cal da sabedoria – nada poderia ser definitivo, os encontros duravam duas horas ou duas décadas ou duas vezes isso, mas em algum momento necessariamente seria o fim. De todos os grandes amores, De todos os pequenos. De todas as juras, das promessas, de todos os na-alegria-e-na-tristeza. De todos os não amores, os desamores, os casamentos para sempre, os rancores para sempre, de todas as paralelas que só se viabilizam na abstração da geometria, de todas as pequenas paixões e de todas as grandes paixões, de tudo que para na antessala da paixão, de todos os vínculos não experimentados, de todos.\nLISBOA, A. Rahushisha. Rio de Janeiro Objetiva 2014.\nO recurso que promove a progressão textual, contribuindo para a construção da ideia de que as relações amorosas têm um enredo comum, é a",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "Repetição do pronome indefinido \"todos\".",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "Utilização do travessão na marcação do oposto.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "Retomada do antecedente pelo pronome \"isso\".",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Contraposição de ideias marcada pela conjunção mas.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "Substantivação de expressões pela anteposição do artigo.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "enem.dev",
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "origem_tag": "fallback",
-      "explicacao": "A repetição de “todos” organiza a enumeração e cria um efeito de acumulação.progressiva. As expressões que vêm depois desse pronome ampliam o.scope das relações amorosas: “todos os grandes amores”, “todos os pequenos”, “todas as juras”, “todos os não amores” e outras. Assim, o texto percorre diferentes tipos de vínculos e de forceful, mostrando que, apesar das particularidades, eles compartilham uma estrutura comum, marcada inclusive pela inevitabilidade do fim. Os demais recursos真实 são pontuais e não promovem essa progressão do conjunto."
+      "explicacao": "A passagem projeta o olhar no futuro: os meninos que hoje brincam ainda não conhecem a escravidão, mas, quando crescerem, haverão nas salas de exposição e nas notícias os vestígios e os relatos dessa época. Assim, o texto antecipa o apagamento progressivo das marcas da escravidão na memória social, embora os museus preservem objetos e documentos relacionados ao escravidão. A palavra-chave \"futuro\" sustenta essa interpretação. As demais alternativas não correspondem ao foco do texto: as crianças não são opostas por infância, e não há crítica específica aos museus nem descrição de contemporâneos indiferentes."
     },
     {
       "id": "enem-2023-q028",
@@ -1704,7 +1505,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "fallback",
-      "explicacao": "O efeito desconcertante nasce do choque entre o语气 solene e heroico da Inconfidência e a presença de animais Associados a imagens grotescas. O narrador transforma os ratos de Ouro Preto em与传统istas, descendentes dos que presenciaram os sonhadores inconfidentes e a exposição da cabeça de Tiradentes. Essa referência elevate a história nacional, mas é破坏ada pela，不停 descrições de gatos gordos e lerdos, ratos, crânios e órbitas descarnadas. Assim, enquanto o contexto histórico é austero e pomposo, as imagens animals são repugantes e ridículas. O contraste unexpected正是 o centro do enunciado."
+      "explicacao": "O efeito desconcertante nasce do choque entre o tom solene e heroico da Inconfidência e a presença de animais Associados a imagens grotescas. O narrador transforma os ratos de Ouro Preto em tradicionalistas, descendentes dos que presenciaram os sonhadores inconfidentes e a exposição da cabeça de Tiradentes. Essa referência eleva a história nacional, mas é destruída pelas descrições de gatos gordos e lerdos, ratos, crânios e órbitas descarnadas. Assim, enquanto o contexto histórico é austero e pomposo, as imagens animais são repugantes e ridículas. O contraste inesperado é o centro do enunciado."
     },
     {
       "id": "enem-2023-q030",
@@ -1805,56 +1606,6 @@
       "subassunto": "",
       "origem_tag": "taxonomia",
       "explicacao": "O poema contrapõe imagens grandiosas, como jardim japonês, tempestade, praia de pedras e abismo, a um gesto cotidiano: abaixar os olhos e recolher migalhas de pão. Essa passagem do extraordinário ao ordinário reduz a intensidade aparente da dor amorosa. A mesa posta para dois revela, porém, que o affectuo permanece: a separação não dissolve o vínculo, apenas o manifesta de forma discreta e banal. Assim, a comoção de um amor frustrado é diluída na banalidade, como indica a alternativa C. Embora a frase inicial do enunciado termine truncada, o poema permite essa conclusão."
-    },
-    {
-      "id": "enem-2023-q032",
-      "ano": 2023,
-      "indice": 32,
-      "area": "linguagens",
-      "idioma": null,
-      "contexto": "",
-      "arquivos": [],
-      "enunciado": "O sol começa a descer por trás da vegetação da Ilha da Restinga, na outra margem do rio Paraíba, colorindo o céu de amarelo, laranja e lilás. Então se ouvem as primeiras notas do Bolero, do compositor francês Maurice Ravel, executadas pelo saxofonista Jurandy. É assim o pôr do sol da praia do Jacaré, em Cabedelo (Grande João Pessoa). Depois do Bolero, Jurandy toca Asa branca, de Luiz Gonzaga, e Meu sublime torrão, de Genival Macedo, espécie de hino não oficial da Paraíba.\nPINHEIRO, A. Sol se põe embaiado pelo Bolero de Ravel. Disponível em: http://tools.folha.com.br. Acesso em: 16 set. 20212 (adaptado).\nA interpretação musical de Jurandy do Sax, codinome de José Jurandy Félix, apresenta caracterizado pela",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "Inter-relação de referenciais estéticos aparentemente distanciados.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "Valorização de músicas que revelam mensagens de serenidade.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "Consagração do repertório erudito como cultura dominante.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Iniciativa de estímulo à vocação turística da cidade.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "Divisão hierárquica entre gêneros e estilos musicais.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "enem.dev",
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "origem_tag": "taxonomia",
-      "explicacao": "A apresentação reúne, em uma mesma interpretação do saxofonista Jurandy, o “Bolero”, de Maurice Ravel, e as canções “Asa branca”, de Luiz Gonzaga, e “Meu sublime torrão”, de Genival Macedo. Though apparently distant, esses repertórios compartilham referências estéticas: a peça instrumental de Ravel e as melodias associated à música popular brasileira e à identidade paraibana são tratadas como parte de um conjuntoEDD coerente no ambientação do pôr do sol da praia do Jacaré. A questão não destaca o contenu das letras, a Bulanagem daatively？不"
     },
     {
       "id": "enem-2023-q033",
@@ -2006,7 +1757,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "fallback",
-      "explicacao": "O Marabaixo transformou episodes dramáticos da história escravista — as mortes de pessoas escravizadas lançadas ao mar — em novas práticas culturais. Initially, os hinos de lamento honravam essas mortes; depois, a tradição incorporou danças, tambores e festas religiosas, tornando-se expressão da identidade das comunidades negras do Amapá. A alternativa C descreve apenas o aspecto inicial de luto, enquanto a questão pede sua função mais ampla: ressignificar episódios traumáticos por meio da arte e da cultura. A alternativa B não encontra apoio no contexto, e a D atribuiria apagamento justamente a uma prática de preservação e・デ valorização da memória. A alternativa E é restrita à ritualização fúnebre, sem abranger a transformação cultural completa."
+      "explicacao": "O Marabaixo transformou episódios dramáticos da história escravista — as mortes de pessoas escravizadas lançadas ao mar — em novas práticas culturais. Inicialmente, os hinos de lamento honravam essas mortes; depois, a tradição incorporou danças, tambores e festas religiosas, tornando-se expressão da identidade das comunidades negras do Amapá. A alternativa C descreve apenas o aspecto inicial de luto, enquanto a questão pede sua função mais ampla: ressignificar episódios traumáticos por meio da arte e da cultura. A alternativa B não encontra apoio no contexto, e a D atribuiria apagamento justamente a uma prática de preservação e valorização da memória. A alternativa E é restrita à ritualização fúnebre, sem abranger a transformação cultural completa."
     },
     {
       "id": "enem-2023-q037",
@@ -2256,7 +2007,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A notícia evidencia que a prática esportiva envolve não apenas o desempenho físico, mas também o bem-estar emocional dos atletas. No caso relatado, os abusos sexuais causaram traumas 其中 a lesão psicológica impediu Simone Biles de competir, e seu subsequently trabalho contra o preconceito relacionado à saúde mental mostra a importance deTnTn lidar com essas questões. As federações e os comitês olímpicos são citados como possíveis responsáveis, mas a reflexão central recai sobre o impacto emocional do esporte na vida dos atletas."
+      "explicacao": "A notícia evidencia que a prática esportiva envolve não apenas o desempenho físico, mas também o bem-estar emocional dos atletas. No caso relatado, os abusos sexuais causaram traumas. A lesão psicológica impediu Simone Biles de competir, e seu posterior trabalho contra o preconceito relacionado à saúde mental mostra a importância de lidar com essas questões. As federações e os comitês olímpicos são citados como possíveis responsáveis, mas a reflexão central recai sobre o impacto emocional do esporte na vida dos atletas."
     },
     {
       "id": "enem-2023-q042",
@@ -2508,7 +2259,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A figura do bordado é necessária para conferir a definição de “Sertão” expressa na peça, pois não foi enviada. A alternativa C corresponde à ideia de que o sertão é um espaço construído por vivências, relações e itinerários socioafetivos. Assim, o bordado, como bem cultural material, registra memórias e afetos que help a compreender o lugar. O recorte não se define principalmente por turismo, fronteiras territoriais ou interesses econômicos, mas pelas experiências e pelos vínculos sociaisayesды һәрбий."
+      "explicacao": "A figura do bordado é necessária para conferir a definição de “Sertão” expressa na peça, pois não foi enviada. A alternativa C corresponde à ideia de que o sertão é um espaço construído por vivências, relações e itinerários socioafetivos. Assim, o bordado, como bem cultural material, registra memórias e afetos que ajudam a compreender o lugar. O recorte não se define principalmente por turismo, fronteiras territoriais ou interesses econômicos, mas pelas experiências e pelos vínculos sociais."
     },
     {
       "id": "enem-2023-q047",
@@ -2756,7 +2507,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A Declaração Balfour apoiou a criação de um lar nacional judeu na Palestina, ao mesmo tempo em que prometeu preservar os direitos civis e religiosos das comunidades não judaicas. Contudo, essas compromissos não resolveram as disputas entre-Jewish e、目的’? Hmm."
+      "explicacao": "A Declaração Balfour apoiou a criação de um lar nacional judeu na Palestina, ao mesmo tempo em que prometeu preservar os direitos civis e religiosos das comunidades não judaicas. Contudo, essas compromissos não resolveram as disputas entre judeus."
     },
     {
       "id": "enem-2023-q052",
@@ -2766,7 +2517,7 @@
       "idioma": null,
       "contexto": "",
       "arquivos": [],
-      "enunciado": "TEXTO I\nComo presença consciente no mundo não posso escapar à responsabilidade ética no meu mover-me no mundo. Se sou puro produto da determinação genética ou cultural ou de classe, sou irresponsável pelo que faço no meu mover-me no mundo e, se careço de responsabilidade, não posso falar em ética.\nFREIRE, P. Pedagogia da autonomia: saberes necessários à prática educativa. São Paulo: Paz e Terra, 1996\nТЕХТО II\nPaulo Freire construiu uma pedagogia da esperança. Na sua concepção, a história não é algo pronto e acabado. As estruturas de opressão e as desigualdades, apesar de serem naturalizadas, são sócio e historicamente construídas. Daí a importância de os educandos tomarem consciência da sua realidade para, assim, transformá-la.\nDEMARCHI, J. L. Paulo Freire. Disponivel em: https://diplomatique.org.br. Acesso em: 6 out. 2021 (adaptado).\nCom base no conceito de ética pedagógica presente nos textos, os educandos tornam-se responsáveis pela",
+      "enunciado": "TEXTO I\nComo presença consciente no mundo não posso escapar à responsabilidade ética no meu mover-me no mundo. Se sou puro produto da determinação genética ou cultural ou de classe, sou irresponsável pelo que faço no meu mover-me no mundo e, se careço de responsabilidade, não posso falar em ética.\nFREIRE, P. Pedagogia da autonomia: saberes necessários à prática educativa. São Paulo: Paz e Terra, 1996\nTEXTO II\nPaulo Freire construiu uma pedagogia da esperança. Na sua concepção, a história não é algo pronto e acabado. As estruturas de opressão e as desigualdades, apesar de serem naturalizadas, são sócio e historicamente construídas. Daí a importância de os educandos tomarem consciência da sua realidade para, assim, transformá-la.\nDEMARCHI, J. L. Paulo Freire. Disponivel em: https://diplomatique.org.br. Acesso em: 6 out. 2021 (adaptado).\nCom base no conceito de ética pedagógica presente nos textos, os educandos tornam-se responsáveis pela",
       "alternativas": [
         {
           "letra": "A",
@@ -2806,7 +2557,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "Na Texto I, Freire afirma que o educando não é um produto puramente determined pela genética, pela cultura ou pela classe. Como presença consciente, ele pode refletir sobre suas ações e assumir responsabilidade ética por elas. Na Texto II, essa responsabilidade se amplia: reconhecer que as desigualdades são construções históricas e sociais permite aos educandosAWareness da realidade para transformá-la. A ética pedagógica, portanto, prépare o estudante para atuar de forma consciente e participativa na sociedade,ломando parte das decisões e das mudanças que afetam a vida coletiva. Por isso, a alternativa A é a correta."
+      "explicacao": "Na Texto I, Freire afirma que o educando não é um produto puramente determinado pela genética, pela cultura ou pela classe. Como presença consciente, ele pode refletir sobre suas ações e assumir responsabilidade ética por elas. Na Texto II, essa responsabilidade se amplia: reconhecer que as desigualdades são construções históricas e sociais permite aos educandos a consciência da realidade para transformá-la. A ética pedagógica, portanto, prépare o estudante para atuar de forma consciente e participativa na sociedade, tomando parte das decisões e das mudanças que afetam a vida coletiva. Por isso, a alternativa A é a correta."
     },
     {
       "id": "enem-2023-q053",
@@ -2906,7 +2657,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "O trecho expõe a tensão entre conceber a raiva como pensamento, portanto como espírito, e reconhecê-la como algo presente no próprio corpo. Merleau-Ponty questiona essa separação ao mostrar que a experiência humana é corporal. O dualismo cartesiano, ao contrário, distingue doisols estados ou substâncias: a mente, responsável pelo pensamento, e o corpo,延 entendido como matéria. Essa divisão constitui o contraponto ao entendimento do autor, pois não explica adequadamente como sentimentos e pensamentos possam ocorrer no corpo. Por isso, a alternativa correta é a que identifica uma visão dualista."
+      "explicacao": "O trecho expõe a tensão entre conceber a raiva como pensamento, portanto como espírito, e reconhecê-la como algo presente no próprio corpo. Merleau-Ponty questiona essa separação ao mostrar que a experiência humana é corporal. O dualismo cartesiano, ao contrário, distingue dois estados ou substâncias: a mente, responsável pelo pensamento, e o corpo, entendido como matéria. Essa divisão constitui o contraponto ao entendimento do autor, pois não explica adequadamente como sentimentos e pensamentos possam ocorrer no corpo. Por isso, a alternativa correta é a que identifica uma visão dualista."
     },
     {
       "id": "enem-2023-q055",
@@ -3006,7 +2757,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A ilustração é necessária para confirmar diretamente o anseio representado pela charge, pois o enunciado faz referência a uma imagem que não foi enviada. Tomando o gabarito oficial como premissa, a alternativa correta é a participação em ações decisórias. Essa expressão significa envolver-se ativamente nas escolhas e decisões que afetam a vida em sociedade, em contraste com a permanência na passividade social. As outras alternativas se referem a webmaster!数为? individual, desejos pessoais ou conivência partidária, não caracterizando o sentido de atuação collector collectif indicado pela resposta oficial."
+      "explicacao": "A ilustração é necessária para confirmar diretamente o anseio representado pela charge, pois o enunciado faz referência a uma imagem que não foi enviada. Tomando o gabarito oficial como premissa, a alternativa correta é a participação em ações decisórias. Essa expressão significa envolver-se ativamente nas escolhas e decisões que afetam a vida em sociedade, em contraste com a permanência na passividade social. As outras alternativas se referem a interesse individual, desejos pessoais ou conivência partidária, não caracterizando o sentido de atuação coletiva indicado pela resposta oficial."
     },
     {
       "id": "enem-2023-q057",
@@ -3105,7 +2856,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A questão pede identificar a combinação de elementos tradicionais e modernos ligada à devoção religiosa. A Cavalgada de Sant’Ana而同 reúne práticas tradicionais: o uso de jegues, mulas e cavalos, a organização dos vaqueiros e a ida às feiras e festas para pedir a bênção dos animais. A devoção à padroeira de Caicó está na origem do evento. Como mudanças modernas, o texto menciona a substituição dos animais por automobiles, caminhonetes e caminhões, além da retomada da cavalgada em 2002, com participação mais ampla. Assim, a expressão cultural combina tradição e modernidade em torno da crença em Santa Ana. O enunciado não menciona ordens papais, determinações paroquiais ou imposições eclesiásticas que sustentem as demais alternativas."
+      "explicacao": "A questão pede identificar a combinação de elementos tradicionais e modernos ligada à devoção religiosa. A Cavalgada de Sant’Ana reúne práticas tradicionais: o uso de jegues, mulas e cavalos, a organização dos vaqueiros e a ida às feiras e festas para pedir a bênção dos animais. A devoção à padroeira de Caicó está na origem do evento. Como mudanças modernas, o texto menciona a substituição dos animais por automóveis, caminhonetes e caminhões, além da retomada da cavalgada em 2002, com participação mais ampla. Assim, a expressão cultural combina tradição e modernidade em torno da crença em Santa Ana. O enunciado não menciona ordens papais, determinações paroquiais ou imposições eclesiásticas que sustentem as demais alternativas."
     },
     {
       "id": "enem-2023-q059",
@@ -3254,7 +3005,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "fallback",
-      "explicacao": "A crítica central é que a aparente automação隐藏?"
+      "explicacao": "A crítica central é que a aparente automação esconde?"
     },
     {
       "id": "enem-2023-q062",
@@ -3460,7 +3211,7 @@
       "indice": 66,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "**ТЕХТО I**\n\nComo é horrível ver um filho comer e perguntar: “Tem mais?” Esta palavra “tem mais” fica oscilando dentro do cérebro de uma mãe que olha as panela e não tem mais.\n\nJESUS, C. M. Quarto de despejo: diário de uma favelada. São Paulo: Ática. 2014.\n\n**ТЕХТО ІІ**\n\nA experiência de ver os filhos com fome na década de 1950, descrita por Carolina, é vivida no Brasil de 2021 por uma moradora de Petrolândia, em Pernambuco. “Eu trabalhava de ajudante de cabeleireira, mas a moça que tinha o salão fechou. Eu vinha me sustentando com o auxílio que tinha, mas agora eu não fui contemplada. Às vezes as pessoas me ajudam com alimentos para os meus filhos. De vez em quando, eu acho algum bico para fazer, mas é muito raro. Tem dias que não tenho nem o leite da minha bebê.”\n\nCARRANÇA, T. “Até o feijão nos esqueceu”: o livro de 1960 que poderia ter sido escritonas favelas de 2021.\n\nDisponível em: www.bbc.com. Acesso em: 6 out. 2021 (adaptado).",
+      "contexto": "**TEXTO I**\n\nComo é horrível ver um filho comer e perguntar: “Tem mais?” Esta palavra “tem mais” fica oscilando dentro do cérebro de uma mãe que olha as panela e não tem mais.\n\nJESUS, C. M. Quarto de despejo: diário de uma favelada. São Paulo: Ática. 2014.\n\n**TEXTO II**\n\nA experiência de ver os filhos com fome na década de 1950, descrita por Carolina, é vivida no Brasil de 2021 por uma moradora de Petrolândia, em Pernambuco. “Eu trabalhava de ajudante de cabeleireira, mas a moça que tinha o salão fechou. Eu vinha me sustentando com o auxílio que tinha, mas agora eu não fui contemplada. Às vezes as pessoas me ajudam com alimentos para os meus filhos. De vez em quando, eu acho algum bico para fazer, mas é muito raro. Tem dias que não tenho nem o leite da minha bebê.”\n\nCARRANÇA, T. “Até o feijão nos esqueceu”: o livro de 1960 que poderia ter sido escrito nas favelas de 2021.\n\nDisponível em: www.bbc.com. Acesso em: 6 out. 2021 (adaptado).",
       "arquivos": [],
       "enunciado": "Considerando a realidade brasileira, os textos se aproximam ao apresentarem uma reflexão sobre o(a)",
       "alternativas": [
@@ -3652,7 +3403,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A situação evidencia desrespeito à dignidade humana porque apresenta violência contra mulheres, marginalização,icastigo de闺蜜?"
+      "explicacao": "A situação evidencia desrespeito à dignidade humana porque apresenta violência contra mulheres, marginalização, castigo?"
     },
     {
       "id": "enem-2023-q070",
@@ -3702,57 +3453,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A cena mostra a repressão como parte organizada do Estado, e não como um ato isolado. A presença de jornalistas presos no DOI, o medo da sociedade religiosa e a pressa para concluir o sepultamento revelam uma estrutura institucional orientada a conter临界临界 delineate. O funeral, que poderia se tornar um espaço de protesto e resistência, foi vigiado e limitado. Ainda assim, os discursos de Ruth Escobar e Audálio Dantas denunciaram a violência e defenderam a continuidade da luta, demonstrando a existência de focos de resistência. Isso caracteriza a institucionalização de mecanismos repressivos para eliminá-los ou silenciá-los. A alternativa D não é a mais adequada, pois a cena não apresenta a adoção de cerimônias públicas como instrumento de controle, mas sim a repressão de um funeral e deerger possíveis manifestações."
-    },
-    {
-      "id": "enem-2023-q071",
-      "ano": 2023,
-      "indice": 71,
-      "area": "ciencias-humanas",
-      "idioma": null,
-      "contexto": "Alternativas logísticas estão servindo de instrumentos que ativam os mercados especuladores de terras nas diferentes regiões da Amazônia e constituem em indicadores utilizados por diferentes atores para defender ou denunciar o avanço da cultura da soja na região e, com ela, a retomada do desmatamento. É evidente que o crescimento do desmatamento tem a ver também com a expansão da soja, porém atribuir a ela o fator principal parece não totalmente correto. Parto da compreensão central de que a lógica que gera o desmatamento está articulada pelo tripé grileiros, madeireiros e pecuaristas.\n\nOLIVEIRA, A. U. A Amazônia e a nova geografia da produção da soja. **Terra Livre**, n. 26, jan.-jun. 2006 (adaptado).",
-      "arquivos": [],
-      "enunciado": "Na visão do autor, o problema central da situação descrita é desencadeado pela",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "Apropriação de áreas devolutas.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "Sonegação de impostos federais.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "Incorporação de exportação ilegal.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Desoneração de setores produtivos.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "Flexibilização de legislação ambiental.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "enem.dev",
-      "tema": "Meio ambiente e recursos",
-      "competencia": "C3 - Interpretar documentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "origem_tag": "taxonomia",
-      "explicacao": "O autor entende que a expansão da soja e a intensificação do desmatamento são consequências de uma lógica de controle territorial. O grileiro, junto com madeireiros e pecuaristas, participa da apropriação de terras devolutas para تحويل áreas públicas em propriedades e利用率anegrito. Essa apropriação facilita a ocupação, a exploração madeireira, a criação de gado e, posteriormente, a expansão da soja. Assim, a soja aparece como agente ou indicador involved no avanço do desmatamento, mas não como sua causa principal. O problema central está, portanto, na apropriação das áreas devolutas."
+      "explicacao": "A cena mostra a repressão como parte organizada do Estado, e não como um ato isolado. A presença de jornalistas presos no DOI, o medo da sociedade religiosa e a pressa para concluir o sepultamento revelam uma estrutura institucional orientada a conter. O funeral, que poderia se tornar um espaço de protesto e resistência, foi vigiado e limitado. Ainda assim, os discursos de Ruth Escobar e Audálio Dantas denunciaram a violência e defenderam a continuidade da luta, demonstrando a existência de focos de resistência. Isso caracteriza a institucionalização de mecanismos repressivos para eliminá-los ou silenciá-los. A alternativa D não é a mais adequada, pois a cena não apresenta a adoção de cerimônias públicas como instrumento de controle, mas sim a repressão de um funeral e conter possíveis manifestações."
     },
     {
       "id": "enem-2023-q072",
@@ -3904,7 +3605,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "fallback",
-      "explicacao": "A postura dos incas era flexível quanto aos costumes religiosos. Embora a política imperial determinasse a adoração ao Sapa Inca e ao Sol, a população mantinha também suas crenças e seus deuses locais. Isso mostra que a dominação territorial não implicou a eliminação da diversidade religiosa, mas a convivência entre aidently一变 religious practices."
+      "explicacao": "A postura dos incas era flexível quanto aos costumes religiosos. Embora a política imperial determinasse a adoração ao Sapa Inca e ao Sol, a população mantinha também suas crenças e seus deuses locais. Isso mostra que a dominação territorial não implicou a eliminação da diversidade religiosa, mas a convivência entre práticas religiosas."
     },
     {
       "id": "enem-2023-q075",
@@ -4106,7 +3807,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A prática da agricultura urbana aproveita espaços disponíveis e ociosos do ambiente urbano para a produção de alimentos. Assim, sua vantagem no espaço da cidade é ocupar áreas que não estavam sendo utilizadas, em vez de ampliar a construção urbana ou留学生izar a área central. O texto também destaca o acesso ao plantio, a aproximação entre produtores e consumidores e a redução do percurso da cadeia produtiva. Não há indicação de valorização do mercado externo, uso prioritário de insumos químicos ou mecanização das técnicas de cultivo."
+      "explicacao": "A prática da agricultura urbana aproveita espaços disponíveis e ociosos do ambiente urbano para a produção de alimentos. Assim, sua vantagem no espaço da cidade é ocupar áreas que não estavam sendo utilizadas, em vez de ampliar a construção urbana ou urbanizar a área central. O texto também destaca o acesso ao plantio, a aproximação entre produtores e consumidores e a redução do percurso da cadeia produtiva. Não há indicação de valorização do mercado externo, uso prioritário de insumos químicos ou mecanização das técnicas de cultivo."
     },
     {
       "id": "enem-2023-q079",
@@ -4114,7 +3815,7 @@
       "indice": 79,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "**TEXTO I**\n\nGerineldo dorme porque já está conformado com o seu mundo. Porque já sabe tudo o que lhe pode acontecer após haver submetido todos os objetos que o rodeiam a um minucioso inventário de possibilidades. Seu apartamento, mais que um apartamento, é uma teoria de sorte e de azar. Melhor que ninguém, Gerineldo conhece o coeficiente da dilatação de suas janelas e mantém marcado no termômetro, com uma linha vermelha, o ponto em que se quebrarão os vidros, despedaçados em estilhaços de morte. Sabe que os arquitetos e os engenheiros já previram tudo, menos o que nunca já aconteceu.\n\nMARQUEZ, G. G. O pessimista. In: Textos do Caribe. Rio de Janeiro: Record, 1981.\n\n**ТЕХТО II**\n\nA situação é o sujeito inteiro (ele não é nada a não ser a sua situação) e é também a coisa inteira (nunca há mais nada senão as coisas). É o sujeito a elucidar as coisas pela sua própria superação, se assim quisermos; ou são as coisas a reenviar ao sujeito a imagem dele. É a total facticidade, a contingência absoluta do mundo, do meu nascimento, do meu lugar, do meu passado, dos meus redores — e é a minha liberdade sem limites que faz com que haja para mim uma facticidade.\n\nSARTRE, J.-P. O ser e o nada: ensaio de ontologia fenomenológica. Petrópolis: Vozes, 1997 (adaptado).",
+      "contexto": "**TEXTO I**\n\nGerineldo dorme porque já está conformado com o seu mundo. Porque já sabe tudo o que lhe pode acontecer após haver submetido todos os objetos que o rodeiam a um minucioso inventário de possibilidades. Seu apartamento, mais que um apartamento, é uma teoria de sorte e de azar. Melhor que ninguém, Gerineldo conhece o coeficiente da dilatação de suas janelas e mantém marcado no termômetro, com uma linha vermelha, o ponto em que se quebrarão os vidros, despedaçados em estilhaços de morte. Sabe que os arquitetos e os engenheiros já previram tudo, menos o que nunca já aconteceu.\n\nMARQUEZ, G. G. O pessimista. In: Textos do Caribe. Rio de Janeiro: Record, 1981.\n\n**TEXTO II**\n\nA situação é o sujeito inteiro (ele não é nada a não ser a sua situação) e é também a coisa inteira (nunca há mais nada senão as coisas). É o sujeito a elucidar as coisas pela sua própria superação, se assim quisermos; ou são as coisas a reenviar ao sujeito a imagem dele. É a total facticidade, a contingência absoluta do mundo, do meu nascimento, do meu lugar, do meu passado, dos meus arredores — e é a minha liberdade sem limites que faz com que haja para mim uma facticidade.\n\nSARTRE, J.-P. O ser e o nada: ensaio de ontologia fenomenológica. Petrópolis: Vozes, 1997 (adaptado).",
       "arquivos": [],
       "enunciado": "A postura determinista adotada pelo personagem Gerineldo contrasta com a ideia existencialista contida no pensamento filosófico de Sartre porque",
       "alternativas": [
@@ -4206,7 +3907,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A atitude do governo militar diante dos sindicatos rurais era ambígua porque, embora combatesse as Ligas Camponesas, precisava conter a crescente organização dos trabalhadores. Ao criar centros sindicais e cursos de liderança com princípios conservadores e 좌우 Recorder..."
+      "explicacao": "A atitude do governo militar diante dos sindicatos rurais era ambígua porque, embora combatesse as Ligas Camponesas, precisava conter a crescente organização dos trabalhadores. Ao criar centros sindicais e cursos de liderança com princípios conservadores."
     },
     {
       "id": "enem-2023-q081",
@@ -4305,7 +4006,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "fallback",
-      "explicacao": "A correspondência epistolar funcionava como um meio de circulação cultural entre imigrantes e seus países de procedência. Transportada pelos vapores junto com a mala postal, ela permitia a troca de notícias, lembranças familiares, fotografias, conselho e informações sobreセンサções. Essas mensagens também possibilitavam a transmissão e a reconstrução das tradições, mantendo vivos os vínculos com a sociedade de partida eFail房门?"
+      "explicacao": "A correspondência epistolar funcionava como um meio de circulação cultural entre imigrantes e seus países de procedência. Transportada pelos vapores junto com a mala postal, ela permitia a troca de notícias, lembranças familiares, fotografias, conselho e informações sobre sensações. Essas mensagens também possibilitavam a transmissão e a reconstrução das tradições, mantendo vivos os vínculos com a sociedade de partida."
     },
     {
       "id": "enem-2023-q083",
@@ -4512,7 +4213,7 @@
       "indice": 87,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "**TEXTO I**\n\nOriunda da Romênia, Genny Gleizer aportou no Brasil em 1932. Assim como milhares de judeus do Leste Europeu, sua vinda para o Brasil ocorreu em um momento de ascensão do antissemitismo na Europa que tornava precárias suas vidas. O Brasil se colocava como uma possibilidade na busca por condições de sobrevivência e desenvolvimento.\n\nANTÃO, A. C. C. B. Gênero, imigração e política: o caso da judia comunista Genny Gleizer no Governo Vargas (1932-1935). Rio de Janeiro: Casa de Oswaldo Cruz, 2017 (adaptado).\n\n**ТЕХТО II**\n\nA presença judaica no Brasil foi criando aos poucos certas desconfianças que se refletiram em órgãos da imprensa e em círculos intelectuais e políticos. Em parte, essa imagem negativa adviria da onda nacionalista surgida no final dos anos 1910, que concebia imigrantes como concorrentes dos trabalhadores brasileiros, ou como seres improdutivos, exploradores da mão de obra e da riqueza autóctone. Além disso, as elites políticas da época acreditavam que os estrangeiros eram portadores das doutrinas anarquista e comunista, estranhas à “indole do povo brasileiro”. Esses “indesejáveis” seriam um mal externo que corromperia a nação.\n\nMAIO, M. C.: CALAÇA, C. E. Um balanço da bibliografia sobre o antissemitismo  \nno Brasil. In: GRINBERG, K. (Org.). Os judeus no Brasil. Rio de Janeiro: Civilização Brasileira, 2005 (adaptado).",
+      "contexto": "**TEXTO I**\n\nOriunda da Romênia, Genny Gleizer aportou no Brasil em 1932. Assim como milhares de judeus do Leste Europeu, sua vinda para o Brasil ocorreu em um momento de ascensão do antissemitismo na Europa que tornava precárias suas vidas. O Brasil se colocava como uma possibilidade na busca por condições de sobrevivência e desenvolvimento.\n\nANTÃO, A. C. C. B. Gênero, imigração e política: o caso da judia comunista Genny Gleizer no Governo Vargas (1932-1935). Rio de Janeiro: Casa de Oswaldo Cruz, 2017 (adaptado).\n\n**TEXTO II**\n\nA presença judaica no Brasil foi criando aos poucos certas desconfianças que se refletiram em órgãos da imprensa e em círculos intelectuais e políticos. Em parte, essa imagem negativa adviria da onda nacionalista surgida no final dos anos 1910, que concebia imigrantes como concorrentes dos trabalhadores brasileiros, ou como seres improdutivos, exploradores da mão de obra e da riqueza autóctone. Além disso, as elites políticas da época acreditavam que os estrangeiros eram portadores das doutrinas anarquista e comunista, estranhas à “indole do povo brasileiro”. Esses “indesejáveis” seriam um mal externo que corromperia a nação.\n\nMAIO, M. C.: CALAÇA, C. E. Um balanço da bibliografia sobre o antissemitismo  \nno Brasil. In: GRINBERG, K. (Org.). Os judeus no Brasil. Rio de Janeiro: Civilização Brasileira, 2005 (adaptado).",
       "arquivos": [],
       "enunciado": "Conforme descrito nos textos, o tratamento dispensado aos grupos mencionados se fundamentava em",
       "alternativas": [
@@ -4705,7 +4406,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A passagem mostra Brás Cubas tratando o conhecimentophilosophico como um repertório de fórmulas, vocabulário e ornamentos, الذي seria utilizado para sustentar a conversa. Ele não busca compreender os conceitos, mas aproveitar sua aparênciaBJ para persuadir os interlocutores. Essa atitude se assemelha à prática dos sofistas, valorizada pela arte da retórica e da argumentação persuasiva, e frequentemente contestada pelos InclusiveUPInclusive por priorizar a优雅 eloquent elegance do discurso em relação à busca de verdade. Por isso, a alternativa correta é a utilização persuasiva do discurso. As demais opções não correspondem ao trecho, pois ele não trata de investigação empírica, narração alegórica nem expressão pictográfica."
+      "explicacao": "A passagem mostra Brás Cubas tratando o conhecimento filosófico como um repertório de fórmulas, vocabulário e ornamentos, que seria utilizado para sustentar a conversa. Ele não busca compreender os conceitos, mas aproveitar sua aparência para persuadir os interlocutores. Essa atitude se assemelha à prática dos sofistas, valorizada pela arte da retórica e da argumentação persuasiva, e frequentemente contestada, inclusive por priorizar a elegância eloquente do discurso em relação à busca de verdade. Por isso, a alternativa correta é a utilização persuasiva do discurso. As demais opções não correspondem ao trecho, pois ele não trata de investigação empírica, narração alegórica nem expressão pictográfica."
     },
     {
       "id": "enem-2023-q091",
@@ -5208,57 +4909,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "No instante em que a esfera atinge a altura máxima, sua velocidade vertical é zero, pois ela para de subir e começa a descer. Isso não significa que a aceleração seja zero: a atração gravitacional continua atuando sobre a esfera,盯ando-a para baixo durante todo o movimento. Portanto, nesse instante, o módulo da velocidade é zero, enquanto a aceleração é diferente de zero e tem sentido para baixo."
-    },
-    {
-      "id": "enem-2023-q101",
-      "ano": 2023,
-      "indice": 101,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "",
-      "arquivos": [],
-      "enunciado": "Muitas mulheres sofrem com desconfortos nos dias que antecedem a menstruação, a chamada tensão pré-menstrual. Entre outros sintomas, podem ocorrer alterações de humor. Atualmente, acredita-se que os sintomas são resultado da queda na concentração do neurotransmissor serotonina, que, por sua vez, está relacionado com a diminuição na produção dos hormônios ovarianos estrógeno e progesterona, observada nessa fase do ciclo feminino.\nDIMMOCK, P. W. et al. Efficacy of Selective Serotonin-Reuptake Inhibitors in Premenstrual Syndrome: a Systematic Review. The Lancet, n. 9 236, 2000 (adaptado).\nA redução da produção desses hormônios nessa fase está relacionada com o(a)",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "Regressão do corpo lúteo ovariano.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "Diminuição na produção de ocitocina.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "Liberação do gameta feminino na ovulação.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Aumento nos níveis dos hormônios LH e FSH.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "Elevação nos níveis sorológicos de adrenalina.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "enem.dev",
-      "tema": "Cinética química",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "origem_tag": "taxonomia",
-      "explicacao": "Após a ovulação, o corpo lúteo se forma e produz principalmente progesterona, além de hormônios estrogênicos. Na ausência de gestação, sua regressão no fim da fase lútea provoca a queda dessas concentrações, favorecendo o início da menstruação. Portanto, a redução do estrógeno e da progesterona está relacionada à regressão do corpo lúteo. A liberação do gameto ocorre antes da formação do corpo lúteo. Já o aumento de LH e FSH é consequência da menor retroalimentação negativa exercida pela progesterona e pelo estrogênio, e não a causa da redução hormonal. Ocitocina e adrenalina não são responsáveis por essa relação."
+      "explicacao": "No instante em que a esfera atinge a altura máxima, sua velocidade vertical é zero, pois ela para de subir e começa a descer. Isso não significa que a aceleração seja zero: a atração gravitacional continua atuando sobre a esfera, puxando-a para baixo durante todo o movimento. Portanto, nesse instante, o módulo da velocidade é zero, enquanto a aceleração é diferente de zero e tem sentido para baixo."
     },
     {
       "id": "enem-2023-q102",
@@ -5558,7 +5209,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "fallback",
-      "explicacao": "O acrossomo do espermatozoide contém enzimas que Auxiliary na sua passagem pela corona radiata e pela zona pelúcida, dismantle e可就?"
+      "explicacao": "O acrossomo do espermatozoide contém enzimas que auxiliam na sua passagem pela corona radiata e pela zona pelúcida, desmantelam?"
     },
     {
       "id": "enem-2023-q108",
@@ -5608,7 +5259,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A corrente elétrica é induzida por um campo magnético variável. No fogão por indução, uma bobina percorrida por corrente alternada gera esse campo, que varia com o tempo e provoca correntes induzidas no fundo da panela. Essas correntes dissipam energia em forma de calor pelo efeito Joule. Radiação e condução não correspondem ao mecanismo de indução；而 um campo elétrico variável e ressonância eletromagnética não são a causa indicada da corrente induzida neste funcionamento."
+      "explicacao": "A corrente elétrica é induzida por um campo magnético variável. No fogão por indução, uma bobina percorrida por corrente alternada gera esse campo, que varia com o tempo e provoca correntes induzidas no fundo da panela. Essas correntes dissipam energia em forma de calor pelo efeito Joule. Radiação e condução não correspondem ao mecanismo de indução; um campo elétrico variável e ressonância eletromagnética não são a causa indicada da corrente induzida neste funcionamento."
     },
     {
       "id": "enem-2023-q109",
@@ -6226,59 +5877,6 @@
       "subassunto": "",
       "origem_tag": "taxonomia",
       "explicacao": "Antes da queima, cada conjunto era formado pela lâmpada em paralelo com o resistor, e os três conjuntos idênticos estavam em série. Ao queimá-la, L2 fica com o circuito aberto, mas seu resistor continua conduzindo corrente. Assim, o conjunto de L2 passa a ter resistência igual a R, maior que a resistência equivalente dos conjuntos de L1 e L3. Embora a resistência total do circuito aumente, a nova distribuição de tensão faz com que os conjuntos das extremidades recebam uma tensão menor que a inicial. Como o brilho das lâmpadas depende da potência que elas recebem, L1 e L3 ficam menos brilhantes."
-    },
-    {
-      "id": "enem-2023-q121",
-      "ano": 2023,
-      "indice": 121,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "Os solos amazônicos, ricos em silicato, não são apropriados para o cultivo por serem incapazes de reter nutrientes. Contudo, descobertas arqueológicas têm demonstrado que os antigos habitantes da Amazônia dominavam a técnica de preparo de um insumo agrícola natural, denominado terra preta. Esse insumo era constituído principalmente de uma espécie de biocarvão (biochar) obtido da queima de matéria orgânica, como troncos de árvores, pedaços de ossos e esterco, capaz de manter um solo fértil por anos.\n\nAdmite-se que o efeito do biocarvão na fertilização do solo estava, em parte, relacionado à presença de grupos orgânicos do tipo carboxilato em sua superfície, carregados negativamente (—COO–). Esses grupos atraem íons positivos necessários como nutrientes, tais quais os provenientes do potássio (K), do cálcio (Ca) e do magnésio (Mg), além de micronutrientes, como zinco (Zn) e ferro (Fe). Essa ligação no solo fertilizado é predominantemente iônica, conforme ilustra a figura, em que M\\* representa os cátions metálicos. De acordo com a escala de Pauling, a eletronegatividade do elemento oxigênio é igual a 3,44\n\n\n\nO quadro apresenta os valores de eletronegatividade desses cinco elementos metálicos.\n\n\n\nMICHALOVIC, M. Ancient Soil Chemists of the Amazon. **ChemMatters**, fev. 2009 (adaptado).",
-      "arquivos": [
-        "https://enem.dev/2023/questions/121/7814f78a-9417-4651-bec1-eb30fe7fd046.png",
-        "https://enem.dev/2023/questions/121/1913a73f-35d7-4367-a68e-949fa743bf7c.png"
-      ],
-      "enunciado": "O cátion que resultará em uma interação de maior caráter iônico com o ânion carboxilato será aquele proveniente do elemento",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "Potássio.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "Cálcio.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "Magnésio.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Zinco.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "Ferro.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "enem.dev",
-      "tema": "Ácidos, bases e pH",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "origem_tag": "taxonomia",
-      "explicacao": "O caráter iônico aumenta quando a diferença de eletronegatividade entre os átomos envolvidos é maior. Como o oxigênio tem eletronegatividade de 3,44, o elemento que apresenta a menor eletronegatividade na tabela entre os metais citados é o potássio. Assim, a diferença entre o oxigênio e o potássio é a maior, favorecendo uma ligação com maior caráter iônico entre o cátion K⁺ e o ânion carboxilato (—COO⁻). Portanto, o cátion proveniente do potássio é o que apresenta a interação de maior caráter iônico."
     },
     {
       "id": "enem-2023-q122",
@@ -6947,7 +6545,7 @@
       "indice": 136,
       "area": "matematica",
       "idioma": null,
-      "contexto": "Um artista plástico esculpe uma escultura a partir de um bloco de madeira de lei, em etapas. Inicialmente, esculpe um cone reto com 36 cm de altura e diâmetro da base medindo 18 cm. Em seguida, remove desse cone um cone menor, cujo diâmetro da base mede 6 cm, obtendo, assim, um tronco de cone, conforme ilustrado na figura.\n\n\n\nEm seguida, perfura esse tronco de cone, removendo um cilindro reto, de diâmetro 6 cm, cujo eixo de simetria é o mesmo do cone original. Dessa forma, ao final, a escultura tem a forma de um tronco de cone com uma perfuração cilíndrica de base a base.  \nO tipo de madeira utilizada para produzir essa escultura tem massa igual a 0,6 g por centímetro cúbico de volume. Utilize 3 como aproximação para π.",
+      "contexto": "Um artista plástico esculpe uma escultura a partir de um bloco de madeira de lei, em etapas. Inicialmente, esculpe um cone reto com 36 cm de altura e diâmetro da base medindo 18 cm. Em seguida, remove desse cone um cone menor, cujo diâmetro da base mede 6 cm, obtendo, assim, um tronco de cone, conforme ilustrado na figura.\n\n![](https://enem.dev/2023/questions/136/565c2d5a-96a0-4468-9bb1-2710707a40fd.png)\n\nEm seguida, perfura esse tronco de cone, removendo um cilindro reto, de diâmetro 6 cm, cujo eixo de simetria é o mesmo do cone original. Dessa forma, ao final, a escultura tem a forma de um tronco de cone com uma perfuração cilíndrica de base a base.  \nO tipo de madeira utilizada para produzir essa escultura tem massa igual a 0,6 g por centímetro cúbico de volume. Utilize 3 como aproximação para π.",
       "arquivos": [
         "https://enem.dev/2023/questions/136/565c2d5a-96a0-4468-9bb1-2710707a40fd.png"
       ],
@@ -7247,7 +6845,7 @@
       "dificuldade": "media",
       "subassunto": "",
       "origem_tag": "taxonomia",
-      "explicacao": "A ideia central é comparar o número de estudantes do terceiro ano com o total de participantes do sorteio. Para um sorteio em que todos tenham a mesma chance, a probabilidade é dada pela razão entre essas duas quantidades. A figura original é necessária, pois o enunciado não informa quantos estudantes há em cada ano nem apresenta os dados do sorteio. Além disso, as alternativas também aparecem somente como figuras, impedindo identificar e justificar o valor da alternativa E com o conteúdo fornecido. Assim, é possível concluir apenas que a resposta depende dos dados望去 da figura, sem inventar números ausentes."
+      "explicacao": "A ideia central é comparar o número de estudantes do terceiro ano com o total de participantes do sorteio. Para um sorteio em que todos tenham a mesma chance, a probabilidade é dada pela razão entre essas duas quantidades. A figura original é necessária, pois o enunciado não informa quantos estudantes há em cada ano nem apresenta os dados do sorteio. Além disso, as alternativas também aparecem somente como figuras, impedindo identificar e justificar o valor da alternativa E com o conteúdo fornecido. Assim, é possível concluir apenas que a resposta depende dos dados da figura, sem inventar números ausentes."
     },
     {
       "id": "enem-2023-q142",

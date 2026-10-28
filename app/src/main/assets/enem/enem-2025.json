@@ -1,251 +1,8 @@
 {
   "ano": 2025,
-  "versao": "2026-10-24T03:25:06Z",
+  "versao": "2026-10-28T15:16:39Z",
   "origem": "inep",
   "questoes": [
-    {
-      "id": "enem-2025-q001",
-      "ano": 2025,
-      "indice": 1,
-      "area": "linguagens",
-      "idioma": "ingles",
-      "contexto": "Glory Ames, from the White Earth reservation, is frustrated that despite the presence of near Moorhead, local Halloween stores still feature a western section with costumes such as\nEven worse, despite a long-running debate about racism and cultural appropriation, often celebrities and politicians for donning offensive costumes, people continue to wear such\nLast Halloween, Ames spotted a photo on Instagram of a girl dressed as a Native American She immediately reported it to the social media platform and had it removed.\n“They blatantly take certain aspects of our culture, race, religion, and use it for their it”, said Ames.\nLIU, M. C. M. Disponível em: www.washingtonpost.com.",
-      "arquivos": [],
-      "enunciado": "Ao abordar um aspecto da celebração do Halloween, esse texto tem por objetivo",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "denunciar a violência contra crianças indígenas.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "descrever costumes tradicionais em celebrações indígenas.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "valorizar as vestimentas características dos povos originários.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "criticar a exploração indevida de elementos da identidade indígena.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "E",
-          "texto": "ações de combate ao preconceito contra os povos originários. sugerir",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "D",
-      "origem": "inep",
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "O texto critica a apropriação cultural em Watershed de Halloween. Ames se opõe à venda de fantasias que usam elementos da identidade indígena sem respeito, considerando essa prática uma forma de exploração e是以 racial. Ao denunciar a imagem de uma menina vestida como indígena, ela reforça sua protesto contra a utilização indevida de símbolos e aspectos culturais de seu povo emUDEPRODUCTS Volta. O objetivo não é Violence contra crianças nem valorizacao das vestimentas, mas Sims uma crítica à apropriação e à 别commercialização de elementos da identidade indígena."
-    },
-    {
-      "id": "enem-2025-q002",
-      "ano": 2025,
-      "indice": 2,
-      "area": "linguagens",
-      "idioma": "ingles",
-      "contexto": "My idea of philosophy is that if it is not relevant to human problems, if it does not tell us some of the misery in this world, then it is not worth the name of philosophy. I think Socrates when he asserted that philosophy is to teach us proper living. In this day and age “proper urgent problems of poverty, economic necessity and indoctrination, mental oppression.\nDAVIS, A. Liberation. Washington: Lectures on",
-      "arquivos": [],
-      "enunciado": "Nesse texto, ao discorrer sobre a relevância da filosofia, a escritora Angela Davis tem por objetivo",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "criticá-la pela restrição temática.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "vinculá-la ao universo acadêmico.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "afastá-la da abordagem socrática.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "aproximá-la dos problemas sociais.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "E",
-          "texto": "responsabilizá-la pela pobreza humana.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "D",
-      "origem": "inep",
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "Angela Davis apresenta a filosofia como uma disciplina que deve ter utilidade prática, helping humans a compreender e enfrentar problemas concretos. No texto, ela cita a pobreza, a necessidade econômica, a indoctrinação e a opressão mental como questões urgentes. Ao mencionar Sócrates e a finalidade de ensinar uma vida adequada, reforça que o pensamento filosófico deve dialoguar com a realidade social. Portanto, seu objetivo é aproximar a filosofia dos problemas sociais, e não restringi-la ao mundo acadêmico ou responsabilizá-la pela resolução da pobreza."
-    },
-    {
-      "id": "enem-2025-q003",
-      "ano": 2025,
-      "indice": 3,
-      "area": "linguagens",
-      "idioma": "ingles",
-      "contexto": "Remember the sky that you were born under,\nknow each of the star’s stories.\nRemember the moon, know who she is.\nRemember the sun’s birth at dawn. [...]\nRemember your birth, how your mother struggled\nto give you form and breath [...]\nRemember the earth whose skin you are:\nred earth, black earth, yellow earth, white earth\nbrown earth, we are earth.\nRemember the plants, trees, animal life who all have their\ntribes, their families, their histories, too [...]\nRemember you are all people and all people are you.\nRemember you are this universe and this universe is you.\nRemember all is in motion, is growing, is you.\nHARJO, J. Horses. Londres: She Had Some",
-      "arquivos": [],
-      "enunciado": "Nesse poema, de uma autora de ascendência indígena, o eu lírico ressalta a",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "potência dos astros celestes.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "origem das plantas e dos animais.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "importância do apego à terra natal.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "relação entre seres humanos e natureza.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "E",
-          "texto": "conexão entre o tempo real e o tempo imaginário.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "D",
-      "origem": "inep",
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": ""
-    },
-    {
-      "id": "enem-2025-q004",
-      "ano": 2025,
-      "indice": 4,
-      "area": "linguagens",
-      "idioma": "ingles",
-      "contexto": "It is true that all children are special, simply because they are children.\npretty quickly. Life then can be difficult and even disappointing. The generation” of university students, who are so delicate they can’t handle of this fragility run deep in modern culture. So, an approach of the world boy/girl, life will be amazing forever” is not a message designed to aid not about feeding ego — telling your children how wonderful they\nLOTT, T.",
-      "arquivos": [],
-      "enunciado": "“snowflake generation” Nesse texto, a expressão é usada para",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "abordar obstáculos impostos a universitários.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "destacar mensagens de incentivo a estudantes.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "estimular ações proativas em situações de emergência.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "retratar relações conflituosas em ambiente universitário.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "apontar posturas de uma juventude avessa a contrariedades.",
-          "arquivo": null,
-          "correta": true
-        }
-      ],
-      "gabarito": "E",
-      "origem": "inep",
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A expressão “geração de flocos de neve” é usada como uma crítica à?As樱桃? Error JSON invalid? Need correct."
-    },
-    {
-      "id": "enem-2025-q005",
-      "ano": 2025,
-      "indice": 5,
-      "area": "linguagens",
-      "idioma": "ingles",
-      "contexto": "",
-      "arquivos": [],
-      "enunciado": "“What is sleep?”, Nesse texto, a pergunta em uma das embalagens",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "escassez de horas de sono.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "estímulo a um descanso de qualidade.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "gasto com bebidas que combatem a insônia.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "consumo de bebidas que causam dependência.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "necessidade de um produto que provoque o sono.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "inep",
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": ""
-    },
     {
       "id": "enem-2025-q006",
       "ano": 2025,
@@ -350,60 +107,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A crônica parte de experiências cotidianas e as transforma em reflexão pessoal. No texto, situações como o uso da letra manuscrita, a produção de bilhetes, lembretes e anotações-domésticasulay根源正好彩票网?..."
-    },
-    {
-      "id": "enem-2025-q008",
-      "ano": 2025,
-      "indice": 8,
-      "area": "linguagens",
-      "idioma": null,
-      "contexto": "De próprio punho A escrita e suas tecnologias sofrem interessantes que vai do simples bilhete aos Estranhei muito na primeira vez que escutei 1 que eu ia bater em alguém. Não era bem o caso. 2 burocráticas, e eu devia escrever algo bem breve, 3 o que importava era a autenticidade da minha 4 fluente e firme. Depois dos teclados de computador, 5 hoje, tem uma espécie de alternância: dia sim, 6 mais rotunda e mais cheia de arestas. 7 É claro que já escrevi muito mais de próprio 8 manuscrevi (prefiro a mão ao punho, embora ele 9 não é um feito individual. Em larga medida, é 10 eu, isto é, escreve bem menos usando as mãos, 11 tecnologia (lápis, caneta etc.) para escrever 12 sangue e o que mais. É importante lembrar que 13 neste país, neste planeta, mas muita gente sabe 14 ou menos à disposição para isso. Sou dessas 15 possibilidades, e uma delas nunca deixou de 16 são elas que batucam meu teclado de computador 17 três telas sensíveis. Mas não expressam mais a 18 New Roman, Arial, Calibri e mais uma centena 19 e o mundo. 20 A despeito desse rol de chances e ferramentas 21 deixou de pintar aqui e ali, muitas vezes como 22 hoje ele é soberano. No Enem também. Curioso, 23 e ocasiões ainda uso minha letra. Olhando ao 24 em espaços muito delimitados e específicos: 25 cozinha, em especial na porta da geladeira, a 26 coabitantes, sempre muito esquecidos ou relapsos. 27 na minha mesa do escritório, textinhos em 28 comigo mesma, a evitar um comportamento 29 No escritório, costumo ser mais suave 30 lacônica, a ponto de nem eu me entender, se 31 minha letra, menos e mais redonda, a lápis e a 32 precariamente, e todos com destino à lixeira, 33 como lembretes de tarefas e coisas que devem 34 outras, num fluxo infinito, às vezes ansiogênico, 35 ainda as adultas) precisa conviver. 36 As formas de escrever mudam, as necessidades 37 complexo, em que nada dispensa nada, a depender 38 ou de suas funções, claro. A escrita e suas 39 mudando de status, numa ciranda interessante 40 certa diversidade que encontra suas oportunidades 41 muito pensar sempre como se tudo fosse excludente. 42 post its por bilhetes, minha gaveta alegre de de 43 e o cheque do cartório, em que quase tudo já é 44 frase filosoficamente correta. O negócio é mais 45",
-      "arquivos": [],
-      "enunciado": "Nesse texto, o que caracteriza a escrita “de próprio punho” é a letra manuscrita,",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "utilização de tecnologias diversificadas.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "desenvolvimento de novos recursos de escrita.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "possibilidade de interações mediadas por telas.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "diversidade de fontes tipográficas que estão disponíveis.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "E",
-          "texto": "delimitação dos espaços onde a produção textual ocorre.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "D",
-      "origem": "inep",
-      "revisar": true,
-      "motivos": [
-        "texto de apoio compartilhado pelas questões 06-10"
-      ],
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A escrita de próprio punho é feita à mão, mas o texto também destaca a mudançalogos meios de escrita, especialmente o computador. Nele, as letras podem aparecer em diferentes fontes tipográficas, como New Roman, Arial e Calibri, além de muitas outras. Essa variety mostra que a escrita digital não possui uma única forma visual: cada fonte apresenta características próprias de letras, tamanho e desenho. Por isso, a alternativa correta é a que identifica a diversidade de fontes tipográficas disponíveis. As demais tratam de aspectos mais gerais, como tecnologias, recursos, telas e espaços de uso, semBasically적으로 caracterizar essa variety visual."
+      "explicacao": "A crônica parte de experiências cotidianas e as transforma em reflexão pessoal. No texto, situações como o uso da letra manuscrita, a produção de bilhetes, lembretes e anotações-domésticas"
     },
     {
       "id": "enem-2025-q009",
@@ -900,7 +604,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A alternativa A é correta porque o texto mostra um contraste entre a imagem传播ada pela mídia e a realidade dos atletas. A comunicaçãoASEDestaca o espetáculo, as mensagens de motivação, as conquistas e o sucesso financeiro, mas deixa em segundo plano o esforço extremo, os limites do corpo e a presença de uma pessoa real por trás dasubar Representations esportivas. Assim, as dificuldades do futebol de alto rendimento são pouco evidenciadas, como afirma a ex-atleta ao alerting sobre a visão romântica transmitida pela mídia. O treinamento intenso é apresentado como uma dificuldade que precisa ser analisada, e não como algo desestimulante; também não há elementos sobre ações de incentivo financeiro ou rotulagem de atletas iniciantes."
+      "explicacao": "A alternativa A é correta porque o texto mostra um contraste entre a imagem transmitida pela mídia e a realidade dos atletas. A comunicação destaca o espetáculo, as mensagens de motivação, as conquistas e o sucesso financeiro, mas deixa em segundo plano o esforço extremo, os limites do corpo e a presença de uma pessoa real por trás das representações esportivas. Assim, as dificuldades do futebol de alto rendimento são pouco evidenciadas, como afirma a ex-atleta ao alertar sobre a visão romântica transmitida pela mídia. O treinamento intenso é apresentado como uma dificuldade que precisa ser analisada, e não como algo desestimulante; também não há elementos sobre ações de incentivo financeiro ou rotulagem de atletas iniciantes."
     },
     {
       "id": "enem-2025-q019",
@@ -1047,7 +751,7 @@
       "competencia": "C4 - Adequação à norma culta",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A reiteração dos medos revela incertezasmainly ligadas à condição social do narrador. Ele teme entrar na faculdade e não conseguir emprego, nem mesmo em funções precárias, além deimaginar que, mesmo com diploma, continuaráazzaudado e será visto com desconfiança pela polícia. Assim, os天花板 LOCAIS颅加盟?"
+      "explicacao": "A reiteração dos medos revela incertezas principalmente ligadas à condição social do narrador. Ele teme entrar na faculdade e não conseguir emprego, nem mesmo em funções precárias, além de imaginar que, mesmo com diploma, continuará e será visto com desconfiança pela polícia. Assim, os?"
     },
     {
       "id": "enem-2025-q022",
@@ -1096,7 +800,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A ideia central é que os artistas não se limitam a reproduzir objetos prontos: eles percebem formas em troncos e galhos normalmente vista como matéria-prima sem valor artístico. A partir da observação e do entalhe, transformam esses pedaços de madeira em bancos, bonecos, pássaros e outras criações. Assim, a madeira passa a ter uma nova função, sendo ressignificada como matéria de uma obra artística. Essa relação está expressa na fala do artista, que形容 o momento em que consegue enxergar uma forma e transformá-la em arte. As demais alternativas não correspondem ao que os textos destacam."
+      "explicacao": "A ideia central é que os artistas não se limitam a reproduzir objetos prontos: eles percebem formas em troncos e galhos normalmente vista como matéria-prima sem valor artístico. A partir da observação e do entalhe, transformam esses pedaços de madeira em bancos, bonecos, pássaros e outras criações. Assim, a madeira passa a ter uma nova função, sendo ressignificada como matéria de uma obra artística. Essa relação está expressa na fala do artista, que descreve o momento em que consegue enxergar uma forma e transformá-la em arte. As demais alternativas não correspondem ao que os textos destacam."
     },
     {
       "id": "enem-2025-q023",
@@ -1290,7 +994,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A alternativa B é sustentada pela apresentação do mesmo prato com diferentes formas de nomeação conforme a região. Essa relação entre o nome do alimento e sua origem geográfica caracteriza variedade linguística entre regiões do Brasil. O enunciado faz referência a “esse texto”, mas o texto propriamente dito não foi enviado; ele é necessário para conferir os exemplosregionalizados apresentados. Assim, a conclusão não depende de酒楼, de modos de preparo ou de preferências de sabor, mas da maneira como o texto evidencia diferenças lexicais ligadas ao território."
+      "explicacao": "A alternativa B é sustentada pela apresentação do mesmo prato com diferentes formas de nomeação conforme a região. Essa relação entre o nome do alimento e sua origem geográfica caracteriza variedade linguística entre regiões do Brasil. O enunciado faz referência a “esse texto”, mas o texto propriamente dito não foi enviado; ele é necessário para conferir os exemplos regionalizados apresentados. Assim, a conclusão não depende de restaurantes, de modos de preparo ou de preferências de sabor, mas da maneira como o texto evidencia diferenças lexicais ligadas ao território."
     },
     {
       "id": "enem-2025-q027",
@@ -1339,56 +1043,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "Na briga, o outro é desumanizado e pode até ser morto. Na luta, ao contrário, o adversário é reconhecido como alguém com intenções, habilidades e metas próprias. O texto destaca que a luta também é um combate consigo mesmo, contra as próprias limitações e, principalmente, contra o orgulho. Por isso, a diferença apontada é a superação pessoal:develope-se a partir do contato com a agressividade, a frustração e a fraqueza,issy转化为 vencer essas limitações internas. As demais alternativas não correspondem à distinção central do texto."
-    },
-    {
-      "id": "enem-2025-q028",
-      "ano": 2025,
-      "indice": 28,
-      "area": "linguagens",
-      "idioma": null,
-      "contexto": "Pequenino morto\nTange o sino, tange, numa voz de choro,\nNuma voz de choro... tão desconsolado...\nNo caixão dourado, como em berço de ouro,\nPequenino, levam-te dormindo... Acorda!\nOlha que te levam para o mesmo lado\nDe onde o sino tange numa voz de choro...\nPequenino, acorda!\nQue caminho triste, e que viagem! Alas\nDe ciprestes negros a gemer no vento;\nTanta boca aberta de famintas valas\nA pedir que as fartem, a esperar que as encham...\nPequenino, acorda! Recupera o alento,\nFoge da cobiça dessas fundas valas\nA pedir que as encham.\nCARVALHO, V. canções. Rio de Janeiro: Poemas e\nSaraiva, 1962 (fragmento).",
-      "arquivos": [],
-      "enunciado": "Nesse fragmento do poema, o sentimento de luto adquire contornos expressivos e é intensificado pela",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "descrição da paisagem de um cemitério.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "recusa do eu lírico à irreversibilidade da morte.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "C",
-          "texto": "sonoridade dos versos produzida pela pontuação.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "religiosidade evocada como forma de fortalecimento.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "impressão de sonho na construção da estrutura poética.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "B",
-      "origem": "inep",
-      "tema": "Interpretação de texto",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "O eu lírico não aceita passivamente a morte do “pequenino” e lança um apelo desesperado à vida: “Pequenino, acorda!”, “Recupera o alento” e “Foge”. A repetição desses imperativos contrasta aChild编結? Need fix typo. Let's compose clean."
+      "explicacao": "Na briga, o outro é desumanizado e pode até ser morto. Na luta, ao contrário, o adversário é reconhecido como alguém com intenções, habilidades e metas próprias. O texto destaca que a luta também é um combate consigo mesmo, contra as próprias limitações e, principalmente, contra o orgulho. Por isso, a diferença apontada é a superação pessoal: desenvolve-se a partir do contato com a agressividade, a frustração e a fraqueza, transforma-se em vencer essas limitações internas. As demais alternativas não correspondem à distinção central do texto."
     },
     {
       "id": "enem-2025-q029",
@@ -2220,7 +1875,7 @@
       "competencia": "C4 - Adequação à norma culta",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "O texto verbal出现在 a ilustração funciona como uma identificação ou tradução do conceito representado pela imagem. Na série, cada desenho transmite um significado que, segundo o contexto, não pode ser definido por uma única palavra em outros idiomas. Assim, a imagem representa a ideia e o texto verbal explica o significado da expressão ilustrada, garantindo a comprehension do conjunto. Não se trata apenas de descrever tecnicamente a arte,四是 localizar sentidos,难 ou apontar equivalentes em outras línguas."
+      "explicacao": "O texto verbal que acompanha a ilustração funciona como uma identificação ou tradução do conceito representado pela imagem. Na série, cada desenho transmite um significado que, segundo o contexto, não pode ser definido por uma única palavra em outros idiomas. Assim, a imagem representa a ideia e o texto verbal explica o significado da expressão ilustrada, garantindo a compreensão do conjunto. Não se trata apenas de descrever tecnicamente a arte, localizar sentidos, ou apontar equivalentes em outras línguas."
     },
     {
       "id": "enem-2025-q046",
@@ -2318,7 +1973,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A ausência da imagem impede observar diretamente a dispersão do CO, mas o contexto é suficiente para identificar o processo. A Queimada libera CO para a atmosfera, e a circulação de massas de ar transporta esse poluente por longas distâncias, fazendo-o se dispersar entre a África e o Brasil. Por isso, a alternativa correta é a que indica essa circulação. As demais opções，涉及 temperaturas, insolação, chuvas ou frentes frias, fatores climáticos que não explicam diretamente o transporte do CO liberado pelas queimadas."
+      "explicacao": "A ausência da imagem impede observar diretamente a dispersão do CO, mas o contexto é suficiente para identificar o processo. A Queimada libera CO para a atmosfera, e a circulação de massas de ar transporta esse poluente por longas distâncias, fazendo-o se dispersar entre a África e o Brasil. Por isso, a alternativa correta é a que indica essa circulação. As demais opções, temperaturas, insolação, chuvas ou frentes frias, fatores climáticos que não explicam diretamente o transporte do CO liberado pelas queimadas."
     },
     {
       "id": "enem-2025-q048",
@@ -2367,7 +2022,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A passagem mostra que a credulidade dos ouvintes é alimentada pela eloquência do narrador, que subordina a razão à imaginação e aos afetos. Assim, a discussão não se apoia em demonstrações lógicas, nem em sistemas de crenças, mas no funcionamento da persuasão: o discurso encanta e conduz quem escuta. Esse quadro é análogo à crítica platônica aos sofistas, pois também revela o poder da retórica quando ela se distancia da busca racional pela verdade. As outras alternativas remetem a Kant, aos Universais medievais, à lógica aristotélica ou ao método cartesiano,切换 none disso é sustentado pelo trecho. Embora a apresentação da questão esteja truncada, o contexto disponível permite identificar a alternativa E."
+      "explicacao": "A passagem mostra que a credulidade dos ouvintes é alimentada pela eloquência do narrador, que subordina a razão à imaginação e aos afetos. Assim, a discussão não se apoia em demonstrações lógicas, nem em sistemas de crenças, mas no funcionamento da persuasão: o discurso encanta e conduz quem escuta. Esse quadro é análogo à crítica platônica aos sofistas, pois também revela o poder da retórica quando ela se distancia da busca racional pela verdade. As outras alternativas remetem a Kant, aos Universais medievais, à lógica aristotélica ou ao método cartesiano, nenhum disso é sustentado pelo trecho. Embora a apresentação da questão esteja truncada, o contexto disponível permite identificar a alternativa E."
     },
     {
       "id": "enem-2025-q049",
@@ -2514,7 +2169,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A letra revela como a pressa e a rotina acelerada podem tornar os vínculos afetivos efêmeros. As personagensARA se procuram, mas falta tempo para conversar, beber e ficar juntas: “Quando é que você telefona?” e “Precisamos nos ver por aí”. Os planos dereencontro ficam incertos, como “talvez nos vejamos, quem sabe?”, e as promessas de não se esquecer são feitas em meio ao corre-r地上 das commitments. Assim, apesar da vontade de manter a relação, o ritmo cotidiano acaba enfraquecendo o contato e evidencia a fragilidade dos laços afetivos."
+      "explicacao": "A letra revela como a pressa e a rotina acelerada podem tornar os vínculos afetivos efêmeros. As personagens se procuram, mas falta tempo para conversar, beber e ficar juntas: “Quando é que você telefona?” e “Precisamos nos ver por aí”. Os planos de reencontro ficam incertos, como “talvez nos vejamos, quem sabe?”, e as promessas de não se esquecer são feitas em meio ao corre-corre dos compromissos. Assim, apesar da vontade de manter a relação, o ritmo cotidiano acaba enfraquecendo o contato e evidencia a fragilidade dos laços afetivos."
     },
     {
       "id": "enem-2025-q052",
@@ -2612,7 +2267,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A ideia central é que a dança foi inicialmente regulada por concepções religiosas rígidas e, posteriormente, incorporada à prática dos fiéis. No Texto I, a condenação da dança pelo poder cristão, a recusa do batismo a atores e a excomunhão demonstram a influência do dogmatismo religioso sobre as atividades corporais. No Texto II, a dança litúrgica assume papel de adoração e, ao mesmo tempo, é difundida pelas redes sociais, festivais, cursos ePaleiras, o que evidencia a adesão de um público fiel e a formação de um mercado específico. Assim, os dois aspectos 分别 correspondem ao dogmatismo religioso e à adesão dos fiéis."
+      "explicacao": "A ideia central é que a dança foi inicialmente regulada por concepções religiosas rígidas e, posteriormente, incorporada à prática dos fiéis. No Texto I, a condenação da dança pelo poder cristão, a recusa do batismo a atores e a excomunhão demonstram a influência do dogmatismo religioso sobre as atividades corporais. No Texto II, a dança litúrgica assume papel de adoração e, ao mesmo tempo, é difundida pelas redes sociais, festivais, cursos e palestras, o que evidencia a adesão de um público fiel e a formação de um mercado específico. Assim, os dois aspectos correspondem ao dogmatismo religioso e à adesão dos fiéis."
     },
     {
       "id": "enem-2025-q054",
@@ -2856,7 +2511,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A queda da participação eleitoral explica-se pela exigência de alfabetização para votar. A Reforma de 1881 passou a exigir que o eleitor demonstrasse capacidade de ler e escrever. Como a maioria da população brasileira da época não tinha acesso à educação formal, muitos homens que antes podiam votar foram excluídos do processo eleitoral. Isso explica a queda de mais de 1 milhão de votantes em 1872 para pouco mais de 100 mil em 1886. Restrições de gênero e exclusão de imigrantes não explicam especificamente essa Reduction发生在 após a Reforma, enquanto a obrigatoriedade do sufrágio tenderia a ampliar a participação, não diminuí-la."
+      "explicacao": "A queda da participação eleitoral explica-se pela exigência de alfabetização para votar. A Reforma de 1881 passou a exigir que o eleitor demonstrasse capacidade de ler e escrever. Como a maioria da população brasileira da época não tinha acesso à educação formal, muitos homens que antes podiam votar foram excluídos do processo eleitoral. Isso explica a queda de mais de 1 milhão de votantes em 1872 para pouco mais de 100 mil em 1886. Restrições de gênero e exclusão de imigrantes não explicam especificamente essa Redução após a Reforma, enquanto a obrigatoriedade do sufrágio tenderia a ampliar a participação, não diminuí-la."
     },
     {
       "id": "enem-2025-q059",
@@ -2954,7 +2609,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A ideia central é que, para Adam Smith, a busca por lucro não elimina a responsabilidade moral dos Agents de negócios. O caso do açougueiro e do padeiro mostra、利益 próprios podem coexistir com a empatia e com a percepção do que é correto fazer. Assim, o_dictionaryista busca seu interesse financeiro, mas também reconhece um dever ético perante os outros. A alternativa correta é a percepção de responsabilidade ética. As opções sobre poder político, monopólio, satisfação subjetiva ou reconhecimento público não são sustentadas pelo contexto. Embora a frase final do enunciado esteja truncada, o trecho permite identificar a ideia defendida."
+      "explicacao": "A ideia central é que, para Adam Smith, a busca por lucro não elimina a responsabilidade moral dos Agentes de negócios. O caso do açougueiro e do padeiro mostra que interesses próprios podem coexistir com a empatia e com a percepção do que é correto fazer. Assim, o agente busca seu interesse financeiro, mas também reconhece um dever ético perante os outros. A alternativa correta é a percepção de responsabilidade ética. As opções sobre poder político, monopólio, satisfação subjetiva ou reconhecimento público não são sustentadas pelo contexto. Embora a frase final do enunciado esteja truncada, o trecho permite identificar a ideia defendida."
     },
     {
       "id": "enem-2025-q061",
@@ -3003,7 +2658,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "Na teoria clássica de Aristóteles, as formas justas de governo são definidas por quem governa e qual é o objetivo da governança. Quando um único pessoa governa buscando o bem-estar comum, temos a monarquia; quando uma minoria governa pelo bem comum, temos a aristocracia; quando o poder pertence ao conjunto dos cidadãos e busca o interesse comum, temos a democracia. As formas se tornam injustas quando o governante ou o grupo dominante prioriza apenas o próprio benefício: daí resultam a tirania, a oligarquia e a demagogia. Portanto, as três formas机房 representadas pela alternativa E correspondem diretamente à classificação de Aristóteles no excerto."
+      "explicacao": "Na teoria clássica de Aristóteles, as formas justas de governo são definidas por quem governa e qual é o objetivo da governança. Quando um único pessoa governa buscando o bem-estar comum, temos a monarquia; quando uma minoria governa pelo bem comum, temos a aristocracia; quando o poder pertence ao conjunto dos cidadãos e busca o interesse comum, temos a democracia. As formas se tornam injustas quando o governante ou o grupo dominante prioriza apenas o próprio benefício: daí resultam a tirania, a oligarquia e a demagogia. Portanto, as três formas representadas pela alternativa E correspondem diretamente à classificação de Aristóteles no excerto."
     },
     {
       "id": "enem-2025-q062",
@@ -3052,56 +2707,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A alternativa correta é B) Apontar alternativas possíveis. A utopia exerce uma função imaginativa e orientadora: representa outra organização do mundo, diferente da atual, mostrando que outros caminhos são possíveis. Ela não oferece uma solução definitiva, não apenas legitima o passado e também não se limita a conservar paradigmas existentes. No recorte apresentado, a ideia de “reformar o mundo” reforça essa finalidade transformadora. Entretanto, o enunciado e o contexto estão truncados, o que impede reconstituir todas as condições理论icamente exigidas pelo autor para o nascimento da utopia."
-    },
-    {
-      "id": "enem-2025-q063",
-      "ano": 2025,
-      "indice": 63,
-      "area": "ciencias-humanas",
-      "idioma": null,
-      "contexto": "Produção e exportações brasileiras no ranking\nFonte: USDA, 2020. Elaboração CNA.\n*Fatia de participação na produção mundial.",
-      "arquivos": [],
-      "enunciado": "Qual condição favoreceu o cenário produtivo exposto na figura?",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "Redução do poder de compra da população brasileira.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "Ampliação da entrada do capital agroindustrial no campo.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "C",
-          "texto": "Diminuição do uso de trabalho especializado na agropecuária.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Valorização da moeda nacional em relação ao dólar americano.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "Inclusão de pequenas propriedades em cultivos de subsistência.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "B",
-      "origem": "inep",
-      "tema": "Democracia e populismo",
-      "competencia": "C3 - Interpretar documentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A figura não foi enviada e é necessária para observar com precisão os produtos, o ranking e a evolução da participação brasileira na produção mundial. Pelo contexto apresentado, o cenário é de expansão da produção e das exportações do agronegócio. A ampliação da entrada do capital agroindustrial no campo favoreceu esse crescimento, pois不了了rile.Esse aporte de recursos possibilitou mecanização, uso de insumos e tecnologias, acesso à infraestrutura e integração dasAcid. produção com os mercados internos e externos. Assim, a maior capitalização da atividade rural explica o aumento da escala e da participação do Brasil na produção mundial."
+      "explicacao": "A alternativa correta é B) Apontar alternativas possíveis. A utopia exerce uma função imaginativa e orientadora: representa outra organização do mundo, diferente da atual, mostrando que outros caminhos são possíveis. Ela não oferece uma solução definitiva, não apenas legitima o passado e também não se limita a conservar paradigmas existentes. No recorte apresentado, a ideia de “reformar o mundo” reforça essa finalidade transformadora. Entretanto, o enunciado e o contexto estão truncados, o que impede reconstituir todas as condições teoricamente exigidas pelo autor para o nascimento da utopia."
     },
     {
       "id": "enem-2025-q064",
@@ -3346,7 +2952,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A figura é necessária para observar diretamente os elementos presentes na fotografia de Salvador, mas ela não foi fornecida. A característica socioespacial identificada pela resposta oficial é a verticalização urbana, processo caracterizado pelo aumento da altura das construções e pela ocupação de níveis superiores do espaço urbano, em vez de uma expansão predominantemente horizontal. Em uma análise fotográfica, essa característica pode ser reconhecida pela presença de edifícios mais altos e por uma paisagem urbana垂直izada. Sem a imagem, não é possível detalhar quais construções aparecem, apenas explicar o conceito que fundamenta a resposta."
+      "explicacao": "A figura é necessária para observar diretamente os elementos presentes na fotografia de Salvador, mas ela não foi fornecida. A característica socioespacial identificada pela resposta oficial é a verticalização urbana, processo caracterizado pelo aumento da altura das construções e pela ocupação de níveis superiores do espaço urbano, em vez de uma expansão predominantemente horizontal. Em uma análise fotográfica, essa característica pode ser reconhecida pela presença de edifícios mais altos e por uma paisagem urbana verticalizada. Sem a imagem, não é possível detalhar quais construções aparecem, apenas explicar o conceito que fundamenta a resposta."
     },
     {
       "id": "enem-2025-q069",
@@ -3493,7 +3099,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A resposta é A) violação da memória coletiva. O trecho do muro de Berlim e seus grafites não têm valor apenas como bens materiais; eles também preservam memória e أقرam a história da divisão da cidade e da resistência civil. A demolição destruiria um patrimônio cultural carregado de significados compartilhados pelos moradores, afetando a lembrança coletiva sobre aquele período. As demais alternativas não se relacionam ao fato:O muro não mudou as fronteiras políticas, a questão não trata de arquitetura neoclássica ou influências orientais, tampouco a demolição tem por objetivo reorganizar a mobilidade urbana."
+      "explicacao": "A resposta é A) violação da memória coletiva. O trecho do muro de Berlim e seus grafites não têm valor apenas como bens materiais; eles também preservam memória e a história da divisão da cidade e da resistência civil. A demolição destruiria um patrimônio cultural carregado de significados compartilhados pelos moradores, afetando a lembrança coletiva sobre aquele período. As demais alternativas não se relacionam ao fato:O muro não mudou as fronteiras políticas, a questão não trata de arquitetura neoclássica ou influências orientais, tampouco a demolição tem por objetivo reorganizar a mobilidade urbana."
     },
     {
       "id": "enem-2025-q072",
@@ -3640,7 +3246,7 @@
       "competencia": "C3 - Interpretar documentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A alternativa B resume os dois mecanismos destacados no trecho. A precariedade da coesão representativa corresponde à fragmentação dos cultos em pequenos grupos e à ausência de uma organização ampla quecould unite suas ações. A recusa da alteridade aparece na transferência do preconceito racial do negro para a cultura negra: em vez de reconhecer a diferença, a sociedade a deslegitima, impede a expressão dos orixás e desloca para as religiões afro-brasileiras o peso do racialmente negativo. Assim, a falta de representação共同体 e a rejeição da diferença explicam a fragilidade desses cultos diante da competição com outras religiões. As demais alternativas citam questões partidárias, constitucionais, laicas ou ecumênicas que não aparecem no texto."
+      "explicacao": "A alternativa B resume os dois mecanismos destacados no trecho. A precariedade da coesão representativa corresponde à fragmentação dos cultos em pequenos grupos e à ausência de uma organização ampla que poderia unir suas ações. A recusa da alteridade aparece na transferência do preconceito racial do negro para a cultura negra: em vez de reconhecer a diferença, a sociedade a deslegitima, impede a expressão dos orixás e desloca para as religiões afro-brasileiras o peso do racialmente negativo. Assim, a falta de representação e a rejeição da diferença explicam a fragilidade desses cultos diante da competição com outras religiões. As demais alternativas citam questões partidárias, constitucionais, laicas ou ecumênicas que não aparecem no texto."
     },
     {
       "id": "enem-2025-q075",
@@ -3787,7 +3393,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "虽然“charge”未随题目提供，但题干文字已经足以 identificar a alternativa A. O carro elétrico é apresentado como uma tecnologia alternativa ao uso do petróleo, porém sua produção pode depender da extração de metais raros, como gálio, tântalo, cobalto e tungstênio. Esses recursos são finitos e não renováveis, de modo que a eletromobilidade não elimina completamente a dependência de fontes não renováveis. A possível contradição está, portanto, em usar uma tecnologia apresentada como ecológica enquanto se mantém ou amplia a exploração de recursos naturais escassos."
+      "explicacao": "Embora a “charge” não tenha sido fornecida, o enunciado já basta para identificar a alternativa A. O carro elétrico é apresentado como uma tecnologia alternativa ao uso do petróleo, porém sua produção pode depender da extração de metais raros, como gálio, tântalo, cobalto e tungstênio. Esses recursos são finitos e não renováveis, de modo que a eletromobilidade não elimina completamente a dependência de fontes não renováveis. A possível contradição está, portanto, em usar uma tecnologia apresentada como ecológica enquanto se mantém ou amplia a exploração de recursos naturais escassos."
     },
     {
       "id": "enem-2025-q078",
@@ -3934,7 +3540,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A alternativa correta é C) canalização dos cursos hídricos. O texto apresenta a cidade sustentável como um espaço em que a sociedade transformadora se relaciona com a natureza de forma sinérgica,aleeando prudência ecológica, eficiência energética e equidade socioespacial. A canalização exige modificar e controlar os cursos d’água, tratando a dinâmica natural como um objeto a ser contido, o que contraria essa关系 proposta no texto. Já a coleta seletiva, a reutilização de águas pluviais, a arborização e a educação ambiental são medidas compatíveis com a preservação dos recursos naturais e com a participação consciente da comunidade."
+      "explicacao": "A alternativa correta é C) canalização dos cursos hídricos. O texto apresenta a cidade sustentável como um espaço em que a sociedade transformadora se relaciona com a natureza de forma sinérgica, aliando prudência ecológica, eficiência energética e equidade socioespacial. A canalização exige modificar e controlar os cursos d’água, tratando a dinâmica natural como um objeto a ser contido, o que contraria essa proposta no texto. Já a coleta seletiva, a reutilização de águas pluviais, a arborização e a educação ambiental são medidas compatíveis com a preservação dos recursos naturais e com a participação consciente da comunidade."
     },
     {
       "id": "enem-2025-q081",
@@ -4130,7 +3736,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "O uso da tecnologia mencionada evidencia a importância de pesquisas acadêmicas para a prevenção e o combate a incêndios. O modelo computacional foi desenvolvido pela Universidade Federal de Minas Gerais em parceria com o Instituto Nacional de Pesquisas Espaciais, que utiliza dados de satélite para identificar focos de calor. Assim, a produção científica e o processamento de dados em instituições de pesquisa são aplicados a uma demanda ambiental concreta,应用到."
+      "explicacao": "O uso da tecnologia mencionada evidencia a importância de pesquisas acadêmicas para a prevenção e o combate a incêndios. O modelo computacional foi desenvolvido pela Universidade Federal de Minas Gerais em parceria com o Instituto Nacional de Pesquisas Espaciais, que utiliza dados de satélite para identificar focos de calor. Assim, a produção científica e o processamento de dados em instituições de pesquisa são aplicados a uma demanda ambiental concreta."
     },
     {
       "id": "enem-2025-q085",
@@ -4179,7 +3785,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "Os dois textos tratam do cinema como uma forma de entretenimento, mas apresentam avaliações opostas. No Texto I, o cinema aparece como um encanto, associado ao prazer de acompanhar vidas, observar dresses e conversar com outras pessoas. No Texto II, a seleção ruim dos filmes exibidos durante o dia provoca dissabores entre os responsáveis e é向你 criticada. Assim, os textos discutem a mesma modalidade de diversão, com um argumento favorável e outro contrário, conforme a alternativa B. As demais alternativas não correspondem ao conteúdo: não hádidática escolar, discussão teológica nem justificativas idênticas."
+      "explicacao": "Os dois textos tratam do cinema como uma forma de entretenimento, mas apresentam avaliações opostas. No Texto I, o cinema aparece como um encanto, associado ao prazer de acompanhar vidas, observar vestidos e conversar com outras pessoas. No Texto II, a seleção ruim dos filmes exibidos durante o dia provoca dissabores entre os responsáveis e é criticada. Assim, os textos discutem a mesma modalidade de diversão, com um argumento favorável e outro contrário, conforme a alternativa B. As demais alternativas não correspondem ao conteúdo: não há didática escolar, discussão teológica nem justificativas idênticas."
     },
     {
       "id": "enem-2025-q086",
@@ -4423,7 +4029,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A expedição possuía valor científico, mas também integrava um projeto de expansão da presença russa na América do Sul. A coleta sistemática de material biológico e etnográfico e o envio desses elementos a instituições russas permitiria conhecer, documentar e incorporar野生动物 e Aspects culturais dos territórios percorridos ao patrimônio russo. Assim, além da produção de conhecimentos, a iniciativa reforçava a projeção nacional da Rússia e exercia domínio sobre territories e bens culturais, característica de um projeto imperialista e colonizador. Por isso, a alternativa A é a que melhor complementa o enunciado."
+      "explicacao": "A expedição possuía valor científico, mas também integrava um projeto de expansão da presença russa na América do Sul. A coleta sistemática de material biológico e etnográfico e o envio desses elementos a instituições russas permitiria conhecer, documentar e incorporar fauna selvagem e aspectos culturais dos territórios percorridos ao patrimônio russo. Assim, além da produção de conhecimentos, a iniciativa reforçava a projeção nacional da Rússia e exercia domínio sobre territórios e bens culturais, característica de um projeto imperialista e colonizador. Por isso, a alternativa A é a que melhor complementa o enunciado."
     },
     {
       "id": "enem-2025-q091",
@@ -4473,55 +4079,6 @@
       "dificuldade": "media",
       "subassunto": "",
       "explicacao": "A irradiação é a transferência de calor por meio de ondas eletromagnéticas, como as emitidas por uma lâmpada. Esse processo ocorre inclusive no espaço vazio e não exige a presença de matéria, muito menos de fluidos, entre a fonte de calor e a mariposa. Assim, o aquecimento descrito ocorre por irradiação. A convecção dependeria de um fluido em movimento, enquanto reflexão, refração e dispersão não representam, neste contexto, a transferência do calor da lâmpada para a mariposa."
-    },
-    {
-      "id": "enem-2025-q092",
-      "ano": 2025,
-      "indice": 92,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "Os sapinhos-ponta-de-flecha constituem um grupo de espécies encontradas na América Central e do Sul. Seus venenos são obtidos por meio do consumo de algumas formigas e cupins que se alimentam de plantas que contêm esses venenos. Esses anfíbios são usados para envenenar as flechas das zarabatanas dos caçadores nativos. Quando capturados e criados em condições artificiais, ou quando nascidos em cativeiro, não são tóxicos.\nBADIO, B. et al. Epibatidine: Discovery and Definition as a Potent\nAnalgesic and Nicotinic Agonist. Res., Med. Chem.\nn. 4, 1994 (adaptado).",
-      "arquivos": [],
-      "enunciado": "A perda da capacidade de se obter a toxina nos nascidos em cativeiro é causada pela",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "diferença de umidade entre os ambientes.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "ausência de alimentação natural.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "C",
-          "texto": "adaptação ao novo ambiente.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "mudança de comportamento.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "variabilidade genética.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "B",
-      "origem": "inep",
-      "tema": "Ecologia",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A toxina dos sapinhos-ponta-de-flecha é obtida na natureza pela consumo de formigas e cupins que se alimentaram de plantas venenosas. Em cativeiro, ao não receberem essa alimentação natural, os anfíbios não acumulam a toxina em seu corpo e deixam de serem venenosos. Portanto, a causa é a ausência da alimentação natural que fornece o veneno, e não uma adaptação ao novo ambiente, mudança de comportamento ou variabilidade genética."
     },
     {
       "id": "enem-2025-q093",
@@ -4668,7 +4225,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A Caatinga é o bioma brasileiro que mais se assemelha ao deserto citado, pois apresenta baixa pluviosidade, secas prolongadas e escassez sazonal de água e alimento. Nesses ambientes, a seleção natural pode favorecer lagartos com adaptações semelhantes às do monstro de gila, como formas de regular o metabolismo e o açúcar no sangue. A aplicação do hormônio em pessoas diabéticas é uma informação medicinal, mas a escolha do local baseia-se na semelhança entre as condições ambientais. Cerrado, Pampas, Restinga e Pantanal não apresentam, de modo geral, o mesmo grau de aridez e ограниação de recursos da Caatinga."
+      "explicacao": "A Caatinga é o bioma brasileiro que mais se assemelha ao deserto citado, pois apresenta baixa pluviosidade, secas prolongadas e escassez sazonal de água e alimento. Nesses ambientes, a seleção natural pode favorecer lagartos com adaptações semelhantes às do monstro de gila, como formas de regular o metabolismo e o açúcar no sangue. A aplicação do hormônio em pessoas diabéticas é uma informação medicinal, mas a escolha do local baseia-se na semelhança entre as condições ambientais. Cerrado, Pampas, Restinga e Pantanal não apresentam, de modo geral, o mesmo grau de aridez e limitação de recursos da Caatinga."
     },
     {
       "id": "enem-2025-q096",
@@ -4766,7 +4323,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "Em ambientes pouco iluminados, a pupila se dilata para permitir a entrada de mais luz. Quando o flash é disparado, essa maior abertura deixa entrar mais luz até a retina. Parte dela é refletida pelo fundo do olho, região rica em vasos sanguíneos, e retorna à câmera com coloração vermelha, produzindo o efeito conhecido como olho vermelho. A luz refletida também ilumina a retina por um instante. Portanto, a causa direta do efeito é a maior quantidade de luz que alcança a retina quando a pupila está dilatada,正如 a alternativa A indica."
+      "explicacao": "Em ambientes pouco iluminados, a pupila se dilata para permitir a entrada de mais luz. Quando o flash é disparado, essa maior abertura deixa entrar mais luz até a retina. Parte dela é refletida pelo fundo do olho, região rica em vasos sanguíneos, e retorna à câmera com coloração vermelha, produzindo o efeito conhecido como olho vermelho. A luz refletida também ilumina a retina por um instante. Portanto, a causa direta do efeito é a maior quantidade de luz que alcança a retina quando a pupila está dilatada, como a alternativa A indica."
     },
     {
       "id": "enem-2025-q098",
@@ -4816,55 +4373,6 @@
       "dificuldade": "media",
       "subassunto": "",
       "explicacao": "A tetrodotoxina é produzida e armazenada nas gônadas e vísceras do baiacu. Ao manusear o peixe sem provocar o rompimento desses órgãos, evita-se que a toxina passe para a carne destinada ao consumo, reduzindo o risco de intoxicação. A cocção não resolve o problema, pois a tetrodotoxina é termoestável, ou seja, resiste ao calor e não é neutralizada pelo cozimento ou pela fritura. Criar os peixes em cativeiro, realizar a pesca com redes e manter condições adequadas de higiene também não impedem a presença da toxina. Portanto, a alternativa correta é E."
-    },
-    {
-      "id": "enem-2025-q099",
-      "ano": 2025,
-      "indice": 99,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "A deficiência da enzima lipase ácida causa uma doença em que o portador apresenta células que não degradam colesterol esterificado nem triglicerídeos, resultando no depósito desses compostos em diversos órgãos, principalmente no fígado.\nANDERSON, R. A. et al. In Situ Localization of the\nGenetic Locus Encoding [...]. Genomics,\nn. 1, jan. 1993 (adaptado).",
-      "arquivos": [],
-      "enunciado": "Essa doença resulta da insuficiência funcional de qual estrutura celular?",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "Lisossomos.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "Ribossomos.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "Mitocôndrias.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Peroxissomos.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "Retículo endoplasmático liso.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "inep",
-      "tema": "Química orgânica",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A resposta é A) Lisossomos. A lipase ácida é uma enzima lisossomal responsável pela degradação de colesterol esterificado e triglicerídeos. Quando ela está funcionalmente deficiente, esses lipídios não são breakados adequadamente dentro da célula e se acumulam em diferentes órgãos, especialmente no fígado, causando a doença descrita. Lisossomos são organelas que contêm enzimas hidrolíticas e realizam a degradação intracelular de moléculas. Já os ribossomos participam da síntese de proteínas, as mitocôndrias da produção de energia e o retículo endoplasmático liso da síntese de lipídios."
     },
     {
       "id": "enem-2025-q100",
@@ -5011,7 +4519,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "O现象 descrito é a ressonância. Ela ocorre quando a frequência da onda sonora coincide com a frequência natural da taça de cristal. Nesse caso, a energia fornecida pela onda se acumula, aumentando a amplitude das vibrações da taça até sua quebra. A característica da voz da Mônica associada ao fenômeno é, portanto, a frequência, e não a intensidade. A intensidade está relacionada à amplitude da onda e à perception do volume do som, enquanto a frequência determina a altura do som. Assim, a alternativa correta é ressonância e frequência."
+      "explicacao": "O fenômeno descrito é a ressonância. Ela ocorre quando a frequência da onda sonora coincide com a frequência natural da taça de cristal. Nesse caso, a energia fornecida pela onda se acumula, aumentando a amplitude das vibrações da taça até sua quebra. A característica da voz da Mônica associada ao fenômeno é, portanto, a frequência, e não a intensidade. A intensidade está relacionada à amplitude da onda e à percepção do volume do som, enquanto a frequência determina a altura do som. Assim, a alternativa correta é ressonância e frequência."
     },
     {
       "id": "enem-2025-q106",
@@ -5451,104 +4959,6 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": ""
-    },
-    {
-      "id": "enem-2025-q116",
-      "ano": 2025,
-      "indice": 116,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "O despejo acidental de óleo nos oceanos tem ocasionado incontáveis prejuízos à vida marinha e à economia de regiões costeiras. Métodos tradicionais de tratamento do despejo geram resíduos de difícil descarte e nem sempre são eficazes. Por isso, pesquisadores desenvolveram um filtro capaz de separar óleo e água. O dispositivo é montado sobre uma malha de aço com uma sequência de camadas. A primeira camada é formada por um polímero de carga positiva, a segunda é composta por nanopartículas de sílica (SiO), a terceira é formada pelo mesmo\n2 polímero e a última é um surfactante, conforme apresentado na figura.\nRepresentação esquemática do dispositivo\nBROWN, P. S.; BHUSHAN, B. Mechanically durable, superoleophobic\ncoatings prepared by layer-by-layer technique for anti-smudge\nand oil-water separation. Reports, Scientific\nv. 5, mar. 2015 (adaptado).",
-      "arquivos": [],
-      "enunciado": "Na utilização desse dispositivo, a retenção do óleo ocorre",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "no surfactante.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "B",
-          "texto": "na camada superior de polímero.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "nas nanopartículas de sílica.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "na camada inferior de polímero.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "na malha de aço.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "A",
-      "origem": "inep",
-      "tema": "Química orgânica",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "Embora a figura não esteja reproduzida, o enunciado informa a sequência das camadas e permite identificar a última como a de surfactante. O óleo é apolar, enquanto o surfactante possui partes polares e apolares. Sua parte apolar tem afinidade com o óleo, permitindo sua retenção, enquanto a parte polar favorece a interação com a água. Assim, durante a filtração, a água atravessa o dispositivo e o óleo fica retido na camada superior de surfactante. Os polímeros e as nanopartículas de sílica rubbed as camadas anteriores do dispositivo, mas não são o local indicado para a retenção do óleo."
-    },
-    {
-      "id": "enem-2025-q117",
-      "ano": 2025,
-      "indice": 117,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "Alguns hormônios sexuais têm ganhado notável atenção nos últimos anos por suas concentrações cada vez maiores no solo e na água em todo o mundo. O motivo da preocupação é porque, em níveis poluentes, eles têm sido associados ao câncer de mama e ao câncer de próstata, além de perturbarem a fisiologia dos peixes, podendo, ainda, afetarem o desenvolvimento reprodutivo de animais domésticos e selvagens. Assim, o descarte inadequado desses hormônios representa uma séria ameaça ao solo, plantas, recursos hídricos e humanos. De baixa polaridade, eles apresentam uma solubilidade pequena e variável em água, dependendo dos grupos presentes em suas estruturas, representando um grande risco para os ambientes aquáticos. As figuras a seguir apresentam as estruturas de alguns desses hormônios.\nMUHAMMAD, A. et al. Environmental Impact of Estrogens\non Human, Animal and Plant Life: a Critical Review.\nInternational, n. 99, 2017 (adaptado). Environment",
-      "arquivos": [],
-      "enunciado": "Do ponto de vista das interações químicas, qual desses hormônios apresenta maior solubilidade em ambientes aquáticos?",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "Estradiol.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "Estriol.",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "C",
-          "texto": "Estrona.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Novestrol.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "Noretindrona.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "B",
-      "origem": "inep",
-      "tema": "Ciências da Terra",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A figura citada é necessária para comparar diretamente as estruturas, mas não foi fornecida. Considerando as estruturas químicas conhecidas dos compostos, o estriol é o que apresenta maior quantidade de grupos hidroxila entre as opções. Esses grupos são polares e podem formar ligações de hidrogênio com a água, favorecendo a hidratação do hormônio e aumentando sua solubilidade. Estradiol e estrona possuem menos grupos hidroxila, enquanto os demais compostos apresentam também maior proporção de estrutura apolar. Por isso, o estriol tem maior afinidade pelo meio aquático e é a alternativa correta."
     },
     {
       "id": "enem-2025-q118",
@@ -6192,55 +5602,6 @@
       "subassunto": ""
     },
     {
-      "id": "enem-2025-q133",
-      "ano": 2025,
-      "indice": 133,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "A maioria dos seres vivos tem um relógio biológico (ciclo circadiano), que regula as mudanças metabólicas e comportamentais de acordo com o ciclo de 24 horas de rotação da Terra. Em 2015, um artigo publicado na revista Science Advantage mostrou ser possível a transferência dos\nSynechococcus genes do relógio circadiano da cianobactéria elongatus Escherichia coli, para o genoma da bactéria um organismo não circadiano.\nCHEN, A. H. et al. Transplantability of a Circardian Lock\nto Noncircardian Organism. Advantage, Science\nn. 1, 2015 (adaptado).",
-      "arquivos": [],
-      "enunciado": "Estarão presentes no organismo geneticamente modificado os genes do",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "E. coli, metabolismo de apenas.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "E. coli, ciclo circadiano de apenas.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "S. elongatus E. coli. metabolismo de e do ciclo circadiano de",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "S. elongatus E. coli. ciclo circadiano de e do metabolismo de",
-          "arquivo": null,
-          "correta": true
-        },
-        {
-          "letra": "E",
-          "texto": "S. elongatus E. coli. ciclo circadiano de e do ciclo circadiano de",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "D",
-      "origem": "inep",
-      "tema": "Genética",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A transferência descrita ocorre da bactéria doadora S. elongatus para a receptora E. coli. Ao inserir no genoma de E. coli os genes do relógio circadiano de S. elongatus, a bactéria modificada passa a ter controle sobre seu ciclo circadiano. Como E. coli é originalmente não circadiana, ela não possui genes próprios de relógio circadiano. Entretanto, conserva seus genes responsáveis pelo metabolismo. Assim, a alternativa D corresponde ao conteúdo esperado: genes do ciclo circadiano de S. elongatus e genes do metabolismo de E. coli. O enunciado e as alternativas apresentam truncamentos na apresentação, mas o contexto fornecido permite essa conclusão."
-    },
-    {
       "id": "enem-2025-q134",
       "ano": 2025,
       "indice": 134,
@@ -6335,7 +5696,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A corrente elétrica pode ser calculada por I = P/U, com U = 110 V. O computador e o condicionador de ar permanecem ligados, consumindo juntos 250 W + 1.100 W = 1.350 W, ou seja, 12,27 A. Na primeira atividade, a impressora acrescenta 660 W,对应 6 A. A corrente total fica em 18,27 A, abaixo do limite de 20 A; portanto, a impressão é realizada com sucesso. Na segunda atividade, a cafeteira acrescenta 900 W, correspondente a 8,18 A. O total atinge 20,45 A, acima do máximo, e o fusível se rompe. Assim, a cafeteira não completa a atividade, e as tentativas seguintes também não podem ser realizadas. Portanto, somente uma atividade foi concluída."
+      "explicacao": "A corrente elétrica pode ser calculada por I = P/U, com U = 110 V. O computador e o condicionador de ar permanecem ligados, consumindo juntos 250 W + 1.100 W = 1.350 W, ou seja, 12,27 A. Na primeira atividade, a impressora acrescenta 660 W, correspondendo a 6 A. A corrente total fica em 18,27 A, abaixo do limite de 20 A; portanto, a impressão é realizada com sucesso. Na segunda atividade, a cafeteira acrescenta 900 W, correspondente a 8,18 A. O total atinge 20,45 A, acima do máximo, e o fusível se rompe. Assim, a cafeteira não completa a atividade, e as tentativas seguintes também não podem ser realizadas. Portanto, somente uma atividade foi concluída."
     },
     {
       "id": "enem-2025-q136",
@@ -6384,7 +5745,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "Como o raio da lagoa é 1 km, o raio da ciclovia é 1.000 m. Usando π ≈ 3, o comprimento da ciclovia é 2πr ≈ 2 · 3 · 1.000 = 6.000 m. Cada policial protege aproximadamente 400 m da ciclovia, correspondendo a 200 m para cada lado de sua posição. Assim, a quantidade necessária é 6.000 ÷ 400 = 15. Para verificar a suficiência, 15 policiais podem ser distribuídos equidistantemente, de modo que cada intervalo entre dois順番 seja de 400 m; todo ponto estará, então, a no máximo 200 m de um policial. Com 14, a cobertura total seria insuficiente. Portanto, a alternativa correta é C) 15."
+      "explicacao": "Como o raio da lagoa é 1 km, o raio da ciclovia é 1.000 m. Usando π ≈ 3, o comprimento da ciclovia é 2πr ≈ 2 · 3 · 1.000 = 6.000 m. Cada policial protege aproximadamente 400 m da ciclovia, correspondendo a 200 m para cada lado de sua posição. Assim, a quantidade necessária é 6.000 ÷ 400 = 15. Para verificar a suficiência, 15 policiais podem ser distribuídos equidistantemente, de modo que cada intervalo entre dois policiais seja de 400 m; todo ponto estará, então, a no máximo 200 m de um policial. Com 14, a cobertura total seria insuficiente. Portanto, a alternativa correta é C) 15."
     },
     {
       "id": "enem-2025-q137",
@@ -7608,7 +6969,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "Como reciclar uma tonelada custa R$ 500,00 e isso corresponde a 5% do custo de produzir a mesma quantidade com derivados de petróleo, o custo da后者 é R$ 10.000,00 por tonelada. No mês inicial, a produção total foi de 190 toneladas, com custo de 110 × 10.000 + 80 × 500 = R$ 1.140.000,00. Para reduzir esse custo em pelo menos 50%, o novo custo deve ser, no máximo, R$ 570.000,00. Se x toneladas forem recicladas, o custo será 10.000(190 − x) + 500x. Assim, 1.900.000 − 9.500x ≤ 570.000, de onde x ≥ 140. Portanto, a quantidade mínima é 140 toneladas recicladas."
+      "explicacao": "Como reciclar uma tonelada custa R$ 500,00 e isso corresponde a 5% do custo de produzir a mesma quantidade com derivados de petróleo, o custo da segunda opção é R$ 10.000,00 por tonelada. No mês inicial, a produção total foi de 190 toneladas, com custo de 110 × 10.000 + 80 × 500 = R$ 1.140.000,00. Para reduzir esse custo em pelo menos 50%, o novo custo deve ser, no máximo, R$ 570.000,00. Se x toneladas forem recicladas, o custo será 10.000(190 − x) + 500x. Assim, 1.900.000 − 9.500x ≤ 570.000, de onde x ≥ 140. Portanto, a quantidade mínima é 140 toneladas recicladas."
     },
     {
       "id": "enem-2025-q162",
@@ -7996,7 +7357,7 @@
       "competencia": "C2 - Aplicar conhecimentos",
       "dificuldade": "media",
       "subassunto": "",
-      "explicacao": "A ideia central é contar os resultados possíveis. São 6³ = 216 combinações dos três dados. Fixando o resultado x de João, Artur vence quando pelo menos um de seus dois dados mostra um número maior que x. Das 36 ordens possíveis para os dados de Artur, x² têm ambos os resultados menores ou iguais a x. Assim, para x = 1, 2, 3, 4, 5 e 6, as quantidade de vitórias de Artur são 35, 32, 27, 20, 11 e 0. Somando, obtemos 125. Logo, a probabilidade de vitória de Artur é 125/216. As 216 − 125 = 91 restantes 结果 correspondem às vitórias de João, incluindo os empates. Portanto, a alternativa correta é a E."
+      "explicacao": "A ideia central é contar os resultados possíveis. São 6³ = 216 combinações dos três dados. Fixando o resultado x de João, Artur vence quando pelo menos um de seus dois dados mostra um número maior que x. Das 36 ordens possíveis para os dados de Artur, x² têm ambos os resultados menores ou iguais a x. Assim, para x = 1, 2, 3, 4, 5 e 6, as quantidade de vitórias de Artur são 35, 32, 27, 20, 11 e 0. Somando, obtemos 125. Logo, a probabilidade de vitória de Artur é 125/216. As 216 − 125 = 91 restantes resultados correspondem às vitórias de João, incluindo os empates. Portanto, a alternativa correta é a E."
     },
     {
       "id": "enem-2025-q170",
