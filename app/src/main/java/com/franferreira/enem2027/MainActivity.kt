@@ -361,6 +361,10 @@ fun EnemApp() {
                             navController.popBackStack()
                         },
                         aoPedirExplicacao = { vm.pedirExplicacao(questao) },
+                        aoAbrirAula = { id ->
+                            vm.abrirPacoteAula(id)
+                            navController.navigate("aulapacote")
+                        },
                     )
                 } else {
                     TelaVazia(
@@ -523,6 +527,10 @@ fun EnemApp() {
                         navController.navigate("questao")
                     },
                     aoVoltar = { navController.popBackStack() },
+                    aoAbrirAula = { id ->
+                        vm.abrirPacoteAula(id)
+                        navController.navigate("aulapacote")
+                    },
                 )
             }
 

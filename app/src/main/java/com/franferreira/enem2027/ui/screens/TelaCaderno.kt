@@ -34,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.style.TextAlign
@@ -65,6 +66,7 @@ fun TelaCaderno(
     itens: List<ItemCaderno>,
     aoAbrir: (String) -> Unit,
     aoVoltar: () -> Unit,
+    aoAbrirAula: (String) -> Unit = {},
 ) {
     var areaFiltro by remember { mutableStateOf<String?>(null) }
     var soReincidentes by remember { mutableStateOf(false) }
@@ -197,14 +199,28 @@ fun TelaCaderno(
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             items(filtrados, key = { it.id }) { item ->
-                CartaoErro(item = item, aoClicar = { aoAbrir(item.id) })
+                CartaoErro(
+                    item = item,
+                    aoClicar = { aoAbrir(item.id) },
+                    aoAbrirAula = aoAbrirAula,
+                )
             }
         }
     }
 }
 
 @Composable
-private fun CartaoErro(item: ItemCaderno, aoClicar: () -> Unit) {
+private fun CartaoErro(
+    item: ItemCaderno,
+    aoClicar: () -> Unit,
+    aoAbrirAula: (String) -> Unit,
+) {
+    val contexto = LocalContext.current
+    val aula = remember(item.id) {
+        com.franferreira.enem2027.data.repo.AulasPorTema
+            .aulasDoTema(contexto, item.tema)
+            .firstOrNull()
+    }
     val cor = corDaArea(item.area)
     Column(
         modifier = Modifier
@@ -265,6 +281,18 @@ private fun CartaoErro(item: ItemCaderno, aoClicar: () -> Unit) {
                     text = "já acertou ${item.vezesAcertada}×",
                     style = MaterialTheme.typography.labelSmall,
                     color = TextMutedDark,
+                )
+            }
+            aula?.let { sugerida ->
+                Spacer(Modifier.width(10.dp))
+                Text(
+                    text = "ver aula",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = com.franferreira.enem2027.ui.theme.Primary,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(999.dp))
+                        .clickable { aoAbrirAula(sugerida.id) }
+                        .padding(horizontal = 6.dp, vertical = 2.dp),
                 )
             }
         }

@@ -85,6 +85,8 @@ fun TelaQuestao(
     aoResponder: (correta: Boolean, segundos: Float?, confianca: String?) -> Unit,
     aoVoltar: () -> Unit,
     aoPedirExplicacao: suspend () -> String?,
+    /** Abre a video-aula sugerida quando a questão é errada. */
+    aoAbrirAula: (String) -> Unit = {},
 ) {
     var respondida by remember { mutableStateOf(false) }
     var alternativaEscolhida by remember { mutableStateOf<String?>(null) }
@@ -485,6 +487,26 @@ error = ColorPainter(SurfaceRaised),
                             color = TextSecondary,
                         )
                     }
+
+                    // Errou: a aula que ensina este tema, para fechar o buraco
+                    // agora, e não depois de procurar na aba Aulas.
+                    val errou = alternativaEscolhida != null &&
+                        !alternativaEscolhida.equals(questao.gabarito, ignoreCase = true)
+                    val aulas = remember(questao.id, respondida, alternativaEscolhida) {
+                        if (errou) {
+                            com.franferreira.enem2027.data.repo.AulasPorTema
+                                .aulasDoTema(app, questao.temaExibicao)
+                        } else {
+                            emptyList()
+                        }
+                    }
+                    if (aulas.isNotEmpty()) {
+                        Spacer(Modifier.height(14.dp))
+                        CartaoAulaSugerida(
+                            aula = aulas.first(),
+                            aoAbrir = { aoAbrirAula(aulas.first().id) },
+                        )
+                    }
                 }
             }
         }
@@ -663,6 +685,46 @@ private fun BotaoExplicacao(
             text = texto,
             style = MaterialTheme.typography.labelLarge,
             color = Color.White,
+        )
+    }
+}
+
+/**
+ * A aula que ensina o tema da questão errada.
+ *
+ * Aparece só quando erra: acertar não precisa de aula. A tabela vem do APK, então
+ * funciona sem rede.
+ */
+@Composable
+private fun CartaoAulaSugerida(
+    aula: com.franferreira.enem2027.data.model.AulaSugerida,
+    aoAbrir: () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(16.dp))
+            .background(SurfaceRaised)
+            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
+            .clickable { aoAbrir() }
+            .padding(14.dp),
+    ) {
+        Text(
+            text = "REVER O TEMA EM AULA",
+            style = MaterialTheme.typography.labelSmall,
+            color = com.franferreira.enem2027.ui.theme.Primary,
+        )
+        Spacer(Modifier.height(6.dp))
+        Text(
+            text = aula.titulo,
+            style = MaterialTheme.typography.bodyMedium,
+            color = TextPrimary,
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = "Assistir a aula",
+            style = MaterialTheme.typography.labelMedium,
+            color = TextMuted,
         )
     }
 }
