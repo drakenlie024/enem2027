@@ -44,6 +44,14 @@ data class EstadoHoje(
     /** O acervo embutido do APK esta sendo gravado no banco local. */
     val semeando: Boolean = false,
     val autenticado: Boolean = false,
+    /**
+     * A sessão já foi conferida (prefs e, se houver token, o servidor).
+     *
+     * Sem isso, a tela de login aparecia por um instante em toda abertura: a
+     * semeadura do acervo zerava `carregando` antes de a sessão ser verificada,
+     * e a tela entendia "não carregando e não autenticado" como primeiro acesso.
+     */
+    val sessaoVerificada: Boolean = false,
     /** Nome que a aluna digitou ao começar; a saudação da tela Hoje usa. */
     val nome: String = "",
     val pendentes: Int = 0,
@@ -298,6 +306,7 @@ class ViewModelPrincipal(
                 _estado.value = _estado.value.copy(
                     carregando = false,
                     autenticado = modoLocal,
+                    sessaoVerificada = true,
                     nome = prefs.getString("nome", "").orEmpty(),
                 )
                 if (modoLocal) {
@@ -319,6 +328,7 @@ class ViewModelPrincipal(
                 _estado.value = _estado.value.copy(
                     carregando = false,
                     autenticado = modoLocal,
+                    sessaoVerificada = true,
                     nome = prefs.getString("nome", "").orEmpty(),
                 )
                 if (modoLocal) {
@@ -330,6 +340,7 @@ class ViewModelPrincipal(
             _estado.value = _estado.value.copy(
                 carregando = false,
                 autenticado = true,
+                sessaoVerificada = true,
                 nome = prefs.getString("nome", "").orEmpty(),
             )
             recarregar()
@@ -378,6 +389,7 @@ class ViewModelPrincipal(
         _estado.value = _estado.value.copy(
             carregando = false,
             autenticado = true,
+            sessaoVerificada = true,
             nome = limpo,
         )
         recarregar()

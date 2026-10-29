@@ -46,6 +46,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.franferreira.enem2027.ui.ViewModelPrincipal
 import com.franferreira.enem2027.ui.screens.TelaAgenda
+import com.franferreira.enem2027.ui.screens.TelaAbertura
 import com.franferreira.enem2027.ui.screens.TelaAprovacao
 import com.franferreira.enem2027.ui.screens.TelaEtapa
 import com.franferreira.enem2027.ui.screens.TelaHoje
@@ -129,27 +130,21 @@ fun EnemApp() {
     LaunchedEffect(rotaAtual) { vm.limparMensagem() }
 
     if (!estado.autenticado) {
+        // Enquanto a sessão não foi conferida, nada de login: ele piscava na
+        // tela antes de o app saber que a pessoa já tinha sessão.
+        if (!estado.sessaoVerificada) {
+            TelaAbertura()
+            return
+        }
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Background),
         ) {
-            if (estado.carregando) {
-                androidx.compose.foundation.layout.Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = androidx.compose.ui.Alignment.Center,
-                ) {
-                    androidx.compose.material3.CircularProgressIndicator(
-                        color = Primary,
-                        strokeWidth = 2.dp,
-                    )
-                }
-            } else {
-                TelaLogin(
-                    aoComecar = vm::comecarSemConta,
-                    aoEntrar = vm::autenticar,
-                )
-            }
+            TelaLogin(
+                aoComecar = vm::comecarSemConta,
+                aoEntrar = vm::autenticar,
+            )
         }
         return
     }
