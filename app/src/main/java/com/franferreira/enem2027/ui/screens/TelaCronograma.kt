@@ -196,13 +196,7 @@ private fun CartaoSemana(semana: SemanaCronograma) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(if (semana.atual) Primary.copy(alpha = 0.10f) else Surface)
-            .border(
-                1.dp,
-                if (semana.atual) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                RoundedCornerShape(18.dp),
-            )
+            .cartaoRabisco(18.dp, fundo = if (semana.atual) Primary.copy(alpha = 0.10f) else Surface, borda = if (semana.atual) Primary.copy(alpha = 0.5f) else SurfaceBorder)
             .padding(14.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {

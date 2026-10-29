@@ -144,13 +144,7 @@ fun TelaDiagnostico(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 8.dp)
-                        .clip(RoundedCornerShape(14.dp))
-                        .background(if (marcada) Primary.copy(alpha = 0.16f) else Surface)
-                        .border(
-                            1.dp,
-                            if (marcada) Primary else SurfaceBorder,
-                            RoundedCornerShape(14.dp),
-                        )
+                        .cartaoRabisco(14.dp, fundo = if (marcada) Primary.copy(alpha = 0.16f) else Surface, borda = if (marcada) Primary else SurfaceBorder)
                         .clickable { escolhida = alternativa.letra }
                         .padding(12.dp),
                 ) {
@@ -248,9 +242,7 @@ fun TelaResultadoDiagnostico(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(18.dp))
-                        .background(Surface)
-                        .border(1.dp, Primary.copy(alpha = 0.4f), RoundedCornerShape(18.dp))
+                        .cartaoRabisco(18.dp, fundo = Surface, borda = Primary.copy(alpha = 0.4f))
                         .padding(14.dp),
                 ) {
                     Text(

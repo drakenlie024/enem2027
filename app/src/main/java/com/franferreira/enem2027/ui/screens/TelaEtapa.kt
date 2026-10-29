@@ -344,9 +344,7 @@ fun TelaEtapa(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(16.dp))
-                            .background(Surface)
-                            .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(16.dp))
+                            .cartaoRabisco(16.dp, fundo = Surface, borda = Primary.copy(alpha = 0.35f))
                             .padding(12.dp),
                     ) {
                         Column {

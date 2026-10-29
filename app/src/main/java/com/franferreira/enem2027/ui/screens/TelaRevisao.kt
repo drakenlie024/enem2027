@@ -132,6 +132,7 @@ fun TelaRevisao(
 
             Spacer(Modifier.height(12.dp))
             OutlinedTextField(
+                    shape = RoundedCornerShape(14.dp),
                 value = buscaTexto,
                 onValueChange = aoBuscar,
                 singleLine = true,

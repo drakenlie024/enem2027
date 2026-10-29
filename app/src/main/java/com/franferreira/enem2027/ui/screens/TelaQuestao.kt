@@ -241,6 +241,7 @@ error = ColorPainter(SurfaceRaised),
 
             item {
                 OutlinedTextField(
+                    shape = RoundedCornerShape(14.dp),
                     value = anotacao,
                     onValueChange = { anotacao = it },
                     label = { Text("Sua anotação desta questão") },
@@ -701,9 +702,7 @@ private fun CartaoAulaSugerida(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp))
-            .background(SurfaceRaised)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
+            .cartaoRabisco(16.dp, fundo = SurfaceRaised, borda = SurfaceBorder)
             .clickable { aoAbrir() }
             .padding(14.dp),
     ) {

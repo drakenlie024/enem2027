@@ -178,13 +178,7 @@ fun TelaAgenda(
                         modifier = Modifier
                             .weight(1f)
                             .height(38.dp)
-                            .clip(RoundedCornerShape(14.dp))
-                            .background(if (ativo) Primary.copy(alpha = 0.16f) else Surface)
-                            .border(
-                                1.dp,
-                                if (ativo) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                                RoundedCornerShape(14.dp),
-                            )
+                            .cartaoRabisco(14.dp, fundo = if (ativo) Primary.copy(alpha = 0.16f) else Surface, borda = if (ativo) Primary.copy(alpha = 0.5f) else SurfaceBorder)
                             .clickable { aoAlternar(indice, chave) },
                         contentAlignment = Alignment.Center,
                     ) {

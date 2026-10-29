@@ -150,9 +150,7 @@ fun TelaProgresso(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(16.dp))
-                        .background(Primary.copy(alpha = 0.10f))
-                        .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(16.dp))
+                        .cartaoRabisco(16.dp, fundo = Primary.copy(alpha = 0.10f), borda = Primary.copy(alpha = 0.35f))
                         .clickable { aoAbrirAprovacao() }
                         .padding(12.dp),
                     verticalAlignment = Alignment.CenterVertically,
@@ -207,9 +205,7 @@ fun TelaProgresso(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(18.dp))
-                        .background(Primary.copy(alpha = 0.10f))
-                        .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(18.dp))
+                        .cartaoRabisco(18.dp, fundo = Primary.copy(alpha = 0.10f), borda = Primary.copy(alpha = 0.35f))
                         .padding(14.dp),
                 ) {
                     Column {
@@ -363,9 +359,7 @@ private fun AtalhoProgresso(
 ) {
     Column(
         modifier = modifier
-            .clip(RoundedCornerShape(18.dp))
-            .background(cor.copy(alpha = 0.10f))
-            .border(1.dp, cor.copy(alpha = 0.30f), RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp, fundo = cor.copy(alpha = 0.10f), borda = cor.copy(alpha = 0.30f))
             .clickable { aoClicar() }
             .padding(12.dp),
     ) {
@@ -506,9 +500,7 @@ private fun GradeConquistas(conquistas: List<String>) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(22.dp))
-            .background(Brush.verticalGradient(listOf(SurfaceRaised, Surface)))
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(22.dp))
+            .cartaoRabisco(22.dp, fundo = Brush.verticalGradient(listOf(SurfaceRaised, Surface)), borda = SurfaceBorder)
             .padding(13.dp),
     ) {
         Row(

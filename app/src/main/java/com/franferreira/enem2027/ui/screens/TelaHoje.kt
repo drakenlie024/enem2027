@@ -722,9 +722,7 @@ private fun CartaoTrilha(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(22.dp))
-            .background(Brush.verticalGradient(listOf(SurfaceRaised, Surface)))
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(22.dp))
+            .cartaoRabisco(22.dp, fundo = Brush.verticalGradient(listOf(SurfaceRaised, Surface)), borda = SurfaceBorder)
             .clickable { aoAbrir() }
             .padding(14.dp),
     ) {

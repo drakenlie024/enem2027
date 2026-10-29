@@ -318,13 +318,7 @@ fun TelaSimulado(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(16.dp))
-                        .background(if (escolhida) Primary.copy(alpha = 0.16f) else Surface)
-                        .border(
-                            1.dp,
-                            if (escolhida) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                            RoundedCornerShape(16.dp),
-                        )
+                        .cartaoRabisco(16.dp, fundo = if (escolhida) Primary.copy(alpha = 0.16f) else Surface, borda = if (escolhida) Primary.copy(alpha = 0.5f) else SurfaceBorder)
                         .clickable {
                             respostas = respostas + (questao.id to alternativa.letra)
                             tempos[questao.id] = (
@@ -637,13 +631,7 @@ fun TelaRevisaoSimulado(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(16.dp))
-                        .background(Surface)
-                        .border(
-                            1.dp,
-                            if (acertou) Secondary.copy(alpha = 0.5f) else Danger.copy(alpha = 0.4f),
-                            RoundedCornerShape(16.dp),
-                        )
+                        .cartaoRabisco(16.dp, fundo = Surface, borda = if (acertou) Secondary.copy(alpha = 0.5f) else Danger.copy(alpha = 0.4f))
                         .padding(12.dp),
                 ) {
                     Text(

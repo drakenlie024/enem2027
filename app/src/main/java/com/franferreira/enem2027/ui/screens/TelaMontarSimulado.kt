@@ -37,6 +37,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.ui.components.BotaoGamificado
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Primary
@@ -109,13 +110,7 @@ fun TelaMontarSimulado(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = 8.dp)
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(if (selecionado) Primary.copy(alpha = 0.14f) else Surface)
-                    .border(
-                        1.dp,
-                        if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                        RoundedCornerShape(16.dp),
-                    )
+                    .cartaoRabisco(16.dp, fundo = if (selecionado) Primary.copy(alpha = 0.14f) else Surface, borda = if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder)
                     .clickable {
                         tipo = chave
                         // Dia do ENEM é de um caderno só: sem "Todos" e sem escolher quantidade.
@@ -170,13 +165,7 @@ fun TelaMontarSimulado(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 6.dp)
-                        .clip(RoundedCornerShape(14.dp))
-                        .background(if (selecionado) Primary.copy(alpha = 0.14f) else Surface)
-                        .border(
-                            1.dp,
-                            if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                            RoundedCornerShape(14.dp),
-                        )
+                        .cartaoRabisco(14.dp, fundo = if (selecionado) Primary.copy(alpha = 0.14f) else Surface, borda = if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder)
                         .clickable { area = chave }
                         .padding(12.dp),
                 ) {
@@ -204,13 +193,7 @@ fun TelaMontarSimulado(
                         modifier = Modifier
                             .weight(1f)
                             .height(34.dp)
-                            .clip(RoundedCornerShape(13.dp))
-                            .background(if (selecionado) Primary.copy(alpha = 0.16f) else Surface)
-                            .border(
-                                1.dp,
-                                if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                                RoundedCornerShape(13.dp),
-                            )
+                            .cartaoRabisco(13.dp, fundo = if (selecionado) Primary.copy(alpha = 0.16f) else Surface, borda = if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder)
                             .clickable { ano = valor },
                         contentAlignment = Alignment.Center,
                     ) {
@@ -234,13 +217,7 @@ fun TelaMontarSimulado(
                         modifier = Modifier
                             .weight(1f)
                             .height(34.dp)
-                            .clip(RoundedCornerShape(13.dp))
-                            .background(if (selecionado) Primary.copy(alpha = 0.16f) else Surface)
-                            .border(
-                                1.dp,
-                                if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                                RoundedCornerShape(13.dp),
-                            )
+                            .cartaoRabisco(13.dp, fundo = if (selecionado) Primary.copy(alpha = 0.16f) else Surface, borda = if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder)
                             .clickable { quantidade = n },
                         contentAlignment = Alignment.Center,
                     ) {

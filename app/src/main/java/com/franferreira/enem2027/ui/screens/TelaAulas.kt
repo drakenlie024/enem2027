@@ -123,9 +123,7 @@ fun TelaAulas(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(18.dp))
-                            .background(Primary.copy(alpha = 0.12f))
-                            .border(1.dp, Primary.copy(alpha = 0.35f), RoundedCornerShape(18.dp))
+                            .cartaoRabisco(18.dp, fundo = Primary.copy(alpha = 0.12f), borda = Primary.copy(alpha = 0.35f))
                             .clickable { aoContinuar(ultima.first) }
                             .padding(13.dp),
                     ) {
@@ -295,13 +293,7 @@ fun TelaAulasDeArea(
                             Box(
                                 modifier = Modifier
                                     .size(22.dp)
-                                    .clip(RoundedCornerShape(6.dp))
-                                    .background(if (marcada) Primary else Surface)
-                                    .border(
-                                        1.dp,
-                                        if (marcada) Primary else SurfaceBorder,
-                                        RoundedCornerShape(6.dp),
-                                    ),
+                                    .cartaoRabisco(6.dp, fundo = if (marcada) Primary else Surface, borda = if (marcada) Primary else SurfaceBorder),
                                 contentAlignment = Alignment.Center,
                             ) {
                                 if (marcada) {
@@ -775,9 +767,7 @@ private fun CartaoQuestaoAula(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 3.dp)
-                    .clip(RoundedCornerShape(14.dp))
-                    .background(corFundo)
-                    .border(1.dp, corBorda, RoundedCornerShape(14.dp))
+                    .cartaoRabisco(14.dp, fundo = corFundo, borda = corBorda)
                     .clickable(enabled = !respondida) {
                         escolhida = alternativa.letra
                         aoResponder()
@@ -996,13 +986,7 @@ private fun TopoAulas(
 private fun BotaoPill(texto: String, ativo: Boolean, aoClicar: () -> Unit) {
     Box(
         modifier = Modifier
-            .clip(RoundedCornerShape(999.dp))
-            .background(if (ativo) Primary.copy(alpha = 0.18f) else Surface)
-            .border(
-                1.dp,
-                if (ativo) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                RoundedCornerShape(999.dp),
-            )
+            .cartaoRabisco(999.dp, fundo = if (ativo) Primary.copy(alpha = 0.18f) else Surface, borda = if (ativo) Primary.copy(alpha = 0.5f) else SurfaceBorder)
             .clickable { aoClicar() }
             .padding(horizontal = 12.dp, vertical = 7.dp),
     ) {

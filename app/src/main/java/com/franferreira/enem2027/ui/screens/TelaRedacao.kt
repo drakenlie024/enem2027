@@ -152,13 +152,7 @@ fun TelaRedacao(
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(14.dp))
-                            .background(if (selecionado) Primary.copy(alpha = 0.16f) else Surface)
-                            .border(
-                                1.dp,
-                                if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                                RoundedCornerShape(14.dp),
-                            )
+                            .cartaoRabisco(14.dp, fundo = if (selecionado) Primary.copy(alpha = 0.16f) else Surface, borda = if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder)
                             .clickable { temaSelecionado = tema.titulo }
                             .padding(11.dp),
                         verticalAlignment = Alignment.CenterVertically,
@@ -265,6 +259,7 @@ fun TelaRedacao(
             )
             Spacer(Modifier.height(6.dp))
             OutlinedTextField(
+                    shape = RoundedCornerShape(14.dp),
                 value = texto,
                 onValueChange = { texto = it },
                 placeholder = {
@@ -550,9 +545,7 @@ private fun CartaoCorrecao(correcao: EssayCorrection) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(Danger.copy(alpha = 0.10f))
-                    .border(1.dp, Danger.copy(alpha = 0.35f), RoundedCornerShape(16.dp))
+                    .cartaoRabisco(16.dp, fundo = Danger.copy(alpha = 0.10f), borda = Danger.copy(alpha = 0.35f))
                     .padding(12.dp),
             ) {
                 Text(
@@ -678,9 +671,7 @@ private fun CartaoCorrecao(correcao: EssayCorrection) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(SurfaceRaised)
-                    .border(1.dp, Secondary.copy(alpha = 0.30f), RoundedCornerShape(16.dp))
+                    .cartaoRabisco(16.dp, fundo = SurfaceRaised, borda = Secondary.copy(alpha = 0.30f))
                     .padding(12.dp),
             ) {
                 Text(

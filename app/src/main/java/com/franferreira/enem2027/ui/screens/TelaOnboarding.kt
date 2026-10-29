@@ -415,13 +415,7 @@ private fun Escolha(
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
-            .clip(RoundedCornerShape(999.dp))
-            .background(if (selecionada) Primary else SurfaceRaised)
-            .border(
-                1.dp,
-                if (selecionada) Primary else SurfaceBorder,
-                RoundedCornerShape(999.dp),
-            )
+            .cartaoRabisco(999.dp, fundo = if (selecionada) Primary else SurfaceRaised, borda = if (selecionada) Primary else SurfaceBorder)
             .clickable { aoClicar() }
             .padding(horizontal = 12.dp, vertical = 10.dp),
     ) {

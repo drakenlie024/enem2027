@@ -237,9 +237,7 @@ private fun CartaoPendente(
                 modifier = Modifier
                     .weight(1f)
                     .height(46.dp)
-                    .clip(RoundedCornerShape(18.dp))
-                    .background(SurfaceRaised)
-                    .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                    .cartaoRabisco(18.dp, fundo = SurfaceRaised, borda = SurfaceBorder)
                     .clickable { aoRejeitar(item.id) },
                 contentAlignment = Alignment.Center,
             ) {

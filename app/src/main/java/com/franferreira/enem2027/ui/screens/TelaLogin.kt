@@ -285,6 +285,7 @@ private fun Campo(
     aoAlternarVisibilidade: (() -> Unit)? = null,
 ) {
     OutlinedTextField(
+                    shape = RoundedCornerShape(14.dp),
         value = valor,
         onValueChange = aoMudar,
         label = { Text(rotulo) },

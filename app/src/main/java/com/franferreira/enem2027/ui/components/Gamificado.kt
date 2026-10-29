@@ -226,15 +226,15 @@ fun BarraGamificada(
         modifier = modificador
             .fillMaxWidth()
             .height(altura.dp)
-            .clip(CircleShape)
-            .background(Color(0xFF232A38)),
+            .bordaRabisco(cor.copy(alpha = 0.55f), raio = (altura / 2).dp, largura = 1.5.dp),
     ) {
+        // Preenchimento chapado: no Doodle o traço é do papel, não gradiente.
         Box(
             modifier = Modifier
                 .fillMaxWidth(progresso.coerceIn(0f, 1f))
                 .height(altura.dp)
                 .clip(CircleShape)
-                .background(Brush.horizontalGradient(listOf(cor, cor.copy(alpha = 0.7f)))),
+                .background(cor),
         )
     }
 }
