@@ -5,6 +5,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -20,6 +22,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -152,3 +155,45 @@ fun ChipRabisco(
         )
     }
 }
+
+/**
+ * Borda tracejada desenhada um pouco torta.
+ *
+ * O cartão do mockup é levemente inclinado. Inclinar o cartão inteiro desalinha
+ * a área de toque; aqui só o TRAÇO gira, o fundo e o clique continuam retos.
+ */
+fun Modifier.cartaoRabiscoTorto(
+    raio: Dp = 16.dp,
+    fundo: Color = Color.Unspecified,
+    borda: Color = Color.Unspecified,
+    graus: Float = -0.6f,
+): Modifier = this
+    .then(if (fundo == Color.Unspecified) Modifier else Modifier.background(fundo, RoundedCornerShape(raio)))
+    .drawWithContent {
+        drawContent()
+        rotate(graus) {
+            drawRoundRect(
+                color = if (borda == Color.Unspecified) Color(0xFFF1DCE1) else borda,
+                cornerRadius = CornerRadius(raio.toPx(), raio.toPx()),
+                style = Stroke(width = 1.5.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(7f, 5f))),
+            )
+        }
+    }
+
+/** Divisor rabiscado: uma linha tracejada, não um fio reto. */
+@Composable
+fun DivisorRabisco(
+    modifier: Modifier = Modifier,
+    cor: Color = SurfaceBorder,
+) {
+    androidx.compose.foundation.Canvas(modifier = modifier.fillMaxWidth().height(2.dp)) {
+        drawLine(
+            color = cor,
+            start = Offset(0f, size.height / 2f),
+            end = Offset(size.width, size.height / 2f),
+            strokeWidth = 1.5.dp.toPx(),
+            pathEffect = PathEffect.dashPathEffect(floatArrayOf(7f, 5f)),
+        )
+    }
+}
+

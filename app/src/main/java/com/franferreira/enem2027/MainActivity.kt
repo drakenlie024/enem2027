@@ -4,6 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.Alignment
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -46,6 +53,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.franferreira.enem2027.ui.ViewModelPrincipal
 import com.franferreira.enem2027.ui.screens.TelaAgenda
+import com.franferreira.enem2027.ui.components.DivisorRabisco
+import androidx.compose.foundation.layout.Arrangement
 import com.franferreira.enem2027.ui.screens.TelaAbertura
 import com.franferreira.enem2027.ui.screens.TelaAprovacao
 import com.franferreira.enem2027.ui.screens.TelaEtapa
@@ -197,36 +206,50 @@ fun EnemApp() {
                 (estado.simulado != null || estado.diagnostico != null)
             val semBarra = rotaAtual in setOf("questao", "etapa", "aulapacote") || emProva
             if (!semBarra && estado.autenticado) {
-                NavigationBar(containerColor = Surface, contentColor = TextPrimary) {
-                    destinations.forEach { destino ->
-                        val selecionado =
-                            currentDestination?.hierarchy?.any { it.route == destino.route } == true
-                        NavigationBarItem(
-                            selected = selecionado,
-                            onClick = {
-                                navController.navigate(destino.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) {
-                                        saveState = true
+                // Barra inferior desenhada à mão: fundo creme, separador
+                // rabiscado e rótulo na fonte manuscrita, como no DESIGN.md.
+                Column(Modifier.background(Surface)) {
+                    DivisorRabisco()
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 8.dp, vertical = 6.dp),
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                    ) {
+                        destinations.forEach { destino ->
+                            val selecionado =
+                                currentDestination?.hierarchy?.any { it.route == destino.route } == true
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(14.dp))
+                                    .clickable {
+                                        navController.navigate(destino.route) {
+                                            popUpTo(navController.graph.findStartDestination().id) {
+                                                saveState = true
+                                            }
+                                            launchSingleTop = true
+                                            restoreState = true
+                                        }
                                     }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
-                            },
-                            icon = {
+                                    .padding(horizontal = 10.dp, vertical = 6.dp),
+                            ) {
                                 Icon(
                                     imageVector = destino.icon,
                                     contentDescription = destino.label,
+                                    tint = if (selecionado) Primary else TextMuted,
+                                    modifier = Modifier.size(22.dp),
                                 )
-                            },
-                            label = { Text(destino.label) },
-                            colors = NavigationBarItemDefaults.colors(
-                                selectedIconColor = TextPrimary,
-                                selectedTextColor = TextPrimary,
-                                indicatorColor = Primary.copy(alpha = 0.18f),
-                                unselectedIconColor = TextMuted,
-                                unselectedTextColor = TextMuted,
-                            ),
-                        )
+                                Spacer(Modifier.height(3.dp))
+                                Text(
+                                    text = destino.label,
+                                    style = MaterialTheme.typography.labelSmall.copy(
+                                        fontFamily = com.franferreira.enem2027.ui.theme.FonteManuscrita,
+                                    ),
+                                    color = if (selecionado) Primary else TextMuted,
+                                )
+                            }
+                        }
                     }
                 }
             }
