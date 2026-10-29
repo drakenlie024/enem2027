@@ -54,6 +54,7 @@ import com.franferreira.enem2027.data.model.DiagnosticoSimulado
 import com.franferreira.enem2027.data.model.SimuladoMontado
 import com.franferreira.enem2027.data.model.SimuladoQuestao
 import com.franferreira.enem2027.ui.components.cartaoRabisco
+import com.franferreira.enem2027.ui.components.bordaRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -537,7 +538,7 @@ fun TelaResultadoSimulado(
                     .background(
                         Brush.verticalGradient(listOf(SurfaceRaised, Surface))
                     )
-                    .border(1.dp, SurfaceBorder, RoundedCornerShape(20.dp))
+                    .bordaRabisco(SurfaceBorder, raio = 20.dp)
                     .padding(12.dp),
                 verticalAlignment = Alignment.Top,
             ) {

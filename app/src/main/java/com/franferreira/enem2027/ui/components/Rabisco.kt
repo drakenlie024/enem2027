@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -88,13 +89,57 @@ fun Modifier.cartaoRabisco(
     fundo: Color = Surface,
     borda: Color = SurfaceBorder,
     sombra: Boolean = false,
+    /**
+     * Inclinação do traço, em graus. Só o desenho gira: o fundo e a área de
+     * toque continuam retos, então o clique não sai do lugar.
+     */
+    torto: Float = 0f,
 ): Modifier {
     var m = this
     if (sombra) m = m.sombraDura(TextPrimary, raio = raio)
-    return m
-        .clip(RoundedCornerShape(raio))
-        .background(fundo)
-        .bordaRabisco(borda, raio = raio)
+    m = m.clip(RoundedCornerShape(raio)).background(fundo)
+    if (torto == 0f) return m.bordaRabisco(borda, raio = raio)
+    return m.drawWithContent {
+        drawContent()
+        rotate(torto) {
+            drawRoundRect(
+                color = borda,
+                cornerRadius = CornerRadius(raio.toPx(), raio.toPx()),
+                style = Stroke(
+                    width = 1.5.dp.toPx(),
+                    pathEffect = PathEffect.dashPathEffect(floatArrayOf(7f, 5f)),
+                ),
+            )
+        }
+    }
+}
+
+/**
+ * Sublinhado desenhado à mão, sob um título.
+ *
+ * É o floreio do mockup que faltava: dois traços levemente tortos, em vez de
+ * uma linha reta.
+ */
+@Composable
+fun SublinhadoRabisco(
+    modifier: Modifier = Modifier,
+    cor: Color = Primary,
+) {
+    androidx.compose.foundation.Canvas(modifier = modifier.width(72.dp).height(6.dp)) {
+        val meio = size.height / 2f
+        drawLine(
+            color = cor,
+            start = Offset(0f, meio + 1f),
+            end = Offset(size.width * 0.82f, meio - 1.5f),
+            strokeWidth = 2.dp.toPx(),
+        )
+        drawLine(
+            color = cor.copy(alpha = 0.55f),
+            start = Offset(size.width * 0.12f, meio + 2.5f),
+            end = Offset(size.width, meio - 0.5f),
+            strokeWidth = 1.5.dp.toPx(),
+        )
+    }
 }
 
 /** Botão do app: pílula, borda de tinta e sombra dura embaixo. */

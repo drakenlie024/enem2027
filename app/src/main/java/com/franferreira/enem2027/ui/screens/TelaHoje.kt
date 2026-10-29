@@ -52,6 +52,7 @@ import com.franferreira.enem2027.ui.components.BotaoGamificado
 import com.franferreira.enem2027.ui.components.CartaoGamificado
 import com.franferreira.enem2027.ui.components.Pilula
 import com.franferreira.enem2027.ui.components.bordaRabisco
+import com.franferreira.enem2027.ui.components.SublinhadoRabisco
 import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
@@ -142,6 +143,8 @@ fun TelaHoje(
                         style = MaterialTheme.typography.titleLarge,
                         color = TextPrimary,
                     )
+                    // Floreio do DESIGN.md: sublinhado desenhado à mão.
+                    SublinhadoRabisco(modifier = Modifier.padding(top = 2.dp))
                 }
                 Box(
                     modifier = Modifier
@@ -221,7 +224,7 @@ fun TelaHoje(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .cartaoRabisco(18.dp)
+                        .cartaoRabisco(18.dp, torto = -0.6f)
                         .clickable { aoFazerDiagnostico() }
                         .padding(14.dp),
                 ) {
@@ -245,7 +248,7 @@ fun TelaHoje(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .cartaoRabisco(18.dp)
+                        .cartaoRabisco(18.dp, torto = 0.5f)
                         .clickable { aoAbrirCronograma() }
                         .padding(14.dp),
                 ) {
@@ -282,7 +285,7 @@ fun TelaHoje(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .cartaoRabisco(18.dp)
+                        .cartaoRabisco(18.dp, torto = -0.5f)
                         .clickable { aoRevisar() }
                         .padding(14.dp),
                 ) {
@@ -315,7 +318,7 @@ fun TelaHoje(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .cartaoRabisco(18.dp)
+                        .cartaoRabisco(18.dp, torto = 0.6f)
                         .clickable { aoRevisar() }
                         .padding(14.dp),
                 ) {
@@ -346,7 +349,7 @@ fun TelaHoje(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .cartaoRabisco(18.dp)
+                        .cartaoRabisco(18.dp, torto = -0.6f)
                         .clickable { aoRevisar() }
                         .padding(14.dp),
                 ) {
@@ -381,7 +384,7 @@ fun TelaHoje(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .cartaoRabisco(18.dp)
+                    .cartaoRabisco(18.dp, torto = 0.5f)
                     .padding(14.dp),
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -535,8 +538,7 @@ fun TelaHoje(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(16.dp))
-                            .background(Surface)
+                            .cartaoRabisco(16.dp)
                             .padding(20.dp),
                     ) {
                         Text(
@@ -997,7 +999,7 @@ private fun SemanaDeEstudo(estado: EstadoHoje, aoMudarMeta: (Int) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .cartaoRabisco(18.dp)
+            .cartaoRabisco(18.dp, torto = -0.5f)
             .clickable { aoMudarMeta(proximaMeta) }
             .padding(horizontal = 14.dp, vertical = 11.dp),
     ) {
@@ -1058,7 +1060,7 @@ private fun CartaoFoco(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .cartaoRabisco(18.dp)
+            .cartaoRabisco(18.dp, torto = 0.6f)
             .padding(14.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {

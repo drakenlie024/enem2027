@@ -265,6 +265,8 @@ fun EnemApp() {
                                     text = destino.label,
                                     style = MaterialTheme.typography.labelSmall.copy(
                                         fontFamily = com.franferreira.enem2027.ui.theme.FonteManuscrita,
+                                        // Rótulo de aba: 10sp ficava apagado na manuscrita.
+                                        fontSize = 11.5.sp,
                                     ),
                                     color = if (selecionado) Primary else TextMuted,
                                 )

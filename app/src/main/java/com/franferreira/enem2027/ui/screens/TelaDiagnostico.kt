@@ -286,8 +286,7 @@ fun TelaResultadoDiagnostico(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(14.dp))
-                        .background(Surface)
+                        .cartaoRabisco(14.dp)
                         .padding(12.dp),
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -387,8 +386,7 @@ private fun ListaTemasDiagnostico(temas: List<TemaDiagnostico>, vazio: String) {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(12.dp))
-                .background(Surface)
+                .cartaoRabisco(12.dp)
                 .padding(horizontal = 12.dp, vertical = 10.dp),
         ) {
             Column(Modifier.weight(1f)) {
