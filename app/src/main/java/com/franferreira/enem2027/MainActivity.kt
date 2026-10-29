@@ -57,6 +57,7 @@ import com.franferreira.enem2027.ui.screens.TelaAula
 import com.franferreira.enem2027.ui.screens.TelaAulas
 import com.franferreira.enem2027.ui.screens.TelaAulasDeArea
 import com.franferreira.enem2027.ui.screens.TelaCaderno
+import com.franferreira.enem2027.ui.screens.TelaCronograma
 import com.franferreira.enem2027.ui.screens.TelaDiagnostico
 import com.franferreira.enem2027.ui.screens.TelaOnboarding
 import com.franferreira.enem2027.ui.screens.TelaResultadoDiagnostico
@@ -269,6 +270,7 @@ fun EnemApp() {
                     aoAulas = { navController.navigate(Destination.Aulas.route) },
                     aoMudarMetaSemanal = vm::ajustarMetaSemanal,
                     aoFazerDiagnostico = vm::iniciarDiagnostico,
+                    aoAbrirCronograma = { navController.navigate("cronograma") },
                 )
             }
 
@@ -463,6 +465,15 @@ fun EnemApp() {
                         vm.abrirPacoteAula(aula.id)
                         navController.navigate("aulapacote")
                     },
+                    aoVoltar = { navController.popBackStack() },
+                )
+            }
+
+            // Cronograma até a prova: o que estudar em cada semana.
+            composable("cronograma") {
+                TelaCronograma(
+                    semanas = estado.cronograma,
+                    cobertura = estado.coberturaTemas,
                     aoVoltar = { navController.popBackStack() },
                 )
             }

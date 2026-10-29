@@ -94,6 +94,10 @@ data class EstadoHoje(
     val diagnostico: DiagnosticoSimulado? = null,
     /** Temas que a última prova errou; viram prioridade no treino por 7 dias. */
     val simuladoTemas: List<String> = emptyList(),
+    /** Plano de estudo até a prova (recalculado a cada abertura). */
+    val cronograma: List<com.franferreira.enem2027.data.model.SemanaCronograma> = emptyList(),
+    /** Temas cobertos por área: area -> (cobertos, total). */
+    val coberturaTemas: Map<String, Pair<Int, Int>> = emptyMap(),
     /** Simulado encerrado, guardado para a revisão com gabarito. */
     val simuladoRevisao: SimuladoMontado? = null,
     /** Respostas dadas no simulado revisado (id, escolhida, gabarito, ...). */
@@ -667,6 +671,7 @@ class ViewModelPrincipal(
             carregarSessao()
             carregarTrilhas()
             carregarTreinos()
+            carregarCronograma()
         }
     }
 
@@ -1280,6 +1285,40 @@ class ViewModelPrincipal(
     fun fecharTreino() {
         _estado.value = _estado.value.copy(treinoAberto = null, treinoQuestoes = emptyList())
         carregarTreinos()
+    }
+
+    // ---------- cronograma até a prova ----------
+
+    /**
+     * Monta o plano das semanas que faltam até 1º de novembro do ano da prova.
+     *
+     * É derivado, não salvo: cada abertura recalcula com o que já foi coberto,
+     * então tema que atrasou desce para a semana seguinte sem ninguém editar.
+     */
+    fun carregarCronograma() {
+        viewModelScope.launch {
+            val fracos = prefsLocais().getStringSet("diag_fracos", emptySet())?.toSet() ?: emptySet()
+            val temas = runCatching { repo.temasDoAcervo(fracos) }.getOrDefault(emptyList())
+            if (temas.isEmpty()) {
+                _estado.value = _estado.value.copy(cronograma = emptyList(), coberturaTemas = emptyMap())
+                return@launch
+            }
+            val hoje = java.time.LocalDate.now()
+            val prova = java.time.LocalDate.of(_estado.value.anoProva ?: 2027, 11, 1)
+            val semanas = Cronograma.semanasAte(hoje, prova)
+            // O plano começa na semana corrente, não na semana zero de janeiro:
+            // o que já passou não precisa aparecer, e o atraso vira tema desta.
+            val plano = Cronograma.montar(
+                temas = temas,
+                semanas = semanas,
+                inicio = hoje.minusDays((hoje.dayOfWeek.value - 1).toLong()),
+                hoje = hoje,
+            )
+            _estado.value = _estado.value.copy(
+                cronograma = plano,
+                coberturaTemas = Cronograma.cobertura(temas),
+            )
+        }
     }
 
     /** Busca livre no acervo do aparelho (enunciado, contexto e tema). */

@@ -104,6 +104,7 @@ fun TelaHoje(
     aoAulas: () -> Unit = {},
     aoMudarMetaSemanal: (Int) -> Unit = {},
     aoFazerDiagnostico: () -> Unit = {},
+    aoAbrirCronograma: () -> Unit = {},
 ) {
     // Tudo num único scroll: antes o cabeçalho (anel + estatísticas) ficava
     // fixo no topo e a lista de trilhas abaixo, dividindo a tela. Em tela
@@ -234,6 +235,46 @@ fun TelaHoje(
                             text = "40 questões, 10 de cada área. Mostra onde você está forte e onde precisa de treino.",
                             style = MaterialTheme.typography.bodySmall,
                             color = TextMuted,
+                        )
+                    }
+                }
+                Spacer(Modifier.height(14.dp))
+            }
+            val semanaAtual = estado.cronograma.firstOrNull { it.atual }
+            if (semanaAtual != null) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(18.dp))
+                        .background(Surface)
+                        .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                        .clickable { aoAbrirCronograma() }
+                        .padding(14.dp),
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text(
+                                text = "Cronograma · semana ${semanaAtual.numero} de ${estado.cronograma.size}",
+                                style = MaterialTheme.typography.titleSmall,
+                                color = TextPrimary,
+                            )
+                            Text(
+                                text = if (semanaAtual.temas.isEmpty()) {
+                                    "Semana de revisão"
+                                } else {
+                                    semanaAtual.temas.take(2).joinToString(", ") { it.tema } +
+                                        if (semanaAtual.pendentes > 2) " +${semanaAtual.pendentes - 2}" else ""
+                                },
+                                style = MaterialTheme.typography.bodySmall,
+                                color = TextMuted,
+                                maxLines = 2,
+                                overflow = TextOverflow.Ellipsis,
+                            )
+                        }
+                        Text(
+                            text = "Ver",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = Primary,
                         )
                     }
                 }

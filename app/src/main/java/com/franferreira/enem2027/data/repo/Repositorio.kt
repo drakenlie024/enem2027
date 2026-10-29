@@ -319,6 +319,30 @@ class Repositorio(private val context: Context) {
         ).take(limite)
     }
 
+    /**
+     * Os temas do acervo, para o cronograma até a prova.
+     *
+     * "Coberto" é ter respondido ao menos uma questão do tema: não existe
+     * aula marcada como vista por tema, e o que importa é o que foi treinado.
+     */
+    suspend fun temasDoAcervo(fracos: Set<String> = emptySet()): List<com.franferreira.enem2027.data.model.TemaDaSemana> {
+        val linhas = db.questions().temasTreino(0L)
+        return linhas.mapNotNull { r ->
+            val tema = r.tema?.takeIf { it.isNotBlank() } ?: return@mapNotNull null
+            val area = r.area?.takeIf { it.isNotBlank() } ?: return@mapNotNull null
+            com.franferreira.enem2027.data.model.TemaDaSemana(
+                tema = tema,
+                area = area,
+                totalQuestoes = r.total,
+                coberto = r.vistas > 0,
+            )
+        }.sortedWith(
+            compareByDescending<com.franferreira.enem2027.data.model.TemaDaSemana> {
+                Diagnostico.chaveTema(it.area, it.tema) in fracos
+            }.thenBy { it.tema }
+        )
+    }
+
     /** Questões novas (ou fora do cooldown) de um tema, para treinar. */
     suspend fun questoesDoTema(area: String, tema: String, limite: Int = 12): List<Question> {
         val cooldown = System.currentTimeMillis() - COOLDOWN_DIAS * DIA_MS
