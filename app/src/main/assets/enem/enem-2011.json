@@ -1,6 +1,6 @@
 {
   "ano": 2011,
-  "versao": "2026-10-28T15:16:39Z",
+  "versao": "2026-10-29T23:30:37Z",
   "origem": "enem.dev",
   "questoes": [
     {
@@ -59,7 +59,7 @@
       "indice": 2,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "O brasileiro tem noção clara dos comportamentos éticos e morais adequados, mas vive sob o espectro da corrupção, revela pesquisa. Se o país fosse resultado dos padrões morais que as pessoas dizem aprovar, pareceria mais com a Escandinávia do que com Bruzundanga (corrompida nação fictícia de Lima Barreto).\n\nFRAGA, P. **Ninguém é inocente.** Folha de S. Paulo, 4 out. 2009 (adaptado).",
+      "contexto": "O brasileiro tem noção clara dos comportamentos éticos e morais adequados, mas vive sob o espectro da corrupção, revela pesquisa. Se o país fosse resultado dos padrões morais que as pessoas dizem aprovar, pareceria mais com a Escandinávia do que com Bruzundanga (corrompida nação fictícia de Lima Barreto).\n\nFRAGA, P. Ninguém é inocente. Folha de S. Paulo, 4 out. 2009 (adaptado).",
       "arquivos": [],
       "enunciado": "O distanciamento entre “reconhecer” e “cumprir” efetivamente o que é moral constitui uma ambiguidade inerente ao humano, porque as normas morais são",
       "alternativas": [
@@ -211,7 +211,7 @@
       "indice": 6,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "\n\nTEIXEIRA, W. et al. **Decifrando a Terra.** São Paulo: Nacional, 2009 (adaptado).",
+      "contexto": "\n\nTEIXEIRA, W. et al. Decifrando a Terra. São Paulo: Nacional, 2009 (adaptado).",
       "arquivos": [
         "https://enem.dev/2011/questions/6/01d48357-ec3c-4b7f-8b7a-716414cef478.jpg"
       ],
@@ -263,7 +263,7 @@
       "indice": 7,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Uma empresa norte-americana de bioenergia está expandindo suas operações para o Brasil para explorar o mercado de pinhão manso. Com sede na Califórnia, a empresa desenvolveu sementes híbridas de pinhão manso, oleaginosa utilizada hoje na produção de biodiesel e de querosene de aviação.\n\nMAGOSSI, E. **O Estado de São Paulo.** 19 maio 2011 (adaptado).",
+      "contexto": "Uma empresa norte-americana de bioenergia está expandindo suas operações para o Brasil para explorar o mercado de pinhão manso. Com sede na Califórnia, a empresa desenvolveu sementes híbridas de pinhão manso, oleaginosa utilizada hoje na produção de biodiesel e de querosene de aviação.\n\nMAGOSSI, E. O Estado de São Paulo. 19 maio 2011 (adaptado).",
       "arquivos": [],
       "enunciado": "A partir do texto, a melhoria agronômica das sementes de pinhão manso abre para o Brasil a oportunidade econômica de",
       "alternativas": [
@@ -313,7 +313,7 @@
       "indice": 8,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Um dos principais objetivos de se dar continuidade às pesquisas em erosão dos solos é o de procurar resolver os problemas oriundos desse processo, que, em última análise, geram uma série de impactos ambientais. Além disso, para a adoção de técnicas de conservação dos solos, é preciso conhecer como a água executa seu trabalho de remoção, transporte e deposição de sedimentos. A erosão causa, quase sempre, uma série de problemas ambientais, em nível local ou até mesmo em grandes áreas.\n\nGUERRA, A. J. T. Processos erosivos nas encostas. In: GUERRA, A. J. T.; CUNHA, S. B.  \n**Geomorfologia:** uma atualização de bases e conceitos.  \nRio de Janeiro: Bertrand Brasil, 2007 (adaptado).",
+      "contexto": "Um dos principais objetivos de se dar continuidade às pesquisas em erosão dos solos é o de procurar resolver os problemas oriundos desse processo, que, em última análise, geram uma série de impactos ambientais. Além disso, para a adoção de técnicas de conservação dos solos, é preciso conhecer como a água executa seu trabalho de remoção, transporte e deposição de sedimentos. A erosão causa, quase sempre, uma série de problemas ambientais, em nível local ou até mesmo em grandes áreas.\n\nGUERRA, A. J. T. Processos erosivos nas encostas. In: GUERRA, A. J. T.; CUNHA, S. B.  \nGeomorfologia: uma atualização de bases e conceitos.  \nRio de Janeiro: Bertrand Brasil, 2007 (adaptado).",
       "arquivos": [],
       "enunciado": "A preservação do solo, principalmente em áreas de encostas, pode ser uma solução para evitar catástrofes em função da intensidade de fluxo hídrico. A prática humana que segue no caminho contrário a essa solução é",
       "alternativas": [
@@ -363,7 +363,7 @@
       "indice": 9,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "O fenômeno de ilha de calor é o exemplo mais marcante da modificação das condições iniciais do clima pelo processo de urbanização, caracterizado pela modificação do solo e pelo calor antropogênico, o qual inclui todas as atividades humanas inerentes à sua vida na cidade.\n\nBARBOSA, R. V. R. **Áreas verdes e qualidade térmica em ambientes urbanos**:  \nestudo em microclimas em Maceió. São Paulo: EdUSP, 2005.",
+      "contexto": "O fenômeno de ilha de calor é o exemplo mais marcante da modificação das condições iniciais do clima pelo processo de urbanização, caracterizado pela modificação do solo e pelo calor antropogênico, o qual inclui todas as atividades humanas inerentes à sua vida na cidade.\n\nBARBOSA, R. V. R. Áreas verdes e qualidade térmica em ambientes urbanos:  \nestudo em microclimas em Maceió. São Paulo: EdUSP, 2005.",
       "arquivos": [],
       "enunciado": "O texto exemplifica uma importante alteração socioambiental, comum aos centros urbanos. A maximização desse fenômeno ocorre",
       "alternativas": [
@@ -413,7 +413,7 @@
       "indice": 10,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "O professor Paulo Saldiva pedala 6 km em 22 minutos de casa para o trabalho, todos os dias. Nunca foi atingido por um carro. Mesmo assim, é vítima diária do trânsito de São Paulo: a cada minuto sobre a bicicleta, seus pulmões são envenenados com 3,3 microgramas de poluição particulada – poeira, fumaça, fuligem, partículas de metal em suspensão, sulfatos, nitratos, carbono, compostos orgânicos e outras substâncias nocivas.\n\nESCOBAR, H. Sem Ar. **O Estado de São Paulo.** Ago. 2008.",
+      "contexto": "O professor Paulo Saldiva pedala 6 km em 22 minutos de casa para o trabalho, todos os dias. Nunca foi atingido por um carro. Mesmo assim, é vítima diária do trânsito de São Paulo: a cada minuto sobre a bicicleta, seus pulmões são envenenados com 3,3 microgramas de poluição particulada – poeira, fumaça, fuligem, partículas de metal em suspensão, sulfatos, nitratos, carbono, compostos orgânicos e outras substâncias nocivas.\n\nESCOBAR, H. Sem Ar. O Estado de São Paulo. Ago. 2008.",
       "arquivos": [],
       "enunciado": "A população de uma metrópole brasileira que vive nas mesmas condições socioambientais das do professor citado no texto apresentará uma tendência de",
       "alternativas": [
@@ -515,7 +515,7 @@
       "indice": 12,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "SOBRADINHO  \nO homem chega, já desfaz a natureza  \nTira gente, põe represa, diz que tudo vai mudar  \nO São Francisco lá pra cima da Bahia  \nDiz que dia menos dia vai subir bem devagar  \nE passo a passo vai cumprindo a profecia do beato que  \ndizia que o Sertão ia alagar.\n\nSÁ E GUARABYRA. **Disco Pirão de peixe com pimenta.** Som Livre, 1977 (adaptado).",
+      "contexto": "SOBRADINHO  \nO homem chega, já desfaz a natureza  \nTira gente, põe represa, diz que tudo vai mudar  \nO São Francisco lá pra cima da Bahia  \nDiz que dia menos dia vai subir bem devagar  \nE passo a passo vai cumprindo a profecia do beato que  \ndizia que o Sertão ia alagar.\n\nSÁ E GUARABYRA. Disco Pirão de peixe com pimenta. Som Livre, 1977 (adaptado).",
       "arquivos": [],
       "enunciado": "O trecho da música faz referência a uma importante obra na região do rio São Francisco. Uma consequência socioespacial dessa construção foi",
       "alternativas": [
@@ -565,7 +565,7 @@
       "indice": 13,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Como os combustíveis energéticos, as tecnologias da informação são, hoje em dia, indispensáveis em todos os setores econômicos. Através delas, um maior número de produtores é capaz de inovar e a obsolescência de bens e serviços se acelera. Longe de estender a vida útil dos equipamentos e a sua capacidade de reparação, o ciclo de vida desses produtos diminui, resultando em maior necessidade de matéria-prima para a fabricação de novos.\n\nGROSSARD, C. **Le Monde Diplomatique Brasil.** Ano 3, nº 36, 2010 (adaptado)",
+      "contexto": "Como os combustíveis energéticos, as tecnologias da informação são, hoje em dia, indispensáveis em todos os setores econômicos. Através delas, um maior número de produtores é capaz de inovar e a obsolescência de bens e serviços se acelera. Longe de estender a vida útil dos equipamentos e a sua capacidade de reparação, o ciclo de vida desses produtos diminui, resultando em maior necessidade de matéria-prima para a fabricação de novos.\n\nGROSSARD, C. Le Monde Diplomatique Brasil. Ano 3, nº 36, 2010 (adaptado)",
       "arquivos": [],
       "enunciado": "A postura consumista de nossa sociedade indica a crescente produção de lixo, principalmente nas áreas urbanas, o que, associado a modos incorretos de deposição,",
       "alternativas": [
@@ -615,7 +615,7 @@
       "indice": 14,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "\n\nO espaço mundial sob a “nova des-ordem” é um emaranhado de zonas, redes e “aglomerados”, espaços hegemônicos e contra-hegemônicos que se cruzam de forma complexa na face da Terra. Fica clara, de saída, a polêmica que envolve uma nova regionalização mundial. Como regionalizar um espaço tão heterogêneo e, em parte, fluído, como é o espaço mundial contemporâneo?\n\nHAESBAERT, R.; PORTO-GONÇALVES, C.W. **A nova des-ordem mundial.**  \nSão Paulo: UNESP, 2006",
+      "contexto": "\n\nO espaço mundial sob a “nova des-ordem” é um emaranhado de zonas, redes e “aglomerados”, espaços hegemônicos e contra-hegemônicos que se cruzam de forma complexa na face da Terra. Fica clara, de saída, a polêmica que envolve uma nova regionalização mundial. Como regionalizar um espaço tão heterogêneo e, em parte, fluído, como é o espaço mundial contemporâneo?\n\nHAESBAERT, R.; PORTO-GONÇALVES, C.W. A nova des-ordem mundial.  \nSão Paulo: UNESP, 2006",
       "arquivos": [
         "https://enem.dev/2011/questions/14/0ffc7161-04f7-43a3-a275-99f445ccfcfb.jpg"
       ],
@@ -716,7 +716,7 @@
       "indice": 16,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Estamos testemunhando o reverso da tendência histórica da assalariação do trabalho e socialização da produção, que foi característica predominante na era industrial. A nova organização social e econômica baseada nas tecnologias da informação visa à administração descentralizadora, ao trabalho individualizante e aos mercados personalizados. As novas tecnologias da informação possibilitam, ao mesmo tempo, a descentralização das tarefas e sua coordenação em uma rede interativa de comunicação em tempo real, seja entre continentes, seja entre os andares de um mesmo edifício.\n\nCASTELLS, M. **A sociedade em rede.** São Paulo: Paz e Terra, 2006 (adaptado).",
+      "contexto": "Estamos testemunhando o reverso da tendência histórica da assalariação do trabalho e socialização da produção, que foi característica predominante na era industrial. A nova organização social e econômica baseada nas tecnologias da informação visa à administração descentralizadora, ao trabalho individualizante e aos mercados personalizados. As novas tecnologias da informação possibilitam, ao mesmo tempo, a descentralização das tarefas e sua coordenação em uma rede interativa de comunicação em tempo real, seja entre continentes, seja entre os andares de um mesmo edifício.\n\nCASTELLS, M. A sociedade em rede. São Paulo: Paz e Terra, 2006 (adaptado).",
       "arquivos": [],
       "enunciado": "No contexto descrito, as sociedades vivenciam mudanças constantes nas ferramentas de comunicação que afetam os processos produtivos nas empresas. Na esfera do trabalho, tais mudanças têm provocado",
       "alternativas": [
@@ -766,7 +766,7 @@
       "indice": 17,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Completamente analfabeto, ou quase, sem assistência médica, não lendo jornais, nem revistas, nas quais se limita a ver as figuras, o trabalhador rural, a não ser em casos esporádicos, tem o patrão na conta de benfeitor. No plano político, ele luta com o “coronel” e pelo “coronel”. Aí estão os votos de cabresto, que resultam, em grande parte, da nossa organização econômica rural.\n\nLEAL, V. N. **Coronelismo, enxada e voto**. São Paulo: Alfa-Ômega, 1978 (adaptado).",
+      "contexto": "Completamente analfabeto, ou quase, sem assistência médica, não lendo jornais, nem revistas, nas quais se limita a ver as figuras, o trabalhador rural, a não ser em casos esporádicos, tem o patrão na conta de benfeitor. No plano político, ele luta com o “coronel” e pelo “coronel”. Aí estão os votos de cabresto, que resultam, em grande parte, da nossa organização econômica rural.\n\nLEAL, V. N. Coronelismo, enxada e voto. São Paulo: Alfa-Ômega, 1978 (adaptado).",
       "arquivos": [],
       "enunciado": "O coronelismo, fenômeno político da Primeira República (1889-1930), tinha como uma de suas principais características o controle do voto, o que limitava, portanto, o exercício da cidadania. Nesse período, esta prática estava vinculada a uma estrutura social",
       "alternativas": [
@@ -816,7 +816,7 @@
       "indice": 18,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Na década de 1990, os movimentos sociais camponeses e as ONGs tiveram destaque, ao lado de outros sujeitos coletivos. Na sociedade brasileira, a ação dos movimentos sociais vem construindo lentamente um conjunto de práticas democráticas no interior das escolas, das comunidades, dos grupos organizados e na interface da sociedade civil com o Estado. O diálogo, o confronto e o conflito têm sido os motores no processo de construção democrática.\n\nSOUZA, M. A. **Movimentos sociais no Brasil contemporâneo**: participação e possibilidades das práticas democráticas. Disponível em: http://www.ces.uc.pt. Acesso em: 30 abr. 2010 (adaptado).",
+      "contexto": "Na década de 1990, os movimentos sociais camponeses e as ONGs tiveram destaque, ao lado de outros sujeitos coletivos. Na sociedade brasileira, a ação dos movimentos sociais vem construindo lentamente um conjunto de práticas democráticas no interior das escolas, das comunidades, dos grupos organizados e na interface da sociedade civil com o Estado. O diálogo, o confronto e o conflito têm sido os motores no processo de construção democrática.\n\nSOUZA, M. A. Movimentos sociais no Brasil contemporâneo: participação e possibilidades das práticas democráticas. Disponível em: http://www.ces.uc.pt. Acesso em: 30 abr. 2010 (adaptado).",
       "arquivos": [],
       "enunciado": "Segundo o texto, os movimentos sociais contribuem para o processo de construção democrática, porque",
       "alternativas": [
@@ -1066,7 +1066,7 @@
       "indice": 23,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "O acidente nuclear de Chernobyl revela brutalmente os limites dos poderes técnico-científicos da humanidade e as “marchas-à-ré” que a “natureza” nos pode reservar. É evidente que uma gestão mais coletiva se impõe para orientar as ciências e as técnicas em direção a finalidades mais humanas.\n\nGUATTARI, F. **As três ecologias.** São Paulo: Papirus, 1995 (adaptado).",
+      "contexto": "O acidente nuclear de Chernobyl revela brutalmente os limites dos poderes técnico-científicos da humanidade e as “marchas-à-ré” que a “natureza” nos pode reservar. É evidente que uma gestão mais coletiva se impõe para orientar as ciências e as técnicas em direção a finalidades mais humanas.\n\nGUATTARI, F. As três ecologias. São Paulo: Papirus, 1995 (adaptado).",
       "arquivos": [],
       "enunciado": "O texto trata do aparato técnico-científico e as suas consequências para a humanidade, propondo que esse desenvolvimento",
       "alternativas": [
@@ -1116,7 +1116,7 @@
       "indice": 24,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "A introdução de novas tecnologias desencadeou uma série de efeitos sociais que afetaram os trabalhadores e sua organização. O uso de novas tecnologias trouxe a diminuição do trabalho necessário que se traduz na economia líquida do tempo de trabalho, uma vez que, com a presença da automação microeletrônica, começou a ocorrer a diminuição dos coletivos operários e uma mudança na organização dos processos de trabalho.\n\n**Revista Eletrônica de Geografia Y Ciências Sociales.**  \nUniversidad de Barcelona. Nº 170(9), 1 ago. 2004.",
+      "contexto": "A introdução de novas tecnologias desencadeou uma série de efeitos sociais que afetaram os trabalhadores e sua organização. O uso de novas tecnologias trouxe a diminuição do trabalho necessário que se traduz na economia líquida do tempo de trabalho, uma vez que, com a presença da automação microeletrônica, começou a ocorrer a diminuição dos coletivos operários e uma mudança na organização dos processos de trabalho.\n\nRevista Eletrônica de Geografia Y Ciências Sociales.  \nUniversidad de Barcelona. Nº 170(9), 1 ago. 2004.",
       "arquivos": [],
       "enunciado": "A utilização de novas tecnologias tem causado inúmeras alterações no mundo do trabalho. Essas mudanças são observadas em um modelo de produção caracterizado",
       "alternativas": [
@@ -1315,7 +1315,7 @@
       "indice": 28,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Subindo morros, margeando córregos ou penduradas em palafitas, as favelas fazem parte da paisagem de um terço dos municípios do país, abrigando mais de 10 milhões de pessoas, segundo dados do Instituto Brasileiro de Geografia e Estatística (IBGE).\n\nMARTINS, A. R. **A favela como um espaço da cidade.** Disponível em: http://www.revistaescola.abril.com.br. Acesso em: 31 jul. 2010.",
+      "contexto": "Subindo morros, margeando córregos ou penduradas em palafitas, as favelas fazem parte da paisagem de um terço dos municípios do país, abrigando mais de 10 milhões de pessoas, segundo dados do Instituto Brasileiro de Geografia e Estatística (IBGE).\n\nMARTINS, A. R. A favela como um espaço da cidade. Disponível em: http://www.revistaescola.abril.com.br. Acesso em: 31 jul. 2010.",
       "arquivos": [],
       "enunciado": "A situação das favelas no país reporta a graves problemas de desordenamento territorial. Nesse sentido, uma característica comum a esses espaços tem sido",
       "alternativas": [
@@ -1768,7 +1768,7 @@
       "indice": 37,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "No Estado de São Paulo, a mecanização da colheita da cana-de-açúcar tem sido induzida também pela legislação ambiental, que proíbe a realização de queimadas em áreas próximas aos centros urbanos. Na região de Ribeirão Preto, principal polo sucroalcooleiro do país, a mecanização da colheita já é realizada em 516 mil dos 1,3 milhão de hectares cultivados com cana-de-açúcar.\n\nBALSADI, O. et al. Transformações Tecnológicas e a força de trabalho na agricultura brasileira no período de 1990-2000. **Revista de economia agrícola.** V. 49 (1), 2002.",
+      "contexto": "No Estado de São Paulo, a mecanização da colheita da cana-de-açúcar tem sido induzida também pela legislação ambiental, que proíbe a realização de queimadas em áreas próximas aos centros urbanos. Na região de Ribeirão Preto, principal polo sucroalcooleiro do país, a mecanização da colheita já é realizada em 516 mil dos 1,3 milhão de hectares cultivados com cana-de-açúcar.\n\nBALSADI, O. et al. Transformações Tecnológicas e a força de trabalho na agricultura brasileira no período de 1990-2000. Revista de economia agrícola. V. 49 (1), 2002.",
       "arquivos": [],
       "enunciado": "O texto aborda duas questões, uma ambiental e outra socioeconômica, que integram o processo de modernização da produção canavieira. Em torno da associação entre elas, uma mudança decorrente desse processo é a",
       "alternativas": [
@@ -1818,7 +1818,7 @@
       "indice": 38,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Acompanhando a intenção da burguesia renascentista de ampliar seu domínio sobre a natureza e sobre o espaço geográfico, através da pesquisa científica e da invenção tecnológica, os cientistas também iriam se atirar nessa aventura, tentando conquistar a forma, o movimento, o espaço, a luz, a cor e mesmo a expressão e o sentimento.\n\n(SEVCENKO, N. ****O Renascimento****, Campinas, Unicamp, 1984).",
+      "contexto": "Acompanhando a intenção da burguesia renascentista de ampliar seu domínio sobre a natureza e sobre o espaço geográfico, através da pesquisa científica e da invenção tecnológica, os cientistas também iriam se atirar nessa aventura, tentando conquistar a forma, o movimento, o espaço, a luz, a cor e mesmo a expressão e o sentimento.\n\n(SEVCENKO, N. O Renascimento, Campinas, Unicamp, 1984).",
       "arquivos": [],
       "enunciado": "O texto apresenta um espírito de época que afetou também a produção artística, marcada pela constante relação entre",
       "alternativas": [
@@ -1868,7 +1868,7 @@
       "indice": 39,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Os chineses não atrelam nenhuma condição para efetuar investimentos nos países africanos. Outro ponto interessante é a venda e compra de grandes somas de áreas, posteriormente cercadas. Por se tratar de países instáveis e com governos ainda não consolidados, teme-se que algumas nações da África tornem-se literalmente protetorados.\n\nBRANCOLI, F. **China e os novos investimentos na África**:  \nneocolonialismo ou mudanças na arquitetura global  \nDisponível em: http://opiniaoenoticia.com.br. Acesso em: 29 abr. 2010 (adaptado).",
+      "contexto": "Os chineses não atrelam nenhuma condição para efetuar investimentos nos países africanos. Outro ponto interessante é a venda e compra de grandes somas de áreas, posteriormente cercadas. Por se tratar de países instáveis e com governos ainda não consolidados, teme-se que algumas nações da África tornem-se literalmente protetorados.\n\nBRANCOLI, F. China e os novos investimentos na África:  \nneocolonialismo ou mudanças na arquitetura global  \nDisponível em: http://opiniaoenoticia.com.br. Acesso em: 29 abr. 2010 (adaptado).",
       "arquivos": [],
       "enunciado": "A presença econômica da China em vastas áreas do globo é uma realidade do século XXI. A partir do texto, como é possível caracterizar a relação econômica da China com o continente africano?",
       "alternativas": [
@@ -2120,7 +2120,7 @@
       "indice": 44,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "\n\nSILVA, E. S. O. Circuito espacial de produção e comercialização da produção familiar de tomate no município de São José de Ubá (RJ). In: RIBEIRO, M. A.; MARAFON, G. J. (orgs.).  \n**A metrópole e o interior fluminense**: simetrias e assimetrias geométricas.  \nFoto: Rio de Janeiro: Gramma, 2009 (adaptado).",
+      "contexto": "\n\nSILVA, E. S. O. Circuito espacial de produção e comercialização da produção familiar de tomate no município de São José de Ubá (RJ). In: RIBEIRO, M. A.; MARAFON, G. J. (orgs.).  \nA metrópole e o interior fluminense: simetrias e assimetrias geométricas.  \nFoto: Rio de Janeiro: Gramma, 2009 (adaptado).",
       "arquivos": [
         "https://enem.dev/2011/questions/44/05efa7d4-ad52-4143-b3c0-7964355d84ae.jpg"
       ],
@@ -2172,7 +2172,7 @@
       "indice": 45,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "As migrações transnacionais, intensificadas e generalizadas nas últimas décadas do século XX, expressam aspectos particularmente importantes da problemática racial, visto como dilema também mundial. Deslocam-se indivíduos, famílias e coletividades para lugares próximos e distantes, envolvendo mudanças mais ou menos drásticas nas condições de vida e trabalho, em padrões e valores socioculturais. Deslocam-se para sociedades semelhantes ou radicalmente distintas, algumas vezes compreendendo culturas ou mesmo civilizações totalmente diversas.\n\nIANNI, O. **A era do globalismo.** Rio de Janeiro: Civilização Brasileira, 1996.",
+      "contexto": "As migrações transnacionais, intensificadas e generalizadas nas últimas décadas do século XX, expressam aspectos particularmente importantes da problemática racial, visto como dilema também mundial. Deslocam-se indivíduos, famílias e coletividades para lugares próximos e distantes, envolvendo mudanças mais ou menos drásticas nas condições de vida e trabalho, em padrões e valores socioculturais. Deslocam-se para sociedades semelhantes ou radicalmente distintas, algumas vezes compreendendo culturas ou mesmo civilizações totalmente diversas.\n\nIANNI, O. A era do globalismo. Rio de Janeiro: Civilização Brasileira, 1996.",
       "arquivos": [],
       "enunciado": "A mobilidade populacional da segunda metade do século XX teve um papel importante na formação social e econômica de diversos estados nacionais. Uma razão para os movimentos migratórios nas últimas décadas e uma política migratória atual dos países desenvolvidos são",
       "alternativas": [
@@ -3855,7 +3855,7 @@
       "indice": 79,
       "area": "ciencias-natureza",
       "idioma": null,
-      "contexto": "Moradores sobreviventes da tragédia que destruiu aproximadamente 60 casas no Morro do Bumba, na Zona Norte de Niterói (RJ), ainda defendem a hipótese de o deslizamento ter sido causado por uma explosão provocada por gás metano, visto que esse local foi um lixão entre os anos 1960 e 1980.\n\n**Jornal Web. Disponível em: http://www.ojornalweb.com. Acesso em: 12 abr. 2010 (adaptado).**",
+      "contexto": "Moradores sobreviventes da tragédia que destruiu aproximadamente 60 casas no Morro do Bumba, na Zona Norte de Niterói (RJ), ainda defendem a hipótese de o deslizamento ter sido causado por uma explosão provocada por gás metano, visto que esse local foi um lixão entre os anos 1960 e 1980.\n\nJornal Web. Disponível em: http://www.ojornalweb.com. Acesso em: 12 abr. 2010 (adaptado).",
       "arquivos": [],
       "enunciado": "O gás mencionado no texto é produzido",
       "alternativas": [
@@ -3905,7 +3905,7 @@
       "indice": 80,
       "area": "ciencias-natureza",
       "idioma": null,
-      "contexto": "Segundo dados do Balanço Energético Nacional de 2008, do Ministério das Minas e Energia, a matriz energética brasileira é composta por hidrelétrica (80%), termelétrica (19,9%) e eólica (0,1%). Nas termelétricas, esse percentual é dividido conforme o combustível usado, sendo: gás natural (6,6%), biomassa (5,3%), derivados de petróleo (3,3%), energia nuclear (3,1%) e carvão mineral (1,6%). Com a geração de eletricidade da biomassa, pode-se considerar que ocorre uma compensação do carbono liberado na queima do material vegetal pela absorção desse elemento no crescimento das plantas. Entretanto, estudos indicam que as emissões de metano (CH4) das hidrelétricas podem ser comparáveis às emissões de CO2 das termelétricas.\n\n**MORET, A. S.; FERREIRA, I. A. As hidrelétricas do Rio Madeira e os impactos socioambientais. Revista Ciência Hoje. V. 45, n° 265, 2009 (adaptado).**",
+      "contexto": "Segundo dados do Balanço Energético Nacional de 2008, do Ministério das Minas e Energia, a matriz energética brasileira é composta por hidrelétrica (80%), termelétrica (19,9%) e eólica (0,1%). Nas termelétricas, esse percentual é dividido conforme o combustível usado, sendo: gás natural (6,6%), biomassa (5,3%), derivados de petróleo (3,3%), energia nuclear (3,1%) e carvão mineral (1,6%). Com a geração de eletricidade da biomassa, pode-se considerar que ocorre uma compensação do carbono liberado na queima do material vegetal pela absorção desse elemento no crescimento das plantas. Entretanto, estudos indicam que as emissões de metano (CH4) das hidrelétricas podem ser comparáveis às emissões de CO2 das termelétricas.\n\nMORET, A. S.; FERREIRA, I. A. As hidrelétricas do Rio Madeira e os impactos socioambientais. Revista Ciência Hoje. V. 45, n° 265, 2009 (adaptado).",
       "arquivos": [],
       "enunciado": "No Brasil, em termos do impacto das fontes de energia no crescimento do efeito estufa, quanto à emissão de gases, as hidrelétricas seriam consideradas como uma fonte",
       "alternativas": [
@@ -4006,7 +4006,7 @@
       "indice": 82,
       "area": "ciencias-natureza",
       "idioma": null,
-      "contexto": "Os vaga-lumes machos e fêmeas emitem sinais luminosos para se atraírem para o acasalamento. O macho reconhece a fêmea de sua espécie e, atraído por ela, vai ao seu encontro. Porém, existe um tipo de vaga-lume, o _Photuris_, cuja fêmea engana e atrai os machos de outro tipo, o _Photinus_, fingindo ser deste gênero. Quando o macho _Photinus_ se aproxima da fêmea _Photuris_, muito maior que ele, é atacado e devorado por ela.\n\nBERTOLDI, O. G.; VASCONCELLOS, J. R. **Ciência & sociedade**: a aventura da vida,  \na aventura da tecnologia. São Paulo: Scipione, 2000 (adaptado).",
+      "contexto": "Os vaga-lumes machos e fêmeas emitem sinais luminosos para se atraírem para o acasalamento. O macho reconhece a fêmea de sua espécie e, atraído por ela, vai ao seu encontro. Porém, existe um tipo de vaga-lume, o _Photuris_, cuja fêmea engana e atrai os machos de outro tipo, o _Photinus_, fingindo ser deste gênero. Quando o macho _Photinus_ se aproxima da fêmea _Photuris_, muito maior que ele, é atacado e devorado por ela.\n\nBERTOLDI, O. G.; VASCONCELLOS, J. R. Ciência & sociedade: a aventura da vida,  \na aventura da tecnologia. São Paulo: Scipione, 2000 (adaptado).",
       "arquivos": [],
       "enunciado": "A relação descrita no texto, entre a fêmea do gênero Photuris e o macho do gênero Photinus, é um exemplo de",
       "alternativas": [
@@ -4260,7 +4260,7 @@
       "indice": 87,
       "area": "ciencias-natureza",
       "idioma": null,
-      "contexto": "**Os Bichinhos e O Homem**\n\nArca de Noé  \nToquinho & Vinicius de Moraes  \nNossa irmã, a mosca  \nÉ feia e tosca  \nEnquanto que o mosquito  \nÉ mais bonito  \nNosso irmão besouro  \nQue é feito de couro  \nMal sabe voar  \nNossa irmã, a barata  \nBichinha mais chata  \nÉ prima da borboleta  \nQue é uma careta  \nNosso irmão, o grilo  \nQue vive dando estrilo  \nSó pra chatear\n\n**MORAES, V. A arca de Noé: poemas infantis. São Paulo: Companhia das Letrinhas, 1991.**",
+      "contexto": "Os Bichinhos e O Homem\n\nArca de Noé  \nToquinho & Vinicius de Moraes  \nNossa irmã, a mosca  \nÉ feia e tosca  \nEnquanto que o mosquito  \nÉ mais bonito  \nNosso irmão besouro  \nQue é feito de couro  \nMal sabe voar  \nNossa irmã, a barata  \nBichinha mais chata  \nÉ prima da borboleta  \nQue é uma careta  \nNosso irmão, o grilo  \nQue vive dando estrilo  \nSó pra chatear\n\nMORAES, V. A arca de Noé: poemas infantis. São Paulo: Companhia das Letrinhas, 1991.",
       "arquivos": [],
       "enunciado": "O poema acima sugere a existência de relações de afinidade entre os animais citados e nós, seres humanos. Respeitando a liberdade poética dos autores, a unidade taxonômica que expressa a afinidade existente entre nós e estes animais é",
       "alternativas": [
@@ -4410,7 +4410,7 @@
       "indice": 90,
       "area": "ciencias-natureza",
       "idioma": null,
-      "contexto": "\n\nDe acordo com o relatório “A grande sombra da pecuária” (Livestock’s Long Shadow), feito pela Organização das Nações Unidas para a Agricultura e a Alimentação, o gado é responsável por cerca de 18% do aquecimento global, uma contribuição maior que a do setor de transportes.\n\n**Disponível em: www.conpet.gov.br. Acesso em: 22 jun. 2010. (Foto: Reprodução/Enem)**",
+      "contexto": "\n\nDe acordo com o relatório “A grande sombra da pecuária” (Livestock’s Long Shadow), feito pela Organização das Nações Unidas para a Agricultura e a Alimentação, o gado é responsável por cerca de 18% do aquecimento global, uma contribuição maior que a do setor de transportes.\n\nDisponível em: www.conpet.gov.br. Acesso em: 22 jun. 2010. (Foto: Reprodução/Enem)",
       "arquivos": [
         "https://enem.dev/2011/questions/90/7ae35329-f487-4902-ad0f-7033b80442ab.png"
       ],
@@ -4462,7 +4462,7 @@
       "indice": 91,
       "area": "linguagens",
       "idioma": "espanhol",
-      "contexto": "**‘Desmachupizar’ el turismo**\n\nEs ya un lugar común escuchar aquello de que hay que desmachupizar el turismo en Perú y buscar visitantes en las demás atracciones (y son muchas) que tiene el país, naturales y arqueológicas, pero la ciudadela inca tiene un imán innegable. La Cámara Nacional de Turismo considera que Machu Picchu significa el 70% de los ingresos por turismo en Perú, ya que cada turista que tiene como primer destino la ciudadela inca visita entre tres y cinco lugares más (la ciudad de Cuzco, la de Arequipa, las líneas de Nazca, el Lago Titicaca y la selva) y deja en el país un promedio de 2 200 dólares (unos 1 538 euros).\n\nCarlos Canales, presidente de Canatur, señaló que la ciudadela tiene capacidad para recibir más visitantes que en la actualidad (un máximo de 3 000) con un sistema planificado de horarios y rutas, pero no quiso avanzar una cifra. Sin embargo, la Unesco ha advertido en varias ocasiones que el monumento se encuentra cercano al punto de saturación y el Gobierno no debe emprender ninguna política de captación de nuevos visitantes, algo con lo que coincide el viceministro Roca Rey.\n\nDisponivel em: http://www.elpais.com. Acesso em: 21 jun. 2011.",
+      "contexto": "‘Desmachupizar’ el turismo\n\nEs ya un lugar común escuchar aquello de que hay que desmachupizar el turismo en Perú y buscar visitantes en las demás atracciones (y son muchas) que tiene el país, naturales y arqueológicas, pero la ciudadela inca tiene un imán innegable. La Cámara Nacional de Turismo considera que Machu Picchu significa el 70% de los ingresos por turismo en Perú, ya que cada turista que tiene como primer destino la ciudadela inca visita entre tres y cinco lugares más (la ciudad de Cuzco, la de Arequipa, las líneas de Nazca, el Lago Titicaca y la selva) y deja en el país un promedio de 2 200 dólares (unos 1 538 euros).\n\nCarlos Canales, presidente de Canatur, señaló que la ciudadela tiene capacidad para recibir más visitantes que en la actualidad (un máximo de 3 000) con un sistema planificado de horarios y rutas, pero no quiso avanzar una cifra. Sin embargo, la Unesco ha advertido en varias ocasiones que el monumento se encuentra cercano al punto de saturación y el Gobierno no debe emprender ninguna política de captación de nuevos visitantes, algo con lo que coincide el viceministro Roca Rey.\n\nDisponivel em: http://www.elpais.com. Acesso em: 21 jun. 2011.",
       "arquivos": [],
       "enunciado": "A reportagem do jornal espanhol mostra a preocupação diante de um problema no Peru, que pode ser resumido pelo vocábulo “desmachupizar”, referindo-se",
       "alternativas": [
@@ -4511,7 +4511,7 @@
       "indice": 92,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "\n\nGLASBERGEN, R. **Today’s cartoon**. Disponível em: http://www.glasbergen.com. Acesso em: 23 jul. 2010.",
+      "contexto": "\n\nGLASBERGEN, R. Today’s cartoon. Disponível em: http://www.glasbergen.com. Acesso em: 23 jul. 2010.",
       "arquivos": [
         "https://enem.dev/2011/questions/92/cf4e6e0a-1f86-4e8f-a89b-a1cc1a445703.png"
       ],
@@ -4613,7 +4613,7 @@
       "indice": 93,
       "area": "linguagens",
       "idioma": "espanhol",
-      "contexto": "**Bienvenido a Brasília**\n\nEl Gobierno de Brasil, por medio del Ministerio de la Cultura y del Instituto del Patrimonio Histórico y Artístico Nacional (IPHAN), da la bienvenida a los participantes de la 34a Sesión del Comité del Patrimonio Mundial, encuentro realizado poria Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura (UNESCO).\n\nRespaldado por la Convención del Patrimonio Mundial, de 1972, el Comité reúne en su 34a sesión más de 180 delegaciones nacionales para deliberar sobre las nuevas candidaturas y el estado de conservación y de riesgo de los bienes ya declarados Patrimonio Mundial, con base en los análisis del Consejo Internacional de Monumentos y Sitios (Icomos), del Centro Internacional para el Estudio de la Preservación y la Restauración del Patrimonio Cultural (ICCROM) y de la Union Internacional para la Conservación de la Naturaleza (IUCN).\n\nDisponivel em: http://www.34whc.brasilia2010.oig.br. Acesso em: 28 jul. 2010.",
+      "contexto": "Bienvenido a Brasília\n\nEl Gobierno de Brasil, por medio del Ministerio de la Cultura y del Instituto del Patrimonio Histórico y Artístico Nacional (IPHAN), da la bienvenida a los participantes de la 34a Sesión del Comité del Patrimonio Mundial, encuentro realizado poria Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura (UNESCO).\n\nRespaldado por la Convención del Patrimonio Mundial, de 1972, el Comité reúne en su 34a sesión más de 180 delegaciones nacionales para deliberar sobre las nuevas candidaturas y el estado de conservación y de riesgo de los bienes ya declarados Patrimonio Mundial, con base en los análisis del Consejo Internacional de Monumentos y Sitios (Icomos), del Centro Internacional para el Estudio de la Preservación y la Restauración del Patrimonio Cultural (ICCROM) y de la Union Internacional para la Conservación de la Naturaleza (IUCN).\n\nDisponivel em: http://www.34whc.brasilia2010.oig.br. Acesso em: 28 jul. 2010.",
       "arquivos": [],
       "enunciado": "O Comitê do Patrimônio Mundial reúne-se regularmente para deliberar sobre ações que visem à conservação e à preservação do patrimônio mundial. Entre as tarefas atribuídas às delegações nacionais que participaram da 34a Sessão do Comitê do Patrimônio Mundial, destaca-se a",
       "alternativas": [
@@ -4663,7 +4663,7 @@
       "indice": 94,
       "area": "linguagens",
       "idioma": "espanhol",
-      "contexto": "**El tango**\n\nYa sea como danza, música, poesía o cabal expresión de una filosofía de vida, el tango posee una larga y valiosa trayectoria, jalonada de encuentros y desencuentros, amores y odios, nacida desde lo más hondo de la historia argentina.\n\nEl nuevo ambiente es el cabaret, su nuevo cultor la clase media porteña, que ameniza sus momentos de diversión con nuevas composiciones, sustituyendo el carácter malevo del tango primitivo por una nueva poesía más acorde con las concepciones estéticas provenientes de Londres y París.\n\nYa en la década del ‘20 el tango se anima incluso a traspasar las fronteras del país, recalando en lujosos salones parisinos donde es aclamado por públicos selectos que adhieren entusiastas a la sensualidad del nuevo baile. Ya no es privativo de los bajos fondos porteños; ahora se escucha y se baila en salones elegantes, clubs y casas particulares.\n\nEl tango revive con juveniles fuerzas en ajironadas versiones de grupos rockeros, presentaciones en elegantes reductos de San Telmo, Barracas y La Boca y películas foráneas que lo divulgan por el mundo entero.\n\nDisponivel em: http://vww.elpdwrin.over-blog.es. Acesso em: 22 jun. 2011 (adaptado).",
+      "contexto": "El tango\n\nYa sea como danza, música, poesía o cabal expresión de una filosofía de vida, el tango posee una larga y valiosa trayectoria, jalonada de encuentros y desencuentros, amores y odios, nacida desde lo más hondo de la historia argentina.\n\nEl nuevo ambiente es el cabaret, su nuevo cultor la clase media porteña, que ameniza sus momentos de diversión con nuevas composiciones, sustituyendo el carácter malevo del tango primitivo por una nueva poesía más acorde con las concepciones estéticas provenientes de Londres y París.\n\nYa en la década del ‘20 el tango se anima incluso a traspasar las fronteras del país, recalando en lujosos salones parisinos donde es aclamado por públicos selectos que adhieren entusiastas a la sensualidad del nuevo baile. Ya no es privativo de los bajos fondos porteños; ahora se escucha y se baila en salones elegantes, clubs y casas particulares.\n\nEl tango revive con juveniles fuerzas en ajironadas versiones de grupos rockeros, presentaciones en elegantes reductos de San Telmo, Barracas y La Boca y películas foráneas que lo divulgan por el mundo entero.\n\nDisponivel em: http://vww.elpdwrin.over-blog.es. Acesso em: 22 jun. 2011 (adaptado).",
       "arquivos": [],
       "enunciado": "Sabendo-se que a produção cultural de um país pode influenciar, retratar ou, inclusive, ser reflexo de acontecimentos de sua história, o tango, dentro do contexto histórico argentino, é reconhecido por",
       "alternativas": [
@@ -4713,7 +4713,7 @@
       "indice": 95,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Es posible reducir la basura**\n\nEn México se producen más de 10 millones de m3 de basura mensualmente, depositados en más de 50 mil tiraderos de basura legales y clandestinos, que afectan de manera directa nuestra calidad de vida, pues nuestros recursos naturales son utilizados desproporcionalmente, como materias primas que luego desechamos y tiramos convirtiéndolos en materiales inútiles y focos de infección.\n\nTodo aquello que compramos y consumimos tiene una relación directa con lo que tiramos. Consumiendo racionalmente, evitando el derroche y usando sólo lo indispensable, directamente colaboramos con el cuidado del ambiente.\n\nSi la basura se compone de varios desperdicios y si como desperdicios no fueron basura, si los separamos adecuadamente, podremos controlarlos y evitar posteriores problemas. Reciclar se traduce en importantes ahorros de energía, ahorro de agua potable, ahorro de materias primas, menor impacto en los ecosistemas y sus recursos naturales y ahorro de tiempo, dinero y esfuerzo.\n\nEs necesario saber para empezar a actuar…\n\nDisponível em: http://www.tododecarton.com. Acesso em: 27 abr. 2010 (adaptado).",
+      "contexto": "Es posible reducir la basura\n\nEn México se producen más de 10 millones de m3 de basura mensualmente, depositados en más de 50 mil tiraderos de basura legales y clandestinos, que afectan de manera directa nuestra calidad de vida, pues nuestros recursos naturales son utilizados desproporcionalmente, como materias primas que luego desechamos y tiramos convirtiéndolos en materiales inútiles y focos de infección.\n\nTodo aquello que compramos y consumimos tiene una relación directa con lo que tiramos. Consumiendo racionalmente, evitando el derroche y usando sólo lo indispensable, directamente colaboramos con el cuidado del ambiente.\n\nSi la basura se compone de varios desperdicios y si como desperdicios no fueron basura, si los separamos adecuadamente, podremos controlarlos y evitar posteriores problemas. Reciclar se traduce en importantes ahorros de energía, ahorro de agua potable, ahorro de materias primas, menor impacto en los ecosistemas y sus recursos naturales y ahorro de tiempo, dinero y esfuerzo.\n\nEs necesario saber para empezar a actuar…\n\nDisponível em: http://www.tododecarton.com. Acesso em: 27 abr. 2010 (adaptado).",
       "arquivos": [],
       "enunciado": "A partir do que se afirma no último parágrafo: “Es necesario saber para empezar a actuar…”, pode-se constatar que o texto foi escrito com a intenção de",
       "alternativas": [
@@ -4763,7 +4763,7 @@
       "indice": 96,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "Na modernidade, o corpo foi descoberto, despido e modelado pelos exercícios físicos da moda. Novos espaços e práticas esportivas e de ginástica passaram a convocar as pessoas a modelarem seus corpos. Multiplicaram-se as academias de ginástica, as salas de musculação e o número de pessoas correndo pelas ruas.\n\nSECRETARIA DA EDUCAÇÃO. **Caderno do professor**: educação física. São Paulo, 2008.",
+      "contexto": "Na modernidade, o corpo foi descoberto, despido e modelado pelos exercícios físicos da moda. Novos espaços e práticas esportivas e de ginástica passaram a convocar as pessoas a modelarem seus corpos. Multiplicaram-se as academias de ginástica, as salas de musculação e o número de pessoas correndo pelas ruas.\n\nSECRETARIA DA EDUCAÇÃO. Caderno do professor: educação física. São Paulo, 2008.",
       "arquivos": [],
       "enunciado": "Diante do exposto, é possível perceber que houve um aumento da procura por",
       "alternativas": [
@@ -4813,7 +4813,7 @@
       "indice": 97,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "\n\nCOSTA, C. **Superinteressante**. Fev. 2011 (adaptado).",
+      "contexto": "\n\nCOSTA, C. Superinteressante. Fev. 2011 (adaptado).",
       "arquivos": [
         "https://enem.dev/2011/questions/97/bd1b0936-b39f-42aa-a4ea-0744b73dc320.png"
       ],
@@ -4915,7 +4915,7 @@
       "indice": 99,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**TEXTO I**\n\nO meu nome é Severino,  \nnão tenho outro de pia.  \nComo há muitos Severinos,  \nque é santo de romaria,  \nderam então de me chamar  \nSeverino de Maria;  \ncomo há muitos Severinos  \ncom mães chamadas Maria,  \nfiquei sendo o da Maria  \ndo finado Zacarias,  \nmas isso ainda diz pouco:  \nhá muitos na freguesia,  \npor causa de um coronel  \nque se chamou Zacarias  \ne que foi o mais antigo  \nsenhor desta sesmaria.  \nComo então dizer quem fala  \nora a Vossas Senhorias?\n\nMELO NETO, J. C. **Obra completa**. Rio de Janeiro: Aguilar, 1994 (fragmento).\n\n**TEXTO II**\n\nJoão Cabral, que já emprestara sua voz ao rio, transfere-a, aqui, ao retirante Severino, que, como o Capibaribe, também segue no caminho do Recife. A autoapresentação do personagem, na fala inicial do texto, nos mostra um Severino que, quanto mais se define, menos se individualiza, pois seus traços biográficos são sempre partilhados por outros homens.\n\nSECCHIN, A. C. **João Cabral**: a poesia do menos. Rio de Janeiro: Topbooks, 1999 (fragmento).",
+      "contexto": "TEXTO I\n\nO meu nome é Severino,  \nnão tenho outro de pia.  \nComo há muitos Severinos,  \nque é santo de romaria,  \nderam então de me chamar  \nSeverino de Maria;  \ncomo há muitos Severinos  \ncom mães chamadas Maria,  \nfiquei sendo o da Maria  \ndo finado Zacarias,  \nmas isso ainda diz pouco:  \nhá muitos na freguesia,  \npor causa de um coronel  \nque se chamou Zacarias  \ne que foi o mais antigo  \nsenhor desta sesmaria.  \nComo então dizer quem fala  \nora a Vossas Senhorias?\n\nMELO NETO, J. C. Obra completa. Rio de Janeiro: Aguilar, 1994 (fragmento).\n\nTEXTO II\n\nJoão Cabral, que já emprestara sua voz ao rio, transfere-a, aqui, ao retirante Severino, que, como o Capibaribe, também segue no caminho do Recife. A autoapresentação do personagem, na fala inicial do texto, nos mostra um Severino que, quanto mais se define, menos se individualiza, pois seus traços biográficos são sempre partilhados por outros homens.\n\nSECCHIN, A. C. João Cabral: a poesia do menos. Rio de Janeiro: Topbooks, 1999 (fragmento).",
       "arquivos": [],
       "enunciado": "Com base no trecho de Morte e Vida Severina (Texto I) e na análise crítica (Texto II), observa-se que a relação entre o texto poético e o contexto social a que ele faz referência aponta para um problema social expresso literariamente pela pergunta “Como então dizer quem fala / ora a Vossas Senhorias?”. A resposta à pergunta expressa no poema é dada por meio da",
       "alternativas": [
@@ -5017,7 +5017,7 @@
       "indice": 101,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**TEXTO I**  \n**Onde está a honestidade?**\n\nVocê tem palacete reluzente  \nTem joias e criados à vontade  \nSem ter nenhuma herança ou parente  \nSó anda de automóvel na cidade…\n\nE o povo pergunta com maldade:  \nOnde está a honestidade?  \nOnde está a honestidade?\n\nO seu dinheiro nasce de repente  \nE embora não se saiba se é verdade  \nVocê acha nas ruas diariamente  \nAnéis, dinheiro e felicidade…\n\nVassoura dos salões da sociedade  \nQue varre o que encontrar em sua frente  \nPromove festivais de caridade  \nEm nome de qualquer defunto ausente…\n\nROSA, N. Disponível em: http://www.mpbnet.com.br. Acesso em: abr. 2010.\n\n**TEXTO II**\n\nUm vulto da história da música popular brasileira, reconhecido nacionalmente, é Noel Rosa. Ele nasceu em 1910, no Rio de Janeiro; portanto, se estivesse vivo, estaria completando 100 anos. Mas faleceu aos 26 anos de idade, vítima de tuberculose, deixando um acervo de grande valor para o patrimônio cultural brasileiro. Muitas de suas letras representam a sociedade contemporânea, como se tivessem sido escritas no século XXI.\n\nDisponível em: http://www.mpbnet.com.br. Acesso em: abr. 2010.",
+      "contexto": "TEXTO I  \nOnde está a honestidade?\n\nVocê tem palacete reluzente  \nTem joias e criados à vontade  \nSem ter nenhuma herança ou parente  \nSó anda de automóvel na cidade…\n\nE o povo pergunta com maldade:  \nOnde está a honestidade?  \nOnde está a honestidade?\n\nO seu dinheiro nasce de repente  \nE embora não se saiba se é verdade  \nVocê acha nas ruas diariamente  \nAnéis, dinheiro e felicidade…\n\nVassoura dos salões da sociedade  \nQue varre o que encontrar em sua frente  \nPromove festivais de caridade  \nEm nome de qualquer defunto ausente…\n\nROSA, N. Disponível em: http://www.mpbnet.com.br. Acesso em: abr. 2010.\n\nTEXTO II\n\nUm vulto da história da música popular brasileira, reconhecido nacionalmente, é Noel Rosa. Ele nasceu em 1910, no Rio de Janeiro; portanto, se estivesse vivo, estaria completando 100 anos. Mas faleceu aos 26 anos de idade, vítima de tuberculose, deixando um acervo de grande valor para o patrimônio cultural brasileiro. Muitas de suas letras representam a sociedade contemporânea, como se tivessem sido escritas no século XXI.\n\nDisponível em: http://www.mpbnet.com.br. Acesso em: abr. 2010.",
       "arquivos": [],
       "enunciado": "Um texto pertencente ao patrimônio literário-cultural brasileiro é atualizável, na medida em que ele se refere a valores e situações de um povo. A atualidade da canção Onde está a honestidade?, de Noel Rosa, evidencia-se por meio",
       "alternativas": [
@@ -5067,7 +5067,7 @@
       "indice": 102,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "Quem é pobre, pouco se apega, é um giro-o-giro no vago dos gerais, que nem os pássaros de rios e lagoas. O senhor vê: o Zé-Zim, o melhor meeiro meu aqui, risonho e habilidoso. Pergunto: — Zé-Zim, por que é que você não cria galinhas-d’angola, como todo o mundo faz? — Quero criar nada não… — me deu resposta: — Eu gosto muito de mudar… \\[…\\] Belo um dia, ele tora. Ninguém discrepa. Eu, tantas, mesmo digo. Eu dou proteção. \\[…\\] Essa não faltou também à minha mãe, quando eu era menino, no sertãozinho de minha terra. \\[…\\] Gente melhor do lugar eram todos dessa família Guedes, Jidião Guedes; quando saíram de lá, nos trouxeram junto, minha mãe e eu. Ficamos existindo em território baixio da Sirga, da outra banda, ali onde o de-Janeiro vai no São Francisco, o senhor sabe.\n\nROSA, J. G. **Grande Sertão**: Veredas. Rio de Janeiro: José Olympio (fragmento).",
+      "contexto": "Quem é pobre, pouco se apega, é um giro-o-giro no vago dos gerais, que nem os pássaros de rios e lagoas. O senhor vê: o Zé-Zim, o melhor meeiro meu aqui, risonho e habilidoso. Pergunto: — Zé-Zim, por que é que você não cria galinhas-d’angola, como todo o mundo faz? — Quero criar nada não… — me deu resposta: — Eu gosto muito de mudar… \\[…\\] Belo um dia, ele tora. Ninguém discrepa. Eu, tantas, mesmo digo. Eu dou proteção. \\[…\\] Essa não faltou também à minha mãe, quando eu era menino, no sertãozinho de minha terra. \\[…\\] Gente melhor do lugar eram todos dessa família Guedes, Jidião Guedes; quando saíram de lá, nos trouxeram junto, minha mãe e eu. Ficamos existindo em território baixio da Sirga, da outra banda, ali onde o de-Janeiro vai no São Francisco, o senhor sabe.\n\nROSA, J. G. Grande Sertão: Veredas. Rio de Janeiro: José Olympio (fragmento).",
       "arquivos": [],
       "enunciado": "Na passagem citada, Riobaldo expõe uma situação decorrente de uma desigualdade social típica das áreas rurais brasileiras marcadas pela concentração de terras e pela relação de dependência entre agregados e fazendeiros. No texto, destaca-se essa relação porque o personagem-narrador",
       "alternativas": [
@@ -5167,7 +5167,7 @@
       "indice": 104,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Não tem tradução**\n\n\\[…\\]  \nLá no morro, se eu fizer uma falseta  \nA Risoleta desiste logo do francês e do inglês  \nA gíria que o nosso morro criou  \nBem cedo a cidade aceitou e usou  \n\\[…\\]  \nEssa gente hoje em dia que tem mania de exibição  \nNão entende que o samba não tem tradução no idioma francês  \nTudo aquilo que o malandro pronuncia  \nCom voz macia é brasileiro, já passou de português  \nAmor lá no morro é amor pra chuchu  \nAs rimas do samba não são _I love you_  \nE esse negócio de _alô, alô boy e alô Johnny_  \nSó pode ser conversa de telefone\n\nROSA, N. In: SOBRAL, João J. V. A tradução dos bambas. **Revista Língua Portuguesa**. Ano 4, n° 54. São Paulo: Segmento, abr. 2010 (fragmento).",
+      "contexto": "Não tem tradução\n\n\\[…\\]  \nLá no morro, se eu fizer uma falseta  \nA Risoleta desiste logo do francês e do inglês  \nA gíria que o nosso morro criou  \nBem cedo a cidade aceitou e usou  \n\\[…\\]  \nEssa gente hoje em dia que tem mania de exibição  \nNão entende que o samba não tem tradução no idioma francês  \nTudo aquilo que o malandro pronuncia  \nCom voz macia é brasileiro, já passou de português  \nAmor lá no morro é amor pra chuchu  \nAs rimas do samba não são _I love you_  \nE esse negócio de _alô, alô boy e alô Johnny_  \nSó pode ser conversa de telefone\n\nROSA, N. In: SOBRAL, João J. V. A tradução dos bambas. Revista Língua Portuguesa. Ano 4, n° 54. São Paulo: Segmento, abr. 2010 (fragmento).",
       "arquivos": [],
       "enunciado": "As canções de Noel Rosa, compositor brasileiro de Vila Isabel, apesar de revelarem uma aguçada preocupação do artista com seu tempo e com as mudanças político-culturais no Brasil, no início dos anos 1920, ainda são modernas. Nesse fragmento do samba Não tem tradução, por meio do recurso da metalinguagem, o poeta propõe",
       "alternativas": [
@@ -5217,7 +5217,7 @@
       "indice": 105,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "A dança é um importante componente cultural da humanidade. O folclore brasileiro é rico em danças que representam as tradições e a cultura de várias regiões do país. Estão ligadas aos aspectos religiosos, festas, lendas, fatos históricos, acontecimentos do cotidiano e brincadeiras e caracterizam-se pelas músicas animadas (com letras simples e populares), figurinos e cenários representativos.\n\nSECRETARIA DA EDUCAÇÃO. **Proposta Curricular do Estado de São Paulo**: Educação Física. São Paulo: 2009 (adaptado).",
+      "contexto": "A dança é um importante componente cultural da humanidade. O folclore brasileiro é rico em danças que representam as tradições e a cultura de várias regiões do país. Estão ligadas aos aspectos religiosos, festas, lendas, fatos históricos, acontecimentos do cotidiano e brincadeiras e caracterizam-se pelas músicas animadas (com letras simples e populares), figurinos e cenários representativos.\n\nSECRETARIA DA EDUCAÇÃO. Proposta Curricular do Estado de São Paulo: Educação Física. São Paulo: 2009 (adaptado).",
       "arquivos": [],
       "enunciado": "A dança, como manifestação e representação da cultura rítmica, envolve a expressão corporal própria de um povo. Considerando-a como elemento folclórico, a dança revela",
       "alternativas": [
@@ -5267,7 +5267,7 @@
       "indice": 106,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "Cultivar um estilo de vida saudável é extremamente importante para diminuir o risco de infarto, mas também de problemas como morte súbita e derrame. Significa que manter uma alimentação saudável e praticar atividade física regularmente já reduz, por si só, as chances de desenvolver vários problemas. Além disso, é importante para o controle da pressão arterial, dos níveis de colesterol e de glicose no sangue. Também ajuda a diminuir o estresse e aumentar a capacidade física, fatores que, somados, reduzem as chances de infarto. Exercitar-se, nesses casos, com acompanhamento médico e moderação, é altamente recomendável.\n\nATALIA, M. Nossa vida. **Época**. 23 mar. 2009.",
+      "contexto": "Cultivar um estilo de vida saudável é extremamente importante para diminuir o risco de infarto, mas também de problemas como morte súbita e derrame. Significa que manter uma alimentação saudável e praticar atividade física regularmente já reduz, por si só, as chances de desenvolver vários problemas. Além disso, é importante para o controle da pressão arterial, dos níveis de colesterol e de glicose no sangue. Também ajuda a diminuir o estresse e aumentar a capacidade física, fatores que, somados, reduzem as chances de infarto. Exercitar-se, nesses casos, com acompanhamento médico e moderação, é altamente recomendável.\n\nATALIA, M. Nossa vida. Época. 23 mar. 2009.",
       "arquivos": [],
       "enunciado": "As idéias veiculadas no texto se organizam estabelecendo relações que atuam na construção do sentido. A esse respeito, identifica-se, no fragmento, que",
       "alternativas": [
@@ -5317,7 +5317,7 @@
       "indice": 107,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "\n\n**Brasília 50 anos**. **Veja**. N° 2 138, nov. 2009.",
+      "contexto": "\n\nBrasília 50 anos. Veja. N° 2 138, nov. 2009.",
       "arquivos": [
         "https://enem.dev/2011/questions/107/4d2319f1-f48b-49f6-a323-920558a74811.png"
       ],
@@ -5369,7 +5369,7 @@
       "indice": 108,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Conceitos e importância das lutas**\n\nAntes de se tornarem esporte, as lutas ou as artes marciais tiveram duas conotações principais: eram praticadas com o objetivo guerreiro ou tinham um apelo filosófico como concepção de vida bastante significativo.\n\nAtualmente, nos deparamos com a grande expansão das artes marciais em nível mundial. As raízes orientais foram se disseminando, ora pela necessidade de luta pela sobrevivência ou para a “defesa pessoal”, ora pela possibilidade de ter as artes marciais como própria filosofia de vida.\n\nCARREIRO, E. A. **Educação Física na escola**: Implicações para a prática pedagógica. Rio de Janeiro: Guanabara Koogan, 2008 (fragmento).",
+      "contexto": "Conceitos e importância das lutas\n\nAntes de se tornarem esporte, as lutas ou as artes marciais tiveram duas conotações principais: eram praticadas com o objetivo guerreiro ou tinham um apelo filosófico como concepção de vida bastante significativo.\n\nAtualmente, nos deparamos com a grande expansão das artes marciais em nível mundial. As raízes orientais foram se disseminando, ora pela necessidade de luta pela sobrevivência ou para a “defesa pessoal”, ora pela possibilidade de ter as artes marciais como própria filosofia de vida.\n\nCARREIRO, E. A. Educação Física na escola: Implicações para a prática pedagógica. Rio de Janeiro: Guanabara Koogan, 2008 (fragmento).",
       "arquivos": [],
       "enunciado": "Um dos problemas da violência que está presente principalmente nos grandes centros urbanos são as brigas e os enfrentamentos de torcidas organizadas, além da formação de gangues, que se apropriam de gestos das lutas, resultando, muitas vezes, em fatalidades. Portanto, o verdadeiro objetivo da aprendizagem desses movimentos foi mal compreendido, afinal as lutas",
       "alternativas": [
@@ -5419,7 +5419,7 @@
       "indice": 109,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "O tema da velhice foi objeto de estudo de brilhantes filósofos ao longo dos tempos. Um dos melhores livros sobre o assunto foi escrito pelo pensador e orador romano Cícero: _A Arte do Envelhecimento_. Cícero nota, primeiramente, que todas as idades têm seus encantos e suas dificuldades. E depois aponta para um paradoxo da humanidade. Todos sonhamos ter uma vida longa, o que significa viver muitos anos. Quando realizamos a meta, em vez de celebrar o feito, nos atiramos a um estado de melancolia e amargura. Ler as palavras de Cícero sobre envelhecimento pode ajudar a aceitar melhor a passagem do tempo.\n\nNOGUEIRA, P. Saúde & Bem-Estar Antienvelhecimento. **Época**. 28 abr. 2008.",
+      "contexto": "O tema da velhice foi objeto de estudo de brilhantes filósofos ao longo dos tempos. Um dos melhores livros sobre o assunto foi escrito pelo pensador e orador romano Cícero: _A Arte do Envelhecimento_. Cícero nota, primeiramente, que todas as idades têm seus encantos e suas dificuldades. E depois aponta para um paradoxo da humanidade. Todos sonhamos ter uma vida longa, o que significa viver muitos anos. Quando realizamos a meta, em vez de celebrar o feito, nos atiramos a um estado de melancolia e amargura. Ler as palavras de Cícero sobre envelhecimento pode ajudar a aceitar melhor a passagem do tempo.\n\nNOGUEIRA, P. Saúde & Bem-Estar Antienvelhecimento. Época. 28 abr. 2008.",
       "arquivos": [],
       "enunciado": "O autor discute problemas relacionados ao envelhecimento, apresentando argumentos que levam a inferir que seu objetivo é",
       "alternativas": [
@@ -5469,7 +5469,7 @@
       "indice": 110,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "\n\nLEIRNER, N. Tronco com cadeira (detalhe), 1964.  \nDisponível em: http://www.itaucultural.org.br. Acesso em: 27 jul. 2010.\n\nNessa estranha dignidade e nesse abandono, o objeto foi exaltado de maneira ilimitada e ganhou um significado que se pode considerar mágico. Daí sua “vida inquietante e absurda”. Tornou-se ídolo e, ao mesmo tempo, objeto de zombaria. Sua realidade intrínseca foi anulada.\n\nJAFFÉ, A. O simbolismo nas artes plásticas. In: JUNG, C.G. (org.). **O homem e os seus símbolos**. Rio de Janeiro: Nova Fronteira, 2008.",
+      "contexto": "\n\nLEIRNER, N. Tronco com cadeira (detalhe), 1964.  \nDisponível em: http://www.itaucultural.org.br. Acesso em: 27 jul. 2010.\n\nNessa estranha dignidade e nesse abandono, o objeto foi exaltado de maneira ilimitada e ganhou um significado que se pode considerar mágico. Daí sua “vida inquietante e absurda”. Tornou-se ídolo e, ao mesmo tempo, objeto de zombaria. Sua realidade intrínseca foi anulada.\n\nJAFFÉ, A. O simbolismo nas artes plásticas. In: JUNG, C.G. (org.). O homem e os seus símbolos. Rio de Janeiro: Nova Fronteira, 2008.",
       "arquivos": [
         "https://enem.dev/2011/questions/110/1fa1d245-9cd8-45d7-a8e9-21cb188c46da.png"
       ],
@@ -5521,7 +5521,7 @@
       "indice": 111,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**No capricho**\n\nO Adãozinho, meu cumpade, enquanto esperava pelo delegado, olhava para um quadro, a pintura de uma senhora. Ao entrar a autoridade e percebendo que o cabôco admirava tal figura, perguntou: “Que tal? Gosta desse quadro?”\n\nE o Adãozinho, com toda a sinceridade que Deus dá ao cabôco da roça: “Mas pelo amor de Deus, hein, dotô! Que muié feia! Parece fiote de cruis-credo, parente do deus-me-livre, mais horríver que briga de cego no escuro.”\n\nAo que o delegado não teve como deixar de confessar, um pouco secamente: “É a minha mãe.” E o cabôco, em cima da bucha, não perde a linha: “Mais dotô, inté que é uma feiura caprichada.”\n\nBOLDRIN, R. **Almanaque Brasil de Cultura Popular**. São Paulo: Andreato Comunicação e Cultura, n° 62, 2004 (adaptado).",
+      "contexto": "No capricho\n\nO Adãozinho, meu cumpade, enquanto esperava pelo delegado, olhava para um quadro, a pintura de uma senhora. Ao entrar a autoridade e percebendo que o cabôco admirava tal figura, perguntou: “Que tal? Gosta desse quadro?”\n\nE o Adãozinho, com toda a sinceridade que Deus dá ao cabôco da roça: “Mas pelo amor de Deus, hein, dotô! Que muié feia! Parece fiote de cruis-credo, parente do deus-me-livre, mais horríver que briga de cego no escuro.”\n\nAo que o delegado não teve como deixar de confessar, um pouco secamente: “É a minha mãe.” E o cabôco, em cima da bucha, não perde a linha: “Mais dotô, inté que é uma feiura caprichada.”\n\nBOLDRIN, R. Almanaque Brasil de Cultura Popular. São Paulo: Andreato Comunicação e Cultura, n° 62, 2004 (adaptado).",
       "arquivos": [],
       "enunciado": "Por suas características formais, por sua função e uso, o texto pertence ao gênero",
       "alternativas": [
@@ -5571,7 +5571,7 @@
       "indice": 112,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**TEXTO I**\n\n\n\nToca do Salitre – Piauí  \nDisponível em: http://www.fumdham.org.br. Acesso em: 27 jul. 2010.\n\n**TEXTO II**\n\n\n\nArte Urbana. Foto: Diego Singh  \nDisponível em: http://www.diaadia.pr.gov.br. Acesso em: 27 jul. 2010.",
+      "contexto": "TEXTO I\n\n\n\nToca do Salitre – Piauí  \nDisponível em: http://www.fumdham.org.br. Acesso em: 27 jul. 2010.\n\nTEXTO II\n\n\n\nArte Urbana. Foto: Diego Singh  \nDisponível em: http://www.diaadia.pr.gov.br. Acesso em: 27 jul. 2010.",
       "arquivos": [
         "https://enem.dev/2011/questions/112/0c0d18b7-d2f7-473a-b14a-84793118256f.png",
         "https://enem.dev/2011/questions/112/afb1243e-488a-4092-a586-01e503a45818.png"
@@ -5624,7 +5624,7 @@
       "indice": 113,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Estrada**\n\nEsta estrada onde moro, entre duas voltas do caminho,  \nInteressa mais que uma avenida urbana.  \nNas cidades todas as pessoas se parecem.  \nTodo mundo é igual. Todo mundo é toda a gente.  \nAqui, não: sente-se bem que cada um traz a sua alma.  \nCada criatura é única.  \nAté os cães.  \nEstes cães da roça parecem homens de negócios:  \nAndam sempre preocupados.  \nE quanta gente vem e vai!  \nE tudo tem aquele caráter impressivo que faz meditar:  \nEnterro a pé ou a carrocinha de leite puxada por um bodezinho manhoso.  \nNem falta o murmúrio da água, para sugerir, pela voz dos símbolos,  \nQue a vida passa! que a vida passa!  \nE que a mocidade vai acabar.\n\nBANDEIRA, M. **O ritmo dissoluto**. Rio de Janeiro: Aguilar, 1967.",
+      "contexto": "Estrada\n\nEsta estrada onde moro, entre duas voltas do caminho,  \nInteressa mais que uma avenida urbana.  \nNas cidades todas as pessoas se parecem.  \nTodo mundo é igual. Todo mundo é toda a gente.  \nAqui, não: sente-se bem que cada um traz a sua alma.  \nCada criatura é única.  \nAté os cães.  \nEstes cães da roça parecem homens de negócios:  \nAndam sempre preocupados.  \nE quanta gente vem e vai!  \nE tudo tem aquele caráter impressivo que faz meditar:  \nEnterro a pé ou a carrocinha de leite puxada por um bodezinho manhoso.  \nNem falta o murmúrio da água, para sugerir, pela voz dos símbolos,  \nQue a vida passa! que a vida passa!  \nE que a mocidade vai acabar.\n\nBANDEIRA, M. O ritmo dissoluto. Rio de Janeiro: Aguilar, 1967.",
       "arquivos": [],
       "enunciado": "A lírica de Manuel Bandeira é pautada na apreensão de significados profundos a partir de elementos do cotidiano. No poema Estrada, o lirismo presente no contraste entre campo e cidade aponta para",
       "alternativas": [
@@ -5674,7 +5674,7 @@
       "indice": 114,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "\n\nPICASSO, P. **Guernica**. Óleo sobre tela. 349 X 777 cm. Museu Reina Sofia, Espanha, 1937.  \nDisponível em: http://www.fddreis.files.wordpress.com. Acesso em: 26 jul. 2010.",
+      "contexto": "\n\nPICASSO, P. Guernica. Óleo sobre tela. 349 X 777 cm. Museu Reina Sofia, Espanha, 1937.  \nDisponível em: http://www.fddreis.files.wordpress.com. Acesso em: 26 jul. 2010.",
       "arquivos": [
         "https://enem.dev/2011/questions/114/f1377ead-441b-47bf-a1f3-25e20beac813.png"
       ],
@@ -5726,7 +5726,7 @@
       "indice": 115,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "No Brasil, a condição cidadã, embora dependa da leitura e da escrita, não se basta pela enunciação do direito, nem pelo domínio desses instrumentos, o que, sem dúvida, viabiliza melhor participação social. A condição cidadã depende, seguramente, da ruptura com o ciclo da pobreza, que penaliza um largo contingente populacional.\n\n**Formação de leitores e construção da cidadania, memória e presença do PROLER**. Rio de Janeiro: FBN, 2008.",
+      "contexto": "No Brasil, a condição cidadã, embora dependa da leitura e da escrita, não se basta pela enunciação do direito, nem pelo domínio desses instrumentos, o que, sem dúvida, viabiliza melhor participação social. A condição cidadã depende, seguramente, da ruptura com o ciclo da pobreza, que penaliza um largo contingente populacional.\n\nFormação de leitores e construção da cidadania, memória e presença do PROLER. Rio de Janeiro: FBN, 2008.",
       "arquivos": [],
       "enunciado": "Ao argumentar que a aquisição das habilidades de leitura e escrita não são suficientes para garantir o exercício da cidadania, o autor",
       "alternativas": [
@@ -5776,7 +5776,7 @@
       "indice": 116,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Lépida e leve**\n\nLíngua do meu Amor velosa e doce,  \nque me convences de que sou frase,  \nque me contornas, que me vestes quase,  \ncomo se o corpo meu de ti vindo me fosse.  \nLíngua que me cativas, que me enleias  \nos surtos de ave estranha,  \nem linhas longas de invisíveis teias,  \nde que és, há tanto, habilidosa aranha…  \n\\[…\\]  \nAmo-te as sugestões gloriosas e funestas,  \namo-te como todas as mulheres  \nte amam, ó língua-lama, ó língua-resplendor,  \npela carne de som que à ideia emprestas  \ne pelas frases mudas que proferes  \nnos silêncios de Amor!…\n\nMACHADO, G. In: MORICONI, I. (org.). **Os cem melhores poemas brasileiros do século**. Rio de Janeiro: Objetiva, 2001 (fragmento).",
+      "contexto": "Lépida e leve\n\nLíngua do meu Amor velosa e doce,  \nque me convences de que sou frase,  \nque me contornas, que me vestes quase,  \ncomo se o corpo meu de ti vindo me fosse.  \nLíngua que me cativas, que me enleias  \nos surtos de ave estranha,  \nem linhas longas de invisíveis teias,  \nde que és, há tanto, habilidosa aranha…  \n\\[…\\]  \nAmo-te as sugestões gloriosas e funestas,  \namo-te como todas as mulheres  \nte amam, ó língua-lama, ó língua-resplendor,  \npela carne de som que à ideia emprestas  \ne pelas frases mudas que proferes  \nnos silêncios de Amor!…\n\nMACHADO, G. In: MORICONI, I. (org.). Os cem melhores poemas brasileiros do século. Rio de Janeiro: Objetiva, 2001 (fragmento).",
       "arquivos": [],
       "enunciado": "A poesia de Gilka Machado identifica-se com as concepções artísticas simbolistas. Entretanto, o texto selecionado incorpora referências temáticas e formais modernistas, já que, nele, a poeta",
       "alternativas": [
@@ -5826,7 +5826,7 @@
       "indice": 118,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Guardar**\n\nGuardar uma coisa não é escondê-la ou trancá-la.  \nEm cofre não se guarda coisa alguma.  \nEm cofre perde-se a coisa à vista.  \nGuardar uma coisa é olhá-la, fitá-la, mirá-la por  \nadmirá-la, isto é, iluminá-la ou ser por ela iluminado.  \nGuardar uma coisa é vigiá-la, isto é, fazer vigília por  \nela, isto é, velar por ela, isto é, estar acordado por ela,  \nisto é, estar por ela ou ser por ela.  \nPor isso melhor se guarda o voo de um pássaro  \nDo que um pássaro sem voos.  \nPor isso se escreve, por isso se diz, por isso se publica,  \npor isso se declara e declama um poema:  \nPara guardá-lo:  \nPara que ele, por sua vez, guarde o que guarda:  \nGuarde o que quer que guarda um poema:  \nPor isso o lance do poema:  \nPor guardar-se o que se quer guardar.\n\nMACHADO, G. In: MORICONI, I. (org.). **Os cem melhores poemas brasileiros do século**. Rio de Janeiro: Objetiva, 2001.",
+      "contexto": "Guardar\n\nGuardar uma coisa não é escondê-la ou trancá-la.  \nEm cofre não se guarda coisa alguma.  \nEm cofre perde-se a coisa à vista.  \nGuardar uma coisa é olhá-la, fitá-la, mirá-la por  \nadmirá-la, isto é, iluminá-la ou ser por ela iluminado.  \nGuardar uma coisa é vigiá-la, isto é, fazer vigília por  \nela, isto é, velar por ela, isto é, estar acordado por ela,  \nisto é, estar por ela ou ser por ela.  \nPor isso melhor se guarda o voo de um pássaro  \nDo que um pássaro sem voos.  \nPor isso se escreve, por isso se diz, por isso se publica,  \npor isso se declara e declama um poema:  \nPara guardá-lo:  \nPara que ele, por sua vez, guarde o que guarda:  \nGuarde o que quer que guarda um poema:  \nPor isso o lance do poema:  \nPor guardar-se o que se quer guardar.\n\nMACHADO, G. In: MORICONI, I. (org.). Os cem melhores poemas brasileiros do século. Rio de Janeiro: Objetiva, 2001.",
       "arquivos": [],
       "enunciado": "A memória é um importante recurso do patrimônio cultural de uma nação. Ela está presente nas lembranças do passado e no acervo cultural de um povo. Ao tratar o fazer poético como uma das maneiras de se guardar o que se quer, o texto",
       "alternativas": [
@@ -5876,7 +5876,7 @@
       "indice": 119,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "Quando os portugueses se instalaram no Brasil, o país era povoado de índios. Importaram, depois, da África, grande número de escravos. O Português, o Índio e o Negro constituem, durante o período colonial, as três bases da população brasileira. Mas no que se refere à cultura, a contribuição do Português foi de longe a mais notada.\n\nDurante muito tempo o português e o tupi viveram lado a lado como línguas de comunicação. Era o tupi que utilizavam os bandeirantes nas suas expedições. Em 1694, dizia o Padre Antônio Vieira que “as famílias dos portugueses e índios em São Paulo estão tão ligadas hoje umas com as outras, que as mulheres e os filhos se criam mística e domesticamente, e a língua que nas ditas famílias se fala é a dos Índios, e a portuguesa a vão os meninos aprender à escola.”\n\nTEYSSIER, P. **História da língua portuguesa**. Lisboa: Livraria Sá da Costa, 1984 (adaptado).",
+      "contexto": "Quando os portugueses se instalaram no Brasil, o país era povoado de índios. Importaram, depois, da África, grande número de escravos. O Português, o Índio e o Negro constituem, durante o período colonial, as três bases da população brasileira. Mas no que se refere à cultura, a contribuição do Português foi de longe a mais notada.\n\nDurante muito tempo o português e o tupi viveram lado a lado como línguas de comunicação. Era o tupi que utilizavam os bandeirantes nas suas expedições. Em 1694, dizia o Padre Antônio Vieira que “as famílias dos portugueses e índios em São Paulo estão tão ligadas hoje umas com as outras, que as mulheres e os filhos se criam mística e domesticamente, e a língua que nas ditas famílias se fala é a dos Índios, e a portuguesa a vão os meninos aprender à escola.”\n\nTEYSSIER, P. História da língua portuguesa. Lisboa: Livraria Sá da Costa, 1984 (adaptado).",
       "arquivos": [],
       "enunciado": "A identidade de uma nação está diretamente ligada à cultura de seu povo. O texto mostra que, no período colonial brasileiro, o Português, o Índio e o Negro formaram a base da população e que o patrimônio linguístico brasileiro é resultado da",
       "alternativas": [
@@ -5926,7 +5926,7 @@
       "indice": 120,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Pequeno concerto que virou canção**\n\nNão, não há por que mentir ou esconder  \nA dor que foi maior do que é capaz meu coração  \nNão, nem há por que seguir cantando só para explicar  \nNão vai nunca entender de amor quem nunca soube amar  \nAh, eu vou voltar pra mim  \nSeguir sozinho assim  \nAté me consumir ou consumir toda essa dor  \nAté sentir de novo o coração capaz de amor\n\nVANDRÉ, G. Disponível em: http://www.letras.terra.com.br. Acesso em: 29 jun. 2011.",
+      "contexto": "Pequeno concerto que virou canção\n\nNão, não há por que mentir ou esconder  \nA dor que foi maior do que é capaz meu coração  \nNão, nem há por que seguir cantando só para explicar  \nNão vai nunca entender de amor quem nunca soube amar  \nAh, eu vou voltar pra mim  \nSeguir sozinho assim  \nAté me consumir ou consumir toda essa dor  \nAté sentir de novo o coração capaz de amor\n\nVANDRÉ, G. Disponível em: http://www.letras.terra.com.br. Acesso em: 29 jun. 2011.",
       "arquivos": [],
       "enunciado": "Na canção de Geraldo Vandré, tem-se a manifestação da função poética da linguagem, que é percebida na elaboração artística e criativa da mensagem, por meio de combinações sonoras e rítmicas. Pela análise do texto, entretanto, percebe-se, também, a presença marcante da função emotiva ou expressiva, por meio da qual o emissor",
       "alternativas": [
@@ -5975,7 +5975,7 @@
       "indice": 121,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**É água que não acaba mais**\n\nDados preliminares divulgados por pesquisadores da Universidade Federal do Pará (UFPA) apontaram o Aquífero Alter do Chão como o maior depósito de água potável do planeta. Com volume estimado em 86 000 quilômetros cúbicos de água doce, a reserva subterrânea está localizada sob os estados do Amazonas, Pará e Amapá. “Essa quantidade de água seria suficiente para abastecer a população mundial durante 500 anos”, diz Milton Matta, geólogo da UFPA. Em termos comparativos, Alter do Chão tem quase o dobro do volume de água do Aquífero Guarani (com 45 000 quilômetros cúbicos). Até então, Guarani era a maior reserva subterrânea do mundo, distribuída por Brasil, Argentina, Paraguai e Uruguai.\n\n**Época**. N° 623, 26 abr. 2010.",
+      "contexto": "É água que não acaba mais\n\nDados preliminares divulgados por pesquisadores da Universidade Federal do Pará (UFPA) apontaram o Aquífero Alter do Chão como o maior depósito de água potável do planeta. Com volume estimado em 86 000 quilômetros cúbicos de água doce, a reserva subterrânea está localizada sob os estados do Amazonas, Pará e Amapá. “Essa quantidade de água seria suficiente para abastecer a população mundial durante 500 anos”, diz Milton Matta, geólogo da UFPA. Em termos comparativos, Alter do Chão tem quase o dobro do volume de água do Aquífero Guarani (com 45 000 quilômetros cúbicos). Até então, Guarani era a maior reserva subterrânea do mundo, distribuída por Brasil, Argentina, Paraguai e Uruguai.\n\nÉpoca. N° 623, 26 abr. 2010.",
       "arquivos": [],
       "enunciado": "Essa notícia, publicada em uma revista de grande circulação, apresenta resultados de uma pesquisa científica realizada por uma universidade brasileira. Nessa situação específica de comunicação, a função referencial da linguagem predomina, porque o autor do texto prioriza",
       "alternativas": [
@@ -6025,7 +6025,7 @@
       "indice": 122,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "\n\nNós adoraríamos dizer que somos perfeitos. Que somos infalíveis. Que não cometemos nem mesmo o menor deslize. E só não falamos isso por um pequeno detalhe: seria uma mentira. Aliás, em vez de usar a palavra “mentira”, como acabamos de fazer, poderíamos optar por um eufemismo. “Meia-verdade”, por exemplo, seria um termo muito menos agressivo. Mas nós não usamos esta palavra simplesmente porque não acreditamos que exista uma “Meia-verdade”. Para o Conar, Conselho Nacional de Autorregulamentação Publicitária, existem a verdade e a mentira. Existem a honestidade e a desonestidade. Absolutamente nada no meio. O Conar nasceu há 29 anos (viu só? não arredondamos para 30) com a missão de zelar pela ética na publicidade. Não fazemos isso porque somos bonzinhos (gostaríamos de dizer isso, mas, mais uma vez, seria mentira). Fazemos isso porque é a única forma da propaganda ter o máximo de credibilidade. E, cá entre nós, para que serviria a propaganda se o consumidor não acreditasse nela?  \nQualquer pessoa que se sinta enganada por uma peça publicitária pode fazer uma reclamação ao Conar. Ele analisa cuidadosamente todas as denúncias e, quando é o caso, aplica a punição.\n\nAnúncio veiculado na Revista **Veja**. São Paulo: Abril. Ed. 2120, ano 42, n° 27, 8 jul. 2009.",
+      "contexto": "\n\nNós adoraríamos dizer que somos perfeitos. Que somos infalíveis. Que não cometemos nem mesmo o menor deslize. E só não falamos isso por um pequeno detalhe: seria uma mentira. Aliás, em vez de usar a palavra “mentira”, como acabamos de fazer, poderíamos optar por um eufemismo. “Meia-verdade”, por exemplo, seria um termo muito menos agressivo. Mas nós não usamos esta palavra simplesmente porque não acreditamos que exista uma “Meia-verdade”. Para o Conar, Conselho Nacional de Autorregulamentação Publicitária, existem a verdade e a mentira. Existem a honestidade e a desonestidade. Absolutamente nada no meio. O Conar nasceu há 29 anos (viu só? não arredondamos para 30) com a missão de zelar pela ética na publicidade. Não fazemos isso porque somos bonzinhos (gostaríamos de dizer isso, mas, mais uma vez, seria mentira). Fazemos isso porque é a única forma da propaganda ter o máximo de credibilidade. E, cá entre nós, para que serviria a propaganda se o consumidor não acreditasse nela?  \nQualquer pessoa que se sinta enganada por uma peça publicitária pode fazer uma reclamação ao Conar. Ele analisa cuidadosamente todas as denúncias e, quando é o caso, aplica a punição.\n\nAnúncio veiculado na Revista Veja. São Paulo: Abril. Ed. 2120, ano 42, n° 27, 8 jul. 2009.",
       "arquivos": [
         "https://enem.dev/2011/questions/122/d8295ea3-6df2-42a5-8fe7-37e71cd0850d.png"
       ],
@@ -6077,7 +6077,7 @@
       "indice": 123,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "\n\nNós adoraríamos dizer que somos perfeitos. Que somos infalíveis. Que não cometemos nem mesmo o menor deslize. E só não falamos isso por um pequeno detalhe: seria uma mentira. Aliás, em vez de usar a palavra “mentira”, como acabamos de fazer, poderíamos optar por um eufemismo. “Meia-verdade”, por exemplo, seria um termo muito menos agressivo. Mas nós não usamos esta palavra simplesmente porque não acreditamos que exista uma “Meia-verdade”. Para o Conar, Conselho Nacional de Autorregulamentação Publicitária, existem a verdade e a mentira. Existem a honestidade e a desonestidade. Absolutamente nada no meio. O Conar nasceu há 29 anos (viu só? não arredondamos para 30) com a missão de zelar pela ética na publicidade. Não fazemos isso porque somos bonzinhos (gostaríamos de dizer isso, mas, mais uma vez, seria mentira). Fazemos isso porque é a única forma da propaganda ter o máximo de credibilidade. E, cá entre nós, para que serviria a propaganda se o consumidor não acreditasse nela?  \nQualquer pessoa que se sinta enganada por uma peça publicitária pode fazer uma reclamação ao Conar. Ele analisa cuidadosamente todas as denúncias e, quando é o caso, aplica a punição.\n\nAnúncio veiculado na Revista **Veja**. São Paulo: Abril. Ed. 2120, ano 42, n° 27, 8 jul. 2009.",
+      "contexto": "\n\nNós adoraríamos dizer que somos perfeitos. Que somos infalíveis. Que não cometemos nem mesmo o menor deslize. E só não falamos isso por um pequeno detalhe: seria uma mentira. Aliás, em vez de usar a palavra “mentira”, como acabamos de fazer, poderíamos optar por um eufemismo. “Meia-verdade”, por exemplo, seria um termo muito menos agressivo. Mas nós não usamos esta palavra simplesmente porque não acreditamos que exista uma “Meia-verdade”. Para o Conar, Conselho Nacional de Autorregulamentação Publicitária, existem a verdade e a mentira. Existem a honestidade e a desonestidade. Absolutamente nada no meio. O Conar nasceu há 29 anos (viu só? não arredondamos para 30) com a missão de zelar pela ética na publicidade. Não fazemos isso porque somos bonzinhos (gostaríamos de dizer isso, mas, mais uma vez, seria mentira). Fazemos isso porque é a única forma da propaganda ter o máximo de credibilidade. E, cá entre nós, para que serviria a propaganda se o consumidor não acreditasse nela?  \nQualquer pessoa que se sinta enganada por uma peça publicitária pode fazer uma reclamação ao Conar. Ele analisa cuidadosamente todas as denúncias e, quando é o caso, aplica a punição.\n\nAnúncio veiculado na Revista Veja. São Paulo: Abril. Ed. 2120, ano 42, n° 27, 8 jul. 2009.",
       "arquivos": [
         "https://enem.dev/2011/questions/123/d8350fd2-dd7d-42b4-8be8-3b2892dcf629.png"
       ],
@@ -6129,7 +6129,7 @@
       "indice": 124,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "\n\n**Veja**. 05 set. 1999 (adaptado).",
+      "contexto": "\n\nVeja. 05 set. 1999 (adaptado).",
       "arquivos": [
         "https://enem.dev/2011/questions/124/d9afe727-bf11-4034-b3e4-3121d99dc482.png"
       ],
@@ -6181,7 +6181,7 @@
       "indice": 125,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Entre ideia e tecnologia**\n\nO grande conceito por trás do Museu da Língua é apresentar o idioma como algo vivo e fundamental para o entendimento do que é ser brasileiro. Se nada nos define com clareza, a forma como falamos o português nas mais diversas situações cotidianas é talvez a melhor expressão da brasilidade.\n\nSCARDOVELI, E. **Revista Língua Portuguesa**. São Paulo: Segmento, Ano II, n° 6, 2006.",
+      "contexto": "Entre ideia e tecnologia\n\nO grande conceito por trás do Museu da Língua é apresentar o idioma como algo vivo e fundamental para o entendimento do que é ser brasileiro. Se nada nos define com clareza, a forma como falamos o português nas mais diversas situações cotidianas é talvez a melhor expressão da brasilidade.\n\nSCARDOVELI, E. Revista Língua Portuguesa. São Paulo: Segmento, Ano II, n° 6, 2006.",
       "arquivos": [],
       "enunciado": "O texto propõe uma reflexão acerca da língua portuguesa, ressaltando para o leitor a",
       "alternativas": [
@@ -6231,7 +6231,7 @@
       "indice": 126,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**TEXTO I**\n\nO Brasil sempre deu respostas rápidas através da solidariedade do seu povo. Mas a mesma força que nos motiva a ajudar o próximo deveria também nos motivar a ter atitudes cidadãs. Não podemos mais transferir a culpa para quem é vítima ou até mesmo para a própria natureza, como se essa seguisse a lógica humana. Sobram desculpas esfarrapadas e falta competência da classe política.\n\nCartas. **Istoé**. 28 abr. 2010.\n\n**TEXTO II**\n\nNão podemos negar ao povo sofrido todas as hipóteses de previsão dos desastres. Demagogos culpam os moradores; o governo e a prefeitura apelam para as pessoas saírem das áreas de risco e agora dizem que será compulsória a realocação. Então temos a realocar o Brasil inteiro! Criemos um serviço, similar ao SUS, com alocação obrigatória de recursos orçamentários com rede de atendimento preventivo, onde participariam arquitetos, engenheiros, geólogos. Bem ou mal, esse “SUS” organizaria brigadas nos locais. Nos casos da dengue, por exemplo, poderia verificar as condições de acontecer epidemias. Seriam boas ações preventivas.\n\nCarta do Leitor. **Carta Capital**. 28 abr. 2010 (adaptado).",
+      "contexto": "TEXTO I\n\nO Brasil sempre deu respostas rápidas através da solidariedade do seu povo. Mas a mesma força que nos motiva a ajudar o próximo deveria também nos motivar a ter atitudes cidadãs. Não podemos mais transferir a culpa para quem é vítima ou até mesmo para a própria natureza, como se essa seguisse a lógica humana. Sobram desculpas esfarrapadas e falta competência da classe política.\n\nCartas. Istoé. 28 abr. 2010.\n\nTEXTO II\n\nNão podemos negar ao povo sofrido todas as hipóteses de previsão dos desastres. Demagogos culpam os moradores; o governo e a prefeitura apelam para as pessoas saírem das áreas de risco e agora dizem que será compulsória a realocação. Então temos a realocar o Brasil inteiro! Criemos um serviço, similar ao SUS, com alocação obrigatória de recursos orçamentários com rede de atendimento preventivo, onde participariam arquitetos, engenheiros, geólogos. Bem ou mal, esse “SUS” organizaria brigadas nos locais. Nos casos da dengue, por exemplo, poderia verificar as condições de acontecer epidemias. Seriam boas ações preventivas.\n\nCarta do Leitor. Carta Capital. 28 abr. 2010 (adaptado).",
       "arquivos": [],
       "enunciado": "Os textos apresentados expressam opiniões de leitores acerca de relevante assunto para a sociedade brasileira. Os autores dos dois textos apontam para a",
       "alternativas": [
@@ -6333,7 +6333,7 @@
       "indice": 128,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "Motivadas ou não historicamente, normas prestigiadas ou estigmatizadas pela comunidade sobrepõem-se ao longo do território, seja numa relação de oposição, seja de complementaridade, sem, contudo, anular a interseção de usos que configuram uma norma nacional distinta da do português europeu. Ao focalizar essa questão, que opõe não só as normas do português de Portugal às normas do português brasileiro, mas também as chamadas normas cultas locais às populares ou vernáculas, deve-se insistir na ideia de que essas normas se consolidaram em diferentes momentos da nossa história e que só a partir do século XVIII se pode começar a pensar na bifurcação das variantes continentais, ora em consequência de mudanças ocorridas no Brasil, ora em Portugal, ora, ainda, em ambos os territórios.\n\nCALLOU, D. Gramática, variação e normas. In: VIEIRA, S. R.; BRANDÃO, S. (orgs). **Ensino de gramática**: descrição e uso. São Paulo: Contexto, 2007 (adaptado).",
+      "contexto": "Motivadas ou não historicamente, normas prestigiadas ou estigmatizadas pela comunidade sobrepõem-se ao longo do território, seja numa relação de oposição, seja de complementaridade, sem, contudo, anular a interseção de usos que configuram uma norma nacional distinta da do português europeu. Ao focalizar essa questão, que opõe não só as normas do português de Portugal às normas do português brasileiro, mas também as chamadas normas cultas locais às populares ou vernáculas, deve-se insistir na ideia de que essas normas se consolidaram em diferentes momentos da nossa história e que só a partir do século XVIII se pode começar a pensar na bifurcação das variantes continentais, ora em consequência de mudanças ocorridas no Brasil, ora em Portugal, ora, ainda, em ambos os territórios.\n\nCALLOU, D. Gramática, variação e normas. In: VIEIRA, S. R.; BRANDÃO, S. (orgs). Ensino de gramática: descrição e uso. São Paulo: Contexto, 2007 (adaptado).",
       "arquivos": [],
       "enunciado": "O português do Brasil não é uma língua uniforme. A variação linguística é um fenômeno natural, ao qual todas as línguas estão sujeitas. Ao considerar as variedades linguísticas, o texto mostra que as normas podem ser aprovadas ou condenadas socialmente, chamando a atenção do leitor para a",
       "alternativas": [
@@ -6383,7 +6383,7 @@
       "indice": 129,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "\n\nVERÍSSIMO, L. F. **As cobras em: Se Deus existe que eu seja atingido por um raio**. Porto Alegre: L&PM, 1997.",
+      "contexto": "\n\nVERÍSSIMO, L. F. As cobras em: Se Deus existe que eu seja atingido por um raio. Porto Alegre: L&PM, 1997.",
       "arquivos": [
         "https://enem.dev/2011/questions/129/5e1eed51-8dca-463c-8587-c0578dda1639.png"
       ],
@@ -6435,7 +6435,7 @@
       "indice": 130,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**MANDIOCA — mais um presente da Amazônia**\n\n_Aipim_, _castelinha_, _macaxeira_, _maniva_, _maniveira_. As designações da _Manihot utilissima_ podem variar de região, no Brasil, mas uma delas deve ser levada em conta em todo o território nacional: pão-de-pobre — e por motivos óbvios.\n\nRica em fécula, a mandioca — uma planta rústica e nativa da Amazônia disseminada no mundo inteiro, especialmente pelos colonizadores portugueses — é a base de sustento de muitos brasileiros e o único alimento disponível para mais de 600 milhões de pessoas em vários pontos do planeta, e em particular em algumas regiões da África.\n\n**O melhor do Globo Rural**. Fev. 2005 (fragmento).",
+      "contexto": "MANDIOCA — mais um presente da Amazônia\n\n_Aipim_, _castelinha_, _macaxeira_, _maniva_, _maniveira_. As designações da _Manihot utilissima_ podem variar de região, no Brasil, mas uma delas deve ser levada em conta em todo o território nacional: pão-de-pobre — e por motivos óbvios.\n\nRica em fécula, a mandioca — uma planta rústica e nativa da Amazônia disseminada no mundo inteiro, especialmente pelos colonizadores portugueses — é a base de sustento de muitos brasileiros e o único alimento disponível para mais de 600 milhões de pessoas em vários pontos do planeta, e em particular em algumas regiões da África.\n\nO melhor do Globo Rural. Fev. 2005 (fragmento).",
       "arquivos": [],
       "enunciado": "De acordo com o texto, há no Brasil uma variedade de nomes para a Manihot utilissima, nome científico da mandioca. Esse fenômeno revela que",
       "alternativas": [
@@ -6485,7 +6485,7 @@
       "indice": 131,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "Há certos usos consagrados na fala, e até mesmo na escrita, que, a depender do estrato social e do nível de escolaridade do falante, são, sem dúvida, previsíveis. Ocorrem até mesmo em falantes que dominam a variedade padrão, pois, na verdade, revelam tendências existentes na língua em seu processo de mudança que não podem ser bloqueadas em nome de um “ideal linguístico” que estaria representado pelas regras da gramática normativa. Usos como _ter_ por _haver_ em construções existenciais (_tem_ muitos livros na estante), o do pronome objeto na posição de sujeito (para _mim_ fazer o trabalho), a não-concordância das passivas com _se_ (_aluga-se_ casas) são indícios da existência, não de uma norma única, mas de uma pluralidade de normas, entendida, mais uma vez, norma como conjunto de hábitos linguísticos, sem implicar juízo de valor.\n\nCALLOU, D. Gramática, variação e normas. In: VIEIRA, S. R.; BRANDÃO, S. (orgs). **Ensino de gramática**: descrição e uso. São Paulo: Contexto, 2007 (fragmento).",
+      "contexto": "Há certos usos consagrados na fala, e até mesmo na escrita, que, a depender do estrato social e do nível de escolaridade do falante, são, sem dúvida, previsíveis. Ocorrem até mesmo em falantes que dominam a variedade padrão, pois, na verdade, revelam tendências existentes na língua em seu processo de mudança que não podem ser bloqueadas em nome de um “ideal linguístico” que estaria representado pelas regras da gramática normativa. Usos como _ter_ por _haver_ em construções existenciais (_tem_ muitos livros na estante), o do pronome objeto na posição de sujeito (para _mim_ fazer o trabalho), a não-concordância das passivas com _se_ (_aluga-se_ casas) são indícios da existência, não de uma norma única, mas de uma pluralidade de normas, entendida, mais uma vez, norma como conjunto de hábitos linguísticos, sem implicar juízo de valor.\n\nCALLOU, D. Gramática, variação e normas. In: VIEIRA, S. R.; BRANDÃO, S. (orgs). Ensino de gramática: descrição e uso. São Paulo: Contexto, 2007 (fragmento).",
       "arquivos": [],
       "enunciado": "Considerando a reflexão trazida no texto a respeito da multiplicidade do discurso, verifica-se que",
       "alternativas": [
@@ -6535,7 +6535,7 @@
       "indice": 132,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Palavra indígena**\n\n_A história da tribo Sapucaí, que traduziu para o idioma guarani os artefatos da era da computação que ganharam importância em sua vida, como mouse (que eles chamam de angojhá) e windows (oventã)_\n\nQuando a internet chegou àquela comunidade, que abriga em torno de 400 guaranis, há quatro anos, por meio de um projeto do Comitê para Democratização da Informática (CDI), em parceria com a ONG Rede Povos da Floresta e com antena cedida pela _Star One_ (da Embratel), Potty e sua aldeia logo vislumbraram as possibilidades de comunicação que a _web_ traz.\n\nEle conta que usam a rede, por enquanto, somente para preparação e envio de documentos, mas perceberam que ela pode ajudar na preservação da cultura indígena.\n\nA apropriação da rede se deu de forma gradual, mas os guaranis já incorporaram a novidade tecnológica ao seu estilo de vida. A importância da internet e da computação para eles está expressa num caso de rara incorporação: a do vocabulário.\n\n— Um dia, o cacique da aldeia Sapucaí me ligou. “A gente não está querendo chamar computador de “computador”. Sugeri a eles que criassem uma palavra em guarani. E criaram _aiú irú rive_, “caixa pra acumular a língua”. Nós, brancos, usamos _mouse_, w_indows_ e outros termos, que eles começaram a adaptar para o idioma deles, como _angojhá_ (rato) e _oventã_ (janela) — conta Rodrigo Baggio, diretor do CDI.\n\nDisponível em: http://www.revistalingua.uol.com.br. Acesso em: 22 jul. 2010.",
+      "contexto": "Palavra indígena\n\n_A história da tribo Sapucaí, que traduziu para o idioma guarani os artefatos da era da computação que ganharam importância em sua vida, como mouse (que eles chamam de angojhá) e windows (oventã)_\n\nQuando a internet chegou àquela comunidade, que abriga em torno de 400 guaranis, há quatro anos, por meio de um projeto do Comitê para Democratização da Informática (CDI), em parceria com a ONG Rede Povos da Floresta e com antena cedida pela _Star One_ (da Embratel), Potty e sua aldeia logo vislumbraram as possibilidades de comunicação que a _web_ traz.\n\nEle conta que usam a rede, por enquanto, somente para preparação e envio de documentos, mas perceberam que ela pode ajudar na preservação da cultura indígena.\n\nA apropriação da rede se deu de forma gradual, mas os guaranis já incorporaram a novidade tecnológica ao seu estilo de vida. A importância da internet e da computação para eles está expressa num caso de rara incorporação: a do vocabulário.\n\n— Um dia, o cacique da aldeia Sapucaí me ligou. “A gente não está querendo chamar computador de “computador”. Sugeri a eles que criassem uma palavra em guarani. E criaram _aiú irú rive_, “caixa pra acumular a língua”. Nós, brancos, usamos _mouse_, w_indows_ e outros termos, que eles começaram a adaptar para o idioma deles, como _angojhá_ (rato) e _oventã_ (janela) — conta Rodrigo Baggio, diretor do CDI.\n\nDisponível em: http://www.revistalingua.uol.com.br. Acesso em: 22 jul. 2010.",
       "arquivos": [],
       "enunciado": "O uso das novas tecnologias de informação e comunicação fez surgir uma série de novos termos que foram acolhidos na sociedade brasileira em sua forma original, como: mouse, windows, download, site, homepage, entre outros. O texto trata da adaptação de termos da informática à língua indígena como uma reação da tribo Sapucaí, o que revela",
       "alternativas": [
@@ -6689,7 +6689,7 @@
       "indice": 135,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**O que é possível dizer em 140 caracteres?**\n\n_Sucesso do Twitter no Brasil é oportunidade única de compreender a importância da concisão nos gêneros de escrita_\n\nA máxima “menos é mais” nunca fez tanto sentido como no caso do _microblog_ Twitter, cuja premissa é dizer algo — não importa o quê — em 140 caracteres. Desde que o serviço foi criado, em 2006, o número de usuários da ferramenta é cada vez maior, assim como a diversidade de usos que se faz dela. Do estilo “querido diário” à literatura concisa, passando por aforismos, citações, jornalismo, fofoca, humor etc., tudo ganha o espaço de um _tweet_ (“pio” em inglês), e entender seu sucesso pode indicar um caminho para o aprimoramento de um recurso vital à escrita: a concisão.\n\nDisponível em: http://www.revistalingua.com.br. Acesso em: 28 abr. 2010 (adaptado).",
+      "contexto": "O que é possível dizer em 140 caracteres?\n\n_Sucesso do Twitter no Brasil é oportunidade única de compreender a importância da concisão nos gêneros de escrita_\n\nA máxima “menos é mais” nunca fez tanto sentido como no caso do _microblog_ Twitter, cuja premissa é dizer algo — não importa o quê — em 140 caracteres. Desde que o serviço foi criado, em 2006, o número de usuários da ferramenta é cada vez maior, assim como a diversidade de usos que se faz dela. Do estilo “querido diário” à literatura concisa, passando por aforismos, citações, jornalismo, fofoca, humor etc., tudo ganha o espaço de um _tweet_ (“pio” em inglês), e entender seu sucesso pode indicar um caminho para o aprimoramento de um recurso vital à escrita: a concisão.\n\nDisponível em: http://www.revistalingua.com.br. Acesso em: 28 abr. 2010 (adaptado).",
       "arquivos": [],
       "enunciado": "O Twitter se presta a diversas finalidades, entre elas, à comunicação concisa, por isso essa rede social",
       "alternativas": [
@@ -6789,7 +6789,7 @@
       "indice": 137,
       "area": "matematica",
       "idioma": null,
-      "contexto": "\n\nOnde M0 é o momento sísmico (usualmente estimado a partir dos registros de movimento da superfície, através dos sismogramas), cuja unidade é o dina⋅cm. O terremoto de Kobe, acontecido no dia 17 de janeiro de 1995, foi um dos terremotos que causaram maior impacto no Japão e na comunidade científica internacional. Teve magnitude MW = 7,3.\n\n**U.S. GEOLOGICAL SURVEY**. Historic Earthquakes.  \nDisponível em: http://earthquake.usgs.gov. Acesso em: 1 maio 2010 (adaptado).",
+      "contexto": "\n\nOnde M0 é o momento sísmico (usualmente estimado a partir dos registros de movimento da superfície, através dos sismogramas), cuja unidade é o dina⋅cm. O terremoto de Kobe, acontecido no dia 17 de janeiro de 1995, foi um dos terremotos que causaram maior impacto no Japão e na comunidade científica internacional. Teve magnitude MW = 7,3.\n\nU.S. GEOLOGICAL SURVEY. Historic Earthquakes.  \nDisponível em: http://earthquake.usgs.gov. Acesso em: 1 maio 2010 (adaptado).",
       "arquivos": [
         "https://enem.dev/2011/questions/137/71b536bf-1542-490f-96b7-6da5a37e0c08.png"
       ],
@@ -7606,7 +7606,7 @@
       "indice": 153,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Observe as dicas para calcular a quantidade certa de alimentos e bebidas para as festas de fim de ano:\n\n*   Para o prato principal, estime 250 gramas de carne para cada pessoa.\n*   Um copo americano cheio de arroz rende o suficiente para quatro pessoas.\n*   Para a farofa, calcule quatro colheres de sopa por convidado.\n*   Uma garrafa de vinho serve seis pessoas.\n*    Uma garrafa de cerveja serve duas.\n*    Uma garrafa de espumante serve três convidados.\n\nQuem organiza festas faz esses cálculos em cima do total de convidados, independente do gosto de cada um.\n\nQuantidade certa de alimentos e bebidas evita o desperdício da ceia.  \n**Jornal Hoje** 17 dez. 2010 (adaptado).",
+      "contexto": "Observe as dicas para calcular a quantidade certa de alimentos e bebidas para as festas de fim de ano:\n\n*   Para o prato principal, estime 250 gramas de carne para cada pessoa.\n*   Um copo americano cheio de arroz rende o suficiente para quatro pessoas.\n*   Para a farofa, calcule quatro colheres de sopa por convidado.\n*   Uma garrafa de vinho serve seis pessoas.\n*    Uma garrafa de cerveja serve duas.\n*    Uma garrafa de espumante serve três convidados.\n\nQuem organiza festas faz esses cálculos em cima do total de convidados, independente do gosto de cada um.\n\nQuantidade certa de alimentos e bebidas evita o desperdício da ceia.  \nJornal Hoje 17 dez. 2010 (adaptado).",
       "arquivos": [],
       "enunciado": "Um anfitrião decidiu seguir essas dicas ao se preparar para receber 30 convidados para a ceia de Natal. Para seguir essas orientações à risca, o anfitrião deverá dispor de",
       "alternativas": [
@@ -8265,7 +8265,7 @@
       "indice": 166,
       "area": "matematica",
       "idioma": null,
-      "contexto": "Nos últimos cinco anos, 32 mil mulheres de 20 a 24 anos foram internadas nos hospitais do SUS por causa de AVC. Entre os homens da mesma faixa etária, houve 28 mil internações pelo mesmo motivo.\n\n**Época**.26 abr. 2010 (adaptado).\n\nSupondo que, nos próximos cinco anos, haja um acréscimo de 8 mil internações de mulheres e que o acréscimo de internações de homens por AVC ocorra na mesma proporção.",
+      "contexto": "Nos últimos cinco anos, 32 mil mulheres de 20 a 24 anos foram internadas nos hospitais do SUS por causa de AVC. Entre os homens da mesma faixa etária, houve 28 mil internações pelo mesmo motivo.\n\nÉpoca.26 abr. 2010 (adaptado).\n\nSupondo que, nos próximos cinco anos, haja um acréscimo de 8 mil internações de mulheres e que o acréscimo de internações de homens por AVC ocorra na mesma proporção.",
       "arquivos": [],
       "enunciado": "De acordo com as informações dadas, o número de homens que seriam internados por AVC, nos próximos cinco anos, corresponderia a",
       "alternativas": [
@@ -8315,7 +8315,7 @@
       "indice": 167,
       "area": "matematica",
       "idioma": null,
-      "contexto": "É possível usar água ou comida para atrair as aves e observá-las. Muitas pessoas costumam usar água com açúcar, por exemplo, para atrair beija-flores. Mas é importante saber que, na hora de fazer a mistura, você deve sempre usar uma parte de açúcar para cinco  partes de água. Além disso, em dias quentes, precisa trocar a água de duas a três vezes, pois com o calor ela pode fermentar e, se for ingerida pela ave, pode deixá-la doente. O excesso de açúcar, ao cristalizar, também pode manter o bico da ave fechado, impedindo-a de se alimentar. Isso pode até matá-la.\n\n**Ciência Hoje das Crianças**. FNDE; Instituto Ciência Hoje, ano 19, n.166, mar.1996\n\nPretende-se encher completamente um copo com a mistura para atrais beija-flores.",
+      "contexto": "É possível usar água ou comida para atrair as aves e observá-las. Muitas pessoas costumam usar água com açúcar, por exemplo, para atrair beija-flores. Mas é importante saber que, na hora de fazer a mistura, você deve sempre usar uma parte de açúcar para cinco  partes de água. Além disso, em dias quentes, precisa trocar a água de duas a três vezes, pois com o calor ela pode fermentar e, se for ingerida pela ave, pode deixá-la doente. O excesso de açúcar, ao cristalizar, também pode manter o bico da ave fechado, impedindo-a de se alimentar. Isso pode até matá-la.\n\nCiência Hoje das Crianças. FNDE; Instituto Ciência Hoje, ano 19, n.166, mar.1996\n\nPretende-se encher completamente um copo com a mistura para atrais beija-flores.",
       "arquivos": [],
       "enunciado": "O copo tem formato cilíndrico, e suas medidas são 10 cm de altura e 4 cm de diâmetro. A quantidade de água que deve ser utilizada na mistura é cerca de (utilize π = 3)",
       "alternativas": [

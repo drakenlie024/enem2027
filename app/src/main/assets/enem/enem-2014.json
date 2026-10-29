@@ -1,6 +1,6 @@
 {
   "ano": 2014,
-  "versao": "2026-10-28T15:16:39Z",
+  "versao": "2026-10-29T23:30:37Z",
   "origem": "enem.dev",
   "questoes": [
     {
@@ -61,7 +61,7 @@
       "indice": 2,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Sou uma pobre e velha mulher, Muito ignorante, que nem sabe ler. Mostraram-me na igreja da minha terra Um Paraíso com harpas pintado E o Inferno onde fervem almas danadas, Um enche-me de júbilo, o outro me aterra.\n\nVILLON, F. In: GOMBRICH, E. **História da arte**. Lisboa: LTC, 1999.",
+      "contexto": "Sou uma pobre e velha mulher, Muito ignorante, que nem sabe ler. Mostraram-me na igreja da minha terra Um Paraíso com harpas pintado E o Inferno onde fervem almas danadas, Um enche-me de júbilo, o outro me aterra.\n\nVILLON, F. In: GOMBRICH, E. História da arte. Lisboa: LTC, 1999.",
       "arquivos": [],
       "enunciado": "Os versos do poeta francês François Villon fazem referência às imagens presentes nos templos católicos medievais. Nesse contexto, as imagens eram usadas com o objetivo de",
       "alternativas": [
@@ -111,7 +111,7 @@
       "indice": 3,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Os dois principais rios que alimentavam o Mar de Aral, Amurdarya e Sydarya, mantiveram o nível e o volume do mar por muitos séculos. Entretanto, o projeto de estabelecer e expandir a produção de algodão irrigado aumentou a dependência de várias repúblicas da Ásia Central da irrigação e monocultura. O aumento da demanda resultou no desvio crescente de água para a irrigação, acarretando redução drástica do volume de tributários do Mar de Aral. Foi criado na Ásia Central um novo deserto, com mais de 5 milhões de hectares, como resultado da redução em volume.\n\nTUNDISI, J. G. **Água no século XXI**: enfrentando a escassez. São Carlos: Rima, 2003.",
+      "contexto": "Os dois principais rios que alimentavam o Mar de Aral, Amurdarya e Sydarya, mantiveram o nível e o volume do mar por muitos séculos. Entretanto, o projeto de estabelecer e expandir a produção de algodão irrigado aumentou a dependência de várias repúblicas da Ásia Central da irrigação e monocultura. O aumento da demanda resultou no desvio crescente de água para a irrigação, acarretando redução drástica do volume de tributários do Mar de Aral. Foi criado na Ásia Central um novo deserto, com mais de 5 milhões de hectares, como resultado da redução em volume.\n\nTUNDISI, J. G. Água no século XXI: enfrentando a escassez. São Carlos: Rima, 2003.",
       "arquivos": [],
       "enunciado": "A intensa interferência humana na região descrita provocou o surgimento de uma área desértica em decorrência da",
       "alternativas": [
@@ -263,7 +263,7 @@
       "indice": 6,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Ao deflagrar-se a crise mundial de 1929, a situação da economia cafeeira se apresentava como se segue. A produção, que se encontrava em altos níveis, teria que seguir crescendo, pois os produtores haviam continuado a expandir as plantações até aquele momento. Com efeito, a produção máxima seria alcançada em 1933, ou seja, no ponto mais baixo da depressão, como reflexo das grandes plantações de 1927-1928. Entretanto, era totalmente impossível obter crédito no exterior para financiar a retenção de novos estoques, pois o mercado internacional de capitais se encontrava em profunda depressão, e o crédito do governo desaparecera com a evaporação das reservas.\n\nFURTADO, C. **Formação econômica do Brasil**. São Paulo: Cia. Editora Nacional, 1997 (adaptado).",
+      "contexto": "Ao deflagrar-se a crise mundial de 1929, a situação da economia cafeeira se apresentava como se segue. A produção, que se encontrava em altos níveis, teria que seguir crescendo, pois os produtores haviam continuado a expandir as plantações até aquele momento. Com efeito, a produção máxima seria alcançada em 1933, ou seja, no ponto mais baixo da depressão, como reflexo das grandes plantações de 1927-1928. Entretanto, era totalmente impossível obter crédito no exterior para financiar a retenção de novos estoques, pois o mercado internacional de capitais se encontrava em profunda depressão, e o crédito do governo desaparecera com a evaporação das reservas.\n\nFURTADO, C. Formação econômica do Brasil. São Paulo: Cia. Editora Nacional, 1997 (adaptado).",
       "arquivos": [],
       "enunciado": "Uma resposta do Estado brasileiro à conjuntura econômica mencionada foi o(a)",
       "alternativas": [
@@ -313,7 +313,7 @@
       "indice": 7,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Mas plantar pra dividir\n\nNão faço mais isso, não.\n\nEu sou um pobre caboclo,\n\nGanho a vida na enxada.\n\nO que eu colho é dividido\n\nCom quem não planta nada.\n\nSe assim continuar\n\nvou deixar o meu sertão,\n\nmesmo os olhos cheios d’água\n\ne com dor no coração.\n\nVou pro Rio carregar massas\n\npros pedreiros em construção.\n\nDeus até está ajudando:\n\nestá chovendo no sertão!\n\nMas plantar pra dividir,\n\nNão faço mais isso, não.\n\nVALE, J.; AQUINO, J. B. **Sina de caboclo**. São Paulo: Polygram, 1994 (fragmento).",
+      "contexto": "Mas plantar pra dividir\n\nNão faço mais isso, não.\n\nEu sou um pobre caboclo,\n\nGanho a vida na enxada.\n\nO que eu colho é dividido\n\nCom quem não planta nada.\n\nSe assim continuar\n\nvou deixar o meu sertão,\n\nmesmo os olhos cheios d’água\n\ne com dor no coração.\n\nVou pro Rio carregar massas\n\npros pedreiros em construção.\n\nDeus até está ajudando:\n\nestá chovendo no sertão!\n\nMas plantar pra dividir,\n\nNão faço mais isso, não.\n\nVALE, J.; AQUINO, J. B. Sina de caboclo. São Paulo: Polygram, 1994 (fragmento).",
       "arquivos": [],
       "enunciado": "No trecho da canção, composta na década de 1960, retrata-se a insatisfação do trabalhador rural com:",
       "alternativas": [
@@ -363,7 +363,7 @@
       "indice": 8,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "O cidadão norte-americano desperta num leito construído segundo padrão originário do Oriente Próximo, mas modificado na Europa Setentrional antes de ser transmitido à América. Sai debaixo de cobertas feitas de algodão cuja planta se tornou doméstica na Índia. No restaurante, toda uma série de elementos tomada de empréstimo o espera. O prato é feito de uma espécie de cerâmica inventada na China. A faca é de aço, liga feita pela primeira vez na Índia do Sul; o garfo é inventado na Itália medieval; a colher vem de um original romano. Lê notícias do dia impressas em caracteres inventados pelos antigos semitas, em material inventado na China e por um processo inventado na Alemanha.\n\nLINTON. R. **O homem: uma introdução à antropologia**. São Paulo: Martins. 1959 (adaptado).",
+      "contexto": "O cidadão norte-americano desperta num leito construído segundo padrão originário do Oriente Próximo, mas modificado na Europa Setentrional antes de ser transmitido à América. Sai debaixo de cobertas feitas de algodão cuja planta se tornou doméstica na Índia. No restaurante, toda uma série de elementos tomada de empréstimo o espera. O prato é feito de uma espécie de cerâmica inventada na China. A faca é de aço, liga feita pela primeira vez na Índia do Sul; o garfo é inventado na Itália medieval; a colher vem de um original romano. Lê notícias do dia impressas em caracteres inventados pelos antigos semitas, em material inventado na China e por um processo inventado na Alemanha.\n\nLINTON. R. O homem: uma introdução à antropologia. São Paulo: Martins. 1959 (adaptado).",
       "arquivos": [],
       "enunciado": "A situação descrita é um exemplo de como os costumes resultam da",
       "alternativas": [
@@ -413,7 +413,7 @@
       "indice": 9,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "\n\n**TEXTO II**\n\nA Índia deu um passo alto no setor de teleatendimento para países mais desenvolvidos, como os Estados Unidos e as nações europeias. Atualmente mais de 245 mil indianos realizam ligações para todas as partes do mundo a fim de oferecer cartões de crédito ou telefones celulares ou cobrar contas em atraso.\n\nDisponível em: www.conectacallcenter.com.br. Acesso em: 12 nov. 2013 (adaptado).",
+      "contexto": "\n\nTEXTO II\n\nA Índia deu um passo alto no setor de teleatendimento para países mais desenvolvidos, como os Estados Unidos e as nações europeias. Atualmente mais de 245 mil indianos realizam ligações para todas as partes do mundo a fim de oferecer cartões de crédito ou telefones celulares ou cobrar contas em atraso.\n\nDisponível em: www.conectacallcenter.com.br. Acesso em: 12 nov. 2013 (adaptado).",
       "arquivos": [
         "https://enem.dev/2014/questions/9/de4e7360-b8c8-4652-a4a9-b54cfd9a7683.jpg"
       ],
@@ -465,7 +465,7 @@
       "indice": 10,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "O jovem espanhol Daniel se sente perdido. Seu diploma de desenhista industrial e seu alto conhecimento de inglês devem ajudá-lo a tomar um rumo. Mas a taxa de desemprego, que supera 52% entre os que têm menos de 25 anos, o desnorteia. Ele está convencido de que seu futuro profissional não está na Espanha, como o de, pelo menos, 120 mil conterrâneos que emigraram nos últimos dois anos. O irmão dele, que é engenheiro-agrônomo, conseguiu emprego no Chile. Atualmente, Daniel participa de uma “oficina de procura de emprego” em países como Brasil, Alemanha e China. A oficina é oferecida por uma universidade espanhola.\n\nGUILAYN, P. Na Espanha, universidade ensina a emigrar. **O Globo**, 17 fev. 2013 (adaptado).",
+      "contexto": "O jovem espanhol Daniel se sente perdido. Seu diploma de desenhista industrial e seu alto conhecimento de inglês devem ajudá-lo a tomar um rumo. Mas a taxa de desemprego, que supera 52% entre os que têm menos de 25 anos, o desnorteia. Ele está convencido de que seu futuro profissional não está na Espanha, como o de, pelo menos, 120 mil conterrâneos que emigraram nos últimos dois anos. O irmão dele, que é engenheiro-agrônomo, conseguiu emprego no Chile. Atualmente, Daniel participa de uma “oficina de procura de emprego” em países como Brasil, Alemanha e China. A oficina é oferecida por uma universidade espanhola.\n\nGUILAYN, P. Na Espanha, universidade ensina a emigrar. O Globo, 17 fev. 2013 (adaptado).",
       "arquivos": [],
       "enunciado": "A situação ilustra uma crise econômica que implica",
       "alternativas": [
@@ -615,7 +615,7 @@
       "indice": 13,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Quando é meio-dia nos Estados Unidos, o Sol, todo mundo sabe, está se deitando na França. Bastaria ir à França num minuto para assistir ao pôr do sol.\n\nSAINT-EXUPÉRY, A. **O Pequeno Príncipe.** Rio de Janeiro: Agir, 1996.",
+      "contexto": "Quando é meio-dia nos Estados Unidos, o Sol, todo mundo sabe, está se deitando na França. Bastaria ir à França num minuto para assistir ao pôr do sol.\n\nSAINT-EXUPÉRY, A. O Pequeno Príncipe. Rio de Janeiro: Agir, 1996.",
       "arquivos": [],
       "enunciado": "A diferença espacial citada é causada por qual característica física da Terra?",
       "alternativas": [
@@ -715,7 +715,7 @@
       "indice": 15,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "O índio era o único elemento então disponível para ajudar o colonizador como agricultor, pescador, guia, conhecedor da natureza tropical e, para tudo isso, deveria ser tratado como gente, ter reconhecidas sua inocência e alma na medida do possível. A discussão religiosa e jurídica em torno dos limites da liberdade dos índios se confundiu com uma disputa entre jesuítas e colonos. Os padres se apresentavam como defensores da liberdade, enfrentando a cobiça desenfreada dos colonos.\n\nCALDEIRA, J. **A nação mercantilista.** São Paulo: Editora 34, 1999 (adaptado).",
+      "contexto": "O índio era o único elemento então disponível para ajudar o colonizador como agricultor, pescador, guia, conhecedor da natureza tropical e, para tudo isso, deveria ser tratado como gente, ter reconhecidas sua inocência e alma na medida do possível. A discussão religiosa e jurídica em torno dos limites da liberdade dos índios se confundiu com uma disputa entre jesuítas e colonos. Os padres se apresentavam como defensores da liberdade, enfrentando a cobiça desenfreada dos colonos.\n\nCALDEIRA, J. A nação mercantilista. São Paulo: Editora 34, 1999 (adaptado).",
       "arquivos": [],
       "enunciado": "Entre os séculos XVI e XVIII, os jesuítas buscaram a conversão dos indígenas ao catolicismo. Essa aproximação dos jesuítas em relação ao mundo indígena foi mediada pela",
       "alternativas": [
@@ -765,7 +765,7 @@
       "indice": 16,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "**Queijo de Minas vira patrimônio cultural brasileiro**\n\nO modo artesanal da fabricação do queijo em Minas Gerais foi registrado nesta quinta-feira (15) como patrimônio cultural imaterial brasileiro pelo Conselho Consultivo do Instituto do Patrimônio Histórico e Artístico Nacional (Iphan). O veredicto foi dado em reunião do conselho realizada no Museu de Artes e Ofícios, em Belo Horizonte. O presidente do Iphan e do conselho ressaltou que a técnica de fabricação artesanal do queijo está “inserida na cultura do que é ser mineiro”.\n\nFolha de S. Paulo, 15 maio 2008",
+      "contexto": "Queijo de Minas vira patrimônio cultural brasileiro\n\nO modo artesanal da fabricação do queijo em Minas Gerais foi registrado nesta quinta-feira (15) como patrimônio cultural imaterial brasileiro pelo Conselho Consultivo do Instituto do Patrimônio Histórico e Artístico Nacional (Iphan). O veredicto foi dado em reunião do conselho realizada no Museu de Artes e Ofícios, em Belo Horizonte. O presidente do Iphan e do conselho ressaltou que a técnica de fabricação artesanal do queijo está “inserida na cultura do que é ser mineiro”.\n\nFolha de S. Paulo, 15 maio 2008",
       "arquivos": [],
       "enunciado": "Entre os bens que compõem o patrimônio nacional, o que pertence à mesma categoria citada no texto está representado em:",
       "alternativas": [
@@ -866,7 +866,7 @@
       "indice": 18,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Todo homem de bom juízo, depois que tiver realizado sua viagem, reconhecerá que é um milagre manifesto ter podido **escapar de todos os perigos que se apresentam em sua peregrinação**; tanto mais que há tantos outros acidentes que diariamente podem aí ocorrer que seria coisa pavorosa àqueles que aí navegam querer pô-los todos diante dos olhos quando querem empreender suas viagens.\n\nJ. P. T. Histoire de plusieurs voyages aventureux. 1600. In: DELUMEAU, J. História do medo no Ocidente: 1300·1800. São Paulo: Cia. das Letras, 2009 (adaptado).",
+      "contexto": "Todo homem de bom juízo, depois que tiver realizado sua viagem, reconhecerá que é um milagre manifesto ter podido escapar de todos os perigos que se apresentam em sua peregrinação; tanto mais que há tantos outros acidentes que diariamente podem aí ocorrer que seria coisa pavorosa àqueles que aí navegam querer pô-los todos diante dos olhos quando querem empreender suas viagens.\n\nJ. P. T. Histoire de plusieurs voyages aventureux. 1600. In: DELUMEAU, J. História do medo no Ocidente: 1300·1800. São Paulo: Cia. das Letras, 2009 (adaptado).",
       "arquivos": [],
       "enunciado": "Esse relato, associado ao imaginário das viagens marítimas da época moderna, expressa um sentimento de",
       "alternativas": [
@@ -966,7 +966,7 @@
       "indice": 20,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Antes de o sol começar a esquentar as terras da faixa ao sul do Saara conhecida como Sahel, duas dezenas de mulheres da aldeia de Widou, no norte do Senegal, regam a horta cujas frutas e verduras alimentam a população local. É um pequeno terreno que, visto do céu, forma uma mancha verde — um dos primeiros pedaços da “Grande Muralha Verde”, barreira vegetal que se estenderá por 7 000 km do Senegal ao Djibuti, e é parte de um plano conjunto de vinte países africanos.\n\nGIORGI, J. Muralha verde. **Folha de S. Paulo**, 20 maio 2013 (adaptado).",
+      "contexto": "Antes de o sol começar a esquentar as terras da faixa ao sul do Saara conhecida como Sahel, duas dezenas de mulheres da aldeia de Widou, no norte do Senegal, regam a horta cujas frutas e verduras alimentam a população local. É um pequeno terreno que, visto do céu, forma uma mancha verde — um dos primeiros pedaços da “Grande Muralha Verde”, barreira vegetal que se estenderá por 7 000 km do Senegal ao Djibuti, e é parte de um plano conjunto de vinte países africanos.\n\nGIORGI, J. Muralha verde. Folha de S. Paulo, 20 maio 2013 (adaptado).",
       "arquivos": [],
       "enunciado": "O projeto ambiental descrito proporciona a seguinte consequência regional imediata:",
       "alternativas": [
@@ -1016,7 +1016,7 @@
       "indice": 21,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "**Estatuto da Frente Negra Brasileira (FNB)**\n\nArt. 1.o – Fica fundada nesta cidade de São Paulo, para se irradiar por todo o Brasil, a Frente Negra Brasileira, união política e social da Gente Negra Nacional, para a afirmação dos direitos históricos da mesma, em virtude da sua atividade material e moral no passado e para reivindicação de seus direitos sociais e políticos, atuais, na Comunhão Brasileira.\n\n**Diário Oficial do Estado de São Paulo**. 4 novo 1931.",
+      "contexto": "Estatuto da Frente Negra Brasileira (FNB)\n\nArt. 1.o – Fica fundada nesta cidade de São Paulo, para se irradiar por todo o Brasil, a Frente Negra Brasileira, união política e social da Gente Negra Nacional, para a afirmação dos direitos históricos da mesma, em virtude da sua atividade material e moral no passado e para reivindicação de seus direitos sociais e políticos, atuais, na Comunhão Brasileira.\n\nDiário Oficial do Estado de São Paulo. 4 novo 1931.",
       "arquivos": [],
       "enunciado": "Quando foi fechada pela ditadura do Estado Novo, em 1937, a FNB caracterizava-se como uma organização",
       "alternativas": [
@@ -1066,7 +1066,7 @@
       "indice": 22,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "No século XIX, o preço mais alto dos terrenos situados no centro das cidades é causa da especialização dos bairros e de sua diferenciação social. Muitas pessoas, que não têm meios de pagar os altos aluguéis dos bairros elegantes, são progressivamente rejeitadas para a periferia, como os subúrbios e os bairros mais afastados.\n\nRÉMOND, R. **O século XIX**. São Paulo: Cultrix, 1989 (adaptado).",
+      "contexto": "No século XIX, o preço mais alto dos terrenos situados no centro das cidades é causa da especialização dos bairros e de sua diferenciação social. Muitas pessoas, que não têm meios de pagar os altos aluguéis dos bairros elegantes, são progressivamente rejeitadas para a periferia, como os subúrbios e os bairros mais afastados.\n\nRÉMOND, R. O século XIX. São Paulo: Cultrix, 1989 (adaptado).",
       "arquivos": [],
       "enunciado": "Uma consequência geográfica do processo espacial descrito no texto é a:",
       "alternativas": [
@@ -1116,7 +1116,7 @@
       "indice": 23,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Três décadas – de 1884 a 1914 – separam o século XIX – que terminou com a corrida dos países europeus para a África e com o surgimento dos movimentos de unificação nacional na Europa – do século XX, que começou com a Primeira Guerra Mundial. É o período do Imperialismo, da quietude estagnante na Europa e dos acontecimentos empolgantes na Ásia e na África.\n\nARENDT. H. **As origens do totalitarismo**. São Paulo: Cia. das Letras, 2012.",
+      "contexto": "Três décadas – de 1884 a 1914 – separam o século XIX – que terminou com a corrida dos países europeus para a África e com o surgimento dos movimentos de unificação nacional na Europa – do século XX, que começou com a Primeira Guerra Mundial. É o período do Imperialismo, da quietude estagnante na Europa e dos acontecimentos empolgantes na Ásia e na África.\n\nARENDT. H. As origens do totalitarismo. São Paulo: Cia. das Letras, 2012.",
       "arquivos": [],
       "enunciado": "O processo histórico citado contribuiu para a eclosão da Primeira Grande Guerra na medida em que",
       "alternativas": [
@@ -1319,7 +1319,7 @@
       "indice": 27,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "A urbanização brasileira, no início da segunda metade do século XX, promoveu uma radical alteração nas cidades. Ruas foram alargadas, túneis e viadutos foram construídos. O bonde foi a primeira vítima fatal. O destino do sistema ferroviário não foi muito diferente. O transporte coletivo saiu definitivamente dos trilhos.\n\nJANOT, L. F. **A caminho de Guaratiba.** Disponível em: www.iab.org.br. Acesso em: 9 jan. 2014 (adaptado).",
+      "contexto": "A urbanização brasileira, no início da segunda metade do século XX, promoveu uma radical alteração nas cidades. Ruas foram alargadas, túneis e viadutos foram construídos. O bonde foi a primeira vítima fatal. O destino do sistema ferroviário não foi muito diferente. O transporte coletivo saiu definitivamente dos trilhos.\n\nJANOT, L. F. A caminho de Guaratiba. Disponível em: www.iab.org.br. Acesso em: 9 jan. 2014 (adaptado).",
       "arquivos": [],
       "enunciado": "A relação entre transportes e urbanização é explicada, no texto, pela",
       "alternativas": [
@@ -1721,7 +1721,7 @@
       "indice": 35,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "A convecção na Região Amazônica é um importante mecanismo da atmosfera tropical e sua variação, em termos de intensidade e posição, tem um papel importante na determinação do tempo e do clima dessa região. A nebulosidade e o regime de precipitação determinam o clima amazônico.\n\nFISCH, G.; MARENGO, J. A.; NOBRE, C. A. Uma revisão geral sobre o clima da Amazônia. **Acta Amazônica**, v. 28, n. 2, 1998 (adaptado).",
+      "contexto": "A convecção na Região Amazônica é um importante mecanismo da atmosfera tropical e sua variação, em termos de intensidade e posição, tem um papel importante na determinação do tempo e do clima dessa região. A nebulosidade e o regime de precipitação determinam o clima amazônico.\n\nFISCH, G.; MARENGO, J. A.; NOBRE, C. A. Uma revisão geral sobre o clima da Amazônia. Acta Amazônica, v. 28, n. 2, 1998 (adaptado).",
       "arquivos": [],
       "enunciado": "O mecanismo climático regional descrito está associado à característica do espaço físico de:",
       "alternativas": [
@@ -1927,7 +1927,7 @@
       "indice": 39,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "O problema central a ser resolvido pelo Novo Regime era a organização de outro pacto de poder que pudesse substituir o arranjo imperial com grau suficiente de estabilidade. O próprio presidente Campos Sales resumiu claramente seu objetivo: _“É de lá, dos estados, que se governa a República, por cima das multidões que tumultuam agitadas nas ruas da capital da União. A política dos estados é a política nacional”._\n\nCARVALHO. J. M. **Os Bestializados:** o Rio de Janeiro e a República que não foi. São Paulo: Companhia das Lelras, 1987 (adaptado).",
+      "contexto": "O problema central a ser resolvido pelo Novo Regime era a organização de outro pacto de poder que pudesse substituir o arranjo imperial com grau suficiente de estabilidade. O próprio presidente Campos Sales resumiu claramente seu objetivo: _“É de lá, dos estados, que se governa a República, por cima das multidões que tumultuam agitadas nas ruas da capital da União. A política dos estados é a política nacional”._\n\nCARVALHO. J. M. Os Bestializados: o Rio de Janeiro e a República que não foi. São Paulo: Companhia das Lelras, 1987 (adaptado).",
       "arquivos": [],
       "enunciado": "Nessa citação, o presidente do Brasil no período expressa uma estratégia política no sentido de",
       "alternativas": [
@@ -2075,7 +2075,7 @@
       "indice": 42,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "**TEXTO I**\n\nO presidente do jornal de maior circulação do país destacava também os avanços econômicos obtidos naqueles vinte anos, mas, ao justificar sua adesão aos militares em 1964, deixava clara sua crença de que a intervenção fora imprescindível para a manutenção da democracia.\n\nDisponivel em: **http://oglobo.globo.com**. Acesso em: 1 set. 2013 (adaplado).\n\n**TEXTO II**\n\nNada pode ser colocado em compensação à perda das liberdades individuais. Não existe nada de bom quando se aceita uma solução autoritária.\n\nFICO, C. **A educação e o golpe de 1964**. Disponivel em: www.brasilrecente.com.Acesso em: 4 abro 2014 (adaptado).",
+      "contexto": "TEXTO I\n\nO presidente do jornal de maior circulação do país destacava também os avanços econômicos obtidos naqueles vinte anos, mas, ao justificar sua adesão aos militares em 1964, deixava clara sua crença de que a intervenção fora imprescindível para a manutenção da democracia.\n\nDisponivel em: http://oglobo.globo.com. Acesso em: 1 set. 2013 (adaplado).\n\nTEXTO II\n\nNada pode ser colocado em compensação à perda das liberdades individuais. Não existe nada de bom quando se aceita uma solução autoritária.\n\nFICO, C. A educação e o golpe de 1964. Disponivel em: www.brasilrecente.com.Acesso em: 4 abro 2014 (adaptado).",
       "arquivos": [],
       "enunciado": "Embora enfatizem a defesa da democracia, as visões do movimento político-militar de 1964 divergem ao focarem, respectivamente:",
       "alternativas": [
@@ -2125,7 +2125,7 @@
       "indice": 43,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "A transferência da corte trouxe para a América portuguesa a família real e o governo da Metrópole. Trouxe também, e sobretudo, boa parte do aparato administrativo português. Personalidades diversas e funcionários régios continuaram embarcando para o Brasil atrás da corte, dos seus empregos e dos seus parentes após o ano de 1808.\n\nNOVAIS, F. A.; ALENCASTRO, L F. (Orq.). **História da vida privada no Brasil**. São Paulo: Cia, das Letras, 1997.",
+      "contexto": "A transferência da corte trouxe para a América portuguesa a família real e o governo da Metrópole. Trouxe também, e sobretudo, boa parte do aparato administrativo português. Personalidades diversas e funcionários régios continuaram embarcando para o Brasil atrás da corte, dos seus empregos e dos seus parentes após o ano de 1808.\n\nNOVAIS, F. A.; ALENCASTRO, L F. (Orq.). História da vida privada no Brasil. São Paulo: Cia, das Letras, 1997.",
       "arquivos": [],
       "enunciado": "Os fatos apresentados se relacionam ao processo de independência da América portuguesa por terem a",
       "alternativas": [
@@ -2175,7 +2175,7 @@
       "indice": 44,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "Respeitar a diversidade de circunstâncias entre as pequenas sociedades locais que constituem uma mesma nacionalidade, tal deve ser a regra suprema das leis internas de cada Estado. As leis municipais seriam as cartas de cada povoação doadas pela assembleia provincial, alargadas conforme o seu desenvolvimento, alteradas segundo os conselhos da experiência. Então, administrar-se-ia de perto, governar-se-ia de longe, alvo a que jamais se atingirá de outra sorte.\n\nBASTOS, T. **A província** (1870). São Paulo: Cia, Editora Nacional, 1937 (adaptado).",
+      "contexto": "Respeitar a diversidade de circunstâncias entre as pequenas sociedades locais que constituem uma mesma nacionalidade, tal deve ser a regra suprema das leis internas de cada Estado. As leis municipais seriam as cartas de cada povoação doadas pela assembleia provincial, alargadas conforme o seu desenvolvimento, alteradas segundo os conselhos da experiência. Então, administrar-se-ia de perto, governar-se-ia de longe, alvo a que jamais se atingirá de outra sorte.\n\nBASTOS, T. A província (1870). São Paulo: Cia, Editora Nacional, 1937 (adaptado).",
       "arquivos": [],
       "enunciado": "O discurso do autor, no período do Segundo Reinado no Brasil, tinha como meta a implantação do",
       "alternativas": [
@@ -2225,7 +2225,7 @@
       "indice": 45,
       "area": "ciencias-humanas",
       "idioma": null,
-      "contexto": "\n\n**De volta do Paraguai**\n\nCheio de glória, coberto de louros, depois de ter derramado seu sangue em defesa da pátria e libertado um povo da escravidão, o voluntário volta ao seu país natal para ver sua mãe amarrada a um tronco horrível de realidade!…\n\nAGOSTINI. A vida fluminense, ano 3, n. 128, 11 jun. 1870. In: LEMOS, R. (Org.). Uma história do Brasil através da caricatura (1840-2001). Rio de Janeiro: Letras & Expressões, 2001 (adaptado).",
+      "contexto": "\n\nDe volta do Paraguai\n\nCheio de glória, coberto de louros, depois de ter derramado seu sangue em defesa da pátria e libertado um povo da escravidão, o voluntário volta ao seu país natal para ver sua mãe amarrada a um tronco horrível de realidade!…\n\nAGOSTINI. A vida fluminense, ano 3, n. 128, 11 jun. 1870. In: LEMOS, R. (Org.). Uma história do Brasil através da caricatura (1840-2001). Rio de Janeiro: Letras & Expressões, 2001 (adaptado).",
       "arquivos": [
         "https://enem.dev/2014/questions/45/ff3d9660-9de4-424a-88d2-bffb60c90d9d.png"
       ],
@@ -3754,7 +3754,7 @@
       "indice": 76,
       "area": "ciencias-natureza",
       "idioma": null,
-      "contexto": "Alguns sistemas de segurança incluem detectores de movimento. Nesses sensores, existe uma substância que se polariza na presença de radiação eletromagnética de certa região de frequência, gerando uma tensão que pode ser amplificada e empregada para efeito de controle. Quando uma pessoa se aproxima do sistema, a radiação emitida por seu corpo é detectada por esse tipo de sensor.\n\nWENDLING, M. **Sensores**. Disponível em: www2.feg.unesp.br. Acesso em: 7 maio 2014 (adaptado).",
+      "contexto": "Alguns sistemas de segurança incluem detectores de movimento. Nesses sensores, existe uma substância que se polariza na presença de radiação eletromagnética de certa região de frequência, gerando uma tensão que pode ser amplificada e empregada para efeito de controle. Quando uma pessoa se aproxima do sistema, a radiação emitida por seu corpo é detectada por esse tipo de sensor.\n\nWENDLING, M. Sensores. Disponível em: www2.feg.unesp.br. Acesso em: 7 maio 2014 (adaptado).",
       "arquivos": [],
       "enunciado": "A radiação captada por esse detector encontra-se na região de frequência",
       "alternativas": [
@@ -3854,7 +3854,7 @@
       "indice": 78,
       "area": "ciencias-natureza",
       "idioma": null,
-      "contexto": "Com o objetivo de substituir as sacolas de polietileno, alguns supermercados têm utilizado um novo tipo de plástico ecológico, que apresenta em sua composição amido de milho e uma resina polimérica termoplástica, obtida a partir de uma fonte petroquímica.\n\nERENO, D. Plásticos de vegetais. **Pesquisa Fapesp**, n. 179, jan. 2011 (adaptado).",
+      "contexto": "Com o objetivo de substituir as sacolas de polietileno, alguns supermercados têm utilizado um novo tipo de plástico ecológico, que apresenta em sua composição amido de milho e uma resina polimérica termoplástica, obtida a partir de uma fonte petroquímica.\n\nERENO, D. Plásticos de vegetais. Pesquisa Fapesp, n. 179, jan. 2011 (adaptado).",
       "arquivos": [],
       "enunciado": "Nesses plásticos, a fragmentação da resina polimérica é facilitada porque os carboidratos presentes",
       "alternativas": [
@@ -4265,7 +4265,7 @@
       "indice": 86,
       "area": "ciencias-natureza",
       "idioma": null,
-      "contexto": "Grande quantidade dos maus odores do nosso dia a dia está relacionada a compostos alcalinos. Assim, em vários desses casos, pode-se utilizar o vinagre, que contém entre 3,5% e 5% de ácido acético, para diminuir ou eliminar o mau cheiro. Por exemplo, lavar as mãos com vinagre e depois enxaguá-las com água elimina o odor de peixe, já que a molécula de piridina (C5H5N) é uma das substâncias responsáveis pelo odor característico de peixe podre.\n\nSILVA, V. A.; BENITE, A. M. C.; SOARES, M. H. F. B. Algo aqui não cheira bem… A química do mau cheiro. **Química Nova na Escola**, v. 33, n. 1, fev. 2011 (adaptado).",
+      "contexto": "Grande quantidade dos maus odores do nosso dia a dia está relacionada a compostos alcalinos. Assim, em vários desses casos, pode-se utilizar o vinagre, que contém entre 3,5% e 5% de ácido acético, para diminuir ou eliminar o mau cheiro. Por exemplo, lavar as mãos com vinagre e depois enxaguá-las com água elimina o odor de peixe, já que a molécula de piridina (C5H5N) é uma das substâncias responsáveis pelo odor característico de peixe podre.\n\nSILVA, V. A.; BENITE, A. M. C.; SOARES, M. H. F. B. Algo aqui não cheira bem… A química do mau cheiro. Química Nova na Escola, v. 33, n. 1, fev. 2011 (adaptado).",
       "arquivos": [],
       "enunciado": "A eficiência do uso do vinagre nesse caso se explica pela",
       "alternativas": [
@@ -4315,7 +4315,7 @@
       "indice": 87,
       "area": "ciencias-natureza",
       "idioma": null,
-      "contexto": "Quando adolescente, as nossas tardes, após as aulas, consistiam em tomar às mãos o violão e o dicionário de acordes de Almir Chediak e desafiar nosso amigo Hamilton a descobrir, apenas ouvindo o acorde, quais notas eram escolhidas. Sempre perdíamos a aposta, ele possui o ouvido absoluto.\n\nO ouvido absoluto é uma característica perceptual de poucos indivíduos capazes de identificar notas isoladas sem outras referências, isto é, sem precisar relacioná-las com outras notas de uma melodia.\n\nLENT, R. **O cérebro do meu professor de acordeão**. Disponível em: http://cienciahoje.uol.com.br. Acesso em: 15 ago. 2012 (adaptado).",
+      "contexto": "Quando adolescente, as nossas tardes, após as aulas, consistiam em tomar às mãos o violão e o dicionário de acordes de Almir Chediak e desafiar nosso amigo Hamilton a descobrir, apenas ouvindo o acorde, quais notas eram escolhidas. Sempre perdíamos a aposta, ele possui o ouvido absoluto.\n\nO ouvido absoluto é uma característica perceptual de poucos indivíduos capazes de identificar notas isoladas sem outras referências, isto é, sem precisar relacioná-las com outras notas de uma melodia.\n\nLENT, R. O cérebro do meu professor de acordeão. Disponível em: http://cienciahoje.uol.com.br. Acesso em: 15 ago. 2012 (adaptado).",
       "arquivos": [],
       "enunciado": "No contexto apresentado, a propriedade física das ondas que permite essa distinção entre as notas é a",
       "alternativas": [
@@ -4365,7 +4365,7 @@
       "indice": 88,
       "area": "ciencias-natureza",
       "idioma": null,
-      "contexto": "Grandes fontes de emissão do gás dióxido de enxofre são as indústrias de extração de cobre e níquel, em decorrência da oxidação dos minérios sulfurados. Para evitar a liberação desses óxidos na atmosfera e a consequente formação da chuva ácida, o gás pode ser lavado, em um processo conhecido como dessulfurização, conforme mostrado na equação (1).\n\nCaCO3(s) + SO2(g) → CaSO3(s) + CO2(g) (1)\n\nPor sua vez, o sulfito de cálcio formado por ser oxidado, com o auxílio do ar atmosférico, para a obtenção do sulfato de cálcio, como mostrado na equação (2). Essa etapa é de grande interesse porque o produto da reação, popularmente conhecido como gesso, é utilizado para fins agrícolas.\n\n2 CaSO3(s) + O2(g) → 2CaSO4(s) (2)\n\nAs massas molares dos elementos carbono, oxigênio, enxofre e cálcio são iguais a 12 g/mol, 16 g/mol, 32 g/mol e 40 g/mol, respectivamente.\n\nBAIRD, C. **Química ambiental**. Porto Alegre: Bookman, 2002 (adaptado).",
+      "contexto": "Grandes fontes de emissão do gás dióxido de enxofre são as indústrias de extração de cobre e níquel, em decorrência da oxidação dos minérios sulfurados. Para evitar a liberação desses óxidos na atmosfera e a consequente formação da chuva ácida, o gás pode ser lavado, em um processo conhecido como dessulfurização, conforme mostrado na equação (1).\n\nCaCO3(s) + SO2(g) → CaSO3(s) + CO2(g) (1)\n\nPor sua vez, o sulfito de cálcio formado por ser oxidado, com o auxílio do ar atmosférico, para a obtenção do sulfato de cálcio, como mostrado na equação (2). Essa etapa é de grande interesse porque o produto da reação, popularmente conhecido como gesso, é utilizado para fins agrícolas.\n\n2 CaSO3(s) + O2(g) → 2CaSO4(s) (2)\n\nAs massas molares dos elementos carbono, oxigênio, enxofre e cálcio são iguais a 12 g/mol, 16 g/mol, 32 g/mol e 40 g/mol, respectivamente.\n\nBAIRD, C. Química ambiental. Porto Alegre: Bookman, 2002 (adaptado).",
       "arquivos": [],
       "enunciado": "Considerando um rendimento de 90% no processo, a massa de gesso obtida, em gramas, por mol de gás retido é mais próxima de",
       "alternativas": [
@@ -4569,7 +4569,7 @@
       "indice": 92,
       "area": "linguagens",
       "idioma": "espanhol",
-      "contexto": "**Emigrantes**\n\nEn todo emigrante existen dos posibles actitudes vitales: una la de considerar su experiencia como aventura pasajera, vivir mental y emocionalmente en la patria de origen, cultivando su nostalgia, y definir la realidad presente por comparación con el mundo que se ha dejado; la otra es vivir el presente tal como viene dado, proyectarlo en el futuro, cortar raíces y dominar nostalgias, sumergirse en la nueva cultura, aprenderla y asimilarla. El drama personal del emigrante reside en el hecho de que casi nunca es posible esa elección en términos absolutos y, al igual que el mestizo, se siente parte de dos mundos sin integrarse por completo en uno de ellos con exclusión del otro.\n\nDEL CASTILLO, G. C. América hispánica (1492-1892). In: DE LARA, M. T. **Historia de España.** Barcelona: Labor, 1985",
+      "contexto": "Emigrantes\n\nEn todo emigrante existen dos posibles actitudes vitales: una la de considerar su experiencia como aventura pasajera, vivir mental y emocionalmente en la patria de origen, cultivando su nostalgia, y definir la realidad presente por comparación con el mundo que se ha dejado; la otra es vivir el presente tal como viene dado, proyectarlo en el futuro, cortar raíces y dominar nostalgias, sumergirse en la nueva cultura, aprenderla y asimilarla. El drama personal del emigrante reside en el hecho de que casi nunca es posible esa elección en términos absolutos y, al igual que el mestizo, se siente parte de dos mundos sin integrarse por completo en uno de ellos con exclusión del otro.\n\nDEL CASTILLO, G. C. América hispánica (1492-1892). In: DE LARA, M. T. Historia de España. Barcelona: Labor, 1985",
       "arquivos": [],
       "enunciado": "O texto apresenta uma reflexão sobre a condição do imigrante, o qual, para o autor, tem de lidar com o dilema da",
       "alternativas": [
@@ -4619,7 +4619,7 @@
       "indice": 93,
       "area": "linguagens",
       "idioma": "espanhol",
-      "contexto": "En un año de campaña paraguaya, he visto muchas cosas tristes…\n\nHe visto la tierra, con su fertilidad incoercible y salvaje, sofocar al hombre, que arroja una semilla y obtiene cien plantas diferentes y no sabe cuál es la suya. He visto los viejos caminos que abrió la tiranía devorados por la vegetación, desleídos por las innundaciones, borrados por el abandono.\n\nBARRET, R. **Lo que he visto.** Cuba: XX Feria Internacional del Libro de la Habana, 2011.\n\nRafael Barret nasceu na Espanha e, ainda jovem, foi viver no Paraguai.",
+      "contexto": "En un año de campaña paraguaya, he visto muchas cosas tristes…\n\nHe visto la tierra, con su fertilidad incoercible y salvaje, sofocar al hombre, que arroja una semilla y obtiene cien plantas diferentes y no sabe cuál es la suya. He visto los viejos caminos que abrió la tiranía devorados por la vegetación, desleídos por las innundaciones, borrados por el abandono.\n\nBARRET, R. Lo que he visto. Cuba: XX Feria Internacional del Libro de la Habana, 2011.\n\nRafael Barret nasceu na Espanha e, ainda jovem, foi viver no Paraguai.",
       "arquivos": [],
       "enunciado": "O fragmento do texto Lo que hai visto revela um pouco da percepção do escritor sobre a realidade paraguaia, marcada, em essência, pelo(a)",
       "alternativas": [
@@ -4771,7 +4771,7 @@
       "indice": 95,
       "area": "linguagens",
       "idioma": "espanhol",
-      "contexto": "**El robo**\n\nPara los niños  \nanchos espacios tiene el día  \ny las horas  \nson calles despejadas  \nabiertas avenidas.\n\nA nosotros, se estrecha  \nel tiempo de tal modo  \nque todo está apretado y oprimido.\n\nSe atropellan los tiempos  \nCasi no da lugar un día a otro.  \nNo bien ha amanecido  \ncae la luz a pique  \nen veloz mediodía  \ny apenas la contemplas  \nhuye en atardeceres  \nhacia pozos de sombra.\n\nDice una voz:  \nentre vueltas y vueltas  \nse me fue el día.\n\nAlgún ladrón  \noculto roba mi vida.\n\nMAIA, C. **Obra poética**. Montevidéu: Rebecalinke, 2010.",
+      "contexto": "El robo\n\nPara los niños  \nanchos espacios tiene el día  \ny las horas  \nson calles despejadas  \nabiertas avenidas.\n\nA nosotros, se estrecha  \nel tiempo de tal modo  \nque todo está apretado y oprimido.\n\nSe atropellan los tiempos  \nCasi no da lugar un día a otro.  \nNo bien ha amanecido  \ncae la luz a pique  \nen veloz mediodía  \ny apenas la contemplas  \nhuye en atardeceres  \nhacia pozos de sombra.\n\nDice una voz:  \nentre vueltas y vueltas  \nse me fue el día.\n\nAlgún ladrón  \noculto roba mi vida.\n\nMAIA, C. Obra poética. Montevidéu: Rebecalinke, 2010.",
       "arquivos": [],
       "enunciado": "O poema El robo, de Circe Maia, poetisa uruguaia contemporânea, trata do(a)",
       "alternativas": [
@@ -4821,7 +4821,7 @@
       "indice": 96,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**TEXTO l**\n\n**Seis estados zeram fila de espera para transplante da córnea**\n\nSeis estados brasileiros aproveitaram o aumento no número de doadores e de transplantes feitos no primeiro semestre de 2012 no país e entraram para uma lista privilegiada: a de não ter mais pacientes esperando por uma córnea.\n\nAté julho desse ano, Acre, Distrito Federal, Espírito Santo, Paraná, Rio Grande do Norte e São Paulo eliminaram a lista de espera no transplante de córneas, de acordo com balanço divulgado pelo Ministério da Saúde, no Dia Nacional de Doação de Órgãos e Tecidos. Em 2011, só São Paulo e Rio Grande do Norte conseguiram zerar essa fila.\n\n**TEXTO ll**\n\n\n\nDisponível em: http://noticias.uol.com.br. Acesso em: 11 ago. 2013 (adaptado).",
+      "contexto": "TEXTO l\n\nSeis estados zeram fila de espera para transplante da córnea\n\nSeis estados brasileiros aproveitaram o aumento no número de doadores e de transplantes feitos no primeiro semestre de 2012 no país e entraram para uma lista privilegiada: a de não ter mais pacientes esperando por uma córnea.\n\nAté julho desse ano, Acre, Distrito Federal, Espírito Santo, Paraná, Rio Grande do Norte e São Paulo eliminaram a lista de espera no transplante de córneas, de acordo com balanço divulgado pelo Ministério da Saúde, no Dia Nacional de Doação de Órgãos e Tecidos. Em 2011, só São Paulo e Rio Grande do Norte conseguiram zerar essa fila.\n\nTEXTO ll\n\n\n\nDisponível em: http://noticias.uol.com.br. Acesso em: 11 ago. 2013 (adaptado).",
       "arquivos": [
         "https://enem.dev/2014/questions/96/c8ebba38-0e9a-4cc7-88ad-f54257534f04.png"
       ],
@@ -4873,7 +4873,7 @@
       "indice": 97,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "O boxe está perdendo cada vez mais espaço para um fenômeno relativamente recente do esporte, o MMA. E o maior evento de Artes Marciais Mistas do planeta é o _Ultimate Fighting Championship_, ou simplesmente UFC. O ringue, com oito cantos, foi desenhado para deixar os lutadores com mais espaço para as lutas. Os atletas podem usar as mãos e aplicar golpes de jiu-jitsu. Muitos podem falar que a modalidade é uma espécie de vale-tudo, mas isso já ficou no passado: agora, a modalidade tem regras e acompanhamento médico obrigatório para que o esporte apague o estigma negativo.\n\nCORREIA, D. UFC: saiba como o MMA nocauteou o boxe em oito golpes. **Veja**, 10 jun. 2011 (fragmento)\n\nO processo de modificação das regras do MMA retrata a tendência de redimensionamento de algumas práticas corporais, visando enquadrá-las em um determinado formato.",
+      "contexto": "O boxe está perdendo cada vez mais espaço para um fenômeno relativamente recente do esporte, o MMA. E o maior evento de Artes Marciais Mistas do planeta é o _Ultimate Fighting Championship_, ou simplesmente UFC. O ringue, com oito cantos, foi desenhado para deixar os lutadores com mais espaço para as lutas. Os atletas podem usar as mãos e aplicar golpes de jiu-jitsu. Muitos podem falar que a modalidade é uma espécie de vale-tudo, mas isso já ficou no passado: agora, a modalidade tem regras e acompanhamento médico obrigatório para que o esporte apague o estigma negativo.\n\nCORREIA, D. UFC: saiba como o MMA nocauteou o boxe em oito golpes. Veja, 10 jun. 2011 (fragmento)\n\nO processo de modificação das regras do MMA retrata a tendência de redimensionamento de algumas práticas corporais, visando enquadrá-las em um determinado formato.",
       "arquivos": [],
       "enunciado": "Qual o sentido atribuído a essas transformações incorporadas historicamente ao MMA?",
       "alternativas": [
@@ -4923,7 +4923,7 @@
       "indice": 98,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Uso de suplementos alimentares por adolescentes**\n\nEvidências médicas sugerem que a suplementação alimentar pode ser benéfica para um pequeno grupo de pessoas, aí incluídos atletas competitivos, cuja dieta não seja balanceada. Tem-se observado que adolescentes envolvidos em atividade física ou atlética estão usando cada vez mais tais suplementos. A prevalência desse uso varia entre os tipos de esportes, aspectos culturais, faixas etárias (mais comum em adolescentes) e sexo (maior prevalência em homens). Poucos estudos se referem a frequência, tipo e quantidade de suplementos usados, mas parece ser comum que as doses recomendadas sejam excedidas.\n\nA mídia é um dos importantes estímulos ao uso de suplementos alimentares ao veicular, por exemplo, o mito do corpo ideal. Em 2001, a indústria de suplementos alimentares investiu globalmente US$ 46 bilhões em propaganda, como meio de persuadir potenciais consumidores a adquirir seus produtos. Na adolescência, período de autoafirmação, muitos deles não medem esforços para atingir tal objetivo.\n\nALVES, C.; LIMA, R. J. **Pediatr**. v.85, n.4, 2009 (fragmento).",
+      "contexto": "Uso de suplementos alimentares por adolescentes\n\nEvidências médicas sugerem que a suplementação alimentar pode ser benéfica para um pequeno grupo de pessoas, aí incluídos atletas competitivos, cuja dieta não seja balanceada. Tem-se observado que adolescentes envolvidos em atividade física ou atlética estão usando cada vez mais tais suplementos. A prevalência desse uso varia entre os tipos de esportes, aspectos culturais, faixas etárias (mais comum em adolescentes) e sexo (maior prevalência em homens). Poucos estudos se referem a frequência, tipo e quantidade de suplementos usados, mas parece ser comum que as doses recomendadas sejam excedidas.\n\nA mídia é um dos importantes estímulos ao uso de suplementos alimentares ao veicular, por exemplo, o mito do corpo ideal. Em 2001, a indústria de suplementos alimentares investiu globalmente US$ 46 bilhões em propaganda, como meio de persuadir potenciais consumidores a adquirir seus produtos. Na adolescência, período de autoafirmação, muitos deles não medem esforços para atingir tal objetivo.\n\nALVES, C.; LIMA, R. J. Pediatr. v.85, n.4, 2009 (fragmento).",
       "arquivos": [],
       "enunciado": "Sobre a associação entre a prática de atividades físicas e o uso de suplementos alimentares, o texto informa que a ingestão desses suplementos",
       "alternativas": [
@@ -4973,7 +4973,7 @@
       "indice": 99,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**TEXTO I**\n\nJoão Guedes, um dos assíduos frequentadores do boliche do capitão, mudara-se da campanha havia três anos. Três anos de pobreza na cidade bastaram para o degradar. Ao morrer, não tinha um vintém nos bolsos e fazia dois meses que saíra da cadeia, onde estivera preso por roubo de ovelha.\n\nA história de sua desgraça se confunde com a da maioria dos que povoam a aldeia de Boa Ventura, uma cidadezinha distante, triste e precocemente envelhecida, situada nos confins da fronteira do Brasil com o Uruguai.\n\nMARTINS, C. **Porteira fechada**. Porto Alegre: Movimento, 2001 (fragmento).\n\n**TEXTO II**\n\nComecei a procurar emprego, já topando o que desse e viesse, menos complicação com os homens, mas não tava fácil. Fui na feira, fui nos bancos de sangue, fui nesses lugares que sempre dão para descolar algum, fui de porta em porta me oferecendo de faxineiro, mas tava todo mundo escabreado pedindo referências, e referências eu só tinha do diretor do presídio.\n\nFONSECA, R. **Feliz Ano Novo**. São Paulo: Cia. das Letras, 1989 (fragmento).\n\nA oposição entre campo e cidade esteve entre as temáticas tradicionais da literatura brasileira. Nos fragmentos dos dois autores contemporâneos, esse embate incorpora um elemento novo: a questão da violência e do desemprego.",
+      "contexto": "TEXTO I\n\nJoão Guedes, um dos assíduos frequentadores do boliche do capitão, mudara-se da campanha havia três anos. Três anos de pobreza na cidade bastaram para o degradar. Ao morrer, não tinha um vintém nos bolsos e fazia dois meses que saíra da cadeia, onde estivera preso por roubo de ovelha.\n\nA história de sua desgraça se confunde com a da maioria dos que povoam a aldeia de Boa Ventura, uma cidadezinha distante, triste e precocemente envelhecida, situada nos confins da fronteira do Brasil com o Uruguai.\n\nMARTINS, C. Porteira fechada. Porto Alegre: Movimento, 2001 (fragmento).\n\nTEXTO II\n\nComecei a procurar emprego, já topando o que desse e viesse, menos complicação com os homens, mas não tava fácil. Fui na feira, fui nos bancos de sangue, fui nesses lugares que sempre dão para descolar algum, fui de porta em porta me oferecendo de faxineiro, mas tava todo mundo escabreado pedindo referências, e referências eu só tinha do diretor do presídio.\n\nFONSECA, R. Feliz Ano Novo. São Paulo: Cia. das Letras, 1989 (fragmento).\n\nA oposição entre campo e cidade esteve entre as temáticas tradicionais da literatura brasileira. Nos fragmentos dos dois autores contemporâneos, esse embate incorpora um elemento novo: a questão da violência e do desemprego.",
       "arquivos": [],
       "enunciado": "As narrativas apresentam confluência, pois nelas o(a)",
       "alternativas": [
@@ -5023,7 +5023,7 @@
       "indice": 100,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "O correr da vida embrulha tudo. A vida é assim: esquenta e esfria, aperta e daí afrouxa, sossega e depois desinquieta. O que ela quer da gente é coragem.\n\nROSA, J. G. **Grande sertão: veredas**. Rio de Janeiro: Nova Fronteira, 1986.\n\nNo romance _Grande sertão: veredas_, o protagonista Riobaldo narra sua trajetória de jagunço.",
+      "contexto": "O correr da vida embrulha tudo. A vida é assim: esquenta e esfria, aperta e daí afrouxa, sossega e depois desinquieta. O que ela quer da gente é coragem.\n\nROSA, J. G. Grande sertão: veredas. Rio de Janeiro: Nova Fronteira, 1986.\n\nNo romance _Grande sertão: veredas_, o protagonista Riobaldo narra sua trajetória de jagunço.",
       "arquivos": [],
       "enunciado": "A leitura do trecho permite identificar que o desabafo de Riobaldo se aproxima de um(a):",
       "alternativas": [
@@ -5073,7 +5073,7 @@
       "indice": 101,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "Há qualquer coisa de especial **nisso** de botar a cara na janela em crônica de jornal — eu não fazia **isso** há muitos anos, enquanto me escondia em poesia e ficção. Crônica algumas vezes também é feita, intencionalmente, para provocar. Além do mais, em certos dias mesmo o escritor mais escolado não está lá grande coisa. Tem os que mostram sua cara escrevendo para reclamar: moderna demais, antiquada demais. **Alguns** discorrem sobre o assunto, e é gostoso compartilhar ideias. Há os textos que parecem passar despercebidos, outros rendem um montão de recados: “Você escreveu exatamente o que eu sinto”, “Isso é exatamente o que falo com meus pacientes”, “É isso que digo para meus pais”, “Comentei com minha namorada”. Os estímulos são valiosos pra quem nesses tempos andava meio **assim**: é como me botarem no colo — também eu preciso. Na verdade, nunca fui tão posta no colo por leitores como na janela do jornal. De modo que está sendo ótima, essa brincadeira séria, com alguns textos que iam acabar neste livro, outros espalhados por aí. Porque eu levo a sério ser sério… mesmo quando parece que estou brincando: **essa** é uma das maravilhas de escrever. Como escrevi há muitos anos e continua sendo a minha verdade: palavras são meu jeito mais secreto de calar.\n\nLUFT, L. **Pensar é transgredir**. Rio de Janeiro: Record, 2004.",
+      "contexto": "Há qualquer coisa de especial nisso de botar a cara na janela em crônica de jornal — eu não fazia isso há muitos anos, enquanto me escondia em poesia e ficção. Crônica algumas vezes também é feita, intencionalmente, para provocar. Além do mais, em certos dias mesmo o escritor mais escolado não está lá grande coisa. Tem os que mostram sua cara escrevendo para reclamar: moderna demais, antiquada demais. Alguns discorrem sobre o assunto, e é gostoso compartilhar ideias. Há os textos que parecem passar despercebidos, outros rendem um montão de recados: “Você escreveu exatamente o que eu sinto”, “Isso é exatamente o que falo com meus pacientes”, “É isso que digo para meus pais”, “Comentei com minha namorada”. Os estímulos são valiosos pra quem nesses tempos andava meio assim: é como me botarem no colo — também eu preciso. Na verdade, nunca fui tão posta no colo por leitores como na janela do jornal. De modo que está sendo ótima, essa brincadeira séria, com alguns textos que iam acabar neste livro, outros espalhados por aí. Porque eu levo a sério ser sério… mesmo quando parece que estou brincando: essa é uma das maravilhas de escrever. Como escrevi há muitos anos e continua sendo a minha verdade: palavras são meu jeito mais secreto de calar.\n\nLUFT, L. Pensar é transgredir. Rio de Janeiro: Record, 2004.",
       "arquivos": [],
       "enunciado": "Os textos fazem uso constante de recursos que permitem a articulação entre suas partes. Quanto à construção do fragmento, o elemento",
       "alternativas": [
@@ -5123,7 +5123,7 @@
       "indice": 102,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "Era um dos meus primeiros dias na sala de música. A fim de descobrirmos o que deveríamos estar fazendo ali, propus à classe um problema. Inocentemente perguntei: — O que é música?\n\nPassamos dois dias inteiros tateando em busca de uma definição. Descobrimos que tínhamos de rejeitar todas as definições costumeiras porque elas não eram suficientemente abrangentes.\n\nO simples fato é que, à medida que a crescente margem a que chamamos de vanguarda continua suas explorações pelas fronteiras do som, qualquer definição se torna difícil. Quando John Cage abre a porta da sala de concerto e encoraja os ruídos da rua a atravessar suas composições, ele ventila a arte da música com conceitos novos e aparentemente sem forma.\n\nSCHAFER, R. M. **O ouvido pensante.** São Paulo: Unesp, 1991 (adaptado)",
+      "contexto": "Era um dos meus primeiros dias na sala de música. A fim de descobrirmos o que deveríamos estar fazendo ali, propus à classe um problema. Inocentemente perguntei: — O que é música?\n\nPassamos dois dias inteiros tateando em busca de uma definição. Descobrimos que tínhamos de rejeitar todas as definições costumeiras porque elas não eram suficientemente abrangentes.\n\nO simples fato é que, à medida que a crescente margem a que chamamos de vanguarda continua suas explorações pelas fronteiras do som, qualquer definição se torna difícil. Quando John Cage abre a porta da sala de concerto e encoraja os ruídos da rua a atravessar suas composições, ele ventila a arte da música com conceitos novos e aparentemente sem forma.\n\nSCHAFER, R. M. O ouvido pensante. São Paulo: Unesp, 1991 (adaptado)",
       "arquivos": [],
       "enunciado": "A frase “Quando John Cage abre a porta da sala de concerto e encoraja os ruídos da rua a atravessar suas composições”, na proposta de Schafer de formular uma nova conceituação de música, representa a",
       "alternativas": [
@@ -5173,7 +5173,7 @@
       "indice": 103,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Censura Moralista**\n\nHá tempos que a leitura está em pauta. E, diz-se, em crise. Comenta-se esta crise, por exemplo, apontando a precariedade das práticas de leitura, lamentando a falta de familiaridade dos jovens com livros, reclamando da falta de bibliotecas em tantos municípios, do preço dos livros em livrarias, num nunca acabar de problemas e de carências. Mas, de um tempo para cá, pesquisas acadêmicas vêm dizendo que talvez não seja exatamente assim, que brasileiros leem, sim, só que leem livros que as pesquisas tradicionais não levam em conta. E, também de um tempo para cá, políticas educacionais têm tomado a peito investir em livros e em leitura.\n\nLAJOLO, M. Disponível em: www.estadao.com.br. Acesso em: 2 dez. 2013 (fragmento).\n\nOs falantes, nos textos que produzem, sejam orais ou escritos, posicionam-se frente a assuntos que geram consenso ou despertam polêmica.",
+      "contexto": "Censura Moralista\n\nHá tempos que a leitura está em pauta. E, diz-se, em crise. Comenta-se esta crise, por exemplo, apontando a precariedade das práticas de leitura, lamentando a falta de familiaridade dos jovens com livros, reclamando da falta de bibliotecas em tantos municípios, do preço dos livros em livrarias, num nunca acabar de problemas e de carências. Mas, de um tempo para cá, pesquisas acadêmicas vêm dizendo que talvez não seja exatamente assim, que brasileiros leem, sim, só que leem livros que as pesquisas tradicionais não levam em conta. E, também de um tempo para cá, políticas educacionais têm tomado a peito investir em livros e em leitura.\n\nLAJOLO, M. Disponível em: www.estadao.com.br. Acesso em: 2 dez. 2013 (fragmento).\n\nOs falantes, nos textos que produzem, sejam orais ou escritos, posicionam-se frente a assuntos que geram consenso ou despertam polêmica.",
       "arquivos": [],
       "enunciado": "No texto, a autora",
       "alternativas": [
@@ -5223,7 +5223,7 @@
       "indice": 104,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "Só há uma saída para a escola se ela quiser ser mais bem-sucedida: aceitar a mudança da língua como um fato. Isso deve significar que a escola deve aceitar qualquer forma da língua em suas atividades escritas? Não deve mais corrigir? Não!\n\nHá outra dimensão a ser considerada: de fato, no mundo real da escrita, não existe apenas um português correto, que valeria para todas as ocasiões: o estilo dos contratos não é o mesmo do dos manuais de instrução; o dos juízes do Supremo não é o mesmo do dos cordelistas; o dos editoriais dos jornais não é o mesmo do dos cadernos de cultura dos mesmos jornais. Ou do de seus colunistas.\n\nPOSSENTI, S. Gramática na cabeça. **Língua Portuguesa**, ano 5, n. 67, maio 2011 (adaptado).\n\nSírio Possenti defende a tese de que não existe um único “português correto”.",
+      "contexto": "Só há uma saída para a escola se ela quiser ser mais bem-sucedida: aceitar a mudança da língua como um fato. Isso deve significar que a escola deve aceitar qualquer forma da língua em suas atividades escritas? Não deve mais corrigir? Não!\n\nHá outra dimensão a ser considerada: de fato, no mundo real da escrita, não existe apenas um português correto, que valeria para todas as ocasiões: o estilo dos contratos não é o mesmo do dos manuais de instrução; o dos juízes do Supremo não é o mesmo do dos cordelistas; o dos editoriais dos jornais não é o mesmo do dos cadernos de cultura dos mesmos jornais. Ou do de seus colunistas.\n\nPOSSENTI, S. Gramática na cabeça. Língua Portuguesa, ano 5, n. 67, maio 2011 (adaptado).\n\nSírio Possenti defende a tese de que não existe um único “português correto”.",
       "arquivos": [],
       "enunciado": "Assim sendo, o domínio da língua portuguesa implica, entre outras coisas, saber",
       "alternativas": [
@@ -5325,7 +5325,7 @@
       "indice": 106,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "eu acho um fato interessante… né… foi como meu pai e minha mãe vieram se conhecer… né… que… minha mãe morava no Piauí com toda família… né… meu… meu avô… materno no caso… era maquinista… ele sofreu um acidente… infelizmente morreu… minha mãe tinha cinco anos… né… e o irmão mais velho dela… meu padrinho… tinha dezessete e ele foi obrigado a trabalhar… foi trabalhar no banco… e… ele foi… o banco… no caso… estava… com um número de funcionários cheio e ele teve que ir para outro local e pediu transferência prum local mais perto de Parnaíba que era a cidade onde eles moravam e por engano o… o… escrivão entendeu Paraíba… né… e meu… e minha família veio parar em Mossoró que era exatamente o local mais perto onde tinha vaga pra funcionário do Banco do Brasil e:: ela foi parar na rua do meu pai… né… e começaram a se conhecer… namoraram onze anos… né… pararam algum tempo… brigaram… é lógico… porque todo relacionamento tem uma briga… né… e eu achei esse fato muito interessante porque foi uma coincidência incrível… né… como vieram a se conhecer… namoraram e hoje… e até hoje estão juntos… dezessete anos de casados…\n\nCUNHA, M. A. F. (Org.) . **_Corpus_ discurso & gramática**: a língua falada e escrita na cidade do Natal. Natal: EdUFRN, 1998\n\nNa transcrição de fala, há um breve relato de experiência pessoal, no qual se observa a frequente repetição de “né”.",
+      "contexto": "eu acho um fato interessante… né… foi como meu pai e minha mãe vieram se conhecer… né… que… minha mãe morava no Piauí com toda família… né… meu… meu avô… materno no caso… era maquinista… ele sofreu um acidente… infelizmente morreu… minha mãe tinha cinco anos… né… e o irmão mais velho dela… meu padrinho… tinha dezessete e ele foi obrigado a trabalhar… foi trabalhar no banco… e… ele foi… o banco… no caso… estava… com um número de funcionários cheio e ele teve que ir para outro local e pediu transferência prum local mais perto de Parnaíba que era a cidade onde eles moravam e por engano o… o… escrivão entendeu Paraíba… né… e meu… e minha família veio parar em Mossoró que era exatamente o local mais perto onde tinha vaga pra funcionário do Banco do Brasil e:: ela foi parar na rua do meu pai… né… e começaram a se conhecer… namoraram onze anos… né… pararam algum tempo… brigaram… é lógico… porque todo relacionamento tem uma briga… né… e eu achei esse fato muito interessante porque foi uma coincidência incrível… né… como vieram a se conhecer… namoraram e hoje… e até hoje estão juntos… dezessete anos de casados…\n\nCUNHA, M. A. F. (Org.) . _Corpus_ discurso & gramática: a língua falada e escrita na cidade do Natal. Natal: EdUFRN, 1998\n\nNa transcrição de fala, há um breve relato de experiência pessoal, no qual se observa a frequente repetição de “né”.",
       "arquivos": [],
       "enunciado": "Essa repetição é um(a)",
       "alternativas": [
@@ -5375,7 +5375,7 @@
       "indice": 107,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "_Blog_ é concebido como um espaço onde o blogueiro é livre para expressar e discutir o que quiser na atividade da sua escrita, com a escolha de imagens e sons que compõem o todo do texto veiculado pela internet, por meio dos _posts_. Assim, essa ferramenta deixa de ter como única função a exposição de vida e/ou rotina de alguém — como em um diário pessoal —, função para qual serviu inicialmente e que o popularizou, permitindo também que seja um espaço para a discussão de ideias, trocas e divulgação de informações.\n\nA produção dos _blogs_ requer uma relação de troca, que acaba unindo pessoas em torno de um ponto de interesse comum. A força dos _blogs_ está em possibilitar que qualquer pessoa, sem nenhum conhecimento técnico, publique suas ideias e opiniões na _web_ e que milhões de outras pessoas publiquem comentários sobre o que foi escrito, criando um grande debate aberto a todos.\n\nLOPES, B. O. **A linguagem dos _blogs_ e as redes sociais**. Disponível em: www.fateczl.edu.br. Acesso em: 29 abr. 2013 (adaptado).",
+      "contexto": "_Blog_ é concebido como um espaço onde o blogueiro é livre para expressar e discutir o que quiser na atividade da sua escrita, com a escolha de imagens e sons que compõem o todo do texto veiculado pela internet, por meio dos _posts_. Assim, essa ferramenta deixa de ter como única função a exposição de vida e/ou rotina de alguém — como em um diário pessoal —, função para qual serviu inicialmente e que o popularizou, permitindo também que seja um espaço para a discussão de ideias, trocas e divulgação de informações.\n\nA produção dos _blogs_ requer uma relação de troca, que acaba unindo pessoas em torno de um ponto de interesse comum. A força dos _blogs_ está em possibilitar que qualquer pessoa, sem nenhum conhecimento técnico, publique suas ideias e opiniões na _web_ e que milhões de outras pessoas publiquem comentários sobre o que foi escrito, criando um grande debate aberto a todos.\n\nLOPES, B. O. A linguagem dos _blogs_ e as redes sociais. Disponível em: www.fateczl.edu.br. Acesso em: 29 abr. 2013 (adaptado).",
       "arquivos": [],
       "enunciado": "De acordo com o texto, o blog ultrapassou sua função inicial e vem se destacando como",
       "alternativas": [
@@ -5425,7 +5425,7 @@
       "indice": 108,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Camelôs**\n\nAbençoado seja o camelô dos brinquedos de tostão:  \nO que vende balõezinhos de cor  \nO macaquinho que trepa no coqueiro  \nO cachorrinho que bate com o rabo  \nOs homenzinhos que jogam boxe  \nA perereca verde que de repente dá um pulo que engraçado  \nE as canetinhas-tinteiro que jamais escreverão coisa alguma.\n\nAlegria das calçadas  \nUns falam pelos cotovelos:  \n– “O cavalheiro chega em casa e diz: Meu filho, vai buscar um  \npedaço de banana para eu acender o charuto.  \nNaturalmente o menino pensará: Papai está malu…”\n\nOutros, coitados, têm a língua atada.\n\nTodos porém sabem mexer nos cordéis como o tino  \ningênuo de  \ndemiurgos de inutilidades.  \nE ensinam no tumulto das ruas os mitos heroicos da  \nmeninice…  \nE dão aos homens que passam preocupados ou tristes  \numa lição de infância.\n\nBANDEIRA, M. **Estrela da vida inteira.** Rio de Janeiro: Nova Fronteira, 2007.\n\nUma das diretrizes do Modernismo foi a percepção de elementos do cotidiano como matéria de inspiração poética.",
+      "contexto": "Camelôs\n\nAbençoado seja o camelô dos brinquedos de tostão:  \nO que vende balõezinhos de cor  \nO macaquinho que trepa no coqueiro  \nO cachorrinho que bate com o rabo  \nOs homenzinhos que jogam boxe  \nA perereca verde que de repente dá um pulo que engraçado  \nE as canetinhas-tinteiro que jamais escreverão coisa alguma.\n\nAlegria das calçadas  \nUns falam pelos cotovelos:  \n– “O cavalheiro chega em casa e diz: Meu filho, vai buscar um  \npedaço de banana para eu acender o charuto.  \nNaturalmente o menino pensará: Papai está malu…”\n\nOutros, coitados, têm a língua atada.\n\nTodos porém sabem mexer nos cordéis como o tino  \ningênuo de  \ndemiurgos de inutilidades.  \nE ensinam no tumulto das ruas os mitos heroicos da  \nmeninice…  \nE dão aos homens que passam preocupados ou tristes  \numa lição de infância.\n\nBANDEIRA, M. Estrela da vida inteira. Rio de Janeiro: Nova Fronteira, 2007.\n\nUma das diretrizes do Modernismo foi a percepção de elementos do cotidiano como matéria de inspiração poética.",
       "arquivos": [],
       "enunciado": "O poema de Manuel Bandeira exemplifica essa tendência e alcança expressividade porque",
       "alternativas": [
@@ -5475,7 +5475,7 @@
       "indice": 109,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "Talvez pareça excessivo o escrúpulo do Cotrim, a quem não souber que ele possuía um caráter ferozmente honrado. Eu mesmo fui injusto com ele durante os anos que se seguiram ao inventário de meu pai. Reconheço que era um modelo. Arguíam-no de avareza, e cuido que tinham razão; mas a avareza é apenas a exageração de uma virtude, e as virtudes devem ser como os orçamentos: melhor é o saldo que o déficit. Como era muito seco de maneiras, tinha inimigos que chegavam a acusá-lo de bárbaro. O único fato alegado neste particular era o de mandar com frequência escravos ao calabouço, donde eles desciam a escorrer sangue; mas, além de que ele só mandava os perversos e os fujões, ocorre que, tendo longamente contrabandeado em escravos, habituara-se de certo modo ao trato um pouco mais duro que esse gênero de negócio requeria, e não se pode honestamente atribuir à índole original de um homem o que é puro efeito de relações sociais. A prova de que o Cotrim tinha sentimentos pios encontrava-se no seu amor aos filhos, e na dor que padeceu quando morreu Sara, dali a alguns meses; prova irrefutável, acho eu, e não única. Era tesoureiro de uma confraria, e irmão de várias irmandades, e até irmão remido de uma destas, o que não se coaduna muito com a reputação da avareza; verdade é que o benefício não caíra no chão: a irmandade (de que ele fora juiz) mandara-lhe tirar o retrato a óleo.\n\nASSIS, M. **Memórias póstumas de Brás Cubas.** Rio de Janeiro: Nova Aguilar, 1992.\n\nObra que inaugura o Realismo na literatura brasileira, _Memórias póstumas de Brás Cubas_ condensa numa expressividade que caracterizaria o estilo machadiano: a ironia.",
+      "contexto": "Talvez pareça excessivo o escrúpulo do Cotrim, a quem não souber que ele possuía um caráter ferozmente honrado. Eu mesmo fui injusto com ele durante os anos que se seguiram ao inventário de meu pai. Reconheço que era um modelo. Arguíam-no de avareza, e cuido que tinham razão; mas a avareza é apenas a exageração de uma virtude, e as virtudes devem ser como os orçamentos: melhor é o saldo que o déficit. Como era muito seco de maneiras, tinha inimigos que chegavam a acusá-lo de bárbaro. O único fato alegado neste particular era o de mandar com frequência escravos ao calabouço, donde eles desciam a escorrer sangue; mas, além de que ele só mandava os perversos e os fujões, ocorre que, tendo longamente contrabandeado em escravos, habituara-se de certo modo ao trato um pouco mais duro que esse gênero de negócio requeria, e não se pode honestamente atribuir à índole original de um homem o que é puro efeito de relações sociais. A prova de que o Cotrim tinha sentimentos pios encontrava-se no seu amor aos filhos, e na dor que padeceu quando morreu Sara, dali a alguns meses; prova irrefutável, acho eu, e não única. Era tesoureiro de uma confraria, e irmão de várias irmandades, e até irmão remido de uma destas, o que não se coaduna muito com a reputação da avareza; verdade é que o benefício não caíra no chão: a irmandade (de que ele fora juiz) mandara-lhe tirar o retrato a óleo.\n\nASSIS, M. Memórias póstumas de Brás Cubas. Rio de Janeiro: Nova Aguilar, 1992.\n\nObra que inaugura o Realismo na literatura brasileira, _Memórias póstumas de Brás Cubas_ condensa numa expressividade que caracterizaria o estilo machadiano: a ironia.",
       "arquivos": [],
       "enunciado": "Descrevendo a moral de seu cunhado, Cotrim, o narrador-personagem Brás Cubas refina a percepção irônica ao",
       "alternativas": [
@@ -5524,7 +5524,7 @@
       "indice": 110,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**O exercício da crônica**\n\nEscrever prosa é uma arte ingrata. Eu digo prosa como se faz um cronista; não a prosa de um ficcionista, na qual este é levado meio a tapas pelas personagens e situações que, azar dele, criou porque quis. Com um prosador do cotidiano, a coisa fia mais fino. Senta-se ele diante de sua máquina, olha através da janela e busca fundo em sua imaginação um fato qualquer, de preferência colhido no noticiário matutino, ou da véspera, em que, com as suas artimanhas peculiares, possa injetar um sangue novo. Se nada houver, resta-lhe o recurso de olhar em torno e esperar que, através de um processo associativo, surja-lhe de repente a crônica, provinda dos fatos e feitos de sua vida emocionalmente despertados pela concentração. Ou então, em última instância, recorrer ao assunto da falta de assunto, já bastante gasto, mas do qual, no ato de escrever, pode surgir o inesperado.\n\nMORAES, V. **Para viver um grande amor: crônicas e poemas.** São Paulo: Cia. das Letras, 1991.",
+      "contexto": "O exercício da crônica\n\nEscrever prosa é uma arte ingrata. Eu digo prosa como se faz um cronista; não a prosa de um ficcionista, na qual este é levado meio a tapas pelas personagens e situações que, azar dele, criou porque quis. Com um prosador do cotidiano, a coisa fia mais fino. Senta-se ele diante de sua máquina, olha através da janela e busca fundo em sua imaginação um fato qualquer, de preferência colhido no noticiário matutino, ou da véspera, em que, com as suas artimanhas peculiares, possa injetar um sangue novo. Se nada houver, resta-lhe o recurso de olhar em torno e esperar que, através de um processo associativo, surja-lhe de repente a crônica, provinda dos fatos e feitos de sua vida emocionalmente despertados pela concentração. Ou então, em última instância, recorrer ao assunto da falta de assunto, já bastante gasto, mas do qual, no ato de escrever, pode surgir o inesperado.\n\nMORAES, V. Para viver um grande amor: crônicas e poemas. São Paulo: Cia. das Letras, 1991.",
       "arquivos": [],
       "enunciado": "Predomina nesse texto a função da linguagem que se constitui",
       "alternativas": [
@@ -5676,7 +5676,7 @@
       "indice": 113,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "Quando Deus redimiu da tirania  \nDa mão do Faraó endurecido  \nO Povo Hebreu amado, e esclarecido,  \nPáscoa ficou da redenção o dia.\n\nPáscoa de flores, dia de alegria  \nÀquele Povo foi tão afligido  \nO dia, em que por Deus foi redimido;  \nErgo sois vós, Senhor, Deus da Bahia.\n\nPois mandado pela alta Majestade  \nNos remiu de tão triste cativeiro,  \nNos livrou de tão vil calamidade.\n\nQuem pode ser senão um verdadeiro Deus,  \nque veio estirpar desta cidade  \nO Faraó do povo brasileiro.\n\nDAMASCENO, D. (Org.). **Melhores poemas:** **Gregório de Matos.** São Paulo: Globo, 2006.",
+      "contexto": "Quando Deus redimiu da tirania  \nDa mão do Faraó endurecido  \nO Povo Hebreu amado, e esclarecido,  \nPáscoa ficou da redenção o dia.\n\nPáscoa de flores, dia de alegria  \nÀquele Povo foi tão afligido  \nO dia, em que por Deus foi redimido;  \nErgo sois vós, Senhor, Deus da Bahia.\n\nPois mandado pela alta Majestade  \nNos remiu de tão triste cativeiro,  \nNos livrou de tão vil calamidade.\n\nQuem pode ser senão um verdadeiro Deus,  \nque veio estirpar desta cidade  \nO Faraó do povo brasileiro.\n\nDAMASCENO, D. (Org.). Melhores poemas: Gregório de Matos. São Paulo: Globo, 2006.",
       "arquivos": [],
       "enunciado": "Com uma elaboração de linguagem e uma visão de mundo que apresentam princípios barrocos, o soneto de Gregório de Matos apresenta temática expressa por",
       "alternativas": [
@@ -5726,7 +5726,7 @@
       "indice": 114,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**O Brasil é sertanejo**\n\nQue tipo de música simboliza o Brasil? Eis uma questão discutida há muito tempo, que desperta opiniões extremadas. Há fundamentalistas que desejam impor ao público um tipo de som nascido das raízes socioculturais do país. O samba. Outros, igualmente nacionalistas, desprezam tudo aquilo que não tem estilo. Sonham com o império da MPB de Chico Buarque e Caetano Veloso. Um terceiro grupo, formado por gente mais jovem, escuta e cultiva apenas a música internacional, em todas as vertentes. E mais ou menos ignora o resto.\n\nA realidade dos hábitos musicais do brasileiro agora está claro, nada tem a ver com esses estereótipos. O gênero que encanta mais da metade do país é o sertanejo, seguido de longe pela MPB e pelo pagode. Outros gêneros em ascensão, sobretudo entre as classes C, D e E, são o _funk_ e o religioso, em especial o _gospel_. _Rock_ e música eletrônica são músicas de minoria.\n\nÉ o que demonstra uma pesquisa pioneira feita entre agosto de 2012 e agosto de 2013 pelo Instituto Brasileiro de Opinião Pública e Estatística (Ibope). A pesquisa _Tribos musicais – o comportamento dos ouvintes de rádio sob uma nova ótica_ faz um retrato do ouvinte brasileiro e traz algumas novidades. Para quem pensava que a MPB e o samba ainda resistiam como baluartes da nacionalidade, uma má notícia: os dois gêneros foram superados em popularidade. O Brasil moderno não tem mais o perfil sonoro dos anos 1970, que muitos gostariam que se eternizasse. A cara musical do país agora é outra.\n\nGIRON, L. A. **Época**, n. 805, out. 2013 (fragmento).\n\nO texto objetiva convencer o leitor de que a configuração da preferência musical dos brasileiros não é mais a mesma da dos anos 1970.",
+      "contexto": "O Brasil é sertanejo\n\nQue tipo de música simboliza o Brasil? Eis uma questão discutida há muito tempo, que desperta opiniões extremadas. Há fundamentalistas que desejam impor ao público um tipo de som nascido das raízes socioculturais do país. O samba. Outros, igualmente nacionalistas, desprezam tudo aquilo que não tem estilo. Sonham com o império da MPB de Chico Buarque e Caetano Veloso. Um terceiro grupo, formado por gente mais jovem, escuta e cultiva apenas a música internacional, em todas as vertentes. E mais ou menos ignora o resto.\n\nA realidade dos hábitos musicais do brasileiro agora está claro, nada tem a ver com esses estereótipos. O gênero que encanta mais da metade do país é o sertanejo, seguido de longe pela MPB e pelo pagode. Outros gêneros em ascensão, sobretudo entre as classes C, D e E, são o _funk_ e o religioso, em especial o _gospel_. _Rock_ e música eletrônica são músicas de minoria.\n\nÉ o que demonstra uma pesquisa pioneira feita entre agosto de 2012 e agosto de 2013 pelo Instituto Brasileiro de Opinião Pública e Estatística (Ibope). A pesquisa _Tribos musicais – o comportamento dos ouvintes de rádio sob uma nova ótica_ faz um retrato do ouvinte brasileiro e traz algumas novidades. Para quem pensava que a MPB e o samba ainda resistiam como baluartes da nacionalidade, uma má notícia: os dois gêneros foram superados em popularidade. O Brasil moderno não tem mais o perfil sonoro dos anos 1970, que muitos gostariam que se eternizasse. A cara musical do país agora é outra.\n\nGIRON, L. A. Época, n. 805, out. 2013 (fragmento).\n\nO texto objetiva convencer o leitor de que a configuração da preferência musical dos brasileiros não é mais a mesma da dos anos 1970.",
       "arquivos": [],
       "enunciado": "A estratégia de argumentação para comprovar essa posição baseia-se no(a)",
       "alternativas": [
@@ -5776,7 +5776,7 @@
       "indice": 115,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "\n\n**Scientific American Brasil**, ano 11, n. 134, jul. 2013 (adaptado).",
+      "contexto": "\n\nScientific American Brasil, ano 11, n. 134, jul. 2013 (adaptado).",
       "arquivos": [
         "https://enem.dev/2014/questions/115/e13b2d6f-c865-4932-b906-03827868ad82.png"
       ],
@@ -5828,7 +5828,7 @@
       "indice": 116,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Linotipos**\n\nO Museu da Imprensa exibe duas linotipos. Trata-se de um tipo de máquina de composição de tipos de chumbo, inventada em 1884 em Baltimore, nos Estados Unidos, pelo alemão Ottmar Mergenthaler. O invento foi de grande importância por ter significado um novo e fundamental avanço na história das artes gráficas. A linotipia provocou, na verdade, uma revolução porque venceu a lentidão da composição dos textos executada na tipografia tradicional, em que o texto era composto à mão, juntando tipos móveis um por um. Constituía-se, assim, no principal meio de composição tipográfica até 1950. A linotipo, a partir do século XIX, passou a produzir impressos a baixo custo, o que levou informação às massas, democratizou a informação. Promoveu uma revolução na educação. Antes da linotipo, os jornais e revistas eram escassos, com poucas páginas e caros. Os livros didáticos eram também caros, pouco acessíveis.\n\nDisponível em: http://portal.in.gov.br. Acesso em: 23 fev. 2013 (adaptado).\n\nO texto apresenta um histórico da linotipo, uma máquina tipográfica inventada no século XIX e responsável pela dinamização da imprensa.",
+      "contexto": "Linotipos\n\nO Museu da Imprensa exibe duas linotipos. Trata-se de um tipo de máquina de composição de tipos de chumbo, inventada em 1884 em Baltimore, nos Estados Unidos, pelo alemão Ottmar Mergenthaler. O invento foi de grande importância por ter significado um novo e fundamental avanço na história das artes gráficas. A linotipia provocou, na verdade, uma revolução porque venceu a lentidão da composição dos textos executada na tipografia tradicional, em que o texto era composto à mão, juntando tipos móveis um por um. Constituía-se, assim, no principal meio de composição tipográfica até 1950. A linotipo, a partir do século XIX, passou a produzir impressos a baixo custo, o que levou informação às massas, democratizou a informação. Promoveu uma revolução na educação. Antes da linotipo, os jornais e revistas eram escassos, com poucas páginas e caros. Os livros didáticos eram também caros, pouco acessíveis.\n\nDisponível em: http://portal.in.gov.br. Acesso em: 23 fev. 2013 (adaptado).\n\nO texto apresenta um histórico da linotipo, uma máquina tipográfica inventada no século XIX e responsável pela dinamização da imprensa.",
       "arquivos": [],
       "enunciado": "Em termos sociais, a contribuição da linotipo teve impacto direto na",
       "alternativas": [
@@ -5878,7 +5878,7 @@
       "indice": 117,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Cordel resiste à tecnologia gráfica**\n\nO Cariri mantém uma das mais ricas tradições da cultura popular. É a literatura de cordel, que atravessa os séculos sem ser destruída pela avalanche de modernidade que invade o sertão lírico e telúrico. Na contramão do progresso, que informatizou a indústria gráfica, a Lira Nordestina, de Juazeiro do Norte, e a Academia dos Cordelistas do Crato conservam, em suas oficinas, velhas máquinas para impressão dos seus cordéis.\n\nA chapa para impressão do cordel é feita à mão, letra por letra, um trabalho artesanal que dura cerca de uma hora para confecção de uma página. Em seguida, a chapa é levada para a impressora, também manual, para imprimir. A manutenção desse sistema antigo de impressão faz parte da filosofia do trabalho. A outra etapa é a confecção da xilogravura para a capa do cordel.\n\nAs xilogravuras são ilustrações populares obtidas por gravuras talhadas em madeira. A origem da xilogravura nordestina até hoje é ignorada. Acredita-se que os missionários portugueses tenham ensinado sua técnica aos índios, como uma atividade extra-catequese, partindo do princípio religioso que defende a necessidade de ocupar as mãos para que a mente não fique livre, sujeita aos maus pensamentos, ao pecado. A xilogravura antecedeu ao clichê, placa fotomecanicamente gravada em relevo sobre metal, usualmente zinco, que era utilizada nos jornais impressos em rotoplanas.\n\nVICELMO, A. Disponível em: www.onordeste.com. Acesso em: 24 fev. 2013 (adaptado)",
+      "contexto": "Cordel resiste à tecnologia gráfica\n\nO Cariri mantém uma das mais ricas tradições da cultura popular. É a literatura de cordel, que atravessa os séculos sem ser destruída pela avalanche de modernidade que invade o sertão lírico e telúrico. Na contramão do progresso, que informatizou a indústria gráfica, a Lira Nordestina, de Juazeiro do Norte, e a Academia dos Cordelistas do Crato conservam, em suas oficinas, velhas máquinas para impressão dos seus cordéis.\n\nA chapa para impressão do cordel é feita à mão, letra por letra, um trabalho artesanal que dura cerca de uma hora para confecção de uma página. Em seguida, a chapa é levada para a impressora, também manual, para imprimir. A manutenção desse sistema antigo de impressão faz parte da filosofia do trabalho. A outra etapa é a confecção da xilogravura para a capa do cordel.\n\nAs xilogravuras são ilustrações populares obtidas por gravuras talhadas em madeira. A origem da xilogravura nordestina até hoje é ignorada. Acredita-se que os missionários portugueses tenham ensinado sua técnica aos índios, como uma atividade extra-catequese, partindo do princípio religioso que defende a necessidade de ocupar as mãos para que a mente não fique livre, sujeita aos maus pensamentos, ao pecado. A xilogravura antecedeu ao clichê, placa fotomecanicamente gravada em relevo sobre metal, usualmente zinco, que era utilizada nos jornais impressos em rotoplanas.\n\nVICELMO, A. Disponível em: www.onordeste.com. Acesso em: 24 fev. 2013 (adaptado)",
       "arquivos": [],
       "enunciado": "A estratégia gráfica constituída pela união entre as técnicas da impressão manual e da confecção da xilogravura na produção de folhetos de cordel",
       "alternativas": [
@@ -5928,7 +5928,7 @@
       "indice": 118,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Em bom português**\n\nNo Brasil, as palavras envelhecem e caem como folhas secas. Não é somente pela gíria que a gente é apanhada (aliás, já não se usa mais a primeira pessoa, tanto do singular como do plural: tudo é “a gente”). A própria linguagem corrente vai-se renovando e a cada dia uma parte do léxico cai em desuso.\n\nMinha amiga Lila, que vive descobrindo essas coisas, chamou minha atenção para os que falam assim:\n\n— Assisti a uma fita de cinema com um artista que representa muito bem.\n\nOs que acharam natural essa frase, cuidado! Não saberão dizer que viram um filme com um ator que trabalha bem. E irão ao banho de mar em vez de ir à praia, vestido de roupa de banho em vez de biquíni, carregando guarda-sol em vez de barraca. Comprarão um automóvel em vez de comprar um carro, pegarão um defluxo em vez de um resfriado, vão andar no passeio em vez de passear na calçada. Viajarão de trem de ferro e apresentarão sua esposa ou sua senhora em vez de apresentar sua mulher.\n\nSABINO, F. **Folha de S. Paulo**, 13 abr. 1984 (adaptado).",
+      "contexto": "Em bom português\n\nNo Brasil, as palavras envelhecem e caem como folhas secas. Não é somente pela gíria que a gente é apanhada (aliás, já não se usa mais a primeira pessoa, tanto do singular como do plural: tudo é “a gente”). A própria linguagem corrente vai-se renovando e a cada dia uma parte do léxico cai em desuso.\n\nMinha amiga Lila, que vive descobrindo essas coisas, chamou minha atenção para os que falam assim:\n\n— Assisti a uma fita de cinema com um artista que representa muito bem.\n\nOs que acharam natural essa frase, cuidado! Não saberão dizer que viram um filme com um ator que trabalha bem. E irão ao banho de mar em vez de ir à praia, vestido de roupa de banho em vez de biquíni, carregando guarda-sol em vez de barraca. Comprarão um automóvel em vez de comprar um carro, pegarão um defluxo em vez de um resfriado, vão andar no passeio em vez de passear na calçada. Viajarão de trem de ferro e apresentarão sua esposa ou sua senhora em vez de apresentar sua mulher.\n\nSABINO, F. Folha de S. Paulo, 13 abr. 1984 (adaptado).",
       "arquivos": [],
       "enunciado": "A língua varia no tempo, no espaço e em diferentes classes socioculturais. O texto exemplifica essa característica da língua, evidenciando que",
       "alternativas": [
@@ -5978,7 +5978,7 @@
       "indice": 119,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Psicologia de um vencido**\n\nEu, filho do carbono e do amoníaco,  \nMonstro de escuridão e rutilância,  \nSofro, desde a epigênesis da infância,  \nA influência má dos signos do zodíaco.\n\nProfundíssimamente hipocondríaco,  \nEste ambiente me causa repugnância…  \nSobe-me à boca uma ânsia análoga à ânsia  \nQue se escapa da boca de um cardíaco.\n\nJá o verme — este operário das ruínas —  \nQue o sangue podre das carnificinas  \nCome, e à vida em geral declara guerra,\n\nAnda a espreitar meus olhos para roê-los,  \nE há de deixar-me apenas os cabelos,  \nNa frialdade inorgânica da terra!\n\nANJOS, A. **Obra completa.** Rio de Janeiro: Nova Aguilar, 1994.",
+      "contexto": "Psicologia de um vencido\n\nEu, filho do carbono e do amoníaco,  \nMonstro de escuridão e rutilância,  \nSofro, desde a epigênesis da infância,  \nA influência má dos signos do zodíaco.\n\nProfundíssimamente hipocondríaco,  \nEste ambiente me causa repugnância…  \nSobe-me à boca uma ânsia análoga à ânsia  \nQue se escapa da boca de um cardíaco.\n\nJá o verme — este operário das ruínas —  \nQue o sangue podre das carnificinas  \nCome, e à vida em geral declara guerra,\n\nAnda a espreitar meus olhos para roê-los,  \nE há de deixar-me apenas os cabelos,  \nNa frialdade inorgânica da terra!\n\nANJOS, A. Obra completa. Rio de Janeiro: Nova Aguilar, 1994.",
       "arquivos": [],
       "enunciado": "A poesia de Augusto dos Anjos revela aspectos de uma literatura de transição designada como pré-modernista. Com relação à poética e à abordagem temática presentes no soneto, identificam-se marcas dessa literatura de transição, como",
       "alternativas": [
@@ -6027,7 +6027,7 @@
       "indice": 120,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**O negócio**\n\nGrande sorriso do canino de ouro, o velho Abílio propõe às donas que se abastecem de pão e banana:  \n— Como é o negócio?  \nDe cada três dá certo com uma. Ela sorri, não responde ou é uma promessa a recusa:  \n— Deus me livre, não! Hoje não…  \nAbílio interpelou a velha:  \n— Como é o negócio?  \nEla concordou e, o que foi melhor, a filha também aceitou o trato. Com a dona Julietinha foi assim. Ele se chegou:  \n— Como é o negócio?  \nEla sorriu, olhinho baixo. Abílio espreitou o cometa partir. Manhã cedinho saltou a cerca. Sinal combinado, duas batidas na porta da cozinha. A dona saiu para o quintal, cuidadosa de não acordar os filhos. Ela trazia a capa de viagem, estendida na grama orvalhada.  \nO vizinho espionou os dois, aprendeu o sinal. Decidiu imitar a proeza. No crepúsculo, pum-pum, duas pancadas fortes na porta. O marido em viagem, mas não era dia do Abílio. Desconfiada, a moça surgiu à janela e o vizinho repetiu:  \n— Como é o negócio?\n\nDiante da recusa, ele ameaçou:\n\n— Então você quer o velho e não quer o moço? Olhe que eu conto!\n\nTREVISAN, D. **Mistérios de Curitiba**. Rio de Janeiro: Record, 1979 (fragmento).",
+      "contexto": "O negócio\n\nGrande sorriso do canino de ouro, o velho Abílio propõe às donas que se abastecem de pão e banana:  \n— Como é o negócio?  \nDe cada três dá certo com uma. Ela sorri, não responde ou é uma promessa a recusa:  \n— Deus me livre, não! Hoje não…  \nAbílio interpelou a velha:  \n— Como é o negócio?  \nEla concordou e, o que foi melhor, a filha também aceitou o trato. Com a dona Julietinha foi assim. Ele se chegou:  \n— Como é o negócio?  \nEla sorriu, olhinho baixo. Abílio espreitou o cometa partir. Manhã cedinho saltou a cerca. Sinal combinado, duas batidas na porta da cozinha. A dona saiu para o quintal, cuidadosa de não acordar os filhos. Ela trazia a capa de viagem, estendida na grama orvalhada.  \nO vizinho espionou os dois, aprendeu o sinal. Decidiu imitar a proeza. No crepúsculo, pum-pum, duas pancadas fortes na porta. O marido em viagem, mas não era dia do Abílio. Desconfiada, a moça surgiu à janela e o vizinho repetiu:  \n— Como é o negócio?\n\nDiante da recusa, ele ameaçou:\n\n— Então você quer o velho e não quer o moço? Olhe que eu conto!\n\nTREVISAN, D. Mistérios de Curitiba. Rio de Janeiro: Record, 1979 (fragmento).",
       "arquivos": [],
       "enunciado": "Quanto à abordagem do tema e aos recursos expressivos, essa crônica tem um caráter",
       "alternativas": [
@@ -6127,7 +6127,7 @@
       "indice": 122,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "\n\nCLARK, L. **Bicho de bolso.** Placas de metal, 1966.",
+      "contexto": "\n\nCLARK, L. Bicho de bolso. Placas de metal, 1966.",
       "arquivos": [
         "https://enem.dev/2014/questions/122/ff1bfb0f-0911-497a-8a39-2bc0a9741a72.png"
       ],
@@ -6228,7 +6228,7 @@
       "indice": 124,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Vida obscura**\n\nNinguém sentiu o teu espasmo obscuro,  \nó ser humilde entre os humildes seres,  \nembriagado, tonto de prazeres,  \no mundo para ti foi negro e duro.\n\nAtravessaste no silêncio escuro  \na vida presa a trágicos deveres  \ne chegaste ao saber de altos saberes  \ntornando-te mais simples e mais puro.\n\nNinguém te viu o sentimento inquieto,  \nmagoado, oculto e aterrador, secreto,  \nque o coração te apunhalou no mundo,\n\nMas eu que sempre te segui os passos  \nsei que cruz infernal prendeu-te os braços  \ne o teu suspiro como foi profundo!\n\nSOUSA, C. **Obra completa**. Rio de Janeiro: Nova Aguilar, 1961.",
+      "contexto": "Vida obscura\n\nNinguém sentiu o teu espasmo obscuro,  \nó ser humilde entre os humildes seres,  \nembriagado, tonto de prazeres,  \no mundo para ti foi negro e duro.\n\nAtravessaste no silêncio escuro  \na vida presa a trágicos deveres  \ne chegaste ao saber de altos saberes  \ntornando-te mais simples e mais puro.\n\nNinguém te viu o sentimento inquieto,  \nmagoado, oculto e aterrador, secreto,  \nque o coração te apunhalou no mundo,\n\nMas eu que sempre te segui os passos  \nsei que cruz infernal prendeu-te os braços  \ne o teu suspiro como foi profundo!\n\nSOUSA, C. Obra completa. Rio de Janeiro: Nova Aguilar, 1961.",
       "arquivos": [],
       "enunciado": "Com uma obra densa e expressiva no Simbolismo brasileiro, Cruz e Sousa transpôs para seu lirismo uma sensibilidade em conflito com a realidade vivenciada. No soneto, essa percepção traduz-se em",
       "alternativas": [
@@ -6277,7 +6277,7 @@
       "indice": 125,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**A História, mais ou menos**\n\nNegócio seguinte. Três reis magrinhos ouviram um plá de que tinha nascido um Guri. Viram o cometa no Oriente e tal e se flagraram que o Guri tinha pintado por lá. Os profetas, que não eram de dar cascata, já tinham dicado o troço: em Belém, da Judeia, vai nascer o Salvador, e tá falado. Os três magrinhos se mandaram. Mas deram o maior fora. Em vez de irem direto para Belém, como mandava o catálogo, resolveram dar uma incerta no velho Herodes, em Jerusalém. Pra quê! Chegaram lá de boca aberta e entregaram toda a trama. Perguntaram: _Onde está o rei que acaba de nascer? Vimos sua estrela no Oriente e viemos adorá-lo._ Quer dizer, pegou mal. Muito mal. O velho Herodes, que era um oligão, ficou grilado. Que rei era aquele? Ele é que era o dono da praça. Mas comeu em boca e disse: _Joia. Onde é que esse guri vai se apresentar? Em que canal? Quem é o empresário? Tem baixo elétrico? Quero saber tudo._ Os magrinhos disseram que iam flagrar o Guri e na volta dicavam tudo para o coroa.\n\nVERISSIMO, L. F. **O nariz e outras crônicas**. São Paulo: Ática, 1994.",
+      "contexto": "A História, mais ou menos\n\nNegócio seguinte. Três reis magrinhos ouviram um plá de que tinha nascido um Guri. Viram o cometa no Oriente e tal e se flagraram que o Guri tinha pintado por lá. Os profetas, que não eram de dar cascata, já tinham dicado o troço: em Belém, da Judeia, vai nascer o Salvador, e tá falado. Os três magrinhos se mandaram. Mas deram o maior fora. Em vez de irem direto para Belém, como mandava o catálogo, resolveram dar uma incerta no velho Herodes, em Jerusalém. Pra quê! Chegaram lá de boca aberta e entregaram toda a trama. Perguntaram: _Onde está o rei que acaba de nascer? Vimos sua estrela no Oriente e viemos adorá-lo._ Quer dizer, pegou mal. Muito mal. O velho Herodes, que era um oligão, ficou grilado. Que rei era aquele? Ele é que era o dono da praça. Mas comeu em boca e disse: _Joia. Onde é que esse guri vai se apresentar? Em que canal? Quem é o empresário? Tem baixo elétrico? Quero saber tudo._ Os magrinhos disseram que iam flagrar o Guri e na volta dicavam tudo para o coroa.\n\nVERISSIMO, L. F. O nariz e outras crônicas. São Paulo: Ática, 1994.",
       "arquivos": [],
       "enunciado": "Na crônica de Verissimo, a estratégia para gerar o efeito de humor decorre do(a)",
       "alternativas": [
@@ -6327,7 +6327,7 @@
       "indice": 126,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "FABIANA, _arrepelando-se de raiva_ — Hum! Ora, eis aí está para que se casou meu filho, e trouxe a mulher para minha casa. É isto constantemente. Não sabe o senhor meu filho que quem casa quer casa…. Já não posso, não posso, não posso! _(Batendo com o pé)_. Um dia arrebento, e então veremos!\n\nPENA, M. **Quem casa quer casa**. www.dominiopublico.gov.br. Acesso em: 7 dez. 2012.",
+      "contexto": "FABIANA, _arrepelando-se de raiva_ — Hum! Ora, eis aí está para que se casou meu filho, e trouxe a mulher para minha casa. É isto constantemente. Não sabe o senhor meu filho que quem casa quer casa…. Já não posso, não posso, não posso! _(Batendo com o pé)_. Um dia arrebento, e então veremos!\n\nPENA, M. Quem casa quer casa. www.dominiopublico.gov.br. Acesso em: 7 dez. 2012.",
       "arquivos": [],
       "enunciado": "As rubricas em itálico, como as trazidas no trecho de Martins Pena, em uma atuação teatral, constituem",
       "alternativas": [
@@ -6377,7 +6377,7 @@
       "indice": 127,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "\n\n**Jornal Zero Hora**, 2 mar. 2006.",
+      "contexto": "\n\nJornal Zero Hora, 2 mar. 2006.",
       "arquivos": [
         "https://enem.dev/2014/questions/127/96f0d3f9-7155-487a-b274-c39876e88293.jpg"
       ],
@@ -6429,7 +6429,7 @@
       "indice": 128,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**Tarefa**\n\nMorder o fruto amargo e não cuspir  \nMas avisar aos outros quanto é amargo  \nCumprir o trato injusto e não falhar  \nMas avisar aos outros quanto é injusto  \nSofrer o esquema falso e não ceder  \nMas avisar aos outros quanto é falso  \nDizer também que são coisas mutáveis…  \nE quando em muitos a não pulsar  \n— do amargo e injusto e falso por mudar —  \nentão confiar à gente exausta o plano  \nde um mundo novo e muito mais humano.\n\nCAMPOS, G. **Tarefa**. Rio de Janeiro: Civilização Brasileira, 1981.",
+      "contexto": "Tarefa\n\nMorder o fruto amargo e não cuspir  \nMas avisar aos outros quanto é amargo  \nCumprir o trato injusto e não falhar  \nMas avisar aos outros quanto é injusto  \nSofrer o esquema falso e não ceder  \nMas avisar aos outros quanto é falso  \nDizer também que são coisas mutáveis…  \nE quando em muitos a não pulsar  \n— do amargo e injusto e falso por mudar —  \nentão confiar à gente exausta o plano  \nde um mundo novo e muito mais humano.\n\nCAMPOS, G. Tarefa. Rio de Janeiro: Civilização Brasileira, 1981.",
       "arquivos": [],
       "enunciado": "Na organização do poema, os empregos da conjunção “mas” articulam, para além de sua função sintática,",
       "alternativas": [
@@ -6478,7 +6478,7 @@
       "indice": 129,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "Óia eu aqui de novo xaxando  \nÓia eu aqui de novo para xaxar\n\nVou mostrar pr’esses cabras  \nQue eu ainda dou no couro  \nIsso é um desaforo  \nQue eu não posso levar  \nQue eu aqui de novo cantando  \nQue eu aqui de novo xaxando  \nÓia eu aqui de novo mostrando  \nComo se deve xaxar\n\nVem cá morena linda  \nVestida de chita  \nVocê é a mais bonita  \nDesse meu lugar  \nVai, chama Maria, chama Luzia  \nVai, chama Zabé, chama Raque  \nDiz que eu tou aqui com alegria\n\nBARROS, A. **Óia eu aqui de novo**. Disponível em: www.luizluagonzaga.mus.br. Acesso em: 5 maio 2013 (fragmento).",
+      "contexto": "Óia eu aqui de novo xaxando  \nÓia eu aqui de novo para xaxar\n\nVou mostrar pr’esses cabras  \nQue eu ainda dou no couro  \nIsso é um desaforo  \nQue eu não posso levar  \nQue eu aqui de novo cantando  \nQue eu aqui de novo xaxando  \nÓia eu aqui de novo mostrando  \nComo se deve xaxar\n\nVem cá morena linda  \nVestida de chita  \nVocê é a mais bonita  \nDesse meu lugar  \nVai, chama Maria, chama Luzia  \nVai, chama Zabé, chama Raque  \nDiz que eu tou aqui com alegria\n\nBARROS, A. Óia eu aqui de novo. Disponível em: www.luizluagonzaga.mus.br. Acesso em: 5 maio 2013 (fragmento).",
       "arquivos": [],
       "enunciado": "A letra da canção de Antônio de Barros manifesta aspectos do repertório linguístico e cultural do Brasil. O verso que singulariza uma forma característica do falar popular regional é:",
       "alternativas": [
@@ -6630,7 +6630,7 @@
       "indice": 132,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "**TEXTO I**\n\nDitado popular é uma frase sentenciosa, concisa, de verdade comprovada, baseada na secular experiência do povo, exposta de forma poética, contendo uma norma de conduta ou qualquer outro ensinamento.\n\nWEITZEL, A. H. **Folclore literário e linguístico**. Juiz de Fora: Esdeva, 1984 (fragmento).\n\n**TEXTO II**\n\nRindo brincalhona, dando-lhe tapinhas nas costas, prima Constança disse isto, dorme no assunto, ouça o travesseiro, não tem melhor conselheiro.\n\nEnquanto prima Biela dormia no assunto, toda a casa se alvoroçava.\n\n\\[Prima Constança\\] ia rezar, pedir a Deus para iluminar prima Biela. Mas ia também tomar suas providências. Casamento e mortalha, no céu se talha. Deus escreve direito por linhas tortas. O que for soará. Dizia os ditados todos, procurando interpretar os desígnios de Deus, transformar os seus desejos nos desígnios de Deus. Se achava um instrumento de Deus.\n\nDOURADO, A. **Uma vida em segredo**. Rio de Janeiro: Francisco Alves, 1990 (fragmento).",
+      "contexto": "TEXTO I\n\nDitado popular é uma frase sentenciosa, concisa, de verdade comprovada, baseada na secular experiência do povo, exposta de forma poética, contendo uma norma de conduta ou qualquer outro ensinamento.\n\nWEITZEL, A. H. Folclore literário e linguístico. Juiz de Fora: Esdeva, 1984 (fragmento).\n\nTEXTO II\n\nRindo brincalhona, dando-lhe tapinhas nas costas, prima Constança disse isto, dorme no assunto, ouça o travesseiro, não tem melhor conselheiro.\n\nEnquanto prima Biela dormia no assunto, toda a casa se alvoroçava.\n\n\\[Prima Constança\\] ia rezar, pedir a Deus para iluminar prima Biela. Mas ia também tomar suas providências. Casamento e mortalha, no céu se talha. Deus escreve direito por linhas tortas. O que for soará. Dizia os ditados todos, procurando interpretar os desígnios de Deus, transformar os seus desejos nos desígnios de Deus. Se achava um instrumento de Deus.\n\nDOURADO, A. Uma vida em segredo. Rio de Janeiro: Francisco Alves, 1990 (fragmento).",
       "arquivos": [],
       "enunciado": "O uso que prima Constança faz dos ditados populares, no Texto II, constitui uma maneira de utilizar o tipo de saber definido no Texto I, porque",
       "alternativas": [
@@ -6680,7 +6680,7 @@
       "indice": 133,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "No Brasil, a origem do _funk_ e do _hip-hop_ remonta aos anos 1970, quando da proliferação dos chamados “bailes _black_” nas periferias dos grandes centros urbanos. Embalados pela _black music_ americana, milhares de jovens encontravam nos bailes de final de semana uma alternativa de lazer antes inexistente. Em cidades como o Rio de Janeiro ou São Paulo, formavam-se equipes de som que promoviam bailes onde foi se disseminando um estilo que buscava a valorização da cultura negra, tanto na música como nas roupas e nos penteados. No Rio de Janeiro ficou conhecido como “_Black_ Rio”. A indústria fonográfica descobriu o filão e, lançando discos de “equipe” com as músicas de sucesso nos bailes, difundia a moda pelo restante do país.\n\nDAYRELL, J. **A música entra em cena**: o _rap_ e o _funk_ na socialização da juventude.Belo Horizonte: UFMG, 2005.",
+      "contexto": "No Brasil, a origem do _funk_ e do _hip-hop_ remonta aos anos 1970, quando da proliferação dos chamados “bailes _black_” nas periferias dos grandes centros urbanos. Embalados pela _black music_ americana, milhares de jovens encontravam nos bailes de final de semana uma alternativa de lazer antes inexistente. Em cidades como o Rio de Janeiro ou São Paulo, formavam-se equipes de som que promoviam bailes onde foi se disseminando um estilo que buscava a valorização da cultura negra, tanto na música como nas roupas e nos penteados. No Rio de Janeiro ficou conhecido como “_Black_ Rio”. A indústria fonográfica descobriu o filão e, lançando discos de “equipe” com as músicas de sucesso nos bailes, difundia a moda pelo restante do país.\n\nDAYRELL, J. A música entra em cena: o _rap_ e o _funk_ na socialização da juventude.Belo Horizonte: UFMG, 2005.",
       "arquivos": [],
       "enunciado": "A presença da cultura hip-hop no Brasil caracteriza-se como uma forma de",
       "alternativas": [
@@ -6730,7 +6730,7 @@
       "indice": 134,
       "area": "linguagens",
       "idioma": null,
-      "contexto": "A forte presença de palavras indígenas e africanas e de termos trazidos pelos imigrantes a partir do século XIX é um dos traços que distinguem o português do Brasil e o português de Portugal. Mas, olhando para a história dos empréstimos que o português brasileiro recebeu de línguas europeias a partir do século XX, outra diferença também aparece: com a vinda ao Brasil da família real portuguesa (1808) e, particularmente, com a Independência, Portugal deixou de ser o intermediário obrigatório da assimilação desses empréstimos e, assim, Brasil e Portugal começaram a divergir, não só por terem sofrido influências diferentes, mas também pela maneira como reagiram a elas.\n\nILARI, R.; BASSO, R. **O português da gente**: a língua que estudamos, a língua que falamos. São Paulo: Contexto, 2006.",
+      "contexto": "A forte presença de palavras indígenas e africanas e de termos trazidos pelos imigrantes a partir do século XIX é um dos traços que distinguem o português do Brasil e o português de Portugal. Mas, olhando para a história dos empréstimos que o português brasileiro recebeu de línguas europeias a partir do século XX, outra diferença também aparece: com a vinda ao Brasil da família real portuguesa (1808) e, particularmente, com a Independência, Portugal deixou de ser o intermediário obrigatório da assimilação desses empréstimos e, assim, Brasil e Portugal começaram a divergir, não só por terem sofrido influências diferentes, mas também pela maneira como reagiram a elas.\n\nILARI, R.; BASSO, R. O português da gente: a língua que estudamos, a língua que falamos. São Paulo: Contexto, 2006.",
       "arquivos": [],
       "enunciado": "Os empréstimos linguísticos, recebidos de diversas línguas, são importantes na constituição do português do Brasil porque",
       "alternativas": [
@@ -7142,7 +7142,7 @@
       "indice": 142,
       "area": "matematica",
       "idioma": null,
-      "contexto": "\n\nConsidere um silo de 2 m de altura, 6 m de largura de topo e 20 m de comprimento. Para cada metro de altura do silo, a largura do topo tem 0,5 m a mais do que a largura do fundo. Após a silagem, 1 tonelada de forragem ocupa 2 m3 desse tipo de silo.\n\nEMBRAPA. **Gado de corte**. Disponível em: www.cnpgc.embrapa.br. Acesso em: 1 ago. 2012 (adaptado).",
+      "contexto": "\n\nConsidere um silo de 2 m de altura, 6 m de largura de topo e 20 m de comprimento. Para cada metro de altura do silo, a largura do topo tem 0,5 m a mais do que a largura do fundo. Após a silagem, 1 tonelada de forragem ocupa 2 m3 desse tipo de silo.\n\nEMBRAPA. Gado de corte. Disponível em: www.cnpgc.embrapa.br. Acesso em: 1 ago. 2012 (adaptado).",
       "arquivos": [
         "https://enem.dev/2014/questions/142/3a321f8b-9e36-433f-9664-4f989a797ed8.png"
       ],
@@ -7960,7 +7960,7 @@
       "indice": 158,
       "area": "matematica",
       "idioma": null,
-      "contexto": "\n\nBENSEÑOR, I. M.; LOTUFO, P. A. **Epidemologia**: abordagem prática.\n\nSão Paulo: Sarvier, 2011 (adaptado).",
+      "contexto": "\n\nBENSEÑOR, I. M.; LOTUFO, P. A. Epidemologia: abordagem prática.\n\nSão Paulo: Sarvier, 2011 (adaptado).",
       "arquivos": [
         "https://enem.dev/2014/questions/158/f3fb8087-ffc9-4624-9550-cb84254ac99f.png"
       ],
@@ -8471,7 +8471,7 @@
       "indice": 168,
       "area": "matematica",
       "idioma": null,
-      "contexto": "O Brasil é um país com uma vantagem econômica clara no terreno dos recursos naturais, dispondo de uma das maiores áreas com vocação agrícola do mundo. Especialistas calculam que, dos 853 milhões de hectares do país, as cidades, as reservas indígenas e as áreas de preservação, incluindo florestas e mananciais, cubram por volta de 470 milhões de hectares. Aproximadamente 280 milhões se destinam à agropecuária, 200 milhões para pastagens e 80 milhões para a agricultura, somadas as lavouras anuais e as perenes, como o café e a fruticultura.\n\nFORTES, G. Recuperação de pastagens é alternativa para ampliar cultivos. **Folha de S. Paulo**, 30 out. 2011.",
+      "contexto": "O Brasil é um país com uma vantagem econômica clara no terreno dos recursos naturais, dispondo de uma das maiores áreas com vocação agrícola do mundo. Especialistas calculam que, dos 853 milhões de hectares do país, as cidades, as reservas indígenas e as áreas de preservação, incluindo florestas e mananciais, cubram por volta de 470 milhões de hectares. Aproximadamente 280 milhões se destinam à agropecuária, 200 milhões para pastagens e 80 milhões para a agricultura, somadas as lavouras anuais e as perenes, como o café e a fruticultura.\n\nFORTES, G. Recuperação de pastagens é alternativa para ampliar cultivos. Folha de S. Paulo, 30 out. 2011.",
       "arquivos": [],
       "enunciado": "De acordo com os dados apresentados, o percentual correspondente à área utilizada para agricultura em relação à área do território brasileiro é mais próximo de",
       "alternativas": [
@@ -8521,7 +8521,7 @@
       "indice": 169,
       "area": "matematica",
       "idioma": null,
-      "contexto": "\n\nDeseja-se reproduzi-la numa folha de papel retangular com 42 cm de comprimento e 30 cm de altura, deixando livres 3 cm em cada margem, conforme a Figura 2.\n\n\n\nA reprodução da gravura deve ocupar o máximo possível da região disponível, mantendo-se as proporções da Figura 1\n\nPRADO, A. C. **Superinteressante**, ed. 301, fev. 2012 (adaptado).",
+      "contexto": "\n\nDeseja-se reproduzi-la numa folha de papel retangular com 42 cm de comprimento e 30 cm de altura, deixando livres 3 cm em cada margem, conforme a Figura 2.\n\n\n\nA reprodução da gravura deve ocupar o máximo possível da região disponível, mantendo-se as proporções da Figura 1\n\nPRADO, A. C. Superinteressante, ed. 301, fev. 2012 (adaptado).",
       "arquivos": [
         "https://enem.dev/2014/questions/169/b44d9617-dc63-4685-b986-350085211e6d.png",
         "https://enem.dev/2014/questions/169/763670f1-6c10-4db7-bc89-5871441c12b6.png"

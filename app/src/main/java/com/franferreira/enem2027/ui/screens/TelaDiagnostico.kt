@@ -57,6 +57,8 @@ fun TelaDiagnostico(
     aoConfirmar: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    // Contexto do Android para resolver imagem local antes da rede.
+    val app = androidx.compose.ui.platform.LocalContext.current
     var escolhida by remember(questao.id) { mutableStateOf<String?>(null) }
     val rolagem = rememberScrollState()
     val pronto = escolhida != null
@@ -132,6 +134,18 @@ fun TelaDiagnostico(
                 )
                 Spacer(Modifier.height(12.dp))
             }
+            // A figura faz parte da questão: sem ela a pergunta não tem resposta.
+            questao.arquivos.forEach { url ->
+                coil.compose.AsyncImage(
+                    model = com.franferreira.enem2027.data.repo.ImagensAcervo.arquivoLocal(app, url) ?: url,
+                    contentDescription = "Figura da questão",
+                    contentScale = androidx.compose.ui.layout.ContentScale.Fit,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 12.dp)
+                        .clip(RoundedCornerShape(10.dp)),
+                )
+            }
             Text(
                 text = questao.enunciado.orEmpty(),
                 style = MaterialTheme.typography.bodyMedium,
@@ -155,12 +169,29 @@ fun TelaDiagnostico(
                         color = if (marcada) Primary else TextMuted,
                     )
                     Spacer(Modifier.width(8.dp))
-                    Text(
-                        text = alternativa.texto,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = TextPrimary,
-                        modifier = Modifier.weight(1f),
-                    )
+                    Column(Modifier.weight(1f)) {
+                        if (alternativa.texto.isNotBlank()) {
+                            Text(
+                                text = alternativa.texto,
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = TextPrimary,
+                            )
+                        }
+                        // Muitas alternativas do ENEM são só imagem: sem isto a
+                        // opção aparece vazia e a questão fica sem resposta.
+                        alternativa.arquivo?.let { url ->
+                            coil.compose.AsyncImage(
+                                model = com.franferreira.enem2027.data.repo.ImagensAcervo
+                                    .arquivoLocal(app, url) ?: url,
+                                contentDescription = "Alternativa ${alternativa.letra}",
+                                contentScale = androidx.compose.ui.layout.ContentScale.Fit,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(top = 6.dp)
+                                    .clip(RoundedCornerShape(8.dp)),
+                            )
+                        }
+                    }
                 }
             }
         }
