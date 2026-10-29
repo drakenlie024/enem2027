@@ -70,6 +70,7 @@ fun TelaOnboarding(
     aoSalvarAgenda: () -> Unit,
     aoPular: () -> Unit,
     aoAvancar: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val indice = Onboarding.ETAPAS.indexOf(etapa).coerceAtLeast(0)
     val total = Onboarding.ETAPAS.size
@@ -80,7 +81,7 @@ fun TelaOnboarding(
     ) { aoAvancar() }
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
             .floresFundo(alpha = 0.35f)

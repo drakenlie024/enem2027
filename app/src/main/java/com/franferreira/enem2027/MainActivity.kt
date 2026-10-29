@@ -5,6 +5,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -143,7 +149,7 @@ fun EnemApp() {
         // Enquanto a sessão não foi conferida, nada de login: ele piscava na
         // tela antes de o app saber que a pessoa já tinha sessão.
         if (!estado.sessaoVerificada) {
-            TelaAbertura()
+            TelaAbertura(modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing))
             return
         }
         Box(
@@ -152,6 +158,7 @@ fun EnemApp() {
                 .background(Background),
         ) {
             TelaLogin(
+                modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing),
                 aoComecar = vm::comecarSemConta,
                 aoEntrar = vm::autenticar,
             )
@@ -162,6 +169,7 @@ fun EnemApp() {
     // Primeiro acesso: metas, agenda e notificação, todas puláveis.
     estado.onboardingEtapa?.let { etapa ->
         TelaOnboarding(
+            modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing),
             etapa = etapa,
             agenda = estado.agenda,
             aoSalvarMetas = vm::salvarMetasOnboarding,
@@ -179,12 +187,14 @@ fun EnemApp() {
         val questao = estado.diagQuestoes.getOrNull(estado.diagIndice)
         when {
             resultado != null -> TelaResultadoDiagnostico(
+                modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing),
                 resultado = resultado,
                 previsao = estado.diagPrevisao,
                 notaAlvo = estado.notaAlvo,
                 aoComecar = vm::concluirDiagnostico,
             )
             questao != null -> TelaDiagnostico(
+                modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing),
                 questao = questao,
                 indice = estado.diagIndice,
                 total = estado.diagQuestoes.size,
@@ -199,6 +209,11 @@ fun EnemApp() {
 
     Scaffold(
         containerColor = Background,
+        // safeDrawing inclui recorte de tela e barra de gestos: sem isto o
+        // conteúdo da Hoje também encostava nas bordas em aparelho novo.
+        contentWindowInsets = WindowInsets.safeDrawing.only(
+            WindowInsetsSides.Top + WindowInsetsSides.Horizontal,
+        ),
         bottomBar = {
             // Telas de prova ficam sem a barra: sair de um simulado no meio por
             // um toque na aba jogava fora as respostas marcadas. Mas a tela de
@@ -209,7 +224,11 @@ fun EnemApp() {
             if (!semBarra && estado.autenticado) {
                 // Barra inferior desenhada à mão: fundo creme, separador
                 // rabiscado e rótulo na fonte manuscrita, como no DESIGN.md.
-                Column(Modifier.background(Surface)) {
+                Column(
+                    Modifier
+                        .background(Surface)
+                        .windowInsetsPadding(WindowInsets.navigationBars),
+                ) {
                     DivisorRabisco()
                     Row(
                         modifier = Modifier

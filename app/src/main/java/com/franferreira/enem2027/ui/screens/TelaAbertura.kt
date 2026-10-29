@@ -27,9 +27,9 @@ import com.franferreira.enem2027.ui.theme.TextMuted
  * É só espera — não pede nada.
  */
 @Composable
-fun TelaAbertura() {
+fun TelaAbertura(modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
             .floresFundo(alpha = 0.35f),

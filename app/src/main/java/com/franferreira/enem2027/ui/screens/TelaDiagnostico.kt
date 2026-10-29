@@ -55,13 +55,14 @@ fun TelaDiagnostico(
     podeSair: Boolean,
     aoSair: () -> Unit,
     aoConfirmar: (String) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     var escolhida by remember(questao.id) { mutableStateOf<String?>(null) }
     val rolagem = rememberScrollState()
     val pronto = escolhida != null
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
             .padding(horizontal = 20.dp),
@@ -190,11 +191,12 @@ fun TelaResultadoDiagnostico(
     previsao: PrevisaoNota?,
     notaAlvo: Int,
     aoComecar: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val rolagem = rememberScrollState()
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
             .padding(horizontal = 20.dp),

@@ -60,6 +60,7 @@ import kotlinx.coroutines.launch
 fun TelaLogin(
     aoComecar: (nome: String) -> Unit,
     aoEntrar: suspend (email: String, senha: String, nome: String, criar: Boolean) -> String?,
+    modifier: Modifier = Modifier,
 ) {
     var nome by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -88,7 +89,7 @@ fun TelaLogin(
     }
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
             .floresFundo(alpha = 0.45f)
