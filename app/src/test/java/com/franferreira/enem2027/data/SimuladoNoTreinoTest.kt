@@ -10,7 +10,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.io.File
 
 /**
  * O simulado passa a contar como estudo.
@@ -23,9 +22,11 @@ import java.io.File
 class SimuladoNoTreinoTest {
 
     private fun bancoLimpo(): EnemDatabase {
-        val context = ApplicationProvider.getApplicationContext<Context>()
-        File(context.getDatabasePath("enem2027.db").absolutePath).delete()
-        return EnemDatabase.get(context)
+        // EnemDatabase é singleton: apagar o arquivo não basta, a conexão antiga
+        // continua de pé e o teste anterior deixa dado para trás.
+        val db = EnemDatabase.get(ApplicationProvider.getApplicationContext())
+        db.clearAllTables()
+        return db
     }
 
     private fun questao(id: String, tema: String, gabarito: String = "A") =
