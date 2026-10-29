@@ -5,6 +5,8 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.franferreira.enem2027.data.local.EnemDatabase
 import com.franferreira.enem2027.data.repo.Repositorio
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -21,12 +23,12 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SimuladoNoTreinoTest {
 
-    private fun bancoLimpo(): EnemDatabase {
+    private fun bancoLimpo(): EnemDatabase = runBlocking(Dispatchers.IO) {
         // EnemDatabase é singleton: apagar o arquivo não basta, a conexão antiga
         // continua de pé e o teste anterior deixa dado para trás.
         val db = EnemDatabase.get(ApplicationProvider.getApplicationContext())
         db.clearAllTables()
-        return db
+        db
     }
 
     private fun questao(id: String, tema: String, gabarito: String = "A") =
