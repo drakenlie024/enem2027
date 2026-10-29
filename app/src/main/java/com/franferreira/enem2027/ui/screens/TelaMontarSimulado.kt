@@ -98,6 +98,8 @@ fun TelaMontarSimulado(
         Text("TIPO", style = MaterialTheme.typography.labelSmall, color = TextMuted)
         Spacer(Modifier.height(8.dp))
         listOf(
+            "dia1" to "Dia 1 · 90 questões (Linguagens + Humanas)",
+            "dia2" to "Dia 2 · 90 questões (Natureza + Matemática)",
             "area" to "Por área",
             "completo" to "Prova completa",
             "adaptativo" to "Adaptativo (prioriza seus erros)",
@@ -114,7 +116,13 @@ fun TelaMontarSimulado(
                         if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
                         RoundedCornerShape(16.dp),
                     )
-                    .clickable { tipo = chave }
+                    .clickable {
+                        tipo = chave
+                        // Dia do ENEM é de um caderno só: sem "Todos" e sem escolher quantidade.
+                        if (chave.startsWith("dia") && ano == null) {
+                            ano = anosDisponiveis.firstOrNull()
+                        }
+                    }
                     .padding(13.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
@@ -188,7 +196,8 @@ fun TelaMontarSimulado(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(6.dp),
         ) {
-            listOf(null to "Todos").plus(anosDisponiveis.take(7).map { it to it.toString() })
+            (if (tipo.startsWith("dia")) emptyList() else listOf(null to "Todos"))
+                .plus(anosDisponiveis.take(7).map { it to it.toString() })
                 .forEach { (valor, rotulo) ->
                     val selecionado = ano == valor
                     Box(
@@ -214,31 +223,33 @@ fun TelaMontarSimulado(
                 }
         }
 
-        Spacer(Modifier.height(12.dp))
-        Text("QUANTIDADE", style = MaterialTheme.typography.labelSmall, color = TextMuted)
-        Spacer(Modifier.height(8.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            listOf(10, 20, 45, 60).forEach { n ->
-                val selecionado = quantidade == n
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .height(34.dp)
-                        .clip(RoundedCornerShape(13.dp))
-                        .background(if (selecionado) Primary.copy(alpha = 0.16f) else Surface)
-                        .border(
-                            1.dp,
-                            if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
-                            RoundedCornerShape(13.dp),
+        if (!tipo.startsWith("dia")) {
+            Spacer(Modifier.height(12.dp))
+            Text("QUANTIDADE", style = MaterialTheme.typography.labelSmall, color = TextMuted)
+            Spacer(Modifier.height(8.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                listOf(10, 20, 45, 60).forEach { n ->
+                    val selecionado = quantidade == n
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(34.dp)
+                            .clip(RoundedCornerShape(13.dp))
+                            .background(if (selecionado) Primary.copy(alpha = 0.16f) else Surface)
+                            .border(
+                                1.dp,
+                                if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder,
+                                RoundedCornerShape(13.dp),
+                            )
+                            .clickable { quantidade = n },
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(
+                            text = n.toString(),
+                            style = MaterialTheme.typography.labelMedium,
+                            color = if (selecionado) TextPrimary else TextMuted,
                         )
-                        .clickable { quantidade = n },
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text(
-                        text = n.toString(),
-                        style = MaterialTheme.typography.labelMedium,
-                        color = if (selecionado) TextPrimary else TextMuted,
-                    )
+                    }
                 }
             }
         }
@@ -291,7 +302,7 @@ fun TelaMontarSimulado(
                 texto = "COMEÇAR SIMULADO",
                 cor = Primary,
                 aoClicar = {
-                    aoIniciar(tipo, if (tipo == "area") area else null, ano, quantidade)
+                    aoIniciar(tipo, if (tipo == "area") area else null, ano, if (tipo.startsWith("dia")) 90 else quantidade)
                 },
             )
         }
