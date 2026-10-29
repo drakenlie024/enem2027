@@ -92,6 +92,8 @@ data class EstadoHoje(
     val simuladoInicio: Long = 0L,
     /** Diagnóstico do último simulado encerrado. */
     val diagnostico: DiagnosticoSimulado? = null,
+    /** Temas que a última prova errou; viram prioridade no treino por 7 dias. */
+    val simuladoTemas: List<String> = emptyList(),
     /** Simulado encerrado, guardado para a revisão com gabarito. */
     val simuladoRevisao: SimuladoMontado? = null,
     /** Respostas dadas no simulado revisado (id, escolhida, gabarito, ...). */
@@ -337,6 +339,18 @@ class ViewModelPrincipal(
         .getSharedPreferences("leticia", android.content.Context.MODE_PRIVATE)
 
     /**
+     * Temas que a última prova errou, válidos por 7 dias.
+     *
+     * Depois disso eles voltam à fila normal: prioridade que não expira vira
+     * assunto eterno, e a pessoa estuda sempre o mesmo punhado.
+     */
+    private fun temasDoSimulado(): List<String> {
+        val em = prefsLocais().getLong("simulado_em", 0L)
+        if (em == 0L || System.currentTimeMillis() - em > 7L * 24 * 60 * 60 * 1000) return emptyList()
+        return prefsLocais().getStringSet("simulado_temas", emptySet())?.toList().orEmpty()
+    }
+
+    /**
      * Começa a estudar só com o nome, sem e-mail nem senha.
      *
      * O requisito número um do app é funcionar offline: as 3.117 questões vêm
@@ -379,6 +393,7 @@ class ViewModelPrincipal(
             diagFeito = prefs.getBoolean("diag_feito", false),
             notaAlvo = nota ?: _estado.value.notaAlvo,
             anoProva = ano,
+            simuladoTemas = temasDoSimulado(),
         )
         if (!prefs.getBoolean("diag_pendente", false)) return
         if (prefs.getBoolean("onboarding_feito", true)) {
@@ -738,6 +753,14 @@ class ViewModelPrincipal(
     ) {
         val simulado = _estado.value.simulado ?: return
         viewModelScope.launch {
+            // Cada resposta da prova entra no progresso como qualquer outra:
+            // o erro vira questão do caderno e tema do treino. Antes, terminar
+            // 40 questões não mudava nada no que o app mandava estudar.
+            respostas.forEach { r ->
+                val id = r["id"] ?: return@forEach
+                val correta = r["escolhida"]?.equals(r["gabarito"].orEmpty(), ignoreCase = true) == true
+                runCatching { repo.registrarResposta(id, correta, tempos[id]?.toFloat()) }
+            }
             runCatching {
                 ApiClient.api.diagnosticoSimulado(
                     RespostaSimulado(
@@ -754,16 +777,29 @@ class ViewModelPrincipal(
                 )
             }
                 .onSuccess { diag ->
-                    prefsLocais().edit().remove("simulado_ativo").remove("simulado_inicio").apply()
+                    val temasDaProva = diag.temasFracos
+                        .sortedBy { it.taxa }
+                        .map { it.tema }
+                        .filter { it.isNotBlank() }
+                        .distinct()
+                        .take(5)
+                    prefsLocais().edit()
+                        .remove("simulado_ativo")
+                        .remove("simulado_inicio")
+                        .putStringSet("simulado_temas", temasDaProva.toSet())
+                        .putLong("simulado_em", System.currentTimeMillis())
+                        .apply()
                     _estado.value = _estado.value.copy(
                         simulado = null,
                         simuladoInicio = 0L,
                         diagnostico = diag,
+                        simuladoTemas = temasDaProva,
                         // Guarda o simulado para a revisão com gabarito.
                         simuladoRevisao = simulado,
                         respostasRevisao = respostas,
                         temposRevisao = tempos,
                     )
+                    carregarTreinos()
                 }
                 .onFailure {
                     _estado.value = _estado.value.copy(
@@ -1220,7 +1256,10 @@ class ViewModelPrincipal(
     fun carregarTreinos() {
         viewModelScope.launch {
             val fracos = prefsLocais().getStringSet("diag_fracos", emptySet())?.toSet() ?: emptySet()
-            val lista = runCatching { repo.temasParaTreinar(fracos = fracos) }.getOrDefault(emptyList())
+            val daProva = temasDoSimulado().toSet()
+            val lista = runCatching {
+                repo.temasParaTreinar(fracos = fracos, prioritarios = daProva)
+            }.getOrDefault(emptyList())
             _estado.value = _estado.value.copy(treinos = lista)
         }
     }

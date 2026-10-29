@@ -239,6 +239,40 @@ fun TelaHoje(
                 }
                 Spacer(Modifier.height(14.dp))
             }
+            if (estado.simuladoTemas.isNotEmpty()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(18.dp))
+                        .background(Surface)
+                        .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                        .clickable { aoRevisar() }
+                        .padding(14.dp),
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text(
+                                text = "Revisar o simulado",
+                                style = MaterialTheme.typography.titleSmall,
+                                color = TextPrimary,
+                            )
+                            Text(
+                                text = estado.simuladoTemas.take(3).joinToString(", "),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = TextMuted,
+                                maxLines = 2,
+                                overflow = TextOverflow.Ellipsis,
+                            )
+                        }
+                        Text(
+                            text = "Treinar",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = Primary,
+                        )
+                    }
+                }
+                Spacer(Modifier.height(14.dp))
+            }
             val treinos = estado.treinos
             if (treinos.isNotEmpty()) {
                 Box(

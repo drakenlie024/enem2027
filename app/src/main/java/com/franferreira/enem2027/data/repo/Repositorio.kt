@@ -277,6 +277,8 @@ class Repositorio(private val context: Context) {
     suspend fun temasParaTreinar(
         limite: Int = 6,
         fracos: Set<String> = emptySet(),
+        /** Temas que a última prova errou: entram antes dos que só venceram. */
+        prioritarios: Set<String> = emptySet(),
     ): List<com.franferreira.enem2027.data.model.TemaTreino> {
         val agora = System.currentTimeMillis()
         val cooldown = agora - COOLDOWN_DIAS * DIA_MS
@@ -292,7 +294,8 @@ class Repositorio(private val context: Context) {
             // Tema já praticado e ainda dentro do intervalo não entra.
             // Tema fraco do diagnóstico entra mesmo dentro do intervalo.
             val fraco = Diagnostico.chaveTema(area, tema) in fracos
-            if (r.vistas > 0 && vencido < 0 && !fraco) return@mapNotNull null
+            val prioritario = tema in prioritarios
+            if (r.vistas > 0 && vencido < 0 && !fraco && !prioritario) return@mapNotNull null
             com.franferreira.enem2027.data.model.TemaTreino(
                 tema = tema,
                 area = area,
@@ -310,6 +313,7 @@ class Repositorio(private val context: Context) {
             compareByDescending<com.franferreira.enem2027.data.model.TemaTreino> {
                 Diagnostico.chaveTema(it.area, it.tema) in fracos
             }
+                .thenByDescending { it.tema in prioritarios }
                 .thenByDescending { it.vencidoHa }
                 .thenBy { it.forca }
         ).take(limite)
