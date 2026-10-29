@@ -53,6 +53,7 @@ import coil.compose.AsyncImage
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
 import com.franferreira.enem2027.data.model.SimuladoMontado
 import com.franferreira.enem2027.data.model.SimuladoQuestao
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -164,7 +165,7 @@ fun TelaSimulado(
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background))),
     ) {
         // barra de progresso + cronômetro
-        Column(Modifier.padding(horizontal = 16.dp)) {
+        Column(Modifier.padding(horizontal = 20.dp)) {
             Spacer(Modifier.height(10.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 // Timer em pílula: fica visível de relance, e muda de cor
@@ -237,7 +238,7 @@ fun TelaSimulado(
         LazyColumn(
             modifier = Modifier.weight(1f),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                start = 16.dp, end = 16.dp, bottom = 12.dp
+                start = 20.dp, end = 20.dp, bottom = 12.dp
             ),
         ) {
             item {
@@ -290,9 +291,7 @@ fun TelaSimulado(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(16.dp))
-                            .background(Surface)
-                            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
+                            .cartaoRabisco(16.dp)
                             .padding(12.dp),
                     ) {
                         Text(
@@ -406,9 +405,7 @@ fun TelaSimulado(
                 modifier = Modifier
                     .weight(1f)
                     .height(44.dp)
-                    .clip(RoundedCornerShape(11.dp))
-                    .background(Surface)
-                    .border(1.dp, SurfaceBorder, RoundedCornerShape(11.dp))
+                    .cartaoRabisco(11.dp)
                     .clickable(enabled = indice > 0) { indice-- },
                 contentAlignment = Alignment.Center,
             ) {
@@ -457,7 +454,7 @@ fun TelaResultadoSimulado(
         modifier = Modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 20.dp),
     ) {
         Spacer(Modifier.height(24.dp))
         Text(
@@ -627,7 +624,7 @@ fun TelaRevisaoSimulado(
         LazyColumn(
             modifier = Modifier.weight(1f),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                start = 16.dp, end = 16.dp, bottom = 24.dp
+                start = 20.dp, end = 20.dp, bottom = 24.dp
             ),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {

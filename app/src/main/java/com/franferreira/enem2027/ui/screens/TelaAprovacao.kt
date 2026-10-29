@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.QuestaoPendente
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -65,7 +66,7 @@ fun TelaAprovacao(
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background))),
     ) {
-        Column(Modifier.padding(horizontal = 16.dp)) {
+        Column(Modifier.padding(horizontal = 20.dp)) {
             Spacer(Modifier.height(12.dp))
             Text(
                 text = "APROVAÇÃO",
@@ -129,7 +130,7 @@ fun TelaAprovacao(
         LazyColumn(
             modifier = Modifier.weight(1f),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                start = 16.dp, end = 16.dp, bottom = 24.dp
+                start = 20.dp, end = 20.dp, bottom = 24.dp
             ),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
@@ -149,9 +150,7 @@ private fun CartaoPendente(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp)
             .padding(14.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {

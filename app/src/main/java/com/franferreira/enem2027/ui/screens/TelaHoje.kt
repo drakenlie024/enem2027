@@ -51,6 +51,7 @@ import com.franferreira.enem2027.ui.components.BarraGamificada
 import com.franferreira.enem2027.ui.components.BotaoGamificado
 import com.franferreira.enem2027.ui.components.CartaoGamificado
 import com.franferreira.enem2027.ui.components.Pilula
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.components.floresFundo
@@ -120,7 +121,7 @@ fun TelaHoje(
                 alpha = if (PaletaAtual.atual.escuro) 0.22f else 0.42f
             ),
         contentPadding = androidx.compose.foundation.layout.PaddingValues(
-            start = 16.dp, end = 16.dp, bottom = 24.dp
+            start = 20.dp, end = 20.dp, bottom = 24.dp
         ),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
@@ -219,9 +220,7 @@ fun TelaHoje(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(18.dp))
-                        .background(Surface)
-                        .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                        .cartaoRabisco(18.dp)
                         .clickable { aoFazerDiagnostico() }
                         .padding(14.dp),
                 ) {
@@ -245,9 +244,7 @@ fun TelaHoje(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(18.dp))
-                        .background(Surface)
-                        .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                        .cartaoRabisco(18.dp)
                         .clickable { aoAbrirCronograma() }
                         .padding(14.dp),
                 ) {
@@ -284,9 +281,7 @@ fun TelaHoje(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(18.dp))
-                        .background(Surface)
-                        .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                        .cartaoRabisco(18.dp)
                         .clickable { aoRevisar() }
                         .padding(14.dp),
                 ) {
@@ -319,9 +314,7 @@ fun TelaHoje(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(18.dp))
-                        .background(Surface)
-                        .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                        .cartaoRabisco(18.dp)
                         .clickable { aoRevisar() }
                         .padding(14.dp),
                 ) {
@@ -352,9 +345,7 @@ fun TelaHoje(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(18.dp))
-                        .background(Surface)
-                        .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                        .cartaoRabisco(18.dp)
                         .clickable { aoRevisar() }
                         .padding(14.dp),
                 ) {
@@ -389,9 +380,7 @@ fun TelaHoje(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(18.dp))
-                    .background(Surface)
-                    .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                    .cartaoRabisco(18.dp)
                     .padding(14.dp),
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -923,9 +912,7 @@ private fun PlanoDeHoje(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(22.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(22.dp))
+            .cartaoRabisco(22.dp)
             .padding(horizontal = 14.dp, vertical = 12.dp),
     ) {
         Text(
@@ -1009,9 +996,7 @@ private fun SemanaDeEstudo(estado: EstadoHoje, aoMudarMeta: (Int) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp)
             .clickable { aoMudarMeta(proximaMeta) }
             .padding(horizontal = 14.dp, vertical = 11.dp),
     ) {
@@ -1072,9 +1057,7 @@ private fun CartaoFoco(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp)
             .padding(14.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {

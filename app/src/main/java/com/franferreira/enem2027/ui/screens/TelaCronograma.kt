@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.SemanaCronograma
 import com.franferreira.enem2027.data.model.TemaDaSemana
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -66,7 +67,7 @@ fun TelaCronograma(
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 14.dp),
+            modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 14.dp),
         ) {
             Icon(
                 Icons.Filled.ArrowBack,
@@ -115,7 +116,7 @@ fun TelaCronograma(
 
         LazyColumn(
             modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
+            contentPadding = PaddingValues(start = 20.dp, end = 20.dp, bottom = 24.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             item {
@@ -137,9 +138,7 @@ private fun Cobertura(cobertura: Map<String, Pair<Int, Int>>) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp)
             .padding(14.dp),
     ) {
         Text(

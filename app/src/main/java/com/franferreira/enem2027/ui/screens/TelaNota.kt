@@ -44,6 +44,7 @@ import com.franferreira.enem2027.data.model.Previsor
 import com.franferreira.enem2027.data.repo.DadosTri
 import com.franferreira.enem2027.ui.components.BarraGamificada
 import com.franferreira.enem2027.ui.components.CartaoGamificado
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Surface
@@ -103,7 +104,7 @@ fun TelaNota(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = 20.dp)
                 .verticalScrollCompat(),
         ) {
             Spacer(Modifier.height(6.dp))
@@ -252,9 +253,7 @@ private fun CartaoArea(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(20.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(20.dp))
+            .cartaoRabisco(20.dp)
             .padding(13.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {

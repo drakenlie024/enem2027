@@ -47,6 +47,7 @@ import com.franferreira.enem2027.ui.components.BotaoGamificado
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.EssayCorrection
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -122,7 +123,7 @@ fun TelaRedacao(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = 20.dp)
                 .verticalScroll(rememberScrollState()),
         ) {
             Spacer(Modifier.height(12.dp))
@@ -388,9 +389,7 @@ fun TelaRedacao(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(top = 6.dp)
-                                .clip(RoundedCornerShape(12.dp))
-                                .background(Surface)
-                                .border(1.dp, SurfaceBorder, RoundedCornerShape(12.dp))
+                                .cartaoRabisco(12.dp)
                                 .clickable {
                                     texto = v.texto
                                     mostrarVersoes = false
@@ -481,9 +480,7 @@ private fun CartaoCorrecao(correcao: EssayCorrection) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(20.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(20.dp))
+            .cartaoRabisco(20.dp)
             .padding(15.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {

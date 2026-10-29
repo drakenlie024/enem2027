@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.Onboarding
 import com.franferreira.enem2027.ui.components.BotaoGamificado
 import com.franferreira.enem2027.ui.components.floresFundo
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.PaletaClaro
@@ -199,9 +200,7 @@ private fun PorQueCard(itens: List<String>) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp)
             .padding(16.dp),
     ) {
         Text(

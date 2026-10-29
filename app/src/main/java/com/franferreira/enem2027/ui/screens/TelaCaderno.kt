@@ -41,6 +41,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.ItemCaderno
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -119,7 +120,7 @@ fun TelaCaderno(
         }
 
         if (itens.isNotEmpty()) {
-            Column(Modifier.padding(horizontal = 16.dp)) {
+            Column(Modifier.padding(horizontal = 20.dp)) {
                 // filtro por área
                 Row(
                     modifier = Modifier.horizontalScroll(rememberScrollState()),
@@ -194,7 +195,7 @@ fun TelaCaderno(
         LazyColumn(
             modifier = Modifier.weight(1f),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                start = 16.dp, end = 16.dp, bottom = 24.dp
+                start = 20.dp, end = 20.dp, bottom = 24.dp
             ),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
@@ -225,9 +226,7 @@ private fun CartaoErro(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp)
             .clickable { aoClicar() }
             .padding(12.dp),
     ) {

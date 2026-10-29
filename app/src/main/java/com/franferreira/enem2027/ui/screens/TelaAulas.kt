@@ -56,6 +56,7 @@ import com.franferreira.enem2027.data.model.PacoteAula
 import com.franferreira.enem2027.data.model.QuestaoAula
 import com.franferreira.enem2027.data.repo.VideoDownloader
 import com.franferreira.enem2027.ui.components.BarraGamificada
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -112,7 +113,7 @@ fun TelaAulas(
 
         LazyColumn(
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                start = 16.dp, end = 16.dp, bottom = 24.dp
+                start = 20.dp, end = 20.dp, bottom = 24.dp
             ),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
@@ -236,7 +237,7 @@ fun TelaAulasDeArea(
         LazyColumn(
             modifier = Modifier.weight(1f),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                start = 16.dp, end = 16.dp, bottom = 24.dp
+                start = 20.dp, end = 20.dp, bottom = 24.dp
             ),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
@@ -335,7 +336,7 @@ fun TelaAulasDeArea(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Surface)
-                    .padding(horizontal = 16.dp, vertical = 10.dp),
+                    .padding(horizontal = 20.dp, vertical = 10.dp),
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
@@ -458,7 +459,7 @@ fun TelaAula(
 
         LazyColumn(
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                start = 16.dp, end = 16.dp, bottom = 28.dp
+                start = 20.dp, end = 20.dp, bottom = 28.dp
             ),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
@@ -489,9 +490,7 @@ fun TelaAula(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(18.dp))
-                        .background(Surface)
-                        .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                        .cartaoRabisco(18.dp)
                         .clickable { abrirVideo() }
                         .padding(12.dp),
                 ) {
@@ -666,9 +665,7 @@ fun TelaAula(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(18.dp))
-                            .background(Surface)
-                            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                            .cartaoRabisco(18.dp)
                             .padding(13.dp),
                     ) {
                         pacote.resumo.forEach { topico ->
@@ -747,9 +744,7 @@ private fun CartaoQuestaoAula(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp)
             .padding(13.dp),
     ) {
         Text(
@@ -865,9 +860,7 @@ private fun CartaoAreaAulas(area: AreaAulas, aoClicar: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp)
             .clickable { aoClicar() }
             .padding(14.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -912,9 +905,7 @@ private fun CartaoAula(aula: AulaResumo, aoClicar: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp)
             .clickable { aoClicar() }
             .padding(11.dp),
         verticalAlignment = Alignment.CenterVertically,

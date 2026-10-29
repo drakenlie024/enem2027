@@ -33,6 +33,7 @@ import com.franferreira.enem2027.data.model.PrevisaoNota
 import com.franferreira.enem2027.data.model.Question
 import com.franferreira.enem2027.data.model.ResultadoDiagnostico
 import com.franferreira.enem2027.data.model.TemaDiagnostico
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -63,7 +64,7 @@ fun TelaDiagnostico(
         modifier = Modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 20.dp),
     ) {
         Spacer(Modifier.height(12.dp))
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -202,7 +203,7 @@ fun TelaResultadoDiagnostico(
         modifier = Modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 20.dp),
     ) {
         Spacer(Modifier.height(12.dp))
         Text(
@@ -226,9 +227,7 @@ fun TelaResultadoDiagnostico(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(18.dp))
-                    .background(Surface)
-                    .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+                    .cartaoRabisco(18.dp)
                     .padding(14.dp),
             ) {
                 Text(

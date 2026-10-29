@@ -1,5 +1,6 @@
 package com.franferreira.enem2027.ui.screens
 
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import android.content.Intent
 import android.net.Uri
@@ -180,7 +181,7 @@ fun TelaQuestao(
 
         LazyColumn(
             modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),
+            contentPadding = PaddingValues(horizontal = 20.dp, vertical = 4.dp),
         ) {
             // texto de apoio
             val contexto = questao.contexto?.trim()
@@ -189,9 +190,7 @@ fun TelaQuestao(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(16.dp))
-                            .background(Surface)
-                            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
+                            .cartaoRabisco(16.dp)
                             .padding(12.dp),
                     ) {
                         Text(
@@ -409,13 +408,14 @@ error = ColorPainter(SurfaceRaised),
             }
         }
 
-        // rodapé: explicação via IA
+        // rodapé: explicação via IA. Fica como cartão solto, com margem: nada
+        // encosta na borda da tela.
         if (respondida) {
             Box(
                 modifier = Modifier
+                    .padding(horizontal = 20.dp, vertical = 10.dp)
                     .fillMaxWidth()
-                    .background(Surface)
-                    .border(1.dp, SurfaceBorder, RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+                    .cartaoRabisco(18.dp, sombra = true)
                     .padding(16.dp),
             ) {
                 Column {
@@ -547,9 +547,7 @@ private fun LinhaApoio(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp)
             .padding(12.dp),
     ) {
         Text(

@@ -43,7 +43,12 @@ import com.franferreira.enem2027.ui.theme.TextSecondary
  * secundário — quem manda é o número.
  */
 
-/** Botão principal: gradiente, redondo, sombra colorida. */
+/**
+ * Botão principal: pílula com borda de tinta e sombra dura.
+ *
+ * O gradiente e a sombra difusa saíram no DESIGN.md (estilo Doodle): o botão
+ * parece um adesivo colado no papel, não um botão de vidro.
+ */
 @Composable
 fun BotaoGamificado(
     texto: String,
@@ -53,24 +58,13 @@ fun BotaoGamificado(
     habilitado: Boolean = true,
     aoClicar: () -> Unit,
 ) {
-    val fundo = if (verde) com.franferreira.enem2027.ui.theme.Primary else cor
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(54.dp)
-            .shadow(if (habilitado) 10.dp else 0.dp, RoundedCornerShape(27.dp), spotColor = fundo)
-            .clip(RoundedCornerShape(27.dp))
-            .background(if (habilitado) fundo else SurfaceBorder)
-            .clickable(enabled = habilitado) { aoClicar() },
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text = texto,
-            style = MaterialTheme.typography.labelLarge,
-            fontWeight = FontWeight.Bold,
-            color = if (habilitado) com.franferreira.enem2027.ui.theme.PaletaClaro.texto else TextMuted,
-        )
-    }
+    BotaoRabisco(
+        texto = texto,
+        aoClicar = aoClicar,
+        modifier = modifier.fillMaxWidth().height(52.dp),
+        fundo = if (verde) com.franferreira.enem2027.ui.theme.Primary else cor,
+        habilitado = habilitado,
+    )
 }
 
 /** Card com gradiente suave — o "bloco" padrão do estilo. */

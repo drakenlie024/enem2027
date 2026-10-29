@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.Question
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -80,7 +81,7 @@ fun TelaRevisao(
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background))),
     ) {
-        Column(Modifier.padding(horizontal = 16.dp)) {
+        Column(Modifier.padding(horizontal = 20.dp)) {
             Spacer(Modifier.height(12.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 if (treinoAberto != null) {
@@ -154,7 +155,7 @@ fun TelaRevisao(
             buscando -> {
                 LazyColumn(
                     modifier = Modifier.weight(1f),
-                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
+                    contentPadding = PaddingValues(start = 20.dp, end = 20.dp, bottom = 24.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     item {
@@ -192,7 +193,7 @@ fun TelaRevisao(
                 } else {
                     LazyColumn(
                         modifier = Modifier.weight(1f),
-                        contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
+                        contentPadding = PaddingValues(start = 20.dp, end = 20.dp, bottom = 24.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
                         items(treinoQuestoes, key = { it.id }) { q ->
@@ -236,7 +237,7 @@ fun TelaRevisao(
             else -> {
                 LazyColumn(
                     modifier = Modifier.weight(1f),
-                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
+                    contentPadding = PaddingValues(start = 20.dp, end = 20.dp, bottom = 24.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
                     items(treinos, key = { it.tema + it.area }) { t ->
@@ -258,9 +259,7 @@ private fun CartaoTreino(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp)
             .padding(14.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -308,7 +307,7 @@ private fun CartaoTreino(
                 .clip(RoundedCornerShape(999.dp))
                 .background(cor)
                 .clickable { aoClicar() }
-                .padding(horizontal = 16.dp, vertical = 8.dp),
+                .padding(horizontal = 20.dp, vertical = 8.dp),
         ) {
             Text(
                 text = "Treinar",
@@ -372,9 +371,7 @@ private fun CartaoFila(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
+            .cartaoRabisco(16.dp)
             .clickable { aoClicar() }
             .padding(12.dp),
     ) {

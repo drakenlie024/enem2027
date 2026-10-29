@@ -117,7 +117,7 @@ fun TelaTrilha(
         LazyColumn(
             modifier = Modifier.weight(1f),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                start = 16.dp, end = 16.dp, bottom = 28.dp
+                start = 20.dp, end = 20.dp, bottom = 28.dp
             ),
         ) {
             item {

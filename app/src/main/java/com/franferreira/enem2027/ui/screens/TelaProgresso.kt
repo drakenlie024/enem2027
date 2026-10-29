@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.AreaStats
 import com.franferreira.enem2027.data.model.ProgressoResponse
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Danger
@@ -77,7 +78,7 @@ fun TelaProgresso(
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background))),
     ) {
-        Column(Modifier.padding(horizontal = 16.dp)) {
+        Column(Modifier.padding(horizontal = 20.dp)) {
             Spacer(Modifier.height(12.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Column(Modifier.weight(1f)) {
@@ -239,7 +240,7 @@ fun TelaProgresso(
         LazyColumn(
             modifier = Modifier.weight(1f),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                start = 16.dp, end = 16.dp, bottom = 24.dp
+                start = 20.dp, end = 20.dp, bottom = 24.dp
             ),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
@@ -279,9 +280,7 @@ private fun CartaoNumero(
 ) {
     Column(
         modifier = modifier
-            .clip(RoundedCornerShape(16.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
+            .cartaoRabisco(16.dp)
             .padding(12.dp),
     ) {
         Text(
@@ -304,9 +303,7 @@ private fun CartaoSemana(porDia: List<Int>) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(18.dp))
+            .cartaoRabisco(18.dp)
             .padding(14.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -406,9 +403,7 @@ private fun LinhaArea(area: AreaStats) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
+            .cartaoRabisco(16.dp)
             .padding(12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -470,9 +465,7 @@ private fun LinhaCompetencia(rotulo: String, taxa: Double, respondidas: Int) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp))
-            .background(Surface)
-            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
+            .cartaoRabisco(16.dp)
             .padding(12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {

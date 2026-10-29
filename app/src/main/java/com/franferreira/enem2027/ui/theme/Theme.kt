@@ -83,6 +83,13 @@ private val Fredoka = FontFamily(
     ),
 )
 
+private val Delius = FontFamily(
+    Font(R.font.delius_swash_caps, weight = FontWeight.Normal),
+    Font(R.font.delius_swash_caps, weight = FontWeight.Medium),
+    Font(R.font.delius_swash_caps, weight = FontWeight.SemiBold),
+    Font(R.font.delius_swash_caps, weight = FontWeight.Bold),
+)
+
 private val Nunito = FontFamily(
     Font(
         R.font.nunito,
@@ -108,34 +115,34 @@ private val Nunito = FontFamily(
 
 private val FloralTypography = Typography(
     headlineLarge = TextStyle(
-        fontFamily = Fredoka,
+        fontFamily = Delius,
         fontSize = 32.sp,
         lineHeight = 38.sp,
         fontWeight = FontWeight.SemiBold,
         letterSpacing = (-0.2).sp,
     ),
     headlineMedium = TextStyle(
-        fontFamily = Fredoka,
+        fontFamily = Delius,
         fontSize = 27.sp,
         lineHeight = 33.sp,
         fontWeight = FontWeight.SemiBold,
         letterSpacing = (-0.2).sp,
     ),
     titleLarge = TextStyle(
-        fontFamily = Fredoka,
+        fontFamily = Delius,
         fontSize = 21.sp,
         lineHeight = 27.sp,
         fontWeight = FontWeight.SemiBold,
         letterSpacing = 0.sp,
     ),
     titleMedium = TextStyle(
-        fontFamily = Fredoka,
+        fontFamily = Delius,
         fontSize = 17.sp,
         lineHeight = 23.sp,
         fontWeight = FontWeight.Medium,
     ),
     titleSmall = TextStyle(
-        fontFamily = Fredoka,
+        fontFamily = Delius,
         fontSize = 15.sp,
         lineHeight = 20.sp,
         fontWeight = FontWeight.Medium,

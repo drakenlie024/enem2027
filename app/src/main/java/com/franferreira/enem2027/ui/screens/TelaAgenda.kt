@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.franferreira.enem2027.notificacao.Notificador
 import com.franferreira.enem2027.notificacao.Silencio
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Primary
@@ -84,7 +85,7 @@ fun TelaAgenda(
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
             .verticalScroll(rememberScrollState())
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 20.dp),
     ) {
         Spacer(Modifier.height(12.dp))
         Text(
@@ -136,9 +137,7 @@ fun TelaAgenda(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(14.dp))
-                .background(Surface)
-                .border(1.dp, SurfaceBorder, RoundedCornerShape(14.dp))
+                .cartaoRabisco(14.dp)
                 .padding(horizontal = 12.dp, vertical = 8.dp),
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {

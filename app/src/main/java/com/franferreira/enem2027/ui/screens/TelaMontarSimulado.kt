@@ -79,7 +79,7 @@ fun TelaMontarSimulado(
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
             .verticalScroll(rememberScrollState())
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 20.dp),
     ) {
         Spacer(Modifier.height(12.dp))
         Text(

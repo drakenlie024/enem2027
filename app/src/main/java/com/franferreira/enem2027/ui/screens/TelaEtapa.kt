@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.franferreira.enem2027.data.model.Etapa
 import com.franferreira.enem2027.data.model.Question
+import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
 import com.franferreira.enem2027.ui.theme.Primary
@@ -129,7 +130,7 @@ fun TelaEtapa(
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background))),
     ) {
         // topo: etapa, progresso e sair
-        Column(Modifier.padding(horizontal = 16.dp)) {
+        Column(Modifier.padding(horizontal = 20.dp)) {
             Spacer(Modifier.height(10.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
@@ -200,7 +201,7 @@ fun TelaEtapa(
         LazyColumn(
             modifier = Modifier.weight(1f),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                start = 16.dp, end = 16.dp, bottom = 16.dp
+                start = 20.dp, end = 20.dp, bottom = 16.dp
             ),
         ) {
             // figuras
@@ -230,9 +231,7 @@ fun TelaEtapa(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(16.dp))
-                            .background(Surface)
-                            .border(1.dp, SurfaceBorder, RoundedCornerShape(16.dp))
+                            .cartaoRabisco(16.dp)
                             .padding(12.dp),
                     ) {
                         Text(
@@ -372,9 +371,9 @@ fun TelaEtapa(
         // rodapé: navegação
         Row(
             modifier = Modifier
+                .padding(horizontal = 20.dp)
                 .fillMaxWidth()
-                .background(Surface)
-                .border(1.dp, SurfaceBorder, RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+                .cartaoRabisco(16.dp, sombra = true)
                 .padding(14.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             verticalAlignment = Alignment.CenterVertically,
