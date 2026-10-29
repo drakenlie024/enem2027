@@ -291,63 +291,55 @@ class ViewModelPrincipal(
     }
 
     /**
-     * Guarda o token localmente para não pedir login toda vez.
+     * Restaura a sessão lendo o aparelho, sem esperar rede.
+     *
+     * Antes esta função chamava `api.gamificacao()` antes de liberar a tela: com
+     * rede ruim ou servidor fora, o app ficava para sempre em "preparando seu
+     * estudo". Agora o que está salvo no aparelho manda; o servidor só confirma
+     * depois, em segundo plano.
      */
     private fun restaurarSessao() {
+        val prefs = prefsLocais()
+        val token = prefs.getString("token", null)
+        val modoLocal = prefs.getBoolean("modo_local", false)
+        val nome = prefs.getString("nome", "").orEmpty()
+        val temSessao = !token.isNullOrBlank() || modoLocal
+
+        if (!token.isNullOrBlank()) ApiClient.token = token
+        _estado.value = _estado.value.copy(
+            carregando = false,
+            autenticado = temSessao,
+            sessaoVerificada = true,
+            nome = nome,
+        )
+        if (!temSessao) return
+
+        recarregar()
+        carregarAgenda()
+        carregarFilaAprovacao()
+        carregarRedacoes()
+        retomarDiagnostico(prefs)
+        if (modoLocal) garantirContaRemota()
+        conferirTokenNoServidor(token, modoLocal)
+    }
+
+    /**
+     * Confere o token em segundo plano, com prazo.
+     *
+     * Sem prazo, uma conexão pendurada segurava o app na abertura. E só 401
+     * desloga: erro de rede não é token inválido.
+     */
+    private fun conferirTokenNoServidor(token: String?, modoLocal: Boolean) {
+        if (token.isNullOrBlank()) return
         viewModelScope.launch {
-            val prefs = getApplication<Application>()
-                .getSharedPreferences("leticia", android.content.Context.MODE_PRIVATE)
-            val token = prefs.getString("token", null)
-            val modoLocal = prefs.getBoolean("modo_local", false)
-            if (token.isNullOrBlank()) {
-                // Sem token há dois casos: primeira abertura (mostra o login) e
-                // conta local, criada só com o nome. No segundo, o estudo tem
-                // de começar na hora: o acervo é do aparelho, não do servidor.
-                _estado.value = _estado.value.copy(
-                    carregando = false,
-                    autenticado = modoLocal,
-                    sessaoVerificada = true,
-                    nome = prefs.getString("nome", "").orEmpty(),
-                )
-                if (modoLocal) {
-                    recarregar()
-                    carregarAgenda()
-                    garantirContaRemota()
-                }
-                retomarDiagnostico(prefs)
-                return@launch
+            val erro = kotlinx.coroutines.withTimeoutOrNull(8_000L) {
+                runCatching { api.gamificacao() }.exceptionOrNull()
             }
-            ApiClient.token = token
-            // Confere se o token ainda vale. SÓ desloga em 401: erro de rede
-            // não é token inválido, e deslogar ali matava o app offline na
-            // primeira abertura sem internet.
-            val erro = runCatching { api.gamificacao() }.exceptionOrNull()
             if (erro is retrofit2.HttpException && erro.code() == 401) {
                 ApiClient.token = null
-                prefs.edit().remove("token").apply()
-                _estado.value = _estado.value.copy(
-                    carregando = false,
-                    autenticado = modoLocal,
-                    sessaoVerificada = true,
-                    nome = prefs.getString("nome", "").orEmpty(),
-                )
-                if (modoLocal) {
-                    recarregar()
-                    carregarAgenda()
-                }
-                return@launch
+                prefsLocais().edit().remove("token").apply()
+                _estado.value = _estado.value.copy(autenticado = modoLocal)
             }
-            _estado.value = _estado.value.copy(
-                carregando = false,
-                autenticado = true,
-                sessaoVerificada = true,
-                nome = prefs.getString("nome", "").orEmpty(),
-            )
-            recarregar()
-            carregarAgenda()
-            carregarFilaAprovacao()
-            carregarRedacoes()
-            retomarDiagnostico(prefs)
         }
     }
 
