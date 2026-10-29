@@ -53,7 +53,7 @@ class CronogramaTest {
             listOf(tema("m$n", "matematica"), tema("h$n", "ciencias-humanas"))
         }
 
-        val semanas = Cronograma.montar(temas, semanas = 6, inicio = hoje, hoje = hoje)
+        val semanas = Cronograma.montar(temas, semanas = 3, inicio = hoje, hoje = hoje)
         val primeira = semanas.first().temas
 
         assertEquals(2, primeira.size)
