@@ -1,6 +1,6 @@
 {
   "ano": 2025,
-  "versao": "2026-10-28T15:16:39Z",
+  "versao": "2026-10-29T21:26:05Z",
   "origem": "inep",
   "questoes": [
     {
@@ -4913,54 +4913,6 @@
       "explicacao": "Pela equação aluminotérmica, 3 Nb₂O₅ + 10 Al → 6 Nb + 5 Al₂O₃, são necessários 10 mol de alumínio para produzir 6 mol de nióbio. Como a massa molar do nióbio é 93 g/mol, os 9,3 kg correspondem a 100 mol de Nb. A quantidade estequiométrica de alumínio é 100 × (10/6) = 166,7 mol. Sua massa é 166,7 × 27 = 4.500 g, ou 4,5 kg. Como se utiliza excesso de 10%, a massa necessária é 4,5 × 1,10 = 4,95 kg, que, entre as alternativas, é mais próxima de 5,0 kg. O rendimento de 100% permite considerar toda a massa de nióbio produced."
     },
     {
-      "id": "enem-2025-q115",
-      "ano": 2025,
-      "indice": 115,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "O nível sonoro, em decibel (dB), é calculado pela expressão:\n(cid:30) (cid:27) I\nn(cid:31)10 log (cid:28) (cid:25)\n10\n(cid:29)I (cid:26)\n0",
-      "arquivos": [],
-      "enunciado": "Uma conversa normal entre duas pessoas gera sons de níveis sonoros entre 50 e 60 dB, enquanto pessoas gritando podem gerar sons de níveis superiores a 100 dB. Supondo que, no centro de um estádio de futebol, foram realizadas medidas para avaliar o ruído médio de uma pessoa gritando a palavra “gol” em diferentes posições das arquibancadas. O valor médio obtido, considerando um grande número de medidas, foi de 100 dB. Com esse dado, estimou-se o ruído sonoro produzido por 10 000 pessoas, distribuídas aleatoriamente nas arquibancadas, enquanto gritavam, simultaneamente, a palavra “gol”. O valor médio estimado para o ruído produzido por essas pessoas, na posição central desse estádio hipotético, foi de",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "60 dB.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "104 dB.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "140 dB.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "400 dB.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "800 dB.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": null,
-      "origem": "inep",
-      "tema": "Ciências da Natureza",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": ""
-    },
-    {
       "id": "enem-2025-q118",
       "ano": 2025,
       "indice": 118,
@@ -5106,58 +5058,6 @@
       "dificuldade": "media",
       "subassunto": "",
       "explicacao": "A bobina gera um campo magnético variável na região onde está a panela. Esse campo provoca o deslocamento de cargas elétricas no material condutor, formando correntes circulares chamadas correntes parasitas. Como o material da panela oferece resistência à passagem dessas correntes, há conversão de energia elétrica em energia térmica: é o efeito Joule.\n\nPor isso, o aquecimento ocorre diretamente na panela, especialmente na parte situada sobre a bobina. As demais zonas do vidro cerâmico não são aquecidas significativamente por esse mecanismo. Não se trata de imantação da panela, movimento de átomos, emissão de radiação eletromagnética nem aquecimento do ar por convecção."
-    },
-    {
-      "id": "enem-2025-q121",
-      "ano": 2025,
-      "indice": 121,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "Plantas e algas realizam fotossíntese oxigênica para síntese de matéria orgânica e, para isso, utilizam trifosfato de adenosina (ATP) e nicotinamida adenina dinucleotídeo fosfato reduzido (NADPH). Já algumas bactérias fotossintetizantes não apresentam cloroplasto e clorofila, mas um pigmento denominado bacterioclorofila. Esses procariotos realizam a fotossíntese anoxigênica, um processo de síntese de matéria orgânica utilizando o gás carbônico (CO) e o gás sulfídrico (H S).\n2 2 Na fotossíntese oxigênica, qual composto desempenha função análoga à do H S?",
-      "arquivos": [],
-      "enunciado": "2",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "ATP.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "NADPH.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "Oxigênio.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "Clorofila.",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "Água.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": null,
-      "origem": "inep",
-      "revisar": true,
-      "motivos": [
-        "enunciado parece ser expressão matemática (texto incompleto)"
-      ],
-      "tema": "Ecologia",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": ""
     },
     {
       "id": "enem-2025-q122",
@@ -6093,47 +5993,6 @@
       "dificuldade": "media",
       "subassunto": "",
       "explicacao": "A marca de referência é de 10,00 segundos, e o tempo de Usain Bolt foi de 9,58 segundos. Para encontrar a diferença, subtraímos o menor tempo do maior: 10,00 − 9,58 = 0,42. Portanto, a marca de referência ficou 0,42 segundo acima do tempo registrado por Bolt."
-    },
-    {
-      "id": "enem-2025-q144",
-      "ano": 2025,
-      "indice": 144,
-      "area": "matematica",
-      "idioma": null,
-      "contexto": "Em um jogo de computador, um cubo se encontra inicialmente posicionado\nCada deslocamento efetuado por esse cubo se dá sempre em uma das Ao se movimentar a partir da posição inicial, esse cubo se aproximou 3 unidades",
-      "arquivos": [],
-      "enunciado": "xy. e se aproximou 4 unidades do plano A figura que apresenta as projeções ortogonais desse cubo sobre os três planos descritas, é",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "D",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "E",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "conforme indicado na figura. direções definidas pelos três eixos coordenados. yz, xz do plano se afastou 5 unidades do plano coordenados, após efetuar as movimentações",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "E",
-      "origem": "inep",
-      "revisar": true,
-      "motivos": [
-        "alternativas incompletas (A,B,C)"
-      ],
-      "tema": "Resolução de problemas",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A ideia central é usar as projeções para transformar os deslocamentos em coordenadas. A projeção ortogonal sobre o plano yz mostra a posição no eixo x; sobre o plano xz, a posição no eixo y; e sobre o plano xy, a posição no eixo z. Assim, as diferenças de 3, 4 e 5 unidades devem aparecer simultaneamente nas projeções, respeitando os sentidos de aproximação e afastamento indicados. A alternativa E é a que apresenta essas posições na figura. Entretanto, a figura inicial e as figuras das alternativas não foram fornecidas, de modo que não é possível conferir visualmente a correspondência. Portanto, a questão está truncada e a figura é necessária para uma explicação completa."
     },
     {
       "id": "enem-2025-q145",
@@ -7751,54 +7610,6 @@
       "dificuldade": "media",
       "subassunto": "",
       "explicacao": "Como os túneis são semicilindros retos, cada seção transversal tem formato de semicircunferência, com área igual a πr²/2. No Projeto 1, somam-se as áreas das duas semicircunferências; no Projeto 2, calcula-se a área de uma única semicircunferência que contém as duas faixas de trânsito. A figura com os raios é indispensável para realizar esses cálculos, mas não foi enviada, e o enunciado também está truncado. Portanto, não é possível reconstituir os 67,5 m² apenas com o texto. Tomando o gabarito oficial como premissa, o Projeto 1 tem área de 67,5 m², inferior aos 121,5 m² do Projeto 2. Como o critério é retirar a menor quantidade de material da montanha, deve ser escolhido o Projeto 1, alternativa A."
-    },
-    {
-      "id": "enem-2025-q178",
-      "ano": 2025,
-      "indice": 178,
-      "area": "matematica",
-      "idioma": null,
-      "contexto": "Um carro que custa 60 mil reais é comercializado por uma revendedora que oferece duas opções de pagamento, todas sem entrada e sem juros:\nn • opção 1: pagamento em parcelas iguais;\n• opção 2: pagamento em 6 parcelas a mais do que na\nopção 1 e, com isso, o valor de cada parcela se torna\nR$ 500,00 menor do que o valor da parcela na opção 1.\nNas duas opções de pagamento, o valor total a ser pago pelo carro é o mesmo.",
-      "arquivos": [],
-      "enunciado": "n Qual é a quantidade de parcelas contidas na opção 1 de pagamento?",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "18",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "24",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "30",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "42",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "48",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": null,
-      "origem": "inep",
-      "tema": "Resolução de problemas",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": ""
     },
     {
       "id": "enem-2025-q179",

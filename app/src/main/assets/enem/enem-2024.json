@@ -1,6 +1,6 @@
 {
   "ano": 2024,
-  "versao": "2026-10-28T15:16:39Z",
+  "versao": "2026-10-29T21:26:05Z",
   "origem": "inep",
   "questoes": [
     {
@@ -4499,54 +4499,6 @@
       "explicacao": "A espícula viral funciona como antígeno, ou seja, uma estrutura reconhecida pelo sistema imunológico. Quando apresentada ao organismo, ela estimula a produção de anticorpos específicos contra essa proteína. Esses anticorpos podem impedir que o vírus se ligue aos receptores celulares e entre nas células, além de contribuírem para a formação de memória imunológica. A alternativa A completa corretamente a frase. Não se trata de imunidade passiva, pois a vacina utiliza o próprio sistema imunológico do vacinado; o vírus e a estrutura viral não são alterados. Também não há modificação dos receptores celulares nem neutralização direta dos vírus pela vacina."
     },
     {
-      "id": "enem-2024-q102",
-      "ano": 2024,
-      "indice": 102,
-      "area": "ciencias-natureza",
-      "idioma": null,
-      "contexto": "Um estudante comprou uma cafeteira elétrica de 700 W de potência e com capacidade de 0,5 L de água (500 g). Enquanto o café estava em preparação na capacidade máxima da cafeteira, ele marcou que demorou 3 minutos\n°°C) para a cafeteira ferver toda a água (100 a partir da\n°°C. temperatura ambiente de 20 Em seguida, para avaliar a eficiência da cafeteira, ele calculou esse tempo desprezando quaisquer perdas energéticas. É necessária 1 cal (4,2 J)\n°°C para elevar em 1 a temperatura de 1 grama de água.",
-      "arquivos": [],
-      "enunciado": "Qual a eficiência energética calculada pelo estudante?",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "100%",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "B",
-          "texto": "75%",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "C",
-          "texto": "60%",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "D",
-          "texto": "7,5%",
-          "arquivo": null,
-          "correta": false
-        },
-        {
-          "letra": "E",
-          "texto": "5,1%",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": null,
-      "origem": "inep",
-      "tema": "Ecologia",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": ""
-    },
-    {
       "id": "enem-2024-q103",
       "ano": 2024,
       "indice": 103,
@@ -6843,35 +6795,6 @@
       "dificuldade": "media",
       "subassunto": "",
       "explicacao": "Para calcular o tempo médio, somamos os tempos dos seis contratos listados e dividimos pelo número de contratos. A soma é 36 + 17 + 27 + 13 + 13 + 13 = 119 minutos. Como são seis contratos, a média é 119 ÷ 6 = 19,833... minutos. Arredondando para uma casa decimal, obtemos 19,8 minutos. Portanto, a alternativa correta é C."
-    },
-    {
-      "id": "enem-2024-q155",
-      "ano": 2024,
-      "indice": 155,
-      "area": "matematica",
-      "idioma": null,
-      "contexto": "Um proprietário pretende instalar um sensor de presença para a proteção de seu imóvel. O sensor deverá detectar movimentos de objetos e pessoas numa determinada região plana. A figura ilustra a vista superior da área de cobertura (setor circular em azul) de um sensor colocado no ponto S. Essa área depende da medida do\nα, ângulo em grau, e do raio R, em metro.\nα\nAo aumentar o ângulo ou o raio R aumenta-se a área de cobertura do sensor. Entretanto, quanto maior essa área, maior o preço do sensor.\nPara esse fim, há cinco tipos de sensores disponíveis\nno mercado, cada um com as seguintes características:\nα = = 15°°\ne R 20 m; tipo I: •\nα = = 30°°\ntipo II: • e R 22 m;\nα = = 40°°\ntipo III: • e R 12 m;\nα = = 60°°\ntipo IV: • e R 16 m;\nα = = 90°°\ntipo V: • e R 10 m.\nEsse proprietário pretende adquirir um desses sensores\nque seja capaz de cobrir, no mínimo, uma área de medida\nm2, 70 com o menor preço possível.\nπ.\nUse 3 como valor aproximado para",
-      "arquivos": [],
-      "enunciado": "O proprietário do imóvel deverá adquirir o sensor do tipo",
-      "alternativas": [
-        {
-          "letra": "A",
-          "texto": "I. E V.",
-          "arquivo": null,
-          "correta": false
-        }
-      ],
-      "gabarito": "E",
-      "origem": "inep",
-      "revisar": true,
-      "motivos": [
-        "alternativas incompletas (A)"
-      ],
-      "tema": "Polinômios e equações",
-      "competencia": "C2 - Aplicar conhecimentos",
-      "dificuldade": "media",
-      "subassunto": "",
-      "explicacao": "A área coberta é a área de um setor circular: A = (α/360) · π · R². Usando π ≈ 3, obtemos: tipo I: 50 m²; tipo II: 121 m²; tipo III: 48 m²; tipo IV: 128 m²; tipo V: 75 m². Portanto, os tipos II, IV e V cobrem pelo menos 70 m². Como quanto maior a área de cobertura, maior o preço, o mais barato entre os sensors adequados é aquele com a menor área que ainda atinge o mínimo: o tipo V, com 90° e raio de 10 m, cobrindo 75 m². Assim, a resposta é a alternativa E."
     },
     {
       "id": "enem-2024-q156",
