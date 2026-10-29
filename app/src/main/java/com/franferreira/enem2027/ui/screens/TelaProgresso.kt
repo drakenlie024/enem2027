@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.AreaStats
 import com.franferreira.enem2027.data.model.ProgressoResponse
+import com.franferreira.enem2027.ui.components.bordaRabisco
 import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
@@ -500,7 +501,9 @@ private fun GradeConquistas(conquistas: List<String>) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .cartaoRabisco(22.dp, fundo = Brush.verticalGradient(listOf(SurfaceRaised, Surface)), borda = SurfaceBorder)
+            .clip(RoundedCornerShape(22.dp))
+            .background(Brush.verticalGradient(listOf(SurfaceRaised, Surface)))
+            .bordaRabisco(SurfaceBorder, raio = 22.dp)
             .padding(13.dp),
     ) {
         Row(

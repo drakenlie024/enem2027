@@ -51,6 +51,7 @@ import com.franferreira.enem2027.ui.components.BarraGamificada
 import com.franferreira.enem2027.ui.components.BotaoGamificado
 import com.franferreira.enem2027.ui.components.CartaoGamificado
 import com.franferreira.enem2027.ui.components.Pilula
+import com.franferreira.enem2027.ui.components.bordaRabisco
 import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
 import com.franferreira.enem2027.ui.theme.BackgroundGradientTop
@@ -722,7 +723,9 @@ private fun CartaoTrilha(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .cartaoRabisco(22.dp, fundo = Brush.verticalGradient(listOf(SurfaceRaised, Surface)), borda = SurfaceBorder)
+            .clip(RoundedCornerShape(22.dp))
+            .background(Brush.verticalGradient(listOf(SurfaceRaised, Surface)))
+            .bordaRabisco(SurfaceBorder, raio = 22.dp)
             .clickable { aoAbrir() }
             .padding(14.dp),
     ) {
