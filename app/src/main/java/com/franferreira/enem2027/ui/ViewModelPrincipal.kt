@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.franferreira.enem2027.data.local.AgendaEntity
 import com.franferreira.enem2027.data.model.AgendaItem
+import com.franferreira.enem2027.data.model.Cronograma
 import com.franferreira.enem2027.data.model.Diagnostico
 import com.franferreira.enem2027.data.model.Onboarding
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
