@@ -321,6 +321,24 @@ class ViewModelPrincipal(
         retomarDiagnostico(prefs)
         if (modoLocal) garantirContaRemota()
         conferirTokenNoServidor(token, modoLocal)
+        sincronizarSePendente()
+    }
+
+    /**
+     * Envia o que ficou preso, sem precisar de toque no botão.
+     *
+     * Antes, resposta só subia quando a pessoa apertava "sincronizar": dava 41
+     * respostas paradas no aparelho e o aviso "esperando rede" para sempre,
+     * mesmo com internet boa.
+     */
+    private fun sincronizarSePendente() {
+        viewModelScope.launch {
+            kotlinx.coroutines.delay(2_000)
+            if (runCatching { repo.esperandoRede() }.getOrDefault(0) > 0) {
+                repo.sincronizar()
+                recarregar()
+            }
+        }
     }
 
     /**
