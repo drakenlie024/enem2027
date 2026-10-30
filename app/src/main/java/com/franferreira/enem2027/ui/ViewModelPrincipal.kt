@@ -1060,7 +1060,17 @@ class ViewModelPrincipal(
                 sincronizando = false,
                 mensagem = resultado.fold(
                     onSuccess = { "$it respostas sincronizadas" },
-                    onFailure = { "Sem conexão — suas respostas ficam salvas no aparelho" },
+                    onFailure = { erro ->
+                        // "Sem conexão" fixo mentia quando o servidor recusava
+                        // com 401 ou 422 e a internet estava boa.
+                        when {
+                            erro is retrofit2.HttpException && erro.code() == 401 ->
+                                "A conta do servidor pediu novo login; as respostas ficam salvas"
+                            erro is retrofit2.HttpException ->
+                                "O servidor recusou o envio (${erro.code()}); as respostas ficam salvas"
+                            else -> "Sem conexão — suas respostas ficam salvas no aparelho"
+                        }
+                    },
                 ),
             )
             // Aproveita o mesmo momento para pegar as questões de IA novas.
