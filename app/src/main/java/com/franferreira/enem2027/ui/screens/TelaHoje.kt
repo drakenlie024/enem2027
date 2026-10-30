@@ -175,11 +175,13 @@ fun TelaHoje(
                 aoMudarMeta = aoMudarMetaSemanal,
             )
 
-            CartaoFoco(
-                estado = estado,
-                aoIniciar = aoIniciarFoco,
-                aoParar = aoPararFoco,
+            CartaoEstudarHoje(
+                treinos = estado.treinos,
+                aoEstudar = aoRevisar,
+                aoFoco = aoIniciarFoco,
+                focoAtivo = estado.focoAtivo,
             )
+
 
             if (estado.esperandoRede > 0) {
                 Box(
@@ -1014,59 +1016,80 @@ private fun SemanaDeEstudo(estado: EstadoHoje, aoMudarMeta: (Int) -> Unit) {
 }
 
 /**
- * Foco de 25 minutos (pomodoro).
+ * "Estudar hoje": o cartão principal da Hoje.
  *
- * O alarme é agendado no início, então o aviso chega mesmo se o app estiver
- * fechado; o contador aqui é só o que a tela mostra.
+ * Antes o topo era o pomodoro de 25 minutos — uma ferramenta de apoio ocupando
+ * o lugar da ação que a pessoa abre o app para fazer. O foco virou o botão
+ * secundário.
  */
 @Composable
-private fun CartaoFoco(
-    estado: EstadoHoje,
-    aoIniciar: () -> Unit,
-    aoParar: () -> Unit,
+private fun CartaoEstudarHoje(
+    treinos: List<com.franferreira.enem2027.data.model.TemaTreino>,
+    aoEstudar: () -> Unit,
+    aoFoco: () -> Unit,
+    focoAtivo: Boolean,
 ) {
-    val restante = estado.focoRestante.coerceAtLeast(0)
-    val tempo = "%02d:%02d".format(restante / 60, restante % 60)
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .cartaoRabisco(18.dp, torto = 0.6f)
+            .cartaoRabisco(18.dp, sombra = true)
             .padding(14.dp),
     ) {
+        Text(
+            text = "ESTUDAR HOJE",
+            style = MaterialTheme.typography.labelSmall,
+            color = Primary,
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = if (treinos.isEmpty()) {
+                "Nenhum tema pendente"
+            } else {
+                treinos.take(2).joinToString(" e ") { it.tema }
+            },
+            style = MaterialTheme.typography.titleMedium,
+            color = TextPrimary,
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = if (treinos.isEmpty()) {
+                "Aproveite para assistir uma aula do cronograma."
+            } else {
+                val questoes = treinos.sumOf { it.disponiveis }
+                "$questoes questões disponíveis em ${treinos.size} tema(s)"
+            },
+            style = MaterialTheme.typography.bodySmall,
+            color = TextMuted,
+        )
+        Spacer(Modifier.height(12.dp))
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Column(Modifier.weight(1f)) {
-                Text(
-                    text = "FOCO",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = Primary,
-                )
-                Text(
-                    text = if (estado.focoAtivo) "Faltam $tempo" else "25 minutos sem celular",
-                    style = MaterialTheme.typography.titleMedium,
-                    color = TextPrimary,
-                )
-                Text(
-                    text = if (estado.focoAtivo) {
-                        "Um bloco de cada vez. O aviso chega mesmo com o app fechado."
-                    } else {
-                        "Um bloco de 25 minutos, depois cinco de pausa."
-                    },
-                    style = MaterialTheme.typography.bodySmall,
-                    color = TextMuted,
-                )
-            }
-            Spacer(Modifier.width(10.dp))
             Box(
                 modifier = Modifier
                     .clip(RoundedCornerShape(999.dp))
-                    .background(if (estado.focoAtivo) SurfaceRaised else Primary)
-                    .clickable { if (estado.focoAtivo) aoParar() else aoIniciar() }
-                    .padding(horizontal = 14.dp, vertical = 9.dp),
+                    .background(Primary)
+                    .clickable { aoEstudar() }
+                    .padding(horizontal = 20.dp, vertical = 10.dp),
             ) {
                 Text(
-                    text = if (estado.focoAtivo) "Parar" else "Começar",
+                    text = "Começar",
+                    style = MaterialTheme.typography.labelLarge,
+                    color = PaletaClaro.texto,
+                )
+            }
+            Spacer(Modifier.width(8.dp))
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(SurfaceRaised)
+                    .clickable { aoFoco() }
+                    .padding(horizontal = 14.dp, vertical = 10.dp),
+            ) {
+                Text(
+                    text = if (focoAtivo) "Foco ativo" else "25 min sem celular",
                     style = MaterialTheme.typography.labelMedium,
-                    color = if (estado.focoAtivo) TextMuted else PaletaClaro.texto,
+                    color = if (focoAtivo) Primary else TextMuted,
                 )
             }
         }
