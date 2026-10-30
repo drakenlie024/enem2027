@@ -147,6 +147,20 @@ fun EnemApp() {
     // fosse confirmação do "Salvar agenda".
     LaunchedEffect(rotaAtual) { vm.limparMensagem() }
 
+    // Confere versão nova a cada abertura. O aviso só aparece depois que a sessão
+    // foi verificada, para não cobrir a tela de abertura.
+    LaunchedEffect(Unit) { vm.verificarAtualizacao() }
+    val atualizacao = estado.atualizacao
+    if (estado.sessaoVerificada && atualizacao != null) {
+        com.franferreira.enem2027.ui.components.AvisoAtualizacao(
+            nova = atualizacao,
+            baixando = estado.baixandoAtualizacao,
+            erro = estado.erroAtualizacao,
+            aoAtualizar = vm::instalarAtualizacao,
+            aoDispensar = vm::dispensarAtualizacao,
+        )
+    }
+
     if (!estado.autenticado) {
         // Enquanto a sessão não foi conferida, nada de login: ele piscava na
         // tela antes de o app saber que a pessoa já tinha sessão.

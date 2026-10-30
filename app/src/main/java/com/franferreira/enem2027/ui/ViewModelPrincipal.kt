@@ -113,6 +113,11 @@ data class EstadoHoje(
     val preferencias: Map<String, com.franferreira.enem2027.data.repo.PreferenciasEstudo.Nivel> = emptyMap(),
     /** Conta antiga sem nenhuma preferência: a Hoje pergunta uma vez. */
     val pedirPreferencias: Boolean = false,
+    /** Versão nova do app encontrada no manifesto (null = nada a atualizar). */
+    val atualizacao: com.franferreira.enem2027.data.repo.Atualizacao.Nova? = null,
+    val baixandoAtualizacao: Boolean = false,
+    /** Mensagem do aviso de atualização quando o download ou a permissão falha. */
+    val erroAtualizacao: String? = null,
     /** A aula que a Hoje sugere agora (null = nenhuma aula pendente nos temas da semana). */
     val aulaDoDia: com.franferreira.enem2027.data.model.AulaSugerida? = null,
     /** Simulado encerrado, guardado para a revisão com gabarito. */
@@ -1414,6 +1419,51 @@ class ViewModelPrincipal(
             if (aula != null) return aula
         }
         return null
+    }
+
+    /** Confere se há versão nova; roda a cada abertura do app. Falha em silêncio. */
+    fun verificarAtualizacao() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val nova = com.franferreira.enem2027.data.repo.Atualizacao.verificar(getApplication())
+            _estado.value = _estado.value.copy(atualizacao = nova)
+        }
+    }
+
+    /**
+     * Baixa a versão nova, confere e abre o instalador. Sem a permissão de
+     * instalar, leva a pessoa para a tela de liberar e pede para tocar de novo.
+     */
+    fun instalarAtualizacao() {
+        val nova = _estado.value.atualizacao ?: return
+        val app = getApplication<Application>()
+        if (_estado.value.baixandoAtualizacao) return
+        if (!com.franferreira.enem2027.data.repo.Atualizacao.podeInstalar(app)) {
+            com.franferreira.enem2027.data.repo.Atualizacao.abrirPermissaoInstalar(app)
+            _estado.value = _estado.value.copy(
+                erroAtualizacao = "Libere a instalação deste app e toque em Atualizar de novo.",
+            )
+            return
+        }
+        viewModelScope.launch(Dispatchers.IO) {
+            _estado.value = _estado.value.copy(baixandoAtualizacao = true, erroAtualizacao = null)
+            val resultado = runCatching {
+                val apk = com.franferreira.enem2027.data.repo.Atualizacao.baixar(app, nova)
+                com.franferreira.enem2027.data.repo.Atualizacao.instalar(app, apk)
+            }
+            _estado.value = _estado.value.copy(
+                baixandoAtualizacao = false,
+                erroAtualizacao = if (resultado.isFailure) {
+                    "Não consegui baixar a atualização. Confira a internet e tente de novo."
+                } else {
+                    null
+                },
+            )
+        }
+    }
+
+    /** Dispensa o aviso nesta abertura; ele volta na próxima, se a versão ainda não estiver instalada. */
+    fun dispensarAtualizacao() {
+        _estado.value = _estado.value.copy(atualizacao = null, erroAtualizacao = null)
     }
 
     /** A pergunta das preferências foi respondida ou dispensada: não volta mais. */

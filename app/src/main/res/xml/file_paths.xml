@@ -9,4 +9,8 @@
     <files-path
         name="videos"
         path="videos/" />
+    <!-- APK baixado para a atualização do próprio app. -->
+    <cache-path
+        name="atualizacao"
+        path="atualizacao/" />
 </paths>
