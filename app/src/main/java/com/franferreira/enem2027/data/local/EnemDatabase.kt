@@ -105,6 +105,26 @@ interface QuestionDao {
     suspend fun temasTreino(cooldown: Long): List<TemaTreinoRow>
 
     /**
+     * Quando errou pela última vez cada tema: a última resposta da questão foi
+     * errada e é a mais recente entre as erradas do tema.
+     */
+    @Query(
+        """
+        SELECT q.tema AS tema,
+               q.area AS area,
+               MAX(p.lastReviewedAt) AS ultimoErro
+        FROM progress p
+        JOIN questions q ON q.id = p.questionId
+        WHERE p.lastQuality < 3
+          AND p.lastReviewedAt IS NOT NULL
+          AND q.tema IS NOT NULL AND q.tema != '' AND q.area IS NOT NULL
+          AND q.origem = 'enem'
+        GROUP BY q.tema, q.area
+        """
+    )
+    suspend fun errosPorTema(): List<ErroPorTemaRow>
+
+    /**
      * Questões de um tema para treinar: primeiro as nunca vistas, depois as
      * que estão fora do cooldown. Questão dominada (3 acertos seguidos) sai.
      */

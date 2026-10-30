@@ -345,6 +345,19 @@ class Repositorio(private val context: Context) {
         )
     }
 
+    /**
+     * Temas errados nos últimos [dias] dias, do erro mais recente para o mais
+     * antigo, como chave área|tema. A aula do dia usa isso para pôr o tema que
+     * acabou de errar na frente.
+     */
+    suspend fun temasComErroRecente(dias: Int = 7): List<String> {
+        val corte = System.currentTimeMillis() - dias * DIA_MS
+        return db.questions().errosPorTema()
+            .filter { it.ultimoErro >= corte }
+            .sortedByDescending { it.ultimoErro }
+            .map { com.franferreira.enem2027.data.model.Diagnostico.chaveTema(it.area, it.tema) }
+    }
+
     /** Questões novas (ou fora do cooldown) de um tema, para treinar. */
     suspend fun questoesDoTema(area: String, tema: String, limite: Int = 12): List<Question> {
         val cooldown = System.currentTimeMillis() - COOLDOWN_DIAS * DIA_MS

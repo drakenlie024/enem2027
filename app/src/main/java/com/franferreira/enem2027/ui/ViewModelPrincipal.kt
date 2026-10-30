@@ -1351,6 +1351,7 @@ class ViewModelPrincipal(
             val hoje = java.time.LocalDate.now()
             val prova = java.time.LocalDate.of(_estado.value.anoProva ?: 2027, 11, 1)
             val semanas = Cronograma.semanasAte(hoje, prova)
+            val errosRecentes = runCatching { repo.temasComErroRecente() }.getOrDefault(emptyList())
             // Assistir a aula também conta como ter visto o tema. Lê o JSON das
             // aulas e as prefs, então sai da thread principal.
             val (cobertos, plano, aula) = kotlinx.coroutines.withContext(Dispatchers.IO) {
@@ -1369,7 +1370,7 @@ class ViewModelPrincipal(
                     hoje = hoje,
                     pesos = com.franferreira.enem2027.data.repo.PreferenciasEstudo.pesos(app),
                 )
-                Triple(comAula, montado, aulaDoDia(app, montado))
+                Triple(comAula, montado, aulaDoDia(app, montado, errosRecentes))
             }
             _estado.value = _estado.value.copy(
                 cronograma = plano,
@@ -1385,16 +1386,23 @@ class ViewModelPrincipal(
     }
 
     /**
-     * A aula da Hoje: a primeira ainda não assistida dos temas da semana atual,
-     * na ordem do plano (que já leva em conta "mais" e "menos"). Se a semana
-     * não tiver aula pendente, cai nos temas de revisão.
+     * A aula da Hoje: a primeira ainda não assistida dos temas da semana atual.
+     *
+     * A ordem é: temas em que errou nos últimos 7 dias (o erro mais recente
+     * primeiro), depois o resto na ordem do plano (que já leva em conta "mais"
+     * e "menos"). Se a semana não tiver aula pendente, cai nos temas de revisão.
      */
     private fun aulaDoDia(
         app: Application,
         plano: List<com.franferreira.enem2027.data.model.SemanaCronograma>,
+        errosRecentes: List<String>,
     ): com.franferreira.enem2027.data.model.AulaSugerida? {
         val semana = plano.firstOrNull { it.atual } ?: return null
-        for (tema in (semana.temas + semana.revisao).map { it.tema }) {
+        val ranking = errosRecentes.withIndex().associate { it.value to it.index }
+        val candidatos = (semana.temas + semana.revisao).sortedBy { t ->
+            ranking[com.franferreira.enem2027.data.model.Diagnostico.chaveTema(t.area, t.tema)] ?: Int.MAX_VALUE
+        }
+        for (tema in candidatos.map { it.tema }) {
             val aula = com.franferreira.enem2027.data.repo.AulasPorTema.aulasDoTema(app, tema)
                 .firstOrNull { !com.franferreira.enem2027.data.repo.AulasAssistidas.foiAssistida(app, it.id) }
             if (aula != null) return aula

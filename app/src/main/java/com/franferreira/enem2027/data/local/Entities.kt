@@ -171,6 +171,13 @@ data class TemaTreinoRow(
     val disponiveis: Int,
 )
 
+/** Último erro de cada tema (epoch ms), para priorizar a aula do dia. */
+data class ErroPorTemaRow(
+    val tema: String,
+    val area: String,
+    val ultimoErro: Long,
+)
+
 /** Acertos e erros de uma área, para a previsão de nota. */
 data class AcertoAreaRow(
     val area: String,
