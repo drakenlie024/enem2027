@@ -440,6 +440,10 @@ fun EnemApp() {
                     treinoQuestoes = estado.treinoQuestoes,
                     aoAbrirTreino = vm::abrirTreino,
                     aoFecharTreino = vm::fecharTreino,
+                    aoAbrirAula = { id ->
+                        vm.abrirPacoteAula(id)
+                        navController.navigate("aulapacote")
+                    },
                     buscaTexto = estado.buscaTexto,
                     resultadoBusca = estado.resultadoBusca,
                     aoBuscar = vm::buscarQuestoes,

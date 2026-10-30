@@ -72,6 +72,7 @@ fun TelaRevisao(
     treinoQuestoes: List<Question> = emptyList(),
     aoAbrirTreino: (com.franferreira.enem2027.data.model.TemaTreino) -> Unit = {},
     aoFecharTreino: () -> Unit = {},
+    aoAbrirAula: (String) -> Unit = {},
     buscaTexto: String = "",
     resultadoBusca: List<Question> = emptyList(),
     aoBuscar: (String) -> Unit = {},
@@ -242,7 +243,7 @@ fun TelaRevisao(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
                     items(treinos, key = { it.tema + it.area }) { t ->
-                        CartaoTreino(t, aoClicar = { aoAbrirTreino(t) })
+                        CartaoTreino(t, aoClicar = { aoAbrirTreino(t) }, aoAbrirAula = aoAbrirAula)
                     }
                 }
             }
@@ -255,8 +256,13 @@ fun TelaRevisao(
 private fun CartaoTreino(
     t: com.franferreira.enem2027.data.model.TemaTreino,
     aoClicar: () -> Unit,
+    aoAbrirAula: (String) -> Unit = {},
 ) {
     val cor = corDaArea(t.area)
+    val app = androidx.compose.ui.platform.LocalContext.current
+    val aula = remember(t.tema) {
+        com.franferreira.enem2027.data.repo.AulasPorTema.aulasDoTema(app, t.tema).firstOrNull()
+    }
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -303,18 +309,38 @@ private fun CartaoTreino(
             color = TextMuted,
         )
         Spacer(Modifier.height(10.dp))
-        Box(
-            modifier = Modifier
-                .clip(RoundedCornerShape(999.dp))
-                .background(cor)
-                .clickable { aoClicar() }
-                .padding(horizontal = 20.dp, vertical = 8.dp),
-        ) {
-            Text(
-                text = "Treinar",
-                style = MaterialTheme.typography.labelMedium,
-                color = PaletaClaro.texto,
-            )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(cor)
+                    .clickable { aoClicar() }
+                    .padding(horizontal = 20.dp, vertical = 8.dp),
+            ) {
+                Text(
+                    text = "Treinar",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = PaletaClaro.texto,
+                )
+            }
+            // "O que estudar agora" tem duas metades: questão e aula. Antes a
+            // tela só mandava treinar, e a aula ficava escondida na aba Aulas.
+            aula?.let { sugerida ->
+                Spacer(Modifier.width(8.dp))
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(999.dp))
+                        .background(SurfaceRaised)
+                        .clickable { aoAbrirAula(sugerida.id) }
+                        .padding(horizontal = 14.dp, vertical = 8.dp),
+                ) {
+                    Text(
+                        text = "Ver aula",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = TextPrimary,
+                    )
+                }
+            }
         }
     }
 }
