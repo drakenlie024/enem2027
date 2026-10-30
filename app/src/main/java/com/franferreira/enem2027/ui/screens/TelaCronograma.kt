@@ -56,6 +56,7 @@ fun TelaCronograma(
     semanas: List<SemanaCronograma>,
     cobertura: Map<String, Pair<Int, Int>>,
     aoVoltar: () -> Unit,
+    aoAbrirPreferencias: () -> Unit = {},
 ) {
     val atual = semanas.firstOrNull { it.atual }
     val indiceAtual = semanas.indexOfFirst { it.atual }
@@ -121,6 +122,9 @@ fun TelaCronograma(
         ) {
             item {
                 Cobertura(cobertura)
+                Spacer(Modifier.height(10.dp))
+                // O plano é montado com o que ela gosta: o caminho para mudar isso fica aqui.
+                CartaoPreferencias(aoAbrir = aoAbrirPreferencias)
                 Spacer(Modifier.height(6.dp))
             }
             // Mostra da semana anterior até três à frente: a lista inteira de
@@ -130,6 +134,35 @@ fun TelaCronograma(
                 CartaoSemana(semana)
             }
         }
+    }
+}
+
+@Composable
+private fun CartaoPreferencias(aoAbrir: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .cartaoRabisco(18.dp)
+            .clickable { aoAbrir() }
+            .padding(14.dp),
+    ) {
+        Text(
+            text = "PREFERÊNCIAS",
+            style = MaterialTheme.typography.labelSmall,
+            color = Primary,
+        )
+        Spacer(Modifier.height(6.dp))
+        Text(
+            text = "Marque o que você mais e menos gosta",
+            style = MaterialTheme.typography.bodyMedium,
+            color = TextPrimary,
+        )
+        Spacer(Modifier.height(2.dp))
+        Text(
+            text = "Só muda a ordem: nada some do plano.",
+            style = MaterialTheme.typography.bodySmall,
+            color = TextMuted,
+        )
     }
 }
 

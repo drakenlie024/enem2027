@@ -76,6 +76,7 @@ import com.franferreira.enem2027.ui.screens.TelaAulas
 import com.franferreira.enem2027.ui.screens.TelaAulasDeArea
 import com.franferreira.enem2027.ui.screens.TelaCaderno
 import com.franferreira.enem2027.ui.screens.TelaCronograma
+import com.franferreira.enem2027.ui.screens.TelaPreferencias
 import com.franferreira.enem2027.ui.screens.TelaDiagnostico
 import com.franferreira.enem2027.ui.screens.TelaOnboarding
 import com.franferreira.enem2027.ui.screens.TelaResultadoDiagnostico
@@ -312,6 +313,10 @@ fun EnemApp() {
                     aoMudarMetaSemanal = vm::ajustarMetaSemanal,
                     aoFazerDiagnostico = vm::iniciarDiagnostico,
                     aoAbrirCronograma = { navController.navigate("cronograma") },
+                    aoAbrirAula = { id ->
+                        vm.abrirPacoteAula(id)
+                        navController.navigate("aulapacote")
+                    },
                 )
             }
 
@@ -519,6 +524,16 @@ fun EnemApp() {
                 TelaCronograma(
                     semanas = estado.cronograma,
                     cobertura = estado.coberturaTemas,
+                    aoVoltar = { navController.popBackStack() },
+                    aoAbrirPreferencias = { navController.navigate("preferencias") },
+                )
+            }
+
+            composable("preferencias") {
+                TelaPreferencias(
+                    temas = estado.temasPlano,
+                    preferencias = estado.preferencias,
+                    aoMudar = { tema, nivel -> vm.definirPreferenciaTema(tema.area, tema.tema, nivel) },
                     aoVoltar = { navController.popBackStack() },
                 )
             }

@@ -52,6 +52,7 @@ object Cronograma {
         semanas: Int,
         inicio: LocalDate,
         hoje: LocalDate,
+        pesos: Map<String, Double> = emptyMap(),
     ): List<SemanaCronograma> {
         if (temas.isEmpty()) return emptyList()
         val pendentes = temas.filter { !it.coberto }
@@ -59,7 +60,7 @@ object Cronograma {
         // Sobra espaço para revisar o que já foi visto antes de avançar.
         val porSemana = maxOf(1, kotlin.math.ceil(pendentes.size.toDouble() / semanas).toInt())
 
-        val fila = alternarAreas(pendentes).toMutableList()
+        val fila = alternarAreas(pendentes, pesos).toMutableList()
         val saida = mutableListOf<SemanaCronograma>()
         var revisao = mutableListOf<TemaDaSemana>()
         for (n in 0 until semanas) {
@@ -92,9 +93,23 @@ object Cronograma {
     fun cobertura(temas: List<TemaDaSemana>): Map<String, Pair<Int, Int>> =
         temas.groupBy { it.area }.mapValues { (_, lista) -> lista.count { it.coberto } to lista.size }
 
-    /** Uma questão de cada área por rodada: a semana fica variada. */
-    private fun alternarAreas(temas: List<TemaDaSemana>): List<TemaDaSemana> {
-        val porArea = temas.groupBy { it.area }.values.map { it.toMutableList() }.toMutableList()
+    /**
+     * Uma questão de cada área por rodada: a semana fica variada.
+     *
+     * Dentro de cada área, o tema que a aluna marcou como "mais" vem antes e o
+     * "menos" vai para o fim. Ele continua no plano; só é visto depois.
+     */
+    private fun alternarAreas(
+        temas: List<TemaDaSemana>,
+        pesos: Map<String, Double>,
+    ): List<TemaDaSemana> {
+        val porArea = temas.groupBy { it.area }
+            .values
+            .map { lista ->
+                lista.sortedByDescending { pesos[Diagnostico.chaveTema(it.area, it.tema)] ?: 1.0 }
+                    .toMutableList()
+            }
+            .toMutableList()
         val saida = mutableListOf<TemaDaSemana>()
         while (porArea.isNotEmpty()) {
             val iterador = porArea.iterator()

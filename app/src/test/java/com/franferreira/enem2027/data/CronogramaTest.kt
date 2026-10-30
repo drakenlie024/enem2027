@@ -1,6 +1,7 @@
 package com.franferreira.enem2027.data
 
 import com.franferreira.enem2027.data.model.Cronograma
+import com.franferreira.enem2027.data.model.Diagnostico
 import com.franferreira.enem2027.data.model.TemaDaSemana
 import java.time.LocalDate
 import org.junit.Assert.assertEquals
@@ -73,6 +74,20 @@ class CronogramaTest {
 
         assertTrue(semanas.take(3).all { it.atrasada })
         assertTrue(semanas.last().atual)
+    }
+
+    @Test
+    fun `tema marcado como mais vem antes e menos vai para o fim da area`() {
+        val area = "ciencias-natureza"
+        val temas = listOf(tema("a", area), tema("b", area), tema("c", area))
+        val pesos = mapOf(
+            Diagnostico.chaveTema(area, "c") to 2.0,
+            Diagnostico.chaveTema(area, "a") to 0.5,
+        )
+
+        val semanas = Cronograma.montar(temas, semanas = 3, inicio = hoje, hoje = hoje, pesos = pesos)
+
+        assertEquals(listOf("c", "b", "a"), semanas.flatMap { it.temas }.map { it.tema })
     }
 
     @Test

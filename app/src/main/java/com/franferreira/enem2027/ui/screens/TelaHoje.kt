@@ -108,6 +108,7 @@ fun TelaHoje(
     aoMudarMetaSemanal: (Int) -> Unit = {},
     aoFazerDiagnostico: () -> Unit = {},
     aoAbrirCronograma: () -> Unit = {},
+    aoAbrirAula: (String) -> Unit = {},
 ) {
     // Tudo num único scroll: antes o cabeçalho (anel + estatísticas) ficava
     // fixo no topo e a lista de trilhas abaixo, dividindo a tela. Em tela
@@ -215,6 +216,15 @@ fun TelaHoje(
             )
 
             Spacer(Modifier.height(14.dp))
+
+            // A questão está na flor; a aula do dia é a outra metade do estudo.
+            estado.aulaDoDia?.let { aula ->
+                CartaoAulaDoDia(
+                    aula = aula,
+                    aoAssistir = { aoAbrirAula(aula.id) },
+                )
+                Spacer(Modifier.height(14.dp))
+            }
 
             // Revisão do SRS: virou cartão na Hoje em vez de aba própria.
             val vencendo = estado.fila.vencendo.size
@@ -526,6 +536,56 @@ fun TelaHoje(
                     )
                 }
             }
+        }
+    }
+}
+
+/**
+ * A aula do dia: a próxima aula ainda não assistida dos temas da semana.
+ *
+ * Usa o mesmo formato de cartão da revisão, para a Hoje não virar outro tipo de tela.
+ */
+@Composable
+private fun CartaoAulaDoDia(
+    aula: com.franferreira.enem2027.data.model.AulaSugerida,
+    aoAssistir: () -> Unit,
+) {
+    val cor = corDaArea(aula.area)
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .cartaoRabisco(18.dp)
+            .padding(14.dp),
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = "AULA DO DIA",
+                style = MaterialTheme.typography.labelSmall,
+                color = cor,
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = aula.titulo,
+                style = MaterialTheme.typography.titleSmall,
+                color = TextPrimary,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+            )
+        }
+        Spacer(Modifier.width(10.dp))
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(999.dp))
+                .background(cor)
+                .clickable { aoAssistir() }
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+        ) {
+            Text(
+                text = "Assistir",
+                style = MaterialTheme.typography.labelMedium,
+                color = PaletaClaro.texto,
+            )
         }
     }
 }

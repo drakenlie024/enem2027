@@ -107,6 +107,12 @@ data class EstadoHoje(
     val cronograma: List<com.franferreira.enem2027.data.model.SemanaCronograma> = emptyList(),
     /** Temas cobertos por área: area -> (cobertos, total). */
     val coberturaTemas: Map<String, Pair<Int, Int>> = emptyMap(),
+    /** Todos os temas do acervo, para a tela de preferências. */
+    val temasPlano: List<com.franferreira.enem2027.data.model.TemaDaSemana> = emptyList(),
+    /** Preferência de cada tema (chave área|tema); tema fora do mapa é Normal. */
+    val preferencias: Map<String, com.franferreira.enem2027.data.repo.PreferenciasEstudo.Nivel> = emptyMap(),
+    /** A aula que a Hoje sugere agora (null = nenhuma aula pendente nos temas da semana). */
+    val aulaDoDia: com.franferreira.enem2027.data.model.AulaSugerida? = null,
     /** Simulado encerrado, guardado para a revisão com gabarito. */
     val simuladoRevisao: SimuladoMontado? = null,
     /** Respostas dadas no simulado revisado (id, escolhida, gabarito, ...). */
@@ -1330,28 +1336,80 @@ class ViewModelPrincipal(
      */
     fun carregarCronograma() {
         viewModelScope.launch {
+            val app = getApplication<Application>()
             val fracos = prefsLocais().getStringSet("diag_fracos", emptySet())?.toSet() ?: emptySet()
             val temas = runCatching { repo.temasDoAcervo(fracos) }.getOrDefault(emptyList())
             if (temas.isEmpty()) {
-                _estado.value = _estado.value.copy(cronograma = emptyList(), coberturaTemas = emptyMap())
+                _estado.value = _estado.value.copy(
+                    cronograma = emptyList(),
+                    coberturaTemas = emptyMap(),
+                    temasPlano = emptyList(),
+                    aulaDoDia = null,
+                )
                 return@launch
             }
             val hoje = java.time.LocalDate.now()
             val prova = java.time.LocalDate.of(_estado.value.anoProva ?: 2027, 11, 1)
             val semanas = Cronograma.semanasAte(hoje, prova)
-            // O plano começa na semana corrente, não na semana zero de janeiro:
-            // o que já passou não precisa aparecer, e o atraso vira tema desta.
-            val plano = Cronograma.montar(
-                temas = temas,
-                semanas = semanas,
-                inicio = hoje.minusDays((hoje.dayOfWeek.value - 1).toLong()),
-                hoje = hoje,
-            )
+            // Assistir a aula também conta como ter visto o tema. Lê o JSON das
+            // aulas e as prefs, então sai da thread principal.
+            val (cobertos, plano, aula) = kotlinx.coroutines.withContext(Dispatchers.IO) {
+                val comAula = temas.map { t ->
+                    val assistiu = !t.coberto && com.franferreira.enem2027.data.repo.AulasPorTema
+                        .aulasDoTema(app, t.tema)
+                        .any { com.franferreira.enem2027.data.repo.AulasAssistidas.foiAssistida(app, it.id) }
+                    if (assistiu) t.copy(coberto = true) else t
+                }
+                // O plano começa na semana corrente, não na semana zero de janeiro:
+                // o que já passou não precisa aparecer, e o atraso vira tema desta.
+                val montado = Cronograma.montar(
+                    temas = comAula,
+                    semanas = semanas,
+                    inicio = hoje.minusDays((hoje.dayOfWeek.value - 1).toLong()),
+                    hoje = hoje,
+                    pesos = com.franferreira.enem2027.data.repo.PreferenciasEstudo.pesos(app),
+                )
+                Triple(comAula, montado, aulaDoDia(app, montado))
+            }
             _estado.value = _estado.value.copy(
                 cronograma = plano,
-                coberturaTemas = Cronograma.cobertura(temas),
+                coberturaTemas = Cronograma.cobertura(cobertos),
+                temasPlano = cobertos,
+                aulaDoDia = aula,
+                preferencias = cobertos.associate {
+                    com.franferreira.enem2027.data.model.Diagnostico.chaveTema(it.area, it.tema) to
+                        com.franferreira.enem2027.data.repo.PreferenciasEstudo.nivel(app, it.area, it.tema)
+                },
             )
         }
+    }
+
+    /**
+     * A aula da Hoje: a primeira ainda não assistida dos temas da semana atual,
+     * na ordem do plano (que já leva em conta "mais" e "menos"). Se a semana
+     * não tiver aula pendente, cai nos temas de revisão.
+     */
+    private fun aulaDoDia(
+        app: Application,
+        plano: List<com.franferreira.enem2027.data.model.SemanaCronograma>,
+    ): com.franferreira.enem2027.data.model.AulaSugerida? {
+        val semana = plano.firstOrNull { it.atual } ?: return null
+        for (tema in (semana.temas + semana.revisao).map { it.tema }) {
+            val aula = com.franferreira.enem2027.data.repo.AulasPorTema.aulasDoTema(app, tema)
+                .firstOrNull { !com.franferreira.enem2027.data.repo.AulasAssistidas.foiAssistida(app, it.id) }
+            if (aula != null) return aula
+        }
+        return null
+    }
+
+    /** Preferência da aluna para um tema ("mais", "normal" ou "menos"); refaz o plano. */
+    fun definirPreferenciaTema(
+        area: String,
+        tema: String,
+        nivel: com.franferreira.enem2027.data.repo.PreferenciasEstudo.Nivel,
+    ) {
+        com.franferreira.enem2027.data.repo.PreferenciasEstudo.definir(getApplication(), area, tema, nivel)
+        carregarCronograma()
     }
 
     /** Busca livre no acervo do aparelho (enunciado, contexto e tema). */
@@ -1616,8 +1674,10 @@ class ViewModelPrincipal(
         }
     }
 
+    /** Ao sair da aula, a Hoje e o cronograma já contam o que foi assistido. */
     fun fecharAula() {
         savedStateHandle.remove<String>("pacote_aula_id")
         _estado.value = _estado.value.copy(pacoteAula = null)
+        carregarCronograma()
     }
 }
