@@ -295,7 +295,6 @@ class Repositorio(private val context: Context) {
             // Tema fraco do diagnóstico entra mesmo dentro do intervalo.
             val fraco = Diagnostico.chaveTema(area, tema) in fracos
             val prioritario = tema in prioritarios
-            if (r.vistas > 0 && vencido < 0 && !fraco && !prioritario) return@mapNotNull null
             com.franferreira.enem2027.data.model.TemaTreino(
                 tema = tema,
                 area = area,
@@ -310,6 +309,9 @@ class Repositorio(private val context: Context) {
                 novo = r.vistas == 0,
             )
         }.sortedWith(
+            // Vencido primeiro; dentro do mesmo atraso, o mais fraco. Tema que
+            // ainda não venceu não é descartado: fica no fim da fila, para a
+            // tela nunca dizer "nada para estudar" com o acervo cheio.
             compareByDescending<com.franferreira.enem2027.data.model.TemaTreino> {
                 Diagnostico.chaveTema(it.area, it.tema) in fracos
             }

@@ -345,40 +345,10 @@ fun TelaHoje(
                     }
                 }
                 Spacer(Modifier.height(14.dp))
-            } else if (vencendo + novas > 0) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .cartaoRabisco(18.dp, torto = -0.6f)
-                        .clickable { aoRevisar() }
-                        .padding(14.dp),
-                ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Column(Modifier.weight(1f)) {
-                            Text(
-                                text = "Revisão",
-                                style = MaterialTheme.typography.titleSmall,
-                                color = TextPrimary,
-                            )
-                            Text(
-                                text = buildString {
-                                    append("$vencendo vencendo")
-                                    if (novas > 0) append(" · $novas novas")
-                                },
-                                style = MaterialTheme.typography.bodySmall,
-                                color = TextMuted,
-                            )
-                        }
-                        Text(
-                            text = "Revisar",
-                            style = MaterialTheme.typography.labelLarge,
-                            color = Primary,
-                        )
-                    }
-                }
-                Spacer(Modifier.height(14.dp))
             }
-
+            // O cartão "N vencendo · M novas" saiu: ele vinha do SRS por
+            // questão, mas a tela de revisão agora trabalha por tema — a pessoa
+            // via "50 para revisar", clicava e caía numa lista vazia.
 
             // ---- estatísticas rápidas
             Box(
