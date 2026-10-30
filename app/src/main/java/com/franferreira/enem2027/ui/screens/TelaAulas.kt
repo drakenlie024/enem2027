@@ -905,7 +905,11 @@ private fun CartaoAula(aula: AulaResumo, aoClicar: () -> Unit) {
                 .size(width = 74.dp, height = 44.dp)
                 .clip(RoundedCornerShape(12.dp))
                 .background(SurfaceRaised),
+            contentAlignment = Alignment.Center,
         ) {
+            // A flor fica atrás: se a miniatura falhar (sem rede, vídeo
+            // privado), o cartão mostra o desenho em vez de um retângulo vazio.
+            com.franferreira.enem2027.ui.components.Florzinha(tamanho = 20.dp)
             AsyncImage(
                 model = "https://i.ytimg.com/vi/${aula.id}/mqdefault.jpg",
                 contentDescription = null,
