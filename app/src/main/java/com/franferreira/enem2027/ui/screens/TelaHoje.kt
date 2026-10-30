@@ -175,12 +175,7 @@ fun TelaHoje(
                 aoMudarMeta = aoMudarMetaSemanal,
             )
 
-            CartaoEstudarHoje(
-                treinos = estado.treinos,
-                aoEstudar = aoRevisar,
-                aoFoco = aoIniciarFoco,
-                focoAtivo = estado.focoAtivo,
-            )
+
 
 
             if (estado.esperandoRede > 0) {
@@ -207,6 +202,8 @@ fun TelaHoje(
 
             CartaoMeta(
                 estado = estado,
+                treinos = estado.treinos,
+                aoEstudar = aoRevisar,
                 aoJogar = {
                     val trilha = estado.trilhaParaJogar
                     val etapa = trilha?.etapaAtual
@@ -544,6 +541,8 @@ private fun CartaoMeta(
     estado: EstadoHoje,
     aoJogar: () -> Unit,
     aoAjustarMeta: (Int) -> Unit,
+    aoEstudar: () -> Unit = {},
+    treinos: List<com.franferreira.enem2027.data.model.TemaTreino> = emptyList(),
 ) {
     val meta = estado.metaDiaria
     // O anel mostra o que foi FEITO hoje. Antes usava o saldo do SRS (o que
@@ -575,9 +574,11 @@ private fun CartaoMeta(
             )
             Spacer(Modifier.height(12.dp))
 
-            // anel
+            // A flor é o botão: tocar nela começa a estudar.
             Box(
-                modifier = Modifier.size(132.dp),
+                modifier = Modifier
+                    .size(132.dp)
+                    .clickable { aoEstudar() },
                 contentAlignment = Alignment.Center,
             ) {
                 Canvas(modifier = Modifier.fillMaxSize()) {
@@ -665,6 +666,32 @@ private fun CartaoMeta(
                     style = MaterialTheme.typography.labelSmall,
                     color = TextMuted,
                 )
+            }
+
+            if (treinos.isNotEmpty()) {
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    text = treinos.take(2).joinToString(" e ") { it.tema },
+                    style = MaterialTheme.typography.bodySmall,
+                    color = TextMuted,
+                    textAlign = TextAlign.Center,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Spacer(Modifier.height(8.dp))
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(999.dp))
+                        .background(cor)
+                        .clickable { aoEstudar() }
+                        .padding(horizontal = 24.dp, vertical = 10.dp),
+                ) {
+                    Text(
+                        text = "Estudar agora",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = PaletaClaro.texto,
+                    )
+                }
             }
 
             Spacer(Modifier.height(14.dp))
@@ -1022,76 +1049,3 @@ private fun SemanaDeEstudo(estado: EstadoHoje, aoMudarMeta: (Int) -> Unit) {
  * o lugar da ação que a pessoa abre o app para fazer. O foco virou o botão
  * secundário.
  */
-@Composable
-private fun CartaoEstudarHoje(
-    treinos: List<com.franferreira.enem2027.data.model.TemaTreino>,
-    aoEstudar: () -> Unit,
-    aoFoco: () -> Unit,
-    focoAtivo: Boolean,
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .cartaoRabisco(18.dp, sombra = true)
-            .padding(14.dp),
-    ) {
-        Text(
-            text = "ESTUDAR HOJE",
-            style = MaterialTheme.typography.labelSmall,
-            color = Primary,
-        )
-        Spacer(Modifier.height(4.dp))
-        Text(
-            text = if (treinos.isEmpty()) {
-                "Nenhum tema pendente"
-            } else {
-                treinos.take(2).joinToString(" e ") { it.tema }
-            },
-            style = MaterialTheme.typography.titleMedium,
-            color = TextPrimary,
-            maxLines = 2,
-            overflow = TextOverflow.Ellipsis,
-        )
-        Spacer(Modifier.height(4.dp))
-        Text(
-            text = if (treinos.isEmpty()) {
-                "Aproveite para assistir uma aula do cronograma."
-            } else {
-                val questoes = treinos.sumOf { it.disponiveis }
-                "$questoes questões disponíveis em ${treinos.size} tema(s)"
-            },
-            style = MaterialTheme.typography.bodySmall,
-            color = TextMuted,
-        )
-        Spacer(Modifier.height(12.dp))
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(999.dp))
-                    .background(Primary)
-                    .clickable { aoEstudar() }
-                    .padding(horizontal = 20.dp, vertical = 10.dp),
-            ) {
-                Text(
-                    text = "Começar",
-                    style = MaterialTheme.typography.labelLarge,
-                    color = PaletaClaro.texto,
-                )
-            }
-            Spacer(Modifier.width(8.dp))
-            Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(999.dp))
-                    .background(SurfaceRaised)
-                    .clickable { aoFoco() }
-                    .padding(horizontal = 14.dp, vertical = 10.dp),
-            ) {
-                Text(
-                    text = if (focoAtivo) "Foco ativo" else "25 min sem celular",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = if (focoAtivo) Primary else TextMuted,
-                )
-            }
-        }
-    }
-}
