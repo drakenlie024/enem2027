@@ -29,6 +29,7 @@ object PreferenciasEstudo {
     private const val ARQUIVO = "preferencias"
     private const val CHAVE_MAIS = "temas_mais"
     private const val CHAVE_MENOS = "temas_menos"
+    private const val CHAVE_PERGUNTOU = "perguntou"
 
     private fun prefs(context: Context) =
         context.getSharedPreferences(ARQUIVO, Context.MODE_PRIVATE)
@@ -59,6 +60,16 @@ object PreferenciasEstudo {
             .putStringSet(CHAVE_MAIS, mais)
             .putStringSet(CHAVE_MENOS, menos)
             .apply()
+    }
+
+    /**
+     * Se a pergunta sobre preferências já foi tratada (respondida ou dispensada).
+     * Quem termina o onboarding novo já nasce com a marca; contas antigas não.
+     */
+    fun jaPerguntou(context: Context): Boolean = prefs(context).getBoolean(CHAVE_PERGUNTOU, false)
+
+    fun marcarPerguntado(context: Context) {
+        prefs(context).edit().putBoolean(CHAVE_PERGUNTOU, true).apply()
     }
 
     /** Peso de cada tema marcado (os temas em Normal não entram no mapa). */

@@ -25,7 +25,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -109,7 +111,38 @@ fun TelaHoje(
     aoFazerDiagnostico: () -> Unit = {},
     aoAbrirCronograma: () -> Unit = {},
     aoAbrirAula: (String) -> Unit = {},
+    aoAbrirPreferencias: () -> Unit = {},
+    aoFecharPerguntaPreferencias: () -> Unit = {},
 ) {
+    if (estado.pedirPreferencias) {
+        // Conta antiga, sem preferência: pergunta uma vez. Responder ou dispensar
+        // marca como feito, então não volta.
+        AlertDialog(
+            onDismissRequest = aoFecharPerguntaPreferencias,
+            containerColor = Surface,
+            titleContentColor = TextPrimary,
+            textContentColor = TextMuted,
+            title = { Text("Quais aulas você prefere?") },
+            text = {
+                Text(
+                    "Marque os temas que você mais e menos gosta. Isso muda a ordem do cronograma e da aula do dia.",
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    aoFecharPerguntaPreferencias()
+                    aoAbrirPreferencias()
+                }) {
+                    Text("Preencher", color = Primary)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = aoFecharPerguntaPreferencias) {
+                    Text("Depois", color = TextMuted)
+                }
+            },
+        )
+    }
     // Tudo num único scroll: antes o cabeçalho (anel + estatísticas) ficava
     // fixo no topo e a lista de trilhas abaixo, dividindo a tela. Em tela
     // pequena o cabeçalho comia o espaço e a lista ficava espremida, sem

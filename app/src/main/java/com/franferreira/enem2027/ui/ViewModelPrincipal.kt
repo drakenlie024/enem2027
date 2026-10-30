@@ -111,6 +111,8 @@ data class EstadoHoje(
     val temasPlano: List<com.franferreira.enem2027.data.model.TemaDaSemana> = emptyList(),
     /** Preferência de cada tema (chave área|tema); tema fora do mapa é Normal. */
     val preferencias: Map<String, com.franferreira.enem2027.data.repo.PreferenciasEstudo.Nivel> = emptyMap(),
+    /** Conta antiga sem nenhuma preferência: a Hoje pergunta uma vez. */
+    val pedirPreferencias: Boolean = false,
     /** A aula que a Hoje sugere agora (null = nenhuma aula pendente nos temas da semana). */
     val aulaDoDia: com.franferreira.enem2027.data.model.AulaSugerida? = null,
     /** Simulado encerrado, guardado para a revisão com gabarito. */
@@ -480,6 +482,8 @@ class ViewModelPrincipal(
             return
         }
         prefsLocais().edit().putBoolean("onboarding_feito", true).apply()
+        // Conta nova já escolheu o caminho no onboarding: não precisa do popup.
+        com.franferreira.enem2027.data.repo.PreferenciasEstudo.marcarPerguntado(getApplication())
         _estado.value = _estado.value.copy(onboardingEtapa = null)
         iniciarDiagnostico()
     }
@@ -1381,6 +1385,8 @@ class ViewModelPrincipal(
                     com.franferreira.enem2027.data.model.Diagnostico.chaveTema(it.area, it.tema) to
                         com.franferreira.enem2027.data.repo.PreferenciasEstudo.nivel(app, it.area, it.tema)
                 },
+                pedirPreferencias = !com.franferreira.enem2027.data.repo.PreferenciasEstudo.jaPerguntou(app) &&
+                    com.franferreira.enem2027.data.repo.PreferenciasEstudo.pesos(app).isEmpty(),
             )
         }
     }
@@ -1408,6 +1414,12 @@ class ViewModelPrincipal(
             if (aula != null) return aula
         }
         return null
+    }
+
+    /** A pergunta das preferências foi respondida ou dispensada: não volta mais. */
+    fun fecharPerguntaPreferencias() {
+        com.franferreira.enem2027.data.repo.PreferenciasEstudo.marcarPerguntado(getApplication())
+        _estado.value = _estado.value.copy(pedirPreferencias = false)
     }
 
     /** Preferência da aluna para um tema ("mais", "normal" ou "menos"); refaz o plano. */

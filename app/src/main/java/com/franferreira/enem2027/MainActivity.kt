@@ -317,6 +317,8 @@ fun EnemApp() {
                         vm.abrirPacoteAula(id)
                         navController.navigate("aulapacote")
                     },
+                    aoAbrirPreferencias = { navController.navigate("preferencias") },
+                    aoFecharPerguntaPreferencias = vm::fecharPerguntaPreferencias,
                 )
             }
 
