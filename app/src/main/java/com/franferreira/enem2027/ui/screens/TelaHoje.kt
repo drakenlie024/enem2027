@@ -196,44 +196,7 @@ fun TelaHoje(
 
             Spacer(Modifier.height(16.dp))
 
-            // ---- a meta do dia: um anel e um botão
-            PlanoDeHoje(
-                estado = estado,
-                aoRevisar = aoRevisar,
-                aoJogar = { trilha, etapa -> aoJogarEtapa(trilha, etapa) },
-                aoAulas = aoAulas,
-            )
-
-            SemanaDeEstudo(
-                estado = estado,
-                aoMudarMeta = aoMudarMetaSemanal,
-            )
-
-
-
-
-            if (estado.esperandoRede > 0) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(14.dp))
-                        .background(Warning.copy(alpha = 0.12f))
-                        .padding(horizontal = 12.dp, vertical = 9.dp),
-                ) {
-                    Text(
-                        text = if (estado.esperandoRede == 1) {
-                            "1 resposta salva no aparelho, esperando rede para subir"
-                        } else {
-                            "${estado.esperandoRede} respostas salvas no aparelho, esperando rede"
-                        },
-                        style = MaterialTheme.typography.bodySmall,
-                        color = Warning,
-                    )
-                }
-                Spacer(Modifier.height(10.dp))
-            }
-
-
+            // ---- a flor: a decisão do dia fica no topo da tela
             CartaoMeta(
                 estado = estado,
                 treinos = estado.treinos,
@@ -257,6 +220,27 @@ fun TelaHoje(
                     aoAssistir = { aoAbrirAula(aula.id) },
                 )
                 Spacer(Modifier.height(14.dp))
+            }
+
+            if (estado.esperandoRede > 0) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(14.dp))
+                        .background(Warning.copy(alpha = 0.12f))
+                        .padding(horizontal = 12.dp, vertical = 9.dp),
+                ) {
+                    Text(
+                        text = if (estado.esperandoRede == 1) {
+                            "1 resposta salva no aparelho, esperando rede para subir"
+                        } else {
+                            "${estado.esperandoRede} respostas salvas no aparelho, esperando rede"
+                        },
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Warning,
+                    )
+                }
+                Spacer(Modifier.height(10.dp))
             }
 
             // Revisão do SRS: virou cartão na Hoje em vez de aba própria.
@@ -392,7 +376,14 @@ fun TelaHoje(
             // questão, mas a tela de revisão agora trabalha por tema — a pessoa
             // via "50 para revisar", clicava e caía numa lista vazia.
 
-            // ---- estatísticas rápidas
+            // ---- semana e estatísticas: consulta, ficam no fim
+            SemanaDeEstudo(
+                estado = estado,
+                aoMudarMeta = aoMudarMetaSemanal,
+            )
+
+            Spacer(Modifier.height(12.dp))
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -949,126 +940,6 @@ private fun BotaoAno(ano: Int, carregando: Boolean, aoClicar: () -> Unit) {
             color = if (carregando) TextMuted else Background,
         )
     }
-}
-
-/** Uma ação do plano do dia. */
-private data class AcaoDoDia(
-    val titulo: String,
-    val detalhe: String,
-    val cor: androidx.compose.ui.graphics.Color,
-    val aoClicar: () -> Unit,
-)
-
-/**
- * Plano de hoje: as três coisas para fazer, na ordem, sem a pessoa ter que
- * decidir. É a resposta para "não sei o que estudar".
- */
-@Composable
-private fun PlanoDeHoje(
-    estado: EstadoHoje,
-    aoRevisar: () -> Unit,
-    aoJogar: (Trilha, Etapa) -> Unit,
-    aoAulas: () -> Unit,
-) {
-    val vencendo = estado.fila.vencendo.size
-    val trilha = estado.trilhaParaJogar
-    val etapa = trilha?.etapaAtual
-
-    val acoes = buildList {
-        if (vencendo > 0) {
-            add(AcaoDoDia("Revisar", "$vencendo questões vencendo", Primary, aoRevisar))
-        }
-        if (trilha != null && etapa != null) {
-            add(
-                AcaoDoDia(
-                    titulo = "Continuar ${trilha.nome}",
-                    detalhe = "etapa ${etapa.indice + 1} · ${etapa.questoes.size} questões",
-                    cor = corDaArea(trilha.area),
-                ) { aoJogar(trilha, etapa) }
-            )
-        }
-        // Redação não é tarefa diária. O terceiro item recomenda duas
-        // matérias para assistir aula — as que estão com pior taxa.
-        val fracas = estado.progresso.porArea
-            .filter { it.respondidas >= 5 }
-            .sortedBy { it.taxa }
-            .take(2)
-            .map { nomeDaArea(it.area) }
-        val foco = when (fracas.size) {
-            0 -> "comece pelas aulas da sua trilha"
-            1 -> "foco em ${fracas[0]}"
-            else -> "foco em ${fracas[0]} e ${fracas[1]}"
-        }
-        add(AcaoDoDia("Assistir aulas", foco, Secondary, aoAulas))
-    }.take(3)
-
-    if (acoes.isEmpty()) return
-
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .cartaoRabisco(22.dp)
-            .padding(horizontal = 14.dp, vertical = 12.dp),
-    ) {
-        Text(
-            text = "PLANO DE HOJE",
-            style = MaterialTheme.typography.labelSmall,
-            color = TextMuted,
-        )
-        Spacer(Modifier.height(4.dp))
-        acoes.forEachIndexed { indice, acao ->
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
-                    .clickable { acao.aoClicar() }
-                    .padding(vertical = 9.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(26.dp)
-                        .clip(CircleShape)
-                        .background(acao.cor.copy(alpha = 0.18f)),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text(
-                        text = "${indice + 1}",
-                        style = MaterialTheme.typography.labelMedium,
-                        color = acao.cor,
-                    )
-                }
-                Spacer(Modifier.width(11.dp))
-                Column(Modifier.weight(1f)) {
-                    Text(
-                        text = acao.titulo,
-                        style = MaterialTheme.typography.titleSmall,
-                        color = TextPrimary,
-                    )
-                    Text(
-                        text = acao.detalhe,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = TextMuted,
-                    )
-                }
-                Text(
-                    text = "›",
-                    style = MaterialTheme.typography.titleMedium,
-                    color = TextMuted,
-                )
-            }
-        }
-    }
-}
-
-/** Nome legível da área a partir do slug que o servidor manda. */
-private fun nomeDaArea(area: String): String = when (area) {
-    "matematica" -> "Matemática"
-    "linguagens" -> "Linguagens"
-    "ciencias-humanas" -> "Humanas"
-    "ciencias-natureza" -> "Natureza"
-    "" -> "aulas"
-    else -> area.replaceFirstChar { it.uppercase() }
 }
 
 /**
