@@ -111,6 +111,8 @@ data class EstadoHoje(
     val temasPlano: List<com.franferreira.enem2027.data.model.TemaDaSemana> = emptyList(),
     /** Preferência de cada tema (chave área|tema); tema fora do mapa é Normal. */
     val preferencias: Map<String, com.franferreira.enem2027.data.repo.PreferenciasEstudo.Nivel> = emptyMap(),
+    /** Preferência de cada matéria (biologia, historia...); fora do mapa é Normal. */
+    val preferenciasMaterias: Map<String, com.franferreira.enem2027.data.repo.PreferenciasEstudo.Nivel> = emptyMap(),
     /** Conta antiga sem nenhuma preferência: a Hoje pergunta uma vez. */
     val pedirPreferencias: Boolean = false,
     /** Versão nova do app encontrada no manifesto (null = nada a atualizar). */
@@ -1377,7 +1379,10 @@ class ViewModelPrincipal(
                     semanas = semanas,
                     inicio = hoje.minusDays((hoje.dayOfWeek.value - 1).toLong()),
                     hoje = hoje,
-                    pesos = com.franferreira.enem2027.data.repo.PreferenciasEstudo.pesos(app),
+                    pesos = com.franferreira.enem2027.data.repo.PreferenciasEstudo.pesosPara(
+                        app,
+                        comAula.map { it.area to it.tema },
+                    ),
                 )
                 Triple(comAula, montado, aulaDoDia(app, montado, errosRecentes))
             }
@@ -1391,7 +1396,9 @@ class ViewModelPrincipal(
                         com.franferreira.enem2027.data.repo.PreferenciasEstudo.nivel(app, it.area, it.tema)
                 },
                 pedirPreferencias = !com.franferreira.enem2027.data.repo.PreferenciasEstudo.jaPerguntou(app) &&
-                    com.franferreira.enem2027.data.repo.PreferenciasEstudo.pesos(app).isEmpty(),
+                    com.franferreira.enem2027.data.repo.PreferenciasEstudo.pesos(app).isEmpty() &&
+                    com.franferreira.enem2027.data.repo.PreferenciasEstudo.niveisMaterias(app).isEmpty(),
+                preferenciasMaterias = com.franferreira.enem2027.data.repo.PreferenciasEstudo.niveisMaterias(app),
             )
         }
     }
@@ -1479,6 +1486,18 @@ class ViewModelPrincipal(
         nivel: com.franferreira.enem2027.data.repo.PreferenciasEstudo.Nivel,
     ) {
         com.franferreira.enem2027.data.repo.PreferenciasEstudo.definir(getApplication(), area, tema, nivel)
+        carregarCronograma()
+    }
+
+    /**
+     * Preferência por matéria. Vale para os temas dela que não têm marcação
+     * própria, então marca tudo de uma vez e o ajuste fino continua no tema.
+     */
+    fun definirPreferenciaMateria(
+        materia: String,
+        nivel: com.franferreira.enem2027.data.repo.PreferenciasEstudo.Nivel,
+    ) {
+        com.franferreira.enem2027.data.repo.PreferenciasEstudo.definirMateria(getApplication(), materia, nivel)
         carregarCronograma()
     }
 

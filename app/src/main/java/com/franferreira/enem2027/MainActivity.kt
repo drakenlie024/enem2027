@@ -549,7 +549,9 @@ fun EnemApp() {
                 TelaPreferencias(
                     temas = estado.temasPlano,
                     preferencias = estado.preferencias,
+                    preferenciasMaterias = estado.preferenciasMaterias,
                     aoMudar = { tema, nivel -> vm.definirPreferenciaTema(tema.area, tema.tema, nivel) },
+                    aoMudarMateria = vm::definirPreferenciaMateria,
                     aoVoltar = { navController.popBackStack() },
                 )
             }

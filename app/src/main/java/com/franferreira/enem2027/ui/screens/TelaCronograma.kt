@@ -153,7 +153,7 @@ private fun CartaoPreferencias(aoAbrir: () -> Unit) {
         )
         Spacer(Modifier.height(6.dp))
         Text(
-            text = "Marque o que você mais e menos gosta",
+            text = "Marque as matérias que você mais e menos gosta",
             style = MaterialTheme.typography.bodyMedium,
             color = TextPrimary,
         )

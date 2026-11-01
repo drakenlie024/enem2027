@@ -122,10 +122,10 @@ fun TelaHoje(
             containerColor = Surface,
             titleContentColor = TextPrimary,
             textContentColor = TextMuted,
-            title = { Text("Quais aulas você prefere?") },
+            title = { Text("Quais matérias você prefere?") },
             text = {
                 Text(
-                    "Marque os temas que você mais e menos gosta. Isso muda a ordem do cronograma e da aula do dia.",
+                    "Marque o que você mais e menos gosta — biologia, história, matemática. Muda a ordem do cronograma e da aula do dia.",
                 )
             },
             confirmButton = {

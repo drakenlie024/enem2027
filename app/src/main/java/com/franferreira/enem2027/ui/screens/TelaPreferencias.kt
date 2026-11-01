@@ -32,6 +32,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.franferreira.enem2027.data.model.Diagnostico
 import com.franferreira.enem2027.data.model.TemaDaSemana
+import com.franferreira.enem2027.data.repo.Materias
 import com.franferreira.enem2027.data.repo.PreferenciasEstudo
 import com.franferreira.enem2027.ui.components.cartaoRabisco
 import com.franferreira.enem2027.ui.theme.Background
@@ -52,7 +53,9 @@ import com.franferreira.enem2027.ui.theme.corDaArea
 fun TelaPreferencias(
     temas: List<TemaDaSemana>,
     preferencias: Map<String, PreferenciasEstudo.Nivel>,
+    preferenciasMaterias: Map<String, PreferenciasEstudo.Nivel>,
     aoMudar: (TemaDaSemana, PreferenciasEstudo.Nivel) -> Unit,
+    aoMudarMateria: (String, PreferenciasEstudo.Nivel) -> Unit,
     aoVoltar: () -> Unit,
 ) {
     val porArea = Diagnostico.AREAS.mapNotNull { area ->
@@ -103,11 +106,45 @@ fun TelaPreferencias(
         ) {
             item {
                 Text(
-                    text = "Toque no tema para girar: Normal, Mais ou Menos. O que você marca como Mais vem antes no cronograma e na aula do dia.",
+                    text = "Toque para girar: Normal, Mais ou Menos. O que você marca como Mais vem antes no cronograma e na aula do dia.",
                     style = MaterialTheme.typography.bodySmall,
                     color = TextMuted,
                 )
                 Spacer(Modifier.height(4.dp))
+            }
+            item(key = "rot-materias") {
+                Text(
+                    text = "MATÉRIAS",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = TextMuted,
+                )
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    text = "Vale para todos os temas da matéria. Ajuste um tema específico abaixo, se quiser.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = TextMuted,
+                )
+            }
+            items(Materias.LISTA, key = { "materia-${it.first}" }) { (id, rotulo) ->
+                LinhaNivel(
+                    nome = rotulo,
+                    nivel = preferenciasMaterias[id] ?: PreferenciasEstudo.Nivel.NORMAL,
+                    aoClicar = {
+                        val atual = preferenciasMaterias[id] ?: PreferenciasEstudo.Nivel.NORMAL
+                        aoMudarMateria(id, atual.proximo())
+                    },
+                )
+            }
+            item(key = "rot-temas") {
+                Spacer(Modifier.height(8.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = "TEMAS",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = TextMuted,
+                        modifier = Modifier.weight(1f),
+                    )
+                }
             }
             porArea.forEach { (area, lista) ->
                 item(key = "area-$area") {
@@ -146,6 +183,16 @@ private fun LinhaPreferencia(
     nivel: PreferenciasEstudo.Nivel,
     aoClicar: () -> Unit,
 ) {
+    LinhaNivel(nome = tema.tema, nivel = nivel, aoClicar = aoClicar)
+}
+
+/** Uma linha "nome + botão do nível", usada por matéria e por tema. */
+@Composable
+private fun LinhaNivel(
+    nome: String,
+    nivel: PreferenciasEstudo.Nivel,
+    aoClicar: () -> Unit,
+) {
     val fundo = when (nivel) {
         PreferenciasEstudo.Nivel.MAIS -> Primary
         else -> SurfaceRaised
@@ -162,7 +209,7 @@ private fun LinhaPreferencia(
             .padding(horizontal = 14.dp, vertical = 10.dp),
     ) {
         Text(
-            text = tema.tema,
+            text = nome,
             style = MaterialTheme.typography.bodyMedium,
             color = TextPrimary,
             maxLines = 2,
