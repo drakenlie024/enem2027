@@ -74,6 +74,10 @@ object PreferenciasEstudo {
         prefs(context).edit().putBoolean(CHAVE_PERGUNTOU, true).apply()
     }
 
+    /** Se ainda vale perguntar: não perguntou antes e não marcou nada. */
+    fun devePerguntar(context: Context): Boolean =
+        !jaPerguntou(context) && pesos(context).isEmpty() && niveisMaterias(context).isEmpty()
+
     /** Peso de cada tema marcado (os temas em Normal não entram no mapa). */
     fun pesos(context: Context): Map<String, Double> {
         val p = prefs(context)

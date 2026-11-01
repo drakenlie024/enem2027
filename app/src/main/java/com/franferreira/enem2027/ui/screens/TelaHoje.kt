@@ -113,6 +113,7 @@ fun TelaHoje(
     aoAbrirAula: (String) -> Unit = {},
     aoAbrirPreferencias: () -> Unit = {},
     aoFecharPerguntaPreferencias: () -> Unit = {},
+    aoTentarAcervo: () -> Unit = {},
 ) {
     if (estado.pedirPreferencias) {
         // Conta antiga, sem preferência: pergunta uma vez. Responder ou dispensar
@@ -195,6 +196,46 @@ fun TelaHoje(
             }
 
             Spacer(Modifier.height(16.dp))
+
+            // Se o acervo não foi gravado, isso vem antes de tudo: sem ele
+            // nenhuma das outras funções tem o que mostrar.
+            estado.erroAcervo?.let { erro ->
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .cartaoRabisco(18.dp)
+                        .padding(14.dp),
+                ) {
+                    Column {
+                        Text(
+                            text = "ACERVO",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = Warning,
+                        )
+                        Spacer(Modifier.height(4.dp))
+                        Text(
+                            text = erro,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = TextPrimary,
+                        )
+                        Spacer(Modifier.height(8.dp))
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(999.dp))
+                                .background(Warning)
+                                .clickable { aoTentarAcervo() }
+                                .padding(horizontal = 16.dp, vertical = 8.dp),
+                        ) {
+                            Text(
+                                text = "Tentar de novo",
+                                style = MaterialTheme.typography.labelMedium,
+                                color = PaletaClaro.texto,
+                            )
+                        }
+                    }
+                }
+                Spacer(Modifier.height(12.dp))
+            }
 
             // ---- a flor: a decisão do dia fica no topo da tela
             CartaoMeta(
@@ -426,6 +467,34 @@ fun TelaHoje(
                     )
                 }
                 Spacer(Modifier.height(12.dp))
+            }
+
+            // ---- rodapé: versão e atalho das matérias
+            //
+            // A versão fica visível para dar como conferir, no aparelho, se a
+            // atualização chegou. Sem isso, "não apareceu nada" não tem como
+            // ser diagnosticado de longe.
+            Spacer(Modifier.height(6.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = "v${estado.versaoApp} · ${estado.totalLocal} questões · ${estado.trilhas.size} trilha(s)",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = TextMutedDark,
+                    modifier = Modifier.weight(1f),
+                )
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(999.dp))
+                        .background(SurfaceRaised)
+                        .clickable { aoAbrirPreferencias() }
+                        .padding(horizontal = 12.dp, vertical = 6.dp),
+                ) {
+                    Text(
+                        text = "Matérias",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = TextPrimary,
+                    )
+                }
             }
         }
 

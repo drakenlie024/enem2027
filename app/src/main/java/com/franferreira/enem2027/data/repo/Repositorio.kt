@@ -206,6 +206,9 @@ class Repositorio(private val context: Context) {
 
     suspend fun totalLocal(ano: Int): Int = db.questions().totalDoAno(ano)
 
+    /** Total de questões gravadas no aparelho, todas as origens. */
+    suspend fun totalAcervo(): Int = db.questions().total()
+
     suspend fun areasLocais(): List<String> = db.questions().areas()
 
     suspend fun temasLocais(): List<String> = db.questions().temas()

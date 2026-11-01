@@ -115,6 +115,10 @@ data class EstadoHoje(
     val preferenciasMaterias: Map<String, com.franferreira.enem2027.data.repo.PreferenciasEstudo.Nivel> = emptyMap(),
     /** Conta antiga sem nenhuma preferência: a Hoje pergunta uma vez. */
     val pedirPreferencias: Boolean = false,
+    /** O acervo não foi gravado no aparelho: a Hoje explica o motivo. */
+    val erroAcervo: String? = null,
+    /** Versão instalada, mostrada no rodapé da Hoje para conferir atualização. */
+    val versaoApp: String = "",
     /** Versão nova do app encontrada no manifesto (null = nada a atualizar). */
     val atualizacao: com.franferreira.enem2027.data.repo.Atualizacao.Nova? = null,
     val baixandoAtualizacao: Boolean = false,
@@ -254,11 +258,21 @@ class ViewModelPrincipal(
 
     init {
         carregarMeta()
+        _estado.value = _estado.value.copy(versaoApp = versaoInstalada())
         semearAcervo()
         restaurarSessao()
         restaurarFoco()
         restaurarSimulado()
     }
+
+    private fun versaoInstalada(): String = runCatching {
+        getApplication<Application>().packageManager
+            .getPackageInfo(getApplication<Application>().packageName, 0).versionName
+            .orEmpty()
+    }.getOrDefault("")
+
+    /** Tenta gravar o acervo de novo, quando a primeira tentativa falhou. */
+    fun tentarNovamenteAcervo() = semearAcervo()
 
     /** Reabre o simulado que estava em andamento quando o app foi fechado. */
     private fun restaurarSimulado() {
@@ -284,9 +298,22 @@ class ViewModelPrincipal(
      */
     private fun semearAcervo() {
         viewModelScope.launch {
-            _estado.value = _estado.value.copy(semeando = true)
-            val quantas = runCatching { repo.semearAcervoEmbutido() }.getOrDefault(0)
-            _estado.value = _estado.value.copy(semeando = false, anos = repo.anosLocais())
+            _estado.value = _estado.value.copy(semeando = true, erroAcervo = null)
+            val resultado = runCatching { repo.semearAcervoEmbutido() }
+            val quantas = resultado.getOrDefault(0)
+            val total = repo.totalAcervo()
+            _estado.value = _estado.value.copy(
+                semeando = false,
+                anos = repo.anosLocais(),
+                // Antes a falha era engolida: o app abria com o acervo vazio e
+                // nenhuma das telas dizia por quê.
+                erroAcervo = when {
+                    resultado.isFailure ->
+                        "Não consegui preparar o acervo: ${resultado.exceptionOrNull()?.message ?: "erro desconhecido"}"
+                    total == 0 -> "O acervo do aplicativo não foi gravado no aparelho."
+                    else -> null
+                },
+            )
             // A tela do Hoje pode ter lido o banco ANTES da semeadura terminar.
             // Sem recarregar aqui ela fica dizendo "baixe o acervo" com as
             // 3.117 questões já gravadas no aparelho.
@@ -1356,6 +1383,12 @@ class ViewModelPrincipal(
                     coberturaTemas = emptyMap(),
                     temasPlano = emptyList(),
                     aulaDoDia = null,
+                    // A pergunta das matérias não depende do plano: sem isto,
+                    // conta antiga sem acervo nunca via o convite.
+                    preferenciasMaterias = com.franferreira.enem2027.data.repo.PreferenciasEstudo
+                        .niveisMaterias(app),
+                    pedirPreferencias = com.franferreira.enem2027.data.repo.PreferenciasEstudo
+                        .devePerguntar(app),
                 )
                 return@launch
             }
@@ -1395,9 +1428,7 @@ class ViewModelPrincipal(
                     com.franferreira.enem2027.data.model.Diagnostico.chaveTema(it.area, it.tema) to
                         com.franferreira.enem2027.data.repo.PreferenciasEstudo.nivel(app, it.area, it.tema)
                 },
-                pedirPreferencias = !com.franferreira.enem2027.data.repo.PreferenciasEstudo.jaPerguntou(app) &&
-                    com.franferreira.enem2027.data.repo.PreferenciasEstudo.pesos(app).isEmpty() &&
-                    com.franferreira.enem2027.data.repo.PreferenciasEstudo.niveisMaterias(app).isEmpty(),
+                pedirPreferencias = com.franferreira.enem2027.data.repo.PreferenciasEstudo.devePerguntar(app),
                 preferenciasMaterias = com.franferreira.enem2027.data.repo.PreferenciasEstudo.niveisMaterias(app),
             )
         }
@@ -1570,7 +1601,15 @@ class ViewModelPrincipal(
     /** Carrega as trilhas (montadas localmente, com o acervo do aparelho). */
     fun carregarTrilhas() {
         viewModelScope.launch {
-            val trilhas = repo.trilhas()
+            val resultado = runCatching { repo.trilhas() }
+            val trilhas = resultado.getOrDefault(emptyList())
+            // Antes, uma falha aqui derrubava a coroutine sem deixar rastro: a
+            // tela ficava sem trilha e sem dizer por quê.
+            if (resultado.isFailure && _estado.value.erroAcervo == null) {
+                _estado.value = _estado.value.copy(
+                    erroAcervo = "Não consegui montar as trilhas: ${resultado.exceptionOrNull()?.message ?: "erro desconhecido"}",
+                )
+            }
             // A trilha ABERTA é re-derivada da lista nova: sem isso, quem
             // conclui uma etapa de dentro da tela de trilha volta e vê o
             // mesmo nó pulsando como "atual", e pode refazê-la à toa.

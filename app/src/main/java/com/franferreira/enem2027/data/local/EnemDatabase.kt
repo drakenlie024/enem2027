@@ -22,6 +22,10 @@ interface QuestionDao {
     @Query("SELECT COUNT(*) FROM questions WHERE ano = :ano")
     suspend fun totalDoAno(ano: Int): Int
 
+    /** Total de questões no aparelho, todas as origens. */
+    @Query("SELECT COUNT(*) FROM questions")
+    suspend fun total(): Int
+
     @Query("SELECT DISTINCT ano FROM questions WHERE ano > 0 ORDER BY ano DESC")
     suspend fun anos(): List<Int>
 

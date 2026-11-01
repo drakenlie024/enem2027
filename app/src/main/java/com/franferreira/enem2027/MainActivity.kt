@@ -333,6 +333,7 @@ fun EnemApp() {
                     },
                     aoAbrirPreferencias = { navController.navigate("preferencias") },
                     aoFecharPerguntaPreferencias = vm::fecharPerguntaPreferencias,
+                    aoTentarAcervo = vm::tentarNovamenteAcervo,
                 )
             }
 
