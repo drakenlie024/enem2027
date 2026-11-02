@@ -543,6 +543,10 @@ fun EnemApp() {
                     cobertura = estado.coberturaTemas,
                     aoVoltar = { navController.popBackStack() },
                     aoAbrirPreferencias = { navController.navigate("preferencias") },
+                    metaDiaria = estado.metaDiaria,
+                    metaSemanal = estado.metaSemanal,
+                    aoAjustarMeta = vm::ajustarMeta,
+                    aoMudarMetaSemanal = vm::ajustarMetaSemanal,
                 )
             }
 

@@ -57,6 +57,10 @@ fun TelaCronograma(
     cobertura: Map<String, Pair<Int, Int>>,
     aoVoltar: () -> Unit,
     aoAbrirPreferencias: () -> Unit = {},
+    metaDiaria: Int = 20,
+    metaSemanal: Int = 5,
+    aoAjustarMeta: (Int) -> Unit = {},
+    aoMudarMetaSemanal: (Int) -> Unit = {},
 ) {
     val atual = semanas.firstOrNull { it.atual }
     val indiceAtual = semanas.indexOfFirst { it.atual }
@@ -123,6 +127,13 @@ fun TelaCronograma(
             item {
                 Cobertura(cobertura)
                 Spacer(Modifier.height(10.dp))
+                CartaoMetas(
+                    metaDiaria = metaDiaria,
+                    metaSemanal = metaSemanal,
+                    aoAjustarMeta = aoAjustarMeta,
+                    aoMudarMetaSemanal = aoMudarMetaSemanal,
+                )
+                Spacer(Modifier.height(10.dp))
                 // O plano é montado com o que ela gosta: o caminho para mudar isso fica aqui.
                 CartaoPreferencias(aoAbrir = aoAbrirPreferencias)
                 Spacer(Modifier.height(6.dp))
@@ -134,6 +145,91 @@ fun TelaCronograma(
                 CartaoSemana(semana)
             }
         }
+    }
+}
+
+@Composable
+private fun CartaoMetas(
+    metaDiaria: Int,
+    metaSemanal: Int,
+    aoAjustarMeta: (Int) -> Unit,
+    aoMudarMetaSemanal: (Int) -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .cartaoRabisco(18.dp)
+            .padding(14.dp),
+    ) {
+        Text(
+            text = "METAS",
+            style = MaterialTheme.typography.labelSmall,
+            color = Primary,
+        )
+        Spacer(Modifier.height(8.dp))
+        LinhaMeta(
+            rotulo = "Questões por dia",
+            valor = "$metaDiaria",
+            aoMenos = { aoAjustarMeta(-4) },
+            aoMais = { aoAjustarMeta(4) },
+            habilitadoMenos = metaDiaria > 4,
+            habilitadoMais = metaDiaria < 60,
+        )
+        Spacer(Modifier.height(6.dp))
+        LinhaMeta(
+            rotulo = "Dias por semana",
+            valor = "$metaSemanal",
+            aoMenos = { aoMudarMetaSemanal(metaSemanal - 1) },
+            aoMais = { aoMudarMetaSemanal(metaSemanal + 1) },
+            habilitadoMenos = metaSemanal > 1,
+            habilitadoMais = metaSemanal < 7,
+        )
+    }
+}
+
+@Composable
+private fun LinhaMeta(
+    rotulo: String,
+    valor: String,
+    aoMenos: () -> Unit,
+    aoMais: () -> Unit,
+    habilitadoMenos: Boolean,
+    habilitadoMais: Boolean,
+) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            text = rotulo,
+            style = MaterialTheme.typography.bodyMedium,
+            color = TextPrimary,
+            modifier = Modifier.weight(1f),
+        )
+        BotaoMeta("−", habilitadoMenos, aoMenos)
+        Text(
+            text = valor,
+            style = MaterialTheme.typography.titleMedium,
+            color = TextPrimary,
+            modifier = Modifier.width(40.dp),
+            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+        )
+        BotaoMeta("+", habilitadoMais, aoMais)
+    }
+}
+
+@Composable
+private fun BotaoMeta(simbolo: String, habilitado: Boolean, aoClicar: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .size(32.dp)
+            .clip(CircleShape)
+            .background(SurfaceRaised)
+            .clickable(enabled = habilitado) { aoClicar() },
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = simbolo,
+            style = MaterialTheme.typography.titleMedium,
+            color = if (habilitado) TextPrimary else TextMuted,
+        )
     }
 }
 
