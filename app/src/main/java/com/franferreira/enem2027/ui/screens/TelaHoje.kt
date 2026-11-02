@@ -50,7 +50,6 @@ import com.franferreira.enem2027.data.model.Etapa
 import com.franferreira.enem2027.data.model.Trilha
 import com.franferreira.enem2027.ui.EstadoHoje
 import com.franferreira.enem2027.ui.components.BarraGamificada
-import com.franferreira.enem2027.ui.components.BotaoGamificado
 import com.franferreira.enem2027.ui.components.CartaoGamificado
 import com.franferreira.enem2027.ui.components.Pilula
 import com.franferreira.enem2027.ui.components.bordaRabisco
