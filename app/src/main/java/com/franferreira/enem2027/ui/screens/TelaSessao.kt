@@ -60,6 +60,7 @@ fun TelaSessao(
     aoTreinar: (TemaTreino) -> Unit,
     aoAbrirAula: (String) -> Unit,
     aoEncerrar: () -> Unit,
+    aoPular: () -> Unit = {},
 ) {
     val atual = temas.getOrNull(indice)
     if (atual == null) {
@@ -221,6 +222,21 @@ fun TelaSessao(
                     style = MaterialTheme.typography.bodySmall,
                     color = TextMuted,
                 )
+                Spacer(Modifier.height(6.dp))
+                // Sem saída, um tema travado prendia a sessão para sempre.
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(999.dp))
+                        .background(SurfaceRaised)
+                        .clickable { aoPular() }
+                        .padding(horizontal = 14.dp, vertical = 7.dp),
+                ) {
+                    Text(
+                        text = "Pular para este tema",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = TextPrimary,
+                    )
+                }
             }
         }
 

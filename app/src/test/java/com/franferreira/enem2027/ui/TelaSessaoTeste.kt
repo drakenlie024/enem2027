@@ -123,8 +123,28 @@ class TelaSessaoTeste {
     }
 
     @Test
-    fun `sessao concluida avisa em vez de voltar sozinha`() {
+    fun `o proximo tema pode ser pulado sem responder tudo`() {
+        var pulou = false
         compose.setContent {
+            androidx.compose.material3.MaterialTheme {
+                TelaSessao(
+                    temas = listOf(tema("Ecologia"), tema("Genética")),
+                    indice = 0,
+                    aoTreinar = {},
+                    aoAbrirAula = {},
+                    aoEncerrar = {},
+                    aoPular = { pulou = true },
+                )
+            }
+        }
+
+        compose.onNodeWithText("Pular para este tema").performClick()
+
+        assertTrue(pulou)
+    }
+
+    @Test
+    fun `sessao concluida avisa em vez de voltar sozinha`() {        compose.setContent {
             androidx.compose.material3.MaterialTheme {
                 TelaSessao(
                     temas = listOf(tema("Ecologia")),

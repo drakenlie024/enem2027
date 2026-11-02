@@ -1,11 +1,14 @@
 package com.franferreira.enem2027.data.model
 
+import kotlinx.serialization.Serializable
+
 /**
  * Um tema como unidade de treino espaçado.
  *
  * O app agenda temas, não questões: cada tema tem um intervalo que cresce
  * conforme o acerto, e a sessão sempre traz questões novas daquele tema.
  */
+@Serializable
 data class TemaTreino(
     val tema: String,
     val area: String,

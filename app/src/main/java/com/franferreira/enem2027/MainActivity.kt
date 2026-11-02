@@ -592,6 +592,7 @@ fun EnemApp() {
                         vm.encerrarSessao()
                         navController.popBackStack()
                     },
+                    aoPular = vm::pularTemaDaSessao,
                 )
             }
 

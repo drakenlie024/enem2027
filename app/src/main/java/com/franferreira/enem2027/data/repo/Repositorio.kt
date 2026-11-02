@@ -329,8 +329,11 @@ class Repositorio(private val context: Context) {
                 Diagnostico.chaveTema(it.area, it.tema) in fracos
             }
                 .thenByDescending { it.tema in prioritarios }
-                .thenByDescending { pesoDoTema(it.area, it.tema) }
+                // O atraso manda mais que o gosto: tema vencido há 10 dias
+                // vem antes do "mais gostei" que ainda está no intervalo. A
+                // preferência desempata dentro da mesma urgência.
                 .thenByDescending { it.vencidoHa }
+                .thenByDescending { pesoDoTema(it.area, it.tema) }
                 .thenBy { it.forca }
         ).take(limite)
     }

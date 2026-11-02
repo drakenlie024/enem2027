@@ -268,6 +268,7 @@ class ViewModelPrincipal(
         _estado.value = _estado.value.copy(versaoApp = versaoInstalada())
         semearAcervo()
         restaurarSessao()
+        restaurarSessaoDeEstudo()
         restaurarFoco()
         restaurarSimulado()
     }
@@ -1428,24 +1429,62 @@ class ViewModelPrincipal(
             treinoDaSessao = false,
             treinoRespondidas = emptySet(),
         )
+        if (sessao.treinoDaSessao && terminou) {
+            salvarSessao(sessao.sessaoTemas, sessao.sessaoIndice + 1)
+        }
         carregarTreinos()
     }
 
     /** Abre a sessão de hoje: até três temas, o primeiro já por inteiro. */
     fun iniciarSessao() {
+        val atual = _estado.value
+        // Já existe sessão de hoje em andamento: continua nela em vez de
+        // recomeçar do primeiro tema.
+        if (atual.sessaoTemas.isNotEmpty() && atual.sessaoIndice < atual.sessaoTemas.size) return
         viewModelScope.launch {
             // Tocar em "Começar" pode acontecer antes de a lista carregar.
             // Antes disso a sessão nascia vazia e dizia "nada para estudar".
             val lista = _estado.value.treinos.ifEmpty { buscarTreinos() }
+            val temas = lista.take(3)
+            salvarSessao(temas, 0)
             _estado.value = _estado.value.copy(
                 treinos = lista,
-                sessaoTemas = lista.take(3),
+                sessaoTemas = temas,
                 sessaoIndice = 0,
             )
         }
     }
 
+    /** Passa para o próximo tema sem exigir que tenha respondido tudo. */
+    fun pularTemaDaSessao() {
+        val atual = _estado.value
+        if (atual.sessaoTemas.isEmpty()) return
+        val proximo = atual.sessaoIndice + 1
+        salvarSessao(atual.sessaoTemas, proximo)
+        _estado.value = atual.copy(sessaoIndice = proximo)
+    }
+
+    private fun salvarSessao(temas: List<com.franferreira.enem2027.data.model.TemaTreino>, indice: Int) {
+        val app = getApplication<Application>()
+        if (temas.isEmpty()) {
+            com.franferreira.enem2027.data.repo.SessaoSalva.limpar(app)
+        } else {
+            com.franferreira.enem2027.data.repo.SessaoSalva.salvar(app, temas, indice)
+        }
+    }
+
+    /** Recupera a sessão de hoje, se ela parou no meio. */
+    private fun restaurarSessaoDeEstudo() {
+        val salva = com.franferreira.enem2027.data.repo.SessaoSalva
+            .carregar(getApplication()) ?: return
+        _estado.value = _estado.value.copy(
+            sessaoTemas = salva.temas,
+            sessaoIndice = salva.indice.coerceIn(0, salva.temas.size),
+        )
+    }
+
     fun encerrarSessao() {
+        com.franferreira.enem2027.data.repo.SessaoSalva.limpar(getApplication())
         _estado.value = _estado.value.copy(sessaoTemas = emptyList(), sessaoIndice = 0)
     }
 
