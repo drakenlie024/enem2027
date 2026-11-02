@@ -121,6 +121,7 @@ fun TelaQuestao(
         com.franferreira.enem2027.data.repo.Anotacoes.salvar(app, questao.id, anotacao)
     }
     val vibracao = androidx.compose.ui.platform.LocalHapticFeedback.current
+    val view = androidx.compose.ui.platform.LocalView.current
     var tracos by remember(questao.id) {
         mutableStateOf(RascunhoStore.carregar(app, questao.id))
     }
@@ -340,6 +341,9 @@ error = ColorPainter(SurfaceRaised),
                                     androidx.compose.ui.hapticfeedback.HapticFeedbackType.LongPress
                                 )
                             }
+                            // Errar também responde ao dedo: sem isso, a única
+                            // diferença entre certo e errado era a cor.
+                            vibrar(view, corretaEscolhida)
                             aoResponder(corretaEscolhida, (System.currentTimeMillis() - inicio) / 1000f, confianca)
                         }
                         .padding(12.dp),
@@ -671,6 +675,29 @@ private fun LinhaApoio(
             }
         }
     }
+}
+
+/**
+ * Vibração da resposta: uma batida curta para acerto, uma mais seca para erro.
+ *
+ * As constantes CONFIRM/REJECT só existem do Android 11 em diante; antes disso
+ * o app usa as equivalentes antigas em vez de ficar sem retorno nenhum.
+ */
+private fun vibrar(view: android.view.View, acertou: Boolean) {
+    val constante = if (acertou) {
+        if (android.os.Build.VERSION.SDK_INT >= 30) {
+            android.view.HapticFeedbackConstants.CONFIRM
+        } else {
+            android.view.HapticFeedbackConstants.VIRTUAL_KEY
+        }
+    } else {
+        if (android.os.Build.VERSION.SDK_INT >= 30) {
+            android.view.HapticFeedbackConstants.REJECT
+        } else {
+            android.view.HapticFeedbackConstants.LONG_PRESS
+        }
+    }
+    runCatching { view.performHapticFeedback(constante) }
 }
 
 @Composable

@@ -302,6 +302,34 @@ fun EnemApp() {
             navController = navController,
             startDestination = Destination.Hoje.route,
             modifier = Modifier.padding(innerPadding),
+            // Transição curta: a tela deixa de "piscar" para outra e passa a
+            // andar. 220 ms é rápido o bastante para não atrasar o toque.
+            enterTransition = {
+                androidx.compose.animation.fadeIn(
+                    androidx.compose.animation.core.tween(220),
+                ) + androidx.compose.animation.slideInHorizontally(
+                    animationSpec = androidx.compose.animation.core.tween(220),
+                    initialOffsetX = { it / 12 },
+                )
+            },
+            exitTransition = {
+                androidx.compose.animation.fadeOut(
+                    androidx.compose.animation.core.tween(180),
+                )
+            },
+            popEnterTransition = {
+                androidx.compose.animation.fadeIn(
+                    androidx.compose.animation.core.tween(220),
+                )
+            },
+            popExitTransition = {
+                androidx.compose.animation.fadeOut(
+                    androidx.compose.animation.core.tween(180),
+                ) + androidx.compose.animation.slideOutHorizontally(
+                    animationSpec = androidx.compose.animation.core.tween(220),
+                    targetOffsetX = { it / 12 },
+                )
+            },
         ) {
             composable(Destination.Hoje.route) {
                 TelaHoje(

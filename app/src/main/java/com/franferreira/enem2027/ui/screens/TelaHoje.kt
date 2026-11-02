@@ -33,9 +33,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
@@ -666,7 +669,21 @@ private fun CartaoMeta(
 ) {
     val meta = estado.metaDiaria
     val feitas = estado.respondidasHoje.coerceAtMost(meta)
-    val progresso = if (meta <= 0) 0f else feitas.toFloat() / meta
+    val alvo = if (meta <= 0) 0f else feitas.toFloat() / meta
+    // A pétala cresce em vez de pular: o progresso vira recompensa, não número.
+    val progresso by androidx.compose.animation.core.animateFloatAsState(
+        targetValue = alvo,
+        animationSpec = androidx.compose.animation.core.tween(650),
+        label = "progressoFlor",
+    )
+    // Toque: a flor encolhe um pouco enquanto o dedo está nela.
+    val interacao = remember { androidx.compose.foundation.interaction.MutableInteractionSource() }
+    val pressionada by interacao.collectIsPressedAsState()
+    val escala by androidx.compose.animation.core.animateFloatAsState(
+        targetValue = if (pressionada) 0.96f else 1f,
+        animationSpec = androidx.compose.animation.core.spring(stiffness = 700f),
+        label = "escalaFlor",
+    )
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -686,7 +703,11 @@ private fun CartaoMeta(
         Box(
             modifier = Modifier
                 .size(132.dp)
-                .clickable { aoEstudar() },
+                .graphicsLayer { scaleX = escala; scaleY = escala }
+                .clickable(
+                    interactionSource = interacao,
+                    indication = null,
+                ) { aoEstudar() },
             contentAlignment = Alignment.Center,
         ) {
             Canvas(modifier = Modifier.fillMaxSize()) {

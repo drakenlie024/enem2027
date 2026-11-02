@@ -156,7 +156,7 @@ fun TelaAulas(
 
             item {
                 Text(
-                    text = "Aulas com resumo e questoes sobre o que foi ensinado. " +
+                    text = "Aulas com resumo e questões sobre o que foi ensinado. " +
                         "O gabarito de cada questao tem o minuto da video onde a " +
                         "resposta aparece, entao da para conferir.",
                     style = MaterialTheme.typography.bodySmall,
@@ -634,7 +634,7 @@ fun TelaAula(
                     if (erroDownload != null) {
                         Spacer(Modifier.height(6.dp))
                         Text(
-                            text = "Nao consegui baixar: $erroDownload",
+                            text = "Não consegui baixar: $erroDownload",
                             style = MaterialTheme.typography.labelSmall,
                             color = Danger,
                         )

@@ -317,7 +317,7 @@ class ViewModelPrincipal(
                 // nenhuma das telas dizia por quê.
                 erroAcervo = when {
                     resultado.isFailure ->
-                        "Não consegui preparar o acervo: ${resultado.exceptionOrNull()?.message ?: "erro desconhecido"}"
+                        "Não consegui preparar o acervo. Toque em Tentar de novo."
                     total == 0 -> "O acervo do aplicativo não foi gravado no aparelho."
                     else -> null
                 },
