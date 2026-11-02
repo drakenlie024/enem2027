@@ -1,6 +1,6 @@
 {
  "ano": 2015,
- "versao": "2026-11-02T14:09:42Z",
+ "versao": "2026-11-02T15:02:09Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -4029,7 +4029,7 @@
    ],
    "gabarito": "E",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Eletroquímica",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -4081,7 +4081,7 @@
    ],
    "gabarito": "E",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Física: mecânica",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -4235,7 +4235,7 @@
    ],
    "gabarito": "B",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Física: óptica",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",

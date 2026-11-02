@@ -1,6 +1,6 @@
 {
  "ano": 2023,
- "versao": "2026-11-02T14:09:42Z",
+ "versao": "2026-11-02T15:02:09Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -3702,7 +3702,7 @@
    ],
    "gabarito": "D",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "População e demografia",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -4351,7 +4351,7 @@
    ],
    "gabarito": "D",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Meio ambiente e recursos",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",

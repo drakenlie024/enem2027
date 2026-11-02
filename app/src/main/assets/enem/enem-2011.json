@@ -1,6 +1,6 @@
 {
  "ano": 2011,
- "versao": "2026-11-02T14:09:42Z",
+ "versao": "2026-11-02T15:02:09Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -2870,7 +2870,7 @@
    ],
    "gabarito": "E",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Química orgânica",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",

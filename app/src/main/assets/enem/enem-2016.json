@@ -1,6 +1,6 @@
 {
  "ano": 2016,
- "versao": "2026-11-02T14:09:42Z",
+ "versao": "2026-11-02T15:02:09Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -3844,7 +3844,7 @@
    ],
    "gabarito": "D",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Química ambiental",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -4253,7 +4253,7 @@
    ],
    "gabarito": "A",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Física: ondas",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",
