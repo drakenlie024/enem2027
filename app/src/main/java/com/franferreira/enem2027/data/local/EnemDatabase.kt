@@ -42,7 +42,7 @@ interface QuestionDao {
     @Query(
         """
         SELECT * FROM questions
-        WHERE tema = :tema AND area = :area AND origem = 'enem'
+        WHERE tema = :tema AND area = :area AND COALESCE(origem, '') <> 'ia'
         ORDER BY ano DESC, indice ASC
         """
     )
@@ -53,7 +53,7 @@ interface QuestionDao {
         """
         SELECT q.* FROM questions q
         LEFT JOIN progress p ON p.questionId = q.id
-        WHERE q.area = :area AND q.origem = 'enem' AND p.questionId IS NULL
+        WHERE q.area = :area AND COALESCE(q.origem, '') <> 'ia' AND p.questionId IS NULL
         """
     )
     suspend fun naoRespondidasDaArea(area: String): List<QuestionEntity>
@@ -63,7 +63,7 @@ interface QuestionDao {
         """
         SELECT q.* FROM questions q
         JOIN progress p ON p.questionId = q.id
-        WHERE q.area = :area AND q.origem = 'enem'
+        WHERE q.area = :area AND COALESCE(q.origem, '') <> 'ia'
         """
     )
     suspend fun respondidasDaArea(area: String): List<QuestionEntity>
@@ -102,7 +102,7 @@ interface QuestionDao {
         FROM questions q
         LEFT JOIN progress p ON p.questionId = q.id
         WHERE q.tema IS NOT NULL AND q.tema != '' AND q.area IS NOT NULL
-          AND q.origem = 'enem'
+          AND COALESCE(q.origem, '') <> 'ia'
         GROUP BY q.tema, q.area
         """
     )
@@ -122,7 +122,7 @@ interface QuestionDao {
         WHERE p.lastQuality < 3
           AND p.lastReviewedAt IS NOT NULL
           AND q.tema IS NOT NULL AND q.tema != '' AND q.area IS NOT NULL
-          AND q.origem = 'enem'
+          AND COALESCE(q.origem, '') <> 'ia'
         GROUP BY q.tema, q.area
         """
     )
@@ -136,7 +136,7 @@ interface QuestionDao {
         """
         SELECT q.* FROM questions q
         LEFT JOIN progress p ON p.questionId = q.id
-        WHERE q.tema = :tema AND q.area = :area AND q.origem = 'enem'
+        WHERE q.tema = :tema AND q.area = :area AND COALESCE(q.origem, '') <> 'ia'
           AND (p.questionId IS NULL
                OR (p.repetitions < 3 AND (p.lastReviewedAt IS NULL OR p.lastReviewedAt < :cooldown)))
         ORDER BY CASE WHEN p.questionId IS NULL THEN 0 ELSE 1 END,
@@ -154,7 +154,7 @@ interface QuestionDao {
         """
         SELECT q.* FROM questions q
         LEFT JOIN progress p ON p.questionId = q.id
-        WHERE q.tema = :tema AND q.area = :area AND q.origem = 'enem'
+        WHERE q.tema = :tema AND q.area = :area AND COALESCE(q.origem, '') <> 'ia'
         ORDER BY COALESCE(p.lastReviewedAt, 0) ASC
         LIMIT :limite
         """

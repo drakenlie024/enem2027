@@ -58,6 +58,7 @@ def main() -> int:
 
     problemas: list[str] = []
     total = 0
+    origens: dict[str, int] = {}
     for caminho in arquivos:
         dados = json.loads(pathlib.Path(caminho).read_text(encoding="utf-8"))
         if isinstance(dados, list):
@@ -66,7 +67,17 @@ def main() -> int:
             questoes = dados.get("questoes") or []
         for q in questoes:
             total += 1
+            origens[str(q.get("origem"))] = origens.get(str(q.get("origem")), 0) + 1
             problemas.extend(problemas_da_questao(q))
+
+    # O app exclui do treino só o que é gerado por IA ('ia'); o acervo oficial
+    # chega com 'enem.dev', 'inep' e algumas questões antigas sem origem. Se um
+    # dia o acervo vier marcado como 'ia', o filtro apagaria o acervo inteiro da
+    # tela — foi quase isso que aconteceu com o filtro antigo (= 'enem').
+    if origens.get("ia"):
+        problemas.append(
+            f"{origens['ia']} questões do acervo marcadas como 'ia': o app as esconderia do treino"
+        )
 
     if problemas:
         print(f"{len(problemas)} problema(s) em {total} questões:\n")
@@ -76,7 +87,7 @@ def main() -> int:
             print(f"  … e mais {len(problemas) - 40}")
         return 1
 
-    print(f"acervo ok: {total} questões em {len(arquivos)} anos")
+    print(f"acervo ok: {total} questões em {len(arquivos)} anos · origens: {origens}")
     return 0
 
 
