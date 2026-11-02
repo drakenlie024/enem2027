@@ -21,3 +21,5 @@ secrets.properties
 # SO
 .DS_Store
 Thumbs.db
+
+tmp/
