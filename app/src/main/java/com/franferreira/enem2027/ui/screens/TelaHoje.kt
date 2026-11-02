@@ -112,6 +112,7 @@ fun TelaHoje(
     aoAbrirPreferencias: () -> Unit = {},
     aoFecharPerguntaPreferencias: () -> Unit = {},
     aoTentarAcervo: () -> Unit = {},
+    aoAbrirUrl: (String) -> Unit = {},
 ) {
     if (estado.pedirPreferencias) {
         // Conta antiga, sem preferência: pergunta uma vez. Responder ou dispensar
@@ -254,7 +255,10 @@ fun TelaHoje(
             estado.aulaDoDia?.let { aula ->
                 CartaoAulaDoDia(
                     aula = aula,
-                    aoAssistir = { aoAbrirAula(aula.id) },
+                    aoAssistir = {
+                        val externa = aula.urlExterna
+                        if (externa != null) aoAbrirUrl(externa) else aoAbrirAula(aula.id)
+                    },
                 )
                 Spacer(Modifier.height(14.dp))
             }

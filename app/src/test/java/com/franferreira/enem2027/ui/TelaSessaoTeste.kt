@@ -59,14 +59,15 @@ class TelaSessaoTeste {
         }
 
         compose.onNodeWithText("TEMA 1 DE 2").assertIsDisplayed()
-        compose.onNodeWithText("Ecologia").assertIsDisplayed()
+        compose.onNodeWithText("1 · ASSISTIR").assertIsDisplayed()
         compose.onNodeWithText("2 · PRATICAR").assertIsDisplayed()
         compose.onNodeWithText("PRÓXIMO TEMA").assertIsDisplayed()
     }
 
     @Test
-    fun `tema sem aula comeca pela pratica`() {
-        // "Estatística" não tem aula: o passo 1 é praticar, sem buraco na conta.
+    fun `tema sem aula oferece a playlist da materia`() {
+        // "Estatística" não tem aula no acervo: em vez de ficar sem caminho,
+        // o passo 1 aponta para o canal da matéria.
         compose.setContent {
             androidx.compose.material3.MaterialTheme {
                 TelaSessao(
@@ -79,7 +80,30 @@ class TelaSessaoTeste {
             }
         }
 
-        compose.onNodeWithText("1 · PRATICAR").assertIsDisplayed()
+        compose.onNodeWithText("1 · ASSISTIR").assertIsDisplayed()
+        compose.onNodeWithText("Ver aulas").assertIsDisplayed()
+        compose.onNodeWithText("2 · PRATICAR").assertIsDisplayed()
+    }
+
+    @Test
+    fun `tocar em ver aulas abre a playlist`() {
+        var url: String? = null
+        compose.setContent {
+            androidx.compose.material3.MaterialTheme {
+                TelaSessao(
+                    temas = listOf(tema("Estatística", area = "matematica")),
+                    indice = 0,
+                    aoTreinar = {},
+                    aoAbrirAula = {},
+                    aoEncerrar = {},
+                    aoAbrirUrl = { url = it },
+                )
+            }
+        }
+
+        compose.onNodeWithText("Ver aulas").performClick()
+
+        assertTrue(url!!.startsWith("https://www.youtube.com/"))
     }
 
     @Test

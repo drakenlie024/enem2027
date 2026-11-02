@@ -142,6 +142,7 @@ fun EnemApp() {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = backStackEntry?.destination
     val vm: ViewModelPrincipal = viewModel()
+    val contexto = androidx.compose.ui.platform.LocalContext.current
     val estado by vm.estado.collectAsStateSafe()
 
     val rotaAtual = currentDestination?.route
@@ -341,6 +342,7 @@ fun EnemApp() {
                     aoAbrirPreferencias = { navController.navigate("preferencias") },
                     aoFecharPerguntaPreferencias = vm::fecharPerguntaPreferencias,
                     aoTentarAcervo = vm::tentarNovamenteAcervo,
+                    aoAbrirUrl = { url -> abrirUrl(contexto, url) },
                 )
             }
 
@@ -593,6 +595,7 @@ fun EnemApp() {
                         navController.popBackStack()
                     },
                     aoPular = vm::pularTemaDaSessao,
+                    aoAbrirUrl = { url -> abrirUrl(contexto, url) },
                 )
             }
 
@@ -738,8 +741,24 @@ fun EnemApp() {
  * O ViewModel é quem carrega a questão do banco local e a expõe no estado;
  * a função de composite não pode chamar um `suspend`.
  */
-private fun abrirQuestao(
-    navController: androidx.navigation.NavHostController,
+/**
+ * Abre um link fora do app (playlist de aula).
+ *
+ * Fica fora dos composables porque abrir navegador é efeito colateral, não
+ * desenho de tela.
+ */
+private fun abrirUrl(contexto: android.content.Context, url: String) {
+    runCatching {
+        contexto.startActivity(
+            android.content.Intent(
+                android.content.Intent.ACTION_VIEW,
+                android.net.Uri.parse(url),
+            ).addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK),
+        )
+    }
+}
+
+private fun abrirQuestao(    navController: androidx.navigation.NavHostController,
     vm: ViewModelPrincipal,
     questao: com.franferreira.enem2027.data.model.Question,
 ) {

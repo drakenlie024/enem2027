@@ -15,6 +15,8 @@ import sys
 
 PASTA = pathlib.Path(__file__).resolve().parents[1] / "app/src/main/assets/enem"
 LETRAS = ("A", "B", "C", "D", "E")
+AREAS = ("linguagens", "ciencias-humanas", "ciencias-natureza", "matematica")
+IDIOMAS = ("ingles", "espanhol")
 
 
 def problemas_da_questao(q: dict) -> list[str]:
@@ -24,8 +26,17 @@ def problemas_da_questao(q: dict) -> list[str]:
 
     if not q.get("id"):
         achados.append(f"{qid}: questão sem id")
-    if not q.get("area"):
+    if not (q.get("area") or "").strip():
         achados.append(f"{qid}: questão sem área")
+    elif q.get("area") not in AREAS:
+        # A área é a chave que liga questão, aula e cronograma. Um valor novo
+        # aqui some da trilha e da cobertura sem dar erro.
+        achados.append(f"{qid}: área desconhecida '{q.get('area')}'")
+    if not (q.get("tema") or "").strip():
+        achados.append(f"{qid}: questão sem tema")
+    idioma = q.get("idioma")
+    if idioma is not None and idioma not in IDIOMAS:
+        achados.append(f"{qid}: idioma desconhecido '{idioma}'")
     if not alts:
         achados.append(f"{qid}: questão sem alternativas")
         return achados
@@ -59,6 +70,7 @@ def main() -> int:
     problemas: list[str] = []
     total = 0
     origens: dict[str, int] = {}
+    vistos: dict[str, str] = {}
     for caminho in arquivos:
         dados = json.loads(pathlib.Path(caminho).read_text(encoding="utf-8"))
         if isinstance(dados, list):
@@ -68,6 +80,13 @@ def main() -> int:
         for q in questoes:
             total += 1
             origens[str(q.get("origem"))] = origens.get(str(q.get("origem")), 0) + 1
+            # Id repetido quebra o progresso: responder uma marca as duas.
+            qid = q.get("id")
+            if qid:
+                if qid in vistos:
+                    problemas.append(f"{qid}: id repetido (também em {vistos[qid]})")
+                else:
+                    vistos[qid] = pathlib.Path(caminho).name
             problemas.extend(problemas_da_questao(q))
 
     # O app exclui do treino só o que é gerado por IA ('ia'); o acervo oficial

@@ -1355,7 +1355,14 @@ class ViewModelPrincipal(
     /** Carrega os temas que estão devidos hoje. */
     fun carregarTreinos() {
         viewModelScope.launch {
-            _estado.value = _estado.value.copy(treinos = buscarTreinos())
+            val lista = buscarTreinos()
+            val atual = _estado.value
+            // A sessão guarda os temas com as contagens do momento em que
+            // abriu. Aqui ela é atualizada com o que acabou de ser lido.
+            val sessao = atual.sessaoTemas.map { salvo ->
+                lista.firstOrNull { it.tema == salvo.tema && it.area == salvo.area } ?: salvo
+            }
+            _estado.value = atual.copy(treinos = lista, sessaoTemas = sessao)
         }
     }
 
@@ -1583,7 +1590,11 @@ class ViewModelPrincipal(
                 .firstOrNull { !com.franferreira.enem2027.data.repo.AulasAssistidas.foiAssistida(app, it.id) }
             if (aula != null) return aula
         }
-        return null
+        // Nenhum tema da semana tem aula no acervo: aponta para a playlist da
+        // matéria do primeiro tema, em vez de não sugerir nada.
+        return candidatos.firstOrNull()?.let { tema ->
+            com.franferreira.enem2027.data.repo.AulasPorTema.canalDoTema(app, tema.tema, tema.area)
+        }
     }
 
     /** Confere se há versão nova; roda a cada abertura do app. Falha em silêncio. */

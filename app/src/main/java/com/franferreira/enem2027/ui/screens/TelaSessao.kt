@@ -61,6 +61,7 @@ fun TelaSessao(
     aoAbrirAula: (String) -> Unit,
     aoEncerrar: () -> Unit,
     aoPular: () -> Unit = {},
+    aoAbrirUrl: (String) -> Unit = {},
 ) {
     val atual = temas.getOrNull(indice)
     if (atual == null) {
@@ -112,6 +113,8 @@ fun TelaSessao(
     // Sem cache: ao voltar da aula, o passo 1 já sai da tela.
     val aula = AulasPorTema.aulasDoTema(contexto, atual.tema)
         .firstOrNull { !AulasAssistidas.foiAssistida(contexto, it.id) }
+        // Tema sem aula no acervo: oferece a playlist da matéria.
+        ?: AulasPorTema.canalDoTema(contexto, atual.tema)
     val cor = corDaArea(atual.area)
     val proximo = temas.getOrNull(indice + 1)
 
@@ -177,10 +180,13 @@ fun TelaSessao(
                 numero = "1",
                 rotulo = "ASSISTIR",
                 titulo = sugerida.titulo,
-                detalhe = "vídeo curto do tema",
+                detalhe = sugerida.subtema.ifBlank { "vídeo curto do tema" },
                 cor = cor,
-                botao = "Assistir",
-                aoClicar = { aoAbrirAula(sugerida.id) },
+                botao = if (sugerida.urlExterna != null) "Ver aulas" else "Assistir",
+                aoClicar = {
+                    val externa = sugerida.urlExterna
+                    if (externa != null) aoAbrirUrl(externa) else aoAbrirAula(sugerida.id)
+                },
             )
             Spacer(Modifier.height(10.dp))
         }

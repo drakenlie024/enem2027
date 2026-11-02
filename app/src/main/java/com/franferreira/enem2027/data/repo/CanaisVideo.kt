@@ -112,6 +112,48 @@ object CanaisVideo {
         if (area.isNullOrBlank()) emptyList() else POR_AREA[area].orEmpty()
 
     /**
+     * Canal por MATÉRIA (biologia, história, matemática…).
+     *
+     * É o que resolve os temas sem aula no acervo: a playlist da matéria é o
+     * caminho mais próximo de uma aula, sem inventar vídeo que pode sair do ar.
+     */
+    private val POR_MATERIA: Map<String, Canal> = run {
+        val mapa = mutableMapOf<String, Canal>()
+        POR_AREA["matematica"].orEmpty().firstOrNull()?.let { mapa["matematica"] = it }
+        POR_AREA["linguagens"].orEmpty().forEach { canal ->
+            when {
+                canal.nome.contains("Português") -> mapa["portugues"] = canal
+                canal.nome.contains("Inglês") -> mapa["ingles"] = canal
+                canal.nome.contains("Espanhol") -> mapa["espanhol"] = canal
+                canal.nome.contains("Redação") -> mapa["redacao"] = canal
+            }
+        }
+        POR_AREA["ciencias-humanas"].orEmpty().forEach { canal ->
+            when {
+                canal.nome.contains("História") -> mapa["historia"] = canal
+                canal.nome.contains("Filosofia") -> mapa["filosofia"] = canal
+                canal.nome.contains("Sociologia") -> mapa["sociologia"] = canal
+                canal.nome.contains("Geografia") -> mapa["geografia"] = canal
+            }
+        }
+        POR_AREA["ciencias-natureza"].orEmpty().forEach { canal ->
+            when {
+                canal.nome.contains("Biologia") -> mapa["biologia"] = canal
+                canal.nome.contains("Química") -> mapa["quimica"] = canal
+                canal.nome.contains("Física") -> mapa["fisica"] = canal
+            }
+        }
+        // Ciências da Terra (geologia, astronomia, clima) cai melhor em
+        // Geografia do que em Física.
+        mapa["geografia"]?.let { mapa["ciencias-da-terra"] = it }
+        mapa
+    }
+
+    /** Canal da matéria, se houver um mapeado. */
+    fun daMateria(materia: String?): Canal? =
+        if (materia.isNullOrBlank()) null else POR_MATERIA[materia]
+
+    /**
      * Canais de uma área, com o canal mais provável de ajudar primeiro.
      *
      * A ordem importa: o primeiro é o que a pessoa vai abrir no automático.

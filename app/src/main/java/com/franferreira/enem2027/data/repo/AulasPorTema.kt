@@ -60,5 +60,21 @@ object AulasPorTema {
         return carregar(context)[chave].orEmpty()
     }
 
+    /**
+     * Quando o tema não tem aula no acervo (10 temas hoje), devolve a playlist
+     * do canal da matéria — em vez de deixar a pessoa sem caminho.
+     */
+    fun canalDoTema(context: Context, tema: String?, materiaFallback: String? = null): AulaSugerida? {
+        val materia = Materias.doTema(context, tema) ?: materiaFallback ?: return null
+        val canal = CanaisVideo.daMateria(materia) ?: return null
+        return AulaSugerida(
+            id = "",
+            titulo = "Aulas de ${Materias.rotulo(materia)} · ${canal.nome}",
+            subtema = canal.descricao,
+            area = materia,
+            urlExterna = canal.url,
+        )
+    }
+
     private const val ARQUIVO = "aulas_por_tema.json"
 }
