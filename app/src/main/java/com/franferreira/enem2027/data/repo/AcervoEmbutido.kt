@@ -21,6 +21,16 @@ object AcervoEmbutido {
 
     private const val PASTA = "enem"
 
+    /**
+     * Anos retirados do acervo.
+     *
+     * 2024 e 2025 nunca tiveram as figuras (as questões que dependiam de
+     * imagem foram removidas na montagem, mas o resto ficou faltando pedaço).
+     * Como o seed não recalcula ano que já está no banco, esta lista existe
+     * para apagar do aparelho também — inclusive de quem já tinha baixado.
+     */
+    val APOSENTADOS: List<Int> = listOf(2024, 2025)
+
     private val json = JsonCompartilhado
 
     /** Os anos que vêm no APK, do mais novo para o mais antigo. */

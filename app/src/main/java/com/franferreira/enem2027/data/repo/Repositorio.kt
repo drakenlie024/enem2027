@@ -135,6 +135,10 @@ class Repositorio(private val context: Context) {
      */
     suspend fun semearAcervoEmbutido(): Int = withContext(Dispatchers.IO) {
         val jaTem = db.questions().anos().toSet()
+        // Anos aposentados saem do banco, inclusive de quem já tinha baixado.
+        for (ano in AcervoEmbutido.APOSENTADOS) {
+            if (ano in jaTem) db.questions().substituirAno(ano, emptyList())
+        }
         var total = 0
         for (ano in AcervoEmbutido.anos(context)) {
             if (ano in jaTem) continue
