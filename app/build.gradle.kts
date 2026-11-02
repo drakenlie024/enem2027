@@ -14,8 +14,8 @@ android {
         applicationId = "com.franferreira.enem2027"
         minSdk = 26
         targetSdk = 35
-        versionCode = 20
-        versionName = "0.5.3"
+        versionCode = 21
+        versionName = "0.5.4"
         vectorDrawables { useSupportLibrary = true }
     }
 
@@ -69,6 +69,15 @@ android {
     packaging {
         resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
     }
+
+    testOptions {
+        // Necessário para o teste de tela: o Robolectric precisa das
+        // resources (strings, temas, assets) para montar a interface na JVM.
+        unitTests {
+            isIncludeAndroidResources = true
+            isReturnDefaultValues = true
+        }
+    }
 }
 
 // O schema do Room Ã© versionado no git (app/schemas). Ã‰ o que permite
@@ -119,6 +128,9 @@ dependencies {
     testImplementation(libs.androidx.test.ext.junit)
     testImplementation(libs.robolectric)
     testImplementation(libs.kotlinx.coroutines.test)
+    // Teste de tela rodando na JVM (Robolectric): o CI não tem emulador.
+    testImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.test.manifest)
     androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.ext.junit)
