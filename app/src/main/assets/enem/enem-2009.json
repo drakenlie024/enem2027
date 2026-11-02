@@ -1,6 +1,6 @@
 {
  "ano": 2009,
- "versao": "2026-11-02T13:56:39Z",
+ "versao": "2026-11-02T14:09:42Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -61,7 +61,7 @@
    "idioma": null,
    "contexto": "Analise a figura.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/2/7af3247b-4580-4b52-8d5a-b64887db9b0e.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/2/7af3247b-4580-4b52-8d5a-b64887db9b0e.png"
    ],
    "enunciado": "Supondo que seja necessário dar um título para essa figura, a alternativa que melhor traduziria o processo representado seria:",
    "alternativas": [
@@ -563,8 +563,8 @@
    "idioma": null,
    "contexto": "\n\nEm solução, os ânions do sabão podem hidrolisar a água e, desse modo, formar o ácido carboxílico correspondente. Por exemplo, para o estearato de sódio, é estabelecido o seguinte equilíbrio:\n\n\n\nUma vez que o ácido carboxílico formado é pouco solúvel em água e menos eficiente na remoção de gorduras, o pH do meio deve ser controlado de maneira a evitar que o equilíbrio acima seja deslocado para a direita.",
    "arquivos": [
-    "https://enem.dev/2009/questions/12/233eafdb-167e-4978-a815-54aad9e6bee2.jpg",
-    "https://enem.dev/2009/questions/12/63593c90-04b4-48ea-b9c5-1205f73bef95.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/12/233eafdb-167e-4978-a815-54aad9e6bee2.jpg",
+    "https://leticia.franferreira.cloud/imagens/2009/questions/12/63593c90-04b4-48ea-b9c5-1205f73bef95.jpg"
    ],
    "enunciado": "Com base nas informações do texto, é correto concluir que os sabões atuam de maneira:",
    "alternativas": [
@@ -666,7 +666,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/14/524ed514-1e24-42fe-9a5f-efebf0ce3c6d.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/14/524ed514-1e24-42fe-9a5f-efebf0ce3c6d.png"
    ],
    "enunciado": "Aumentar a eficiência dos processos de conversão de energia implica economizar recursos e combustíveis. Das propostas seguintes, qual resultará em maior aumento da eficiência geral do processo?",
    "alternativas": [
@@ -718,7 +718,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/15/a4e6a5bb-5a91-4e8a-86f2-b4775c56178f.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/15/a4e6a5bb-5a91-4e8a-86f2-b4775c56178f.jpg"
    ],
    "enunciado": "Entre as impurezas metálicas que constam na série apresentada, as que se sedimentam abaixo do ânodo de cobre são",
    "alternativas": [
@@ -770,7 +770,7 @@
    "idioma": null,
    "contexto": "A figura seguinte representa um modelo de transmissão da informação genética nos sistemas biológicos. No fim do processo, que inclui a replicação, a transcrição e a tradução, há três formas proteicas diferentes denominadas a, b e c.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/16/2c67a1f7-b788-445d-9a6c-ef9d499ff78b.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/16/2c67a1f7-b788-445d-9a6c-ef9d499ff78b.png"
    ],
    "enunciado": "Depreende-se do modelo que",
    "alternativas": [
@@ -872,7 +872,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/18/984c1d41-ccbd-4532-b8aa-b39dfefb0649.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/18/984c1d41-ccbd-4532-b8aa-b39dfefb0649.png"
    ],
    "enunciado": "Considere-se que um auditório possua capacidade para 40 pessoas, cada uma produzindo uma quantidade média\nde calor, e que praticamente todo o calor que flui para fora do auditório o faz por meio dos aparelhos de ar condicionado. Nessa situação, entre as informações listadas, aquelas essenciais para se determinar quantos e/ou quais aparelhos de ar-condicionado são precisos para manter, com lotação máxima, a temperatura interna do auditório agradável e constante, bem como determinar a espessura da fiação do circuito elétrico para a ligação desses aparelhos, são",
    "alternativas": [
@@ -924,8 +924,8 @@
    "idioma": null,
    "contexto": "\n\nA escolha das lâmpadas é essencial para obtenção de uma boa iluminação. A potência da lâmpada deverá estar de acordo com o tamanho do cômodo a ser iluminado. O quadro a seguir mostra a relação entre as áreas dos cômodos (em m²) e as potências das lâmpadas (em W), e foi utilizado como referência para o primeiro pavimento de uma residência.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/19/ce14eccd-b5dd-4dde-a5a6-2e163d72fec9.png",
-    "https://enem.dev/2009/questions/19/9747c953-2a43-411f-b7ee-49a4e4fd6429.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/19/ce14eccd-b5dd-4dde-a5a6-2e163d72fec9.png",
+    "https://leticia.franferreira.cloud/imagens/2009/questions/19/9747c953-2a43-411f-b7ee-49a4e4fd6429.png"
    ],
    "enunciado": "Considerando a planta baixa fornecida, com todos os aparelhos em funcionamento, a potência total, em watts, será de",
    "alternativas": [
@@ -977,7 +977,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/20/a5b76cbb-b0e8-42a4-ba0f-ca81b7abdcb7.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/20/a5b76cbb-b0e8-42a4-ba0f-ca81b7abdcb7.png"
    ],
    "enunciado": "Se fosse necessário melhorar o rendimento dessa usina, que forneceria eletricidade para abastecer uma cidade, qual das seguintes ações poderia resultar em alguma economia de energia, sem afetar a capacidade de geração da usina?",
    "alternativas": [
@@ -1034,31 +1034,31 @@
     {
      "letra": "A",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/21/9d7cdc06-4397-4fc8-8e79-5a7933931cce.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/21/9d7cdc06-4397-4fc8-8e79-5a7933931cce.png",
      "correta": false
     },
     {
      "letra": "B",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/21/7a052a7f-b258-4365-8370-16a8757a233a.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/21/7a052a7f-b258-4365-8370-16a8757a233a.png",
      "correta": false
     },
     {
      "letra": "C",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/21/6a5e3a17-5062-4a35-bc1a-267da70919e3.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/21/6a5e3a17-5062-4a35-bc1a-267da70919e3.png",
      "correta": true
     },
     {
      "letra": "D",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/21/482b95e7-e9a6-4631-bdb6-52d196282473.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/21/482b95e7-e9a6-4631-bdb6-52d196282473.png",
      "correta": false
     },
     {
      "letra": "E",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/21/a7fa1fd3-06fa-488f-8389-b8dd42eef74e.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/21/a7fa1fd3-06fa-488f-8389-b8dd42eef74e.png",
      "correta": false
     }
    ],
@@ -1079,7 +1079,7 @@
    "idioma": null,
    "contexto": "Um medicamento, após ser ingerido, atinge a corrente sanguínea e espalha-se pelo organismo, mas, como suas moléculas “não sabem” onde é que está o problema, podem atuar em locais diferentes do local “alvo” e desencadear efeitos além daqueles desejados. Não seria perfeito se as moléculas dos medicamentos soubessem exatamente onde está o problema e fossem apenas até aquele local exercer sua ação? A técnica conhecida como iontoforese, indolor e não invasiva, promete isso. Como mostram as figuras, essa nova técnica baseia-se na aplicação de uma corrente elétrica de baixa intensidade sobre a pele do paciente, permitindo que fármacos permeiem membranas biológicas e alcancem a corrente sanguínea, sem passar pelo estômago. Muitos pacientes relatam apenas um formigamento no local de aplicação. O objetivo da corrente elétrica é formar poros que permitam a passagem do fármaco de interesse. A corrente elétrica é distribuída por eletrodos, positivo e negativo, por meio de uma solução aplicada sobre a pele. Se a molécula do medicamento tiver carga elétrica positiva ou negativa, ao entrar em contato com o eletrodo de carga de mesmo sinal, ela será repelida e forçada a entrar na pele (eletrorrepulsão – A). Se for neutra, a molécula será forçada a entrar na pele juntamente com o fluxo de solvente fisiológico que se forma entre os eletrodos (eletrosmose – B).\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/22/5109eb3c-8a36-48f7-a9e5-b71fcc02ec6d.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/22/5109eb3c-8a36-48f7-a9e5-b71fcc02ec6d.png"
    ],
    "enunciado": "De acordo com as informações contidas no texto e nas figuras, o uso da iontoforese",
    "alternativas": [
@@ -1180,7 +1180,7 @@
    "idioma": null,
    "contexto": "Umidade relativa do ar é o termo usado para descrever a quantidade de vapor de água contido na atmosfera. Ela é definida pela razão entre o conteúdo real de umidade de uma parcela de ar e a quantidade de umidade que a mesma parcela de ar pode armazenar na mesma temperatura e pressão quando está saturada de vapor, isto é, com 100% de umidade relativa. O gráfico representa a relação entre a umidade relativa do ar e sua temperatura ao longo de um período de 24 horas em um determinado local.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/24/53ebbcea-15f9-494b-9426-72808957e3f9.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/24/53ebbcea-15f9-494b-9426-72808957e3f9.jpg"
    ],
    "enunciado": "Considerando-se as informações do texto e do gráfico, conclui-se que",
    "alternativas": [
@@ -1232,7 +1232,7 @@
    "idioma": null,
    "contexto": "Os planos de controle e erradicação de doenças em animais envolvem ações de profilaxia e dependem em grande medida da correta utilização e interpretação de testes diagnósticos. O quadro mostra um exemplo hipotético de aplicação de um teste diagnóstico.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/25/404c9597-0e69-4df3-b423-1e332c80add4.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/25/404c9597-0e69-4df3-b423-1e332c80add4.jpg"
    ],
    "enunciado": "Considerando que, no teste diagnóstico, a sensibilidade é a probabilidade de um animal infectado ser classificado como positivo e a especificidade é a probabilidade de um animal não infectado ter resultado negativo, a interpretação do quadro permite inferir que",
    "alternativas": [
@@ -1334,7 +1334,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/27/8a0ca647-a136-470c-b4b1-f7cd0de48513.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/27/8a0ca647-a136-470c-b4b1-f7cd0de48513.png"
    ],
    "enunciado": "Considerando o texto e as leis de Kepler, pode-se afirmar que a frase dita pelo astronauta",
    "alternativas": [
@@ -1386,7 +1386,7 @@
    "idioma": null,
    "contexto": "Uma pesquisadora deseja reflorestar uma área de mata ciliar quase que totalmente desmatada. Essa formação vegetal é um tipo de floresta muito comum nas margens de rios dos cerrados no Brasil central e, em seu clímax, possui vegetação arbórea perene e apresenta dossel fechado, com pouca incidência luminosa no solo e nas plântulas. Sabe-se que a incidência de luz, a disponibilidade de nutrientes e a umidade do solo são os principais fatores do meio ambiente físico que influenciam no desenvolvimento da planta. Para testar unicamente os efeitos da variação de luz, a pesquisadora analisou, em casas de vegetação com condições controladas, o desenvolvimento de plantas de 10 espécies nativas da região desmatada sob quatro condições de luminosidade: uma sob sol pleno e as demais em diferentes níveis de sombreamento. Para cada tratamento experimental, a pesquisadora relatou se o desenvolvimento da planta foi bom, razoável ou ruim, de acordo com critérios específicos. Os resultados obtidos foram os seguintes:\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/28/d003c721-13f1-4ef4-8cca-6b37a1312ee3.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/28/d003c721-13f1-4ef4-8cca-6b37a1312ee3.png"
    ],
    "enunciado": "Para o reflorestamento da região desmatada,",
    "alternativas": [
@@ -1438,7 +1438,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/29/8b64e737-d832-4707-9ffe-9eb28b3f7b1c.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/29/8b64e737-d832-4707-9ffe-9eb28b3f7b1c.jpg"
    ],
    "enunciado": "O antimônio é um elemento químico que possui 50 prótons e possui vários isótopos ― átomos que só se diferem pelo número de nêutrons. De acordo com o gráfico, os isótopos estáveis do antimônio possuem",
    "alternativas": [
@@ -1589,7 +1589,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/32/2f78c8cf-ff4d-40a1-ad8a-fd513f7001c3.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/32/2f78c8cf-ff4d-40a1-ad8a-fd513f7001c3.png"
    ],
    "enunciado": "Dentre os fenômenos decorrentes da interação entre a radiação e os átomos do indivíduo que permitem a obtenção desta imagem inclui-se a",
    "alternativas": [
@@ -1641,7 +1641,7 @@
    "idioma": null,
    "contexto": "Os ratos _Peromyscus polionotus_ encontram-se distribuídos em ampla região na América do Norte. A pelagem de ratos dessa espécie varia do marrom claro até o escuro, sendo que os ratos de uma mesma população têm coloração muito semelhante. Em geral, a coloração da pelagem também é muito parecida à cor do solo da região em que se encontram, que também apresenta a mesma variação de cor, distribuída ao longo de um gradiente sul-norte. Na figura, encontram-se representadas sete diferentes populações de _P. polionotus_. Cada população é representada pela pelagem do rato, por uma amostra de solo e por sua posição geográfica no mapa.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/33/a2e94298-0c01-4a34-9c5e-938a893089c7.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/33/a2e94298-0c01-4a34-9c5e-938a893089c7.png"
    ],
    "enunciado": "O mecanismo evolutivo envolvido na associação entre cores de pelagem e de substrato é",
    "alternativas": [
@@ -1743,7 +1743,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/35/9d8b484b-e10a-414e-9a44-bd803c5169f6.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/35/9d8b484b-e10a-414e-9a44-bd803c5169f6.png"
    ],
    "enunciado": "Considerando que a distância entre a borda inferior e a borda superior da superfície refletora tenha 6 m de largura e que focaliza no receptor os 800 watts/m² de radiação provenientes do Sol, e que o calor específico da água é 1 cal g-1 ºC-1 = 4.200 J kg-1 ºC-1, então o comprimento linear do refletor parabólico necessário para elevar a temperatura de 1 m³ (equivalente a 1 t) de água de 20 °C para 100 °C, em uma hora, estará entre",
    "alternativas": [
@@ -1894,7 +1894,7 @@
    "idioma": null,
    "contexto": "A invenção da geladeira proporcionou uma revolução no aproveitamento dos alimentos, ao permitir que fossem armazenados e transportados por longos períodos. A figura apresentada ilustra o processo cíclico de funcionamento de uma geladeira, em que um gás no interior de uma tubulação é forçado a circular entre o congelador e a parte externa da geladeira. É por meio dos processos de compressão, que ocorre na parte externa, e de expansão, que ocorre na parte interna, que o gás proporciona a troca de calor entre o interior e o exterior da geladeira.\n\nDisponível em: http://home.howstuffworks.com. Acesso em: 19 out. 2008 (adaptado).\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/39/6991cb0b-0677-4966-9b10-126fa676fe93.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/39/6991cb0b-0677-4966-9b10-126fa676fe93.png"
    ],
    "enunciado": "Nos processos de transformação de energia envolvidos no funcionamento da geladeira,",
    "alternativas": [
@@ -2096,7 +2096,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/43/fc15f9d3-d27d-4451-86aa-2d9576a0e88f.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/43/fc15f9d3-d27d-4451-86aa-2d9576a0e88f.jpg"
    ],
    "enunciado": "À medida que aumenta a consciência sobre os impactos ambientais relacionados ao uso da energia, cresce a importância de se criar políticas de incentivo ao uso de combustíveis mais eficientes. Nesse sentido, considerando-se que o metano, o butano e o octano sejam representativos do gás natural, do gás liquefeito de petróleo (GLP) e da gasolina, respectivamente, então, a partir dos dados fornecidos, é possível concluir que, do ponto de vista da quantidade de calor obtido por mol de CO2 gerado, a ordem crescente desses três combustíveis é",
    "alternativas": [
@@ -2197,7 +2197,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/45/391df735-013e-414c-a12f-3d626c8855ce.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/45/391df735-013e-414c-a12f-3d626c8855ce.png"
    ],
    "enunciado": "Nessa situação, quais são as três lâmpadas que acendem com o mesmo brilho por apresentarem igual valor de corrente fluindo nelas, sob as quais devem se posicionar os três atores?",
    "alternativas": [
@@ -3494,7 +3494,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/73/c8b4cebd-dcd5-4090-b0ea-049c96a392c7.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/73/c8b4cebd-dcd5-4090-b0ea-049c96a392c7.jpg"
    ],
    "enunciado": "A partir do mapa apresentado, é possível inferir que nas últimas décadas do século XX, registraram-se processos que resultaram em transformações na distribuição das atividades econômicas e da população sobre o território brasileiro, com reflexos no PIB por habitante. Assim,",
    "alternativas": [
@@ -3696,7 +3696,7 @@
    "idioma": null,
    "contexto": "A luta pela terra no Brasil é marcada por diversos aspectos que chamam a atenção. Entre os aspectos positivos, destaca-se a perseverança dos movimentos do campesinato e, entre os aspectos negativos, a violência que manchou de sangue essa história. Os movimentos pela reforma agrária articularam-se por todo o território nacional, principalmente entre 1985 e 1996, e conseguiram de maneira expressiva a inserção desse tema nas discussões pelo acesso à terra.O mapa seguinte apresenta a distribuição dos conflitos agrários em todas as regiões do Brasil nesse período, e o número de mortes ocorridas nessas lutas.\n\n\n\nOLIVEIRA, A. U. A longa marcha do campesinato brasileiro: movimentos sociais, conflitos e reforma agrária.  Revista Estudos Avançados. Vol. 15 n. 43, São Paulo, set./dez. 2001.",
    "arquivos": [
-    "https://enem.dev/2009/questions/77/0148040b-fcc5-4e8c-a19f-4c41b9041a27.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/77/0148040b-fcc5-4e8c-a19f-4c41b9041a27.jpg"
    ],
    "enunciado": "Com base nas informações do mapa acerca dos conflitos pela posse de terra no Brasil, a região",
    "alternativas": [
@@ -3748,7 +3748,7 @@
    "idioma": null,
    "contexto": "O gráfico mostra o percentual de áreas ocupadas, segundo o tipo de propriedade rural no Brasil, no ano de 2006.\n\n\n\nMDA/INCRA (DIEESE, 2006)  \nDisponível em: http://www.sober.org.br. Acesso em: 6 ago. 2009.",
    "arquivos": [
-    "https://enem.dev/2009/questions/78/85294de7-2d92-41fd-95eb-d3fd892e6e81.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/78/85294de7-2d92-41fd-95eb-d3fd892e6e81.jpg"
    ],
    "enunciado": "De acordo com o gráfico e com referência à distribuição das áreas rurais no Brasil, conclui-se que",
    "alternativas": [
@@ -3999,7 +3999,7 @@
    "idioma": null,
    "contexto": "No mundo contemporâneo, as reservas energéticas tornam-se estratégicas para muitos países no cenário internacional. Os gráficos apresentados mostram os dez países com as maiores reservas de petróleo e gás natural em reservas comprovadas até janeiro de 2008.\n\n\n\nDisponível em: http://indexmundi.com. Acesso em: 12 ago. 2009 (adaptado).",
    "arquivos": [
-    "https://enem.dev/2009/questions/83/ad2f947f-ee8f-4f33-b73f-6eeeaf728bb1.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/83/ad2f947f-ee8f-4f33-b73f-6eeeaf728bb1.jpg"
    ],
    "enunciado": "As reservas venezuelanas figuram em ambas as classificações porque",
    "alternativas": [
@@ -4051,7 +4051,7 @@
    "idioma": null,
    "contexto": "\n\nBETHEL, L. História da América. V. I. São Paulo. (Foto: EDUSP)",
    "arquivos": [
-    "https://enem.dev/2009/questions/84/15a16039-43b9-4779-9660-b66387929694.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/84/15a16039-43b9-4779-9660-b66387929694.png"
    ],
    "enunciado": "As terras brasileiras foram divididas por meio de tratados entre Portugal e Espanha. De acordo com esses tratados, identificados no mapa, conclui-se que",
    "alternativas": [
@@ -4108,31 +4108,31 @@
     {
      "letra": "A",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/85/9cb975ad-f621-4113-b7fe-06e2d59edfb3.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/85/9cb975ad-f621-4113-b7fe-06e2d59edfb3.jpg",
      "correta": false
     },
     {
      "letra": "B",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/85/b7e91166-ecad-47dc-9e60-f849a04b6c5a.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/85/b7e91166-ecad-47dc-9e60-f849a04b6c5a.jpg",
      "correta": false
     },
     {
      "letra": "C",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/85/6d794016-888f-44d1-9b5a-f6bf5d55fde2.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/85/6d794016-888f-44d1-9b5a-f6bf5d55fde2.jpg",
      "correta": false
     },
     {
      "letra": "D",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/85/305b509e-5820-4232-89d8-536efd654cf2.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/85/305b509e-5820-4232-89d8-536efd654cf2.jpg",
      "correta": true
     },
     {
      "letra": "E",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/85/fc415de4-03a9-4fcd-a402-932ab09d25a9.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/85/fc415de4-03a9-4fcd-a402-932ab09d25a9.jpg",
      "correta": false
     }
    ],
@@ -4153,8 +4153,8 @@
    "idioma": null,
    "contexto": "\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/86/04d790cc-7221-4d93-a0a7-ea323350509a.jpg",
-    "https://enem.dev/2009/questions/86/1dec6a28-9c85-4f2d-a6ca-58d1bd4ead05.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/86/04d790cc-7221-4d93-a0a7-ea323350509a.jpg",
+    "https://leticia.franferreira.cloud/imagens/2009/questions/86/1dec6a28-9c85-4f2d-a6ca-58d1bd4ead05.jpg"
    ],
    "enunciado": "Reunindo-se as informações contidas nas duas charges, infere-se que",
    "alternativas": [
@@ -4206,7 +4206,7 @@
    "idioma": null,
    "contexto": "Na figura, observa-se uma classificação de regiões da América do Sul segundo o grau de aridez verificado.\n\n\n\nDisponível em: http:// www.mutirao.com.br.  \nAcesso em: 5 ago. 2009.",
    "arquivos": [
-    "https://enem.dev/2009/questions/87/951db800-9e06-49b2-b3ab-3589923ae034.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/87/951db800-9e06-49b2-b3ab-3589923ae034.jpg"
    ],
    "enunciado": "Em relação às regiões marcadas na figura, observa-se que",
    "alternativas": [
@@ -4413,31 +4413,31 @@
     {
      "letra": "A",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/91/408d83bd-5a49-47b1-8c27-c93f89ce9848.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/91/408d83bd-5a49-47b1-8c27-c93f89ce9848.png",
      "correta": true
     },
     {
      "letra": "B",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/91/621bd155-ee7a-44c6-8caa-5c762e4aba9a.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/91/621bd155-ee7a-44c6-8caa-5c762e4aba9a.png",
      "correta": false
     },
     {
      "letra": "C",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/91/078717dc-8445-4d06-90a1-d72677e77765.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/91/078717dc-8445-4d06-90a1-d72677e77765.png",
      "correta": false
     },
     {
      "letra": "D",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/91/e9829610-cf70-4c43-b687-43081954d260.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/91/e9829610-cf70-4c43-b687-43081954d260.png",
      "correta": false
     },
     {
      "letra": "E",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/91/151cb81f-9bf4-4bea-ae04-790125cf0fb1.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/91/151cb81f-9bf4-4bea-ae04-790125cf0fb1.png",
      "correta": false
     }
    ],
@@ -4508,7 +4508,7 @@
    "idioma": null,
    "contexto": "Analise as seguintes avaliações de possíveis resultados de  \num teste na Internet.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/93/78a6b697-0241-4008-8983-636d150e26a1.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/93/78a6b697-0241-4008-8983-636d150e26a1.png"
    ],
    "enunciado": "Depreende-se, a partir desse conjunto de informações, que o teste que deu origem a esses resultados, além de estabelecer um perfil para o usuário de sites de relacionamento, apresenta preocupação com hábitos e propõe mudanças de comportamento direcionadas",
    "alternativas": [
@@ -4560,8 +4560,8 @@
    "idioma": null,
    "contexto": "A música pode ser definida como a combinação de sons ao longo do tempo. Cada produto final oriundo da infinidade de combinações possíveis será diferente, dependendo da escolha das notas, de suas durações, dos instrumentos utilizados, do estilo de música, da nacionalidade do compositor e do período em que as obras foram compostas.\n\n\n\n\n\nFigura 1 – http://images.quebarato.com.br/photos/big/2/D/15A12D\\_2.jpg.  \nFigura 2 – http://ourinhos.prefeituramunicipal.net/dados/fotos/2009/07/07/normal.  \nFigura 3 – http://www.edmontonculturalcapital.com/gallery/edjazzfestival/JazzQuartet.jpg  \nFigura 4 – http://www.filmica.com/jacintaescudos/archivos/Led-Zeppelin.jpg.",
    "arquivos": [
-    "https://enem.dev/2009/questions/94/282c49bb-1204-48bd-94f0-655923c3210e.png",
-    "https://enem.dev/2009/questions/94/c2791052-0250-4108-b050-c836866cc800.png"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/94/282c49bb-1204-48bd-94f0-655923c3210e.png",
+    "https://leticia.franferreira.cloud/imagens/2009/questions/94/c2791052-0250-4108-b050-c836866cc800.png"
    ],
    "enunciado": "Das figuras que apresentam grupos musicais em ação, pode-se concluir que o(os) grupo(s) mostrado(s) na(s) figura(s)",
    "alternativas": [
@@ -4663,7 +4663,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/96/05bce341-8926-454e-8c24-49814582373d.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/96/05bce341-8926-454e-8c24-49814582373d.jpg"
    ],
    "enunciado": "Os principais recursos utilizados para envolvimento e adesão do leitor à campanha institucional incluem",
    "alternativas": [
@@ -4715,7 +4715,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/97/21bc16d2-a579-454e-ade1-28f57b52d15d.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/97/21bc16d2-a579-454e-ade1-28f57b52d15d.jpg"
    ],
    "enunciado": "O texto tem o objetivo de solucionar um problema social,",
    "alternativas": [
@@ -4866,7 +4866,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/100/8d5cbf39-b768-437a-a494-eb718d3f64a5.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/100/8d5cbf39-b768-437a-a494-eb718d3f64a5.jpg"
    ],
    "enunciado": "Tendo em vista a segunda fala do personagem entrevistado, constata-se que",
    "alternativas": [
@@ -5068,7 +5068,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/105/d37499f0-6363-4d99-8d33-c682027d79d7.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/105/d37499f0-6363-4d99-8d33-c682027d79d7.jpg"
    ],
    "enunciado": "Os quadrinhos exemplificam que as Histórias em Quadrinhos constituem um gênero textual",
    "alternativas": [
@@ -5270,7 +5270,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/109/1422ce0e-d489-4fc4-af98-06be69f0d8e8.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/109/1422ce0e-d489-4fc4-af98-06be69f0d8e8.jpg"
    ],
    "enunciado": "A linguagem da tirinha revela",
    "alternativas": [
@@ -5422,7 +5422,7 @@
    "idioma": null,
    "contexto": "\n\nA feição deles é serem pardos, maneira d’avermelhados, de bons rostos e bons narizes, bem feitos. Andam nus, sem nenhuma cobertura, nem estimam nenhuma cousa cobrir, nem mostrar suas vergonhas. E estão acerca disso com tanta inocência como têm em mostrar o rosto.\n\nCAMINHA, P. V. A carta. Disponível em: www.dominiopublico.gov.br.  \nAcesso em: 12 ago. 2009.",
    "arquivos": [
-    "https://enem.dev/2009/questions/112/4d3d4611-5050-4e7e-8329-d76f2c17ca69.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/112/4d3d4611-5050-4e7e-8329-d76f2c17ca69.jpg"
    ],
    "enunciado": "Ao se estabelecer uma relação entre a obra de Eckhout e o trecho do texto de Caminha, conclui-se que",
    "alternativas": [
@@ -5524,7 +5524,7 @@
    "idioma": null,
    "contexto": "\n\nVocê sabia que as metrópoles são as grandes consumidoras dos produtos feitos com recursos naturais da Amazônia? Você pode diminuir os impactos à floresta adquirindo produtos com selos de certificação. Eles são encontrados em itens que vão desde lápis e embalagens de papelão até móveis, cosméticos e materiais de construção. Para receber os selos esses produtos devem ser fabricados sob 10 princípios éticos, entre eles o respeito à legislação ambiental e aos direitos de povos indígenas e populações que vivem em nossas matas nativas.\n\nVida simples. Ed. 74, dez. 2008.",
    "arquivos": [
-    "https://enem.dev/2009/questions/114/210b6d6d-83b0-4ea3-9e5e-f132e9192614.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/114/210b6d6d-83b0-4ea3-9e5e-f132e9192614.jpg"
    ],
    "enunciado": "O texto e a imagem têm por finalidade induzir o leitor a uma mudança de comportamento a partir do(a)",
    "alternativas": [
@@ -6076,7 +6076,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/125/5a4ecb2b-fa74-43e5-a8ad-89db87b4e9ba.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/125/5a4ecb2b-fa74-43e5-a8ad-89db87b4e9ba.jpg"
    ],
    "enunciado": "Na parte superior do anúncio, há um comentário escrito à mão que aborda a questão das atividades linguísticas e sua relação com as modalidades oral e escrita da língua. Esse comentário deixa evidente uma posição crítica quanto a usos que se fazem da linguagem, enfatizando ser necessário",
    "alternativas": [
@@ -6128,7 +6128,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/126/b72a01dc-1bf6-4dea-96b7-31e38144d132.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/126/b72a01dc-1bf6-4dea-96b7-31e38144d132.jpg"
    ],
    "enunciado": "O texto exemplifica um gênero textual híbrido entre carta e publicidade oficial. Em seu conteúdo, é possível perceber aspectos relacionados a gêneros digitais. Considerando-se a função social das informações geradas nos sistemas de comunicação e informação presentes no texto, infere-se que",
    "alternativas": [
@@ -6180,7 +6180,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2009/questions/127/798e9623-046e-493b-8d10-455dffae35db.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/127/798e9623-046e-493b-8d10-455dffae35db.jpg"
    ],
    "enunciado": "Diante dos recursos argumentativos utilizados, depreende-se que o texto apresentado",
    "alternativas": [
@@ -6629,7 +6629,7 @@
    "idioma": null,
    "contexto": "Dados da Associação Nacional de Empresas de Transportes Urbanos (ANTU) mostram que o número de passageiros transportados mensalmente nas principais regiões metropolitanas do país vem caindo sistematicamente. Eram 476,7 milhões de passageiros em 1995, e esse número caiu para 321,9 milhões em abril de 2001. Nesse período, o tamanho da frota de veículos mudou pouco, tendo no final de 2008 praticamente o mesmo tamanho que tinha em 2001.  \nO gráfico a seguir mostra um índice de produtividade utilizado pelas empresas do setor, que é a razão entre o total de passageiros transportados por dia e o tamanho da frota de veículos.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/136/dcd1ac1c-61ef-4937-bc83-ee7b4a18f667.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/136/dcd1ac1c-61ef-4937-bc83-ee7b4a18f667.jpg"
    ],
    "enunciado": "Supondo que as frotas totais de veículos naquelas regiões metropolitanas em abril de 2001 e em outubro de 2008 eram do mesmo tamanho, os dados do gráfico permitem inferir que o total de passageiros transportados no mês de outubro de 2008 foi aproximadamente igual a",
    "alternativas": [
@@ -6681,7 +6681,7 @@
    "idioma": null,
    "contexto": "O mapa ao lado representa um bairro de determinada cidade, no qual as flechas indicam o sentido das mãos do tráfego. Sabe-se que esse bairro foi planejado e que cada quadra representada na figura é um terreno quadrado, de lado igual a 200 metros.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/137/d56b6567-20da-46f3-92e0-42b14796b37b.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/137/d56b6567-20da-46f3-92e0-42b14796b37b.jpg"
    ],
    "enunciado": "Desconsiderando-se a largura das ruas, qual seria o tempo, em minutos, que um ônibus, em velocidade constante e igual a 40 km/h, partindo do ponto X, demoraria para chegar até o ponto Y?",
    "alternativas": [
@@ -6733,7 +6733,7 @@
    "idioma": null,
    "contexto": "A população mundial está ficando mais velha, os índices de natalidade diminuíram e a expectativa de vida aumentou. No gráfico seguinte, são apresentados dados obtidos por pesquisa realizada pela Organização das Nações Unidas (ONU), a respeito da quantidade de pessoas com 60 anos ou mais em todo o mundo. Os números da coluna da direita representam as faixas percentuais. Por exemplo, em 1950 havia 95 milhões de pessoas com 60 anos ou mais nos países desenvolvidos, número entre 10% e 15% da população total nos países desenvolvidos.\n\n\n\nSuponha que o modelo exponencial y = 363e0,03x, em que x = 0 corresponde ao ano 2000, x = 1 corresponde ao ano 2001, e assim sucessivamente, e que y é a população em milhões de habitantes no ano x, seja usado para estimar essa população com 60 anos ou mais de idade nos países em desenvolvimento entre 2010 e 2050.",
    "arquivos": [
-    "https://enem.dev/2009/questions/138/2f19ef3b-7481-42c2-9c55-03664846dacc.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/138/2f19ef3b-7481-42c2-9c55-03664846dacc.jpg"
    ],
    "enunciado": "Desse modo, considerando e0,3 = 1,35, estima-se que a população com 60 anos ou mais estará, em 2030, entre",
    "alternativas": [
@@ -6785,7 +6785,7 @@
    "idioma": null,
    "contexto": "A população mundial está ficando mais velha, os índices de natalidade diminuíram e a expectativa de vida aumentou. No gráfico seguinte, são apresentados dados obtidos por pesquisa realizada pela Organização das Nações Unidas (ONU), a respeito da quantidade de pessoas com 60 anos ou mais em todo o mundo. Os números da coluna da direita representam as faixas percentuais. Por exemplo, em 1950 havia 95 milhões de pessoas com 60 anos ou mais nos países desenvolvidos, número entre 10% e 15% da população total nos países desenvolvidos.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/139/ce6a3e69-a428-4ce0-9247-80452dcdca20.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/139/ce6a3e69-a428-4ce0-9247-80452dcdca20.jpg"
    ],
    "enunciado": "Em 2050, a probabilidade de se escolher, aleatoriamente, uma pessoa com 60 anos ou mais de idade, na população dos países desenvolvidos, será um número mais próximo de",
    "alternativas": [
@@ -6837,7 +6837,7 @@
    "idioma": null,
    "contexto": "O governo cedeu terrenos para que famílias construíssem suas residências com a condição de que no mínimo 94% da área do terreno fosse mantida como área de preservação ambiental. Ao receber o terreno retangular ABCD, em que AB= BC/2 , Antônio demarcou uma área quadrada no vértice A, para a construção de sua residência, de acordo com o desenho, no qual AE = AB/5 é lado do quadrado.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/140/ef5fc6bc-3de0-4ee7-ae4c-cdbca574c187.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/140/ef5fc6bc-3de0-4ee7-ae4c-cdbca574c187.jpg"
    ],
    "enunciado": "Nesse caso, a área definida por Antônio atingiria exatamente o limite determinado pela condição se ele",
    "alternativas": [
@@ -6939,7 +6939,7 @@
    "idioma": null,
    "contexto": "A suspeita de que haveria uma relação causal entre tabagismo e câncer de pulmão foi levantada pela primeira vez a partir de observações clínicas. Para testar essa possível associação, foram conduzidos inúmeros estudos epidemiológicos. Dentre esses, houve o estudo do número de casos de câncer em relação ao número de cigarros consumidos por dia, cujos resultados são mostrados no gráfico a seguir.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/142/c56fbd08-b377-40bd-831c-b571ed7638fe.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/142/c56fbd08-b377-40bd-831c-b571ed7638fe.jpg"
    ],
    "enunciado": "De acordo com as informações do gráfico,",
    "alternativas": [
@@ -6991,7 +6991,7 @@
    "idioma": null,
    "contexto": "O gráfico a seguir mostra a evolução, de abril de 2008 a maio de 2009, da população economicamente ativa para seis Regiões Metropolitanas pesquisadas.\n\n\n\nDisponível em: www.ibge.gov.br.",
    "arquivos": [
-    "https://enem.dev/2009/questions/143/d9c2ead9-7b0d-4ba9-bf7d-53d4e3024558.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/143/d9c2ead9-7b0d-4ba9-bf7d-53d4e3024558.jpg"
    ],
    "enunciado": "Considerando que a taxa de crescimento da população economicamente ativa, entre 05/09 e 06/09, seja de 4%, então o número de pessoas economicamente ativas em 06/09 será igual a",
    "alternativas": [
@@ -7043,7 +7043,7 @@
    "idioma": null,
    "contexto": "A música e a matemática se encontram na representação dos tempos das notas musicais, conforme a figura seguinte.\n\n\n\nUm compasso é uma unidade musical composta por determinada quantidade de notas musicais em que a soma das durações coincide com a fração indicada como fórmula do compasso. Por exemplo, se a fórmula de compasso for 1/2 , poderia ter um compasso ou com duas semínimas ou uma mínima ou quatro colcheias, sendo possível a combinação de diferentes figuras.",
    "arquivos": [
-    "https://enem.dev/2009/questions/144/e592d2d8-7aca-4cb8-8a1c-3d01b64706a6.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/144/e592d2d8-7aca-4cb8-8a1c-3d01b64706a6.jpg"
    ],
    "enunciado": "Um trecho musical de oito compassos, cuja fórmula é 3/4 , poderia ser preenchido com",
    "alternativas": [
@@ -7145,7 +7145,7 @@
    "idioma": null,
    "contexto": "Uma pousada oferece pacotes promocionais para atrair casais a se hospedarem por até oito dias. A hospedagem seria em apartamento de luxo e, nos três primeiros dias, a diária custaria R$ 150,00, preço da diária fora da promoção. Nos três dias seguintes, seria aplicada uma redução no valor da diária, cuja taxa média de variação, a cada dia, seria de R$ 20,00. Nos dois dias restantes, seria mantido o preço do sexto dia. Nessas condições, um modelo para a promoção idealizada é apresentado no gráfico a seguir, no qual o valor da diária é função do tempo medido em número de dias.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/146/6e823a1c-778f-4d1a-89e6-06619fba287a.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/146/6e823a1c-778f-4d1a-89e6-06619fba287a.jpg"
    ],
    "enunciado": "De acordo com os dados e com o modelo, comparando o preço que um casal pagaria pela hospedagem por sete dias fora da promoção, um casal que adquirir o pacote promocional por oito dias fará uma economia de",
    "alternativas": [
@@ -7197,8 +7197,8 @@
    "idioma": null,
    "contexto": "As figuras a seguir exibem um trecho de um quebra-cabeças que está sendo montado. Observe que as peças são quadradas e há 8 peças no tabuleiro da figura A e 8 peças no tabuleiro da figura B. As peças são retiradas do tabuleiro da figura B e colocadas no tabuleiro da figura A na posição correta, isto é, de modo a completar os desenhos.\n\n\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/147/2540b2c3-868a-4e6d-bf25-edf78475b995.jpg",
-    "https://enem.dev/2009/questions/147/ce96a139-05bf-4b25-a3fc-eab46adf80f1.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/147/2540b2c3-868a-4e6d-bf25-edf78475b995.jpg",
+    "https://leticia.franferreira.cloud/imagens/2009/questions/147/ce96a139-05bf-4b25-a3fc-eab46adf80f1.jpg"
    ],
    "enunciado": "É possível preencher corretamente o espaço indicado pela seta no tabuleiro da figura A colocando a peça",
    "alternativas": [
@@ -7250,7 +7250,7 @@
    "idioma": null,
    "contexto": "A tabela mostra alguns dados da emissão de dióxido de carbono de uma fábrica, em função do número de toneladas produzidas.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/148/052af6e6-63f3-43e2-be36-96d0f5a48ab4.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/148/052af6e6-63f3-43e2-be36-96d0f5a48ab4.jpg"
    ],
    "enunciado": "Os dados na tabela indicam que a taxa média de variação entre a emissão de dióxido de carbono (em ppm) e a produção (em toneladas) é",
    "alternativas": [
@@ -7302,38 +7302,38 @@
    "idioma": null,
    "contexto": "Em Florença, Itália, na Igreja de Santa Croce, é possível encontrar um portão em que aparecem os anéis de Borromeo. Alguns historiadores acreditavam que os círculos representavam as três artes: escultura, pintura e arquitetura, pois elas eram tão próximas quanto inseparáveis.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/149/87fc20be-0d1a-4508-b804-bf58ba86e918.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/149/87fc20be-0d1a-4508-b804-bf58ba86e918.jpg"
    ],
    "enunciado": "Qual dos esboços a seguir melhor representa os anéis de Borromeo?",
    "alternativas": [
     {
      "letra": "A",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/149/34488218-cb6e-4ae1-ae7b-3e7e2986995d.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/149/34488218-cb6e-4ae1-ae7b-3e7e2986995d.jpg",
      "correta": false
     },
     {
      "letra": "B",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/149/a2900f94-fbf3-410d-ad2f-41938a2ef6b4.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/149/a2900f94-fbf3-410d-ad2f-41938a2ef6b4.jpg",
      "correta": false
     },
     {
      "letra": "C",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/149/704c275a-d2fb-4943-b7ea-9810d4855651.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/149/704c275a-d2fb-4943-b7ea-9810d4855651.jpg",
      "correta": false
     },
     {
      "letra": "D",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/149/a0f7ce1f-2021-48b4-99b4-776289157eac.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/149/a0f7ce1f-2021-48b4-99b4-776289157eac.jpg",
      "correta": false
     },
     {
      "letra": "E",
      "texto": null,
-     "arquivo": "https://enem.dev/2009/questions/149/b83410e7-99f3-47a1-bed5-01c4cffce0e6.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2009/questions/149/b83410e7-99f3-47a1-bed5-01c4cffce0e6.jpg",
      "correta": true
     }
    ],
@@ -7354,7 +7354,7 @@
    "idioma": null,
    "contexto": "Brasil e França têm relações comerciais há mais de 200 anos. Enquanto a França é a 5ª nação mais rica do planeta, o Brasil é a 10ª, e ambas se destacam na economia mundial. No entanto, devido a uma série de restrições, o comércio entre esses dois países ainda não é adequadamente explorado, como mostra a tabela seguinte, referente ao período 2003-2007.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/150/345210ee-8d51-4c8d-b6ca-05541e682160.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/150/345210ee-8d51-4c8d-b6ca-05541e682160.jpg"
    ],
    "enunciado": "Os dados da tabela mostram que, no período considerado, os valores médios dos investimentos da França no Brasil foram maiores que os investimentos do Brasil na França em um valor",
    "alternativas": [
@@ -7506,7 +7506,7 @@
    "idioma": null,
    "contexto": "Suponha que, na escultura do artista Emanoel Araújo, mostrada na figura a seguir, todos os prismas numerados em algarismos romanos são retos, com bases triangulares, e que as faces laterais do poliedro II são perpendiculares à sua própria face superior, que, por sua vez, é um triângulo congruente ao triângulo base dos prismas. Além disso, considere que os prismas I e III são perpendiculares ao prisma IV e ao poliedro II.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/153/0aaaf8f3-e87d-435c-901f-40781e411de9.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/153/0aaaf8f3-e87d-435c-901f-40781e411de9.jpg"
    ],
    "enunciado": "Imagine um plano paralelo à face α do prisma I, mas que passe pelo ponto P pertencente à aresta do poliedro II, indicado na figura. A interseção desse plano imaginário com a escultura contém",
    "alternativas": [
@@ -7758,7 +7758,7 @@
    "idioma": null,
    "contexto": "A figura a seguir mostra as medidas reais de uma aeronave que será fabricada para utilização por companhias de transporte aéreo. Um engenheiro precisa fazer o desenho desse avião em escala de 1:150.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/158/ee2af503-e5d1-45f8-b7f1-372e3cec5e11.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/158/ee2af503-e5d1-45f8-b7f1-372e3cec5e11.jpg"
    ],
    "enunciado": "Para o engenheiro fazer esse desenho em uma folha de papel, deixando uma margem de 1 cm em relação às bordas da folha, quais as dimensões mínimas, em centímetros, que essa folha deverá ter?",
    "alternativas": [
@@ -7810,8 +7810,8 @@
    "idioma": null,
    "contexto": "Um experimento consiste em colocar certa quantidade de bolas de vidro idênticas em um copo com água até certo nível e medir o nível da água, conforme ilustrado na figura a seguir. Como resultado do experimento, concluiu-se que o nível da água é função do número de bolas de vidro que são colocadas dentro do copo.\n\n\n\nO quadro a seguir mostra alguns resultados do experimento realizado.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/159/c49b9a82-ca97-42ec-89a8-0d08a9c8abd3.jpg",
-    "https://enem.dev/2009/questions/159/09fc439a-a96c-466c-a8a7-0928313480ae.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/159/c49b9a82-ca97-42ec-89a8-0d08a9c8abd3.jpg",
+    "https://leticia.franferreira.cloud/imagens/2009/questions/159/09fc439a-a96c-466c-a8a7-0928313480ae.jpg"
    ],
    "enunciado": "Qual a expressão algébrica que permite calcular o nível da água (y) em função do número de bolas (x)?",
    "alternativas": [
@@ -8063,7 +8063,7 @@
    "idioma": null,
    "contexto": "Ao morrer, o pai de João, Pedro e José deixou como herança um terreno retangular de 3 km x 2 km que contém uma área de extração de ouro delimitada por um quarto de círculo de raio 1 km a partir do canto inferior esquerdo da propriedade. Dado o maior valor da área de extração de ouro, os irmãos acordaram em repartir a propriedade de modo que cada um ficasse com a terça parte da área de extração, conforme mostra a figura.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/164/fbf84d66-498d-4521-8b27-9a164c60237d.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/164/fbf84d66-498d-4521-8b27-9a164c60237d.jpg"
    ],
    "enunciado": "Em relação à partilha proposta, constata-se que a porcentagem da área do terreno que coube a João corresponde, aproximadamente, a\n(considere  √3/3 = 0,58)",
    "alternativas": [
@@ -8165,7 +8165,7 @@
    "idioma": null,
    "contexto": "Rotas aéreas são como pontes que ligam cidades, estados ou países. O mapa a seguir mostra os estados brasileiros e a localização de algumas capitais identificadas pelos números. Considere que a direção seguida por um avião AI que partiu de Brasília – DF, sem escalas, para Belém, no Pará, seja um segmento de reta com extremidades em DF e em 4.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/166/f22c3fd9-901b-449e-8864-b9cf7c0cc24a.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/166/f22c3fd9-901b-449e-8864-b9cf7c0cc24a.jpg"
    ],
    "enunciado": "Suponha que um passageiro de nome Carlos pegou um avião AII, que seguiu a direção que forma um ângulo de 135º graus no sentido horário com a rota Brasília – Belém e pousou em alguma das capitais brasileiras. Ao desembarcar, Carlos fez uma conexão e embarcou em um avião AIII, que seguiu a direção que forma um ângulo reto, no sentido anti-horário, com a direção seguida pelo avião AII ao partir de Brasília-DF. Considerando que a direção seguida por um avião é sempre dada pela semirreta com origem na cidade de partida e que passa pela cidade destino do avião, pela descrição dada, o passageiro Carlos fez uma conexão em",
    "alternativas": [
@@ -8217,7 +8217,7 @@
    "idioma": null,
    "contexto": "O quadro apresenta informações da área aproximada de cada bioma brasileiro.\n\n\n\nÉ comum em conversas informais, ou mesmo em noticiários, o uso de múltiplos da área de um campo de futebol (com as medidas de 120 m x 90 m) para auxiliar a visualização de áreas consideradas extensas",
    "arquivos": [
-    "https://enem.dev/2009/questions/167/2e45ce65-e1cb-4d1c-975d-1a4c2feade5f.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/167/2e45ce65-e1cb-4d1c-975d-1a4c2feade5f.jpg"
    ],
    "enunciado": "Nesse caso, qual é o número de campos de futebol correspondente à área aproximada do bioma Pantanal?",
    "alternativas": [
@@ -8269,7 +8269,7 @@
    "idioma": null,
    "contexto": "Na tabela, são apresentados dados da cotação mensal do ovo extra branco vendido no atacado, em Brasília, em reais, por caixa de 30 dúzias de ovos, em alguns meses dos anos 2007 e 2008.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/168/f683544b-94d1-456c-bdfb-f2e964881776.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/168/f683544b-94d1-456c-bdfb-f2e964881776.jpg"
    ],
    "enunciado": "De acordo com esses dados, o valor da mediana das cotações mensais do ovo extra branco nesse período era igual a",
    "alternativas": [
@@ -8320,7 +8320,7 @@
    "idioma": null,
    "contexto": "A vazão do rio Tietê, em São Paulo, constitui preocupação constante nos períodos chuvosos. Em alguns trechos, são construídas canaletas para controlar o fluxo de água. Uma dessas canaletas, cujo corte vertical determina a forma de um trapézio isósceles, tem as medidas especificadas na figura I. Neste caso, a vazão da água é de 1.050 m³/s. O cálculo da vazão, Q em m³/s, envolve o produto da área A do setor transversal (por onde passa a água), em m², pela velocidade da água no local, v, em m/s, ou seja, Q = Av.  \nPlaneja-se uma reforma na canaleta, com as dimensões especificadas na figura II, para evitar a ocorrência de enchentes.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/169/ff2b8876-8f76-444b-b4d9-15556da637ec.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/169/ff2b8876-8f76-444b-b4d9-15556da637ec.jpg"
    ],
    "enunciado": "Na suposição de que a velocidade da água não se alterará, qual a vazão esperada para depois da reforma na canaleta?",
    "alternativas": [
@@ -8471,7 +8471,7 @@
    "idioma": null,
    "contexto": "Nos últimos anos, o volume de petróleo exportado pelo Brasil tem mostrado expressiva tendência de crescimento, ultrapassando as importações em 2008. Entretanto, apesar de as importações terem se mantido praticamente no mesmo patamar desde 2001, os recursos gerados com as exportações ainda são inferiores àqueles despendidos com as importações, uma vez que o preço médio por metro cúbico do petróleo importado é superior ao do petróleo nacional. Nos primeiros cinco meses de 2009, foram gastos 2,84 bilhões de dólares com importações e gerada uma receita de 2,24 bilhões de dólares com as exportações. O preço médio por metro cúbico em maio de 2009 foi de 340 dólares para o petróleo importado e de 230 dólares para o petróleo exportado. O quadro a seguir mostra os dados consolidados de 2001 a 2008 e dos primeiros cinco meses de 2009.\n\n\n\nConsidere que as importações e exportações de petróleo de junho a dezembro de 2009 sejam iguais a 7/5 das  \nimportações e exportações, respectivamente, ocorridas de janeiro a maio de 2009.",
    "arquivos": [
-    "https://enem.dev/2009/questions/172/5f549378-e9d4-4d17-9950-19a0f32f95b7.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/172/5f549378-e9d4-4d17-9950-19a0f32f95b7.jpg"
    ],
    "enunciado": "Nesse caso, supondo que os preços para importação e exportação não sofram alterações, qual seria o valor mais aproximado da diferença entre os recursos despendidos com as importações e os recursos gerados com as exportações em 2009?",
    "alternativas": [
@@ -8522,7 +8522,7 @@
    "idioma": null,
    "contexto": "Uma fábrica produz velas de parafina em forma de pirâmide quadrangular regular com 19 cm de altura e 6 cm de aresta da base. Essas velas são formadas por 4 blocos de mesma altura — 3 troncos de pirâmide de bases paralelas e 1 pirâmide na parte superior —, espaçados de 1 cm entre eles, sendo que a base superior de cada bloco é igual à base inferior do bloco sobreposto, com uma haste de ferro passando pelo centro de cada bloco, unindo-os, conforme a figura.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/173/e9b7219c-4c2a-459d-a1ce-d4e7a3ec2c25.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/173/e9b7219c-4c2a-459d-a1ce-d4e7a3ec2c25.jpg"
    ],
    "enunciado": "Se o dono da fábrica resolver diversificar o modelo, retirando a pirâmide da parte superior, que tem 1,5 cm de aresta na base, mas mantendo o mesmo molde, quanto ele passará a gastar com parafina para fabricar uma vela?",
    "alternativas": [
@@ -8573,7 +8573,7 @@
    "idioma": null,
    "contexto": "Considere um ponto P em uma circunferência de raio r no plano cartesiano. Seja Q a projeção ortogonal de P sobre o eixo x, como mostra a figura, e suponha que o ponto P percorra, no sentido anti-horário, uma distância d ≤ r sobre a circunferência.\n\n",
    "arquivos": [
-    "https://enem.dev/2009/questions/174/29dd5a77-8236-4be7-bdf2-fe2a3bfc482c.jpg"
+    "https://leticia.franferreira.cloud/imagens/2009/questions/174/29dd5a77-8236-4be7-bdf2-fe2a3bfc482c.jpg"
    ],
    "enunciado": "Então, o ponto Q percorrerá, no eixo x, uma distância dada por",
    "alternativas": [

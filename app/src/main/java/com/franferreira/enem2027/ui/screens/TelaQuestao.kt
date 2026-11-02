@@ -214,7 +214,7 @@ fun TelaQuestao(
                     Column {
                         questao.arquivos.forEach { url ->
                             AsyncImage(
-                                model = com.franferreira.enem2027.data.repo.ImagensAcervo.arquivoLocal(app, url) ?: url,
+                                model = com.franferreira.enem2027.data.repo.ImagensAcervo.origem(app, url),
                                 contentDescription = "Figura da questão",
                                 contentScale = ContentScale.Fit,
 placeholder = ColorPainter(SurfaceRaised),
@@ -386,7 +386,7 @@ error = ColorPainter(SurfaceRaised),
                             alternativa.arquivo?.let { url ->
                                 Spacer(Modifier.height(6.dp))
                                 AsyncImage(
-                                    model = com.franferreira.enem2027.data.repo.ImagensAcervo.arquivoLocal(app, url) ?: url,
+                                    model = com.franferreira.enem2027.data.repo.ImagensAcervo.origem(app, url),
                                     contentDescription = "Alternativa ${alternativa.letra}",
                                     contentScale = ContentScale.Fit,
 placeholder = ColorPainter(SurfaceRaised),

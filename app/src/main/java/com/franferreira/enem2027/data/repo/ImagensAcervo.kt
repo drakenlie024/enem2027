@@ -45,6 +45,37 @@ object ImagensAcervo {
         return f.takeIf { it.exists() && it.length() > 100 }
     }
 
+    /** Caminhos já confirmados dentro do APK, para não abrir o asset toda hora. */
+    private val embutidos = java.util.Collections.synchronizedSet(mutableSetOf<String>())
+    private val semEmbutido = java.util.Collections.synchronizedSet(mutableSetOf<String>())
+
+    private fun caminhoEmbutido(context: Context, url: String): String? {
+        val caminho = url.substringAfter("/imagens/", "")
+        if (caminho.isBlank() || caminho.contains("..")) return null
+        if (caminho in embutidos) return "file:///android_asset/imagens/$caminho"
+        if (caminho in semEmbutido) return null
+        return runCatching {
+            context.assets.open("imagens/$caminho").close()
+            embutidos.add(caminho)
+            "file:///android_asset/imagens/$caminho"
+        }.getOrElse {
+            semEmbutido.add(caminho)
+            null
+        }
+    }
+
+    /**
+     * O que a tela deve usar: imagem embutida no APK, senão o cache local,
+     * senão a URL do servidor.
+     *
+     * Nessa ordem: a embutida funciona sem rede nenhuma, o cache economiza
+     * dados e a URL é o último recurso.
+     */
+    fun origem(context: Context, url: String): Any =
+        caminhoEmbutido(context, url)
+            ?: arquivoLocal(context, url)
+            ?: url
+
     /** Baixa uma URL para o arquivo local. Devolve true se deu certo. */
     suspend fun baixarUma(context: Context, url: String): Boolean =
         withContext(Dispatchers.IO) {
@@ -82,6 +113,8 @@ object ImagensAcervo {
         withContext(Dispatchers.IO) {
             for (url in urls.distinct()) {
                 if (url.isBlank()) continue
+                // Já vem dentro do APK: baixar seria gastar 70 MB de dados à toa.
+                if (caminhoEmbutido(context, url) != null) continue
                 if (url.startsWith("http")) baixarUma(context, url)
             }
         }

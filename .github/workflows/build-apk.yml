@@ -93,6 +93,17 @@ jobs:
           print(f"falhas publicadas: {vistos}")
           PY
 
+      - name: Figuras das questões
+        # As 1.808 imagens do acervo (enunciado e alternativas) vêm do servidor
+        # em vez de engordar o repositório com 77 MB. Sem elas, questão com
+        # figura não fecha sem internet — e antes elas vinham de um site de
+        # terceiro (enem.dev), que podia sair do ar.
+        run: |
+          set -e
+          curl -fsSL https://leticia.franferreira.cloud/imagens.zip -o /tmp/imagens.zip
+          unzip -q -o /tmp/imagens.zip -d app/src/main/assets/
+          echo "figuras embutidas: $(find app/src/main/assets/imagens -type f | wc -l)"
+
       - name: Assemble release APK
         env:
           RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}

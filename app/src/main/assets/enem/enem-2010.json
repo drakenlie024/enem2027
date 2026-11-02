@@ -1,6 +1,6 @@
 {
  "ano": 2010,
- "versao": "2026-11-02T13:56:39Z",
+ "versao": "2026-11-02T14:09:42Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -11,7 +11,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/1/ac150e2b-3bf9-48b5-8d9e-aa52c2461af6.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/1/ac150e2b-3bf9-48b5-8d9e-aa52c2461af6.jpg"
    ],
    "enunciado": "O gráfico representa a relação entre o tamanho e a totalidade dos imóveis rurais no Brasil. Que característica da estrutura fundiária brasileira está evidenciada no gráfico apresentado?",
    "alternativas": [
@@ -213,7 +213,7 @@
    "idioma": null,
    "contexto": "\n\nTEIXEIRA. W. et al. (Orgs). Decifrando a Terra. São Paulo: Companhia Editora Nacional, 2009.",
    "arquivos": [
-    "https://enem.dev/2010/questions/5/0507e0cd-2002-4267-8a14-b1061254b765.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/5/0507e0cd-2002-4267-8a14-b1061254b765.jpg"
    ],
    "enunciado": "O esquema representa um processo de erosão em encosta. Que prática realizada por um agricultor pode resultar em aceleração desse processo?",
    "alternativas": [
@@ -265,7 +265,7 @@
    "idioma": null,
    "contexto": "\n\nTEIXEIRA. W. et al. (Orgs). Decifrando a Terra. São Paulo: Companhia Editora Nacional, 2009.",
    "arquivos": [
-    "https://enem.dev/2010/questions/6/aa83a948-e33c-4b98-b195-2e781566a1f4.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/6/aa83a948-e33c-4b98-b195-2e781566a1f4.jpg"
    ],
    "enunciado": "Muitos processos erosivos se concentram nas encostas, principalmente aqueles motivados pela água e pelo vento. No entanto, os reflexos também são sentidos nas áreas de baixada, onde geralmente há ocupação urbana. Um exemplo desses reflexos na vida cotidiana de muitas cidades brasileiras é",
    "alternativas": [
@@ -367,7 +367,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/8/a4c1596f-3cc7-4a97-966e-ccc2d1b0db88.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/8/a4c1596f-3cc7-4a97-966e-ccc2d1b0db88.jpg"
    ],
    "enunciado": "O esquema mostra depósitos em que aparecem fósseis de animais do Período Jurássico. As rochas em que se encontram esses fósseis são",
    "alternativas": [
@@ -2064,7 +2064,7 @@
    "idioma": null,
    "contexto": "\n\nDemocracia: “regime político no qual a soberania é  \nexercida pelo povo, pertence ao conjunto dos cidadãos.”\n\nJAPIASSÚ, H.; MARCONDES, D. Dicionário Básico de Filosofia. Rio de Janeiro: Zahar, 2006.",
    "arquivos": [
-    "https://enem.dev/2010/questions/45/a703a5c4-df7b-46c0-9a46-17f2771dbf24.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/45/a703a5c4-df7b-46c0-9a46-17f2771dbf24.jpg"
    ],
    "enunciado": "Uma suposta “vacina” contra o despotismo, em um contexto democrático, tem por objetivo",
    "alternativas": [
@@ -2216,7 +2216,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/48/b750cefc-08d5-423f-bba9-7e5e64aed3dc.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/48/b750cefc-08d5-423f-bba9-7e5e64aed3dc.png"
    ],
    "enunciado": "Um farol usa uma lâmpada de gás halogênio de 55 W de potência que opera com 36 V. Os dois faróis são ligados separadamente, com um fusível para cada um, mas, após um mau funcionamento, o motorista passou a conectá-los em paralelo, usando apenas um fusível. Dessa forma, admitindo-se que a fiação suporte a carga dos dois faróis, o menor valor de fusível adequado para proteção desse novo circuito é o",
    "alternativas": [
@@ -2517,7 +2517,7 @@
    "idioma": null,
    "contexto": "\n\nA aparência de Júpiter é tipicamente marcada por duas faixas escuras em sua atmosfera – uma no hemisfério norte e outra no hemisfério sul. Como o gás está constantemente em movimento, o desaparecimento da faixa no planeta relaciona-se ao movimento das diversas camadas de nuvens em sua atmosfera. A luz do Sol, refletida nessas nuvens, gera a imagem que é captada pelos telescópios, no espaço ou na Terra.",
    "arquivos": [
-    "https://enem.dev/2010/questions/54/c147e274-c7fa-4112-b084-aacf05f6b016.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/54/c147e274-c7fa-4112-b084-aacf05f6b016.png"
    ],
    "enunciado": "O desaparecimento da faixa sul pode ter sido determinado por uma alteração",
    "alternativas": [
@@ -2619,7 +2619,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/56/85dc7933-c9f1-46b8-8ca8-fee1d9ec8951.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/56/85dc7933-c9f1-46b8-8ca8-fee1d9ec8951.png"
    ],
    "enunciado": "A fonte de energia representada na figura, considerada uma das mais limpas e sustentáveis do mundo, é extraída do calor gerado",
    "alternativas": [
@@ -2921,7 +2921,7 @@
    "idioma": null,
    "contexto": "Para explicar a absorção de nutrientes, bem como a função das microvilosidades das membranas das células que revestem as paredes internas do intestino delgado, um estudante realizou o seguinte experimento:\n\nColocou 200 ml de água em dois recipientes. No primeiro recipiente, mergulhou, por 5 segundos, um pedaço de papel liso, como na FIGURA 1; no segundo recipiente, fez o mesmo com um pedaço de papel com dobras simulando as microvilosidades, conforme FIGURA 2. Os dados obtidos foram: a quantidade de água absorvida pelo papel liso foi de 8 ml, enquanto pelo papel dobrado foi de 12 ml.\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/62/f2824040-a108-45f8-abec-1428dd63cba7.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/62/f2824040-a108-45f8-abec-1428dd63cba7.png"
    ],
    "enunciado": "Com base nos dados obtidos, infere-se que a função das microvilosidades intestinais com relação à absorção de nutrientes pelas células das paredes internas do intestino é a de",
    "alternativas": [
@@ -2973,7 +2973,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/63/4f40bc17-01f3-4962-8574-593ac0409adb.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/63/4f40bc17-01f3-4962-8574-593ac0409adb.jpg"
    ],
    "enunciado": "Com base no texto e na figura, a produção de energia elétrica por meio da célula a combustível hidrogênio/oxigênio diferencia-se dos processos convencionais porque",
    "alternativas": [
@@ -3225,7 +3225,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/68/a0bb7b9d-65ff-4a3d-b370-d26ece33e59c.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/68/a0bb7b9d-65ff-4a3d-b370-d26ece33e59c.png"
    ],
    "enunciado": "O valor a ser pago pelo consumo de energia elétrica registrado seria de",
    "alternativas": [
@@ -3277,7 +3277,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/69/41751926-6bcd-405d-ad63-38c328db607d.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/69/41751926-6bcd-405d-ad63-38c328db607d.jpg"
    ],
    "enunciado": "Considere que, em pequenos volumes, o custo de produção de ambos os alcoóis seja o mesmo. Dessa forma, do ponto de vista econômico, é mais vantajoso utilizar",
    "alternativas": [
@@ -3329,7 +3329,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/70/30a85d80-8071-49b5-808d-4ed735bda2da.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/70/30a85d80-8071-49b5-808d-4ed735bda2da.png"
    ],
    "enunciado": "Considerando que o modelo de maior potência da versão 220 V da torneira suprema foi inadvertidamente conectada a uma rede com tensão nominal de 127 V, e que o aparelho está configurado para trabalhar em sua máxima potência. Qual o valor aproximado da potência ao ligar a torneira?",
    "alternativas": [
@@ -3481,7 +3481,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/73/77d2c218-f8ec-4aba-83d2-701db70cdd89.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/73/77d2c218-f8ec-4aba-83d2-701db70cdd89.jpg"
    ],
    "enunciado": "Segundo as condições do processo apresentado para a obtenção de carbonato de chumbo (II) por meio da lixiviação por carbonato de sódio e considerando uma massa de pasta residual de uma bateria de 6 kg, qual quantidade aproximada, em quilogramas, de PbCO3 é obtida?",
    "alternativas": [
@@ -3582,7 +3582,7 @@
    "idioma": null,
    "contexto": "\n\nDois pesquisadores percorreram os trajetos marcados no mapa. A tarefa deles foi analisar os ecossistemas e, encontrando problemas, relatar e propor medidas de recuperação. A seguir, são reproduzidos trechos aleatórios extraídos dos relatórios desses dois pesquisadores.\n\nTrechos aleatórios extraídos do relatório do pesquisador P1:\n\nI. “Por causa da diminuição drástica das espécies vegetais deste ecossistema, como os pinheiros, a gralha azul também está em processo de extinção”.  \nII. “As árvores de troncos tortuosos e cascas grossas que predominam nesse ecossistema estão sendo utilizadas em carvoarias”.  \nTrechos aleatórios extraídos do relatório do pesquisador P2:  \nIII. “Das palmeiras que predominam nesta região podem ser extraídas substâncias importantes para a economia regional”,  \nIV. “Apesar da aridez desta região, em que encontramos muitas plantas espinhosas, não se pode desprezar a sua biodiversidade”. Ecossistemas brasileiros: mapa de distribuição de ecossistemas.\n\nDisponível em: http://educacao.uol.com.br/ciencias/ult1686u52.jhtm. Acesso em: 20 abr. 2010 (adaptado).",
    "arquivos": [
-    "https://enem.dev/2010/questions/75/4cf500ff-ecc0-4f24-b1b2-a9055a92d633.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/75/4cf500ff-ecc0-4f24-b1b2-a9055a92d633.jpg"
    ],
    "enunciado": "Os trechos I, II, III e IV referem-se, pela ordem, aos seguintes ecossistemas:",
    "alternativas": [
@@ -3684,7 +3684,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/77/ccb7182d-278b-4d5d-9626-03df5e848ed4.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/77/ccb7182d-278b-4d5d-9626-03df5e848ed4.jpg"
    ],
    "enunciado": "O monofluoracetato de sódio pode ser obtido pela",
    "alternativas": [
@@ -3841,31 +3841,31 @@
     {
      "letra": "A",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/80/5e9669d9-50a3-4b81-94a5-fe33b57bf0fe.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/80/5e9669d9-50a3-4b81-94a5-fe33b57bf0fe.jpg",
      "correta": false
     },
     {
      "letra": "B",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/80/cde51055-02ce-468e-a921-dde9a88f26e8.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/80/cde51055-02ce-468e-a921-dde9a88f26e8.jpg",
      "correta": false
     },
     {
      "letra": "C",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/80/94ed9a7e-a56d-4aa0-b061-fbaaafe39415.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/80/94ed9a7e-a56d-4aa0-b061-fbaaafe39415.jpg",
      "correta": false
     },
     {
      "letra": "D",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/80/e2099086-6465-4bee-bde6-7be469a1390f.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/80/e2099086-6465-4bee-bde6-7be469a1390f.jpg",
      "correta": false
     },
     {
      "letra": "E",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/80/3f99d9ae-da62-4199-8c62-44f4e421fc1b.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/80/3f99d9ae-da62-4199-8c62-44f4e421fc1b.jpg",
      "correta": true
     }
    ],
@@ -3936,8 +3936,8 @@
    "idioma": null,
    "contexto": "As baterias de Ni-Cd muito utilizadas no nosso cotidiano não devem ser descartadas em lixos comuns uma vez que uma considerável quantidade de cádmio é volatilizada e emitida para o meio ambiente quando as baterias gastas são incineradas como componente do lixo. Com o objetivo de evitar a emissão de cádmio para a atmosfera durante a combustão é indicada que seja feita a reciclagem dos materiais dessas baterias.\n\nUma maneira de separar o cádmio dos demais compostos presentes na bateria é realizar o processo de lixiviação ácida.Nela, tanto os metais (Cd, Ni e, eventualmente, Co) como os hidróxidos de ions metálicos Cd(OH)2(s), Ni(OH)2(s), Co(OH)2(s) presentes na bateria, reagem com uma mistura ácida e são solubilizados. Em função da baixa seletividade (todos os ions metálicos são solubilizados), após a digestão ácida, é realizada uma etapa de extração dos metais com solventes orgânicos de acordo com a reação:\n\n\n\nOnde:  \nM2+ = Cd2+ , Ni2+ ou Co2+  \nHR = C16H34\\-PO2H : identificado no gráfico por X  \nHR = C12H12\\-PO2H : identificado no gráfico por Y  \nO gráfico mostra resultado de extração utilizando os solventes orgânicos X e Y em diferentes pH.\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/82/4176d2dd-3976-430c-85f8-68f6380b5dbb.jpg",
-    "https://enem.dev/2010/questions/82/8560bd4b-a670-4304-b5a1-8a6003323e93.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/82/4176d2dd-3976-430c-85f8-68f6380b5dbb.jpg",
+    "https://leticia.franferreira.cloud/imagens/2010/questions/82/8560bd4b-a670-4304-b5a1-8a6003323e93.jpg"
    ],
    "enunciado": "A reação descrita no texto mostra o processo de extração dos metais por meio da reação com moléculas orgânicas, X e Y. Considerando-se as estruturas de X e Y e o processo de separação descrito, pode-se afirmar que",
    "alternativas": [
@@ -3989,7 +3989,7 @@
    "idioma": null,
    "contexto": "Ao colocar um pouco de açúcar ma água e mexer até a obtenção de uma só fase, prepara-se uma solução. O mesmo acontece ao se adicionar um pouquinho de sal à água e misturar bem. Uma substância capaz de dissolver o soluto é denominada solvente; por exemplo, a água é um solvente para o açúcar, para o sal e para várias outras substâncias. A figura a seguir ilustra essa citação.\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/83/8b75906e-8371-440b-b712-7c31b6241295.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/83/8b75906e-8371-440b-b712-7c31b6241295.png"
    ],
    "enunciado": "Suponha que uma pessoa, para adoçar seu cafezinho, tenha utilizado 3,42 g de sacarose (massa molar igual a 342 g/mol) para uma xícara de 50 mℓ do líquido. Qual é a concentração final em mol/ℓ de sacarose nesse cafezinho?",
    "alternativas": [
@@ -4046,31 +4046,31 @@
     {
      "letra": "A",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/84/c79b38d7-6730-4f9c-9ecd-1afe898f868e.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/84/c79b38d7-6730-4f9c-9ecd-1afe898f868e.png",
      "correta": false
     },
     {
      "letra": "B",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/84/e9a2a50f-7259-413d-a68e-748f26f9bd93.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/84/e9a2a50f-7259-413d-a68e-748f26f9bd93.png",
      "correta": false
     },
     {
      "letra": "C",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/84/ae9996a3-2b96-48b9-9fb0-63529cfd6059.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/84/ae9996a3-2b96-48b9-9fb0-63529cfd6059.png",
      "correta": false
     },
     {
      "letra": "D",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/84/6a342700-2e07-4f06-92e9-e96e35418f2b.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/84/6a342700-2e07-4f06-92e9-e96e35418f2b.png",
      "correta": true
     },
     {
      "letra": "E",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/84/3302afe8-7fca-45b0-b1c3-59e696c5865f.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/84/3302afe8-7fca-45b0-b1c3-59e696c5865f.png",
      "correta": false
     }
    ],
@@ -4141,7 +4141,7 @@
    "idioma": null,
    "contexto": "\n\nTrês dos quatro tipos de testes atualmente empregados para a detecção de príons patogênicos, em tecidos cerebrais do gado morto, são mostrados nas figuras a seguir. Uma vez identificados um animal morto infectado, funcionários das agências de saúde pública e fazendeiros podem removê-lo do suprimento alimentar ou rastrear os alimentos infectados que o animal possa ter consumido.",
    "arquivos": [
-    "https://enem.dev/2010/questions/86/ca1e9c9f-e762-49d8-aa6e-724bdbd3ae78.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/86/ca1e9c9f-e762-49d8-aa6e-724bdbd3ae78.png"
    ],
    "enunciado": "Analisando os testes I, II e III, para a detecção de príons patogênicos, identifique as condições em que os resultados foram positivos para a presença de príons nos três testes:",
    "alternativas": [
@@ -4442,7 +4442,7 @@
    "idioma": "ingles",
    "contexto": "\n\nDisponível em: http://www.fool.com. Acesso em: 21 jul. 2010.",
    "arquivos": [
-    "https://enem.dev/2010/questions/91-ingles/ce7cb3d4-77f9-454b-b3a1-435aa731d27e.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/91-ingles/ce7cb3d4-77f9-454b-b3a1-435aa731d27e.png"
    ],
    "enunciado": "Ao optar por ler a reportagem completa sobre o assunto anunciado, tem-se acesso a duas palavras que Bill Gates não quer que o leitor conheça e que se referem",
    "alternativas": [
@@ -4644,7 +4644,7 @@
    "idioma": "ingles",
    "contexto": "MILLENIUM GOALS\n\n\n\nDisponível em: http://www.chris-alexander.co.uk/1191. Acesso em: 28 jul. 2010 (adaptado).",
    "arquivos": [
-    "https://enem.dev/2010/questions/94-ingles/90e233c7-5a40-41af-a2a0-ec900b72a889.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/94-ingles/90e233c7-5a40-41af-a2a0-ec900b72a889.png"
    ],
    "enunciado": "Definidas pelos países membros da Organização das Nações Unidas e por organizações internacionais, as metas de desenvolvimento do milênio envolvem oito objetivos a serem alcançados até 2015. Apesar da diversidade cultural, esses objetivos, mostrados na imagem, são comuns ao mundo todo, sendo dois deles:",
    "alternativas": [
@@ -4696,7 +4696,7 @@
    "idioma": "ingles",
    "contexto": "\n\nDisponível em: http://www.meganbergdesigns.com/andrill/iceberg07/postcards/index.html. Acesso em: 29 jul. 2010 (adaptado).",
    "arquivos": [
-    "https://enem.dev/2010/questions/95-ingles/3584c66e-387e-48a8-bf57-8bc6dec07058.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/95-ingles/3584c66e-387e-48a8-bf57-8bc6dec07058.jpg"
    ],
    "enunciado": "Os cartões-postais costumam ser utilizados por viajantes que desejam enviar notícias dos lugares que visitam a parentes e amigos. Publicado no site do projeto ANDRILL, o texto em formato de cartão-postal tem o propósito de",
    "alternativas": [
@@ -4748,7 +4748,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/96/64ed268e-140b-44f4-b421-94d66774f861.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/96/64ed268e-140b-44f4-b421-94d66774f861.jpg"
    ],
    "enunciado": "As diferentes esferas sociais de uso da língua obrigam o falante a adaptá-la às variadas situações de comunicação. Uma das marcas linguísticas que configuram a linguagem oral informal usada entre avô e neto neste texto é",
    "alternativas": [
@@ -4955,31 +4955,31 @@
     {
      "letra": "A",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/100/a1ca9a6c-9da7-4279-a70d-14e34cff4656.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/100/a1ca9a6c-9da7-4279-a70d-14e34cff4656.jpg",
      "correta": false
     },
     {
      "letra": "B",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/100/6cda2bf3-9c32-4651-a2c4-8200b73727d1.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/100/6cda2bf3-9c32-4651-a2c4-8200b73727d1.jpg",
      "correta": false
     },
     {
      "letra": "C",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/100/bf9cdbd5-e66c-4a1f-b4ce-2de19213214b.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/100/bf9cdbd5-e66c-4a1f-b4ce-2de19213214b.jpg",
      "correta": true
     },
     {
      "letra": "D",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/100/a666d33f-4b54-4edb-a91c-67b7a15f5055.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/100/a666d33f-4b54-4edb-a91c-67b7a15f5055.jpg",
      "correta": false
     },
     {
      "letra": "E",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/100/3f6fed9e-14d8-46a4-b15b-91f7b75d4e5f.jpg",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/100/3f6fed9e-14d8-46a4-b15b-91f7b75d4e5f.jpg",
      "correta": false
     }
    ],
@@ -5000,7 +5000,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/101/28db87e9-37b3-49bb-ac74-ecdb20dad7ef.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/101/28db87e9-37b3-49bb-ac74-ecdb20dad7ef.png"
    ],
    "enunciado": "Ao circularem socialmente, os textos realizam-se como práticas de linguagem, assumindo configurações específicas, formais e de conteúdo. Considerando o contexto em que circula o texto publicitário, seu objetivo básico é",
    "alternativas": [
@@ -5201,7 +5201,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/105/465a663a-3aad-490d-9ea3-f727ebd02358.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/105/465a663a-3aad-490d-9ea3-f727ebd02358.jpg"
    ],
    "enunciado": "Em busca de maior naturalismo em suas obras e fundamentando-se em novo conceito estético, Monet, Degas, Renoir e outros artistas passaram a explorar novas formas de composição artística, que resultaram no estilo denominado Impressionismo. Observadores atentos da natureza, esses artistas passaram a",
    "alternativas": [
@@ -5403,7 +5403,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/110/7859a216-d85e-4f5d-b326-bc72cbef3815.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/110/7859a216-d85e-4f5d-b326-bc72cbef3815.jpg"
    ],
    "enunciado": "O desenvolvimento das capacidades físicas (qualidades motoras passíveis de treinamento) ajuda na tomada de decisões em relação à melhor execução do movimento. A capacidade física predominante no movimento representado na imagem é",
    "alternativas": [
@@ -5455,7 +5455,7 @@
    "idioma": null,
    "contexto": "Texto I\n\nSob o olhar do _Twitter_\n\nVivemos a era da exposição e do compartilhamento. Público e privado começam a se confundir. A ideia de privacidade vai mudar ou desaparecer. O trecho acima tem 140 caracteres exatos. É uma mensagem curta que tenta encapsular uma ideia complexa. Não é fácil esse tipo de síntese, mas dezenas de milhões de pessoas o praticam diariamente. No mundo todo, são disparados 2,4 trilhões de SMS por mês, e neles cabem 140 toques, ou pouco mais. Também é comum enviar e-mails, deixar recados no Orkut, falar com as pessoas pelo MSN, tagarelar no celular, receber chamados em qualquer parte, a qualquer hora. Estamos conectados. Superconectados, na verdade, de várias formas.\n\n\\[…\\] O mais recente exemplo de demanda por total conexão e de uma nova sintaxe social é o Twitter, o novo serviço de troca de mensagens pela internet. O Twitter pode ser entendido como uma mistura de blog e celular. As mensagens são de 140 toques, como os torpedos dos celulares, mas circulam pela internet, como os textos de blogs. Em vez de seguir para apenas uma pessoa, como no celular ou no MSN, a mensagem do Twitter vai para todos os “seguidores” – gente que acompanha o emissor. Podem ser 30, 300 ou 409 mil seguidores.\n\nMARTINS, I.; LEAL, R. Época. 16 mar. 2009 (fragmento adaptado).\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/111/e7286ec1-4e73-4cfd-b68d-1db628c37b2d.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/111/e7286ec1-4e73-4cfd-b68d-1db628c37b2d.jpg"
    ],
    "enunciado": "Da comparação entre os textos, depreende-se que o texto II constitui um passo a passo para interferir no comportamento dos usuários, dirigindo-se diretamente aos leitores, e o texto I",
    "alternativas": [
@@ -5657,7 +5657,7 @@
    "idioma": null,
    "contexto": "\n\nJoaquim Maria Machado de Assis, cronista, contista, dramaturgo, jornalista, poeta, novelista, romancista, crítico e ensaísta, nasceu na cidade do Rio de Janeiro em 21 de junho de 1839. Filho de um operário mestiço de negro e português, Francisco José de Assis, e de D. Maria Leopoldina Machado de Assis, aquele que viria a tornar-se o maior escritor do país e um mestre da língua, perde a mãe muito cedo e é criado pela madrasta, Maria Inês, também mulata, que se dedica ao menino e o matricula na escola pública, única que frequentou o autodidata Machado de Assis.\n\nDisponível em: http://www.passeiweb.com. Acesso em: 1 maio 2009.",
    "arquivos": [
-    "https://enem.dev/2010/questions/116/7ce286ed-7c09-4d61-8386-f267e1c1a159.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/116/7ce286ed-7c09-4d61-8386-f267e1c1a159.png"
    ],
    "enunciado": "Considerando os seus conhecimentos sobre os gêneros textuais, o texto citado constitui-se de",
    "alternativas": [
@@ -5809,7 +5809,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/120/905db2b8-b492-4c3a-873c-0193480807bf.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/120/905db2b8-b492-4c3a-873c-0193480807bf.jpg"
    ],
    "enunciado": "O voleibol é um dos esportes mais praticados na atualidade. Está presente nas competições esportivas, nos jogos escolares e na recreação. Nesse esporte, os praticantes utilizam alguns movimentos específicos como: saque, manchete, bloqueio, levantamento, toque, entre outros. Na sequência de imagens, identificam-se os movimentos de",
    "alternativas": [
@@ -5911,7 +5911,7 @@
    "idioma": null,
    "contexto": "Texto I\n\nO chamado “fumante passivo” é aquele indivíduo que não fuma, mas acaba respirando a fumaça dos cigarros fumados ao seu redor. Até hoje, discutem-se muito os efeitos do fumo passivo, mas uma coisa é certa: quem não fuma não é obrigado a respirar a fumaça dos outros.\n\nO fumo passivo é um problema de saúde pública em todos os países do mundo. Na Europa, estima-se que 79% das pessoas estão expostas à fumaça “de segunda mão”, enquanto, nos Estados Unidos, 88% dos não fumantes acabam fumando passivamente. A Sociedade do Câncer da Nova Zelândia informa que o fumo passivo é a terceira entre as principais causas de morte no país, depois do fumo ativo e do uso de álcool.\n\nDisponível em: www.terra.com.br. Acesso em: 27 abr. 2010 (fragmento).\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/122/2df0da41-f8e9-4297-a6a8-e1ad666c16c8.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/122/2df0da41-f8e9-4297-a6a8-e1ad666c16c8.jpg"
    ],
    "enunciado": "Ao abordar a questão do tabagismo, os textos I e II procuram demonstrar que",
    "alternativas": [
@@ -6363,7 +6363,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/132/994f2dab-541c-4f37-bc65-2fa8baa0b506.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/132/994f2dab-541c-4f37-bc65-2fa8baa0b506.jpg"
    ],
    "enunciado": "Segundo pesquisas recentes, é irrelevante a diferença entre sexos para se avaliar a inteligência. Com relação às tendências para áreas do conhecimento, por sexo, levando em conta a matrícula em cursos universitários brasileiros,",
    "alternativas": [
@@ -6563,38 +6563,38 @@
    "idioma": null,
    "contexto": "\n\nAlgum tempo depois, o professor apagou a lousa por completo e, adotando um procedimento semelhante ao anterior, voltou a preenchê-la, mas, dessa vez, utilizando 40% do espaço dela.",
    "arquivos": [
-    "https://enem.dev/2010/questions/136/47193c33-4847-4a88-be44-8155d78d2e2f.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/136/47193c33-4847-4a88-be44-8155d78d2e2f.png"
    ],
    "enunciado": "Uma representação possível para essa segunda situação é",
    "alternativas": [
     {
      "letra": "A",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/136/62533d8a-dc15-4e88-acc9-280abe85ac95.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/136/62533d8a-dc15-4e88-acc9-280abe85ac95.png",
      "correta": false
     },
     {
      "letra": "B",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/136/f995e6dc-9f76-4292-805f-24d4069434ba.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/136/f995e6dc-9f76-4292-805f-24d4069434ba.png",
      "correta": false
     },
     {
      "letra": "C",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/136/0c6f6086-63db-4277-a849-4aee33636ada.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/136/0c6f6086-63db-4277-a849-4aee33636ada.png",
      "correta": true
     },
     {
      "letra": "D",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/136/4409150d-509d-4c99-8ad7-3f02d3c82a53.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/136/4409150d-509d-4c99-8ad7-3f02d3c82a53.png",
      "correta": false
     },
     {
      "letra": "E",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/136/d9647bc4-b883-40d6-aab2-568a995ed96e.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/136/d9647bc4-b883-40d6-aab2-568a995ed96e.png",
      "correta": false
     }
    ],
@@ -6665,38 +6665,38 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/138/45398e2b-e687-438b-9e22-6ffeee57f58f.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/138/45398e2b-e687-438b-9e22-6ffeee57f58f.png"
    ],
    "enunciado": "Considerando que nenhum dos recipientes tenha tampa, qual das figuras a seguir representa uma planificação para o bebedouro 3?",
    "alternativas": [
     {
      "letra": "A",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/138/35d4f2e6-34a6-4305-b32b-6e25cc6d92ce.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/138/35d4f2e6-34a6-4305-b32b-6e25cc6d92ce.png",
      "correta": false
     },
     {
      "letra": "B",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/138/dd953d59-cb75-4627-9c73-948308498f02.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/138/dd953d59-cb75-4627-9c73-948308498f02.png",
      "correta": false
     },
     {
      "letra": "C",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/138/4e654b9e-b922-44e5-a945-58beaa8b0e70.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/138/4e654b9e-b922-44e5-a945-58beaa8b0e70.png",
      "correta": false
     },
     {
      "letra": "D",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/138/8f1dbb6d-c61b-4659-85e2-a447b3ec4d70.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/138/8f1dbb6d-c61b-4659-85e2-a447b3ec4d70.png",
      "correta": false
     },
     {
      "letra": "E",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/138/10ab101d-94d3-4f8a-88ff-e056aaa11e99.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/138/10ab101d-94d3-4f8a-88ff-e056aaa11e99.png",
      "correta": true
     }
    ],
@@ -6767,7 +6767,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/140/1976055e-3295-4f44-9ecf-0cd97ea3e387.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/140/1976055e-3295-4f44-9ecf-0cd97ea3e387.png"
    ],
    "enunciado": "Se o Brasil tivesse obtido mais 4 medalhas de ouro, 4 de prata e 10 de bronze, sem alteração no número de medalhas dos demais países mostrados no quadro, qual teria sido a classificação brasileira no quadro de medalhas das Olimpíadas de 2004?",
    "alternativas": [
@@ -6818,7 +6818,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/141/97f889c7-0bdb-4cc7-9148-5a7d0623d977.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/141/97f889c7-0bdb-4cc7-9148-5a7d0623d977.png"
    ],
    "enunciado": "Supondo-se que, no Sudeste, 14 900 estudantes foram entrevistados nessa pesquisa, quantos deles possuíam telefone móvel celular?",
    "alternativas": [
@@ -6875,31 +6875,31 @@
     {
      "letra": "A",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/142/fb5ec95b-7bca-4809-8d74-42fc28187a78.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/142/fb5ec95b-7bca-4809-8d74-42fc28187a78.png",
      "correta": true
     },
     {
      "letra": "B",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/142/da24640c-cede-4773-afc4-43c2e1dbe83d.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/142/da24640c-cede-4773-afc4-43c2e1dbe83d.png",
      "correta": false
     },
     {
      "letra": "C",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/142/06ba9bf4-5a2b-4a7b-b0c2-2044bcf7ee47.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/142/06ba9bf4-5a2b-4a7b-b0c2-2044bcf7ee47.png",
      "correta": false
     },
     {
      "letra": "D",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/142/c2c0f326-4762-4bf5-a296-09433a66d6b1.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/142/c2c0f326-4762-4bf5-a296-09433a66d6b1.png",
      "correta": false
     },
     {
      "letra": "E",
      "texto": null,
-     "arquivo": "https://enem.dev/2010/questions/142/f9d1e289-c5ae-4438-927c-88b7ca5f62ef.png",
+     "arquivo": "https://leticia.franferreira.cloud/imagens/2010/questions/142/f9d1e289-c5ae-4438-927c-88b7ca5f62ef.png",
      "correta": false
     }
    ],
@@ -6920,7 +6920,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/143/2d869c09-18da-48f9-95c3-deca759a0c3d.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/143/2d869c09-18da-48f9-95c3-deca759a0c3d.png"
    ],
    "enunciado": "Considerando-se que até 2009 o desmatamento cresceu 10,5% em relação aos dados de 2004, o desmatamento médio por estado em 2009 está entre",
    "alternativas": [
@@ -6972,7 +6972,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/144/e6f27641-d27b-4c0b-b5f0-d8d74429aecb.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/144/e6f27641-d27b-4c0b-b5f0-d8d74429aecb.png"
    ],
    "enunciado": "As figuras mostram que as proporcionalidades existentes entre resistência (R) e comprimento (ℓ), resistência (R) e área da secção transversal (A), e entre comprimento (ℓ) e área da secção transversal (A) são, respectivamente,",
    "alternativas": [
@@ -7024,7 +7024,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/145/d6f3efc6-d654-4765-a9b7-ea0938be15ab.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/145/d6f3efc6-d654-4765-a9b7-ea0938be15ab.png"
    ],
    "enunciado": "Supondo que o total de pessoas pesquisadas na região metropolitana de Porto Alegre equivale a 250 000, o número de desempregados em março de 2010, nessa região, foi de",
    "alternativas": [
@@ -7076,7 +7076,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/146/217b7bc8-833f-4177-870c-d2adbf301246.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/146/217b7bc8-833f-4177-870c-d2adbf301246.png"
    ],
    "enunciado": "O produto das três dimensões indicadas na peça resultaria na medida da grandeza",
    "alternativas": [
@@ -7128,7 +7128,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/147/2db13f00-18fd-42d7-92a1-bb79ade13411.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/147/2db13f00-18fd-42d7-92a1-bb79ade13411.png"
    ],
    "enunciado": "Paula deseja se deslocar da cidade A para a cidade B usando exatamente duas das vias indicadas, percorrendo um trajeto com a menor probabilidade de engarrafamento possível. O melhor trajeto para Paula é",
    "alternativas": [
@@ -7180,7 +7180,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/148/210f09db-531d-4eb1-ac47-95d5ef68d963.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/148/210f09db-531d-4eb1-ac47-95d5ef68d963.png"
    ],
    "enunciado": "Com base no gráfico, o gasto militar no ínicio da guerra no Iraque foi de",
    "alternativas": [
@@ -7232,7 +7232,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/149/fce5e898-1709-4341-8000-c3333ad9289b.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/149/fce5e898-1709-4341-8000-c3333ad9289b.png"
    ],
    "enunciado": "Que expressão fornece a quantidade de quadrados de cada figura?",
    "alternativas": [
@@ -7334,7 +7334,7 @@
    "idioma": null,
    "contexto": "\n\nCom o objetivo de não desperdiçar café, a diarista deseja colocar a quantidade mínima de água na leiteira para encher os vinte copinhos pela metade.",
    "arquivos": [
-    "https://enem.dev/2010/questions/151/87ef13a2-eec3-4dfb-9324-6f25f45690e7.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/151/87ef13a2-eec3-4dfb-9324-6f25f45690e7.png"
    ],
    "enunciado": "Para que isso ocorra, Dona Maria deverá",
    "alternativas": [
@@ -7386,7 +7386,7 @@
    "idioma": null,
    "contexto": "\n\nUm cientista monitora o movimento desse satélite para controlar o seu afastamento do centro da Terra. Para isso, ele precisa calcular a soma dos valores de r, no apogeu e no perigeu, representada por S.",
    "arquivos": [
-    "https://enem.dev/2010/questions/152/3b16b42f-5856-499b-a7f7-6512f1c1c219.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/152/3b16b42f-5856-499b-a7f7-6512f1c1c219.png"
    ],
    "enunciado": "O cientista deveria concluir que, periodicamente, S atinge o valor de",
    "alternativas": [
@@ -7438,7 +7438,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/153/7db49675-d757-4e05-8e06-1458c1c566f9.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/153/7db49675-d757-4e05-8e06-1458c1c566f9.png"
    ],
    "enunciado": "Qual dos tanques deverá ser escolhido pelo dono do posto? (Considere p π ≅ 3)",
    "alternativas": [
@@ -7590,7 +7590,7 @@
    "idioma": null,
    "contexto": "\n\nUm pequeno helicóptero usado para reconhecimento sobrevoa a região a partir do ponto X = (20; 60). O helicóptero segue o percurso:\n\n0,8°L→0,5°N→0,2°O→0,1°S→0,4°N→0,3°L\n\nAo final, desce verticalmente até pousar no solo.",
    "arquivos": [
-    "https://enem.dev/2010/questions/156/52ff9fbe-ace4-4e81-b2b0-5fa55642f382.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/156/52ff9fbe-ace4-4e81-b2b0-5fa55642f382.jpg"
    ],
    "enunciado": "De acordo com as orientações, o helicóptero pousou em um local cuja altitude é",
    "alternativas": [
@@ -7692,7 +7692,7 @@
    "idioma": null,
    "contexto": "\n\nUm técnico em manejo florestal recebeu a missão de cubar, abater e transportar cinco toras de madeira, de  \nduas espécies diferentes, sendo\n\n• 3 toras da espécie I, com 3 m de rodo, 12 m de comprimento e densidade 0,77 toneladas/m³;  \n• 2 toras da espécie II, com 4 m de rodo, 10 m de comprimento e densidade 0,78 toneladas/m³.",
    "arquivos": [
-    "https://enem.dev/2010/questions/158/20a4e763-d72c-4908-8b20-59443e8b7e9f.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/158/20a4e763-d72c-4908-8b20-59443e8b7e9f.jpg"
    ],
    "enunciado": "Após realizar seus cálculos, o técnico solicitou que enviassem caminhões para transportar uma carga de, aproximadamente,",
    "alternativas": [
@@ -7743,7 +7743,7 @@
    "idioma": null,
    "contexto": "",
    "arquivos": [
-    "https://enem.dev/2010/questions/159/d9f06afe-c730-4e5a-ab08-dfb562d30d85.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/159/d9f06afe-c730-4e5a-ab08-dfb562d30d85.jpg"
    ],
    "enunciado": "Se uma menina, com 64 kg de massa, apresenta IMC igual a 25 kg/m2, então ela possui RIP igual a",
    "alternativas": [
@@ -7795,7 +7795,7 @@
    "idioma": null,
    "contexto": "Um balão atmosférico, lançado em Bauru (343 quilômetros a Noroeste de São Paulo), na noite do último domingo, caiu nesta segunda-feira em Cuiabá Paulista, na região de Presidente Prudente, assustando agricultores da região. O artefato faz parte do programa Projeto Hibiscus, desenvolvido por Brasil, França, Argentina, Inglaterra e Itália, para a medição do comportamento da camada de ozônio, e sua descida se deu após o cumprimento do tempo previsto de medição.\n\nDisponível em: http://www.correiodobrasil.com.br. Acesso em: 02 maio 2010.\n\n\n\nNa data do acontecido, duas pessoas avistaram o balão. Uma estava a 1,8 km da posição vertical do balão e o avistou sob um ângulo de 60º; a outra estava a 5,5 km da posição vertical do balão, alinhada com a primeira, e no mesmo sentido, conforme se vê na figura, e o avistou sob um ângulo de 30º.",
    "arquivos": [
-    "https://enem.dev/2010/questions/160/1f3ac874-dc7d-48a1-bfbd-6426ce6e0f8e.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/160/1f3ac874-dc7d-48a1-bfbd-6426ce6e0f8e.jpg"
    ],
    "enunciado": "Qual a altura aproximada em que se encontrava o balão?",
    "alternativas": [
@@ -7847,7 +7847,7 @@
    "idioma": null,
    "contexto": "Em canteiros de obras de construção civil é comum perceber trabalhadores realizando medidas de comprimento e de ângulos e fazendo demarcações por onde a obra deve começar ou se erguer. Em um desses canteiros foram feitas algumas marcas no chão plano. Foi possível perceber que, das seis estacas colocadas, três eram vértices de um triângulo retângulo e as outras três eram os pontos médios dos lados desse triângulo, foram indicadas por letras.\n\n\n\nA região demarcada pelas estacas A, B, M e N deveria ser calçada com concreto.",
    "arquivos": [
-    "https://enem.dev/2010/questions/161/93aaf9bb-8489-4ca4-b226-0029de752d3c.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/161/93aaf9bb-8489-4ca4-b226-0029de752d3c.jpg"
    ],
    "enunciado": "Nessas condições, a área a ser calçada corresponde",
    "alternativas": [
@@ -7899,7 +7899,7 @@
    "idioma": null,
    "contexto": "O jornal de certa cidade publicou em uma página inteira a seguinte divulgação de seu caderno de classificados\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/162/3a48f3aa-f9b3-457a-9ffc-a48f280a2e19.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/162/3a48f3aa-f9b3-457a-9ffc-a48f280a2e19.jpg"
    ],
    "enunciado": "Para que a propaganda seja fidedigna à porcentagem da área que aparece na divulgação, a medida do lado do retângulo que representa os 4%, deve ser de aproximadamente",
    "alternativas": [
@@ -7951,7 +7951,7 @@
    "idioma": null,
    "contexto": "A ideia de usar rolos circulares para deslocar objetos pesados provavelmente surgiu com os antigos egípcios ao construírem as pirâmides.\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/163/ad5073a3-52ed-4a3a-b2f4-5c88f216e795.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/163/ad5073a3-52ed-4a3a-b2f4-5c88f216e795.jpg"
    ],
    "enunciado": "Representando por R o raio da base dos rolos cilíndricos, em metros, a expressão do deslocamento horizontal y do bloco de pedra em função de R, após o rolo ter dado uma volta completa sem deslizar, é",
    "alternativas": [
@@ -8003,7 +8003,7 @@
    "idioma": null,
    "contexto": "Uma metalúrgica recebeu uma encomenda para fabricar, em grande quantidade, uma peça com o formato de um prisma reto com base triangular, cujas dimensões da base são 6 cm, 8 cm e 10 cm e cuja altura é 10 cm. Tal peça deve ser vazada de tal maneira que a perfuração na forma de um cilindro circular reto seja tangente às suas faces laterais, conforme mostra a figura.\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/164/d7f10275-2a88-4791-b723-59fdae4f26d0.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/164/d7f10275-2a88-4791-b723-59fdae4f26d0.jpg"
    ],
    "enunciado": "O raio da perfuração da peça é igual a",
    "alternativas": [
@@ -8055,7 +8055,7 @@
    "idioma": null,
    "contexto": "Nos processos industriais, como na indústria de cerâmica, é necessário o uso de fornos capazes de produzir elevadas temperaturas e, em muitas situações, o tempo de elevação dessa temperatura deve ser controlado, para garantir a qualidade do produto final e a economia no processo. Em uma indústria de cerâmica, o forno é programado para elevar a temperatura ao longo do tempo de acordo com a função\n\n\n\nem que T é o valor da temperatura atingida pelo forno, em graus Celsius, e t é o tempo, em minutos, decorrido desde o instante em que o forno é ligado.  \nUma peça deve ser colocada nesse forno quando a temperatura for 48°C e retirada quando a temperatura for  \n200°C.",
    "arquivos": [
-    "https://enem.dev/2010/questions/165/fc2955c9-9732-4344-8658-ce88f7aba999.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/165/fc2955c9-9732-4344-8658-ce88f7aba999.jpg"
    ],
    "enunciado": "O tempo de permanência dessa peça no forno é, em minutos, igual a",
    "alternativas": [
@@ -8107,7 +8107,7 @@
    "idioma": null,
    "contexto": "O gráfico mostra o número de favelas no município do Rio de Janeiro entre 1980 e 2004, considerando que a variação nesse número entre os anos considerados é linear.\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/166/37362de0-ff1e-4e1d-b6f7-4c3c35252fcd.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/166/37362de0-ff1e-4e1d-b6f7-4c3c35252fcd.jpg"
    ],
    "enunciado": "Se o padrão na variação do período 2004/2010 se mantiver nos próximos 6 anos, e sabendo que o número de favelas em 2010 é 968, então o número de favelas em 2016 será",
    "alternativas": [
@@ -8159,7 +8159,7 @@
    "idioma": null,
    "contexto": "O gráfico apresenta a quantidade de gols marcados pelos artilheiros das Copas do Mundo desde a Copa de 1930 até a de 2006.\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/167/62dd2345-60b2-49ba-af99-ee935344a42d.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/167/62dd2345-60b2-49ba-af99-ee935344a42d.jpg"
    ],
    "enunciado": "A partir dos dados apresentados, qual a mediana das quantidades de gols marcados pelos artilheiros das Copas do Mundo?",
    "alternativas": [
@@ -8211,8 +8211,8 @@
    "idioma": null,
    "contexto": "Em um casamento, os donos da festa serviam champanhe aos seus convidados em taças com formato de um hemisfério (Figura 1), porém um acidente na cozinha culminou na quebra de grande parte desses recipientes. Para substituir as taças quebradas, utilizou-se um outro tipo com formato de cone (Figura 2). No entanto, os noivos solicitaram que o volume de champanhe nos dois tipos de taças fosse igual.\n\n\n\nConsidere:\n\n![imagem (Foto: Reprodução/Enem)](https://enem.dev/2010/questions/168/60c7f391-a434-4c90-8ae8-21a21edec1f1.png \"imagem (Foto: Reprodução/Enem)\")",
    "arquivos": [
-    "https://enem.dev/2010/questions/168/ee7ccd75-517b-4b02-9a73-11e2772684d1.jpg",
-    "https://enem.dev/2010/questions/168/60c7f391-a434-4c90-8ae8-21a21edec1f1.png"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/168/ee7ccd75-517b-4b02-9a73-11e2772684d1.jpg",
+    "https://leticia.franferreira.cloud/imagens/2010/questions/168/60c7f391-a434-4c90-8ae8-21a21edec1f1.png"
    ],
    "enunciado": "Sabendo que a taça com o formato de hemisfério é servida completamente cheia, a altura do volume de champanhe que deve ser colocado na outra taça, em centímetros, é de",
    "alternativas": [
@@ -8314,7 +8314,7 @@
    "idioma": null,
    "contexto": "Marco e Paulo foram classificados em um concurso. Para classificação no concurso o candidato deveria obter média aritmética na pontuação igual ou superior a 14. Em caso de empate na média, o desempate seria em favor da pontuação mais regular. No quadro a seguir são apresentados os pontos obtidos nas provas de Matemática, Português e Conhecimentos Gerais, a média, a mediana e o desvio padrão dos dois candidatos.  \nDados dos candidatos no concurso\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/170/b91052ca-dc24-45b9-b953-9aa426b42f1a.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/170/b91052ca-dc24-45b9-b953-9aa426b42f1a.jpg"
    ],
    "enunciado": "O candidato com pontuação mais regular, portanto mais bem classificado no concurso, é",
    "alternativas": [
@@ -8466,7 +8466,7 @@
    "idioma": null,
    "contexto": "João mora na cidade A e precisa visitar cinco clientes, localizados em cidades diferentes da sua. Cada trajeto possível pode ser representado por uma sequência de 7 letras. Por exemplo, o trajeto ABCDEFA, informa que ele sairá da cidade A, visitando as cidades B, C, D, E e F nesta ordem, voltando para a cidade A. Além disso, o número indicado entre as letras informa o custo do deslocamento entre as cidades. A figura mostra o custo de deslocamento entre cada uma das cidades.\n\n\n\nComo João quer economizar, ele precisa determinar qual o trajeto de menor custo para visitar os cinco clientes. somente parte das sequências, pois os trajetos ABCDEFA e AFEDCBA têm o mesmo custo. Ele gasta 1min30s para examinar uma sequência e descartar sua simétrica, conforme apresentado.",
    "arquivos": [
-    "https://enem.dev/2010/questions/173/32cafe03-6732-45ee-85e9-d97f56364ee2.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/173/32cafe03-6732-45ee-85e9-d97f56364ee2.jpg"
    ],
    "enunciado": "O tempo mínimo necessário para João verificar todas as sequências possíveis no problema é de",
    "alternativas": [
@@ -8518,7 +8518,7 @@
    "idioma": null,
    "contexto": "O diretor de um colégio leu numa revista que os pés das mulheres estavam aumentando. Há alguns anos, a média do tamanho dos calçados das mulheres era de 35,5 e, hoje, é de 37,0. Embora não fosse uma informação científica, ele ficou curioso e fez uma pesquisa com as funcionárias do seu colégio, obtendo o quadro a seguir:\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/174/9b2b5d30-dece-4e7e-912d-8465855c6111.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/174/9b2b5d30-dece-4e7e-912d-8465855c6111.jpg"
    ],
    "enunciado": "Escolhendo uma funcionária ao acaso e sabendo que ela tem calçado maior que 36,0 a probabilidade de ela calçar 38,0 é",
    "alternativas": [
@@ -8570,7 +8570,7 @@
    "idioma": null,
    "contexto": "O quadro seguinte mostra o desempenho de um time de futebol no último campeonato. A coluna da esquerda mostra o número de gols marcados e a coluna da direita informa em quantos jogos o time marcou aquele número de gols.\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/175/47a384a9-8a0b-4669-ac56-963874dfc9e9.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/175/47a384a9-8a0b-4669-ac56-963874dfc9e9.jpg"
    ],
    "enunciado": "Se X, Y e Z são, respectivamente, a média, a mediana e a moda desta distribuição, então",
    "alternativas": [
@@ -8722,7 +8722,7 @@
    "idioma": null,
    "contexto": "Um porta-lápis de madeira foi construído no formato cúbico, seguindo o modelo ilustrado a seguir. O cubo de dentro é vazio. A aresta do cubo maior mede 12 cm e a do cubo menor, que é interno, mede 8 cm.\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/178/f167ae80-7a92-4a85-8c25-bd0738dba84d.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/178/f167ae80-7a92-4a85-8c25-bd0738dba84d.jpg"
    ],
    "enunciado": "O volume de madeira utilizado na confecção desse objeto foi de",
    "alternativas": [
@@ -8774,7 +8774,7 @@
    "idioma": null,
    "contexto": "Ronaldo é um garoto que adora brincar com números. Numa dessas brincadeiras, empilhou caixas numeradas de acordo com a sequência conforme mostrada no esquema a seguir.\n\n\n\nEle percebeu que a soma dos números em cada linha tinha uma propriedade e que, por meio dessa propriedade, era possível prever a soma de qualquer linha posterior às já construídas.",
    "arquivos": [
-    "https://enem.dev/2010/questions/179/0fc82f4a-dc92-411f-8f14-995159be0c16.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/179/0fc82f4a-dc92-411f-8f14-995159be0c16.jpg"
    ],
    "enunciado": "A partir dessa propriedade, qual será a soma da 9a linha da sequência de caixas empilhadas por Ronaldo?",
    "alternativas": [
@@ -8826,7 +8826,7 @@
    "idioma": null,
    "contexto": "Para conseguir chegar a um número recorde de produção de ovos de Páscoa, as empresas brasileiras começam a se planejar para esse período com um ano de ovos de Páscoa produzidos no Brasil no período de 2005 a 2009.\n\n",
    "arquivos": [
-    "https://enem.dev/2010/questions/180/b3a08efa-6d65-4f17-955f-8c8962f34861.jpg"
+    "https://leticia.franferreira.cloud/imagens/2010/questions/180/b3a08efa-6d65-4f17-955f-8c8962f34861.jpg"
    ],
    "enunciado": "De acordo com o gráfico, o biênio que apresentou maior produção acumulada foi",
    "alternativas": [
