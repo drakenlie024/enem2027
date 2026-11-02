@@ -764,6 +764,96 @@ private fun CartaoMeta(
     }
 }
 
+/** Um cartão de trilha na lista: nome, progresso e a próxima etapa. */
+@Composable
+private fun CartaoTrilha(
+    trilha: Trilha,
+    aoAbrir: () -> Unit,
+    aoJogar: (Etapa) -> Unit,
+) {
+    val cor = corDaArea(trilha.area)
+    val etapa = trilha.etapaAtual
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(22.dp))
+            .background(Brush.verticalGradient(listOf(SurfaceRaised, Surface)))
+            .bordaRabisco(SurfaceBorder, raio = 22.dp)
+            .clickable { aoAbrir() }
+            .padding(14.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            // marcador com a cor da área
+            Box(
+                modifier = Modifier
+                    .size(10.dp)
+                    .clip(CircleShape)
+                    .background(cor),
+            )
+            Spacer(Modifier.width(9.dp))
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text = trilha.nome,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = TextPrimary,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                if (trilha.adaptativa) {
+                    Text(
+                        text = "MONTADA PELO SEU DESEMPENHO",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = cor,
+                    )
+                }
+            }
+            Pilula(
+                texto = "${trilha.concluidas}/${trilha.totalEtapas}",
+                cor = cor,
+                fundo = cor.copy(alpha = 0.14f),
+            )
+        }
+
+        Spacer(Modifier.height(10.dp))
+
+        // barra de progresso
+        BarraGamificada(
+            progresso = (trilha.progresso / 100.0).toFloat(),
+            cor = cor,
+            altura = 6,
+        )
+
+        if (etapa != null) {
+            Spacer(Modifier.height(10.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = etapa.nome,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = TextMuted,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(1f),
+                )
+                Spacer(Modifier.width(8.dp))
+                Box(
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .background(cor.copy(alpha = 0.16f))
+                        .clickable(enabled = etapa.jogavel) { aoJogar(etapa) }
+                        .padding(horizontal = 12.dp, vertical = 6.dp),
+                ) {
+                    Text(
+                        text = "Jogar",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = cor,
+                    )
+                }
+            }
+        }
+    }
+}
+
 @Composable
 private fun BotaoAno(ano: Int, carregando: Boolean, aoClicar: () -> Unit) {
     Box(
