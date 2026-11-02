@@ -1,5 +1,6 @@
 package com.franferreira.enem2027.ui.screens
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -23,11 +24,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -62,52 +66,27 @@ fun TelaSessao(
     aoEncerrar: () -> Unit,
     aoPular: () -> Unit = {},
     aoAbrirUrl: (String) -> Unit = {},
+    /** XP no começo da sessão e agora, para mostrar o ganho no fim. */
+    xpInicial: Int = 0,
+    xpAtual: Int = 0,
+    respondidasHoje: Int = 0,
+    metaDiaria: Int = 0,
 ) {
     val atual = temas.getOrNull(indice)
     if (atual == null) {
-        // Sessão concluída: em vez de fechar sozinha no meio da composição,
-        // mostra o fim e deixa ela sair quando quiser.
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
-                .padding(24.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Text(
-                text = if (temas.isEmpty()) "Nada para estudar agora" else "Sessão concluída",
-                style = MaterialTheme.typography.headlineSmall,
-                color = TextPrimary,
-            )
-            Spacer(Modifier.height(6.dp))
-            Text(
-                text = if (temas.isEmpty()) {
-                    "Nenhum tema venceu hoje. Você pode abrir uma trilha ou assistir uma aula."
-                } else {
-                    "Você passou pelos ${temas.size} temas de hoje."
-                },
-                style = MaterialTheme.typography.bodyMedium,
-                color = TextMuted,
-                textAlign = TextAlign.Center,
-            )
-            Spacer(Modifier.height(16.dp))
-            Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(999.dp))
-                    .background(Primary)
-                    .clickable { aoEncerrar() }
-                    .padding(horizontal = 24.dp, vertical = 10.dp),
-            ) {
-                Text(
-                    text = "Voltar para a Hoje",
-                    style = MaterialTheme.typography.labelLarge,
-                    color = PaletaClaro.texto,
-                )
-            }
-        }
+        FimDaSessao(
+            vazia = temas.isEmpty(),
+            temasFeitos = temas.size,
+            xpGanho = (xpAtual - xpInicial).coerceAtLeast(0),
+            respondidasHoje = respondidasHoje,
+            metaDiaria = metaDiaria,
+            aoEncerrar = aoEncerrar,
+        )
         return
     }
+
+    // Meta do dia batida: o aviso aparece no corpo da sessão, sem trocar de tela.
+    val metaBatida = metaDiaria > 0 && respondidasHoje == metaDiaria
 
     val contexto = LocalContext.current
     // Sem cache: ao voltar da aula, o passo 1 já sai da tela.
@@ -201,6 +180,29 @@ fun TelaSessao(
             aoClicar = { aoTreinar(atual) },
             destaque = true,
         )
+
+        if (metaBatida) {
+            Spacer(Modifier.height(14.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .cartaoRabisco(18.dp, fundo = Primary.copy(alpha = 0.10f), borda = Primary.copy(alpha = 0.45f))
+                    .padding(14.dp),
+            ) {
+                Text(
+                    text = "$respondidasHoje de $metaDiaria questões hoje",
+                    style = MaterialTheme.typography.titleSmall,
+                    color = Primary,
+                    modifier = Modifier.weight(1f),
+                )
+                Text(
+                    text = "meta batida",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = TextMuted,
+                )
+            }
+        }
 
         if (proximo != null) {
             Spacer(Modifier.height(10.dp))
@@ -314,6 +316,130 @@ private fun CartaoPasso(
                 text = botao,
                 style = MaterialTheme.typography.labelMedium,
                 color = if (destaque) PaletaClaro.texto else TextPrimary,
+            )
+        }
+    }
+}
+
+/**
+ * Fim da sessão: parabéns, o que ela fez hoje e quanto XP ganhou.
+ *
+ * É o único momento de comemoração — a ideia é marcar o fim do dia de estudo,
+ * não premiar cada questão (o que vira ruído).
+ */
+@Composable
+private fun FimDaSessao(
+    vazia: Boolean,
+    temasFeitos: Int,
+    xpGanho: Int,
+    respondidasHoje: Int,
+    metaDiaria: Int,
+    aoEncerrar: () -> Unit,
+) {
+    val xpAnimado = androidx.compose.animation.core.animateIntAsState(
+        targetValue = xpGanho,
+        animationSpec = androidx.compose.animation.core.tween(900),
+        label = "xpGanho",
+    ).value
+    val escala = androidx.compose.animation.core.animateFloatAsState(
+        targetValue = 1f,
+        animationSpec = androidx.compose.animation.core.spring(dampingRatio = 0.45f, stiffness = 220f),
+        label = "florFim",
+    ).value
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background)))
+            .padding(24.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        if (vazia) {
+            Text(
+                text = "Nada para estudar agora",
+                style = MaterialTheme.typography.headlineSmall,
+                color = TextPrimary,
+            )
+            Spacer(Modifier.height(6.dp))
+            Text(
+                text = "Nenhum tema venceu hoje. Você pode abrir uma trilha ou assistir uma aula.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = TextMuted,
+                textAlign = TextAlign.Center,
+            )
+        } else {
+            // Flor aberta: as pétalas cheias, do mesmo traço do resto do app.
+            Canvas(
+                modifier = Modifier
+                    .size(120.dp)
+                    .scale(escala),
+            ) {
+                val centro = center
+                val lado = size.minDimension
+                val largura = lado * 0.16f
+                val altura = lado * 0.23f
+                val distancia = lado * 0.13f
+                for (i in 0 until 5) {
+                    rotate(degrees = -90f + i * 72f, pivot = centro) {
+                        drawOval(
+                            color = Primary,
+                            topLeft = androidx.compose.ui.geometry.Offset(
+                                centro.x - largura / 2f,
+                                centro.y - distancia - altura,
+                            ),
+                            size = androidx.compose.ui.geometry.Size(largura, altura),
+                        )
+                    }
+                }
+            }
+            Spacer(Modifier.height(10.dp))
+            Text(
+                text = "Sessão concluída",
+                style = MaterialTheme.typography.headlineSmall,
+                color = TextPrimary,
+            )
+            Spacer(Modifier.height(6.dp))
+            Text(
+                text = if (metaDiaria > 0) {
+                    "$respondidasHoje de $metaDiaria questões hoje · $temasFeitos tema(s)"
+                } else {
+                    "$temasFeitos tema(s) estudado(s)"
+                },
+                style = MaterialTheme.typography.bodyMedium,
+                color = TextMuted,
+                textAlign = TextAlign.Center,
+            )
+            if (xpGanho > 0) {
+                Spacer(Modifier.height(12.dp))
+                Row(verticalAlignment = Alignment.Bottom) {
+                    Text(
+                        text = "+${xpAnimado}",
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = Primary,
+                    )
+                    Spacer(Modifier.width(4.dp))
+                    Text(
+                        text = "XP",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = TextMuted,
+                        modifier = Modifier.padding(bottom = 6.dp),
+                    )
+                }
+            }
+        }
+        Spacer(Modifier.height(18.dp))
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(999.dp))
+                .background(Primary)
+                .clickable { aoEncerrar() }
+                .padding(horizontal = 26.dp, vertical = 11.dp),
+        ) {
+            Text(
+                text = "Voltar para a Hoje",
+                style = MaterialTheme.typography.labelLarge,
+                color = PaletaClaro.texto,
             )
         }
     }

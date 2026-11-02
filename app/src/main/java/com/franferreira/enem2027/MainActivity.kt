@@ -624,6 +624,10 @@ fun EnemApp() {
                     },
                     aoPular = vm::pularTemaDaSessao,
                     aoAbrirUrl = { url -> abrirUrl(contexto, url) },
+                    xpInicial = estado.sessaoXpInicial,
+                    xpAtual = estado.xp,
+                    respondidasHoje = estado.respondidasHoje,
+                    metaDiaria = estado.metaDiaria,
                 )
             }
 

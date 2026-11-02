@@ -194,6 +194,8 @@ data class EstadoHoje(
     val sessaoTemas: List<com.franferreira.enem2027.data.model.TemaTreino> = emptyList(),
     /** Tema atual da sessão. */
     val sessaoIndice: Int = 0,
+    /** XP no instante em que a sessão começou: o ganho do dia é a diferença. */
+    val sessaoXpInicial: Int = 0,
     /** Texto da busca de questão. */
     val buscaTexto: String = "",
     /** Resultado da busca de questão no acervo local. */
@@ -1461,6 +1463,7 @@ class ViewModelPrincipal(
                 treinos = lista,
                 sessaoTemas = temas,
                 sessaoIndice = 0,
+                sessaoXpInicial = _estado.value.xp,
             )
         }
     }
@@ -1479,7 +1482,7 @@ class ViewModelPrincipal(
         if (temas.isEmpty()) {
             com.franferreira.enem2027.data.repo.SessaoSalva.limpar(app)
         } else {
-            com.franferreira.enem2027.data.repo.SessaoSalva.salvar(app, temas, indice)
+            com.franferreira.enem2027.data.repo.SessaoSalva.salvar(app, temas, indice, _estado.value.sessaoXpInicial)
         }
     }
 
@@ -1490,6 +1493,7 @@ class ViewModelPrincipal(
         _estado.value = _estado.value.copy(
             sessaoTemas = salva.temas,
             sessaoIndice = salva.indice.coerceIn(0, salva.temas.size),
+            sessaoXpInicial = salva.xpInicial,
         )
     }
 

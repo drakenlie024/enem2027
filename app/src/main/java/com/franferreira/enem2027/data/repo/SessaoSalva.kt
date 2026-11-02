@@ -20,21 +20,23 @@ object SessaoSalva {
     private const val CHAVE_DIA = "dia"
     private const val CHAVE_TEMAS = "temas"
     private const val CHAVE_INDICE = "indice"
+    private const val CHAVE_XP = "xp_inicial"
 
     private val json = Json { ignoreUnknownKeys = true; encodeDefaults = true }
     private val lista = ListSerializer(TemaTreino.serializer())
 
-    data class Salva(val temas: List<TemaTreino>, val indice: Int)
+    data class Salva(val temas: List<TemaTreino>, val indice: Int, val xpInicial: Int = 0)
 
     private fun prefs(context: Context) =
         context.getSharedPreferences(ARQUIVO, Context.MODE_PRIVATE)
 
-    fun salvar(context: Context, temas: List<TemaTreino>, indice: Int) {
+    fun salvar(context: Context, temas: List<TemaTreino>, indice: Int, xpInicial: Int = 0) {
         val hoje = LocalDate.now().toString()
         prefs(context).edit()
             .putString(CHAVE_DIA, hoje)
             .putString(CHAVE_TEMAS, runCatching { json.encodeToString(lista, temas) }.getOrNull())
             .putInt(CHAVE_INDICE, indice)
+            .putInt(CHAVE_XP, xpInicial)
             .apply()
     }
 
@@ -44,7 +46,7 @@ object SessaoSalva {
         val bruto = p.getString(CHAVE_TEMAS, null) ?: return null
         val temas = runCatching { json.decodeFromString(lista, bruto) }.getOrNull() ?: return null
         if (temas.isEmpty()) return null
-        return Salva(temas, p.getInt(CHAVE_INDICE, 0))
+        return Salva(temas, p.getInt(CHAVE_INDICE, 0), p.getInt(CHAVE_XP, 0))
     }
 
     fun limpar(context: Context) {

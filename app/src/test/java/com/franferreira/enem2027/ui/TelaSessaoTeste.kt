@@ -168,6 +168,49 @@ class TelaSessaoTeste {
     }
 
     @Test
+    fun `fim de sessao mostra o XP ganho`() {
+        compose.setContent {
+            androidx.compose.material3.MaterialTheme {
+                TelaSessao(
+                    temas = listOf(tema("Ecologia")),
+                    indice = 1,
+                    aoTreinar = {},
+                    aoAbrirAula = {},
+                    aoEncerrar = {},
+                    xpInicial = 100,
+                    xpAtual = 220,
+                    respondidasHoje = 20,
+                    metaDiaria = 20,
+                )
+            }
+        }
+
+        compose.onNodeWithText("Sessão concluída").assertIsDisplayed()
+        compose.onNodeWithText("20 de 20 questões hoje · 1 tema(s)").assertIsDisplayed()
+        compose.onNodeWithText("+120").assertIsDisplayed()
+    }
+
+    @Test
+    fun `meta batida aparece com aviso discreto na sessao`() {
+        compose.setContent {
+            androidx.compose.material3.MaterialTheme {
+                TelaSessao(
+                    temas = listOf(tema("Ecologia")),
+                    indice = 0,
+                    aoTreinar = {},
+                    aoAbrirAula = {},
+                    aoEncerrar = {},
+                    respondidasHoje = 20,
+                    metaDiaria = 20,
+                )
+            }
+        }
+
+        compose.onNodeWithText("meta batida").assertIsDisplayed()
+        compose.onNodeWithText("20 de 20 questões hoje").assertIsDisplayed()
+    }
+
+    @Test
     fun `sessao concluida avisa em vez de voltar sozinha`() {        compose.setContent {
             androidx.compose.material3.MaterialTheme {
                 TelaSessao(
