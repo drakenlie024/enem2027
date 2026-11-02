@@ -759,6 +759,9 @@ class ViewModelPrincipal(
                 sessao = sessao,
                 fila = fila,
                 pendentes = repo.pendentes(),
+                // O número do miolo da flor é "quantas respondi hoje". Sem
+                // isto, ele só mudava quando o app era reaberto.
+                respondidasHoje = repo.respondidasHoje(),
             )
             carregarProgresso()
         }
