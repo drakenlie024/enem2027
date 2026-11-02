@@ -289,7 +289,10 @@ class Repositorio(private val context: Context) {
         return linhas.mapNotNull { r ->
             val tema = r.tema?.takeIf { it.isNotBlank() } ?: return@mapNotNull null
             val area = r.area?.takeIf { it.isNotBlank() } ?: return@mapNotNull null
-            if (r.disponiveis <= 0) return@mapNotNull null
+            if (r.total <= 0) return@mapNotNull null
+            // Tema sem questão nova (todas vistas há pouco ou já dominadas)
+            // continua na lista: ele vira revisão, em vez de sumir e deixar a
+            // tela dizendo "tudo em dia" com o acervo cheio.
             val forca = if (r.vistas > 0) r.acertos.toFloat() / r.vistas else 0f
             val intervalo = intervaloDoTema(forca, r.vistas)
             val dias = r.ultima?.let { ((agora - it) / DIA_MS).toInt() }
@@ -310,6 +313,7 @@ class Repositorio(private val context: Context) {
                 forca = forca,
                 vencidoHa = vencido.coerceAtMost(999),
                 novo = r.vistas == 0,
+                emRevisao = r.disponiveis <= 0,
             )
         }.sortedWith(
             // Vencido primeiro; dentro do mesmo atraso, o mais fraco. Tema que
@@ -364,7 +368,16 @@ class Repositorio(private val context: Context) {
     /** Questões novas (ou fora do cooldown) de um tema, para treinar. */
     suspend fun questoesDoTema(area: String, tema: String, limite: Int = 12): List<Question> {
         val cooldown = System.currentTimeMillis() - COOLDOWN_DIAS * DIA_MS
-        return db.questions().paraTreino(area, tema, cooldown, limite).map { it.paraModelo() }
+        val novas = db.questions().paraTreino(area, tema, cooldown, limite)
+        // Sem nada novo, o tema ainda tem o que estudar: serve o que foi visto
+        // há mais tempo. Antes devolvia lista vazia e a tela dizia "tudo em dia"
+        // mesmo com o tema inteiro esperando revisão.
+        val escolhidas = if (novas.isEmpty()) {
+            db.questions().paraRevisaoDoTema(area, tema, limite)
+        } else {
+            novas
+        }
+        return escolhidas.map { it.paraModelo() }
     }
 
     /**

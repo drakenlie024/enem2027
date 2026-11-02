@@ -286,7 +286,11 @@ private fun CartaoTreino(
                     overflow = TextOverflow.Ellipsis,
                 )
                 Text(
-                    text = t.area.replace('-', ' ') + " · " + t.disponiveis + " questões disponíveis",
+                    text = t.area.replace('-', ' ') + " · " + if (t.emRevisao) {
+                        "${t.total} questões para revisar"
+                    } else {
+                        "${t.disponiveis} questões disponíveis"
+                    },
                     style = MaterialTheme.typography.labelSmall,
                     color = TextMuted,
                 )
@@ -299,11 +303,13 @@ private fun CartaoTreino(
         }
         Spacer(Modifier.height(8.dp))
         Text(
-            text = if (t.novo) {
-                "Nunca treinado. Começa pelas questões mais antigas."
-            } else {
-                val quando = t.diasDesde?.let { "há $it dia(s)" } ?: "agora"
-                "Último treino $quando · volta a cada ${t.intervaloDias} dias"
+            text = when {
+                t.emRevisao -> "Sem questão nova: o treino volta ao que você já viu."
+                t.novo -> "Nunca treinado. Começa pelas questões mais antigas."
+                else -> {
+                    val quando = t.diasDesde?.let { "há $it dia(s)" } ?: "agora"
+                    "Último treino $quando · volta a cada ${t.intervaloDias} dias"
+                }
             },
             style = MaterialTheme.typography.bodySmall,
             color = TextMuted,
@@ -318,7 +324,7 @@ private fun CartaoTreino(
                     .padding(horizontal = 20.dp, vertical = 8.dp),
             ) {
                 Text(
-                    text = "Treinar",
+                    text = if (t.emRevisao) "Revisar" else "Treinar",
                     style = MaterialTheme.typography.labelMedium,
                     color = PaletaClaro.texto,
                 )

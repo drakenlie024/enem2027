@@ -146,6 +146,21 @@ interface QuestionDao {
     )
     suspend fun paraTreino(area: String, tema: String, cooldown: Long, limite: Int): List<QuestionEntity>
 
+    /**
+     * Questões de um tema para quando não há nada novo nem fora do cooldown:
+     * serve as vistas há mais tempo, para a sessão nunca abrir vazia.
+     */
+    @Query(
+        """
+        SELECT q.* FROM questions q
+        LEFT JOIN progress p ON p.questionId = q.id
+        WHERE q.tema = :tema AND q.area = :area AND q.origem = 'enem'
+        ORDER BY COALESCE(p.lastReviewedAt, 0) ASC
+        LIMIT :limite
+        """
+    )
+    suspend fun paraRevisaoDoTema(area: String, tema: String, limite: Int): List<QuestionEntity>
+
     /** Questões de um tema em qualquer área (usado na trilha adaptativa). */
     @Query(
         """

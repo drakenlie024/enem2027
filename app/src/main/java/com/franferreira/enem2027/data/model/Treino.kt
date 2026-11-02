@@ -24,6 +24,8 @@ data class TemaTreino(
     val vencidoHa: Int,
     /** Nunca praticado. */
     val novo: Boolean,
+    /** Sem questão nova: o treino vai revisar o que já foi visto. */
+    val emRevisao: Boolean = false,
 ) {
     val percentual: Int get() = (forca * 100).toInt()
 }
