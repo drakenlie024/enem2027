@@ -137,6 +137,9 @@ interface QuestionDao {
         SELECT q.* FROM questions q
         LEFT JOIN progress p ON p.questionId = q.id
         WHERE q.tema = :tema AND q.area = :area AND COALESCE(q.origem, '') <> 'ia'
+          -- Questão sem alternativas não tem como ser respondida: abria a tela
+          -- com o enunciado e nenhum A-E.
+          AND q.alternativasJson NOT IN ('[]', '')
           AND (p.questionId IS NULL
                OR (p.repetitions < 3 AND (p.lastReviewedAt IS NULL OR p.lastReviewedAt < :cooldown)))
         ORDER BY CASE WHEN p.questionId IS NULL THEN 0 ELSE 1 END,
@@ -155,6 +158,7 @@ interface QuestionDao {
         SELECT q.* FROM questions q
         LEFT JOIN progress p ON p.questionId = q.id
         WHERE q.tema = :tema AND q.area = :area AND COALESCE(q.origem, '') <> 'ia'
+          AND q.alternativasJson NOT IN ('[]', '')
         ORDER BY COALESCE(p.lastReviewedAt, 0) ASC
         LIMIT :limite
         """

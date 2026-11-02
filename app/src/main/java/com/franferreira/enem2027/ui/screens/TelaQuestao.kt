@@ -245,47 +245,7 @@ error = ColorPainter(SurfaceRaised),
                 }
             }
 
-            item {
-                OutlinedTextField(
-                    shape = RoundedCornerShape(14.dp),
-                    value = anotacao,
-                    onValueChange = { anotacao = it },
-                    label = { Text("Sua anotação desta questão") },
-                    placeholder = { Text("O que você quer lembrar na próxima vez") },
-                    minLines = 2,
-                    maxLines = 6,
-                    textStyle = MaterialTheme.typography.bodySmall,
-                    colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = Primary,
-                        unfocusedBorderColor = SurfaceBorder,
-                        focusedTextColor = TextPrimary,
-                        unfocusedTextColor = TextPrimary,
-                        cursorColor = Primary,
-                    ),
-                    modifier = Modifier.fillMaxWidth(),
-                )
-            }
 
-            // ---- confiança, papel e vídeo-aula: as três pontas para quando trava
-            item {
-                LinhaApoio(
-                    confianca = confianca,
-                    aoMudarConfianca = { novo ->
-                        confianca = if (confianca == novo) null else novo
-                    },
-                    temRascunho = tracos.isNotEmpty(),
-                    aoAbrirRascunho = { mostrarRascunho = true },
-                    canais = CanaisVideo.daArea(questao.area),
-                    aoAbrirCanal = { url ->
-                        runCatching {
-                            app.startActivity(
-                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                            )
-                        }
-                    },
-                )
-                Spacer(Modifier.height(14.dp))
-            }
 
             // alternativas
             items(questao.alternativas, key = { it.letra }) { alternativa ->
@@ -416,7 +376,50 @@ error = ColorPainter(SurfaceRaised),
                 }
                 Spacer(Modifier.height(8.dp))
             }
+
+            // ---- confiança, papel e vídeo-aula: as três pontas para quando trava
+            item {
+                LinhaApoio(
+                    confianca = confianca,
+                    aoMudarConfianca = { novo ->
+                        confianca = if (confianca == novo) null else novo
+                    },
+                    temRascunho = tracos.isNotEmpty(),
+                    aoAbrirRascunho = { mostrarRascunho = true },
+                    canais = CanaisVideo.daArea(questao.area),
+                    aoAbrirCanal = { url ->
+                        runCatching {
+                            app.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                        }
+                    },
+                )
+                Spacer(Modifier.height(14.dp))
+            }
+
+            item {
+                OutlinedTextField(
+                    shape = RoundedCornerShape(14.dp),
+                    value = anotacao,
+                    onValueChange = { anotacao = it },
+                    label = { Text("Sua anotação desta questão") },
+                    placeholder = { Text("O que você quer lembrar na próxima vez") },
+                    minLines = 2,
+                    maxLines = 6,
+                    textStyle = MaterialTheme.typography.bodySmall,
+                    colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Primary,
+                        unfocusedBorderColor = SurfaceBorder,
+                        focusedTextColor = TextPrimary,
+                        unfocusedTextColor = TextPrimary,
+                        cursorColor = Primary,
+                    ),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
         }
+
 
         // rodapé: explicação via IA. Fica como cartão solto, com margem: nada
         // encosta na borda da tela.

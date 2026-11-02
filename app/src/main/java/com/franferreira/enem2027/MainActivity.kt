@@ -509,6 +509,7 @@ fun EnemApp() {
                     sincronizando = estado.sincronizando,
                     treinos = estado.treinos,
                     treinoAberto = estado.treinoAberto,
+                    respondidas = estado.treinoRespondidas,
                     treinoQuestoes = estado.treinoQuestoes,
                     aoAbrirTreino = vm::abrirTreino,
                     aoFecharTreino = {

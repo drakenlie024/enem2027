@@ -17,10 +17,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
@@ -73,6 +75,8 @@ fun TelaRevisao(
     aoAbrirTreino: (com.franferreira.enem2027.data.model.TemaTreino) -> Unit = {},
     aoFecharTreino: () -> Unit = {},
     aoAbrirAula: (String) -> Unit = {},
+    /** Questões deste treino que já foram respondidas. */
+    respondidas: Set<String> = emptySet(),
     buscaTexto: String = "",
     resultadoBusca: List<Question> = emptyList(),
     aoBuscar: (String) -> Unit = {},
@@ -121,18 +125,45 @@ fun TelaRevisao(
             }
 
             Spacer(Modifier.height(6.dp))
-            Text(
-                text = if (treinoAberto != null) {
-                    "${treinoQuestoes.size} questões novas deste tema"
-                } else {
-                    "O app escolhe os temas que vencem hoje, e sempre traz questão nova."
-                },
-                style = MaterialTheme.typography.bodySmall,
-                color = TextMuted,
-            )
+            if (treinoAberto != null) {
+                // Progresso do tema no lugar do campo de busca: buscar dentro de
+                // doze questões era ruído, e o que importa é quanto falta.
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(5.dp)
+                            .clip(RoundedCornerShape(999.dp))
+                            .background(SurfaceRaised),
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth(
+                                    if (treinoQuestoes.isEmpty()) 0f
+                                    else respondidas.size.toFloat() / treinoQuestoes.size
+                                )
+                                .height(5.dp)
+                                .clip(RoundedCornerShape(999.dp))
+                                .background(Primary),
+                        )
+                    }
+                    Spacer(Modifier.width(10.dp))
+                    Text(
+                        text = "${respondidas.size} de ${treinoQuestoes.size}",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = TextMuted,
+                    )
+                }
+            } else {
+                Text(
+                    text = "O app escolhe os temas que vencem hoje, e sempre traz questão nova.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = TextMuted,
+                )
+            }
 
             Spacer(Modifier.height(12.dp))
-            OutlinedTextField(
+            if (treinoAberto == null) OutlinedTextField(
                     shape = RoundedCornerShape(14.dp),
                 value = buscaTexto,
                 onValueChange = aoBuscar,
@@ -193,13 +224,30 @@ fun TelaRevisao(
                         )
                     }
                 } else {
+                    val proxima = treinoQuestoes.firstOrNull { it.id !in respondidas }
                     LazyColumn(
                         modifier = Modifier.weight(1f),
                         contentPadding = PaddingValues(start = 20.dp, end = 20.dp, bottom = 24.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(6.dp),
                     ) {
-                        items(treinoQuestoes, key = { it.id }) { q ->
-                            CartaoFila(q, Primary) { aoAbrir(q) }
+                        proxima?.let { q ->
+                            item(key = "continuar") {
+                                ContinuarDaqui(
+                                    numero = treinoQuestoes.indexOf(q) + 1,
+                                    ano = q.ano,
+                                    aoClicar = { aoAbrir(q) },
+                                )
+                                Spacer(Modifier.height(4.dp))
+                            }
+                        }
+                        itemsIndexed(treinoQuestoes, key = { _, q -> q.id }) { indice, q ->
+                            LinhaQuestao(
+                                numero = indice + 1,
+                                texto = (q.contexto ?: q.enunciado).orEmpty(),
+                                feita = q.id in respondidas,
+                                atual = q.id == proxima?.id,
+                                aoClicar = { aoAbrir(q) },
+                            )
                         }
                     }
                 }
@@ -469,5 +517,114 @@ private fun CartaoFila(
                 )
             }
         }
+    }
+}
+
+/** Cartão do topo: "continue de onde parou". */
+@Composable
+private fun ContinuarDaqui(numero: Int, ano: Int, aoClicar: () -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .cartaoRabisco(16.dp, sombra = true, borda = Primary.copy(alpha = 0.55f))
+            .clickable { aoClicar() }
+            .padding(14.dp),
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text(
+                text = "CONTINUAR",
+                style = MaterialTheme.typography.labelSmall,
+                color = Primary,
+            )
+            Text(
+                text = if (ano > 0) "Questão $numero · de $ano" else "Questão $numero",
+                style = MaterialTheme.typography.titleSmall,
+                color = TextPrimary,
+            )
+        }
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(999.dp))
+                .background(Primary)
+                .clickable { aoClicar() }
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+        ) {
+            Text(
+                text = "Abrir",
+                style = MaterialTheme.typography.labelMedium,
+                color = PaletaClaro.texto,
+            )
+        }
+    }
+}
+
+/**
+ * Uma questão na lista: número, estado e o começo do enunciado.
+ *
+ * Antes cada item repetia ano, tema, selo de IA e um botão "por que essa é a
+ * resposta?" — quatro informações iguais em doze linhas seguidas.
+ */
+@Composable
+private fun LinhaQuestao(
+    numero: Int,
+    texto: String,
+    feita: Boolean,
+    atual: Boolean,
+    aoClicar: () -> Unit,
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .cartaoRabisco(
+                14.dp,
+                borda = if (atual) Primary.copy(alpha = 0.55f) else SurfaceBorder,
+            )
+            .clickable { aoClicar() }
+            .padding(horizontal = 12.dp, vertical = 10.dp),
+    ) {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .size(24.dp)
+                .clip(CircleShape)
+                .background(
+                    when {
+                        feita -> Secondary.copy(alpha = 0.2f)
+                        atual -> Primary.copy(alpha = 0.18f)
+                        else -> SurfaceRaised
+                    }
+                ),
+        ) {
+            if (feita) {
+                Icon(
+                    Icons.Filled.Check,
+                    contentDescription = "Respondida",
+                    tint = Secondary,
+                    modifier = Modifier.size(14.dp),
+                )
+            } else {
+                Text(
+                    text = "$numero",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = if (atual) Primary else TextMuted,
+                )
+            }
+        }
+        Spacer(Modifier.width(10.dp))
+        Text(
+            text = texto.ifBlank { "Questão $numero" },
+            style = MaterialTheme.typography.bodyMedium,
+            color = if (feita) TextMuted else TextPrimary,
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.weight(1f),
+        )
+        Text(
+            text = "›",
+            style = MaterialTheme.typography.titleMedium,
+            color = TextMuted,
+        )
     }
 }
