@@ -8,6 +8,8 @@ import com.franferreira.enem2027.data.model.PacoteAula
 import com.franferreira.enem2027.data.model.EtapaConcluida
 import com.franferreira.enem2027.data.model.ExplainRequest
 import com.franferreira.enem2027.data.model.ExplainResponse
+import com.franferreira.enem2027.data.model.DiagnosticoEnvio
+import com.franferreira.enem2027.data.model.DiagnosticoRequest
 import com.franferreira.enem2027.data.model.DiagnosticoSimulado
 import com.franferreira.enem2027.data.model.EssayCorrection
 import com.franferreira.enem2027.data.model.EssayRequest
@@ -97,6 +99,10 @@ interface EnemApi {
 
     @POST("ai/explain")
     suspend fun explicar(@Body body: ExplainRequest): ExplainResponse
+
+    /** Relato de problema do aparelho: fica no banco, para ler do servidor. */
+    @POST("diagnostico")
+    suspend fun enviarDiagnostico(@Body body: DiagnosticoRequest): DiagnosticoEnvio
 
     @POST("simulados/gerar")
     suspend fun gerarSimulado(@Body body: SimuladoRequest): SimuladoMontado

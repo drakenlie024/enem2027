@@ -1589,8 +1589,52 @@ class ViewModelPrincipal(
         _estado.value = _estado.value.copy(atualizacao = null, erroAtualizacao = null)
     }
 
-    /** A pergunta das preferências foi respondida ou dispensada: não volta mais. */
-    fun fecharPerguntaPreferencias() {
+    /**
+     * Envia o relato de problema para o servidor.
+     *
+     * É o caminho que não depende do aparelho estar plugado: o relato fica no
+     * banco e eu leio de lá. Se o envio falhar, abre o compartilhamento para o
+     * texto não se perder.
+     */
+    fun enviarDiagnostico(relato: String) {
+        val app = getApplication<Application>()
+        viewModelScope.launch(Dispatchers.IO) {
+            val pedido = com.franferreira.enem2027.data.model.DiagnosticoRequest(
+                versao = _estado.value.versaoApp,
+                aparelho = com.franferreira.enem2027.data.repo.RelatorioProblema.aparelho(),
+                questoes = _estado.value.totalLocal,
+                temas = _estado.value.temasPlano.size,
+                trilhas = _estado.value.trilhas.size,
+                aviso = _estado.value.erroAcervo,
+                ultimoErro = com.franferreira.enem2027.data.repo.RelatorioProblema.ultimoErro(app),
+                relato = relato,
+            )
+            val enviou: Boolean = runCatching { ApiClient.api.enviarDiagnostico(pedido) }.isSuccess
+            _estado.value = _estado.value.copy(
+                mensagem = if (enviou) {
+                    "Relato enviado. Obrigado!"
+                } else {
+                    "Não consegui enviar pelo servidor. Abri o compartilhamento."
+                },
+            )
+            if (!enviou) {
+                com.franferreira.enem2027.data.repo.RelatorioProblema.compartilhar(
+                    app,
+                    com.franferreira.enem2027.data.repo.RelatorioProblema.texto(
+                        context = app,
+                        versao = _estado.value.versaoApp,
+                        questoes = _estado.value.totalLocal,
+                        temas = _estado.value.temasPlano.size,
+                        trilhas = _estado.value.trilhas.size,
+                        erroDoAcervo = _estado.value.erroAcervo,
+                        relato = relato,
+                    ),
+                )
+            }
+        }
+    }
+
+    /** A pergunta das preferências foi respondida ou dispensada: não volta mais. */    fun fecharPerguntaPreferencias() {
         com.franferreira.enem2027.data.repo.PreferenciasEstudo.marcarPerguntado(getApplication())
         _estado.value = _estado.value.copy(pedirPreferencias = false)
     }

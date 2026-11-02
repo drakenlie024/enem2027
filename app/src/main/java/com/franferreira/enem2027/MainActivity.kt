@@ -142,7 +142,6 @@ fun EnemApp() {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = backStackEntry?.destination
     val vm: ViewModelPrincipal = viewModel()
-    val contexto = androidx.compose.ui.platform.LocalContext.current
     val estado by vm.estado.collectAsStateSafe()
 
     val rotaAtual = currentDestination?.route
@@ -517,21 +516,7 @@ fun EnemApp() {
                     aoAbrirCaderno = { navController.navigate("caderno") },
                     aoAbrirAulas = { navController.navigate("aulas") },
                     pendentesAprovacao = estado.filaAprovacao.size,
-                    aoRelatarProblema = { texto ->
-                        val ctx = contexto
-                        com.franferreira.enem2027.data.repo.RelatorioProblema.compartilhar(
-                            ctx,
-                            com.franferreira.enem2027.data.repo.RelatorioProblema.texto(
-                                context = ctx,
-                                versao = estado.versaoApp,
-                                questoes = estado.totalLocal,
-                                temas = estado.temasPlano.size,
-                                trilhas = estado.trilhas.size,
-                                erroDoAcervo = estado.erroAcervo,
-                                relato = texto,
-                            ),
-                        )
-                    },
+                    aoRelatarProblema = vm::enviarDiagnostico,
                 )
             }
 

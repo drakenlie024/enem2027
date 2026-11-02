@@ -36,6 +36,10 @@ object RelatorioProblema {
 
     fun ultimoErro(context: Context): String? = prefs(context).getString(CHAVE_ERRO, null)
 
+    /** Identificação do aparelho, para o relato não depender de descrição da pessoa. */
+    fun aparelho(): String =
+        "${Build.MANUFACTURER} ${Build.MODEL} · Android ${Build.VERSION.RELEASE}"
+
     /** Liga o gancho de exceção não tratada: a próxima abertura já traz o erro. */
     fun instalarGanchoDeErro(context: Context) {
         val anterior = Thread.getDefaultUncaughtExceptionHandler()

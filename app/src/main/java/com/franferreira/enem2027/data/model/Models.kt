@@ -312,6 +312,22 @@ data class QuestaoPendente(
 @Serializable
 data class ExplainRequest(val question: Question, @SerialName("user_answer") val userAnswer: String? = null)
 
+/** Relato de problema enviado ao servidor (endpoint /diagnostico). */
+@Serializable
+data class DiagnosticoRequest(
+    val versao: String = "",
+    val aparelho: String = "",
+    val questoes: Int = 0,
+    val temas: Int = 0,
+    val trilhas: Int = 0,
+    val aviso: String? = null,
+    @SerialName("ultimo_erro") val ultimoErro: String? = null,
+    val relato: String? = null,
+)
+
+@Serializable
+data class DiagnosticoEnvio(val ok: Boolean = false, val id: String = "")
+
 @Serializable
 data class ExplainResponse(val explicacao: String = "")
 
