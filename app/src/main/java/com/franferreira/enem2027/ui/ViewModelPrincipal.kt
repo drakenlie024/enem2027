@@ -186,6 +186,8 @@ data class EstadoHoje(
     /** Tema aberto para treinar. */
     val treinoAberto: com.franferreira.enem2027.data.model.TemaTreino? = null,    /** Questões do tema aberto. */
     val treinoQuestoes: List<Question> = emptyList(),
+    /** O treino aberto veio da sessão guiada (avança a sessão ao fechar). */
+    val treinoDaSessao: Boolean = false,
     /** Temas da sessão de hoje, na ordem em que ela vai estudar. */
     val sessaoTemas: List<com.franferreira.enem2027.data.model.TemaTreino> = emptyList(),
     /** Tema atual da sessão. */
@@ -1340,17 +1342,49 @@ class ViewModelPrincipal(
     /** Carrega os temas que estão devidos hoje. */
     fun carregarTreinos() {
         viewModelScope.launch {
-            val fracos = prefsLocais().getStringSet("diag_fracos", emptySet())?.toSet() ?: emptySet()
-            val daProva = temasDoSimulado().toSet()
-            val lista = runCatching {
-                repo.temasParaTreinar(fracos = fracos, prioritarios = daProva)
-            }.getOrDefault(emptyList())
-            _estado.value = _estado.value.copy(treinos = lista)
+            _estado.value = _estado.value.copy(treinos = buscarTreinos())
         }
     }
 
+    /**
+     * A lista de temas do dia, já com o peso pessoal.
+     *
+     * Se a consulta falhar, a tela diz o motivo em vez de fingir que não há
+     * nada para estudar.
+     */
+    private suspend fun buscarTreinos(): List<com.franferreira.enem2027.data.model.TemaTreino> {
+        val app = getApplication<Application>()
+        val fracos = prefsLocais().getStringSet("diag_fracos", emptySet())?.toSet() ?: emptySet()
+        val daProva = temasDoSimulado().toSet()
+        val porTema = com.franferreira.enem2027.data.repo.PreferenciasEstudo.pesos(app)
+        val porMateria = com.franferreira.enem2027.data.repo.Materias.LISTA.associate {
+            it.first to com.franferreira.enem2027.data.repo.PreferenciasEstudo.nivelMateria(app, it.first).peso
+        }
+        val resultado = runCatching {
+            repo.temasParaTreinar(
+                fracos = fracos,
+                prioritarios = daProva,
+                pesoDoTema = { area, tema ->
+                    porTema[com.franferreira.enem2027.data.model.Diagnostico.chaveTema(area, tema)]
+                        ?: com.franferreira.enem2027.data.repo.Materias.doTema(app, tema)
+                            ?.let { porMateria[it] }
+                        ?: 1.0
+                },
+            )
+        }
+        if (resultado.isFailure && _estado.value.erroAcervo == null) {
+            _estado.value = _estado.value.copy(
+                erroAcervo = "Não consegui montar o treino do dia: ${resultado.exceptionOrNull()?.message ?: "erro desconhecido"}",
+            )
+        }
+        return resultado.getOrDefault(emptyList())
+    }
+
     /** Abre um tema para treinar: serve questões novas dele. */
-    fun abrirTreino(treino: com.franferreira.enem2027.data.model.TemaTreino) {
+    fun abrirTreino(
+        treino: com.franferreira.enem2027.data.model.TemaTreino,
+        daSessao: Boolean = false,
+    ) {
         viewModelScope.launch {
             val questoes = runCatching {
                 repo.questoesDoTema(treino.area, treino.tema)
@@ -1358,32 +1392,41 @@ class ViewModelPrincipal(
             _estado.value = _estado.value.copy(
                 treinoAberto = treino,
                 treinoQuestoes = questoes,
+                treinoDaSessao = daSessao,
             )
         }
     }
 
     fun fecharTreino() {
         val sessao = _estado.value
-        val eraDaSessao = sessao.sessaoTemas.getOrNull(sessao.sessaoIndice)?.tema == sessao.treinoAberto?.tema
         _estado.value = sessao.copy(
             treinoAberto = null,
             treinoQuestoes = emptyList(),
-            // Terminou o tema da sessão: o próximo já vem aberto.
-            sessaoIndice = if (eraDaSessao && sessao.sessaoTemas.isNotEmpty()) {
+            // Terminou o tema da sessão: o próximo já vem aberto. Só avança
+            // quando o treino veio da sessão — abrir o mesmo tema pela lista
+            // não pode pular a vez dele.
+            sessaoIndice = if (sessao.treinoDaSessao && sessao.sessaoTemas.isNotEmpty()) {
                 sessao.sessaoIndice + 1
             } else {
                 sessao.sessaoIndice
             },
+            treinoDaSessao = false,
         )
         carregarTreinos()
     }
 
     /** Abre a sessão de hoje: até três temas, o primeiro já por inteiro. */
     fun iniciarSessao() {
-        _estado.value = _estado.value.copy(
-            sessaoTemas = _estado.value.treinos.take(3),
-            sessaoIndice = 0,
-        )
+        viewModelScope.launch {
+            // Tocar em "Começar" pode acontecer antes de a lista carregar.
+            // Antes disso a sessão nascia vazia e dizia "nada para estudar".
+            val lista = _estado.value.treinos.ifEmpty { buscarTreinos() }
+            _estado.value = _estado.value.copy(
+                treinos = lista,
+                sessaoTemas = lista.take(3),
+                sessaoIndice = 0,
+            )
+        }
     }
 
     fun encerrarSessao() {

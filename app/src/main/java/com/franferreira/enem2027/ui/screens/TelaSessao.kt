@@ -108,10 +108,9 @@ fun TelaSessao(
     }
 
     val contexto = LocalContext.current
-    val aula = remember(atual.tema) {
-        AulasPorTema.aulasDoTema(contexto, atual.tema)
-            .firstOrNull { !AulasAssistidas.foiAssistida(contexto, it.id) }
-    }
+    // Sem cache: ao voltar da aula, o passo 1 já sai da tela.
+    val aula = AulasPorTema.aulasDoTema(contexto, atual.tema)
+        .firstOrNull { !AulasAssistidas.foiAssistida(contexto, it.id) }
     val cor = corDaArea(atual.area)
     val proximo = temas.getOrNull(indice + 1)
 

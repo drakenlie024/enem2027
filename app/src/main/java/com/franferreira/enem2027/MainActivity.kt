@@ -564,7 +564,7 @@ fun EnemApp() {
                     temas = estado.sessaoTemas,
                     indice = estado.sessaoIndice,
                     aoTreinar = { tema ->
-                        vm.abrirTreino(tema)
+                        vm.abrirTreino(tema, daSessao = true)
                         navController.navigate(Destination.Revisao.route)
                     },
                     aoAbrirAula = { id ->

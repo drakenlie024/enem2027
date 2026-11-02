@@ -282,6 +282,12 @@ class Repositorio(private val context: Context) {
         fracos: Set<String> = emptySet(),
         /** Temas que a última prova errou: entram antes dos que só venceram. */
         prioritarios: Set<String> = emptySet(),
+        /**
+         * Peso pessoal do tema (matéria marcada como "mais" pesa 2, "menos"
+         * pesa 0,5). Sem isso, marcar "mais biologia" só mudava o cronograma:
+         * o treino do dia continuava na mesma ordem.
+         */
+        pesoDoTema: (area: String, tema: String) -> Double = { _, _ -> 1.0 },
     ): List<com.franferreira.enem2027.data.model.TemaTreino> {
         val agora = System.currentTimeMillis()
         val cooldown = agora - COOLDOWN_DIAS * DIA_MS
@@ -323,6 +329,7 @@ class Repositorio(private val context: Context) {
                 Diagnostico.chaveTema(it.area, it.tema) in fracos
             }
                 .thenByDescending { it.tema in prioritarios }
+                .thenByDescending { pesoDoTema(it.area, it.tema) }
                 .thenByDescending { it.vencidoHa }
                 .thenBy { it.forca }
         ).take(limite)
