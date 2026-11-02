@@ -26,7 +26,6 @@ import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.OndemandVideo
 import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -282,7 +281,7 @@ fun TelaProgresso(
                     modifier = Modifier
                         .fillMaxWidth()
                         .cartaoRabisco(16.dp)
-                        .clickable { relatando = true }
+                        .clickable { relatando = !relatando }
                         .padding(14.dp),
                 ) {
                     Column {
@@ -299,54 +298,67 @@ fun TelaProgresso(
                     }
                 }
             }
-        }
 
-        if (relatando) {
-            AlertDialog(
-                onDismissRequest = { relatando = false },
-                containerColor = Surface,
-                titleContentColor = TextPrimary,
-                textContentColor = TextMuted,
-                title = { Text("Relatar um problema") },
-                text = {
-                    Column {
-                        Text(
-                            text = "O que aconteceu? Se aparecer alguma mensagem, copie aqui.",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = TextMuted,
-                        )
-                        Spacer(Modifier.height(8.dp))
-                        OutlinedTextField(
-                            value = textoRelato,
-                            onValueChange = { textoRelato = it },
-                            minLines = 3,
-                            placeholder = { Text("ex.: toquei em Começar e não abriu nada", color = TextMuted) },
-                            colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
-                                focusedBorderColor = Primary,
-                                unfocusedBorderColor = SurfaceBorder,
-                                focusedTextColor = TextPrimary,
-                                unfocusedTextColor = TextPrimary,
-                                cursorColor = Primary,
-                            ),
-                            modifier = Modifier.fillMaxWidth(),
-                        )
+            // O formulário abre aqui mesmo, na lista: diálogo do Material não
+            // é confiável em teste de tela e cobre a tela inteira à toa.
+            if (relatando) {
+                item {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .cartaoRabisco(16.dp, borda = Primary.copy(alpha = 0.45f))
+                            .padding(14.dp),
+                    ) {
+                        Column {
+                            Text(
+                                text = "Relatar um problema",
+                                style = MaterialTheme.typography.titleSmall,
+                                color = TextPrimary,
+                            )
+                            Spacer(Modifier.height(4.dp))
+                            Text(
+                                text = "O que aconteceu? Se aparecer alguma mensagem, copie aqui.",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = TextMuted,
+                            )
+                            Spacer(Modifier.height(8.dp))
+                            OutlinedTextField(
+                                value = textoRelato,
+                                onValueChange = { textoRelato = it },
+                                minLines = 3,
+                                placeholder = {
+                                    Text("ex.: toquei em Começar e não abriu nada", color = TextMuted)
+                                },
+                                colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                                    focusedBorderColor = Primary,
+                                    unfocusedBorderColor = SurfaceBorder,
+                                    focusedTextColor = TextPrimary,
+                                    unfocusedTextColor = TextPrimary,
+                                    cursorColor = Primary,
+                                ),
+                                modifier = Modifier.fillMaxWidth(),
+                            )
+                            Spacer(Modifier.height(6.dp))
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                                modifier = Modifier.fillMaxWidth(),
+                            ) {
+                                TextButton(onClick = { relatando = false }) {
+                                    Text("Cancelar", color = TextMuted)
+                                }
+                                Spacer(Modifier.weight(1f))
+                                TextButton(onClick = {
+                                    aoRelatarProblema(textoRelato)
+                                    textoRelato = ""
+                                    relatando = false
+                                }) {
+                                    Text("Enviar", color = Primary)
+                                }
+                            }
+                        }
                     }
-                },
-                confirmButton = {
-                    TextButton(onClick = {
-                        aoRelatarProblema(textoRelato)
-                        textoRelato = ""
-                        relatando = false
-                    }) {
-                        Text("Enviar", color = Primary)
-                    }
-                },
-                dismissButton = {
-                    TextButton(onClick = { relatando = false }) {
-                        Text("Cancelar", color = TextMuted)
-                    }
-                },
-            )
+                }
+            }
         }
     }
 }
