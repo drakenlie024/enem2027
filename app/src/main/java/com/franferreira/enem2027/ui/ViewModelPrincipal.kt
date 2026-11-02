@@ -184,9 +184,12 @@ data class EstadoHoje(
     /** Temas devidos hoje (treino espaçado por tema). */
     val treinos: List<com.franferreira.enem2027.data.model.TemaTreino> = emptyList(),
     /** Tema aberto para treinar. */
-    val treinoAberto: com.franferreira.enem2027.data.model.TemaTreino? = null,
-    /** Questões do tema aberto. */
+    val treinoAberto: com.franferreira.enem2027.data.model.TemaTreino? = null,    /** Questões do tema aberto. */
     val treinoQuestoes: List<Question> = emptyList(),
+    /** Temas da sessão de hoje, na ordem em que ela vai estudar. */
+    val sessaoTemas: List<com.franferreira.enem2027.data.model.TemaTreino> = emptyList(),
+    /** Tema atual da sessão. */
+    val sessaoIndice: Int = 0,
     /** Texto da busca de questão. */
     val buscaTexto: String = "",
     /** Resultado da busca de questão no acervo local. */
@@ -1360,8 +1363,31 @@ class ViewModelPrincipal(
     }
 
     fun fecharTreino() {
-        _estado.value = _estado.value.copy(treinoAberto = null, treinoQuestoes = emptyList())
+        val sessao = _estado.value
+        val eraDaSessao = sessao.sessaoTemas.getOrNull(sessao.sessaoIndice)?.tema == sessao.treinoAberto?.tema
+        _estado.value = sessao.copy(
+            treinoAberto = null,
+            treinoQuestoes = emptyList(),
+            // Terminou o tema da sessão: o próximo já vem aberto.
+            sessaoIndice = if (eraDaSessao && sessao.sessaoTemas.isNotEmpty()) {
+                sessao.sessaoIndice + 1
+            } else {
+                sessao.sessaoIndice
+            },
+        )
         carregarTreinos()
+    }
+
+    /** Abre a sessão de hoje: até três temas, o primeiro já por inteiro. */
+    fun iniciarSessao() {
+        _estado.value = _estado.value.copy(
+            sessaoTemas = _estado.value.treinos.take(3),
+            sessaoIndice = 0,
+        )
+    }
+
+    fun encerrarSessao() {
+        _estado.value = _estado.value.copy(sessaoTemas = emptyList(), sessaoIndice = 0)
     }
 
     // ---------- cronograma até a prova ----------

@@ -77,6 +77,7 @@ import com.franferreira.enem2027.ui.screens.TelaAulasDeArea
 import com.franferreira.enem2027.ui.screens.TelaCaderno
 import com.franferreira.enem2027.ui.screens.TelaCronograma
 import com.franferreira.enem2027.ui.screens.TelaPreferencias
+import com.franferreira.enem2027.ui.screens.TelaSessao
 import com.franferreira.enem2027.ui.screens.TelaDiagnostico
 import com.franferreira.enem2027.ui.screens.TelaOnboarding
 import com.franferreira.enem2027.ui.screens.TelaResultadoDiagnostico
@@ -322,7 +323,10 @@ fun EnemApp() {
                     aoAtualizarAcervo = vm::atualizarAcervo,
                     aoIniciarFoco = { vm.iniciarFoco() },
                     aoPararFoco = vm::pararFoco,
-                    aoRevisar = { navController.navigate(Destination.Revisao.route) },
+                    aoRevisar = {
+                        vm.iniciarSessao()
+                        navController.navigate("sessao")
+                    },
                     aoAulas = { navController.navigate(Destination.Aulas.route) },
                     aoMudarMetaSemanal = vm::ajustarMetaSemanal,
                     aoFazerDiagnostico = vm::iniciarDiagnostico,
@@ -461,7 +465,11 @@ fun EnemApp() {
                     treinoAberto = estado.treinoAberto,
                     treinoQuestoes = estado.treinoQuestoes,
                     aoAbrirTreino = vm::abrirTreino,
-                    aoFecharTreino = vm::fecharTreino,
+                    aoFecharTreino = {
+                        vm.fecharTreino()
+                        // Veio da sessão: volta para ela, que já abriu o próximo tema.
+                        if (estado.sessaoTemas.isNotEmpty()) navController.popBackStack()
+                    },
                     aoAbrirAula = { id ->
                         vm.abrirPacoteAula(id)
                         navController.navigate("aulapacote")
@@ -550,8 +558,27 @@ fun EnemApp() {
                 )
             }
 
-            composable("preferencias") {
-                TelaPreferencias(
+            // Sessão de hoje: um tema por vez, com a aula dele em cima.
+            composable("sessao") {
+                TelaSessao(
+                    temas = estado.sessaoTemas,
+                    indice = estado.sessaoIndice,
+                    aoTreinar = { tema ->
+                        vm.abrirTreino(tema)
+                        navController.navigate(Destination.Revisao.route)
+                    },
+                    aoAbrirAula = { id ->
+                        vm.abrirPacoteAula(id)
+                        navController.navigate("aulapacote")
+                    },
+                    aoEncerrar = {
+                        vm.encerrarSessao()
+                        navController.popBackStack()
+                    },
+                )
+            }
+
+            composable("preferencias") {                TelaPreferencias(
                     temas = estado.temasPlano,
                     preferencias = estado.preferencias,
                     preferenciasMaterias = estado.preferenciasMaterias,
