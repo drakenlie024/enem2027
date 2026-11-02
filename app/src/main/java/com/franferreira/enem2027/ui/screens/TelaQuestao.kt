@@ -88,6 +88,11 @@ fun TelaQuestao(
     aoPedirExplicacao: suspend () -> String?,
     /** Abre a video-aula sugerida quando a questão é errada. */
     aoAbrirAula: (String) -> Unit = {},
+    /** Questão seguinte do treino (null = esta é a última, ou veio de outro lugar). */
+    aoProxima: (() -> Unit)? = null,
+    /** Posição desta questão no treino, para o rodapé ("3 de 12"). */
+    posicao: Int = 0,
+    total: Int = 0,
 ) {
     var respondida by remember { mutableStateOf(false) }
     var alternativaEscolhida by remember { mutableStateOf<String?>(null) }
@@ -507,6 +512,37 @@ error = ColorPainter(SurfaceRaised),
                             aula = aulas.first(),
                             aoAbrir = { aoAbrirAula(aulas.first().id) },
                         )
+                    }
+
+                    // Antes ela tinha que voltar para a lista e achar a questão
+                    // seguinte. Num treino de 12, isso eram 12 idas e voltas.
+                    if (aoProxima != null) {
+                        Spacer(Modifier.height(14.dp))
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            if (total > 0) {
+                                Text(
+                                    text = "$posicao de $total",
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = TextMuted,
+                                    modifier = Modifier.weight(1f),
+                                )
+                            } else {
+                                Spacer(Modifier.weight(1f))
+                            }
+                            Box(
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(999.dp))
+                                    .background(com.franferreira.enem2027.ui.theme.Primary)
+                                    .clickable { aoProxima() }
+                                    .padding(horizontal = 22.dp, vertical = 10.dp),
+                            ) {
+                                Text(
+                                    text = "Próxima questão",
+                                    style = MaterialTheme.typography.labelLarge,
+                                    color = com.franferreira.enem2027.ui.theme.PaletaClaro.texto,
+                                )
+                            }
+                        }
                     }
                 }
             }

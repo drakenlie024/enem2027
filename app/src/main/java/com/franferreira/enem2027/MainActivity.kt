@@ -102,6 +102,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        // Guarda a última exceção: é o que permite a pessoa relatar o erro
+        // com informação, em vez de "não funcionou".
+        com.franferreira.enem2027.data.repo.RelatorioProblema.instalarGanchoDeErro(this)
         setContent {
             EnemTheme {
                 EnemApp()
@@ -139,6 +142,7 @@ fun EnemApp() {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = backStackEntry?.destination
     val vm: ViewModelPrincipal = viewModel()
+    val contexto = androidx.compose.ui.platform.LocalContext.current
     val estado by vm.estado.collectAsStateSafe()
 
     val rotaAtual = currentDestination?.route
@@ -420,21 +424,34 @@ fun EnemApp() {
             composable("questao") {
                 val questao = estado.questaoAberta
                 if (questao != null) {
-                    TelaQuestao(
-                        questao = questao,
-                        aoResponder = { correta, segundos, confianca ->
-                            vm.responder(questao.id, correta, segundos, confianca)
-                        },
-                        aoVoltar = {
-                            vm.fecharQuestao()
-                            navController.popBackStack()
-                        },
-                        aoPedirExplicacao = { vm.pedirExplicacao(questao) },
-                        aoAbrirAula = { id ->
-                            vm.abrirPacoteAula(id)
-                            navController.navigate("aulapacote")
-                        },
-                    )
+                    // Posição no treino aberto, para o rodapé e o "Próxima".
+                    val lista = estado.treinoQuestoes
+                    val indice = lista.indexOfFirst { it.id == questao.id }
+                    val proxima = if (indice >= 0) lista.getOrNull(indice + 1) else null
+                    // key: cada questão nova precisa de estado próprio
+                    // (respondida, alternativa, explicação).
+                    androidx.compose.runtime.key(questao.id) {
+                        TelaQuestao(
+                            questao = questao,
+                            aoResponder = { correta, segundos, confianca ->
+                                vm.responder(questao.id, correta, segundos, confianca)
+                            },
+                            aoVoltar = {
+                                vm.fecharQuestao()
+                                navController.popBackStack()
+                            },
+                            aoPedirExplicacao = { vm.pedirExplicacao(questao) },
+                            aoAbrirAula = { id ->
+                                vm.abrirPacoteAula(id)
+                                navController.navigate("aulapacote")
+                            },
+                            aoProxima = proxima?.let { seguinte ->
+                                { vm.abrirQuestao(seguinte.id) }
+                            },
+                            posicao = if (indice >= 0) indice + 1 else 0,
+                            total = lista.size,
+                        )
+                    }
                 } else {
                     TelaVazia(
                         titulo = if (estado.questaoPendente != null) {
@@ -500,6 +517,21 @@ fun EnemApp() {
                     aoAbrirCaderno = { navController.navigate("caderno") },
                     aoAbrirAulas = { navController.navigate("aulas") },
                     pendentesAprovacao = estado.filaAprovacao.size,
+                    aoRelatarProblema = { texto ->
+                        val ctx = contexto
+                        com.franferreira.enem2027.data.repo.RelatorioProblema.compartilhar(
+                            ctx,
+                            com.franferreira.enem2027.data.repo.RelatorioProblema.texto(
+                                context = ctx,
+                                versao = estado.versaoApp,
+                                questoes = estado.totalLocal,
+                                temas = estado.temasPlano.size,
+                                trilhas = estado.trilhas.size,
+                                erroDoAcervo = estado.erroAcervo,
+                                relato = texto,
+                            ),
+                        )
+                    },
                 )
             }
 

@@ -26,10 +26,17 @@ import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.OndemandVideo
 import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -71,8 +78,12 @@ fun TelaProgresso(
     aoAbrirCaderno: () -> Unit,
     aoAbrirAulas: () -> Unit,
     pendentesAprovacao: Int,
+    /** Recebe o texto que a pessoa escreveu sobre o problema. */
+    aoRelatarProblema: (String) -> Unit = {},
 ) {
     val fraca = progresso.porArea.minByOrNull { it.taxa }
+    var relatando by remember { mutableStateOf(false) }
+    var textoRelato by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -264,6 +275,78 @@ fun TelaProgresso(
                 item { TituloSecao("CONQUISTAS") }
                 item { GradeConquistas(progresso.conquistas) }
             }
+
+            item {
+                Spacer(Modifier.height(6.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .cartaoRabisco(16.dp)
+                        .clickable { relatando = true }
+                        .padding(14.dp),
+                ) {
+                    Column {
+                        Text(
+                            text = "Algo não funcionou?",
+                            style = MaterialTheme.typography.titleSmall,
+                            color = TextPrimary,
+                        )
+                        Text(
+                            text = "Conte o que aconteceu. O relato vai com a versão do app e os números do seu acervo.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = TextMuted,
+                        )
+                    }
+                }
+            }
+        }
+
+        if (relatando) {
+            AlertDialog(
+                onDismissRequest = { relatando = false },
+                containerColor = Surface,
+                titleContentColor = TextPrimary,
+                textContentColor = TextMuted,
+                title = { Text("Relatar um problema") },
+                text = {
+                    Column {
+                        Text(
+                            text = "O que aconteceu? Se aparecer alguma mensagem, copie aqui.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = TextMuted,
+                        )
+                        Spacer(Modifier.height(8.dp))
+                        OutlinedTextField(
+                            value = textoRelato,
+                            onValueChange = { textoRelato = it },
+                            minLines = 3,
+                            placeholder = { Text("ex.: toquei em Começar e não abriu nada", color = TextMuted) },
+                            colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = Primary,
+                                unfocusedBorderColor = SurfaceBorder,
+                                focusedTextColor = TextPrimary,
+                                unfocusedTextColor = TextPrimary,
+                                cursorColor = Primary,
+                            ),
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
+                },
+                confirmButton = {
+                    TextButton(onClick = {
+                        aoRelatarProblema(textoRelato)
+                        textoRelato = ""
+                        relatando = false
+                    }) {
+                        Text("Enviar", color = Primary)
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { relatando = false }) {
+                        Text("Cancelar", color = TextMuted)
+                    }
+                },
+            )
         }
     }
 }
