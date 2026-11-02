@@ -62,6 +62,8 @@ fun TelaMontarSimulado(
     carregando: Boolean,
     diagnosticoPrevio: String?,
     aoIniciar: (tipo: String, area: String?, ano: Int?, quantidade: Int) -> Unit,
+    /** Nível atual: o relâmpago só abre a partir do 5. */
+    nivel: Int = 1,
 ) {
     var tipo by remember { mutableStateOf("area") }
     var area by remember { mutableStateOf("matematica") }
@@ -104,14 +106,20 @@ fun TelaMontarSimulado(
             "area" to "Por área",
             "completo" to "Prova completa",
             "adaptativo" to "Adaptativo (prioriza seus erros)",
+            "relampago" to if (nivel >= 5) {
+                "Relâmpago · 10 questões em 10 minutos"
+            } else {
+                "Relâmpago · libera no nível 5"
+            },
         ).forEach { (chave, rotulo) ->
+            val bloqueado = chave == "relampago" && nivel < 5
             val selecionado = tipo == chave
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = 8.dp)
                     .cartaoRabisco(16.dp, fundo = if (selecionado) Primary.copy(alpha = 0.14f) else Surface, borda = if (selecionado) Primary.copy(alpha = 0.5f) else SurfaceBorder)
-                    .clickable {
+                    .clickable(enabled = !bloqueado) {
                         tipo = chave
                         // Dia do ENEM é de um caderno só: sem "Todos" e sem escolher quantidade.
                         if (chave.startsWith("dia") && ano == null) {
@@ -279,7 +287,17 @@ fun TelaMontarSimulado(
                 texto = "COMEÇAR SIMULADO",
                 cor = Primary,
                 aoClicar = {
-                    aoIniciar(tipo, if (tipo == "area") area else null, ano, if (tipo.startsWith("dia")) 90 else quantidade)
+                    aoIniciar(
+                        tipo,
+                        if (tipo == "area") area else null,
+                        ano,
+                        when {
+                            tipo.startsWith("dia") -> 90
+                            // Relâmpago tem tamanho fixo: é treino de ritmo.
+                            tipo == "relampago" -> 10
+                            else -> quantidade
+                        },
+                    )
                 },
             )
         }

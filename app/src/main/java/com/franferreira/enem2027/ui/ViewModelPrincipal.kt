@@ -113,6 +113,8 @@ data class EstadoHoje(
     val preferencias: Map<String, com.franferreira.enem2027.data.repo.PreferenciasEstudo.Nivel> = emptyMap(),
     /** Preferência de cada matéria (biologia, historia...); fora do mapa é Normal. */
     val preferenciasMaterias: Map<String, com.franferreira.enem2027.data.repo.PreferenciasEstudo.Nivel> = emptyMap(),
+    /** Folgas de sequência disponíveis (uma a cada dez níveis, menos as usadas). */
+    val folgas: Int = 0,
     /** Conta antiga sem nenhuma preferência: a Hoje pergunta uma vez. */
     val pedirPreferencias: Boolean = false,
     /** O acervo não foi gravado no aparelho: a Hoje explica o motivo. */
@@ -402,9 +404,16 @@ class ViewModelPrincipal(
     private fun conferirTokenNoServidor(token: String?, modoLocal: Boolean) {
         if (token.isNullOrBlank()) return
         viewModelScope.launch {
-            val erro = kotlinx.coroutines.withTimeoutOrNull(8_000L) {
-                runCatching { api.gamificacao() }.exceptionOrNull()
+            val resposta = kotlinx.coroutines.withTimeoutOrNull(8_000L) {
+                runCatching { api.gamificacao() }
             }
+            resposta?.getOrNull()?.let { g ->
+                _estado.value = _estado.value.copy(
+                    folgas = g.folgas,
+                    streak = maxOf(_estado.value.streak, g.streak),
+                )
+            }
+            val erro = resposta?.exceptionOrNull()
             if (erro is retrofit2.HttpException && erro.code() == 401) {
                 ApiClient.token = null
                 prefsLocais().edit().remove("token").apply()

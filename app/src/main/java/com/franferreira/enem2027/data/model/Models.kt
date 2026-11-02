@@ -136,6 +136,8 @@ data class SyncResponse(
     val level: Int = 1,
     val streak: Int = 0,
     @SerialName("due_today") val dueToday: Int = 0,
+    /** Folgas de sequência disponíveis (uma a cada dez níveis). */
+    val folgas: Int = 0,
 )
 
 @Serializable
@@ -144,6 +146,7 @@ data class GamificationResponse(
     val level: Int = 1,
     val streak: Int = 0,
     @SerialName("longest_streak") val longestStreak: Int = 0,
+    val folgas: Int = 0,
 )
 
 // --- progresso ---

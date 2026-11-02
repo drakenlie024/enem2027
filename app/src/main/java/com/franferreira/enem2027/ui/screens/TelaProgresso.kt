@@ -79,6 +79,8 @@ fun TelaProgresso(
     pendentesAprovacao: Int,
     /** Recebe o texto que a pessoa escreveu sobre o problema. */
     aoRelatarProblema: (String) -> Unit = {},
+    /** Folgas de sequência disponíveis. */
+    folgas: Int = 0,
 ) {
     val fraca = progresso.porArea.minByOrNull { it.taxa }
     var relatando by remember { mutableStateOf(false) }
@@ -206,8 +208,8 @@ fun TelaProgresso(
                     modifier = Modifier.weight(1f),
                 )
                 CartaoNumero(
-                    valor = "${progresso.streak}",
-                    rotulo = "dias seguidos",
+                    valor = if (folgas > 0) "${progresso.streak} · $folgas" else "${progresso.streak}",
+                    rotulo = if (folgas > 0) "dias · folgas" else "dias seguidos",
                     cor = Secondary,
                     modifier = Modifier.weight(1f),
                 )

@@ -546,6 +546,7 @@ fun EnemApp() {
                     aoAbrirCaderno = { navController.navigate("caderno") },
                     aoAbrirAulas = { navController.navigate("aulas") },
                     pendentesAprovacao = estado.filaAprovacao.size,
+                    folgas = estado.folgas,
                     aoRelatarProblema = vm::enviarDiagnostico,
                 )
             }
@@ -755,6 +756,7 @@ fun EnemApp() {
                         aoIniciar = { tipo, area, ano, quantidade ->
                             vm.gerarSimulado(tipo, area, ano, quantidade)
                         },
+                        nivel = estado.nivel,
                     )
                 }
             }
