@@ -1,6 +1,6 @@
 {
  "ano": 2023,
- "versao": "2026-11-02T13:39:33Z",
+ "versao": "2026-11-02T13:56:39Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -4001,7 +4001,7 @@
    ],
    "gabarito": "B",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Cultura e identidade",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -4652,7 +4652,7 @@
    ],
    "gabarito": "B",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Ecologia",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -5613,7 +5613,7 @@
    ],
    "gabarito": "B",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Ecologia",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",

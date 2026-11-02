@@ -1,6 +1,6 @@
 {
  "ano": 2014,
- "versao": "2026-11-02T13:39:33Z",
+ "versao": "2026-11-02T13:56:39Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -98,7 +98,7 @@
    ],
    "gabarito": "C",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "História da Europa",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -903,7 +903,7 @@
    ],
    "gabarito": "C",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "História da Europa",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
