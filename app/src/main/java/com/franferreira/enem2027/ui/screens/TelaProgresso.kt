@@ -84,12 +84,17 @@ fun TelaProgresso(
     var relatando by remember { mutableStateOf(false) }
     var textoRelato by remember { mutableStateOf("") }
 
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(BackgroundGradientTop, Background))),
+        contentPadding = androidx.compose.foundation.layout.PaddingValues(
+            start = 20.dp, end = 20.dp, bottom = 24.dp,
+        ),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        Column(Modifier.padding(horizontal = 20.dp)) {
+        item {
+        Column {
             Spacer(Modifier.height(12.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Column(Modifier.weight(1f)) {
@@ -119,6 +124,15 @@ fun TelaProgresso(
                     )
                 }
             }
+
+            Spacer(Modifier.height(14.dp))
+
+            // A flor é o retrato do progresso: nível, fase e o quanto falta.
+            CartaoFlor(xp = progresso.xp, nivel = progresso.nivel)
+
+            Spacer(Modifier.height(12.dp))
+
+            com.franferreira.enem2027.ui.components.CampoDeFlores(nivel = progresso.nivel)
 
             Spacer(Modifier.height(14.dp))
 
@@ -243,14 +257,8 @@ fun TelaProgresso(
 
             Spacer(Modifier.height(16.dp))
         }
+        }
 
-        LazyColumn(
-            modifier = Modifier.weight(1f),
-            contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                start = 20.dp, end = 20.dp, bottom = 24.dp
-            ),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-        ) {
             if (progresso.porArea.isNotEmpty()) {
                 item { TituloSecao("POR ÁREA") }
                 items(progresso.porArea.size) { i ->
@@ -361,7 +369,6 @@ fun TelaProgresso(
             }
         }
     }
-}
 
 @Composable
 private fun CartaoNumero(
@@ -705,4 +712,79 @@ internal fun rotuloConquista(id: String): String = when (id) {
     "area_cem" -> "100 questões de uma mesma área"
     "sete_dias" -> "Estudou nos 7 dias da semana"
     else -> id.replace('_', ' ')
+}
+
+/**
+ * O cartão da flor: fase atual, nome, barra de XP e a próxima fase.
+ *
+ * É o topo da tela de Progresso — o número do nível sozinho não dizia nada
+ * sobre o quanto ela já andou.
+ */
+@Composable
+private fun CartaoFlor(xp: Int, nivel: Int) {
+    val fase = com.franferreira.enem2027.ui.components.FlorNivel.faseDoNivel(nivel)
+    val progresso = com.franferreira.enem2027.ui.components.FlorNivel.progressoNoNivel(xp, nivel)
+    val base = com.franferreira.enem2027.ui.components.FlorNivel.xpParaChegar(nivel)
+    val alvo = com.franferreira.enem2027.ui.components.FlorNivel.xpDoNivel(nivel)
+    val faltam = (alvo - (xp - base)).coerceAtLeast(0)
+    val proxima = com.franferreira.enem2027.ui.components.FlorNivel.nomeDaFase(
+        (fase + 1).coerceAtMost(com.franferreira.enem2027.ui.components.FlorNivel.FASES)
+    )
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .cartaoRabisco(20.dp, sombra = true, borda = Primary.copy(alpha = 0.55f))
+            .padding(14.dp),
+    ) {
+        com.franferreira.enem2027.ui.components.FlorDoNivel(
+            nivel = nivel,
+            modifier = Modifier.size(168.dp),
+        )
+        Text(
+            text = "Nível $nivel",
+            style = MaterialTheme.typography.titleLarge,
+            color = TextPrimary,
+        )
+        Text(
+            text = com.franferreira.enem2027.ui.components.FlorNivel.nomeDaFase(fase),
+            style = MaterialTheme.typography.labelSmall,
+            color = Primary,
+        )
+        Spacer(Modifier.height(10.dp))
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .height(7.dp)
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(SurfaceRaised),
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(progresso)
+                        .height(7.dp)
+                        .clip(RoundedCornerShape(999.dp))
+                        .background(Primary),
+                )
+            }
+            Spacer(Modifier.width(10.dp))
+            Text(
+                text = "${xp - base} / $alvo XP",
+                style = MaterialTheme.typography.labelSmall,
+                color = TextMuted,
+            )
+        }
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = if (fase >= com.franferreira.enem2027.ui.components.FlorNivel.FASES) {
+                "Fase final. Faltam $faltam XP para o nível ${nivel + 1}."
+            } else {
+                "Faltam $faltam XP · próxima fase: $proxima"
+            },
+            style = MaterialTheme.typography.bodySmall,
+            color = TextMuted,
+        )
+    }
 }

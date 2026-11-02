@@ -1,7 +1,10 @@
 package com.franferreira.enem2027.ui
 
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasScrollAction
 import androidx.compose.ui.test.hasSetTextAction
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -29,6 +32,11 @@ class TelaProgressoTeste {
     @get:Rule
     val compose = createComposeRule()
 
+    /** Rola a lista até o cartão do relato (a flor ocupa o topo agora). */
+    private fun irAoRelato() {
+        compose.onNode(hasScrollAction()).performScrollToNode(hasText("Algo não funcionou?"))
+    }
+
     private fun montar(aoRelatar: (String) -> Unit = {}) {
         compose.setContent {
             androidx.compose.material3.MaterialTheme {
@@ -49,6 +57,7 @@ class TelaProgressoTeste {
     @Test
     fun `o convite do relato aparece no fim da tela`() {
         montar()
+        irAoRelato()
         compose.onNodeWithText("Algo não funcionou?").assertIsDisplayed()
     }
 
@@ -57,8 +66,12 @@ class TelaProgressoTeste {
         var recebido: String? = null
         montar(aoRelatar = { recebido = it })
 
+        irAoRelato()
         compose.onNodeWithText("Algo não funcionou?").performClick()
+        // O formulário abre abaixo do cartão: precisa rolar até ele.
+        compose.onNode(hasScrollAction()).performScrollToNode(hasSetTextAction())
         compose.onNode(hasSetTextAction()).performTextInput("toquei em Começar e não abriu nada")
+        compose.onNode(hasScrollAction()).performScrollToNode(hasText("Enviar"))
         compose.onNodeWithText("Enviar").performClick()
 
         assertEquals("toquei em Começar e não abriu nada", recebido)
@@ -69,7 +82,9 @@ class TelaProgressoTeste {
         var enviou = false
         montar(aoRelatar = { enviou = true })
 
+        irAoRelato()
         compose.onNodeWithText("Algo não funcionou?").performClick()
+        compose.onNode(hasScrollAction()).performScrollToNode(hasText("Cancelar"))
         compose.onNodeWithText("Cancelar").performClick()
 
         assertFalse(enviou)
