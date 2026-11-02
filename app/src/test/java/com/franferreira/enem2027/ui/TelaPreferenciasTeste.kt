@@ -9,7 +9,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.franferreira.enem2027.data.model.TemaDaSemana
 import com.franferreira.enem2027.data.repo.PreferenciasEstudo
 import com.franferreira.enem2027.ui.screens.TelaPreferencias
-import com.franferreira.enem2027.ui.theme.EnemTheme
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -34,7 +33,7 @@ class TelaPreferenciasTeste {
         aoMudarMateria: (String, PreferenciasEstudo.Nivel) -> Unit = { _, _ -> },
     ) {
         compose.setContent {
-            EnemTheme {
+            androidx.compose.material3.MaterialTheme {
                 TelaPreferencias(
                     temas = temas,
                     preferencias = emptyMap(),

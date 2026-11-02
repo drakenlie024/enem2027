@@ -76,6 +76,11 @@ android {
         unitTests {
             isIncludeAndroidResources = true
             isReturnDefaultValues = true
+            // Compose na JVM consome memória: sem isso, a suíte morre com
+            // OutOfMemoryError no meio.
+            all {
+                it.maxHeapSize = "2g"
+            }
         }
     }
 }

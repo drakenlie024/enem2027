@@ -7,7 +7,6 @@ import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.franferreira.enem2027.data.model.TemaTreino
 import com.franferreira.enem2027.ui.screens.TelaSessao
-import com.franferreira.enem2027.ui.theme.EnemTheme
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
@@ -48,7 +47,7 @@ class TelaSessaoTeste {
     fun `mostra o tema do dia com a aula e a pratica`() {
         // "Ecologia" tem aula mapeada na tabela de aulas.
         compose.setContent {
-            EnemTheme {
+            androidx.compose.material3.MaterialTheme {
                 TelaSessao(
                     temas = listOf(tema("Ecologia"), tema("Genética")),
                     indice = 0,
@@ -69,7 +68,7 @@ class TelaSessaoTeste {
     fun `tema sem aula comeca pela pratica`() {
         // "Estatística" não tem aula: o passo 1 é praticar, sem buraco na conta.
         compose.setContent {
-            EnemTheme {
+            androidx.compose.material3.MaterialTheme {
                 TelaSessao(
                     temas = listOf(tema("Estatística", area = "matematica")),
                     indice = 0,
@@ -87,7 +86,7 @@ class TelaSessaoTeste {
     fun `tocar em comecar as questoes abre o treino do tema`() {
         var treinado: String? = null
         compose.setContent {
-            EnemTheme {
+            androidx.compose.material3.MaterialTheme {
                 TelaSessao(
                     temas = listOf(tema("Estatística", area = "matematica")),
                     indice = 0,
@@ -107,7 +106,7 @@ class TelaSessaoTeste {
     fun `sessao vazia diz que nao ha nada, em vez de abrir tela em branco`() {
         var encerrou = false
         compose.setContent {
-            EnemTheme {
+            androidx.compose.material3.MaterialTheme {
                 TelaSessao(
                     temas = emptyList(),
                     indice = 0,
@@ -126,7 +125,7 @@ class TelaSessaoTeste {
     @Test
     fun `sessao concluida avisa em vez de voltar sozinha`() {
         compose.setContent {
-            EnemTheme {
+            androidx.compose.material3.MaterialTheme {
                 TelaSessao(
                     temas = listOf(tema("Ecologia")),
                     indice = 1,

@@ -9,7 +9,6 @@ import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.franferreira.enem2027.data.model.ProgressoResponse
 import com.franferreira.enem2027.ui.screens.TelaProgresso
-import com.franferreira.enem2027.ui.theme.EnemTheme
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Rule
@@ -32,7 +31,7 @@ class TelaProgressoTeste {
 
     private fun montar(aoRelatar: (String) -> Unit = {}) {
         compose.setContent {
-            EnemTheme {
+            androidx.compose.material3.MaterialTheme {
                 TelaProgresso(
                     progresso = ProgressoResponse(),
                     aoAbrirAgenda = {},
