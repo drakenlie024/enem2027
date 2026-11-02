@@ -7,7 +7,7 @@ import com.franferreira.enem2027.data.model.YearPackage
 /**
  * O acervo que vem DENTRO do APK.
  *
- * O app é um curso: as 17 provas do ENEM (2009-2025), com a explicação
+ * O app é um curso: as 15 provas do ENEM (2009-2023), com a explicação
  * offline de cada questão, já no instalador. Não há download, não há espera,
  * e o app funciona offline desde o primeiro clique.
  *
