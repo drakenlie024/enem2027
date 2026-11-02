@@ -188,6 +188,8 @@ data class EstadoHoje(
     val treinoQuestoes: List<Question> = emptyList(),
     /** O treino aberto veio da sessão guiada (avança a sessão ao fechar). */
     val treinoDaSessao: Boolean = false,
+    /** Questões deste treino que ela já respondeu. */
+    val treinoRespondidas: Set<String> = emptySet(),
     /** Temas da sessão de hoje, na ordem em que ela vai estudar. */
     val sessaoTemas: List<com.franferreira.enem2027.data.model.TemaTreino> = emptyList(),
     /** Tema atual da sessão. */
@@ -1153,12 +1155,19 @@ class ViewModelPrincipal(
         viewModelScope.launch {
             repo.registrarResposta(questionId, correta, segundos, confianca)
             val gam = repo.gamificacao()
-            _estado.value = _estado.value.copy(
+            val aberto = _estado.value
+            _estado.value = aberto.copy(
                 pendentes = repo.pendentes(),
                 esperandoRede = repo.esperandoRede(),
                 xp = gam?.xp ?: 0,
                 nivel = gam?.level ?: 1,
                 streak = gam?.streak ?: 0,
+                // A sessão só avança quando o tema inteiro foi respondido.
+                treinoRespondidas = if (aberto.treinoQuestoes.any { it.id == questionId }) {
+                    aberto.treinoRespondidas + questionId
+                } else {
+                    aberto.treinoRespondidas
+                },
             )
             carregarSessao()
             // A previsão de nota muda a cada resposta — recalcula para a
@@ -1393,24 +1402,31 @@ class ViewModelPrincipal(
                 treinoAberto = treino,
                 treinoQuestoes = questoes,
                 treinoDaSessao = daSessao,
+                treinoRespondidas = emptySet(),
             )
         }
     }
 
     fun fecharTreino() {
         val sessao = _estado.value
+        // Só avança quando ela respondeu o tema inteiro. Antes, sair sem
+        // responder já pulava para o próximo tema — e como cada tema tem um
+        // número diferente de questões (e alguns não têm aula), parecia que a
+        // lista encolhia e a aula sumia.
+        val terminou = com.franferreira.enem2027.data.model.SessaoRegra.terminou(
+            idsDoTreino = sessao.treinoQuestoes.map { it.id },
+            respondidas = sessao.treinoRespondidas,
+        )
         _estado.value = sessao.copy(
             treinoAberto = null,
             treinoQuestoes = emptyList(),
-            // Terminou o tema da sessão: o próximo já vem aberto. Só avança
-            // quando o treino veio da sessão — abrir o mesmo tema pela lista
-            // não pode pular a vez dele.
-            sessaoIndice = if (sessao.treinoDaSessao && sessao.sessaoTemas.isNotEmpty()) {
+            sessaoIndice = if (sessao.treinoDaSessao && terminou) {
                 sessao.sessaoIndice + 1
             } else {
                 sessao.sessaoIndice
             },
             treinoDaSessao = false,
+            treinoRespondidas = emptySet(),
         )
         carregarTreinos()
     }
