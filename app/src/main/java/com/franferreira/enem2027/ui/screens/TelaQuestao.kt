@@ -51,6 +51,7 @@ import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -386,6 +387,9 @@ error = ColorPainter(SurfaceRaised),
                     },
                     temRascunho = tracos.isNotEmpty(),
                     aoAbrirRascunho = { mostrarRascunho = true },
+                    aulas = com.franferreira.enem2027.data.repo.AulasPorTema
+                        .aulasDoTema(app, questao.temaExibicao),
+                    aoAbrirAula = aoAbrirAula,
                     canais = CanaisVideo.daArea(questao.area),
                     aoAbrirCanal = { url ->
                         runCatching {
@@ -585,6 +589,8 @@ private fun LinhaApoio(
     aoMudarConfianca: (String) -> Unit,
     temRascunho: Boolean,
     aoAbrirRascunho: () -> Unit,
+    aulas: List<com.franferreira.enem2027.data.model.AulaSugerida>,
+    aoAbrirAula: (String) -> Unit,
     canais: List<CanaisVideo.Canal>,
     aoAbrirCanal: (String) -> Unit,
 ) {
@@ -641,8 +647,10 @@ private fun LinhaApoio(
             }
         }
 
-        // a vídeo-aula de quem explica o assunto
-        if (canais.isNotEmpty()) {
+        // Aula do TEMA, dentro do app — não a playlist da matéria.
+        // A playlist é o último recurso, para tema que ainda não tem aula.
+        val temAula = aulas.isNotEmpty()
+        if (temAula || canais.isNotEmpty()) {
             Spacer(Modifier.height(11.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
@@ -653,26 +661,55 @@ private fun LinhaApoio(
                 )
                 Spacer(Modifier.width(6.dp))
                 Text(
-                    text = "VIDEO-AULA DO TEMA",
+                    text = if (temAula) "VIDEO-AULA DO TEMA" else "AULAS DA MATÉRIA",
                     style = MaterialTheme.typography.labelSmall,
                     color = TextMuted,
                 )
             }
             Spacer(Modifier.height(7.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                canais.take(3).forEach { canal ->
-                    Column(
+            if (temAula) {
+                aulas.take(2).forEach { aula ->
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 6.dp)
                             .clip(RoundedCornerShape(13.dp))
                             .background(SurfaceRaised)
-                            .clickable { aoAbrirCanal(canal.url) }
-                            .padding(horizontal = 10.dp, vertical = 7.dp),
+                            .clickable { aoAbrirAula(aula.id) }
+                            .padding(horizontal = 10.dp, vertical = 8.dp),
                     ) {
                         Text(
-                            text = canal.nome,
-                            style = MaterialTheme.typography.labelSmall,
-                            color = TextSecondary,
+                            text = aula.titulo,
+                            style = MaterialTheme.typography.labelMedium,
+                            color = TextPrimary,
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier.weight(1f),
                         )
+                        Text(
+                            text = "Assistir",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = Primary,
+                        )
+                    }
+                }
+            } else {
+                Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    canais.take(3).forEach { canal ->
+                        Column(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(13.dp))
+                                .background(SurfaceRaised)
+                                .clickable { aoAbrirCanal(canal.url) }
+                                .padding(horizontal = 10.dp, vertical = 7.dp),
+                        ) {
+                            Text(
+                                text = canal.nome,
+                                style = MaterialTheme.typography.labelSmall,
+                                color = TextSecondary,
+                            )
+                        }
                     }
                 }
             }
