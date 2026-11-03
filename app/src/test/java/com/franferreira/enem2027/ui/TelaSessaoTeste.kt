@@ -71,7 +71,7 @@ class TelaSessaoTeste {
         compose.setContent {
             androidx.compose.material3.MaterialTheme {
                 TelaSessao(
-                    temas = listOf(tema("Estatística", area = "matematica")),
+                    temas = listOf(tema("Inglês", area = "linguagens")),
                     indice = 0,
                     aoTreinar = {},
                     aoAbrirAula = {},
@@ -92,7 +92,7 @@ class TelaSessaoTeste {
         compose.setContent {
             androidx.compose.material3.MaterialTheme {
                 TelaSessao(
-                    temas = listOf(tema("Estatística", area = "matematica")),
+                    temas = listOf(tema("Inglês", area = "linguagens")),
                     indice = 0,
                     aoTreinar = {},
                     aoAbrirAula = {},
@@ -113,7 +113,7 @@ class TelaSessaoTeste {
         compose.setContent {
             androidx.compose.material3.MaterialTheme {
                 TelaSessao(
-                    temas = listOf(tema("Estatística", area = "matematica")),
+                    temas = listOf(tema("Inglês", area = "linguagens")),
                     indice = 0,
                     aoTreinar = { treinado = it.tema },
                     aoAbrirAula = {},
@@ -124,7 +124,7 @@ class TelaSessaoTeste {
 
         compose.onNodeWithText("Começar as questões").performClick()
 
-        assertEquals("Estatística", treinado)
+        assertEquals("Inglês", treinado)
     }
 
     @Test
