@@ -1939,6 +1939,12 @@
    "titulo": "Geometria Plana: Área do Círculo e Setor Circular 26 · Área do círculo e setor circular",
    "subtema": "Geometria Plana",
    "area": "matematica"
+  },
+  {
+   "id": "f4JBVvr72MQ",
+   "titulo": "Geometria Plana: Triângulo Retângulo - Relações Métricas",
+   "subtema": "relações métricas no triângulo retângulo",
+   "area": "matematica"
   }
  ],
  "funcoes e graficos": [
@@ -2690,12 +2696,6 @@
    "id": "lHuB0CBNNm0",
    "titulo": "Trigonometria · relação fundamental",
    "subtema": "relação fundamental",
-   "area": "matematica"
-  },
-  {
-   "id": "f4JBVvr72MQ",
-   "titulo": "Trigonometria 1 · Triângulo retângulo e relações métricas",
-   "subtema": "Triângulo retângulo e relações métricas",
    "area": "matematica"
   }
  ],
