@@ -176,7 +176,7 @@
    "id": "qNeNN-BLFIk",
    "titulo": "Geografia para o ENEM - Revolução Industrial - tudo o que você precisa saber! | Hyperactive GEO",
    "subtema": "Avulsas",
-   "area": "geografia"
+   "area": "historia"
   }
  ],
  "democracia e populismo": [
@@ -604,7 +604,7 @@
    "id": "EMlAeqMO-WE",
    "titulo": "Revisão (Resumo) de Geografia: O Mundo Bipolar - A Guerra Fria | EUA x URSS",
    "subtema": "Avulsas",
-   "area": "geografia"
+   "area": "historia"
   }
  ],
  "urgencias humanitarias e minorias": [
@@ -752,19 +752,175 @@
    "id": "7zPfkzUS-uM",
    "titulo": "As 5 competências da redação do Enem",
    "subtema": "Avulsas",
-   "area": "redacao"
+   "area": "portugues"
   },
   {
    "id": "kZd70wKteEY",
    "titulo": "Como fazer a redação do Enem",
    "subtema": "Avulsas",
-   "area": "redacao"
+   "area": "portugues"
   },
   {
    "id": "bO_8TN3RaIk",
    "titulo": "5 coisas que não podem faltar em uma redação nota 1000",
    "subtema": "Avulsas",
-   "area": "redacao"
+   "area": "portugues"
+  },
+  {
+   "id": "Ga5EicF2hqQ",
+   "titulo": "As competências da redação do Enem",
+   "subtema": "competências",
+   "area": "portugues"
+  },
+  {
+   "id": "u_Cl4x8Otb4",
+   "titulo": "Tudo sobre a redação: estrutura do desenvolvimento",
+   "subtema": "desenvolvimento",
+   "area": "portugues"
+  },
+  {
+   "id": "G60PxQMofDA",
+   "titulo": "Como escrever parágrafo de desenvolvimento de redação",
+   "subtema": "desenvolvimento",
+   "area": "portugues"
+  },
+  {
+   "id": "6hiv0MFvjAc",
+   "titulo": "Como escrever um parágrafo de desenvolvimento na redação",
+   "subtema": "desenvolvimento",
+   "area": "portugues"
+  },
+  {
+   "id": "mxzhpVn-kj4",
+   "titulo": "Modelo de desenvolvimento de redação para qualquer tema",
+   "subtema": "modelo pronto",
+   "area": "portugues"
+  },
+  {
+   "id": "Q4J1qkqY1as",
+   "titulo": "Modelo de desenvolvimento pronto para qualquer tema de redação",
+   "subtema": "modelo pronto",
+   "area": "portugues"
+  },
+  {
+   "id": "xBlMcXRn7LA",
+   "titulo": "Redação do Enem: como fazer uma introdução perfeita",
+   "subtema": "introdução",
+   "area": "portugues"
+  },
+  {
+   "id": "pAunDEPYSqw",
+   "titulo": "Introdução pronta para qualquer tema da redação",
+   "subtema": "introdução",
+   "area": "portugues"
+  },
+  {
+   "id": "o1LVzcOFjWE",
+   "titulo": "Como fazer a conclusão da redação do Enem",
+   "subtema": "conclusão",
+   "area": "portugues"
+  },
+  {
+   "id": "gZSnKV2w-rA",
+   "titulo": "Conclusão da redação do Enem: o que não fazer",
+   "subtema": "conclusão",
+   "area": "portugues"
+  },
+  {
+   "id": "2EJqRNSqfJE",
+   "titulo": "Como usar citações na redação",
+   "subtema": "repertório",
+   "area": "portugues"
+  },
+  {
+   "id": "EedkITL9NHw",
+   "titulo": "Exemplos de repertórios históricos para qualquer tema",
+   "subtema": "repertório",
+   "area": "portugues"
+  },
+  {
+   "id": "4w5GeFnn6hk",
+   "titulo": "Exemplos de teses coringa para qualquer tema de redação",
+   "subtema": "tese",
+   "area": "portugues"
+  },
+  {
+   "id": "zLo_VxN0wFc",
+   "titulo": "5 tipos de conectivos para usar na redação",
+   "subtema": "conectivos",
+   "area": "portugues"
+  },
+  {
+   "id": "QIDbfdatpfE",
+   "titulo": "Exemplos de frases prontas para usar na redação",
+   "subtema": "frases prontas",
+   "area": "portugues"
+  },
+  {
+   "id": "t1oK-HhEnnU",
+   "titulo": "Como usar o contexto sociocultural na redação?",
+   "subtema": "contextualização",
+   "area": "portugues"
+  },
+  {
+   "id": "ym6rSx_17Sc",
+   "titulo": "Como contextualizar na redação",
+   "subtema": "contextualização",
+   "area": "portugues"
+  },
+  {
+   "id": "7RvfCQQFHMw",
+   "titulo": "Como escrever uma redação sem saber nada sobre o tema",
+   "subtema": "improviso com método",
+   "area": "portugues"
+  },
+  {
+   "id": "OEPSTTBL-jc",
+   "titulo": "Como escrever uma redação mais rápido",
+   "subtema": "tempo de prova",
+   "area": "portugues"
+  },
+  {
+   "id": "hx--VDz2WIs",
+   "titulo": "Como fazer redação modelo nota 1000",
+   "subtema": "modelo nota 1000",
+   "area": "portugues"
+  },
+  {
+   "id": "nyhIy6ed6-g",
+   "titulo": "Modelo de redação nota 1000: ensino a distância",
+   "subtema": "modelo nota 1000",
+   "area": "portugues"
+  },
+  {
+   "id": "w_TqdKcX-jE",
+   "titulo": "Lendo e Analisando a Redação Nota Mil",
+   "subtema": "análise de redação",
+   "area": "portugues"
+  },
+  {
+   "id": "sZddN-FhS70",
+   "titulo": "Como fazer redação modelo Enem",
+   "subtema": "estrutura da prova",
+   "area": "portugues"
+  },
+  {
+   "id": "QRJfRN4HKvE",
+   "titulo": "Como fazer redação para o Enem",
+   "subtema": "estrutura da prova",
+   "area": "portugues"
+  },
+  {
+   "id": "fooKfPSfABo",
+   "titulo": "Como começar a estudar redação do zero",
+   "subtema": "começando do zero",
+   "area": "portugues"
+  },
+  {
+   "id": "KlPpsdlefTI",
+   "titulo": "Redação do zero: para quem se perde na estrutura",
+   "subtema": "começando do zero",
+   "area": "portugues"
   }
  ],
  "interpretacao de texto: charge e tirinha": [
@@ -1283,6 +1439,30 @@
    "titulo": "Pronomes: Sujeito e Objeto",
    "subtema": "pronomes",
    "area": "ingles"
+  },
+  {
+   "id": "7imvkvHEYSQ",
+   "titulo": "Inglês: Tempos Verbais - Simple Past",
+   "subtema": "tempos verbais",
+   "area": "ingles"
+  },
+  {
+   "id": "gWl3_XJPqdk",
+   "titulo": "Inglês: Tempos Verbais - Simple Present",
+   "subtema": "tempos verbais",
+   "area": "ingles"
+  },
+  {
+   "id": "UrBi6e7nHTY",
+   "titulo": "Inglês: Conjunções",
+   "subtema": "conjunções",
+   "area": "ingles"
+  },
+  {
+   "id": "cZwXtJH8zd8",
+   "titulo": "Inglês: Pronomes Reflexivos",
+   "subtema": "pronomes",
+   "area": "ingles"
   }
  ],
  "espanhol": [
@@ -1307,6 +1487,30 @@
   {
    "id": "HqY613OPMG8",
    "titulo": "Frases e Poemas",
+   "subtema": "poema e música",
+   "area": "espanhol"
+  },
+  {
+   "id": "npu77AIMJ4E",
+   "titulo": "Espanhol · Fragmentos de texto e poesia",
+   "subtema": "interpretação de texto",
+   "area": "espanhol"
+  },
+  {
+   "id": "rw71xM3yAMg",
+   "titulo": "Espanhol: Características da prova e dicas",
+   "subtema": "formato da prova",
+   "area": "espanhol"
+  },
+  {
+   "id": "njPeZoC4bVY",
+   "titulo": "Espanhol: Anúncios, Notícias e Propagandas",
+   "subtema": "gêneros textuais",
+   "area": "espanhol"
+  },
+  {
+   "id": "OzRXhsEYhDw",
+   "titulo": "Espanhol: Poema e Música",
    "subtema": "poema e música",
    "area": "espanhol"
   }
