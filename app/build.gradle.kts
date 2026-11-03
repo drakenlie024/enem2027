@@ -14,8 +14,8 @@ android {
         applicationId = "com.franferreira.enem2027"
         minSdk = 26
         targetSdk = 35
-        versionCode = 38
-        versionName = "0.8.3"
+        versionCode = 39
+        versionName = "0.8.4"
         vectorDrawables { useSupportLibrary = true }
     }
 

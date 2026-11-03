@@ -646,7 +646,8 @@ private fun CartaoAulaDoDia(
                 .padding(horizontal = 16.dp, vertical = 8.dp),
         ) {
             Text(
-                text = "Assistir",
+                // Playlist não é aula: o rótulo tem que ser honesto.
+                text = if (aula.urlExterna != null) "Ver aulas" else "Assistir",
                 style = MaterialTheme.typography.labelMedium,
                 color = PaletaClaro.texto,
             )

@@ -80,9 +80,10 @@ class TelaSessaoTeste {
             }
         }
 
-        compose.onNodeWithText("1 · ASSISTIR").assertIsDisplayed()
+        // A playlist não é aula: não entra como passo 1 do itinerário.
+        compose.onNodeWithText("1 · PRATICAR").assertIsDisplayed()
+        compose.onNodeWithText("Este tema não tem aula no acervo").assertIsDisplayed()
         compose.onNodeWithText("Ver aulas").assertIsDisplayed()
-        compose.onNodeWithText("2 · PRATICAR").assertIsDisplayed()
     }
 
     @Test

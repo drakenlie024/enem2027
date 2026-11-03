@@ -92,8 +92,9 @@ fun TelaSessao(
     // Sem cache: ao voltar da aula, o passo 1 já sai da tela.
     val aula = AulasPorTema.aulasDoTema(contexto, atual.tema)
         .firstOrNull { !AulasAssistidas.foiAssistida(contexto, it.id) }
-        // Tema sem aula no acervo: oferece a playlist da matéria.
-        ?: AulasPorTema.canalDoTema(contexto, atual.tema)
+    // Tema sem aula no acervo: a playlist da matéria é um extra, não o passo 1.
+    // Antes ela entrava como "ASSISTIR" e parecia aula do tema.
+    val canal = if (aula == null) AulasPorTema.canalDoTema(contexto, atual.tema) else null
     val cor = corDaArea(atual.area)
     val proximo = temas.getOrNull(indice + 1)
 
@@ -161,11 +162,8 @@ fun TelaSessao(
                 titulo = sugerida.titulo,
                 detalhe = sugerida.subtema.ifBlank { "vídeo curto do tema" },
                 cor = cor,
-                botao = if (sugerida.urlExterna != null) "Ver aulas" else "Assistir",
-                aoClicar = {
-                    val externa = sugerida.urlExterna
-                    if (externa != null) aoAbrirUrl(externa) else aoAbrirAula(sugerida.id)
-                },
+                botao = "Assistir",
+                aoClicar = { aoAbrirAula(sugerida.id) },
             )
             Spacer(Modifier.height(10.dp))
         }
@@ -180,6 +178,36 @@ fun TelaSessao(
             aoClicar = { aoTreinar(atual) },
             destaque = true,
         )
+
+        canal?.let { playlist ->
+            Spacer(Modifier.height(10.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .cartaoRabisco(16.dp)
+                    .clickable { playlist.urlExterna?.let { aoAbrirUrl(it) } }
+                    .padding(12.dp),
+            ) {
+                Column(Modifier.weight(1f)) {
+                    Text(
+                        text = "Este tema não tem aula no acervo",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = TextPrimary,
+                    )
+                    Text(
+                        text = "Playlist de ${playlist.titulo.substringAfter("Aulas de ").substringBefore(" ·")}",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = TextMuted,
+                    )
+                }
+                Text(
+                    text = "Ver aulas",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = Primary,
+                )
+            }
+        }
 
         if (metaBatida) {
             Spacer(Modifier.height(14.dp))
