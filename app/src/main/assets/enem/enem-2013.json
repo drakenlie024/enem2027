@@ -1,6 +1,6 @@
 {
  "ano": 2013,
- "versao": "2026-11-03T17:50:24Z",
+ "versao": "2026-11-03T18:22:12Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -247,7 +247,7 @@
    ],
    "gabarito": "A",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Brasil Colônia",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -1206,7 +1206,7 @@
    ],
    "gabarito": "C",
    "origem": "enem.dev",
-   "tema": "Filosofia: racionalismo e empirismo",
+   "tema": "Filosofia antiga",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -4238,7 +4238,7 @@
    ],
    "gabarito": "D",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Genética",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",

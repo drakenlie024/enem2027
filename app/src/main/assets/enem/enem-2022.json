@@ -1,6 +1,6 @@
 {
  "ano": 2022,
- "versao": "2026-11-03T17:36:34Z",
+ "versao": "2026-11-03T18:22:12Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -2168,7 +2168,7 @@
    "id": "enem-2022-q044",
    "ano": 2022,
    "indice": 44,
-   "area": "linguagens",
+   "area": "ciencias-humanas",
    "idioma": null,
    "contexto": "TEXTO I\n\n\n\nSILVEIRA, R. In absentia, 1983. Instalação, 17ª Bienal de São Paulo. Disponível em: www.bienal.org.br. Acesso em: set. 2016 (adaptado).\n\nTEXTO II\n\nO termo ready-made foi criado por Marcel Duchamp (1887-1968) para designar um tipo de objeto, por ele inventado, que consiste em um ou mais artigos de uso cotidiano, produzidos em massa, selecionados sem critérios estéticos e expostos como obras de arte em espaços especializados (museus e galerias). Seu primeiro ready-made, de 1912, é uma roda de bicicleta montada sobre um banquinho  (Roda de bicicleta). Ao transformar qualquer objeto em obra de arte, o artista realiza uma crítica radical ao sistema da arte.\n\nDisponível em: www.bienal.org.br. Acesso em: 1 set. 2016 (adaptado)",
    "arquivos": [
@@ -2209,7 +2209,7 @@
    ],
    "gabarito": "C",
    "origem": "enem.dev",
-   "tema": "Gramática e norma culta",
+   "tema": "História da arte",
    "competencia": "C4 - Adequação à norma culta",
    "dificuldade": "media",
    "subassunto": "",
@@ -2813,7 +2813,7 @@
    ],
    "gabarito": "A",
    "origem": "enem.dev",
-   "tema": "Democracia e populismo",
+   "tema": "Filosofia contemporânea",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -3818,7 +3818,7 @@
    ],
    "gabarito": "A",
    "origem": "enem.dev",
-   "tema": "Revoluções",
+   "tema": "Brasil Colônia",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -4269,7 +4269,7 @@
    ],
    "gabarito": "C",
    "origem": "enem.dev",
-   "tema": "Movimentos sociais e minorias",
+   "tema": "Filosofia antiga",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",

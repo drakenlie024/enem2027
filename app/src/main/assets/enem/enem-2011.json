@@ -1,6 +1,6 @@
 {
  "ano": 2011,
- "versao": "2026-11-03T17:36:34Z",
+ "versao": "2026-11-03T18:22:12Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -1504,7 +1504,7 @@
    ],
    "gabarito": "A",
    "origem": "enem.dev",
-   "tema": "Sociologia: conceitos básicos",
+   "tema": "Brasil Colônia",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -1855,7 +1855,7 @@
    ],
    "gabarito": "B",
    "origem": "enem.dev",
-   "tema": "Movimentos sociais e minorias",
+   "tema": "História da arte",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -7643,7 +7643,7 @@
    ],
    "gabarito": "E",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Razão, proporção e regra de três",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",

@@ -2964,5 +2964,263 @@
    "subtema": "imunidade inata e adaptativa",
    "area": "biologia"
   }
+ ],
+ "filosofia antiga": [
+  {
+   "id": "TIIzrsbx74E",
+   "titulo": "Filósofos pré-socráticos",
+   "subtema": "Pré-socráticos, arché e physis",
+   "area": "filosofia"
+  },
+  {
+   "id": "j_zkby5CcFc",
+   "titulo": "Ecletismo filosófico no período helenístico",
+   "subtema": "Ecletismo no período helenístico greco-romano",
+   "area": "filosofia"
+  },
+  {
+   "id": "H328rUUlmus",
+   "titulo": "Filosofia de Anaxágoras",
+   "subtema": "pré-socrático, arché, homeomerias e nous",
+   "area": "filosofia"
+  },
+  {
+   "id": "AFNxd7teOEw",
+   "titulo": "O sofista Pródico e a ética heroica",
+   "subtema": "sofista Pródico, ética e fábula de Héracles",
+   "area": "filosofia"
+  },
+  {
+   "id": "zvpLfPLsA6g",
+   "titulo": "O sofismo de Protágoras e sua relativização",
+   "subtema": "Protágoras, relativismo sofista e oposição a Sócrates",
+   "area": "filosofia"
+  },
+  {
+   "id": "b8gsidcbprs",
+   "titulo": "Tales de Mileto e a origem das coisas",
+   "subtema": "Tales, arkhé, physis e origem racional do mundo",
+   "area": "filosofia"
+  },
+  {
+   "id": "epFMWZD2Erc",
+   "titulo": "A filosofia de Pitágoras de Samos",
+   "subtema": "pré-socráticos, arché, escola pitagórica",
+   "area": "filosofia"
+  },
+  {
+   "id": "m3UKnlUcAi4",
+   "titulo": "Estudo da obra: O Banquete, de Platão",
+   "subtema": "O Banquete e método socrático",
+   "area": "filosofia"
+  },
+  {
+   "id": "Zy7EwpV3qqI",
+   "titulo": "Super revisão de Filosofia Antiga e Medieval",
+   "subtema": "revisão de pré-socráticos, Agostinho e Tomás de Aquino",
+   "area": "filosofia"
+  },
+  {
+   "id": "fV3Xq_-SmIw",
+   "titulo": "Respondendo perguntas sobre filosofia",
+   "subtema": "Escolas helenísticas: estoicismo, epicurismo, ceticismo, éti",
+   "area": "filosofia"
+  },
+  {
+   "id": "kabIqweutXI",
+   "titulo": "Como são as questões sobre Platão e Aristóteles?",
+   "subtema": "Platão e Aristóteles: conhecimento, política e causas",
+   "area": "filosofia"
+  },
+  {
+   "id": "dsQoi6b3-Wo",
+   "titulo": "Anaximandro de Mileto, o ápeiron e a Terra cilíndrica",
+   "subtema": "Apeiron de Anaximandro, arché e cosmologia pré-socrática",
+   "area": "filosofia"
+  },
+  {
+   "id": "4Pmbj8D2eNQ",
+   "titulo": "Respondendo perguntas de filosofia grega",
+   "subtema": "pré-socráticos, helenismo e cinismo",
+   "area": "filosofia"
+  },
+  {
+   "id": "5XzvauS8QTg",
+   "titulo": "Górgias de Leôntinos e Sofística Performativa",
+   "subtema": "Górgias, ceticismo e discurso persuasivo",
+   "area": "filosofia"
+  },
+  {
+   "id": "qhALrNZEvis",
+   "titulo": "Anaximenes de Mileto, o ar e a forma da Terra",
+   "subtema": "Anaxímenes, arché e cosmologia pré-socrática",
+   "area": "filosofia"
+  },
+  {
+   "id": "F6ELaI6rfcw",
+   "titulo": "Demócrito e a teoria atômica",
+   "subtema": "Demócrito, pré-socráticos e escola atômica",
+   "area": "filosofia"
+  }
+ ],
+ "brasil colonia": [
+  {
+   "id": "T5tfs8QI3zU",
+   "titulo": "Revoltas nativistas",
+   "subtema": "Revoltas nativistas do período colonial brasileiro",
+   "area": "historia"
+  },
+  {
+   "id": "BrFY5z-HaMM",
+   "titulo": "Sociedade mineradora",
+   "subtema": "Mineração colonial, quinto, derrama e revolta de Vila Rica",
+   "area": "historia"
+  },
+  {
+   "id": "QoSWUeL3fW0",
+   "titulo": "Colonização do Brasil",
+   "subtema": "Colonização, pré-colonial, pau-brasil e mão de obra indígena",
+   "area": "historia"
+  },
+  {
+   "id": "e-D8PaF8JFM",
+   "titulo": "União Ibérica",
+   "subtema": "União Ibérica e Insurreição Pernambucana",
+   "area": "historia"
+  },
+  {
+   "id": "Ink0VvHBqmQ",
+   "titulo": "Revolta Separatista",
+   "subtema": "Inconfidência Mineira e Conjuração Baiana: crise colonial",
+   "area": "historia"
+  },
+  {
+   "id": "eD4R4iOrkAI",
+   "titulo": "FUVEST 2017: economia colonial",
+   "subtema": "economia açucareira e mineradora colonial",
+   "area": "historia"
+  },
+  {
+   "id": "vOQf4k5-T98",
+   "titulo": "Capitanias e Governo Geral",
+   "subtema": "capitanias hereditárias e Governo-Geral, período colonial",
+   "area": "historia"
+  },
+  {
+   "id": "pwTS7mhIiWI",
+   "titulo": "Escravidão 2 · Resistência à escravidão",
+   "subtema": "escravidão no Brasil, alforria e resistência",
+   "area": "historia"
+  }
+ ],
+ "historia da arte": [
+  {
+   "id": "5AcjMcivyhs",
+   "titulo": "Renascimento",
+   "subtema": "Arte renascentista e barroca, contexto e artistas",
+   "area": "artes"
+  },
+  {
+   "id": "cwrvIaehFTs",
+   "titulo": "Donatello (História da Arte 3)",
+   "subtema": "Renascimento italiano e escultura de Donatello",
+   "area": "historia"
+  },
+  {
+   "id": "vckXhGsFMus",
+   "titulo": "Artes | ENEM - O que é arte: arte rupestre | Curso gratuito",
+   "subtema": "conceito de arte e arte rupestre; sem tema de artes",
+   "area": "artes"
+  },
+  {
+   "id": "bFPLhlxSzXs",
+   "titulo": "Artes | ENEM - Modernismo no Brasil I | CURSO GRATUITO",
+   "subtema": "Modernismo nas artes plásticas, fora da grade",
+   "area": "artes"
+  }
+ ],
+ "filosofia medieval": [
+  {
+   "id": "EIGiCMbPz60",
+   "titulo": "Filosofia Ilustrada: Medieval",
+   "subtema": "Agostinho, Tomás de Aquino, patrística e escolástica",
+   "area": "filosofia"
+  },
+  {
+   "id": "VC8fgL1GDVY",
+   "titulo": "Santo Anselmo da Cantuária e seu argumento ontológico",
+   "subtema": "Anselmo, escolástica e argumento ontológico",
+   "area": "filosofia"
+  },
+  {
+   "id": "n1d61aPD0XM",
+   "titulo": "Santo Agostinho",
+   "subtema": "Santo Agostinho e filosofia medieval, fora da grade",
+   "area": "filosofia"
+  },
+  {
+   "id": "hC4aAbqNu18",
+   "titulo": "O que é a tradição aristotélico-tomista?",
+   "subtema": "Escolástica e tomismo, fora da grade",
+   "area": "filosofia"
+  },
+  {
+   "id": "v-c2zVMhH90",
+   "titulo": "O que é o maniqueísmo?",
+   "subtema": "maniqueísmo e base de Santo Agostinho",
+   "area": "filosofia"
+  },
+  {
+   "id": "vrZCtMlTNEs",
+   "titulo": "Respondendo questões de filosofia medieval",
+   "subtema": "Agostinho, Tomás de Aquino, escolástica",
+   "area": "filosofia"
+  },
+  {
+   "id": "4R3p8UkVmpM",
+   "titulo": "São Tomás de Aquino",
+   "subtema": "escolástica, Tomás de Aquino, cinco vias",
+   "area": "filosofia"
+  }
+ ],
+ "antiguidade": [
+  {
+   "id": "GiptK0MhFFI",
+   "titulo": "Grécia Antiga (Atenas e Esparta)",
+   "subtema": "poleis, Atenas e Esparta, instituições políticas gregas",
+   "area": "historia"
+  },
+  {
+   "id": "_UvP3-qtRBo",
+   "titulo": "História Geral 2: Mesopotâmia (cultura e religião)",
+   "subtema": "Mesopotâmia, escrita, arte e religião politeísta",
+   "area": "historia"
+  },
+  {
+   "id": "-vBYuIUKU0s",
+   "titulo": "História Geral 3: Egito (formação, política e economia)",
+   "subtema": "Formação, política e economia do Egito",
+   "area": "historia"
+  }
+ ],
+ "filosofia contemporanea": [
+  {
+   "id": "wxwp2zwGSBQ",
+   "titulo": "Søren Kierkegaard e o existencialismo cristão",
+   "subtema": "existência, liberdade, angústia e crítica a Hegel",
+   "area": "filosofia"
+  },
+  {
+   "id": "bv9obMrnFyY",
+   "titulo": "Super revisão de Filosofia Moderna e Contemporânea",
+   "subtema": "revisão ampla: modernos, absolutismo, Foucault, panóptico",
+   "area": "filosofia"
+  },
+  {
+   "id": "XFtkRtGlIiU",
+   "titulo": "Nihilismo na concepção de Nietzsche",
+   "subtema": "Niilismo em Nietzsche e criação de novos valores",
+   "area": "filosofia"
+  }
  ]
 }
