@@ -1,6 +1,6 @@
 {
  "ano": 2013,
- "versao": "2026-11-02T14:09:42Z",
+ "versao": "2026-11-03T17:36:03Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -1156,7 +1156,7 @@
    ],
    "gabarito": "A",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Sociologia: conceitos básicos",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -2974,7 +2974,7 @@
    ],
    "gabarito": "C",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Meio ambiente e recursos",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",

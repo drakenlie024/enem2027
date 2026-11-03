@@ -1,6 +1,6 @@
 {
  "ano": 2012,
- "versao": "2026-11-02T15:02:09Z",
+ "versao": "2026-11-03T17:36:34Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -350,7 +350,7 @@
    ],
    "gabarito": "D",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Movimentos sociais e minorias",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -2560,7 +2560,7 @@
    ],
    "gabarito": "D",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Ecologia",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -8201,7 +8201,7 @@
    "id": "enem-2012-q162",
    "ano": 2012,
    "indice": 162,
-   "area": "ciencias-humanas",
+   "area": "matematica",
    "idioma": null,
    "contexto": "\n\nNeste dia, cinco investidores compraram e venderam o mesmo volume de ações, porém em horários diferentes, de acordo com a seguinte tabela.\n\n",
    "arquivos": [
@@ -8243,7 +8243,7 @@
    ],
    "gabarito": "A",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Funções e gráficos",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",

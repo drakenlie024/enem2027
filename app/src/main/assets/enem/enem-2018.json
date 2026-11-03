@@ -1,6 +1,6 @@
 {
  "ano": 2018,
- "versao": "2026-11-02T14:09:42Z",
+ "versao": "2026-11-03T17:36:03Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -3123,7 +3123,7 @@
    ],
    "gabarito": "C",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Meio ambiente e recursos",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -4894,7 +4894,7 @@
    ],
    "gabarito": "C",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Química ambiental",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -5924,7 +5924,7 @@
    ],
    "gabarito": "C",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Ecologia",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -6915,7 +6915,7 @@
    "id": "enem-2018-q140",
    "ano": 2018,
    "indice": 140,
-   "area": "ciencias-natureza",
+   "area": "matematica",
    "idioma": null,
    "contexto": "Um artesão possui potes cilíndricos de tinta cujas medidas externas são 4 cm de diâmetro e 6 cm de altura. Ele pretende adquirir caixas organizadoras para armazenar seus potes de tinta, empilhados verticalmente com tampas voltadas para cima, de forma que as caixas possam ser fechadas. No mercado,  existem cinco opções de caixas organizadoras, com tampa, em formato de  paralelepípedo reto retângulo, vendidas pelo mesmo preço, possuindo as seguintes dimensões internas:\n\n",
    "arquivos": [
@@ -6956,7 +6956,7 @@
    ],
    "gabarito": "D",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Geometria espacial",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",

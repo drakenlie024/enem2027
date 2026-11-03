@@ -1,6 +1,6 @@
 {
  "ano": 2009,
- "versao": "2026-11-02T15:02:09Z",
+ "versao": "2026-11-03T17:36:34Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -1434,7 +1434,7 @@
    "id": "enem-2009-q029",
    "ano": 2009,
    "indice": 29,
-   "area": "ciencias-humanas",
+   "area": "ciencias-natureza",
    "idioma": null,
    "contexto": "",
    "arquivos": [
@@ -1475,7 +1475,7 @@
    ],
    "gabarito": "D",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Ciências da Natureza",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -5053,7 +5053,7 @@
    ],
    "gabarito": "A",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Tecnologia e trabalho",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -6165,7 +6165,7 @@
    ],
    "gabarito": "D",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Tecnologia e trabalho",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -6833,7 +6833,7 @@
    "id": "enem-2009-q140",
    "ano": 2009,
    "indice": 140,
-   "area": "ciencias-humanas",
+   "area": "matematica",
    "idioma": null,
    "contexto": "O governo cedeu terrenos para que famílias construíssem suas residências com a condição de que no mínimo 94% da área do terreno fosse mantida como área de preservação ambiental. Ao receber o terreno retangular ABCD, em que AB= BC/2 , Antônio demarcou uma área quadrada no vértice A, para a construção de sua residência, de acordo com o desenho, no qual AE = AB/5 é lado do quadrado.\n\n",
    "arquivos": [
@@ -6874,7 +6874,7 @@
    ],
    "gabarito": "C",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Geometria plana",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",

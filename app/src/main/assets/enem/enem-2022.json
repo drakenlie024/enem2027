@@ -1,6 +1,6 @@
 {
  "ano": 2022,
- "versao": "2026-11-02T14:09:42Z",
+ "versao": "2026-11-03T17:36:34Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -2411,7 +2411,7 @@
    ],
    "gabarito": "B",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Urbanização e qualidade de vida",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -5353,7 +5353,7 @@
    "id": "enem-2022-q108",
    "ano": 2022,
    "indice": 108,
-   "area": "ciencias-humanas",
+   "area": "ciencias-natureza",
    "idioma": null,
    "contexto": "O ácido tartárico é o principal ácido do vinho e está diretamente relacionado com sua qualidade. Na avaliação de um vinho branco em produção, uma analista neutralizou uma alíquota de 25,0 mL do vinho com NaOH a 0,10 mol L−1, consumindo um volume igual a 8,0 mL dessa base. A reação para esse processo de titulação é representada pela equação química:\n\n",
    "arquivos": [
@@ -5394,7 +5394,7 @@
    ],
    "gabarito": "B",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Soluções e molaridade",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -7096,7 +7096,7 @@
    "id": "enem-2022-q144",
    "ano": 2022,
    "indice": 144,
-   "area": "ciencias-humanas",
+   "area": "matematica",
    "idioma": null,
    "contexto": "Cada número que identifica uma agência bancária tem quatro dígitos: ,,, mais um dígito verificador .\n\n\n\nTodos esses dígitos são números naturais pertencentes ao conjunto {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}. Para a determinação de N5, primeiramente multiplica-se  \nordenadamente os quatro primeiros dígitos do número da agência por 5, 4, 3 e 2, respectivamente, somam-se os resultados e obtém-se S = 5 \\+ 4 \\+ 3 \\+ 2 . Posteriormente, encontra-se o resto da divisão de S por 11, denotando por R esse resto. Dessa forma, N5 é a diferença 11 − R.  \nConsidere o número de uma agência bancária cujos quatro primeiros dígitos são 0100.",
    "arquivos": [
@@ -7140,7 +7140,7 @@
    ],
    "gabarito": "C",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Números e álgebra",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",

@@ -1,6 +1,6 @@
 {
  "ano": 2023,
- "versao": "2026-11-02T15:02:09Z",
+ "versao": "2026-11-03T17:36:03Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -2602,7 +2602,7 @@
    ],
    "gabarito": "B",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Meio ambiente e recursos",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",

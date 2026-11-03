@@ -1,6 +1,6 @@
 {
  "ano": 2017,
- "versao": "2026-11-02T15:02:09Z",
+ "versao": "2026-11-03T17:36:03Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -3815,7 +3815,7 @@
    ],
    "gabarito": "B",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Meio ambiente e recursos",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
@@ -6268,7 +6268,7 @@
    "id": "enem-2017-q128",
    "ano": 2017,
    "indice": 128,
-   "area": "ciencias-humanas",
+   "area": "ciencias-natureza",
    "idioma": null,
    "contexto": "A retina é um tecido sensível à luz, localizado na parte posterior do olho, onde ocorre o processo de formação de imagem. Nesse tecido, encontram-se vários tipos celulares específicos. Um desses tipos celulares são cones, os quais convertem os diferentes comprimentos de onda da luz visível em sinais elétricos, que são transmitidos pelo nervo óptico até o cérebro.\n\nDisponível em: www.portaldaretina.com.br. Acesso em: 13 jun. 2012 (adaptado)",
    "arquivos": [],
@@ -6307,7 +6307,7 @@
    ],
    "gabarito": "A",
    "origem": "enem.dev",
-   "tema": "Ciências Humanas",
+   "tema": "Célula e evolução",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",

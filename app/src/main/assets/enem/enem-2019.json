@@ -1,6 +1,6 @@
 {
  "ano": 2019,
- "versao": "2026-11-02T14:09:42Z",
+ "versao": "2026-11-03T17:36:03Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -4365,7 +4365,7 @@
    ],
    "gabarito": "E",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Célula e evolução",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",
