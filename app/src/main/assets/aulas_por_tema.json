@@ -1258,5 +1258,57 @@
    "subtema": "deriva continental e placas tectônicas",
    "area": "geografia"
   }
+ ],
+ "ingles": [
+  {
+   "id": "b7g5NfAFv7g",
+   "titulo": "Resolução de questões de inglês no Enem",
+   "subtema": "questões do Enem resolvidas",
+   "area": "ingles"
+  },
+  {
+   "id": "dYv-PCORVOY",
+   "titulo": "Gramática: Verbos Modais",
+   "subtema": "modais em prova",
+   "area": "ingles"
+  },
+  {
+   "id": "5w5GWCh6NQs",
+   "titulo": "Inglês: Tempos Verbais - Present Perfect",
+   "subtema": "tempos verbais",
+   "area": "ingles"
+  },
+  {
+   "id": "JTFOshZOJpQ",
+   "titulo": "Pronomes: Sujeito e Objeto",
+   "subtema": "pronomes",
+   "area": "ingles"
+  }
+ ],
+ "espanhol": [
+  {
+   "id": "PUxMHJMnnFA",
+   "titulo": "Estratégias de interpretação no Enem",
+   "subtema": "leitura de texto em espanhol",
+   "area": "espanhol"
+  },
+  {
+   "id": "cidHmE1mwUY",
+   "titulo": "Espanhol: Interpretação de Texto 1",
+   "subtema": "interpretação de textos",
+   "area": "espanhol"
+  },
+  {
+   "id": "D-bUQRQ9u6Y",
+   "titulo": "Interpretação de Texto 3 · Tiras e charges em espanhol",
+   "subtema": "tiras e charges",
+   "area": "espanhol"
+  },
+  {
+   "id": "HqY613OPMG8",
+   "titulo": "Frases e Poemas",
+   "subtema": "poema e música",
+   "area": "espanhol"
+  }
  ]
 }
