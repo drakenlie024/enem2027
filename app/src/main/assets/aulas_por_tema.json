@@ -1178,5 +1178,85 @@
    "subtema": "Avulsas",
    "area": "fisica"
   }
+ ],
+ "analise combinatoria": [
+  {
+   "id": "7znzVE_iL8s",
+   "titulo": "Análise combinatória · princípio fundamental da contagem",
+   "subtema": "princípio fundamental da contagem",
+   "area": "matematica"
+  }
+ ],
+ "probabilidade": [
+  {
+   "id": "HWlZtfp-TKQ",
+   "titulo": "Probabilidade · casos favoráveis sobre casos possíveis",
+   "subtema": "casos favoráveis sobre casos possíveis",
+   "area": "matematica"
+  }
+ ],
+ "estatistica": [
+  {
+   "id": "2KjlM-5FVqA",
+   "titulo": "Estatística · média, moda e mediana",
+   "subtema": "média, moda e mediana",
+   "area": "matematica"
+  }
+ ],
+ "trigonometria": [
+  {
+   "id": "lHuB0CBNNm0",
+   "titulo": "Trigonometria · relação fundamental",
+   "subtema": "relação fundamental",
+   "area": "matematica"
+  }
+ ],
+ "matriz, determinante e sistemas lineares": [
+  {
+   "id": "8FwQM4H04kY",
+   "titulo": "Matrizes · multiplicação de matrizes",
+   "subtema": "multiplicação de matrizes",
+   "area": "matematica"
+  }
+ ],
+ "razao, proporcao e regra de tres": [
+  {
+   "id": "uIulBEk8gcM",
+   "titulo": "Razão e proporção · definição, propriedades e aplicações",
+   "subtema": "definição, propriedades e aplicações",
+   "area": "matematica"
+  }
+ ],
+ "geometria espacial": [
+  {
+   "id": "N0qYGevKmko",
+   "titulo": "Geometria espacial · poliedros regulares e relação de Euler",
+   "subtema": "poliedros regulares e relação de Euler",
+   "area": "matematica"
+  }
+ ],
+ "literatura": [
+  {
+   "id": "6GVQcYw6Wk4",
+   "titulo": "Literatura · gêneros e formas literárias",
+   "subtema": "gêneros e formas literárias",
+   "area": "portugues"
+  }
+ ],
+ "quimica ambiental": [
+  {
+   "id": "A8J07TaDiDA",
+   "titulo": "Química Ambiental · chuva ácida, ozônio e efeito estufa",
+   "subtema": "chuva ácida, ozônio e efeito estufa",
+   "area": "quimica"
+  }
+ ],
+ "ciencias da terra": [
+  {
+   "id": "GicW3UpL6Mw",
+   "titulo": "Ciências da Terra · deriva continental e placas tectônicas",
+   "subtema": "deriva continental e placas tectônicas",
+   "area": "geografia"
+  }
  ]
 }
