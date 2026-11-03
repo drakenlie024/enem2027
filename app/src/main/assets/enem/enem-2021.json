@@ -1,6 +1,6 @@
 {
  "ano": 2021,
- "versao": "2026-11-03T17:36:34Z",
+ "versao": "2026-11-03T17:50:24Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -6258,7 +6258,7 @@
    ],
    "gabarito": "B",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Fisiologia humana",
    "competencia": "C2 - Aplicar conhecimentos",
    "dificuldade": "media",
    "subassunto": "",

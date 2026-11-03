@@ -1310,5 +1310,75 @@
    "subtema": "poema e música",
    "area": "espanhol"
   }
+ ],
+ "fisiologia humana": [
+  {
+   "id": "G0CNYe61OyY",
+   "titulo": "Nutrição 1 · Digestão e sistema digestório",
+   "subtema": "digestão",
+   "area": "biologia"
+  },
+  {
+   "id": "7bC0J58u8DY",
+   "titulo": "Nutrição 3 · Digestão no intestino delgado",
+   "subtema": "intestino e absorção",
+   "area": "biologia"
+  },
+  {
+   "id": "mu0XJW3UXjg",
+   "titulo": "Nutrição 4 · Hormônios da digestão",
+   "subtema": "hormônios da digestão",
+   "area": "biologia"
+  },
+  {
+   "id": "1OePqF9zdMA",
+   "titulo": "Nutrição · Vitaminas e suas funções",
+   "subtema": "vitaminas",
+   "area": "biologia"
+  }
+ ],
+ "atomistica e tabela periodica": [
+  {
+   "id": "ZuAxiEoantc",
+   "titulo": "Química: Tabela Periódica 1 · Organização da tabela periódica",
+   "subtema": "organização da tabela",
+   "area": "quimica"
+  },
+  {
+   "id": "1R-Xo3i3p_k",
+   "titulo": "Química: Tabela Periódica 2 · Propriedades periódicas dos elementos",
+   "subtema": "propriedades periódicas",
+   "area": "quimica"
+  },
+  {
+   "id": "3wb4beqlITc",
+   "titulo": "Ligações Covalentes",
+   "subtema": "ligações químicas",
+   "area": "quimica"
+  }
+ ],
+ "radioatividade": [
+  {
+   "id": "4ke_SFfAkrI",
+   "titulo": "Radioatividade",
+   "subtema": "fissão e decaimento",
+   "area": "quimica"
+  }
+ ],
+ "separacao de misturas e interacoes": [
+  {
+   "id": "7DDNZ2ZiAxs",
+   "titulo": "Separação de Misturas",
+   "subtema": "separação de misturas",
+   "area": "quimica"
+  }
+ ],
+ "imunologia e vacinas": [
+  {
+   "id": "pJnPe3M013w",
+   "titulo": "Imunologia 1 · Imunidade inata e adaptativa",
+   "subtema": "imunidade inata e adaptativa",
+   "area": "biologia"
+  }
  ]
 }

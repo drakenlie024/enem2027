@@ -1,6 +1,6 @@
 {
  "ano": 2009,
- "versao": "2026-11-03T17:36:34Z",
+ "versao": "2026-11-03T17:50:24Z",
  "origem": "enem.dev",
  "questoes": [
   {
@@ -1475,7 +1475,7 @@
    ],
    "gabarito": "D",
    "origem": "enem.dev",
-   "tema": "Ciências da Natureza",
+   "tema": "Atomística e tabela periódica",
    "competencia": "C3 - Interpretar documentos",
    "dificuldade": "media",
    "subassunto": "",
