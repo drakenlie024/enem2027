@@ -65,13 +65,14 @@ class TelaSessaoTeste {
     }
 
     @Test
-    fun `tema sem aula oferece a playlist da materia`() {
-        // "Estatística" não tem aula no acervo: em vez de ficar sem caminho,
-        // o passo 1 aponta para o canal da matéria.
+    fun `tema sem aula comeca direto pelo treino`() {
+        // Hoje todo tema com questão tem aula, então o caminho da playlist
+        // ficou raro. O que a tela precisa garantir é o que acontece quando
+        // ele aparece: a playlist não pode virar passo 1 do itinerário.
         compose.setContent {
             androidx.compose.material3.MaterialTheme {
                 TelaSessao(
-                    temas = listOf(tema("Resolução de problemas", area = "matematica")),
+                    temas = listOf(tema("Ciências Humanas", area = "ciencias-humanas")),
                     indice = 0,
                     aoTreinar = {},
                     aoAbrirAula = {},
@@ -80,31 +81,8 @@ class TelaSessaoTeste {
             }
         }
 
-        // A playlist não é aula: não entra como passo 1 do itinerário.
         compose.onNodeWithText("1 · PRATICAR").assertIsDisplayed()
-        compose.onNodeWithText("Este tema não tem aula no acervo").assertIsDisplayed()
-        compose.onNodeWithText("Ver aulas").assertIsDisplayed()
-    }
-
-    @Test
-    fun `tocar em ver aulas abre a playlist`() {
-        var url: String? = null
-        compose.setContent {
-            androidx.compose.material3.MaterialTheme {
-                TelaSessao(
-                    temas = listOf(tema("Resolução de problemas", area = "matematica")),
-                    indice = 0,
-                    aoTreinar = {},
-                    aoAbrirAula = {},
-                    aoEncerrar = {},
-                    aoAbrirUrl = { url = it },
-                )
-            }
-        }
-
-        compose.onNodeWithText("Ver aulas").performClick()
-
-        assertTrue(url!!.startsWith("https://www.youtube.com/"))
+        compose.onNodeWithText("1 · ASSISTIR").assertDoesNotExist()
     }
 
     @Test
@@ -113,7 +91,7 @@ class TelaSessaoTeste {
         compose.setContent {
             androidx.compose.material3.MaterialTheme {
                 TelaSessao(
-                    temas = listOf(tema("Resolução de problemas", area = "matematica")),
+                    temas = listOf(tema("Ciências Humanas", area = "ciencias-humanas")),
                     indice = 0,
                     aoTreinar = { treinado = it.tema },
                     aoAbrirAula = {},
@@ -124,7 +102,7 @@ class TelaSessaoTeste {
 
         compose.onNodeWithText("Começar as questões").performClick()
 
-        assertEquals("Resolução de problemas", treinado)
+        assertEquals("Ciências Humanas", treinado)
     }
 
     @Test
