@@ -17,6 +17,60 @@
    "titulo": "Conceitos de trabalho ao longo da história",
    "subtema": "Avulsas",
    "area": "sociologia"
+  },
+  {
+   "id": "M1vIx0l3ZLw",
+   "titulo": "O que foi o neoplatonismo?",
+   "subtema": "neoplatonismo: Uno, emanação e espiritualidade",
+   "area": "filosofia"
+  },
+  {
+   "id": "MucaOivk50s",
+   "titulo": "Filosofia de Martin Heidegger",
+   "subtema": "Heidegger: ser, Dasein e existência",
+   "area": "filosofia"
+  },
+  {
+   "id": "GYISmIglyc8",
+   "titulo": "Platão",
+   "subtema": "Platão: teoria das ideias, mundo inteligível",
+   "area": "filosofia"
+  },
+  {
+   "id": "sVR71qrLRZ8",
+   "titulo": "O que é ontologia?",
+   "subtema": "ontologia como ramo da metafísica",
+   "area": "filosofia"
+  },
+  {
+   "id": "tQNZT9du_4s",
+   "titulo": "O que é substância?",
+   "subtema": "substância em Aristóteles e Espinosa",
+   "area": "filosofia"
+  },
+  {
+   "id": "CZIUYOs8FZ0",
+   "titulo": "Hegel",
+   "subtema": "dialética hegeliana, espírito absoluto, contraste com Marx",
+   "area": "filosofia"
+  },
+  {
+   "id": "a9g2HDKdcl0",
+   "titulo": "Schopenhauer, Nietzsche e Heidegger na 3ª temporada de Dark",
+   "subtema": "Schopenhauer, Nietzsche e Heidegger: vontade e existência",
+   "area": "filosofia"
+  },
+  {
+   "id": "FDLDYQrHfjc",
+   "titulo": "Filosofia neoplatônica de Plotino",
+   "subtema": "Neoplatonismo, Uno e emanação: metafísica antiga",
+   "area": "filosofia"
+  },
+  {
+   "id": "23L54O237rw",
+   "titulo": "Revisão de Filosofia: Platão e Aristóteles",
+   "subtema": "Materialismo histórico, práxis e crítica a Feuerbach",
+   "area": "filosofia"
   }
  ],
  "sociologia: conceitos basicos": [
@@ -36,6 +90,78 @@
    "id": "d7BeCopGqP4",
    "titulo": "Desigualdade social e estratificação social",
    "subtema": "Avulsas",
+   "area": "sociologia"
+  },
+  {
+   "id": "4yr2_Rw2inw",
+   "titulo": "Como a sociologia aparece na FUVEST?",
+   "subtema": "Marx e Smith resolvidos em questões",
+   "area": "sociologia"
+  },
+  {
+   "id": "-PkLsEHE7kU",
+   "titulo": "Zygmunt Bauman",
+   "subtema": "modernidade sólida e líquida, relações sociais",
+   "area": "filosofia"
+  },
+  {
+   "id": "PzphFCiBZMw",
+   "titulo": "Luísa Sonza, Chico Moedas e amor líquido em Bauman",
+   "subtema": "Bauman, modernidade líquida e relações afetivas",
+   "area": "filosofia"
+  },
+  {
+   "id": "GLW_tBkJ8q0",
+   "titulo": "A Ética Protestante e o Espírito do Capitalismo, de Max Weber",
+   "subtema": "Weber, ética protestante e espírito do capitalismo",
+   "area": "sociologia"
+  },
+  {
+   "id": "vJaZEH6fRWc",
+   "titulo": "Questões de Sociologia Clássica",
+   "subtema": "revisa Durkheim, Weber e Marx em questões",
+   "area": "sociologia"
+  },
+  {
+   "id": "VYvhc5e2DtI",
+   "titulo": "Sociologia da Educação em Pierre Bourdieu",
+   "subtema": "Bourdieu: capital cultural e reprodução",
+   "area": "sociologia"
+  },
+  {
+   "id": "L-A8u46YUss",
+   "titulo": "Émile Durkheim, Fatos Sociais e Suicídio",
+   "subtema": "Durkheim, fato social e método sociológico",
+   "area": "filosofia"
+  },
+  {
+   "id": "pUQTG5HiRhk",
+   "titulo": "Pierre Bourdieu e estruturalismo construtivista",
+   "subtema": "Bourdieu, estruturalismo construtivista e capitais",
+   "area": "sociologia"
+  },
+  {
+   "id": "gfZztGey4ig",
+   "titulo": "Max Weber",
+   "subtema": "Weber, ação social e método sociológico clássico",
+   "area": "filosofia"
+  },
+  {
+   "id": "uiEND4Ovg6A",
+   "titulo": "Marcel Mauss e o Ensaio sobre a Dádiva",
+   "subtema": "Mauss, fato social total e método comparativo",
+   "area": "sociologia"
+  },
+  {
+   "id": "I4uAYzZz-2k",
+   "titulo": "O que é aporofobia?",
+   "subtema": "Conceito de aporofobia e exclusão do pobre",
+   "area": "sociologia"
+  },
+  {
+   "id": "jvK1nxycNQc",
+   "titulo": "Questões resolvidas sobre o método de Pierre Bourdieu",
+   "subtema": "habitus e estruturalismo construtivista de Bourdieu",
    "area": "sociologia"
   }
  ],
@@ -57,6 +183,12 @@
    "titulo": "Exercícios de Geografia pro ENEM - Hierarquia Urbana e Rede Urbana",
    "subtema": "Avulsas",
    "area": "geografia"
+  },
+  {
+   "id": "WfPAs7w1_1c",
+   "titulo": "Questões de Sociologia Brasileira em Vestibulares",
+   "subtema": "déficit habitacional, imóveis vagos e especulação imobiliári",
+   "area": "sociologia"
   }
  ],
  "meio ambiente e recursos": [
@@ -97,6 +229,150 @@
    "titulo": "Filosofia: Tomás de Aquino, Hobbes e Rousseau",
    "subtema": "Avulsas",
    "area": "filosofia"
+  },
+  {
+   "id": "4YogdtC09xk",
+   "titulo": "ILLUSTRATED HISTORY (ABSOLUTISM)",
+   "subtema": "Maquiavel, Hobbes, Leviatã e contrato social",
+   "area": "historia"
+  },
+  {
+   "id": "S0s2DE-ao2Q",
+   "titulo": "Montesquieu e o Espírito das Leis",
+   "subtema": "Montesquieu: formas de governo e separação dos poderes",
+   "area": "filosofia"
+  },
+  {
+   "id": "eWG9fltHZdI",
+   "titulo": "Resumão de Thomas Hobbes",
+   "subtema": "Leviatã, estado de natureza e contrato social",
+   "area": "filosofia"
+  },
+  {
+   "id": "NUiDiqS2HzU",
+   "titulo": "Jacques Bossuet e o direito divino dos reis franceses",
+   "subtema": "Bossuet, direito divino e poder temporal",
+   "area": "filosofia"
+  },
+  {
+   "id": "ypZJNp1dVHc",
+   "titulo": "Jean Bodin e a defesa da soberania com o direito divino",
+   "subtema": "Bodin: soberania e direito divino",
+   "area": "filosofia"
+  },
+  {
+   "id": "btGrFGKzM_o",
+   "titulo": "Thomas More e a Utopia",
+   "subtema": "Utopia critica propriedade e organização política",
+   "area": "filosofia"
+  },
+  {
+   "id": "s-dNSJY5Dpk",
+   "titulo": "As mulheres na concepção de Platão e Aristóteles",
+   "subtema": "República de Platão e Política de Aristóteles",
+   "area": "filosofia"
+  },
+  {
+   "id": "l95Jlm1QdUA",
+   "titulo": "Vigiar e Punir, de Michel Foucault: disciplina e prisão",
+   "subtema": "Foucault, disciplina, poder e prisão",
+   "area": "filosofia"
+  },
+  {
+   "id": "7o8x71D9tnk",
+   "titulo": "Jean-Jacques Rousseau e suas críticas filosóficas",
+   "subtema": "contrato social, vontade geral, soberania",
+   "area": "filosofia"
+  },
+  {
+   "id": "28c7KfiXXY8",
+   "titulo": "Aristóteles: política, família e escravidão",
+   "subtema": "Política de Aristóteles: cidade, família e escravidão",
+   "area": "filosofia"
+  },
+  {
+   "id": "q0pDnS65_9A",
+   "titulo": "Política de Aristóteles: comunidades ideais",
+   "subtema": "Livro II da Política: comunidades ideais",
+   "area": "filosofia"
+  },
+  {
+   "id": "OiAHXVNck8A",
+   "titulo": "Jürgen Habermas",
+   "subtema": "ação comunicativa e democracia deliberativa de Habermas",
+   "area": "filosofia"
+  },
+  {
+   "id": "l2Z4tzLllKQ",
+   "titulo": "Vigiar e Punir de Michel Foucault: Suplício e Punição",
+   "subtema": "Foucault: poder, suplício, disciplina e punição",
+   "area": "filosofia"
+  },
+  {
+   "id": "wOn8wYALX3Y",
+   "titulo": "Questões de Absolutismo",
+   "subtema": "contratualismo e absolutismo em Hobbes",
+   "area": "filosofia"
+  },
+  {
+   "id": "6Tko0XD1rFs",
+   "titulo": "Questões de Iluminação",
+   "subtema": "Montesquieu, Hobbes e Rousseau: poder e Estado",
+   "area": "filosofia"
+  },
+  {
+   "id": "u1NT2bCAHCc",
+   "titulo": "Étienne de La Boétie e o Discurso da Servidão Voluntária",
+   "subtema": "Servidão voluntária, tirania e obediência ao poder",
+   "area": "filosofia"
+  },
+  {
+   "id": "wbPGwWeDZ6g",
+   "titulo": "Denis Diderot: da Enciclopédia à crítica das religiões",
+   "subtema": "Diderot: crítica ao absolutismo e direito divino",
+   "area": "filosofia"
+  },
+  {
+   "id": "ngC2bOoLyAg",
+   "titulo": "Função do Estado",
+   "subtema": "Contratualistas, separação dos poderes e Weber",
+   "area": "sociologia"
+  },
+  {
+   "id": "CphFLGLeZWY",
+   "titulo": "Resumo de Maquiavel",
+   "subtema": "Maquiavel, O Príncipe, virtù e fortuna",
+   "area": "filosofia"
+  },
+  {
+   "id": "wswilCF3zOA",
+   "titulo": "Estado e Poder",
+   "subtema": "Weber, Hobbes, Locke, Rousseau e formação do Estado",
+   "area": "sociologia"
+  },
+  {
+   "id": "vVwckAou7LY",
+   "titulo": "Contrato social: Hobbes, Locke e Rousseau",
+   "subtema": "Contratualistas Hobbes, Locke e Rousseau",
+   "area": "filosofia"
+  },
+  {
+   "id": "jYI16XWXvhY",
+   "titulo": "Biopolítica e biopoder em Michel Foucault",
+   "subtema": "biopolítica, biopoder e governo estatal",
+   "area": "filosofia"
+  },
+  {
+   "id": "HJ0G0FNDrb4",
+   "titulo": "Sofistas",
+   "subtema": "retórica e política na democracia ateniense",
+   "area": "filosofia"
+  },
+  {
+   "id": "U9zdEJ1AHOs",
+   "titulo": "Hípias de Élis: sofista polímata da Grécia Clássica",
+   "subtema": "sofista, natureza versus lei na cidade",
+   "area": "filosofia"
   }
  ],
  "filosofia: racionalismo e empirismo": [
@@ -116,6 +392,102 @@
    "id": "keX0CKCVqu4",
    "titulo": "DAVID HUME PARA O ENEM",
    "subtema": "Avulsas",
+   "area": "filosofia"
+  },
+  {
+   "id": "c8ofsA5uk9I",
+   "titulo": "Karl Popper: do racionalismo radical à sociedade aberta",
+   "subtema": "racionalismo crítico, falseabilidade e crítica ao empirismo",
+   "area": "filosofia"
+  },
+  {
+   "id": "XpBVv0sxznE",
+   "titulo": "Crítica da Razão Pura: Teoria dos Juízos",
+   "subtema": "Kant une razão e experiência; juízos a priori e sintéticos",
+   "area": "filosofia"
+  },
+  {
+   "id": "-aPZ3dmyI-g",
+   "titulo": "Dualismo mente-corpo em René Descartes",
+   "subtema": "Descartes, cogito e dualismo mente-corpo",
+   "area": "filosofia"
+  },
+  {
+   "id": "j4mPsc189bU",
+   "titulo": "Respondendo questões de Filosofia do Enem 2015",
+   "subtema": "Hume e empirismo entre questões de Beauvoir e Nietzsche",
+   "area": "filosofia"
+  },
+  {
+   "id": "quB59LjzXWA",
+   "titulo": "Francis Bacon",
+   "subtema": "Bacon: método empírico-indutivo e ídolos",
+   "area": "filosofia"
+  },
+  {
+   "id": "LMVQKC2py-Q",
+   "titulo": "Filosofia de Baruch Espinoza",
+   "subtema": "Espinosa racionalista, monismo e panteísmo",
+   "area": "filosofia"
+  },
+  {
+   "id": "L4muar9_Fvo",
+   "titulo": "John Locke: do contrato social ao empirismo",
+   "subtema": "tábula rasa, experiência e indução em Locke",
+   "area": "filosofia"
+  },
+  {
+   "id": "gC-8IlAGRYM",
+   "titulo": "Kant",
+   "subtema": "Kant unindo empirismo e racionalismo, juízos sintéticos",
+   "area": "filosofia"
+  },
+  {
+   "id": "SkaGfGK6Pps",
+   "titulo": "Lógica Transcendental de Immanuel Kant",
+   "subtema": "lógica e estética transcendental na Crítica da Razão Pura",
+   "area": "filosofia"
+  },
+  {
+   "id": "_z-uwONGW94",
+   "titulo": "Como o raciocínio em Kant é cobrado?",
+   "subtema": "questões do ENEM sobre Kant e Crítica da Razão Pura",
+   "area": "filosofia"
+  },
+  {
+   "id": "3rOf_ICAUKs",
+   "titulo": "Michel de Montaigne e a Subjetividade do Pensamento",
+   "subtema": "Montaigne, ceticismo e subjetividade moderna",
+   "area": "filosofia"
+  },
+  {
+   "id": "DI5Sdgqy0oI",
+   "titulo": "A filosofia de Roger Bacon e suas previsões na Idade Média",
+   "subtema": "Roger Bacon, observação e experimentação, empirismo",
+   "area": "filosofia"
+  },
+  {
+   "id": "Idf_dEE24u0",
+   "titulo": "Afetos na filosofia de Baruch Spinoza",
+   "subtema": "Espinosa: monismo, afetos e razão",
+   "area": "filosofia"
+  },
+  {
+   "id": "Y3ZmE0j4XxU",
+   "titulo": "O que é epistemologia?",
+   "subtema": "Epistemologia, Kant, razão versus experiência",
+   "area": "filosofia"
+  },
+  {
+   "id": "jIwXAxfAMx8",
+   "titulo": "Estética Transcendental e a Noção de Espaço e Tempo em Kant",
+   "subtema": "Kant, juízos a priori e limites do conhecimento",
+   "area": "filosofia"
+  },
+  {
+   "id": "fx6Vaxam6AI",
+   "titulo": "Como René Descartes solucionou a dúvida sobre o solipsismo?",
+   "subtema": "dúvida cartesiana, ideias inatas versus Locke",
    "area": "filosofia"
   }
  ],
@@ -137,6 +509,18 @@
    "titulo": "Blocos econômicos e geopolítica",
    "subtema": "Avulsas",
    "area": "geografia"
+  },
+  {
+   "id": "mB5M3t0fLSM",
+   "titulo": "Capitalismo financeiro e monopolista",
+   "subtema": "Capitalismo financeiro, monopólios e globalização",
+   "area": "sociologia"
+  },
+  {
+   "id": "rl8TFgS4sOk",
+   "titulo": "Primavera Árabe",
+   "subtema": "revoltas, ditaduras e potências no mundo árabe",
+   "area": "historia"
   }
  ],
  "movimentos sociais e minorias": [
@@ -156,6 +540,30 @@
    "id": "jmPrzji3GaA",
    "titulo": "Ações afirmativas no combate à desigualdade social",
    "subtema": "Avulsas",
+   "area": "sociologia"
+  },
+  {
+   "id": "7WCDgqO7JQ8",
+   "titulo": "A dominação masculina, na concepção de Pierre Bourdieu",
+   "subtema": "Bourdieu e dominação masculina nas relações de gênero",
+   "area": "sociologia"
+  },
+  {
+   "id": "yfoFNXWmHbU",
+   "titulo": "O que são Red Pill e Incel?",
+   "subtema": "red pill, incel e machismo estrutural",
+   "area": "sociologia"
+  },
+  {
+   "id": "xUClyIaIxOw",
+   "titulo": "Conquistas das mulheres no Brasil no século XX",
+   "subtema": "sufrágio feminino e conquistas legais das mulheres",
+   "area": "sociologia"
+  },
+  {
+   "id": "8TsrjedkX5o",
+   "titulo": "Sociedade Patriarcal",
+   "subtema": "patriarcalismo e dominação masculina",
    "area": "sociologia"
   }
  ],
@@ -177,6 +585,12 @@
    "titulo": "Geografia para o ENEM - Revolução Industrial - tudo o que você precisa saber! | Hyperactive GEO",
    "subtema": "Avulsas",
    "area": "historia"
+  },
+  {
+   "id": "qEFWozs7VoI",
+   "titulo": "Capitalismo industrial, Adam Smith e David Ricardo",
+   "subtema": "maquinofatura e capitalismo industrial inglês",
+   "area": "sociologia"
   }
  ],
  "democracia e populismo": [
@@ -277,6 +691,12 @@
    "titulo": "Entendendo a década de 1910",
    "subtema": "Avulsas",
    "area": "historia"
+  },
+  {
+   "id": "U_yQw7e6d_g",
+   "titulo": "Pós-abolição 4 · Racismo estrutural no pós-abolição",
+   "subtema": "Pós-abolição, racismo e teorias raciais na República",
+   "area": "historia"
   }
  ],
  "populacao e demografia": [
@@ -317,6 +737,18 @@
    "titulo": "Os impactos da inteligência artificial na sociedade",
    "subtema": "Avulsas",
    "area": "sociologia"
+  },
+  {
+   "id": "ltI0Qp4V8hQ",
+   "titulo": "O que é volvismo?",
+   "subtema": "Volvismo como sistema de produção pós-fordismo",
+   "area": "sociologia"
+  },
+  {
+   "id": "giMSj0VW61s",
+   "titulo": "O que é toyotismo?",
+   "subtema": "Toyotismo, automação e modelos produtivos",
+   "area": "sociologia"
   }
  ],
  "filosofia: etica e cidadania": [
@@ -336,6 +768,114 @@
    "id": "Xfri3iIO71s",
    "titulo": "Ética Kantiana",
    "subtema": "Avulsas",
+   "area": "filosofia"
+  },
+  {
+   "id": "L61kA1Cq1Gc",
+   "titulo": "Questões de vestibulares sobre Nietzsche",
+   "subtema": "Niilismo e super-homem como crítica moral",
+   "area": "filosofia"
+  },
+  {
+   "id": "mWQQn8qLB9Q",
+   "titulo": "Filosofia helenística do cinismo, de Diógenes",
+   "subtema": "Eudaimonia, virtude e desapego material no cinismo",
+   "area": "filosofia"
+  },
+  {
+   "id": "vwjcqV-ZBHY",
+   "titulo": "Assim Falou Zarathustra: Do Eterno Retorno ao Super-Homem",
+   "subtema": "Nietzsche critica valores, moral e super-homem",
+   "area": "filosofia"
+  },
+  {
+   "id": "NpN6RuH2RyQ",
+   "titulo": "O estoicismo, de Zenão a Sêneca",
+   "subtema": "ética estoica, ataraxia e vida virtuosa",
+   "area": "filosofia"
+  },
+  {
+   "id": "FHj-ZsB1C_E",
+   "titulo": "Respondendo questões de filosofia 2014 PPL",
+   "subtema": "virtude em Aristóteles, Locke e justiça em Rawls",
+   "area": "filosofia"
+  },
+  {
+   "id": "OfxDf5ZGAxo",
+   "titulo": "A filosofia de Epicuro e a busca pela felicidade e ataraxia",
+   "subtema": "epicurismo, desejos, ataraxia e felicidade",
+   "area": "filosofia"
+  },
+  {
+   "id": "OZM86dtBFr8",
+   "titulo": "Nietzsche",
+   "subtema": "niilismo e crítica nietzschiana à moral",
+   "area": "filosofia"
+  },
+  {
+   "id": "VdRSkNda0Mg",
+   "titulo": "John Stuart Mill e utilitarismo individualista",
+   "subtema": "utilitarismo de Mill, liberdade e vida boa",
+   "area": "filosofia"
+  },
+  {
+   "id": "0bueoh71yqc",
+   "titulo": "Estoicismo de Zenão de Cítio",
+   "subtema": "ética estoica, virtude e ataraxia",
+   "area": "filosofia"
+  },
+  {
+   "id": "8cfp9vxE7Uw",
+   "titulo": "Filosofia Socrática",
+   "subtema": "método socrático, ironia e maiêutica",
+   "area": "filosofia"
+  },
+  {
+   "id": "I0RZaAEwRl8",
+   "titulo": "A República: Justiça na Concepção de Platão",
+   "subtema": "concepção de justiça na República de Platão",
+   "area": "filosofia"
+  },
+  {
+   "id": "ORiC0OzWwBI",
+   "titulo": "Introdução e conceitos fundamentais de A República, de Platão",
+   "subtema": "introdução à República: justiça, alma e cidade",
+   "area": "filosofia"
+  },
+  {
+   "id": "KK1TSBaM5pY",
+   "titulo": "Liberdade e livre-arbítrio na filosofia",
+   "subtema": "Determinismo, livre-arbítrio, Agostinho e Aquino",
+   "area": "filosofia"
+  },
+  {
+   "id": "9-bvJy6CvOY",
+   "titulo": "Filosofia Helenística",
+   "subtema": "cinismo, epicurismo e estoicismo buscam ataraxia",
+   "area": "filosofia"
+  },
+  {
+   "id": "6COggNzoqME",
+   "titulo": "Schopenhauer",
+   "subtema": "vontade, sofrimento e busca de neutralizá-la",
+   "area": "filosofia"
+  },
+  {
+   "id": "3Uyxnc1hGy0",
+   "titulo": "A Morte de Deus Segundo Nietzsche",
+   "subtema": "Crítica de Nietzsche à moral cristã e niilismo",
+   "area": "filosofia"
+  },
+  {
+   "id": "Zg6M17b9iNg",
+   "titulo": "Sócrates, Platão e Aristóteles no vestibular da UFU 2019-2",
+   "subtema": "Sócrates, caverna e virtude em Aristóteles",
+   "area": "filosofia"
+  },
+  {
+   "id": "Ep6Q5YMtFQA",
+   "titulo": "Jeremy Bentham",
+   "subtema": "utilitarismo de Bentham como filosofia moral",
    "area": "filosofia"
   }
  ],
@@ -377,6 +917,24 @@
    "titulo": "Período Regencial",
    "subtema": "Avulsas",
    "area": "historia"
+  },
+  {
+   "id": "F8c422R-C1w",
+   "titulo": "Período Joanino",
+   "subtema": "Vinda da corte e abertura dos portos: prelúdio do Império",
+   "area": "historia"
+  },
+  {
+   "id": "TM3eAoSJ0h0",
+   "titulo": "Escravidão 3: abolição e influências",
+   "subtema": "Leis abolicionistas e Lei Áurea no Brasil oitocentista",
+   "area": "historia"
+  },
+  {
+   "id": "hOiKSiek0xw",
+   "titulo": "Independência do Brasil",
+   "subtema": "Revolução do Porto e processo de independência",
+   "area": "historia"
   }
  ],
  "segunda guerra mundial e holocausto": [
@@ -396,6 +954,18 @@
    "id": "aw0tWEtxE_M",
    "titulo": "Pergunta sobre nazismo (2017)",
    "subtema": "Avulsas",
+   "area": "historia"
+  },
+  {
+   "id": "6zwHSgi00Aw",
+   "titulo": "Como era a Juventude Hitlerista?",
+   "subtema": "Juventude Hitlerista, propaganda nazista e preparação milita",
+   "area": "historia"
+  },
+  {
+   "id": "TnFFTZUXv_8",
+   "titulo": "Como era a religião no nazismo?",
+   "subtema": "religião e igrejas sob o nazismo",
    "area": "historia"
   }
  ],
@@ -437,6 +1007,48 @@
    "titulo": "Enem 2017: questão sobre resistência cultural",
    "subtema": "Enem 2017",
    "area": "historia"
+  },
+  {
+   "id": "smt9UB8Kd7g",
+   "titulo": "Introdução à Casa Grande e Senzala de Gilberto Freyre",
+   "subtema": "miscigenação e identidade nacional em Freyre",
+   "area": "sociologia"
+  },
+  {
+   "id": "rzESCIHSCbo",
+   "titulo": "Claude Lévi-Strauss e a antropologia estrutural",
+   "subtema": "Antropologia estrutural, parentesco, mitos e cultura",
+   "area": "sociologia"
+  },
+  {
+   "id": "jXKpE7UhaM8",
+   "titulo": "O que é contracultura?",
+   "subtema": "contracultura hippie, punk e rap como identidade",
+   "area": "sociologia"
+  },
+  {
+   "id": "5lqXIZJBGak",
+   "titulo": "Indústria cultural e aura da arte em Walter Benjamin",
+   "subtema": "indústria cultural e aura da arte",
+   "area": "filosofia"
+  },
+  {
+   "id": "fzsIdG6pvos",
+   "titulo": "O que é antropologia",
+   "subtema": "antropologia, diversidade cultural e relativismo",
+   "area": "sociologia"
+  },
+  {
+   "id": "rBtrGvi6yW0",
+   "titulo": "Os cinco brasis de Darcy Ribeiro",
+   "subtema": "Matrizes culturais e formação do povo brasileiro",
+   "area": "sociologia"
+  },
+  {
+   "id": "ZZ6lGZuXu7k",
+   "titulo": "Civilizados e bárbaros",
+   "subtema": "bárbaro como o outro, alteridade e relativismo",
+   "area": "historia"
   }
  ],
  "cartografia e escala": [
@@ -456,6 +1068,24 @@
    "id": "OsJSzGQ4iP4",
    "titulo": "Questões de Geografia: Cartografia Temática - Tipos de Mapas e Isolinhas",
    "subtema": "Questões de Geografia",
+   "area": "geografia"
+  },
+  {
+   "id": "nWVlQMoDOzI",
+   "titulo": "Coordenadas Geográficas: Latitude, Longitude, Paralelos e Meridianos",
+   "subtema": "Latitude, longitude, paralelos e meridianos",
+   "area": "geografia"
+  },
+  {
+   "id": "7Y58k-kE-as",
+   "titulo": "Rosa dos Ventos - Pontos Cardeais e Colaterais - Orientação",
+   "subtema": "orientação, pontos cardeais, colaterais e bússola",
+   "area": "geografia"
+  },
+  {
+   "id": "tFDiM_gWgQ0",
+   "titulo": "Fusos horários no mundo e no Brasil: como calcular?",
+   "subtema": "Longitude, Greenwich e fusos horários",
    "area": "geografia"
   }
  ],
@@ -497,6 +1127,18 @@
    "titulo": "Liberalismo econômico: Adam Smith vs. David Ricardo",
    "subtema": "Avulsas",
    "area": "filosofia"
+  },
+  {
+   "id": "2cRmI_bYEyc",
+   "titulo": "Escola de Frankfurt",
+   "subtema": "teoria crítica, marxismo e indústria cultural",
+   "area": "filosofia"
+  },
+  {
+   "id": "g26I8ufn2xc",
+   "titulo": "Filosofia Existencialista",
+   "subtema": "Existencialismo, Sartre e Beauvoir",
+   "area": "filosofia"
   }
  ],
  "ditadura militar": [
@@ -517,6 +1159,12 @@
    "titulo": "Entenda os anos 1970",
    "subtema": "Entenda os anos",
    "area": "historia"
+  },
+  {
+   "id": "jaYXB0ZAEa8",
+   "titulo": "Questão: Igreja e Ditadura",
+   "subtema": "Questão do ENEM sobre Igreja Católica e golpe de 1964",
+   "area": "historia"
   }
  ],
  "revolucoes": [
@@ -536,6 +1184,18 @@
    "id": "Ndak1dMOQHY",
    "titulo": "Revoluções Inglesas",
    "subtema": "Avulsas",
+   "area": "historia"
+  },
+  {
+   "id": "ta2npneckTE",
+   "titulo": "História Geral 18: Era Napoleônica",
+   "subtema": "Era napoleônica, Consulado e Congresso de Viena",
+   "area": "historia"
+  },
+  {
+   "id": "7aEqO-WA5H4",
+   "titulo": "História Geral 35: Revolução Islâmica",
+   "subtema": "Revolução Islâmica de 1979 no Irã",
    "area": "historia"
   }
  ],
@@ -564,6 +1224,54 @@
    "id": "2pRCqFFasJ8",
    "titulo": "Quem é o lumpenproletariado em Karl Marx?",
    "subtema": "Avulsas",
+   "area": "sociologia"
+  },
+  {
+   "id": "tglk3oBFS9g",
+   "titulo": "O que Marx quis dizer com \"religião é o ópio do povo\"?",
+   "subtema": "Religião, exploração e consciência de classe",
+   "area": "sociologia"
+  },
+  {
+   "id": "R1q4A0rWnxY",
+   "titulo": "O que é fit cultural?",
+   "subtema": "Cultura organizacional, alienação e direitos do trabalhador",
+   "area": "sociologia"
+  },
+  {
+   "id": "KjTXvK9k74A",
+   "titulo": "Capitalismo: formação e conceitos fundamentais",
+   "subtema": "Capitalismo como modo de produção e divisão de classes",
+   "area": "sociologia"
+  },
+  {
+   "id": "d6JS-tOEU1Q",
+   "titulo": "Trabalho análogo à escravidão no Brasil e no mundo",
+   "subtema": "exploração laboral contemporânea e fiscalização",
+   "area": "sociologia"
+  },
+  {
+   "id": "FJ7FwQsDWvk",
+   "titulo": "Karl Marx",
+   "subtema": "materialismo histórico, alienação, mais-valia e classes",
+   "area": "filosofia"
+  },
+  {
+   "id": "Z7S7N6EDp2g",
+   "titulo": "Karl Marx na FUVEST 2019",
+   "subtema": "Marx e exploração do trabalho feminino",
+   "area": "sociologia"
+  },
+  {
+   "id": "iXrPCfg_IYU",
+   "titulo": "Trabalho Infantil no Brasil e no Mundo",
+   "subtema": "Trabalho infantil, ECA e Revolução Industrial",
+   "area": "sociologia"
+  },
+  {
+   "id": "kev0Dn9ryNo",
+   "titulo": "Taylorismo e Fordismo",
+   "subtema": "Taylorismo, fordismo e organização do trabalho",
    "area": "sociologia"
   }
  ],
@@ -605,6 +1313,12 @@
    "titulo": "Revisão (Resumo) de Geografia: O Mundo Bipolar - A Guerra Fria | EUA x URSS",
    "subtema": "Avulsas",
    "area": "historia"
+  },
+  {
+   "id": "DoIBS1slge4",
+   "titulo": "Entenda a década de 1950",
+   "subtema": "Coreia, Vietnã, Cuba, corrida espacial e Brasil",
+   "area": "historia"
   }
  ],
  "urgencias humanitarias e minorias": [
@@ -645,6 +1359,60 @@
    "titulo": "História do século XVI",
    "subtema": "História do século",
    "area": "historia"
+  },
+  {
+   "id": "TZyNLIAwCZ0",
+   "titulo": "Absolutismo e Mercantilismo",
+   "subtema": "Absolutismo e mercantilismo na Europa moderna",
+   "area": "historia"
+  },
+  {
+   "id": "dCgwD4fYjw8",
+   "titulo": "Aprendendo a história do século XVII",
+   "subtema": "Absolutismo, direito divino e revoluções inglesas",
+   "area": "historia"
+  },
+  {
+   "id": "EDZVqcvffgQ",
+   "titulo": "Feudalismo",
+   "subtema": "Feudalismo medieval, colonato, comitatus e suserania",
+   "area": "historia"
+  },
+  {
+   "id": "QnjkthNjWu0",
+   "titulo": "História Geral 11: Renascimento",
+   "subtema": "Renascimento, transição da Idade Média",
+   "area": "historia"
+  },
+  {
+   "id": "Bet_3rJxwwY",
+   "titulo": "História Geral 13: Iluminismo e Liberalismo",
+   "subtema": "Iluminismo, despotismo esclarecido e Revolução Francesa",
+   "area": "historia"
+  },
+  {
+   "id": "n-gxIqg5xwI",
+   "titulo": "História Geral 12: Reformas Religiosas",
+   "subtema": "Reforma Protestante e Contrarreforma na Europa",
+   "area": "historia"
+  },
+  {
+   "id": "SfoAgpJwF5g",
+   "titulo": "História Geral 7: Roma Antiga (monarquia, república e império)",
+   "subtema": "Roma antiga: monarquia, república, império, sociedade",
+   "area": "historia"
+  },
+  {
+   "id": "Me36pQKhS3E",
+   "titulo": "História Geral 9: Declínio Feudal",
+   "subtema": "Baixa Idade Média e declínio do feudalismo",
+   "area": "historia"
+  },
+  {
+   "id": "Bz8KmpoEB7Y",
+   "titulo": "Erasmo de Roterdã e o Elogio da Loucura",
+   "subtema": "humanismo renascentista e crítica à Igreja",
+   "area": "filosofia"
   }
  ],
  "interpretacao de texto": [
@@ -664,6 +1432,12 @@
    "id": "TzaPWovHjcc",
    "titulo": "Implícitos Textuais",
    "subtema": "Avulsas",
+   "area": "portugues"
+  },
+  {
+   "id": "NPSPcGBaQG8",
+   "titulo": "Coesão Referencial, Lexical e Sequencial",
+   "subtema": "coesão referencial, lexical e sequencial",
    "area": "portugues"
   }
  ],
@@ -704,6 +1478,132 @@
    "id": "65NJJp0fCVs",
    "titulo": "Regência Nominal e Verbal",
    "subtema": "Avulsas",
+   "area": "portugues"
+  },
+  {
+   "id": "cQKAxgMyAFY",
+   "titulo": "Utilização da Vírgula 2 · Uso da vírgula em orações",
+   "subtema": "Aula inteira sobre uso da vírgula e orações",
+   "area": "portugues"
+  },
+  {
+   "id": "LYNv30nF3LA",
+   "titulo": "O uso da crase 2 · Regras de uso da crase",
+   "subtema": "regras de uso da crase",
+   "area": "portugues"
+  },
+  {
+   "id": "1uNL-8TJluw",
+   "titulo": "Período Composto por Subordinação",
+   "subtema": "período composto por subordinação",
+   "area": "portugues"
+  },
+  {
+   "id": "xUrYGIBSMF4",
+   "titulo": "Português | ENEM - Uso da crase I | Curso completo e gratuito",
+   "subtema": "regras de uso da crase",
+   "area": "portugues"
+  },
+  {
+   "id": "JS0PuTycez0",
+   "titulo": "Vozes do Verbo",
+   "subtema": "vozes verbais, agente e paciente da ação",
+   "area": "portugues"
+  },
+  {
+   "id": "wudkGT1WDM0",
+   "titulo": "Emprego dos porquês",
+   "subtema": "quatro empregos dos porquês, com tabela-resumo",
+   "area": "portugues"
+  },
+  {
+   "id": "bbJVEXD_PGA",
+   "titulo": "Adjunto Adverbial",
+   "subtema": "circunstâncias e classificação do adjunto adverbial",
+   "area": "portugues"
+  },
+  {
+   "id": "S7omZJyCv5k",
+   "titulo": "Articulação Textual",
+   "subtema": "coesão e coerência textual, conectivos",
+   "area": "portugues"
+  },
+  {
+   "id": "XSJcX8VZs1k",
+   "titulo": "Português: Semântica",
+   "subtema": "sinônimos, homônimos e parônimos",
+   "area": "portugues"
+  },
+  {
+   "id": "zHSgpk6p7hk",
+   "titulo": "Português: Pronomes Oblíquos",
+   "subtema": "Pronomes oblíquos tônicos e átonos, norma-padrão",
+   "area": "portugues"
+  },
+  {
+   "id": "qMKPITpcKuk",
+   "titulo": "Formação de Palavras 2 · Derivação imprópria e composição",
+   "subtema": "Derivação imprópria, composição e formação de palavras",
+   "area": "portugues"
+  },
+  {
+   "id": "qoDIkQnWrOY",
+   "titulo": "Colocação Pronominal",
+   "subtema": "Próclise, mesóclise e ênclise dos pronomes átonos",
+   "area": "portugues"
+  },
+  {
+   "id": "JWpZ7ZE9FYI",
+   "titulo": "Paralelismo Gramatical",
+   "subtema": "Paralelismo morfológico e sintático na coesão",
+   "area": "portugues"
+  },
+  {
+   "id": "HOrBprH3Od4",
+   "titulo": "Termos Integrantes da Oração",
+   "subtema": "objeto direto, indireto, complemento nominal, agente da pass",
+   "area": "portugues"
+  },
+  {
+   "id": "IyBkS9h45Vk",
+   "titulo": "Orações Coordenadas 1 · Sindéticas e assindéticas",
+   "subtema": "Classificação das orações coordenadas e conjunções",
+   "area": "portugues"
+  },
+  {
+   "id": "Egvkgp6_Y-0",
+   "titulo": "Pronomes Relativos",
+   "subtema": "pronomes relativos e regência",
+   "area": "portugues"
+  },
+  {
+   "id": "Cw5Dx7o3IUw",
+   "titulo": "Formação das Palavras 1 · Derivação e composição de palavras",
+   "subtema": "derivação e composição de palavras",
+   "area": "portugues"
+  },
+  {
+   "id": "LlZmQs3YlYM",
+   "titulo": "Oração sem Sujeito",
+   "subtema": "oração sem sujeito e verbos impessoais",
+   "area": "portugues"
+  },
+  {
+   "id": "exumRjKe6_U",
+   "titulo": "Classificação do Sujeito",
+   "subtema": "classificação do sujeito",
+   "area": "portugues"
+  },
+  {
+   "id": "w1Hl-i2l8OA",
+   "titulo": "Gerúndio",
+   "subtema": "gerúndio, gerundismo e uso verbal",
+   "area": "portugues"
+  },
+  {
+   "id": "SvFGyhKO1OI",
+   "titulo": "Aposto e Vocativo 1 · Aposto explicativo e especificativo",
+   "subtema": "aposto explicativo e especificativo, sintaxe",
    "area": "portugues"
   }
  ],
@@ -921,6 +1821,78 @@
    "titulo": "Redação do zero: para quem se perde na estrutura",
    "subtema": "começando do zero",
    "area": "portugues"
+  },
+  {
+   "id": "aAB6Zrx-QqM",
+   "titulo": "comece pela conclusão!",
+   "subtema": "Conclusão e proposta de intervenção",
+   "area": "redacao"
+  },
+  {
+   "id": "mjvjQKbx5n0",
+   "titulo": "Como fazer uma introdução perfeita",
+   "subtema": "Introdução: repertório, problematização e tese",
+   "area": "redacao"
+  },
+  {
+   "id": "cFLjfE6oS00",
+   "titulo": "Parágrafo de desenvolvimento nota 1000",
+   "subtema": "estrutura do parágrafo de desenvolvimento e conectivos",
+   "area": "redacao"
+  },
+  {
+   "id": "7eR3eoH19-M",
+   "titulo": "Tema da redação do Enem: o que o Inep divulgou",
+   "subtema": "repertório e intervenção no tema divulgado",
+   "area": "redacao"
+  },
+  {
+   "id": "kYnXFE77i5c",
+   "titulo": "Como escrever uma conclusão perfeita",
+   "subtema": "conclusão, proposta de intervenção e elementos AAMDF",
+   "area": "redacao"
+  },
+  {
+   "id": "ODziJ0buAXE",
+   "titulo": "Como fazer a conclusão modelo Enem",
+   "subtema": "Conclusão ENEM, competências e proposta de intervenção",
+   "area": "redacao"
+  },
+  {
+   "id": "xretLprG47M",
+   "titulo": "Tudo o que as redações nota 1000 2019 têm em comum",
+   "subtema": "estrutura e competências de redação nota 1000",
+   "area": "redacao"
+  },
+  {
+   "id": "qyz07P3e-qU",
+   "titulo": "Modelo de conclusão pronto para qualquer tema",
+   "subtema": "modelo de conclusão e proposta de intervenção",
+   "area": "redacao"
+  },
+  {
+   "id": "fsEqSYb8uDQ",
+   "titulo": "Conclusão (Como melhorar na competência 5)",
+   "subtema": "competência 5, conclusão e plano de ação",
+   "area": "redacao"
+  },
+  {
+   "id": "OMXbit78zO0",
+   "titulo": "Tudo o que os desenvolvimentos nota 1000 de 2019 têm em comum",
+   "subtema": "Estrutura dos parágrafos de desenvolvimento nota 1000",
+   "area": "redacao"
+  },
+  {
+   "id": "k2Wh9quFL3I",
+   "titulo": "Frases prontas para começar o desenvolvimento",
+   "subtema": "tópico frasal do parágrafo de desenvolvimento",
+   "area": "redacao"
+  },
+  {
+   "id": "pthjcBriwZ8",
+   "titulo": "Como fazer a conclusão do Enem de acordo com as novas regras",
+   "subtema": "Competência 5 e proposta de intervenção",
+   "area": "redacao"
   }
  ],
  "interpretacao de texto: charge e tirinha": [
@@ -941,6 +1913,12 @@
    "titulo": "Análise de fotos, pinturas, charges, anúncios e tirinhas",
    "subtema": "Avulsas",
    "area": "espanhol"
+  },
+  {
+   "id": "1xucZxSz7Gw",
+   "titulo": "Interpretando cargas",
+   "subtema": "leitura de charges da história republicana",
+   "area": "historia"
   }
  ],
  "geometria plana": [
@@ -981,6 +1959,42 @@
    "titulo": "Funções: Gráfico 5 · Construção de gráficos de funções",
    "subtema": "Funções",
    "area": "matematica"
+  },
+  {
+   "id": "0SiUrWOSL1U",
+   "titulo": "Exemplos Resolvidos: Inequações do Primeiro Grau",
+   "subtema": "Estudo de sinal de funções em inequações-produto e quociente",
+   "area": "matematica"
+  },
+  {
+   "id": "y3DtJRnqPSE",
+   "titulo": "Exercícios Comentados: Função Modular - Parte 2 · equações e inequações modulares",
+   "subtema": "resolve equações e inequações modulares, estudo de função",
+   "area": "matematica"
+  },
+  {
+   "id": "6FD8cHk1mI4",
+   "titulo": "Questões com Respostas: Função Quadrática - Parte 1 · Função quadrática em vestibulares",
+   "subtema": "vértice, parábola e coeficientes em questões",
+   "area": "matematica"
+  },
+  {
+   "id": "ZnxMdyN4Xp8",
+   "titulo": "Função do Segundo Grau (Função Quadrática): Gráfico Parábola 5 · Coeficientes e gráfico da parábola",
+   "subtema": "coeficientes a, b, c e parábola no plano",
+   "area": "matematica"
+  },
+  {
+   "id": "2KWDWpmDZwQ",
+   "titulo": "Função do 1º Grau: Gráfico 4 · Gráfico da função do primeiro grau",
+   "subtema": "gráfico da função do primeiro grau",
+   "area": "matematica"
+  },
+  {
+   "id": "BU5XJv7bKB0",
+   "titulo": "Função do Primeiro Grau (Função Afim): Problemas Resolvidos - Parte 1 · Função afim em problemas aplicados",
+   "subtema": "Função afim aplicada em problemas",
+   "area": "matematica"
   }
  ],
  "funcoes exponenciais e logaritmos": [
@@ -1001,6 +2015,24 @@
    "titulo": "Função Logarítmica e Gráfico 11 · Função logarítmica e seu gráfico",
    "subtema": "Avulsas",
    "area": "matematica"
+  },
+  {
+   "id": "Fdbc8x0bUT0",
+   "titulo": "Inequações Logarítmicas 14 · Resolução de inequações logarítmicas",
+   "subtema": "Inequações logarítmicas, condições de existência e base",
+   "area": "matematica"
+  },
+  {
+   "id": "M99eny1lY2M",
+   "titulo": "Função Logarítmica: Questões Comentadas",
+   "subtema": "questões de função logarítmica e inversa exponencial",
+   "area": "matematica"
+  },
+  {
+   "id": "y57lgKwsHsk",
+   "titulo": "Equações Logarítmicas e Exponenciais 9 · equações exponenciais com logaritmos",
+   "subtema": "Equações exponenciais resolvidas com logaritmos",
+   "area": "matematica"
   }
  ],
  "numeros e algebra": [
@@ -1020,6 +2052,12 @@
    "id": "OPACJhL_mLY",
    "titulo": "Conjuntos Numéricos: Intervalos Reais, Operações e Propriedades 4 · Intervalos reais e operações",
    "subtema": "Conjuntos Numéricos",
+   "area": "matematica"
+  },
+  {
+   "id": "yfmhfoB0kVA",
+   "titulo": "Progressão Aritmética: Termo Geral 2 · termo geral da PA",
+   "subtema": "termo geral da PA e termos equidistantes",
    "area": "matematica"
   }
  ],
@@ -1063,6 +2101,66 @@
    "titulo": "Energia 2 · Trabalho e energia cinética",
    "subtema": "Energia",
    "area": "fisica"
+  },
+  {
+   "id": "AOSzGBL-Q8s",
+   "titulo": "Gravitação Universal - Leis de Kepler",
+   "subtema": "leis de Kepler e gravitação universal de Newton",
+   "area": "fisica"
+  },
+  {
+   "id": "bZJd3DvzTc4",
+   "titulo": "Colisões",
+   "subtema": "colisões, coeficiente de restituição, quantidade de moviment",
+   "area": "fisica"
+  },
+  {
+   "id": "8DnZJAUoUME",
+   "titulo": "Experimento do Pêndulo",
+   "subtema": "pêndulo simples, período e gravidade",
+   "area": "fisica"
+  },
+  {
+   "id": "rsypYXnHPGg",
+   "titulo": "Aplicação da 2ª Lei de Newton 4 · Força elástica e força de atrito",
+   "subtema": "força elástica, atrito e 2ª lei de Newton",
+   "area": "fisica"
+  },
+  {
+   "id": "WpNFVKXc2rU",
+   "titulo": "Impulso e Quantidade de Movimento",
+   "subtema": "Impulso, quantidade de movimento e sua conservação",
+   "area": "fisica"
+  },
+  {
+   "id": "kisWMmVlky0",
+   "titulo": "Potência e Rendimento",
+   "subtema": "Potência, rendimento e energia/trabalho",
+   "area": "fisica"
+  },
+  {
+   "id": "yAUa4kazVoE",
+   "titulo": "Física: Estática - Ponto Material",
+   "subtema": "Vetores, equilíbrio de forças, plano inclinado",
+   "area": "fisica"
+  },
+  {
+   "id": "Ypp_QzUXuxk",
+   "titulo": "Física: Estática - Corpo Extenso",
+   "subtema": "estática, torque e equilíbrio do corpo extenso",
+   "area": "fisica"
+  },
+  {
+   "id": "zCaCOQS0s_4",
+   "titulo": "Física: Aplicando a 2ª Lei de Newton 2 · aplicações da 2ª Lei de Newton",
+   "subtema": "2ª Lei de Newton, blocos e polias",
+   "area": "fisica"
+  },
+  {
+   "id": "Ica1S9YmG60",
+   "titulo": "Movimento Circular 2 · Transmissão no movimento circular",
+   "subtema": "transmissão no movimento circular e MCUV",
+   "area": "fisica"
   }
  ],
  "ecologia": [
@@ -1082,6 +2180,12 @@
    "id": "iQrDFrmT7k4",
    "titulo": "Ecossistemas",
    "subtema": "Avulsas",
+   "area": "biologia"
+  },
+  {
+   "id": "IYTFtg-q9jg",
+   "titulo": "Dinâmica Populacional",
+   "subtema": "potencial biótico, resistência do meio e densidade populacio",
    "area": "biologia"
   }
  ],
@@ -1137,6 +2241,126 @@
    "titulo": "Reações Orgânicas: Introdução",
    "subtema": "Avulsas",
    "area": "quimica"
+  },
+  {
+   "id": "n6p2tMf-Nk8",
+   "titulo": "Aldeídos e Cetonas",
+   "subtema": "Funções oxigenadas: aldeídos e cetonas",
+   "area": "quimica"
+  },
+  {
+   "id": "30-_k3ALUxc",
+   "titulo": "Reações de Oxidação 2: Oxidação Branda e Combustão",
+   "subtema": "Oxidação branda e combustão de orgânicos",
+   "area": "quimica"
+  },
+  {
+   "id": "1ISFqQKzX_0",
+   "titulo": "Ácidos Carboxílicos",
+   "subtema": "Grupo carboxila, nomenclatura e classificação",
+   "area": "quimica"
+  },
+  {
+   "id": "yzSpXF3AT2o",
+   "titulo": "Química: Isomeria Plana",
+   "subtema": "isomeria plana: função, cadeia, posição, metameria, tautomer",
+   "area": "quimica"
+  },
+  {
+   "id": "RjTr2QTqp-Q",
+   "titulo": "Propriedades Físicas dos Compostos Orgânicos",
+   "subtema": "solubilidade e pontos de fusão/ebulição orgânicos",
+   "area": "quimica"
+  },
+  {
+   "id": "nLRrJHEHUZY",
+   "titulo": "Reações de Oxidação 1: Oxidação Energética",
+   "subtema": "oxidação de álcoois, aldeídos e alcenos",
+   "area": "quimica"
+  },
+  {
+   "id": "RhRG78N5oLg",
+   "titulo": "Amidas e Aminas",
+   "subtema": "amidas e aminas: funções nitrogenadas",
+   "area": "quimica"
+  },
+  {
+   "id": "qWVqXfSRmec",
+   "titulo": "Reações de Substituição",
+   "subtema": "substituição em alcanos, aromáticos e ésteres",
+   "area": "quimica"
+  },
+  {
+   "id": "lkmXC-8YGBA",
+   "titulo": "Éteres, Ésteres e Anidridos",
+   "subtema": "éteres, ésteres e anidridos, nomenclatura e reações",
+   "area": "quimica"
+  },
+  {
+   "id": "jz6XPbvTxrU",
+   "titulo": "Hidrocarbonetos e radicais orgânicos",
+   "subtema": "radicais orgânicos e hidrocarbonetos",
+   "area": "quimica"
+  },
+  {
+   "id": "osfOTZ9YLMk",
+   "titulo": "Hidrocarbonetos de Cadeia Ramificada",
+   "subtema": "nomenclatura de hidrocarbonetos ramificados",
+   "area": "quimica"
+  },
+  {
+   "id": "NxZGL3LI-Zg",
+   "titulo": "Haletos e compostos de Grignard",
+   "subtema": "Haletos orgânicos, nomenclatura e compostos de Grignard",
+   "area": "quimica"
+  },
+  {
+   "id": "PBeW8x0lQZc",
+   "titulo": "Hibridização de Orbitais e Indicadores de pH",
+   "subtema": "maior parte sobre hibridização sp3, sp2 e sp",
+   "area": "quimica"
+  },
+  {
+   "id": "97GZaX9zwBs",
+   "titulo": "Álcoois, Enóis e Fenóis",
+   "subtema": "funções oxigenadas: álcoois, enóis e fenóis",
+   "area": "quimica"
+  },
+  {
+   "id": "56zw2xB-mFM",
+   "titulo": "Isomeria Geométrica",
+   "subtema": "Isomeria geométrica cis/trans e E/Z",
+   "area": "quimica"
+  },
+  {
+   "id": "K2DI2M0C3Qs",
+   "titulo": "Reações de Adição",
+   "subtema": "adição em insaturados, hidrogenação, halogenação",
+   "area": "quimica"
+  },
+  {
+   "id": "b3hggpCJAGY",
+   "titulo": "Reações de Condensação e Eliminação",
+   "subtema": "condensação, esterificação e eliminação orgânicas",
+   "area": "quimica"
+  },
+  {
+   "id": "mQbggPCv6mQ",
+   "titulo": "Reações de Redução",
+   "subtema": "Hidrogenação e redução de funções orgânicas",
+   "area": "quimica"
+  },
+  {
+   "id": "9w1zLQhZ3AU",
+   "titulo": "Isomeria Óptica",
+   "subtema": "quiralidade e isomeria espacial",
+   "area": "quimica"
+  },
+  {
+   "id": "mZh_I8dT0mo",
+   "titulo": "Outras Funções Nitrogenadas",
+   "subtema": "funções nitrogenadas e funções mistas",
+   "area": "quimica"
   }
  ],
  "acidos, bases e ph": [
@@ -1156,6 +2380,18 @@
    "id": "d6ByGejpfFs",
    "titulo": "Ácidos",
    "subtema": "Avulsas",
+   "area": "quimica"
+  },
+  {
+   "id": "5kq5gXF6p4o",
+   "titulo": "Bases",
+   "subtema": "definição, classificação e nomenclatura de bases",
+   "area": "quimica"
+  },
+  {
+   "id": "XtLMej8v71k",
+   "titulo": "Sais",
+   "subtema": "Sais formados por neutralização ácido-base",
    "area": "quimica"
   }
  ],
@@ -1225,6 +2461,12 @@
    "titulo": "Química: Reações de Oxirredução",
    "subtema": "Avulsas",
    "area": "quimica"
+  },
+  {
+   "id": "PpjH5aEq6d4",
+   "titulo": "Número de Oxidação",
+   "subtema": "NOX e regras de oxidação, base do redox",
+   "area": "quimica"
   }
  ],
  "celula e evolucao": [
@@ -1244,6 +2486,18 @@
    "id": "SMtOwxdvRZg",
    "titulo": "Citologia 2 · Enzimas e suas propriedades",
    "subtema": "Citologia",
+   "area": "biologia"
+  },
+  {
+   "id": "jYAtuTcHNqo",
+   "titulo": "Introdução à Biologia",
+   "subtema": "aula introdutória; célula, vírus e divisão",
+   "area": "biologia"
+  },
+  {
+   "id": "WovF5a1yW_g",
+   "titulo": "Reprodução assexuada",
+   "subtema": "reprodução assexuada e divisão celular",
    "area": "biologia"
   }
  ],
@@ -1298,6 +2552,30 @@
    "id": "WskTTBhZY4M",
    "titulo": "Transformações Cíclicas",
    "subtema": "Avulsas",
+   "area": "fisica"
+  },
+  {
+   "id": "qnRivrkaAns",
+   "titulo": "Dilatação Térmica dos Sólidos",
+   "subtema": "dilatação linear, superficial e volumétrica; coeficientes té",
+   "area": "fisica"
+  },
+  {
+   "id": "EHTAO6HXvUM",
+   "titulo": "Mudanças no Estado Físico da Matéria",
+   "subtema": "mudanças de estado, calor latente e diagrama de fases",
+   "area": "fisica"
+  },
+  {
+   "id": "tFtnEmBtICk",
+   "titulo": "Escalas Termométricas",
+   "subtema": "escalas termométricas, temperatura e calor",
+   "area": "fisica"
+  },
+  {
+   "id": "MBNmZxp1pyY",
+   "titulo": "Expansão Térmica dos Líquidos",
+   "subtema": "dilatação térmica dos líquidos",
    "area": "fisica"
   }
  ],
@@ -1397,6 +2675,30 @@
    "titulo": "Literatura · gêneros e formas literárias",
    "subtema": "gêneros e formas literárias",
    "area": "portugues"
+  },
+  {
+   "id": "o49bW2MQiM4",
+   "titulo": "Artes | ENEM - As três fases do Modernismo II | Curso gratuito",
+   "subtema": "Segunda fase do modernismo: Drummond, prosa e poesia de 30",
+   "area": "artes"
+  },
+  {
+   "id": "n_shZeXciGQ",
+   "titulo": "As três fases do Modernismo 1 · Semana de Arte Moderna",
+   "subtema": "Semana de 22, manifestos e fases do Modernismo",
+   "area": "artes"
+  },
+  {
+   "id": "5P6O0kK1VWU",
+   "titulo": "Barroco 2 · O Barroco no Brasil",
+   "subtema": "Barroco brasileiro: movimento literário e artístico",
+   "area": "artes"
+  },
+  {
+   "id": "vSVASZL2dck",
+   "titulo": "O que é futurismo?",
+   "subtema": "vanguarda futurista, manifesto e Semana de 22",
+   "area": "historia"
   }
  ],
  "quimica ambiental": [
@@ -1412,6 +2714,24 @@
    "id": "GicW3UpL6Mw",
    "titulo": "Ciências da Terra · deriva continental e placas tectônicas",
    "subtema": "deriva continental e placas tectônicas",
+   "area": "geografia"
+  },
+  {
+   "id": "y0WA1-0MgLM",
+   "titulo": "Escala do Tempo Geológico",
+   "subtema": "Eras geológicas e datação por radioatividade",
+   "area": "geografia"
+  },
+  {
+   "id": "plWMF5ZU4Z0",
+   "titulo": "Fases da Lua e Eclipses",
+   "subtema": "Fases da Lua, eclipses e marés",
+   "area": "geografia"
+  },
+  {
+   "id": "EKps4ny0Oz8",
+   "titulo": "Tudo sobre o sistema solar e a Terra em 4 minutos",
+   "subtema": "Sistema solar, planetas e formação da Terra",
    "area": "geografia"
   }
  ],
@@ -1463,6 +2783,30 @@
    "titulo": "Inglês: Pronomes Reflexivos",
    "subtema": "pronomes",
    "area": "ingles"
+  },
+  {
+   "id": "keEMNJJ4GzM",
+   "titulo": "Tempos Verbais - Presente e Passado Contínuo",
+   "subtema": "presente e passado contínuo, formação com ing",
+   "area": "ingles"
+  },
+  {
+   "id": "7Bfkx5CT5JQ",
+   "titulo": "Possessivos",
+   "subtema": "adjetivos e pronomes possessivos em inglês",
+   "area": "ingles"
+  },
+  {
+   "id": "szVr2UxCaI0",
+   "titulo": "Voz Passiva",
+   "subtema": "estrutura e tempos da voz passiva em inglês",
+   "area": "ingles"
+  },
+  {
+   "id": "qmV1XYPudUM",
+   "titulo": "Pronomes Interrogativos",
+   "subtema": "wh-words, pronomes interrogativos em inglês",
+   "area": "ingles"
   }
  ],
  "espanhol": [
@@ -1513,6 +2857,12 @@
    "titulo": "Espanhol: Poema e Música",
    "subtema": "poema e música",
    "area": "espanhol"
+  },
+  {
+   "id": "xr2bVe6Uggc",
+   "titulo": "Análise geral de provas anteriores",
+   "subtema": "Análise de questões de espanhol do ENEM",
+   "area": "espanhol"
   }
  ],
  "fisiologia humana": [
@@ -1539,6 +2889,12 @@
    "titulo": "Nutrição · Vitaminas e suas funções",
    "subtema": "vitaminas",
    "area": "biologia"
+  },
+  {
+   "id": "9MhYxGc-Ybo",
+   "titulo": "Exercício Físico e Saúde",
+   "subtema": "Exercício, saúde, massa magra e envelhecimento do organismo",
+   "area": "ed-fisica"
   }
  ],
  "atomistica e tabela periodica": [
@@ -1559,6 +2915,18 @@
    "titulo": "Ligações Covalentes",
    "subtema": "ligações químicas",
    "area": "quimica"
+  },
+  {
+   "id": "CYSEIfFpCos",
+   "titulo": "Química: Modelos Atômicos",
+   "subtema": "Modelos atômicos de Dalton, Thomson, Rutherford e Bohr",
+   "area": "quimica"
+  },
+  {
+   "id": "wu7aN-O1z_4",
+   "titulo": "Números Quânticos",
+   "subtema": "números quânticos e distribuição eletrônica",
+   "area": "quimica"
   }
  ],
  "radioatividade": [
@@ -1574,6 +2942,18 @@
    "id": "7DDNZ2ZiAxs",
    "titulo": "Separação de Misturas",
    "subtema": "separação de misturas",
+   "area": "quimica"
+  },
+  {
+   "id": "mYoCB8CFB9k",
+   "titulo": "Forças Intermoleculares",
+   "subtema": "dipolo-dipolo, ligação de hidrogênio, London",
+   "area": "quimica"
+  },
+  {
+   "id": "pFOhDr9RRXc",
+   "titulo": "Substâncias Químicas",
+   "subtema": "Substâncias puras, sistemas, fases e misturas",
    "area": "quimica"
   }
  ],
